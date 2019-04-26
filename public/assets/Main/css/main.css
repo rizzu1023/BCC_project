@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato";
+  font-weight: 300i;
+}
+
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+  font-family: "Raleway", serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+ul {
+  margin: 0;
+}
+
+.bg-steel {
+  background-color: #354475;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #f6f6f6;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+.teams-area {
+  position: relative;
+  z-index: 999;
+}
+
+.teams-area-wrapper > a {
+  text-decoration: none;
+  color: black;
+}
+
+.teams-area-content {
+  border: 1px solid #354475;
+  height: 300px;
+  margin-right: -7px;
+  margin-left: -7px;
+  border-radius: 3px;
+  padding: 20px 20px;
+  position: relative;
+  background: #f6f6f6;
+}
+
+.teams-area-content:hover {
+  box-shadow: 0 0 10px 0 rgba(69, 69, 69, 0.24);
+}
+
+.teams-area-content > h4 {
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.teams-area-content > p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.teams-area-content > button {
+  border: none;
+  position: absolute;
+  left: 50%;
+  bottom: 20%;
+  transform: translateX(-50%);
+  border-bottom: 2px solid #354475;
+  color: rgba(111, 111, 111, 0.8);
+  padding: 3px 13px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.teams-area-content button:hover {
+  background: rgba(111, 111, 111, 0.8);
+  color: #f6f6f6;
+  cursor: pointer;
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 520px) {
+  .laptop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+}
+thead {
+  background: #354475;
+  color: #f6f6f6;
+}
+
+.team-name-area {
+  position: relative;
+  margin-top: -24px;
+  background-image: -moz-linear-gradient(right, #354475, #f6f6f6);
+  background-image: -webkit-linear-gradient(right, #354475, #f6f6f6);
+}
+
+.team-name-area-content {
+  padding: 20px 5px;
+}
+
+.team-name-area-content h2 {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.team-nav-area {
+  position: relative;
+  z-index: 999;
+  background-image: -moz-linear-gradient(left, #354475, #f6f6f6);
+  background-image: -webkit-linear-gradient(left, #354475, #f6f6f6);
+}
+
+.team-nav-area-content {
+  display: inline-block;
+}
+
+.team-nav-area-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.team-nav-area-content ul li {
+  display: inline-block;
+}
+
+.team-nav-area-content ul li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 20px;
+}
+
+@media (max-width: 520px) {
+  .team-nav-area-content ul li a {
+    padding: 15px 10px;
+    border-right: 1px solid white;
+  }
+}
+.stats-header-area {
+  position: relative;
+  z-index: 999;
+  background-image: -moz-linear-gradient(left, #354475, #f6f6f6);
+  background-image: -webkit-linear-gradient(left, #354475, #f6f6f6);
+  padding: 25px 0;
+  top: -24px;
+}
+
+.stats-header-area-content h3 {
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+}
+
+.stats-side-navbar {
+  position: relative;
+  z-index: 999;
+  display: inline-block;
+}
+
+.stats-side-navbar-content h4 {
+  padding: 0px 14px;
+  font-size: 17px;
+}
+
+.stats-side-navbar-content ul {
+  list-style: none;
+  background: #e7e7e7;
+  margin: 0;
+  padding: 0;
+}
+
+.stats-side-navbar-content ul li {
+  margin: 0;
+  padding: 5px 14px;
+}
+
+.stats-side-navbar-content ul li h5 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+}
+
+.stats-side-navbar-content ul li a {
+  font-size: 12px;
+  color: black;
+  display: block;
+  padding: 3px 0px;
+  text-decoration: none;
+}
+
+.stats-side-navbar-content ul li:nth-child(1) {
+  background: #354475;
+  padding: 10px 14px;
+}
+
+.stats-side-navbar-content ul li:nth-child(9) {
+  background: #354475;
+  padding: 10px 14px;
+}
+
+.stats-main-area {
+  position: relative;
+  z-index: 997;
+  display: inline-block;
+  top: -570px;
+  width: 80%;
+}
+
+.stats-main-area-content-header h3 {
+  padding: 10px 20px;
+}
+
+.stats-main-area-content table tbody {
+  font-size: 12px;
+}
+
+/*# sourceMappingURL=main.css.map */
