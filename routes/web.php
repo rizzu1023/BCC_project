@@ -3,7 +3,7 @@
 
 
 
-
+//frontend Routes
 Route::get('/', 'MainController@GetIndex');
 Route::get('/pointsTable', 'MainController@GetPointsTable');
 Route::get('/teams', 'MainController@GetTeams');
@@ -32,4 +32,12 @@ Route::prefix('admin')->group(function(){
     Route::get('/EditPlayer/{id}','AdminController@EditPlayer')->name('EditPlayer');
     Route::post('/Post_EditPlayer','AdminController@Post_EditPlayer')->name('Post_EditPlayer');
     Route::post('/Post_DeletePlayer','AdminController@Post_DeletePlayer')->name('Post_DeletePlayer');
+
+    //Schedule
+    Route::get('/BrowseSchedule','AdminController@BrowseSchedule')->name('BrowseSchedule');
+    Route::get('/AddSchedule','AdminController@AddSchedule')->name('AddSchedule');
+    Route::post('/Post_AddSchedule','AdminController@Post_AddSchedule')->name('Post_AddSchedule');
+    Route::get('/EditSchedule/{id}','AdminController@EditSchedule')->name('EditSchedule');
+    Route::post('/Post_EditSchedule','AdminController@Post_EditSchedule')->name('Post_EditSchedule');
+    Route::post('/Post_DeleteSchedule','AdminController@Post_DeleteSchedule')->name('Post_DeleteSchedule');
 });

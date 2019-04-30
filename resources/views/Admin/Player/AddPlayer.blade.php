@@ -22,10 +22,16 @@
 									<label for="field1">Player Role</label> 
 									<input type="text" class="form-control" id="field1" name="player_role" placeholder="eg Batsman"> 
 								</div>
-                                <div class="form-group"> 
-									<label for="field1">Team Id</label> 
-									<input type="text" class="form-control" id="field1" name="team_id" placeholder="eg MI"> 
-								</div> 
+                         
+								<div class="form-group">
+										<label for="exampleFormControlSelect2">Select Team</label>
+										<select class="form-control" id="exampleFormControlSelect2" name="team_id">
+											<option value="">Select Team</option>
+											@foreach($team as $t)
+												<option value="{{$t->team_id}}">{{$t->team_name}}</option>
+											@endforeach
+										</select>
+								</div>
 								<button type="submit" class="btn btn-default">Submit</button> 
 							</form> 
 						</div>
