@@ -25,6 +25,12 @@
                 <span>Teams</span>
                 </a>
               </li>
+              <li class="treeview">
+                <a href="{{route('BrowsePlayer')}}">
+                <i class="fa fa-pie-chart"></i>
+                <span>Player</span>
+                </a>
+              </li>
 	      		  <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
