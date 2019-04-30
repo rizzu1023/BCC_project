@@ -19,7 +19,13 @@
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
               </li>
-			  <li class="treeview">
+              <li class="treeview">
+                <a href="{{route('BrowseTeam')}}">
+                <i class="fa fa-pie-chart"></i>
+                <span>Teams</span>
+                </a>
+              </li>
+	      		  <li class="treeview">
                 <a href="#">
                 <i class="fa fa-laptop"></i>
                 <span>Components</span>
@@ -29,13 +35,6 @@
                   <li><a href="grids.html"><i class="fa fa-angle-right"></i> Grids</a></li>
                   <li><a href="media.html"><i class="fa fa-angle-right"></i> Media Css</a></li>
                 </ul>
-              </li>
-              <li class="treeview">
-                <a href="charts.html">
-                <i class="fa fa-pie-chart"></i>
-                <span>Charts</span>
-                <span class="label label-primary pull-right">new</span>
-                </a>
               </li>
               <li class="treeview">
                 <a href="#">
