@@ -12,6 +12,8 @@ use App\Bowling;
 use App\Schedule;
 use App\Batting;
 use App\PointsTable;
+use App\Game;
+use App\GameXI;
 
 
 class AdminController extends Controller
@@ -284,25 +286,79 @@ class AdminController extends Controller
     
     public function StartMatch($match_no){
 
-        $teams  = Schedule::where('match_no',$match_no)->first();
+        $schedule  = Schedule::where('match_no',$match_no)->first();
         
-        $team1 = $teams->Teams1->team_name;
-        $team2 = $teams->Teams2->team_name;
 
-        $players1 = Players::where('team_id',$teams->team1_id)->get();
-        $players2 = Players::where('team_id',$teams->team2_id)->get();
+        $players1 = Players::where('team_id',$schedule->team1_id)->get();
+        $players2 = Players::where('team_id',$schedule->team2_id)->get();
         // dd($team1);
 
-        return view('Admin/Match/StartMatch',compact('teams','players1','players2'));
+        return view('Admin/Match/StartMatch',compact('schedule','players1','players2'));
     }
 
     public function StartScore(Request $request, Response $response){
+        
         for($i=1; $i<23; $i++){
+            
             $var = "t1p".$i;
             if($request->$var != null){
-                dd($request->$var);
-                $object = $request->$var;
+                $obj = Players::where('player_id',$request->$var)->first();
+                
+                $gamexi = new GameXI;
+                $gamexi->match_no = $request->match_no;
+                $gamexi->team_id = $obj->Teams->team_id;
+                $gamexi->player_id = $request->$var;
+
+                $gamexi->save();
+
             }
         }
+
+
+
+
+
+        $game1 = new Game;
+        $game1->match_no = $request->match_no;
+        $game1->team_id = $request->team1_id;
+        if($request->toss == $request->team1_id){
+            $game1->toss = 1;
+            $game1->choose = $request->choose; 
+        }
+        else{
+            $game1->toss = 0;
+                if($request->choose == 'Bat'){
+                    $game1->choose = 'Bowl';
+                }
+                else{
+                    $game1->choose = 'Bat';
+                }
+        }
+     
+        $game1->save();
+
+        $game2 = new Game;
+        $game2->match_no = $request->match_no;
+        $game2->team_id = $request->team2_id;
+        if($request->toss == $request->team2_id){
+            $game2->toss = 1;
+            $game2->choose = $request->choose; 
+
+        }
+        else{
+            $game2->toss = 0;
+                if($request->choose == 'Bat'){
+                    $game2->choose = 'Bowl';
+                }
+                else{
+                    $game2->choose = 'Bat';
+                }
+        }
+       
+        $game2->save();
+
+        dd("Done");
+
+        
     }
 }
