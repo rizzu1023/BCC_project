@@ -37,6 +37,18 @@
                 <span>Schedule</span>
                 </a>
               </li>
+              <li class="treeview">
+                <a href="{{route('BrowseBatting')}}">
+                <i class="fa fa-pie-chart"></i>
+                <span>Batting</span>
+                </a>
+              </li>
+              <li class="treeview">
+                <a href="{{route('BrowseBowling')}}">
+                <i class="fa fa-pie-chart"></i>
+                <span>Bowling</span>
+                </a>
+              </li>
 	      	
             </ul>
           </div>

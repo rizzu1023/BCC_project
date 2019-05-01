@@ -40,4 +40,21 @@ Route::prefix('admin')->group(function(){
     Route::get('/EditSchedule/{id}','AdminController@EditSchedule')->name('EditSchedule');
     Route::post('/Post_EditSchedule','AdminController@Post_EditSchedule')->name('Post_EditSchedule');
     Route::post('/Post_DeleteSchedule','AdminController@Post_DeleteSchedule')->name('Post_DeleteSchedule');
+
+    //Batting
+    Route::get('/BrowseBatting','AdminController@BrowseBatting')->name('BrowseBatting');
+    Route::get('/Batting','AdminController@AddBatting')->name('AddBatting');
+    Route::post('/Post_AddBatting','AdminController@Post_AddBatting')->name('Post_AddBatting');
+    Route::get('/EditBatting/{id}','AdminController@EditBatting')->name('EditBatting');
+    Route::post('/Post_EditBatting','AdminController@Post_EditBatting')->name('Post_EditBatting');
+    Route::post('/Post_DeleteBatting','AdminController@Post_DeleteBatting')->name('Post_DeleteBatting');
+
+    
+    //Bowling
+    Route::get('/BrowseBowling','AdminController@BrowseBowling')->name('BrowseBowling');
+    Route::get('/Bowling','AdminController@AddBowling')->name('AddBowling');
+    Route::post('/Post_AddBowling','AdminController@Post_AddBowling')->name('Post_AddBowling');
+    Route::get('/EditBowling/{id}','AdminController@EditBowling')->name('EditBowling');
+    Route::post('/Post_EditBowling','AdminController@Post_EditBowling')->name('Post_EditBowling');
+    Route::post('/Post_DeleteBowling','AdminController@Post_DeleteBowling')->name('Post_DeleteBowling');
 });

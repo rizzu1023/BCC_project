@@ -8,13 +8,14 @@ use Illuminate\Support\Facades\Redirect;
 
 use App\Teams;
 use App\Players;
+use App\Bowling;
 use App\Schedule;
+use App\Batting;
 
 
 class AdminController extends Controller
 {
     public function getDashboard(){
-        // $var = Schedule::all()->first();
         // dd($var->Teams2->team_name);
         return view('admin/dashboard');
     }
@@ -106,12 +107,12 @@ class AdminController extends Controller
         $id = $request->id;
         $player = Players::find($id);
         $player->delete();
-        return Redirect::Route('BrowseSchedule')->with('message','Successfully Deleted');
+        return Redirect::Route('BrowsePlayer')->with('message','Successfully Deleted');
     }
 
 
-     //Schedule BREAD Function
-     public function BrowseSchedule(){
+    //Schedule BREAD Function
+    public function BrowseSchedule(){
         $schedule = Schedule::all();
         return view('admin/Schedule/BrowseSchedule', compact('schedule'));
     }
@@ -134,13 +135,13 @@ class AdminController extends Controller
     }
 
 
-    
+
     public function EditSchedule($id){
         $schedule = Schedule::find($id);
         $team = Teams::all();
         return view('admin/Schedule/EditSchedule',compact('schedule','team'));
     }
-    
+
     public function Post_EditSchedule(Request $request , Response $response){
         $schedule = Schedule::where('id',$request->id)->first();
         $schedule->match_no = $request->match_no;
@@ -151,7 +152,7 @@ class AdminController extends Controller
         $schedule->save();
         return Redirect::Route('BrowseSchedule')->with('message','Successfully Updated');
     }
-    
+
     public function Post_DeleteSchedule(Request $request , Response $response){
         $id = $request->id;
         $schedule = Schedule::find($id);
@@ -159,4 +160,97 @@ class AdminController extends Controller
         return Redirect::Route('BrowseSchedule')->with('message','Successfully Deleted');
     }
      
+     
+     //Batting BREAD Function
+     public function BrowseBatting(){
+        $batting = Batting::all();
+        return view('admin/Batting/BrowseBatting', compact('batting'));
+    }
+
+    public function AddBatting(){
+        return view('admin/Batting/AddBatting');
+    }
+
+    public function Post_AddBatting(Request $request , Response $response){
+        $batting = new Batting;
+        $batting->player_id = $request->player_id;
+        $batting->bt_matches = $request->bt_matches;
+        $batting->bt_innings = $request->bt_innings;
+        $batting->bt_balls = $request->bt_balls;
+        $batting->bt_fours = $request->bt_fours;
+        $batting->save();
+        return Redirect::Route('BrowseBatting')->with('message','Successfully Added');
+    }
+
+
+    
+    public function EditBatting($id){
+        $batting = Batting::find($id);
+        return view('admin/Batting/EditBatting',compact('batting'));
+    }
+    
+    public function Post_EditBatting(Request $request , Response $response){
+        $batting = Batting::where('id',$request->id)->first();
+        $batting->player_id = $request->player_id;
+        $batting->bt_matches = $request->bt_matches;
+        $batting->bt_innings = $request->bt_innings;
+        $batting->bt_balls = $request->bt_balls;
+        $batting->bt_fours = $request->bt_fours;
+        $batting->save();
+        return Redirect::Route('BrowseBatting')->with('message','Successfully Updated');
+    }
+    
+    public function Post_DeleteBatting(Request $request , Response $response){
+        $id = $request->id;
+        $batting = Batting::find($id);
+        $batting->delete();
+        return Redirect::Route('BrowseBatting')->with('message','Successfully Deleted');
+    }
+
+
+    //Bowling BREAD Function
+    public function BrowseBowling(){
+        $bowling = Bowling::all();
+        return view('admin/Bowling/BrowseBowling', compact('bowling'));
+    }
+
+    public function AddBowling(){
+        return view('admin/Bowling/AddBowling');
+    }
+
+    public function Post_AddBowling(Request $request , Response $response){
+        $bowling = new Bowling;
+        $bowling->player_id = $request->player_id;
+        $bowling->bw_matches = $request->bw_matches;
+        $bowling->bw_innings = $request->bw_innings;
+        $bowling->bw_balls = $request->bw_balls;
+        $bowling->bw_wickets = $request->bw_wickets;
+        $bowling->save();
+        return Redirect::Route('BrowseBowling')->with('message','Successfully Added');
+    }
+
+
+    
+    public function EditBowling($id){
+        $bowling = Bowling::find($id);
+        return view('admin/Bowling/EditBowling',compact('bowling'));
+    }
+    
+    public function Post_EditBowling(Request $request , Response $response){
+        $bowling = Bowling::where('id',$request->id)->first();
+        $bowling->player_id = $request->player_id;
+        $bowling->bw_matches = $request->bw_matches;
+        $bowling->bw_innings = $request->bw_innings;
+        $bowling->bw_balls = $request->bw_balls;
+        $bowling->bw_wickets = $request->bw_wickets;
+        $bowling->save();
+        return Redirect::Route('BrowseBowling')->with('message','Successfully Updated');
+    }
+    
+    public function Post_DeleteBowling(Request $request , Response $response){
+        $id = $request->id;
+        $bowling = Bowling::find($id);
+        $bowling->delete();
+        return Redirect::Route('BrowseBowling')->with('message','Successfully Deleted');
+    }
 }
