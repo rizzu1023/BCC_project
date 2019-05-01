@@ -35,6 +35,8 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('assets/Admin/js/custom.js')}}"></script>
 <link href="{{asset('assets/Admin/css/custom.css')}}" rel="stylesheet">
 
+@yield('css')
+
 </head>
 
 
@@ -85,6 +87,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 				}
 			}
 		</script>
+		
+
+		@yield('script')
 	<!-- //Classie --><!-- //for toggle left push menu script -->
 
 	<!--scrolling js-->

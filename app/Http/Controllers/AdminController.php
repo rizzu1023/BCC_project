@@ -280,5 +280,29 @@ class AdminController extends Controller
         return Redirect::Route('BrowseBowling')->with('message','Successfully Updated');
     }
 
+
     
+    public function StartMatch($match_no){
+
+        $teams  = Schedule::where('match_no',$match_no)->first();
+        
+        $team1 = $teams->Teams1->team_name;
+        $team2 = $teams->Teams2->team_name;
+
+        $players1 = Players::where('team_id',$teams->team1_id)->get();
+        $players2 = Players::where('team_id',$teams->team2_id)->get();
+        // dd($team1);
+
+        return view('Admin/Match/StartMatch',compact('teams','players1','players2'));
+    }
+
+    public function StartScore(Request $request, Response $response){
+        for($i=1; $i<23; $i++){
+            $var = "t1p".$i;
+            if($request->$var != null){
+                dd($request->$var);
+                $object = $request->$var;
+            }
+        }
+    }
 }

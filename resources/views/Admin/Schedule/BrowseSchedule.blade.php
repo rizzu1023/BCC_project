@@ -24,15 +24,15 @@
 								  <th></th>
 								  <th>Match No</th>
 								  <th>Team 1</th>
-                                  <th>Vs</th>
+                  <th>Vs</th>
 								  <th>Team 2</th>
 								  <th>Time</th>
 								  <th>Date</th>
 								</tr>
 							</thead>
 							<tbody>
-                            @foreach($schedule as $s)
-                                <tr>
+                @foreach($schedule as $s)
+                <tr>
 								  <td>
 								  <a class="btn btn-success btn-sm" href="/admin/EditSchedule/{{$s->id}}">Edit</a>
 								  <form style="display:inline-block" method="POST" action="{{route('Post_DeleteSchedule')}}">
@@ -43,12 +43,15 @@
 								  </td>
 								  <th scope="row">{{$s->match_no}}</th>
 								  <td>{{$s->team1_id}}</td>
-                                  <td>Vs</td>
+                  <td>Vs</td>
 								  <td>{{$s->team2_id}}</td>
 								  <td>{{$s->times}}</td>
 								  <td>{{$s->dates}}</td>
+									<td>
+									  <a class="btn btn-warning btn-sm" href="/admin/StartMatch/{{$s->match_no}}">Score</a>
+									</td>
 								</tr>
-                            @endforeach
+                @endforeach
 							</tbody>
 						</table>
 					</div>

@@ -62,5 +62,7 @@ Route::prefix('admin')->group(function(){
     Route::post('/Post_EditPointsTable','AdminController@Post_EditPointsTable')->name('Post_EditPointsTable');
     Route::post('/Post_DeletePointsTable','AdminController@Post_DeletePointsTable')->name('Post_DeletePointsTable');
 
-    
+    Route::get('/StartMatch/{match_no}','AdminController@StartMatch')->name('StartMatch');    
+
+    Route::post('/StartScore','AdminController@StartScore')->name('StartScore');
 });
