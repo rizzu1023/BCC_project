@@ -13,7 +13,6 @@
               </div>
 			@endif
 				<h3 class="title1">Batting Stats</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('AddBatting')}}"><i class="fa fa-plus"></i>Add</a>
                 <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
@@ -21,11 +20,12 @@
 								<tr>
 								  <th></th>
 								  <th>Sr</th>
-								  <th>Player Id</th>
+								  <th>Player</th>
 								  <th>Matches</th>
 								  <th>Innings</th>
 								  <th>Balls</th>
 								  <th>Fours</th>
+								  <th>Team</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -34,18 +34,15 @@
                                 <tr>
 								  <td>
 								  <a class="btn btn-success btn-sm" href="/admin/EditBatting/{{$b->id}}">Edit</a>
-								  <form style="display:inline-block" method="POST" action="{{route('Post_DeleteBatting')}}">
-								  	@csrf
-									  <input type="hidden" value="{{$b->id}}" name="id">
-									  <button class="btn btn-danger btn-sm">Delete</button>
-								  </form>
 								  </td>
 								  <th scope="row">{{$i}}</th>
-								  <td>{{$b->player_id}}</td>
+								  <td>{{$b->Players->player_name}}</td>
 								  <td>{{$b->bt_matches}}</td>
 								  <td>{{$b->bt_innings}}</td>
 								  <td>{{$b->bt_balls}}</td>
 								  <td>{{$b->bt_fours}}</td>
+								  <td>{{$b->Players->Teams->team_name}}</td>
+								
 								</tr>
                                 @php($i++)
                             @endforeach

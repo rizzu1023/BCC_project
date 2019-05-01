@@ -12,7 +12,11 @@
 							@csrf
 								<div class="form-group"> 
 									<label for="field1">Player Id</label> 
-									<input type="text" class="form-control" id="field1" name="player_id" value="{{$bowling['player_id']}}"> 
+									<input type="text" class="form-control" id="field1" value="{{$bowling['player_id']}}" disabled> 
+								</div>
+								<div class="form-group"> 
+									<label for="field1">Player Name</label> 
+									<input type="text" class="form-control" id="field1" value="{{$bowling->Players->player_name}}" disabled> 
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Matches</label> 

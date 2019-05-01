@@ -43,8 +43,8 @@ Route::prefix('admin')->group(function(){
 
     //Batting
     Route::get('/BrowseBatting','AdminController@BrowseBatting')->name('BrowseBatting');
-    Route::get('/Batting','AdminController@AddBatting')->name('AddBatting');
-    Route::post('/Post_AddBatting','AdminController@Post_AddBatting')->name('Post_AddBatting');
+    // Route::get('/Batting','AdminController@AddBatting')->name('AddBatting');
+    // Route::post('/Post_AddBatting','AdminController@Post_AddBatting')->name('Post_AddBatting');
     Route::get('/EditBatting/{id}','AdminController@EditBatting')->name('EditBatting');
     Route::post('/Post_EditBatting','AdminController@Post_EditBatting')->name('Post_EditBatting');
     Route::post('/Post_DeleteBatting','AdminController@Post_DeleteBatting')->name('Post_DeleteBatting');
@@ -52,9 +52,15 @@ Route::prefix('admin')->group(function(){
     
     //Bowling
     Route::get('/BrowseBowling','AdminController@BrowseBowling')->name('BrowseBowling');
-    Route::get('/Bowling','AdminController@AddBowling')->name('AddBowling');
-    Route::post('/Post_AddBowling','AdminController@Post_AddBowling')->name('Post_AddBowling');
     Route::get('/EditBowling/{id}','AdminController@EditBowling')->name('EditBowling');
     Route::post('/Post_EditBowling','AdminController@Post_EditBowling')->name('Post_EditBowling');
     Route::post('/Post_DeleteBowling','AdminController@Post_DeleteBowling')->name('Post_DeleteBowling');
+
+    //PointsTable
+    Route::get('/BrowsePointsTable','AdminController@BrowsePointsTable')->name('BrowsePointsTable');
+    Route::get('/EditPointsTable/{id}','AdminController@EditPointsTable')->name('EditPointsTable');
+    Route::post('/Post_EditPointsTable','AdminController@Post_EditPointsTable')->name('Post_EditPointsTable');
+    Route::post('/Post_DeletePointsTable','AdminController@Post_DeletePointsTable')->name('Post_DeletePointsTable');
+
+    
 });

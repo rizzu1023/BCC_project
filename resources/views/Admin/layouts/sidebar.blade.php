@@ -21,19 +21,19 @@
               </li>
               <li class="treeview">
                 <a href="{{route('BrowseTeam')}}">
-                <i class="fa fa-pie-chart"></i>
+                <i class="fa fa-users"></i>
                 <span>Teams</span>
                 </a>
               </li>
               <li class="treeview">
                 <a href="{{route('BrowsePlayer')}}">
-                <i class="fa fa-pie-chart"></i>
+                <i class="fa fa-user"></i>
                 <span>Players</span>
                 </a>
               </li>
               <li class="treeview">
                 <a href="{{route('BrowseSchedule')}}">
-                <i class="fa fa-pie-chart"></i>
+                <i class="fa fa-calendar"></i>
                 <span>Schedule</span>
                 </a>
               </li>
@@ -47,6 +47,12 @@
                 <a href="{{route('BrowseBowling')}}">
                 <i class="fa fa-pie-chart"></i>
                 <span>Bowling</span>
+                </a>
+              </li>
+              <li class="treeview">
+                <a href="{{route('BrowsePointsTable')}}">
+                <i class="fa fa-bars"></i>
+                <span>Points Table</span>
                 </a>
               </li>
 	      	
