@@ -370,17 +370,13 @@ class AdminController extends Controller
 
     public function BrowseResult(){
         $result= Game::where('tournament','BCC2019')->orderBy('match_no','asc')->get();
-        $single_result = NULL;
-        // dd(count($result));
-        // dd($result[0]->team_id);
-        return view('Admin/Result/BrowseResult',compact('result','single_result'));
+        return view('Admin/Result/BrowseResult',compact('result'));
     }
 
     public function Post_BrowseResult(Request $request, Response $response){
-        // dd($request->match_no);
-        $result= Game::where('tournament',$request->tournament)->orderBy('match_no','asc')->get();
-
+        $toss = Game::where('tournament',$request->tournament)->where('match_no',$request->match_no)->where('toss',1)->get();
         $single_result = GameXI::where('match_no',$request->match_no)->get();
-        return view('Admin/Result/BrowseResult',compact('single_result','result'));
+        $two_teams = GameXI::where('match_no',$request->match_no)->select('team_id')->distinct()->get();
+        return view('Admin/Result/SingleResult',compact('single_result','two_teams','toss'));
     }
 }

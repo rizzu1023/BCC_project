@@ -11,4 +11,8 @@ class GameXI extends Model
     public function Players(){
         return $this->belongsTo('App\Players','player_id','player_id');
     }
+
+    public function Teams(){
+        return $this->belongsTo('App\Teams','team_id','team_id');
+    }
 }
