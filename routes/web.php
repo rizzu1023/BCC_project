@@ -65,4 +65,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/StartMatch/{match_no}','AdminController@StartMatch')->name('StartMatch');    
 
     Route::post('/StartScore','AdminController@StartScore')->name('StartScore');
+
+    Route::get('/BrowseResult', 'AdminController@BrowseResult')->name('BrowseResult');
+    Route::post('/Post_BrowseResult', 'AdminController@Post_BrowseResult')->name('Post_BrowseResult');
 });

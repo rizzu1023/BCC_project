@@ -55,6 +55,13 @@
                 <span>Points Table</span>
                 </a>
               </li>
+
+              <li class="treeview">
+                <a href="{{route('BrowseResult')}}">
+                <i class="fa fa-bars"></i>
+                <span>Results</span>
+                </a>
+              </li>
 	      	
             </ul>
           </div>

@@ -118,7 +118,7 @@ class AdminController extends Controller
         $schedule->team2_id = $request->team2_id;
         $schedule->times = $request->times;
         $schedule->dates = $request->dates;
-        $schedule->tournament = "BCC";
+        $schedule->tournament = "BCC2019";
         $schedule->save();
         return Redirect::Route('BrowseSchedule')->with('message','Successfully Added');
     }
@@ -308,6 +308,7 @@ class AdminController extends Controller
                 $gamexi->match_no = $request->match_no;
                 $gamexi->team_id = $obj->Teams->team_id;
                 $gamexi->player_id = $request->$var;
+                $gamexi->tournament = 'BCC2019';
 
                 $gamexi->save();
 
@@ -321,6 +322,7 @@ class AdminController extends Controller
         $game1 = new Game;
         $game1->match_no = $request->match_no;
         $game1->team_id = $request->team1_id;
+        $game1->tournament = 'BCC2019';
         if($request->toss == $request->team1_id){
             $game1->toss = 1;
             $game1->choose = $request->choose; 
@@ -340,6 +342,7 @@ class AdminController extends Controller
         $game2 = new Game;
         $game2->match_no = $request->match_no;
         $game2->team_id = $request->team2_id;
+        $game2->tournament = 'BCC2019';
         if($request->toss == $request->team2_id){
             $game2->toss = 1;
             $game2->choose = $request->choose; 
@@ -360,5 +363,24 @@ class AdminController extends Controller
         dd("Done");
 
         
+    }
+
+
+
+
+    public function BrowseResult(){
+        $result= Game::where('tournament','BCC2019')->orderBy('match_no','asc')->get();
+        $single_result = NULL;
+        // dd(count($result));
+        // dd($result[0]->team_id);
+        return view('Admin/Result/BrowseResult',compact('result','single_result'));
+    }
+
+    public function Post_BrowseResult(Request $request, Response $response){
+        // dd($request->match_no);
+        $result= Game::where('tournament',$request->tournament)->orderBy('match_no','asc')->get();
+
+        $single_result = GameXI::where('match_no',$request->match_no)->get();
+        return view('Admin/Result/BrowseResult',compact('single_result','result'));
     }
 }
