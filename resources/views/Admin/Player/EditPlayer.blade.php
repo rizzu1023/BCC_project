@@ -29,7 +29,7 @@
 											@foreach($team as $t)
 												<option value="{{$t->team_id}}">{{$t->team_name}}</option>
 											@endforeach
-										</select>
+										</select> 
 								</div>
 
                                 <input type="hidden" value="{{$player['id']}}" name="id">

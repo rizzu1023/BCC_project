@@ -20,7 +20,7 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="{{route('BrowseTeam')}}">
+                <a href="{{route('Team.index')}}">
                 <i class="fa fa-users"></i>
                 <span>Teams</span>
                 </a>

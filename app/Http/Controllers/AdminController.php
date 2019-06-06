@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function getDashboard(){
         return view('admin/dashboard');
     }
-    
+
 //Team function
     public function BrowseTeam(){
         $team = Teams::all();
@@ -47,12 +47,12 @@ class AdminController extends Controller
     }
 
 
-    
+
     public function EditTeam($id){
         $team = Teams::find($id);
         return view('admin/Team/EditTeam',compact('team'));
     }
-    
+
     public function Post_EditTeam(Request $request , Response $response){
         $team = Teams::where('id',$request->id)->first();
         $team->team_id = $request->team_id;
@@ -61,7 +61,7 @@ class AdminController extends Controller
         $team->save();
         return Redirect::Route('BrowseTeam')->with('message','Successfully Updated');
     }
-    
+
     public function Post_DeleteTeam(Request $request , Response $response){
         $id = $request->id;
         $team = Teams::find($id);
@@ -72,20 +72,20 @@ class AdminController extends Controller
 
         return Redirect::Route('BrowseTeam')->with('message','Successfully Deleted');
     }
-    
 
-    
+
+
     //PointsTable BREAD Function
         public function BrowsePointsTable(){
             $pointstable = PointsTable::all();
             return view('admin/PointsTable/BrowsePointsTable', compact('pointstable'));
         }
-    
+
         public function EditPointsTable($id){
             $pointstable = PointsTable::find($id);
             return view('admin/PointsTable/EditPointsTable',compact('pointstable'));
         }
-    
+
         public function Post_EditPointsTable(Request $request , Response $response){
             $pointstable = PointsTable::where('id',$request->id)->first();
             $pointstable->match = $request->match;
@@ -148,7 +148,7 @@ class AdminController extends Controller
         $schedule->delete();
         return Redirect::Route('BrowseSchedule')->with('message','Successfully Deleted');
     }
-     
+
 //Player Function
     public function BrowsePlayer(){
         $player = Players::all();
@@ -180,13 +180,13 @@ class AdminController extends Controller
     }
 
 
-    
+
     public function EditPlayer($id){
         $player = Players::find($id);
         $team = Teams::all();
         return view('admin/Player/EditPlayer',compact('player','team'));
     }
-    
+
     public function Post_EditPlayer(Request $request , Response $response){
         $player = Players::where('id',$request->id)->first();
         $player->player_id = $request->player_id;
@@ -196,20 +196,20 @@ class AdminController extends Controller
         $player->save();
         return Redirect::Route('BrowsePlayer')->with('message','Successfully Updated');
     }
-    
+
     public function Post_DeletePlayer(Request $request , Response $response){
         $id = $request->id;
         $player = Players::find($id);
         $player->delete();
-        
+
         $pid = $player->player_id;
 
         $bt_player = Batting::where('player_id',$pid)->first();
         $bt_player->delete();
-        
+
         $bw_player = Bowling::where('player_id',$pid)->first();
         $bw_player->delete();
-        
+
         return Redirect::Route('BrowsePlayer')->with('message','Successfully Deleted');
     }
 
@@ -235,12 +235,12 @@ class AdminController extends Controller
     // }
 
 
-    
+
     public function EditBatting($id){
         $batting = Batting::find($id);
         return view('admin/Batting/EditBatting',compact('batting'));
     }
-    
+
     public function Post_EditBatting(Request $request , Response $response){
         $batting = Batting::where('id',$request->id)->first();
         $batting->bt_matches = $request->bt_matches;
@@ -250,7 +250,7 @@ class AdminController extends Controller
         $batting->save();
         return Redirect::Route('BrowseBatting')->with('message','Successfully Updated');
     }
-    
+
     // public function Post_DeleteBatting(Request $request , Response $response){
     //     $id = $request->id;
     //     $batting = Batting::find($id);
@@ -266,12 +266,12 @@ class AdminController extends Controller
     }
 
 
-    
+
     public function EditBowling($id){
         $bowling = Bowling::find($id);
         return view('admin/Bowling/EditBowling',compact('bowling'));
     }
-    
+
     public function Post_EditBowling(Request $request , Response $response){
         $bowling = Bowling::where('id',$request->id)->first();
         $bowling->bw_matches = $request->bw_matches;
@@ -283,11 +283,11 @@ class AdminController extends Controller
     }
 
 
-    
+
     public function StartMatch($match_no){
 
         $schedule  = Schedule::where('match_no',$match_no)->first();
-        
+
 
         $players1 = Players::where('team_id',$schedule->team1_id)->get();
         $players2 = Players::where('team_id',$schedule->team2_id)->get();
@@ -297,13 +297,13 @@ class AdminController extends Controller
     }
 
     public function StartScore(Request $request, Response $response){
-        
+
         for($i=1; $i<23; $i++){
-            
+
             $var = "t1p".$i;
             if($request->$var != null){
                 $obj = Players::where('player_id',$request->$var)->first();
-                
+
                 $gamexi = new GameXI;
                 $gamexi->match_no = $request->match_no;
                 $gamexi->team_id = $obj->Teams->team_id;
@@ -325,7 +325,7 @@ class AdminController extends Controller
         $game1->tournament = 'BCC2019';
         if($request->toss == $request->team1_id){
             $game1->toss = 1;
-            $game1->choose = $request->choose; 
+            $game1->choose = $request->choose;
         }
         else{
             $game1->toss = 0;
@@ -336,7 +336,7 @@ class AdminController extends Controller
                     $game1->choose = 'Bat';
                 }
         }
-     
+
         $game1->save();
 
         $game2 = new Game;
@@ -345,7 +345,7 @@ class AdminController extends Controller
         $game2->tournament = 'BCC2019';
         if($request->toss == $request->team2_id){
             $game2->toss = 1;
-            $game2->choose = $request->choose; 
+            $game2->choose = $request->choose;
 
         }
         else{
@@ -357,12 +357,12 @@ class AdminController extends Controller
                     $game2->choose = 'Bat';
                 }
         }
-       
+
         $game2->save();
 
         dd("Done");
 
-        
+
     }
 
 
@@ -375,8 +375,29 @@ class AdminController extends Controller
 
     public function Post_BrowseResult(Request $request, Response $response){
         $toss = Game::where('tournament',$request->tournament)->where('match_no',$request->match_no)->where('toss',1)->get();
+        $score = Game::where('tournament',$request->tournament)->where('match_no',$request->match_no)->get();
         $single_result = GameXI::where('match_no',$request->match_no)->get();
         $two_teams = GameXI::where('match_no',$request->match_no)->select('team_id')->distinct()->get();
-        return view('Admin/Result/SingleResult',compact('single_result','two_teams','toss'));
+        // dd($score);
+        return view('Admin/Result/SingleResult',compact('single_result','two_teams','toss','score'));
+    }
+
+    public function Post_DeleteResult(Request $request, Response $response){
+        $result= Game::where('tournament','BCC2019')->orderBy('match_no','asc')->get();
+        $match_no = $request->match_no;
+        $match = Game::where('match_no',$match_no)->get();
+        // dd(count($match));
+        for($i=0; $i<count($match); $i++){
+          $m = Game::where('match_no',$match_no)->first();
+          $m->delete();
+        }
+
+        $gamexi = GameXI::where('match_no',$match_no)->get();
+        for($j=0; $j<count($gamexi); $j++){
+          $g = GameXI::where('match_no',$match_no)->first();
+          $g->delete();
+        }
+
+        return redirect::route('BrowseResult',compact('result'));
     }
 }

@@ -17,12 +17,14 @@ Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@GetDashboard')->name('GetDashboard');
 
     //Team
-    Route::get('/BrowseTeam','AdminController@BrowseTeam')->name('BrowseTeam');
-    Route::get('/AddTeam','AdminController@AddTeam')->name('AddTeam');
-    Route::post('/Post_AddTeam','AdminController@Post_AddTeam')->name('Post_AddTeam');
-    Route::get('/EditTeam/{id}','AdminController@EditTeam')->name('EditTeam');
-    Route::post('/Post_EditTeam','AdminController@Post_EditTeam')->name('Post_EditTeam');
-    Route::post('/Post_DeleteTeam','AdminController@Post_DeleteTeam')->name('Post_DeleteTeam');
+    // Route::get('/BrowseTeam','AdminController@BrowseTeam')->name('BrowseTeam');
+    // Route::get('/AddTeam','AdminController@AddTeam')->name('AddTeam');
+    // Route::post('/Post_AddTeam','AdminController@Post_AddTeam')->name('Post_AddTeam');
+    // Route::get('/EditTeam/{id}','AdminController@EditTeam')->name('EditTeam');
+    // Route::post('/Post_EditTeam','AdminController@Post_EditTeam')->name('Post_EditTeam');
+    // Route::post('/Post_DeleteTeam','AdminController@Post_DeleteTeam')->name('Post_DeleteTeam');
+
+    Route::resource('/Team','TeamController');
 
 
     //Player
@@ -68,4 +70,6 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/BrowseResult', 'AdminController@BrowseResult')->name('BrowseResult');
     Route::post('/Post_BrowseResult', 'AdminController@Post_BrowseResult')->name('Post_BrowseResult');
+    Route::post('/Post_DeleteResult', 'AdminController@Post_DeleteResult')->name('Post_DeleteResult');
+
 });

@@ -15,7 +15,7 @@
 				@endif
 
 				<h3 class="title1">Teams</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('AddTeam')}}"><i class="fa fa-plus"></i>Add</a>
+                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Team.create')}}"><i class="fa fa-plus"></i>Add</a>
                 <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
@@ -33,12 +33,14 @@
                             @foreach($team as $t)
                                 <tr>
 								  <td>
-								  <a class="btn btn-success btn-sm" href="/admin/EditTeam/{{$t->id}}">Edit</a>
-								  <form style="display:inline-block" method="POST" action="{{route('Post_DeleteTeam')}}">
-								  	@csrf
-									  <input type="hidden" value="{{$t->id}}" name="id">
+								  <a class="btn btn-success btn-sm" href="/admin/Team/{{$t->id}}/edit">Edit</a>
+								  <form style="display:inline-block" method="POST" action="/admin/Team/{{$t->id}}">
+								  @csrf
+								  	@method('DELETE')
 									  <button class="btn btn-danger btn-sm">Delete</button>
 								  </form>
+
+								  <!-- <a class="btn btn-danger btn-sm" href="/admin/Team/{{$t->id}}">Delete</a> -->
 								  </td>
 								  <th scope="row">{{$i}}</th>
 								  <td>{{$t->team_id}}</td>

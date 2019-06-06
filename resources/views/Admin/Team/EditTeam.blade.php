@@ -8,8 +8,9 @@
 				<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 					
 						<div class="form-body">
-							<form method="POST" action="{{route('Post_EditTeam')}}"> 
+							<form method="POST" action="/admin/Team/{{$team['id']}}"> 
 							@csrf
+								@method('PUT')
 								<div class="form-group"> 
 									<label for="field1">Team Id</label> 
 									<input type="text" class="form-control" id="field1" name="team_id" value="{{$team['team_id']}}"> 
@@ -22,7 +23,6 @@
 									<label for="field1">Team Won</label> 
 									<input type="text" class="form-control" id="field1" name="team_won" value="{{$team['team_won']}}"> 
 								</div> 
-                                <input type="hidden" value="{{$team['id']}}" name="id">
 								<button type="submit" class="btn btn-default">Update</button> 
 							</form> 
 						</div>

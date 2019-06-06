@@ -5,7 +5,7 @@
 
 <div id="page-wrapper">
 			<div class="main-page">
-			
+
 				<h3 class="title1">Results</h3>
                 <form method="POST" action="{{route('Post_BrowseResult')}}">
                 @csrf
@@ -19,11 +19,11 @@
                     </select>
 				</div>
                 <input type="hidden" value="BCC2019" name="tournament"/>
-				<button type="submit" class="btn btn-default">Browse</button> 
-                
-                </form>
+				<button type="submit" class="btn btn-default">Browse</button>
 
-           
+                </form>
+	
+
 			</div>
 </div>
 
