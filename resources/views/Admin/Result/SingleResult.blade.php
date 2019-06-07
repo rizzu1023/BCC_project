@@ -63,18 +63,19 @@
                 </div>
         	</div>
 
+
         	<div class="col-md-3 widget widget1 ">
         		<div class="r3_counter_box ">
                     <div class="stats">
-                      <span>Tournament</span>
-                      <h5><strong>{{$toss[0]->tournament}}</strong></h5>
+                      <span>Overs</span>
+                      <h5><strong>{{$toss[0]->overs}}</strong></h5>
                     </div>
                 </div>
         	 </div>
              </div>
       <div class="tables ftable">
 				<div class="panel-body widget-shadow">
-				<div class="col-md-12 team-name"><h3>{{$two_teams[0]->Teams->team_name}}</h3><span>Total {{$score[0]->score}}-{{$score[0]->wickets}} (20)</span></div>
+				<div class="col-md-12 team-name"><h3>{{$two_teams[0]->Teams->team_name}}</h3><span>Total {{$score[0]->score}}-{{$score[0]->wickets}} ({{$score[0]->overs_played}})</span></div>
 
 
 						<table class="table">
@@ -105,7 +106,7 @@
 
 					<div class="tables">
 					<div class="panel-body widget-shadow">
-				<div class="col-md-12 team-name"><h3>{{$two_teams[1]->Teams->team_name}}</h3><span>Total {{$score[1]->score}}-{{$score[1]->wickets}} (16.5)</span></div>
+				<div class="col-md-12 team-name"><h3>{{$two_teams[1]->Teams->team_name}}</h3><span>Total {{$score[1]->score}}-{{$score[1]->wickets}} ({{$score[1]->overs_played}})</span></div>
 						<table class="table">
 							<thead>
 								<tr>

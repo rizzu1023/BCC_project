@@ -72,7 +72,7 @@ class AdminController extends Controller
 
         return Redirect::Route('BrowseTeam')->with('message','Successfully Deleted');
     }
-
+ 
 
 
     //PointsTable BREAD Function
@@ -322,6 +322,7 @@ class AdminController extends Controller
         $game1 = new Game;
         $game1->match_no = $request->match_no;
         $game1->team_id = $request->team1_id;
+        $game1->overs = $request->overs;
         $game1->tournament = 'BCC2019';
         if($request->toss == $request->team1_id){
             $game1->toss = 1;
@@ -342,6 +343,7 @@ class AdminController extends Controller
         $game2 = new Game;
         $game2->match_no = $request->match_no;
         $game2->team_id = $request->team2_id;
+        $game2->overs = $request->overs;
         $game2->tournament = 'BCC2019';
         if($request->toss == $request->team2_id){
             $game2->toss = 1;

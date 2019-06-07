@@ -22,7 +22,7 @@
 			<div class="main-page">
             <form method="POST" action="{{route('StartScore')}}">
             @csrf
-                @php 
+                @php
                  $str = "t1p";
                  $i = 1
                 @endphp
@@ -37,7 +37,7 @@
 
                 <div class="col-md-6 single-div">
                 <h3 class="title1">{{$schedule->Teams2->team_name}} XI</h3>
-                    
+
                     @foreach($players2 as $p2)
                         <input class="single-checkbox" type="checkbox" name="{{$str.$i}}" value="{{$p2->player_id}}"><div class="single-name">{{$loop->index + 1}} {{$p2->player_name}}</div><br>
                     @php($i++)
@@ -62,6 +62,10 @@
                                 <option value="Bowl">Bowling</option>
                         </select>
                 </div>
+                <div class="form-group col-md-6">
+                  <label for="field1">Overs</label>
+                  <input type="number" class="form-control"  name="overs" placeholder="eg. 10">
+                </div>
                 </div>
 
                 <input type="hidden" name="match_no" value="{{$schedule->match_no}}">
@@ -70,12 +74,12 @@
 
 
 
-            <button type="submit" class="btn btn-default">Start</button> 
+            <button type="submit" class="btn btn-default">Start</button>
 
 
             </form>
             </div>
-            
+
 </div>
 
 @endsection

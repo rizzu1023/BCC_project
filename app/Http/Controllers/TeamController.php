@@ -39,12 +39,14 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $team = new Teams;
-        $team->team_id = $request->team_id;
-        $team->team_name = $request->team_name;
-        $team->team_won = $request->team_won;
+       
+        // Teams::create([
+        //     'team_id' => request('team_id'),
+        //     'team_name' => request('team_name'),
+        //     'team_won' => request('team_won')
+        // ]);
 
-        $team->save();
+        Teams::create(request(['team_name','team_id','team_won']));
 
         return redirect::route('Team.index')->with('message','Team has been successfully added');
 
@@ -82,12 +84,9 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $team = Teams::find($id)->first();
-        $team->team_id = $request->team_id;
-        $team->team_name = $request->team_name;
-        $team->team_won = $request->team_won;
+        $team = Teams::find($id);
 
-        $team->save();
+        $team->update(request(['team_id','team_name','team_won']));
 
         return redirect::route('Team.index')->with('message','Team has been succesfully updated');
     }
