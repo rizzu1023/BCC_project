@@ -8,8 +8,9 @@
 				<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 					
 						<div class="form-body">
-							<form method="POST" action="{{route('Post_EditPlayer')}}"> 
+							<form method="POST" action="/admin/Players/{{$player['id']}}"> 
 							@csrf
+							@method('PUT')
 								<div class="form-group"> 
 									<label for="field1">Player Id</label> 
 									<input type="text" class="form-control" id="field1" name="player_id" value="{{$player['player_id']}}"> 

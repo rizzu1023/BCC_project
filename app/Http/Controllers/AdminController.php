@@ -22,58 +22,6 @@ class AdminController extends Controller
         return view('admin/dashboard');
     }
 
-//Team function
-    public function BrowseTeam(){
-        $team = Teams::all();
-        return view('admin/Team/BrowseTeam', compact('team'));
-    }
-
-    public function AddTeam(){
-        return view('admin/Team/AddTeam');
-    }
-
-    public function Post_AddTeam(Request $request , Response $response){
-        $team = new Teams;
-        $team->team_id = $request->team_id;
-        $team->team_name = $request->team_name;
-        $team->team_won = $request->team_won;
-        $team->save();
-
-        $pointstable = new PointsTable;
-        $pointstable->team_id = $request->team_id;
-        $pointstable->save();
-
-        return Redirect::Route('BrowseTeam')->with('message','Successfully Added');
-    }
-
-
-
-    public function EditTeam($id){
-        $team = Teams::find($id);
-        return view('admin/Team/EditTeam',compact('team'));
-    }
-
-    public function Post_EditTeam(Request $request , Response $response){
-        $team = Teams::where('id',$request->id)->first();
-        $team->team_id = $request->team_id;
-        $team->team_won = $request->team_won;
-        $team->team_name = $request->team_name;
-        $team->save();
-        return Redirect::Route('BrowseTeam')->with('message','Successfully Updated');
-    }
-
-    public function Post_DeleteTeam(Request $request , Response $response){
-        $id = $request->id;
-        $team = Teams::find($id);
-        $team->delete();
-
-        $pointstable = PointsTable::where('team_id',$team->team_id)->first();
-        $pointstable->delete();
-
-        return Redirect::Route('BrowseTeam')->with('message','Successfully Deleted');
-    }
- 
-
 
     //PointsTable BREAD Function
         public function BrowsePointsTable(){
@@ -149,69 +97,6 @@ class AdminController extends Controller
         return Redirect::Route('BrowseSchedule')->with('message','Successfully Deleted');
     }
 
-//Player Function
-    public function BrowsePlayer(){
-        $player = Players::all();
-        return view('admin/Player/BrowsePlayer', compact('player'));
-    }
-
-    public function AddPlayer(){
-        $team = Teams::all();
-        return view('admin/Player/AddPlayer',compact('team'));
-    }
-
-    public function Post_AddPlayer(Request $request , Response $response){
-        $player = new Players;
-        $player->player_id = $request->player_id;
-        $player->player_name = $request->player_name;
-        $player->player_role = $request->player_role;
-        $player->team_id = $request->team_id;
-        $player->save();
-
-        $batting = new Batting;
-        $batting->player_id = $request->player_id;
-        $batting->save();
-
-        $bowling = new Bowling;
-        $bowling->player_id = $request->player_id;
-        $bowling->save();
-
-        return Redirect::Route('BrowsePlayer')->with('message','Successfully Added');
-    }
-
-
-
-    public function EditPlayer($id){
-        $player = Players::find($id);
-        $team = Teams::all();
-        return view('admin/Player/EditPlayer',compact('player','team'));
-    }
-
-    public function Post_EditPlayer(Request $request , Response $response){
-        $player = Players::where('id',$request->id)->first();
-        $player->player_id = $request->player_id;
-        $player->player_name = $request->player_name;
-        $player->player_role = $request->player_role;
-        $player->team_id = $request->team_id;
-        $player->save();
-        return Redirect::Route('BrowsePlayer')->with('message','Successfully Updated');
-    }
-
-    public function Post_DeletePlayer(Request $request , Response $response){
-        $id = $request->id;
-        $player = Players::find($id);
-        $player->delete();
-
-        $pid = $player->player_id;
-
-        $bt_player = Batting::where('player_id',$pid)->first();
-        $bt_player->delete();
-
-        $bw_player = Bowling::where('player_id',$pid)->first();
-        $bw_player->delete();
-
-        return Redirect::Route('BrowsePlayer')->with('message','Successfully Deleted');
-    }
 
 //Batting BREAD Function
      public function BrowseBatting(){

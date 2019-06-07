@@ -4,7 +4,7 @@
 
 <div id="page-wrapper">
 			<div class="main-page">
-			@if(session()->has('message'))
+			@if(session()->has('message')) 
                 <div class="alert alert-success">
                 {{ session()->get('message') }}
                 <button type="button" class="close fa fa-times text-danger" data-dismiss="alert" aria-label="Close">
@@ -13,7 +13,7 @@
               </div>
 			@endif
 				<h3 class="title1">Players</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('AddPlayer')}}"><i class="fa fa-plus"></i>Add</a>
+                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Players.create')}}"><i class="fa fa-plus"></i>Add</a>
                 <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
@@ -32,10 +32,11 @@
                             @foreach($player as $p)
                                 <tr>
 								  <td>
-								  <a class="btn btn-success btn-sm" href="/admin/EditPlayer/{{$p->id}}">Edit</a>
-								  <form style="display:inline-block" method="POST" action="{{route('Post_DeletePlayer')}}">
+								  <a class="btn btn-success btn-sm" href="/admin/Players/{{$p->id}}/edit">Edit</a>
+								  <form style="display:inline-block" method="POST" action="/admin/Players/{{$p->id}}">
 								  	@csrf
-									  <input type="hidden" value="{{$p->id}}" name="id">
+										@method('DELETE')
+									  <!-- <input type="hidden" value="#" name="id"> -->
 									  <button class="btn btn-danger btn-sm">Delete</button>
 								  </form>
 								  </td>

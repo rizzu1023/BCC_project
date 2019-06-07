@@ -8,7 +8,7 @@
 				<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 					
 						<div class="form-body">
-							<form method="POST" action="{{route('Post_AddPlayer')}}"> 
+							<form method="POST" action="{{route('Players.store')}}"> 
 							@csrf
 								<div class="form-group"> 
 									<label for="field1">Player Id</label> 

@@ -26,7 +26,7 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="{{route('BrowsePlayer')}}">
+                <a href="{{route('Players.index')}}">
                 <i class="fa fa-user"></i>
                 <span>Players</span>
                 </a>
