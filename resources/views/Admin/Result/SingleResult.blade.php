@@ -42,7 +42,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>Match</span>
-                      <h5><strong>{{$toss[0]->match_no}}</strong></h5>
+                      <h5><strong>{{$match[0]->match_no}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -50,7 +50,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>Toss</span>
-                      <h5><strong>{{$toss[0]->team_id}}</strong></h5>
+                      <h5><strong>{{$match[0]->toss}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -58,7 +58,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>First</span>
-                      <h5><strong>{{$toss[0]->choose}}</strong></h5>
+                      <h5><strong>{{$match[0]->choose}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -68,14 +68,14 @@
         		<div class="r3_counter_box ">
                     <div class="stats">
                       <span>Overs</span>
-                      <h5><strong>{{$toss[0]->overs}}</strong></h5>
+                      <h5><strong>{{$match[0]->overs}}</strong></h5>
                     </div>
                 </div>
         	 </div>
              </div>
       <div class="tables ftable">
 				<div class="panel-body widget-shadow">
-				<div class="col-md-12 team-name"><h3>{{$two_teams[0]->Teams->team_name}}</h3><span>Total {{$score[0]->score}}-{{$score[0]->wickets}} ({{$score[0]->overs_played}})</span></div>
+				<div class="col-md-12 team-name"><h3>{{$match_detail[0]->Teams->team_name}}</h3><span>Total {{$match_detail[0]->score}}-{{$match_detail[0]->wicket}} ({{$match_detail[0]->overs_played}})</span></div>
 
 
 						<table class="table">
@@ -90,7 +90,7 @@
 							</thead>
 							<tbody>
                @foreach($single_result as $sr)
-								  @if($sr->team_id == $two_teams[0]->team_id)
+								  @if($sr->team_id == $match_detail[0]->team_id)
                 <tr>
 								  <td>{{$sr->Players->player_name}}</td>
 								  <td>{{$sr->bt_runs}}</td>
@@ -106,7 +106,7 @@
 
 					<div class="tables">
 					<div class="panel-body widget-shadow">
-				<div class="col-md-12 team-name"><h3>{{$two_teams[1]->Teams->team_name}}</h3><span>Total {{$score[1]->score}}-{{$score[1]->wickets}} ({{$score[1]->overs_played}})</span></div>
+				<div class="col-md-12 team-name"><h3>{{$match_detail[1]->Teams->team_name}}</h3><span>Total {{$match_detail[1]->score}}-{{$match_detail[1]->wicket}} ({{$match_detail[1]->overs_played}})</span></div>
 						<table class="table">
 							<thead>
 								<tr>
@@ -119,7 +119,7 @@
 							</thead>
 							<tbody>
                  @foreach($single_result as $sr)
-								  @if($sr->team_id == $two_teams[1]->team_id)
+								  @if($sr->team_id == $match_detail[1]->team_id)
                                 <tr>
 								  <td>{{$sr->Players->player_name}}</td>
 								  <td>{{$sr->bt_runs}}</td>
@@ -137,7 +137,7 @@
 
 						<form action="{{route('Post_DeleteResult')}}" method="POST">
 								@csrf
-								<input type="hidden" value="{{$score[0]->match_no}}" name="match_no">
+								<input type="hidden" value="{{$match[0]->match_no}}" name="match_no">
 								<button class="btn btn-sm btn-danger">Delete Result</button>
 						</form>
 

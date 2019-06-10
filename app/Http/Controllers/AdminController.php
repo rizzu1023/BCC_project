@@ -12,7 +12,8 @@ use App\Bowling;
 use App\Schedule;
 use App\Batting;
 use App\PointsTable;
-use App\Game;
+use App\Match;
+use App\MatchDetail;
 use App\GameXI;
 
 
@@ -169,122 +170,14 @@ class AdminController extends Controller
 
 
 
-    public function StartMatch($match_no){
-
-        $schedule  = Schedule::where('match_no',$match_no)->first();
-
-
-        $players1 = Players::where('team_id',$schedule->team1_id)->get();
-        $players2 = Players::where('team_id',$schedule->team2_id)->get();
-        // dd($team1);
-
-        return view('Admin/Match/StartMatch',compact('schedule','players1','players2'));
-    }
-
-    public function StartScore(Request $request, Response $response){
-
-        for($i=1; $i<23; $i++){
-
-            $var = "t1p".$i;
-            if($request->$var != null){
-                $obj = Players::where('player_id',$request->$var)->first();
-
-                $gamexi = new GameXI;
-                $gamexi->match_no = $request->match_no;
-                $gamexi->team_id = $obj->Teams->team_id;
-                $gamexi->player_id = $request->$var;
-                $gamexi->tournament = 'BCC2019';
-
-                $gamexi->save();
-
-            }
-        }
 
 
 
 
 
-        $game1 = new Game;
-        $game1->match_no = $request->match_no;
-        $game1->team_id = $request->team1_id;
-        $game1->overs = $request->overs;
-        $game1->tournament = 'BCC2019';
-        if($request->toss == $request->team1_id){
-            $game1->toss = 1;
-            $game1->choose = $request->choose;
-        }
-        else{
-            $game1->toss = 0;
-                if($request->choose == 'Bat'){
-                    $game1->choose = 'Bowl';
-                }
-                else{
-                    $game1->choose = 'Bat';
-                }
-        }
-
-        $game1->save();
-
-        $game2 = new Game;
-        $game2->match_no = $request->match_no;
-        $game2->team_id = $request->team2_id;
-        $game2->overs = $request->overs;
-        $game2->tournament = 'BCC2019';
-        if($request->toss == $request->team2_id){
-            $game2->toss = 1;
-            $game2->choose = $request->choose;
-
-        }
-        else{
-            $game2->toss = 0;
-                if($request->choose == 'Bat'){
-                    $game2->choose = 'Bowl';
-                }
-                else{
-                    $game2->choose = 'Bat';
-                }
-        }
-
-        $game2->save();
-
-        dd("Done");
-
-
-    }
 
 
 
 
-    public function BrowseResult(){
-        $result= Game::where('tournament','BCC2019')->orderBy('match_no','asc')->get();
-        return view('Admin/Result/BrowseResult',compact('result'));
-    }
-
-    public function Post_BrowseResult(Request $request, Response $response){
-        $toss = Game::where('tournament',$request->tournament)->where('match_no',$request->match_no)->where('toss',1)->get();
-        $score = Game::where('tournament',$request->tournament)->where('match_no',$request->match_no)->get();
-        $single_result = GameXI::where('match_no',$request->match_no)->get();
-        $two_teams = GameXI::where('match_no',$request->match_no)->select('team_id')->distinct()->get();
-        // dd($score);
-        return view('Admin/Result/SingleResult',compact('single_result','two_teams','toss','score'));
-    }
-
-    public function Post_DeleteResult(Request $request, Response $response){
-        $result= Game::where('tournament','BCC2019')->orderBy('match_no','asc')->get();
-        $match_no = $request->match_no;
-        $match = Game::where('match_no',$match_no)->get();
-        // dd(count($match));
-        for($i=0; $i<count($match); $i++){
-          $m = Game::where('match_no',$match_no)->first();
-          $m->delete();
-        }
-
-        $gamexi = GameXI::where('match_no',$match_no)->get();
-        for($j=0; $j<count($gamexi); $j++){
-          $g = GameXI::where('match_no',$match_no)->first();
-          $g->delete();
-        }
-
-        return redirect::route('BrowseResult',compact('result'));
-    }
+  
 }

@@ -14,7 +14,7 @@ class PlayersController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -77,9 +77,9 @@ class PlayersController extends Controller
      * @param  \App\Players  $players
      * @return \Illuminate\Http\Response
      */
-    public function edit(Players $players, $id)
+    public function edit(Players $Player)
     {
-        $player = Players::find($id);
+        $player = $Player;
         $team = Teams::all();
         return view('admin/Player/EditPlayer',compact('player','team'));
     }
@@ -91,18 +91,18 @@ class PlayersController extends Controller
      * @param  \App\Players  $players
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Players $Player)
     {
-        $player = Players::find($id);
-        $player->update([
-            'player_id' => request('player_id'),
-            'player_name' => request('player_name'),
-            'player_role' => request('player_role'),
-            'team_id' => request('team_id')
+        $data= request()->validate([
+          'player_id' => 'required|min:2',
+          'player_name' => 'required',
+          'player_role' => 'required',
+          'team_id' => 'required'
         ]);
 
+        $Player->update($data);
 
-        return redirect::route('Players.index')->with("Update Successfull");
+        return redirect::route('Players.index')->with('message',"Update Successfull");
     }
 
     /**
@@ -111,12 +111,12 @@ class PlayersController extends Controller
      * @param  \App\Players  $players
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, Players $players)
+    public function destroy(Players $Player)
     {
-        $player = Players::find($id);
-        $player->delete();
+        // $player = Players::find($id);
+        $Player->delete();
 
-        $pid = $player->player_id;
+        $pid = $Player->player_id;
 
         $bt_player = Batting::where('player_id',$pid)->first();
         $bt_player->delete();
