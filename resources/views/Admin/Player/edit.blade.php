@@ -38,7 +38,7 @@
 								</div>
 
 
-                                <input type="hidden" value="{{$player['id']}}" name="id">
+                <input type="hidden" value="{{$player['id']}}" name="id">
 								<button type="submit" class="btn btn-default">Update</button>
 							</form>
 						</div>

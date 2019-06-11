@@ -20,7 +20,8 @@ class PlayersController extends Controller
     public function index()
     {
         $player = Players::all();
-        return view('admin/Player/BrowsePlayer',compact('player'));
+        $team = Teams::all();
+        return view('admin/Player/index',compact('player','team'));
     }
 
     /**
@@ -31,7 +32,7 @@ class PlayersController extends Controller
     public function create()
     {
         $team = Teams::all();
-        return view('admin/Player/AddPlayer',compact('team'));
+        return view('admin/Player/create',compact('team'));
     }
 
     /**
@@ -66,9 +67,11 @@ class PlayersController extends Controller
      * @param  \App\Players  $players
      * @return \Illuminate\Http\Response
      */
-    public function show(Players $players)
+    public function show(Players $Player)
     {
-        //
+        $bt = Batting::where('player_id',$Player->player_id)->first();
+        $bw = Bowling::where('player_id',$Player->player_id)->first();
+        return view('admin/Player/show',compact('Player','bt','bw'));
     }
 
     /**
@@ -81,7 +84,7 @@ class PlayersController extends Controller
     {
         $player = $Player;
         $team = Teams::all();
-        return view('admin/Player/EditPlayer',compact('player','team'));
+        return view('admin/Player/edit',compact('player','team'));
     }
 
     /**
@@ -99,8 +102,16 @@ class PlayersController extends Controller
           'player_role' => 'required',
           'team_id' => 'required'
         ]);
+        $bt = Batting::where('player_id',$Player->player_id)->first();
+        $bw = Bowling::where('player_id',$Player->player_id)->first();
 
         $Player->update($data);
+
+        $bt->player_id = $request->player_id;
+        $bt->save();
+
+        $bw->player_id = $request->player_id;
+        $bw->save();
 
         return redirect::route('Players.index')->with('message',"Update Successfull");
     }

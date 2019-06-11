@@ -36,7 +36,7 @@
 								  <td>
 								  <a class="btn btn-success btn-sm" href="/admin/EditPointsTable/{{$pt->id}}">Edit</a>
 								  </td>
-								  <th scope="row">{{$i}}</th>
+								  <th scope="row">{{$i}}</th> 
 								  <td>{{$pt->Teams->team_name}}</td>
 								  <td>{{$pt->match}}</td>
 								  <td>{{$pt->won}}</td>
@@ -44,7 +44,7 @@
 								  <td>{{$pt->draw}}</td>
 								  <td>{{$pt->points}}</td>
 								  <td>{{$pt->nrr}}</td>
-								
+
 								</tr>
                                 @php($i++)
                             @endforeach

@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="field1">Overs</label>
-                  <input type="number" class="form-control"  name="overs" placeholder="eg. 10">
+                  <input type="number" class="form-control"  name="overs" value="20">
                 </div>
                 </div>
 

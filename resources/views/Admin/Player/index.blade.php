@@ -4,7 +4,7 @@
 
 <div id="page-wrapper">
 			<div class="main-page">
-			@if(session()->has('message')) 
+			@if(session()->has('message'))
                 <div class="alert alert-success">
                 {{ session()->get('message') }}
                 <button type="button" class="close fa fa-times text-danger" data-dismiss="alert" aria-label="Close">
@@ -13,8 +13,39 @@
               </div>
 			@endif
 				<h3 class="title1">Players</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Players.create')}}"><i class="fa fa-plus"></i>Add</a>
-                <div class="tables">
+				<a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Players.create')}}"><i class="fa fa-plus"></i>Add</a>
+								<div class="row">
+
+								<div class="col-md-6">
+										<form method="POST" action="{{route('filterPlayerByTeam')}}">
+											@csrf
+											<div class="form-group">
+													<select class="form-control" onchange="this.form.submit()" name="team_id">
+														<option value="">filter by Team</option>
+														@foreach($team as $t)
+															<option value="{{$t->team_id}}">{{$t->team_name}}</option>
+														@endforeach
+													</select>
+											</div>
+										</form>
+									</div>
+
+									<div class="col-md-6">
+											<form method="POST" action="{{route('filterPlayerByRole')}}">
+												@csrf
+												<div class="form-group">
+														<select class="form-control" onchange="this.form.submit()" name="player_role">
+															<option value="">filter by Role</option>
+																<option value="Batsman">Batsman</option>
+																<option value="Bowler">Bowler</option>
+																<option value="All Rounder">All Rounder</option>
+																<option value="Wicket keeper">Wicket Keeper</option>
+														</select>
+												</div>
+											</form>
+										</div>
+								</div>
+				<div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
 							<thead>
@@ -33,12 +64,14 @@
                                 <tr>
 								  <td>
 								  <a class="btn btn-success btn-sm" href="/admin/Players/{{$p->id}}/edit">Edit</a>
+									<a class="btn btn-warning btn-sm" href="/admin/Players/{{$p->id}}">Show</a>
 								  <form style="display:inline-block" method="POST" action="/admin/Players/{{$p->id}}">
 								  	@csrf
 										@method('DELETE')
 									  <!-- <input type="hidden" value="#" name="id"> -->
 									  <button class="btn btn-danger btn-sm">Delete</button>
 								  </form>
+
 								  </td>
 								  <th scope="row">{{$i}}</th>
 								  <td>{{$p->player_id}}</td>

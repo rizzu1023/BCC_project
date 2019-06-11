@@ -19,6 +19,8 @@ Route::prefix('admin')->group(function(){
     Route::resource('/Team','TeamController');
 
     Route::resource('/Players','PlayersController');
+    Route::post('/Players/byTeam','AdminController@filterPlayerByTeam')->name('filterPlayerByTeam');
+    Route::post('/Players/byRole','AdminController@filterPlayerByRole')->name('filterPlayerByRole');
 
     //Schedule
     Route::get('/BrowseSchedule','AdminController@BrowseSchedule')->name('BrowseSchedule');

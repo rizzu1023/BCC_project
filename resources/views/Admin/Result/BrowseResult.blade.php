@@ -5,7 +5,7 @@
 
 <div id="page-wrapper">
 			<div class="main-page">
-
+				@if(count($result) > 0)
 				<h3 class="title1">Results</h3>
                 <form method="POST" action="{{route('Post_BrowseResult')}}">
                 @csrf
@@ -19,9 +19,15 @@
                     </select>
 				</div>
                 <input type="hidden" value="BCC2019" name="tournament"/>
-				<button type="submit" class="btn btn-default">Browse</button>
+								<button type="submit" class="btn btn-default">Browse</button>
 
                 </form>
+					@else
+					  <div class="container">
+					  		<p>No results found</p>
+					  </div>
+					@endif
+
 
 
 			</div>

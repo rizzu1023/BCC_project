@@ -18,7 +18,7 @@ class TeamController extends Controller
     public function index()
     {
         $team = Teams::all();
-        return view('admin/Team/BrowseTeam',compact('team'));
+        return view('admin/Team/index',compact('team'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('admin/Team/AddTeam');
+        return view('admin/Team/create');
     }
 
     /**
@@ -39,7 +39,7 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         // Teams::create([
         //     'team_id' => request('team_id'),
         //     'team_name' => request('team_name'),
@@ -72,7 +72,7 @@ class TeamController extends Controller
     public function edit($id)
     {
         $team = Teams::find($id);
-        return view('admin/Team/EditTeam',compact('team'));
+        return view('admin/Team/edit',compact('team'));
     }
 
     /**
