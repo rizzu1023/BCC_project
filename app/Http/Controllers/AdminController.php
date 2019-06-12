@@ -115,21 +115,7 @@ class AdminController extends Controller
         return view('admin/Batting/BrowseBatting', compact('batting'));
     }
 
-    // public function AddBatting(){
-    //     return view('admin/Batting/AddBatting');
-    // }
-
-    // public function Post_AddBatting(Request $request , Response $response){
-    //     $batting = new Batting;
-    //     $batting->player_id = $request->player_id;
-    //     $batting->bt_matches = $request->bt_matches;
-    //     $batting->bt_innings = $request->bt_innings;
-    //     $batting->bt_balls = $request->bt_balls;
-    //     $batting->bt_fours = $request->bt_fours;
-    //     $batting->save();
-    //     return Redirect::Route('BrowseBatting')->with('message','Successfully Added');
-    // }
-
+   
 
 
     public function EditBatting($id){
