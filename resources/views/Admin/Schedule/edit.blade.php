@@ -4,42 +4,52 @@
 
 <div id="page-wrapper">
 			<div class="main-page">
-				<h3 class="title1">Add Match</h3>
+				<h3 class="title1">Edit Match</h3>
 				<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 					
 						<div class="form-body">
-							<form method="POST" action="{{route('Post_AddSchedule')}}"> 
+							<form method="POST" action="/admin/Schedule/{{$Schedule['id']}}"> 
 							@csrf
-                                <div class="form-group"> 
+							@method('PUT')
+								<div class="form-group"> 
 									<label for="field1">Match No</label> 
-									<input type="text" class="form-control" id="field1" name="match_no" placeholder="" required> 
+									<input type="text" class="form-control" id="field1" name="match_no" value="{{$Schedule['match_no']}}" requir>
+									<div>{{ $errors->first('match_no')}}</div>
+
 								</div>
 								<div class="form-group">
 										<label for="exampleFormControlSelect2">Team 1</label>
 										<select class="form-control" id="exampleFormControlSelect2" name="team1_id">
+												<option value="{{$Schedule['team1_id']}}">{{$Schedule->Teams1->team_name}}</option>
 											@foreach($team as $t)
 												<option value="{{$t->team_id}}">{{$t->team_name}}</option>
 											@endforeach
 										</select>
+								<div>{{ $errors->first('team1_id')}}</div>
 								</div>
 								<div class="form-group">
 										<label for="exampleFormControlSelect2">Team 1</label>
 										<select class="form-control" id="exampleFormControlSelect2" name="team2_id">
+										    	<option value="{{$Schedule['team2_id']}}">{{$Schedule->Teams2->team_name}}</option>
 											@foreach($team as $t)
 												<option value="{{$t->team_id}}">{{$t->team_name}}</option>
 											@endforeach
 										</select>
+										<div>{{ $errors->first('team2_id')}}</div>
+								
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Time</label> 
-									<input type="time" class="form-control" id="field1" name="times" placeholder="" required> 
+									<input type="time" class="form-control" id="field1" name="times" value="{{$Schedule['times']}}" required> 
+									<div>{{ $errors->first('times')}}</div>
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Date</label> 
-									<input type="date" class="form-control" id="field1" name="dates" placeholder="" required> 
+									<input type="date" class="form-control" id="field1" name="dates" value="{{$Schedule['dates']}}" required> 
+								<div>{{ $errors->first('dates')}}</div>
 								</div>
-                         
-								<button type="submit" class="btn btn-default">Submit</button> 
+
+								<button type="submit" class="btn btn-default">Update</button> 
 							</form> 
 						</div>
 				</div>

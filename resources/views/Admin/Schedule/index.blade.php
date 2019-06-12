@@ -15,7 +15,7 @@
               </div>
 			@endif
 				<h3 class="title1">Schedule</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('AddSchedule')}}"><i class="fa fa-plus"></i>Add</a>
+                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Schedule.create')}}"><i class="fa fa-plus"></i>Add</a>
                 <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
@@ -34,9 +34,10 @@
                 @foreach($schedule as $s)
                 <tr>
 								  <td>
-								  <a class="btn btn-success btn-sm" href="/admin/EditSchedule/{{$s->id}}">Edit</a>
-								  <form style="display:inline-block" method="POST" action="{{route('Post_DeleteSchedule')}}">
+								  <a class="btn btn-success btn-sm" href="/admin/Schedule/{{$s->id}}/edit">Edit</a>
+								  <form style="display:inline-block" method="POST" action="/admin/Schedule/{{$s->id}}">
 								  	@csrf
+										@method('DELETE')
 									  <input type="hidden" value="{{$s->id}}" name="id">
 									  <button class="btn btn-danger btn-sm">Delete</button>
 								  </form>

@@ -32,7 +32,7 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="{{route('BrowseSchedule')}}">
+                <a href="{{route('Schedule.index')}}">
                 <i class="fa fa-calendar"></i>
                 <span>Schedule</span>
                 </a>

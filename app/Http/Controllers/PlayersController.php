@@ -98,7 +98,7 @@ class PlayersController extends Controller
     {
         $data= request()->validate([
           'player_id' => 'required|min:2',
-          'player_name' => 'required',
+          'player_name' => 'required', 
           'player_role' => 'required',
           'team_id' => 'required'
         ]);

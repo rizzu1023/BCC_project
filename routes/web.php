@@ -16,19 +16,13 @@ Route::get('/stats', 'MainController@GetStats');
 Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@GetDashboard')->name('GetDashboard');
 
-    Route::resource('/Team','TeamController');
+    Route::resource('/Team','TeamController');  //Team
 
-    Route::resource('/Players','PlayersController');
+    Route::resource('/Players','PlayersController');    //Player
     Route::post('/Players/byTeam','AdminController@filterPlayerByTeam')->name('filterPlayerByTeam');
     Route::post('/Players/byRole','AdminController@filterPlayerByRole')->name('filterPlayerByRole');
 
-    //Schedule
-    Route::get('/BrowseSchedule','AdminController@BrowseSchedule')->name('BrowseSchedule');
-    Route::get('/AddSchedule','AdminController@AddSchedule')->name('AddSchedule');
-    Route::post('/Post_AddSchedule','AdminController@Post_AddSchedule')->name('Post_AddSchedule');
-    Route::get('/EditSchedule/{id}','AdminController@EditSchedule')->name('EditSchedule');
-    Route::post('/Post_EditSchedule','AdminController@Post_EditSchedule')->name('Post_EditSchedule');
-    Route::post('/Post_DeleteSchedule','AdminController@Post_DeleteSchedule')->name('Post_DeleteSchedule');
+    Route::resource('/Schedule','ScheduleController');  //Schedule
 
     //Batting
     Route::get('/BrowseBatting','AdminController@BrowseBatting')->name('BrowseBatting');

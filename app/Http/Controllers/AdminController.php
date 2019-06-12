@@ -59,55 +59,6 @@ class AdminController extends Controller
 
 
 
-//Schedule BREAD Function
-    public function BrowseSchedule(){
-        $schedule = Schedule::all();
-        return view('admin/Schedule/BrowseSchedule', compact('schedule'));
-    }
-
-    public function AddSchedule(){
-        $team = Teams::all();
-        return view('admin/Schedule/AddSchedule',compact('team'));
-    }
-
-    public function Post_AddSchedule(Request $request , Response $response){
-        $schedule = new Schedule;
-        $schedule->match_no = $request->match_no;
-        $schedule->team1_id = $request->team1_id;
-        $schedule->team2_id = $request->team2_id;
-        $schedule->times = $request->times;
-        $schedule->dates = $request->dates;
-        $schedule->tournament = "BCC2019";
-        $schedule->save();
-        return Redirect::Route('BrowseSchedule')->with('message','Successfully Added');
-    }
-
-
-
-    public function EditSchedule($id){
-        $schedule = Schedule::find($id);
-        $team = Teams::all();
-        return view('admin/Schedule/EditSchedule',compact('schedule','team'));
-    }
-
-    public function Post_EditSchedule(Request $request , Response $response){
-        $schedule = Schedule::where('id',$request->id)->first();
-        $schedule->match_no = $request->match_no;
-        $schedule->team1_id = $request->team1_id;
-        $schedule->team2_id = $request->team2_id;
-        $schedule->times = $request->times;
-        $schedule->dates = $request->dates;
-        $schedule->save();
-        return Redirect::Route('BrowseSchedule')->with('message','Successfully Updated');
-    }
-
-    public function Post_DeleteSchedule(Request $request , Response $response){
-        $id = $request->id;
-        $schedule = Schedule::find($id);
-        $schedule->delete();
-        return Redirect::Route('BrowseSchedule')->with('message','Successfully Deleted');
-    }
-
 
 //Batting BREAD Function
      public function BrowseBatting(){
