@@ -22,7 +22,7 @@ class ScheduleController extends Controller
     {
         $schedule = Schedule::all();
         
-        event(New firstEvent($schedule));
+        // event(New firstEvent($schedule));
 
         return view('admin/Schedule/index',compact('schedule'));
 

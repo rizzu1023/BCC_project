@@ -7,7 +7,7 @@
             margin-top:20px;
         }
 		.ftable{
-			margin-top:120px;
+			margin-top:20px;
 		}
 		.toss{
 			margin : 10px 0;
@@ -38,7 +38,7 @@
 			<div class="main-page">
             <div class="row">
             <div class="col-md-12">
-        	<div class="col-md-3 widget widget1">
+        	<div class="col-md-2">
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>Match</span>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
         	</div>
-        	<div class="col-md-3 widget widget1">
+        	<div class="col-md-2">
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>Toss</span>
@@ -54,7 +54,7 @@
                     </div>
                 </div>
         	</div>
-        	<div class="col-md-3 widget widget1">
+        	<div class="col-md-2 ">
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>First</span>
@@ -64,7 +64,7 @@
         	</div>
 
 
-        	<div class="col-md-3 widget widget1 ">
+        	<div class="col-md-2">
         		<div class="r3_counter_box ">
                     <div class="stats">
                       <span>Overs</span>
@@ -72,7 +72,35 @@
                     </div>
                 </div>
         	 </div>
-             </div>
+
+			 <div class="col-md-2 ">
+        		<div class="r3_counter_box">
+                    <div class="stats">
+                      <span>Won</span>
+                      <h5><strong>{{$match[0]->won}}</strong></h5>
+                    </div>
+                </div>
+        	</div>
+
+			<div class="col-md-2 ">
+        		<div class="r3_counter_box">
+                    <div class="stats">
+                      <span>MOM</span>
+                      <h5><strong>{{$match[0]->mom}}</strong></h5>
+                    </div>
+                </div>
+        	</div>
+			</div>
+            </div>
+
+			<!-- <div class="row"> -->
+			<div class="col-md-12">
+				<div class="r3_counter_ox" style="height:30px;background:white;">
+					<div class="text-center">
+							<span>India Beat Australia by 31 runs<span>
+					</div>
+				</div>
+			<!-- </div> -->
       <div class="tables ftable">
 				<div class="panel-body widget-shadow">
 				<div class="col-md-12 team-name"><h3>{{$match_detail[0]->Teams->team_name}}</h3><span>Total {{$match_detail[0]->score}}-{{$match_detail[0]->wicket}} ({{$match_detail[0]->overs_played}})</span></div>

@@ -25,7 +25,7 @@
 								  <th>Sr</th>
 								  <th>Team Id</th>
 								  <th>Team Name</th>
-								  <th>Team Won</th>
+								  <th>Titles</th>
 								</tr>
 							</thead>
 							<tbody>

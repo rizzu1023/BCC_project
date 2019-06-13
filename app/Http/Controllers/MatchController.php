@@ -77,6 +77,7 @@ class MatchController extends Controller
 
     public function BrowseResult(){
         $result= MatchDetail::where('tournament','BCC2019')->orderBy('match_no','asc')->get();
+        // return $result;
         return view('Admin/Result/BrowseResult',compact('result'));
     }
 
