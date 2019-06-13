@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Events\firstEvent;
 
 
 use App\Schedule;
@@ -20,7 +21,11 @@ class ScheduleController extends Controller
     public function index()
     {
         $schedule = Schedule::all();
+        
+        event(New firstEvent($schedule));
+
         return view('admin/Schedule/index',compact('schedule'));
+
     }
 
     /**

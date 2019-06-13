@@ -115,16 +115,4 @@ class AdminController extends Controller
         return Redirect::Route('BrowseBowling')->with('message','Successfully Updated');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
