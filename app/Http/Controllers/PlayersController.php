@@ -17,9 +17,11 @@ class PlayersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+  
+    
     public function index()
     {
-        $player = Players::all();
+        $player = Players::orderBy('team_id','asc')->get();
         $team = Teams::all();
         return view('admin/Player/index',compact('player','team'));
     }
@@ -138,4 +140,21 @@ class PlayersController extends Controller
 
         return redirect::route('Players.index')->with('message','Successfully Deleted');
     }
+
+    public function playerFilter(Request $request){
+        if($request->team_id && $request->player_role){
+            $player = Players::where('team_id',$request->team_id)->where('player_role',$request->player_role)->get();
+        }
+        elseif($request->team_id || $request->player_role){
+            $player = Players::where('team_id',$request->team_id)->orWhere('player_role',$request->player_role)->get();
+        }
+      
+        else{
+            return redirect::route('Players.index')->with('message','select a filter');
+        }
+
+        $team = Teams::all();
+        return view('admin/Player/index',compact('player','team'));
+      }
+ 
 }

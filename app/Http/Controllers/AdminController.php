@@ -24,16 +24,7 @@ class AdminController extends Controller
     }
 
 
-    public function filterPlayerByTeam(Request $request){
-      $player = Players::where('team_id',$request->team_id)->get();
-      $team = Teams::all();
-      return view('admin/Player/index',compact('player','team'));
-    }
-    public function filterPlayerByRole(Request $request){
-      $player = Players::where('player_role',$request->player_role)->get();
-      $team = Teams::all();
-      return view('admin/Player/index',compact('player','team'));
-    }
+  
     //PointsTable BREAD Function
         public function BrowsePointsTable(){
             $pointstable = PointsTable::all();

@@ -16,25 +16,20 @@
 				<a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Players.create')}}"><i class="fa fa-plus"></i>Add</a>
 								<div class="row">
 
-								<div class="col-md-6">
-										<form method="POST" action="{{route('filterPlayerByTeam')}}">
+								<!-- <div class="col-md-4"> -->
+										<form method="POST" action="{{route('playerFilter')}}">
 											@csrf
-											<div class="form-group">
-													<select class="form-control" onchange="this.form.submit()" name="team_id">
+											<div class="form-group col-md-4">
+													<select class="form-control" name="team_id">
 														<option value="">filter by Team</option>
 														@foreach($team as $t)
 															<option value="{{$t->team_id}}">{{$t->team_name}}</option>
 														@endforeach
 													</select>
 											</div>
-										</form>
-									</div>
 
-									<div class="col-md-6">
-											<form method="POST" action="{{route('filterPlayerByRole')}}">
-												@csrf
-												<div class="form-group">
-														<select class="form-control" onchange="this.form.submit()" name="player_role">
+											<div class="form-group col-md-4">
+														<select class="form-control"  name="player_role">
 															<option value="">filter by Role</option>
 																<option value="Batsman">Batsman</option>
 																<option value="Bowler">Bowler</option>
@@ -42,8 +37,11 @@
 																<option value="Wicket keeper">Wicket Keeper</option>
 														</select>
 												</div>
-											</form>
-										</div>
+											<button type="submit" class="btn btn-md btn-success">Filter</button>
+										</form>
+									<!-- </div> -->
+
+								
 								</div>
 				<div class="tables">
 					<div class="panel-body widget-shadow">
