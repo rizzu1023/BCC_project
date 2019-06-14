@@ -38,6 +38,12 @@
                 </a>
               </li>
               <li class="treeview">
+                <a href="{{route('LiveScore.index')}}">
+                <i class="fa fa-calendar"></i>
+                <span>Live Score</span>
+                </a>
+              </li>
+              <li class="treeview">
                 <a href="{{route('BrowseBatting')}}">
                 <i class="fa fa-pie-chart"></i>
                 <span>Batting</span>

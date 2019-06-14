@@ -41,15 +41,20 @@ Route::prefix('admin')->group(function(){
     Route::get('/EditPointsTable/{id}','AdminController@EditPointsTable')->name('EditPointsTable');
     Route::post('/Post_EditPointsTable','AdminController@Post_EditPointsTable')->name('Post_EditPointsTable');
     Route::post('/Post_DeletePointsTable','AdminController@Post_DeletePointsTable')->name('Post_DeletePointsTable');
-
-    Route::get('/StartMatch/{match_no}','MatchController@StartMatch')->name('StartMatch');
-
-    // Route::post('/StartScore','AdminController@StartScore')->name('StartScore');
-    Route::post('/StartScore','MatchController@StartScore')->name('StartScore');
-    Route::put('/liveScore','MatchController@liveScore')->name('liveScore');
-
+    
     Route::get('/BrowseResult', 'MatchController@BrowseResult')->name('BrowseResult');
     Route::post('/Post_BrowseResult', 'MatchController@Post_BrowseResult')->name('Post_BrowseResult');
     Route::post('/Post_DeleteResult', 'MatchController@Post_DeleteResult')->name('Post_DeleteResult');
+
+    
+    
+    
+    Route::get('/LiveScore','LiveScoreController@LiveScoreindex')->name('LiveScore.index');
+
+    Route::get('/StartScore/{match_no}','LiveScoreController@StartScore')->name('StartScore');
+    Route::post('/ScoreDetails','LiveScoreController@ScoreDetails')->name('ScoreDetails');
+    
+    Route::get('/LiveScore/Show/{match}/{tournament}','LiveScoreController@LiveScoreShow')->name('LiveScore.show');
+    Route::put('/LiveScore','LiveScoreController@LiveScore')->name('LiveScore');        
 
 });

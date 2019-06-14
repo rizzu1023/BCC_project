@@ -4,7 +4,7 @@
 <div id="page-wrapper">
 			<div class="main-page">
                     <div class="form-group">
-                        <form method="POST" action="{{route('liveScore')}}">
+                        <form method="POST" action="{{route('LiveScore')}}">
                         @csrf
                         @method('PUT')
                         <label for="team_name">Team Name</label>
@@ -26,8 +26,4 @@
 
 </div>
 
-@endsection
-
-@section('script')
-    <script src="{{asset('assets/Admin/js/checkbox.js')}}"></script>
 @endsection

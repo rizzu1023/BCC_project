@@ -20,7 +20,7 @@
 
 <div id="page-wrapper">
 			<div class="main-page">
-            <form method="POST" action="{{route('StartScore')}}">
+            <form method="POST" action="{{route('ScoreDetails')}}">
             @csrf
                 @php
                  $str = "t1p";
@@ -74,7 +74,7 @@
 
 
 
-            <button type="submit" class="btn btn-default">Start</button>
+            <button type="submit" class="btn btn-default">Submit Details</button>
 
 
             </form>
