@@ -71,8 +71,12 @@ class MatchController extends Controller
 
            $game_d2->save();
 
+           $match = MatchDetail::where('match_no',$request->match_no)->where('tournament','BCC2019')->get();
+          return view('Admin/Match/liveScore',compact('match'));
+    }
 
-          return "done";
+    public function liveScore(){
+        return "live score";
     }
 
     public function BrowseResult(){

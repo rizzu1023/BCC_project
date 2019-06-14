@@ -46,6 +46,7 @@ Route::prefix('admin')->group(function(){
 
     // Route::post('/StartScore','AdminController@StartScore')->name('StartScore');
     Route::post('/StartScore','MatchController@StartScore')->name('StartScore');
+    Route::put('/liveScore','MatchController@liveScore')->name('liveScore');
 
     Route::get('/BrowseResult', 'MatchController@BrowseResult')->name('BrowseResult');
     Route::post('/Post_BrowseResult', 'MatchController@Post_BrowseResult')->name('Post_BrowseResult');
