@@ -14,7 +14,7 @@ use App\Batting;
 use App\PointsTable;
 use App\Match;
 use App\MatchDetail;
-use App\GameXI;
+use App\MatchPlayers;
 
 
 class AdminController extends Controller

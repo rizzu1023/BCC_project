@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GameXI extends Model
+class MatchPlayers extends Model
 {
-    protected $table = 'gamesxi';
+    protected $guarded = [];
 
     public function Players(){
         return $this->belongsTo('App\Players','player_id','player_id');

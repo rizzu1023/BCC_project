@@ -35,6 +35,7 @@
                     @endforeach
                 </div>
 
+
                 <div class="col-md-6 single-div">
                 <h3 class="title1">{{$schedule->Teams2->team_name}} XI</h3>
 
@@ -48,7 +49,7 @@
                 <div class="row">
                 <div class="form-group col-md-6">
                         <label for="exampleFormControlSelect2">Who won the Toss</label>
-                        <select class="form-control" id="exampleFormControlSelect2" name="toss">
+                        <select class="form-control" id="exampleFormControlSelect2" name="toss" required>
                             <!-- <option value=""></option> -->
                                 <option value="{{$schedule->team1_id}}">{{$schedule->Teams1->team_name}}</option>
                                 <option value="{{$schedule->team2_id}}">{{$schedule->Teams2->team_name}}</option>
@@ -56,7 +57,7 @@
                 </div>
                 <div class="form-group col-md-6">
                         <label for="exampleFormControlSelect2">Choose To</label>
-                        <select class="form-control" id="exampleFormControlSelect2" name="choose">
+                        <select class="form-control" id="exampleFormControlSelect2" name="choose" required>
                             <!-- <option value=""></option> -->
                                 <option value="Bat">Batting</option>
                                 <option value="Bowl">Bowling</option>
@@ -64,15 +65,13 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="field1">Overs</label>
-                  <input type="number" class="form-control"  name="overs" value="20">
+                  <input type="number" class="form-control"  name="overs" value="20" required>
                 </div>
                 </div>
 
                 <input type="hidden" name="match_no" value="{{$schedule->match_no}}">
                 <input type="hidden" name="team1_id" value="{{$schedule->team1_id}}">
                 <input type="hidden" name="team2_id" value="{{$schedule->team2_id}}">
-
-
 
             <button type="submit" class="btn btn-default">Submit Details</button>
 

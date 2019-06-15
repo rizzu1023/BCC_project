@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Match;
 use App\MatchDetail;
 use App\Players;
-use App\GameXI;
+use App\MatchPlayers;
 use App\Schedule;
 
 class MatchController extends Controller
@@ -23,7 +23,7 @@ class MatchController extends Controller
     public function Post_BrowseResult(Request $request){
         $match = Match::where('tournament',$request->tournament)->where('match_no',$request->match_no)->get();
         $match_detail = MatchDetail::where('tournament',$request->tournament)->where('match_no',$request->match_no)->get();
-        $single_result = GameXI::where('match_no',$request->match_no)->get();
+        $single_result = MatchPlayers::where('match_no',$request->match_no)->get();
         return view('Admin/Result/SingleResult',compact('single_result','match','match_detail'));
     }
 
@@ -39,9 +39,9 @@ class MatchController extends Controller
           $m->delete();
         }
 
-        $gamexi = GameXI::where('match_no',$match_no)->get();
+        $gamexi = MatchPlayers::where('match_no',$match_no)->get();
         for($j=0; $j<count($gamexi); $j++){
-          $g = GameXI::where('match_no',$match_no)->first();
+          $g = MatchPlayers::where('match_no',$match_no)->first();
           $g->delete();
         }
 
