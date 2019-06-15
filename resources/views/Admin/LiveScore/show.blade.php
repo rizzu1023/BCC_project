@@ -21,6 +21,24 @@
                         <input type="hidden" value="{{$match[0]->team_id}}" name="team_id">
                         <button type="submit" class="btn btn-sm btn-dark">Update</button>
                         <form>
+                        <br>
+
+                        <form method="POST" action="{{route('LiveScore')}}">
+                        @csrf
+                        @method('PUT')
+                        <label for="team_name">Team Name</label>
+                        <input type="text" id="team_name" value="{{$match[1]->team_id}}"  disabled/>
+
+                        <label for="score">Score</label>
+                        <input type="number" value="{{$match[1]->score}}" name="score" id="score"/>
+
+                        <label for="wicket">Wickets</label>
+                        <input type="number" value="{{$match[1]->wicket}}" name="wicket" id="wicket"/>
+
+                        <input type="hidden" value="{{$match[1]->match_no}}" name="match_no">
+                        <input type="hidden" value="{{$match[1]->tournament}}" name="tournament">
+                        <button type="submit" class="btn btn-sm btn-dark">Update</button>
+                        <form>
                     </div>
             </div>
 

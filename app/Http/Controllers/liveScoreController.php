@@ -17,7 +17,8 @@ class LiveScoreController extends Controller
 {
     public function LiveScoreIndex(){
         $schedule = Schedule::all();
-        return view('Admin/LiveScore/index',compact('schedule'));
+        $start = Match::all();
+        return view('Admin/LiveScore/index',compact('schedule','start'));
     }
 
     public function StartScore($match_no){
@@ -80,7 +81,7 @@ class LiveScoreController extends Controller
                $game_d2->save();
                $match = $request->match_no;
                $tournament = 'BCC2019';
-               return redirect::route('LiveScore.show',[$match,$tournament]);
+               return redirect::route('LiveScore.index');
             }
             
             
@@ -90,7 +91,11 @@ class LiveScoreController extends Controller
     }
 
     public function LiveScore(Request $request){
-        MatchDetail::where('match_no',$request->match_no)->where('tournament',$request->tournament)->where('team_id',$request->team_id)->update(['score'=>$request->score]);
+        MatchDetail::where('match_no',$request->match_no)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->team_id)
+                        ->update(['score'=>$request->score]);
+                        return $request->team_id;
         $match = MatchDetail::where('match_no',$request->match_no)->where('tournament',$request->tournament)->get();
         return view('Admin/LiveScore/show',compact('match'));
     }
