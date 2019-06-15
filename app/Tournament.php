@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Players extends Model
+class Tournament extends Model
 {
     protected $guarded = [];
-    
-    public function Teams(){
-        return $this->belongsTo('App\Teams','team_id','team_id');
-    }
 
+    public function Teams(){
+        return $this->belongsToMany('App\Teams','team_tournament','tournament_id','team_id');
+    }
 }

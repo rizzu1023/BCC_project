@@ -20,6 +20,12 @@
                 </a>
               </li>
               <li class="treeview">
+                <a href="{{route('Tournament.index')}}">
+                <i class="fa fa-users"></i>
+                <span>Tournament</span>
+                </a>
+              </li>
+              <li class="treeview">
                 <a href="{{route('Team.index')}}">
                 <i class="fa fa-users"></i>
                 <span>Teams</span>

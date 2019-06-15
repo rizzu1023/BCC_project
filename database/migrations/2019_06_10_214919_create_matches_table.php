@@ -16,6 +16,8 @@ class CreateMatchesTable extends Migration
         Schema::create('matches', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('match_no')->unique();
+            $table->integer('team1_id');
+            $table->integer('team2_id');
             $table->string('overs');
             $table->string('toss');
             $table->string("choose");

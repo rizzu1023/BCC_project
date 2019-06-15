@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
+use App\Teams;
 use App\Schedule;
 use App\Players;
 use App\MatchPlayers;
@@ -23,7 +24,6 @@ class LiveScoreController extends Controller
 
     public function StartScore($match_no){
         $schedule  = Schedule::where('match_no',$match_no)->first();
-  
         $players1 = Players::where('team_id',$schedule->team1_id)->get();
         $players2 = Players::where('team_id',$schedule->team2_id)->get();
   

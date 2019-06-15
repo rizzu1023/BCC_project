@@ -16,6 +16,8 @@ Route::get('/stats', 'MainController@GetStats');
 Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@GetDashboard')->name('GetDashboard');
 
+    Route::resource('/Tournament','TournamentController');  //Tournament
+
     Route::resource('/Team','TeamController');  //Team
 
     Route::resource('/Players','PlayersController');    //Player

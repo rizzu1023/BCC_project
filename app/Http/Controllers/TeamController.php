@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+
 use App\Teams;
 use App\PointsTable;
+use App\Tournament;
 
 
 class TeamController extends Controller
@@ -28,7 +30,8 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('admin/Team/create');
+        $tournament = Tournament::all();
+        return view('admin/Team/create',compact('tournament'));
     }
 
     /**
@@ -45,8 +48,7 @@ class TeamController extends Controller
         //     'team_name' => request('team_name'),
         //     'team_won' => request('team_won')
         // ]);
-
-        Teams::create(request(['team_name','team_id','team_won']));
+        Teams::create(request(['team_code','team_name','team_title','tournament_id']));
 
         return redirect::route('Team.index')->with('message','Team has been successfully added');
 

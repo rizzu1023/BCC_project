@@ -23,7 +23,7 @@ class CreateMatchPlayersTable extends Migration
             $table->integer('bt_fours')->default(0);
             $table->integer('bt_sixes')->default(0);
             $table->string('bt_status')->default('DNB');
-            $table->string('tournament')->nullable();
+            $table->string('tournament');
             $table->timestamps();
         });
     }

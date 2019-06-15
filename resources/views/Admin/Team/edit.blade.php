@@ -12,16 +12,16 @@
 							@csrf
 								@method('PUT')
 								<div class="form-group"> 
-									<label for="field1">Team Id</label> 
-									<input type="text" class="form-control" id="field1" name="team_id" value="{{$team['team_id']}}"> 
+									<label for="field1">Team Code</label> 
+									<input type="text" class="form-control" id="field1" name="team_code" value="{{$team['team_code']}}"> 
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Team Name</label> 
 									<input type="text" class="form-control" id="field1" name="team_name" value="{{$team['team_name']}}"> 
 								</div>
 								<div class="form-group"> 
-									<label for="field1">Team Won</label> 
-									<input type="text" class="form-control" id="field1" name="team_won" value="{{$team['team_won']}}"> 
+									<label for="field1">Team Title</label> 
+									<input type="text" class="form-control" id="field1" name="team_title" value="{{$team['team_title']}}"> 
 								</div> 
 								<button type="submit" class="btn btn-default">Update</button> 
 							</form> 

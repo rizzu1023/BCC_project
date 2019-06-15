@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-    protected $fillable = ['match_no', 'team1_id', 'team2_id', 'tournament', 'times', 'dates'];
+    protected $guarded = [];
+    
     public function Teams1(){
         return $this->belongsTo('App\Teams','team1_id','team_id');
     }
