@@ -1,5 +1,5 @@
 @extends('Admin.layouts.base')
-
+ 
 @section('content')
 
 <div id="page-wrapper">
@@ -15,8 +15,21 @@
 				@endif
 
 				<h3 class="title1">Teams</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Team.create')}}"><i class="fa fa-plus"></i>Add</a>
-                <div class="tables">
+                <a style="margin-bottom:20px;" class="btn btn-primary btn-flat btn-pri" href="{{route('Team.create')}}"><i class="fa fa-plus"></i>Add</a>
+				<div class="row">
+					<form method="POST" action="{{route('teamFilter')}}">
+							@csrf
+							<div class="form-group col-md-4">
+									<select class="form-control" name="tournament_id" onchange="this.form.submit()">
+										<option value="">Tournament</option>
+										@foreach($tournament as $t)
+											<option value="{{$t->id}}">{{$t->tournament_name}}</option>
+										@endforeach
+									</select>
+							</div>
+					</form>
+				</div>
+			    <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
 							<thead>

@@ -20,7 +20,8 @@ class TeamController extends Controller
     public function index()
     {
         $team = Teams::all();
-        return view('admin/Team/index',compact('team'));
+        $tournament = Tournament::all();
+        return view('admin/Team/index',compact('team','tournament'));
     }
 
     /**
@@ -88,9 +89,7 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         $team = Teams::find($id);
-
         $team->update(request(['team_id','team_name','team_won']));
-
         return redirect::route('Team.index')->with('message','Team has been succesfully updated');
     }
 
@@ -105,10 +104,19 @@ class TeamController extends Controller
         $team = Teams::find($id);
         $team->delete();
 
-        
         // $pointstable = PointsTable::where('team_id',$team->team_id)->first();
         // $pointstable->delete();
 
-        return redirect::route('Team.index')->with('message','Team has been successfully deleted');
+        return back()->with('message','Team has been successfully deleted');
+    }
+
+    public function teamFilter(Request $request){
+            $id = request('tournament_id');
+            // return $id;
+            $tournament = Tournament::all();
+            $team = Teams::whereHas('tournaments',function($query) use($id){
+                    $query->where('tournament_id',$id);
+                })->get(); 
+            return view('Admin/Team/index',compact('tournament','team'));
     }
 }

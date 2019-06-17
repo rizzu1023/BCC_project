@@ -22,9 +22,7 @@ class ScheduleController extends Controller
     public function index()
     {
         $schedule = Schedule::all();
-        
         // event(New firstEvent($schedule));
-
         return view('admin/Schedule/index',compact('schedule'));
 
     }
@@ -47,19 +45,9 @@ class ScheduleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Schedule $Schedule)
     {
-        $data = request()->validate([
-            'match_no' => 'required',
-            'team1_id' => 'required',
-            'team2_id' => 'required',
-            'tournament' => 'required',
-            'times' => 'required',
-            'dates' => 'required',
-        ]);
-        // return $data;
-        Schedule::create($data);
-
+        $Schedule->addSchedule(); 
         return redirect::route('Schedule.index')->with('message','Succesfully Added');
     }
 
@@ -96,18 +84,8 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, Schedule $Schedule)
     {
-        $data = request()->validate([
-            'match_no' => 'required',
-            'team1_id' => 'required',
-            'team2_id' => 'required',
-            'times' => 'required',
-            'dates' => 'required',
-            'tournament' => 'required',
-            ]);
-        $Schedule->update($data);
-
+        $Schedule->updateSchedule();
         return redirect::route('Schedule.index')->with('message','Succesfully Update');
-
     }
 
     /**
@@ -119,6 +97,6 @@ class ScheduleController extends Controller
     public function destroy(Schedule $Schedule)
     {
         $Schedule->delete();
-        return redirect::route('Schedule.index')->with('message','Successfully Deleted');
+        return back()->with('message','Successfully Deleted');
     }
 }

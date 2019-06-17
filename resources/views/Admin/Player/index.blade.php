@@ -19,9 +19,9 @@
 								<!-- <div class="col-md-4"> -->
 										<form method="POST" action="{{route('playerFilter')}}">
 											@csrf
-											<div class="form-group col-md-4">
-													<select class="form-control" name="id">
-														<option value="">filter by Team</option>
+											<div class="form-group col-md-4"> 
+													<select class="form-control" id="id" name="id">
+														<option value="{{$id['id']}}">@if($id){{$id->team_name}}@else<p>ALL</p>@endif</option>
 														@foreach($team as $t)
 															<option value="{{$t->id}}">{{$t->team_name}}</option>
 														@endforeach
@@ -29,8 +29,8 @@
 											</div>
 
 											<div class="form-group col-md-4">
-														<select class="form-control"  name="player_role">
-															<option value="">filter by Role</option>
+														<select class="form-control"  id="player_role" name="player_role">
+															<option value="{{$player_role}}">@if($player_role){{$player_role}}@else<p>ALL</p>@endif</option>
 																<option value="Batsman">Batsman</option>
 																<option value="Bowler">Bowler</option>
 																<option value="All Rounder">All Rounder</option>

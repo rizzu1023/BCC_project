@@ -18,7 +18,8 @@ Route::prefix('admin')->group(function(){
 
     Route::resource('/Tournament','TournamentController');  //Tournament
 
-    Route::resource('/Team','TeamController');  //Team
+    Route::resource('/Team','TeamController');
+    Route::post('/Team/filter','TeamController@teamFilter')->name('teamFilter');  //Team
 
     Route::resource('/Players','PlayersController');    //Player
     Route::post('/Players/filter','PlayersController@playerFilter')->name('playerFilter');

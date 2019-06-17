@@ -25,13 +25,14 @@
                          
 								<div class="form-group">
 										<label for="exampleFormControlSelect2">Select Team</label>
-										<select class="form-control" id="exampleFormControlSelect2" name="id">
+										<select class="form-control" id="exampleFormControlSelect2" name="team_id">
 											<option value="">Select Team</option>
 											@foreach($team as $t)
 												<option value="{{$t->id}}">{{$t->team_name}}</option>
 											@endforeach
 										</select>
 								</div>
+								@include('Admin.layouts.errors')
 								<button type="submit" class="btn btn-default">Submit</button> 
 							</form> 
 						</div>

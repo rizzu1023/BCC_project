@@ -12,4 +12,27 @@ class Players extends Model
         return $this->belongsTo('App\Teams','team_id','id');
     }
 
+    public function addPlayer(){
+
+        $data = request()->validate([
+            'player_id' => 'required',
+            'player_name' => 'required',
+            'player_role' => 'required',
+            'team_id' => 'required',
+        ]);
+
+        return Players::create($data);
+    }
+
+    public function updatePlayer(){
+        $data= request()->validate([
+            'player_id' => 'required|min:2',
+            'player_name' => 'required', 
+            'player_role' => 'required',
+            'team_id' => 'required',
+          ]);
+
+        return $this->update($data);
+    }
+
 }
