@@ -12,16 +12,16 @@ use App\MatchPlayers;
 use App\Schedule;
 
 class MatchController extends Controller
-{
+{ 
   
     public function BrowseResult(){
-        $result= MatchDetail::where('tournament','BCC2019')->orderBy('match_no','asc')->get();
+        $result= MatchDetail::orderBy('match_no','asc')->get();
         // return $result;
         return view('Admin/Result/BrowseResult',compact('result'));
     }
 
     public function Post_BrowseResult(Request $request){
-        $match = Match::where('tournament',$request->tournament)->where('match_no',$request->match_no)->get();
+        $match = Match::where('tournament',$request->tournament)->where('match_no',$request->match_no)->first();
         $match_detail = MatchDetail::where('tournament',$request->tournament)->where('match_no',$request->match_no)->get();
         $single_result = MatchPlayers::where('match_no',$request->match_no)->get();
         return view('Admin/Result/SingleResult',compact('single_result','match','match_detail'));

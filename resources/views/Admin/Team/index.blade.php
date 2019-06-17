@@ -29,7 +29,6 @@
 								</tr>
 							</thead> 
 							<tbody>
-							@php($i=1)
                             @foreach($team as $t)
                                 <tr>
 								  <td>
@@ -41,12 +40,11 @@
 								  </form>
 
 								  </td>
-								  <th scope="row">{{$i}}</th>
+								  <th scope="row">{{$t->id}}</th>
 								  <td>{{$t->team_code}}</td>
 								  <td>{{$t->team_name}}</td>
 								  <td>{{$t->team_title}}</td>
 							    </tr>
-                                @php($i++)
                             @endforeach
 							</tbody>
 						</table>

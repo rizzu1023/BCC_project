@@ -8,35 +8,39 @@
 				<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 					
 						<div class="form-body">
-							<form method="POST" action="{{route('Post_EditBowling')}}"> 
+							<form method="POST" action="/admin/Bowling/{{$Bowling['id']}}"> 
 							@csrf
+							@method('PUT')
 								<div class="form-group"> 
 									<label for="field1">Player Id</label> 
-									<input type="text" class="form-control" id="field1" value="{{$bowling['player_id']}}" disabled> 
+									<input type="text" class="form-control" id="field1" value="{{$Bowling['player_id']}}" disabled> 
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Player Name</label> 
-									<input type="text" class="form-control" id="field1" value="{{$bowling->Players->player_name}}" disabled> 
+									<input type="text" class="form-control" id="field1" value="{{$Bowling->Players->player_name}}" disabled> 
+								</div>
+								<div class="form-group"> 
+									<label for="field1">Team Name</label> 
+									<input type="text" class="form-control" id="field1" name="" value="{{$Bowling->Players->Teams->team_name}}" disabled> 
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Matches</label> 
-									<input type="number" class="form-control" id="field1" name="bw_matches" value="{{$bowling['bw_matches']}}"> 
+									<input type="number" class="form-control" id="field1" name="bw_matches" value="{{$Bowling['bw_matches']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Innings</label> 
-									<input type="number" class="form-control" id="field1" name="bw_innings" value="{{$bowling['bw_innings']}}"> 
+									<input type="number" class="form-control" id="field1" name="bw_innings" value="{{$Bowling['bw_innings']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Balls</label> 
-									<input type="number" class="form-control" id="field1" name="bw_balls" value="{{$bowling['bw_balls']}}"> 
+									<input type="number" class="form-control" id="field1" name="bw_balls" value="{{$Bowling['bw_balls']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Fours</label> 
-									<input type="number" class="form-control" id="field1" name="bw_wickets" value="{{$bowling['bw_wickets']}}"> 
+									<input type="number" class="form-control" id="field1" name="bw_wickets" value="{{$Bowling['bw_wickets']}}"> 
 								</div>
 						
 
-                                <input type="hidden" value="{{$bowling['id']}}" name="id">
 								<button type="submit" class="btn btn-default">Update</button> 
 							</form> 
 						</div>

@@ -19,8 +19,28 @@ class TournamentController extends Controller
     {
         // $tournament = Tournament::all();
         // $teams = Teams::first();
-
         // $teams->Tournaments()->syncWithoutDetaching($tournament);
+
+
+        // $teams = Teams::first();
+        // $teams->Tournaments()->sync([
+        //     23 => [
+        //         'position' => 'Champions',
+        //     ]
+        // ]);
+
+
+        // $teams = Teams::first();
+        // dd($teams->Tournaments->first()->pivot->position);
+        
+        // $team_id = 1;
+        // $tournaments = Tournament::whereHas('teams',function($query) use($team_id){
+        //     $query->where('team_id',$team_id);
+        // })->get();
+        // return $tournaments;
+
+
+        
         $Tournament = Tournament::all();
         return view('Admin/Tournament/index',compact('Tournament'));
     }

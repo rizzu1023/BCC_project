@@ -17,28 +17,38 @@
 								<div class="form-group">
 										<label for="exampleFormControlSelect2">Team 1</label>
 										<select class="form-control" id="exampleFormControlSelect2" name="team1_id" required>
+											<option value="">Select Team 1</option>
 											@foreach($team as $t)
-												<option value="{{$t->team_id}}">{{$t->team_name}}</option>
+												<option value="{{$t->id}}">{{$t->team_name}}</option>
 											@endforeach
 										</select>
 								</div>
 								<div class="form-group">
 										<label for="exampleFormControlSelect2">Team 2</label>
 										<select class="form-control" id="exampleFormControlSelect2" name="team2_id" required>
+											<option value="">Select Team 2</option>
 											@foreach($team as $t)
-												<option value="{{$t->team_id}}">{{$t->team_name}}</option>
+												<option value="{{$t->id}}">{{$t->team_name}}</option>
 											@endforeach
 										</select>
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Time</label> 
-									<input type="time" class="form-control" id="field1" name="times" placeholder="" required> 
+									<input type="time" class="form-control" id="field1" name="times"  required> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Date</label> 
-									<input type="date" class="form-control" id="field1" name="dates" placeholder="" required> 
+									<input type="date" class="form-control" id="field1" name="dates"  required> 
 								</div>
-							    <input type="hidden" name="tournament" value="BCC2019">
+								<div class="form-group">
+										<label for="exampleFormControlSelect2">Select Tournament</label>
+										<select class="form-control" id="exampleFormControlSelect2" name="tournament" required>
+											<option value="">Select Tournament</option>
+											@foreach($tournament as $t)
+												<option value="{{$t->tournament_name}}">{{$t->tournament_name}}</option>
+											@endforeach
+										</select>
+								</div>
 								<button type="submit" class="btn btn-default">Submit</button> 
 							</form> 
 						</div>

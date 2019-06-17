@@ -23,6 +23,7 @@ class PlayersController extends Controller
     {
         $player = Players::orderBy('team_id','asc')->get();
         $team = Teams::all();
+
         return view('admin/Player/index',compact('player','team'));
     }
 
@@ -49,8 +50,9 @@ class PlayersController extends Controller
             'player_id' => request('player_id'),
             'player_name' => request('player_name'),
             'player_role' => request('player_role'),
-            'team_id' => request('team_id')
+            'team_id' => request('id'),
         ]);
+
 
         $batting = new Batting;
         $batting->player_id = $request->player_id;
@@ -102,7 +104,7 @@ class PlayersController extends Controller
           'player_id' => 'required|min:2',
           'player_name' => 'required', 
           'player_role' => 'required',
-          'team_id' => 'required'
+          'team_id' => 'required',
         ]);
         $bt = Batting::where('player_id',$Player->player_id)->first();
         $bw = Bowling::where('player_id',$Player->player_id)->first();
@@ -142,11 +144,11 @@ class PlayersController extends Controller
     }
 
     public function playerFilter(Request $request){
-        if($request->team_id && $request->player_role){
-            $player = Players::where('team_id',$request->team_id)->where('player_role',$request->player_role)->get();
+        if($request->id && $request->player_role){
+            $player = Players::where('team_id',$request->id)->where('player_role',$request->player_role)->get();
         }
-        elseif($request->team_id || $request->player_role){
-            $player = Players::where('team_id',$request->team_id)->orWhere('player_role',$request->player_role)->get();
+        elseif($request->id || $request->player_role){
+            $player = Players::where('team_id',$request->id)->orWhere('player_role',$request->player_role)->get();
         }
       
         else{

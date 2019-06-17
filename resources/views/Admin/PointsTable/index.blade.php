@@ -12,7 +12,7 @@
                 </button>
               </div>
 			@endif
-				<h3 class="title1">Bowling Stats</h3>
+				<h3 class="title1">Points Table</h3>
                 <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
@@ -20,29 +20,31 @@
 								<tr>
 								  <th></th>
 								  <th>Sr</th>
-								  <th>Player</th>
-								  <th>Matches</th>
-								  <th>Innings</th>
-								  <th>Balls</th>
-								  <th>Wickets</th>
 								  <th>Team</th>
+								  <th>Matches</th>
+								  <th>Won</th>
+								  <th>Lost</th>
+								  <th>Draw</th>
+								  <th>Points</th>
+								  <th>NRR</th>
 								</tr>
 							</thead>
 							<tbody>
 							@php($i=1)
-                            @foreach($bowling as $b)
+                            @foreach($pointstable as $pt)
                                 <tr>
 								  <td>
-								  <a class="btn btn-success btn-sm" href="/admin/EditBowling/{{$b->id}}">Edit</a>
+								  <a class="btn btn-success btn-sm" href="/admin/PointsTable/{{$pt->id}}/edit">Edit</a>
 								  </td>
-								  <th scope="row">{{$i}}</th>
-								  <td>{{$b->Players->player_name}}</td>
-								  <td>{{$b->bw_matches}}</td>
-								  <td>{{$b->bw_innings}}</td>
-								  <td>{{$b->bw_balls}}</td>
-								  <td>{{$b->bw_wickets}}</td>
-								  <td>{{$b->Players->Teams->team_name}}</td>
-								
+								  <th scope="row">{{$i}}</th> 
+								  <td>{{$pt->Teams->team_name}}</td>
+								  <td>{{$pt->match}}</td>
+								  <td>{{$pt->won}}</td>
+								  <td>{{$pt->lost}}</td>
+								  <td>{{$pt->draw}}</td>
+								  <td>{{$pt->points}}</td>
+								  <td>{{$pt->nrr}}</td>
+
 								</tr>
                                 @php($i++)
                             @endforeach

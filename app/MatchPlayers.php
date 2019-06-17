@@ -13,6 +13,6 @@ class MatchPlayers extends Model
     }
 
     public function Teams(){
-        return $this->belongsTo('App\Teams','team_id','team_id');
+        return $this->belongsTo('App\Teams','team_id','id');
     }
 }

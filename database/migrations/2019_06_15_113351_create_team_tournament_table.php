@@ -17,6 +17,7 @@ class CreateTeamTournamentTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('team_id');
             $table->unsignedBigInteger('tournament_id');
+            $table->string('position')->default('--');
             $table->timestamps();
         });
     }

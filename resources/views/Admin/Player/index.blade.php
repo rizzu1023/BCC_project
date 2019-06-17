@@ -5,7 +5,7 @@
 <div id="page-wrapper">
 			<div class="main-page">
 			@if(session()->has('message'))
-                <div class="alert alert-success">
+                <div class="alert alert-success"> 
                 {{ session()->get('message') }}
                 <button type="button" class="close fa fa-times text-danger" data-dismiss="alert" aria-label="Close">
                     <i class="material-icons">close</i>
@@ -20,10 +20,10 @@
 										<form method="POST" action="{{route('playerFilter')}}">
 											@csrf
 											<div class="form-group col-md-4">
-													<select class="form-control" name="team_id">
+													<select class="form-control" name="id">
 														<option value="">filter by Team</option>
 														@foreach($team as $t)
-															<option value="{{$t->team_id}}">{{$t->team_name}}</option>
+															<option value="{{$t->id}}">{{$t->team_name}}</option>
 														@endforeach
 													</select>
 											</div>

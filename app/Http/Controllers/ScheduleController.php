@@ -9,6 +9,7 @@ use App\Events\firstEvent;
 
 use App\Schedule;
 use App\Teams;
+use App\Tournament;
 
 
 class ScheduleController extends Controller
@@ -36,7 +37,8 @@ class ScheduleController extends Controller
     public function create()
     {
         $team = Teams::all();
-        return view('admin/Schedule/create',compact('team'));
+        $tournament = Tournament::all();
+        return view('admin/Schedule/create',compact('team','tournament'));
     }
 
     /**
@@ -55,6 +57,7 @@ class ScheduleController extends Controller
             'times' => 'required',
             'dates' => 'required',
         ]);
+        // return $data;
         Schedule::create($data);
 
         return redirect::route('Schedule.index')->with('message','Succesfully Added');
@@ -80,7 +83,8 @@ class ScheduleController extends Controller
     public function edit(Schedule $Schedule)
     {
        $team = Teams::all();
-       return view('admin/Schedule/edit',compact('Schedule','team'));
+       $tournament = Tournament::all();
+       return view('admin/Schedule/edit',compact('Schedule','team','tournament'));
     }
 
     /**
@@ -98,6 +102,7 @@ class ScheduleController extends Controller
             'team2_id' => 'required',
             'times' => 'required',
             'dates' => 'required',
+            'tournament' => 'required',
             ]);
         $Schedule->update($data);
 

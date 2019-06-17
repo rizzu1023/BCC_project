@@ -20,7 +20,7 @@
 					<div class="panel-body widget-shadow">
 						<table class="table">
 							<thead>
-								<tr>
+								<tr> 
 								  <th></th>
 								  <th>Match No</th>
 								  <th>Team 1</th>
@@ -43,9 +43,9 @@
 								  </form>
 								  </td>
 								  <th scope="row">{{$s->match_no}}</th>
-								  <td>{{$s->team1_id}}</td>
+								  <td>{{$s->Teams1->team_code}}</td>
                   <td>Vs</td>
-								  <td>{{$s->team2_id}}</td>
+								  <td>{{$s->Teams2->team_code}}</td>
 								  <td>{{$s->times}}</td>
 								  <td>{{$s->dates}}</td>
 								</tr>

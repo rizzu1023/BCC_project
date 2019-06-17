@@ -8,35 +8,40 @@
 				<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 					
 						<div class="form-body">
-							<form method="POST" action="{{route('Post_EditBatting')}}"> 
+							<form method="POST" action="/admin/Batting/{{$Batting['id']}}"> 
 							@csrf
+							@method('PUT')
+
 								<div class="form-group"> 
 									<label for="field1">Player Id</label> 
-									<input type="text" class="form-control" id="field1" name="" value="{{$batting->Players->player_id}}" disabled> 
+									<input type="text" class="form-control" id="field1" name="" value="{{$Batting->Players->player_id}}" disabled> 
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Player Name</label> 
-									<input type="text" class="form-control" id="field1" name="" value="{{$batting->Players->player_name}}" disabled> 
+									<input type="text" class="form-control" id="field1" name="" value="{{$Batting->Players->player_name}}" disabled> 
+								</div>
+								<div class="form-group"> 
+									<label for="field1">Team Name</label> 
+									<input type="text" class="form-control" id="field1" name="" value="{{$Batting->Players->Teams->team_name}}" disabled> 
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Matches</label> 
-									<input type="number" class="form-control" id="field1" name="bt_matches" value="{{$batting['bt_matches']}}"> 
+									<input type="number" class="form-control" id="field1" name="bt_matches" value="{{$Batting['bt_matches']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Innings</label> 
-									<input type="number" class="form-control" id="field1" name="bt_innings" value="{{$batting['bt_innings']}}"> 
+									<input type="number" class="form-control" id="field1" name="bt_innings" value="{{$Batting['bt_innings']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Balls</label> 
-									<input type="number" class="form-control" id="field1" name="bt_balls" value="{{$batting['bt_balls']}}"> 
+									<input type="number" class="form-control" id="field1" name="bt_balls" value="{{$Batting['bt_balls']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Fours</label> 
-									<input type="number" class="form-control" id="field1" name="bt_fours" value="{{$batting['bt_fours']}}"> 
+									<input type="number" class="form-control" id="field1" name="bt_fours" value="{{$Batting['bt_fours']}}"> 
 								</div>
 						
 
-                                <input type="hidden" value="{{$batting['id']}}" name="id">
 								<button type="submit" class="btn btn-default">Update</button> 
 							</form> 
 						</div>

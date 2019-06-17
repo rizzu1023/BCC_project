@@ -42,13 +42,14 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-
-        // Teams::create([
-        //     'team_id' => request('team_id'),
-        //     'team_name' => request('team_name'),
-        //     'team_won' => request('team_won')
-        // ]);
-        Teams::create(request(['team_code','team_name','team_title','tournament_id']));
+        
+        $t = Teams::create(request(['team_code','team_name','team_title']));
+        $t->id;
+        
+        $team = Teams::find($t->id);
+        
+        $tournament = Tournament::find(request('tournament_id'));
+        $team->Tournaments()->syncWithoutDetaching($tournament);
 
         return redirect::route('Team.index')->with('message','Team has been successfully added');
 
@@ -104,6 +105,7 @@ class TeamController extends Controller
         $team = Teams::find($id);
         $team->delete();
 
+        
         // $pointstable = PointsTable::where('team_id',$team->team_id)->first();
         // $pointstable->delete();
 

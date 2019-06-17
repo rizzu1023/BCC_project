@@ -72,6 +72,7 @@
                 <input type="hidden" name="match_no" value="{{$schedule->match_no}}">
                 <input type="hidden" name="team1_id" value="{{$schedule->team1_id}}">
                 <input type="hidden" name="team2_id" value="{{$schedule->team2_id}}">
+                <input type="hidden" name="tournament" value="{{$schedule->tournament}}">
 
             <button type="submit" class="btn btn-default">Submit Details</button>
 

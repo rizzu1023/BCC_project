@@ -50,19 +50,19 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="{{route('BrowseBatting')}}">
+                <a href="{{route('Batting.index')}}">
                 <i class="fa fa-pie-chart"></i>
                 <span>Batting</span>
                 </a>
               </li>
               <li class="treeview">
-                <a href="{{route('BrowseBowling')}}">
+                <a href="{{route('Bowling.index')}}">
                 <i class="fa fa-pie-chart"></i>
                 <span>Bowling</span>
                 </a>
               </li>
               <li class="treeview">
-                <a href="{{route('BrowsePointsTable')}}">
+                <a href="{{route('PointsTable.index')}}">
                 <i class="fa fa-bars"></i>
                 <span>Points Table</span>
                 </a>

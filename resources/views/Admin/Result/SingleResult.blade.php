@@ -42,7 +42,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>Match</span>
-                      <h5><strong>{{$match[0]->match_no}}</strong></h5>
+                      <h5><strong>{{$match->match_no}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -50,7 +50,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>Toss</span>
-                      <h5><strong>{{$match[0]->toss}}</strong></h5>
+                      <h5><strong>{{$match->Teams->team_code}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -58,7 +58,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>First</span>
-                      <h5><strong>{{$match[0]->choose}}</strong></h5>
+                      <h5><strong>{{$match->choose}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -68,7 +68,7 @@
         		<div class="r3_counter_box ">
                     <div class="stats">
                       <span>Overs</span>
-                      <h5><strong>{{$match[0]->overs}}</strong></h5>
+                      <h5><strong>{{$match->overs}}</strong></h5>
                     </div>
                 </div>
         	 </div>
@@ -77,7 +77,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>Won</span>
-                      <h5><strong>{{$match[0]->won}}</strong></h5>
+                      <h5><strong>{{$match->won}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -86,7 +86,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>MOM</span>
-                      <h5><strong>{{$match[0]->mom}}</strong></h5>
+                      <h5><strong>{{$match->mom}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -165,7 +165,7 @@
 
 						<form action="{{route('Post_DeleteResult')}}" method="POST">
 								@csrf
-								<input type="hidden" value="{{$match[0]->match_no}}" name="match_no">
+								<input type="hidden" value="{{$match->match_no}}" name="match_no">
 								<button class="btn btn-sm btn-danger">Delete Result</button>
 						</form>
 

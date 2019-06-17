@@ -27,7 +27,7 @@
                         <form method="POST" action="{{route('Post_BrowseResult')}}">
                          @csrf
                            <input type="hidden" value="{{$result[$i]->match_no}}" name="match_no"/>
-                           <input type="hidden" value="BCC2019" name="tournament"/>
+                           <input type="hidden" value="{{$result[$i]->tournament}}" name="tournament"/>
 								           <button type="submit" class="btn btn-sm btn-primary">Browse</button>
 
                         </form>

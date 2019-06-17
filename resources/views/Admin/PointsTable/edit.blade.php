@@ -8,43 +8,48 @@
 				<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 					
 						<div class="form-body">
-							<form method="POST" action="{{route('Post_EditPointsTable')}}"> 
+							<form method="POST" action="/admin/PointsTable/{{$PointsTable['id']}}"> 
 							@csrf
+							@method('PUT')
 								<div class="form-group"> 
 									<label for="field1">Team Id</label> 
-									<input type="text" class="form-control" id="field1" value="{{$pointstable['team_id']}}" disabled> 
+									<input type="text" class="form-control" id="field1" value="{{$PointsTable['team_id']}}" disabled> 
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Team Name</label> 
-									<input type="text" class="form-control" id="field1" value="{{$pointstable->Teams->team_name}}" disabled> 
+									<input type="text" class="form-control" id="field1" value="{{$PointsTable->Teams->team_name}}" disabled> 
 								</div>
 								<div class="form-group"> 
 									<label for="field1">Match</label> 
-									<input type="number" class="form-control" id="field1" name="match" value="{{$pointstable['match']}}"> 
+									<input type="number" class="form-control" id="field1" name="match" value="{{$PointsTable['match']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Won</label> 
-									<input type="number" class="form-control" id="field1" name="won" value="{{$pointstable['won']}}"> 
+									<input type="number" class="form-control" id="field1" name="won" value="{{$PointsTable['won']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Lost</label> 
-									<input type="number" class="form-control" id="field1" name="lost" value="{{$pointstable['lost']}}"> 
+									<input type="number" class="form-control" id="field1" name="lost" value="{{$PointsTable['lost']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">Draw</label> 
-									<input type="number" class="form-control" id="field1" name="draw" value="{{$pointstable['draw']}}"> 
+									<input type="number" class="form-control" id="field1" name="draw" value="{{$PointsTable['draw']}}"> 
 								</div>
                                 <div class="form-group">
 									<label for="field1">Points</label> 
-									<input type="number" class="form-control" id="field1" name="points" value="{{$pointstable['points']}}"> 
+									<input type="number" class="form-control" id="field1" name="points" value="{{$PointsTable['points']}}"> 
 								</div>
                                 <div class="form-group"> 
 									<label for="field1">NRR</label> 
-									<input type="number" class="form-control" id="field1" name="nrr" value="{{$pointstable['nrr']}}"> 
+									<input type="number" class="form-control" id="field1" name="nrr" value="{{$PointsTable['nrr']}}"> 
 								</div>
-						
+								<div class="form-group"> 
+									<label for="field1">Tournament</label> 
+									<input type="text" class="form-control" id="field1" value="{{$PointsTable['tournament']}}" disabled> 
+								</div>
+							
 
-                                <input type="hidden" value="{{$pointstable['id']}}" name="id">
+
 								<button type="submit" class="btn btn-default">Update</button> 
 							</form> 
 						</div>

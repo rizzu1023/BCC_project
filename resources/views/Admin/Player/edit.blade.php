@@ -31,7 +31,7 @@
 										<select class="form-control" id="exampleFormControlSelect2" name="team_id">
 											<option value="">Select Team</option>
 											@foreach($team as $t)
-												<option value="{{$t->team_id}}">{{$t->team_name}}</option>
+												<option value="{{$t->id}}">{{$t->team_name}}</option>
 											@endforeach
 										</select>
 										<div>{{ $errors->first('team_id')}}</div>

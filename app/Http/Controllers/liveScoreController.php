@@ -42,16 +42,18 @@ class LiveScoreController extends Controller
                 MatchPlayers::create([
                     'match_no' => request('match_no'),
                     'player_id' => $request->$var,
-                    'team_id' => $obj->Teams->team_id,
-                    'tournament' => 'BCC2019',
+                    'team_id' => $obj->Teams->id,
+                    'tournament' => request('tournament'),
                 ]);
             }
           }
     
         Match::create([
             'match_no' => request('match_no'),
+            'team1_id' => request('team1_id'),
+            'team2_id' => request('team2_id'),
             'overs' => request('overs'),
-            'tournament' => 'BCC2019',
+            'tournament' => request('tournament'),
             'toss' => request('toss'),
             'choose' => request('choose'),
         ]);
@@ -59,13 +61,13 @@ class LiveScoreController extends Controller
         MatchDetail::create([
             'match_no' => request('match_no'),
             'team_id' => request('team1_id'),
-            'tournament' => 'BCC2019',
+            'tournament' => request('tournament'),
         ]);
 
         MatchDetail::create([
             'match_no' => request('match_no'),
             'team_id' => request('team2_id'),
-            'tournament' => 'BCC2019',
+            'tournament' => request('tournament'),
         ]);
     
         return redirect::route('LiveScore.index');
