@@ -37,7 +37,7 @@ class TournamentController extends Controller
         // $tournaments = Tournament::whereHas('teams',function($query) use($team_id){
         //     $query->where('team_id',$team_id);
         // })->get();
-        // return $tournaments;
+        // return $tournaments; 
 
 
         

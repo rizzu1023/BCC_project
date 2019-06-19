@@ -36,6 +36,10 @@
 							<td>Bowling Style</td>
 							<td>Right Arm</td>
 						</tr>
+						<tr>
+							<td>Teams</td>
+							<td>@foreach($teams as $t){{$t->Teams->team_name}}, @endforeach</td>
+						</tr>
 						</tbody>
 					</table>
 				</div>

@@ -70,7 +70,8 @@ class PlayersController extends Controller
     {
         $bt = Batting::where('player_id',$Player->player_id)->first();
         $bw = Bowling::where('player_id',$Player->player_id)->first();
-        return view('admin/Player/show',compact('Player','bt','bw'));
+        $teams = MatchPlayers::where('player_id',$Player->player_id)->select('team_id')->distinct()->get();
+        return view('admin/Player/show',compact('Player','bt','bw','teams'));
     }
 
     /**

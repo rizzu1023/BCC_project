@@ -42,16 +42,12 @@
 								</tr>
 							</thead> 
 							<tbody>
-                            @foreach($team as $t)
+                            @foreach($team as $t) 
                                 <tr>
 								  <td>
+								  <a class="btn btn-warning btn-sm" href="/admin/Team/{{$t->id}}">Show</a>
 								  <a class="btn btn-success btn-sm" href="/admin/Team/{{$t->id}}/edit">Edit</a>
-								  <form style="display:inline-block" method="POST" action="/admin/Team/{{$t->id}}">
-								  @csrf
-								  	@method('DELETE')
-									  <button class="btn btn-danger btn-sm">Delete</button>
-								  </form>
-
+								
 								  </td>
 								  <th scope="row">{{$t->id}}</th>
 								  <td>{{$t->team_code}}</td>

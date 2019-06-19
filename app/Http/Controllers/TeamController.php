@@ -15,7 +15,7 @@ class TeamController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response 
      */
     public function index()
     {
@@ -62,9 +62,14 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Teams $Team)
     {
-        //
+        $id = $Team->id;
+        $tournament = Tournament::whereHas('teams',function($query) use($id){
+            $query->where('team_id',$id);
+        })->get(); 
+        // return $tournament;
+        return view('admin/Team/show',compact('Team','tournament'));
     }
 
     /**
@@ -99,11 +104,17 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, Teams $Team)
     {
-        $team = Teams::find($id);
-        $team->delete();
+        $tournament =  Tournament::where('id',$request->tournament_id)->first();
+        $team = Teams::where('id',$Team->id)->first();
+        // return $team;
 
+        $team->Tournaments()->detach($tournament);
+    
+        // $team->delete();
+
+     
         // $pointstable = PointsTable::where('team_id',$team->team_id)->first();
         // $pointstable->delete();
 
