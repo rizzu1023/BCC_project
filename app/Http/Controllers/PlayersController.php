@@ -9,6 +9,7 @@ use App\Players;
 use App\Teams;
 use App\Bowling;
 use App\Batting;
+use App\MatchPlayers;
 
 class PlayersController extends Controller
 {
@@ -23,6 +24,7 @@ class PlayersController extends Controller
     {
         $player = Players::orderBy('team_id','asc')->get();
         $team = Teams::all();
+        // dd($team);
         $id = NULL;
         $player_role = NULL;
 

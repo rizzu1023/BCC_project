@@ -1,7 +1,7 @@
 <?php
 
 
-
+Route::get('/ataymadina','AtayController@hussain');
 
 //frontend Routes
 Route::get('/', 'MainController@GetIndex');
