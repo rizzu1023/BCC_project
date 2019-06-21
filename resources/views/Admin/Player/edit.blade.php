@@ -29,7 +29,11 @@
 								<div class="form-group">
 										<label for="exampleFormControlSelect2">Select Team</label>
 										<select class="form-control" id="exampleFormControlSelect2" name="team_id">
+											@if($player->Teams)
 											<option value="{{$player['team_id']}}">{{$player->Teams->team_name}}</option>
+											@else
+											<option value="">Select Team</option>
+											@endif
 											@foreach($team as $t)
 												<option value="{{$t->id}}">{{$t->team_name}}</option>
 											@endforeach

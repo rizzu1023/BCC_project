@@ -77,7 +77,13 @@ class TournamentController extends Controller
      */
     public function show(Tournament $Tournament)
     {
-        //
+        $Team = Teams::all();
+        $id = $Tournament->id;
+        $tournament_team = Teams::whereHas('tournaments',function($query) use($id){
+            $query->where('tournament_id',$id);
+        })->get(); 
+        // return $tournament_team;
+        return view('Admin/Tournament/show',compact('Tournament','Team','tournament_team'));
     }
 
     /**
@@ -116,5 +122,23 @@ class TournamentController extends Controller
     {
         $Tournament->delete();
         return redirect::route('Tournament.index')->with('message','Deleted');
+    }
+    
+    public function Tournament_add_Team(Request $request)
+    {
+        $team = Teams::find(request('team_id'));
+        $tournament = Tournament::find(request('tournament_id'));
+        $team->Tournaments()->syncWithoutDetaching($tournament);
+
+        return back()->with('message','Team Added to Tournament');
+    }
+
+    public function Tournament_destroy_Team(Request $request){
+        $team =  Teams::where('id',$request->team_id)->first();
+        $tournament = Tournament::where('id',$request->tournament_id)->first();
+        
+        $tournament->Teams()->detach($team);
+
+        return back()->with('message','Team has been delete from Tournament');
     }
 }

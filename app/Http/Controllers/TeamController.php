@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Teams;
 use App\PointsTable;
 use App\Tournament;
+use App\Schedule;
 
 
 class TeamController extends Controller
@@ -31,10 +32,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        $tournament = Tournament::all();
-        return view('admin/Team/create',compact('tournament'));
+        return view('admin/Team/create');
     }
-
+ 
     /**
      * Store a newly created resource in storage.
      *
@@ -45,13 +45,12 @@ class TeamController extends Controller
     {
         
         $t = Teams::create(request(['team_code','team_name','team_title']));
-        $t->id;
+        // $t->id;
         
-        $team = Teams::find($t->id);
+        // $team = Teams::find($t->id);
         
-        $tournament = Tournament::find(request('tournament_id'));
-        $team->Tournaments()->syncWithoutDetaching($tournament);
-
+        // $tournament = Tournament::find(request('tournament_id'));
+        // $team->Tournaments()->syncWithoutDetaching($tournament);
         return redirect::route('Team.index')->with('message','Team has been successfully added');
 
     }
@@ -92,9 +91,9 @@ class TeamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { 
         $team = Teams::find($id);
-        $team->update(request(['team_id','team_name','team_won']));
+        $team->update(request(['team_code','team_name','team_won']));
         return redirect::route('Team.index')->with('message','Team has been succesfully updated');
     }
 
@@ -106,19 +105,20 @@ class TeamController extends Controller
      */
     public function destroy(Request $request, Teams $Team)
     {
-        $tournament =  Tournament::where('id',$request->tournament_id)->first();
-        $team = Teams::where('id',$Team->id)->first();
-        // return $team;
-
-        $team->Tournaments()->detach($tournament);
+        $schedule = Schedule::where('team1_id',$Team->id)->orWhere('team2_id',$Team->id)->first();
+        if($schedule){
+            return back()->with('message','First Delete Schedule of This Team');
+        }
+        else{
+            $Team->delete();
+            return back()->with('message','Team has been successfully deleted');
+        }
     
-        // $team->delete();
 
      
         // $pointstable = PointsTable::where('team_id',$team->team_id)->first();
         // $pointstable->delete();
 
-        return back()->with('message','Team has been successfully deleted');
     }
 
     public function teamFilter(Request $request){

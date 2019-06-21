@@ -26,11 +26,12 @@
 								  <th>Tournament Name</th>
 								</tr>
 							</thead> 
-							<tbody>
+							<tbody> 
                             @foreach($Tournament as $t)
                                 <tr>
 								  <td>
 								  <a class="btn btn-success btn-sm" href="/admin/Tournament/{{$t->id}}/edit">Edit</a>
+								  <a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Show</a>
 								  <form style="display:inline-block" method="POST" action="/admin/Tournament/{{$t->id}}">
 								  @csrf
 								  	@method('DELETE')
