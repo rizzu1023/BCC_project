@@ -75,8 +75,9 @@ class LiveScoreController extends Controller
             
             
     public function LiveScoreShow($match,$tournament){
-            $match = MatchDetail::where('match_no',$match)->where('tournament',$tournament)->get();
-        return view('Admin/LiveScore/show',compact('match'));
+            $matchs = MatchDetail::where('match_no',$match)->where('tournament',$tournament)->get();
+            $match_player = MatchPlayers::where('match_no',$match)->where('tournament',$tournament)->get();
+        return view('Admin/LiveScore/show',compact('matchs','match_player')); 
     }
 
     public function LiveScore(Request $request){
@@ -84,7 +85,6 @@ class LiveScoreController extends Controller
                             ->where('tournament',$request->tournament)
                             ->where('team_id',$request->team_id)
                             ->update(['score'=>$request->score]);
-                            return $request->team_id;
             $match = MatchDetail::where('match_no',$request->match_no)->where('tournament',$request->tournament)->get();
         return view('Admin/LiveScore/show',compact('match'));
     }
