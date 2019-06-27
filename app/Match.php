@@ -19,4 +19,12 @@ class Match extends Model
     public function Teams2(){
         return $this->belongsTo('App\Teams','team1_id','id');
     }
+
+    public function MatchDetail(){
+        return $this->hasMany('App\MatchDetail','match_id','id');
+    }
+
+    public function MatchPlayers(){
+        return $this->hasMany('App\MatchPlayers','match_id','id');
+    }
 }

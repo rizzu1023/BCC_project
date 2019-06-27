@@ -15,6 +15,7 @@ class CreateMatchDetailsTable extends Migration
     {
         Schema::create('match_details', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('match_id');
             $table->string('match_no');
             $table->integer('team_id');
             $table->integer('score')->default(0);
