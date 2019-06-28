@@ -22,8 +22,8 @@ class LiveScoreController extends Controller
         return view('Admin/LiveScore/index',compact('schedule','start'));
     }
 
-    public function StartScore($match_no){
-        $schedule  = Schedule::where('match_no',$match_no)->first();
+    public function StartScore($id){
+        $schedule  = Schedule::where('id',$id)->first();
         $players1 = Players::where('team_id',$schedule->team1_id)->get();
         $players2 = Players::where('team_id',$schedule->team2_id)->get();
   
@@ -34,24 +34,20 @@ class LiveScoreController extends Controller
 
     public function ScoreDetails(Request $request){
         $m = Match::create([
-            'match_no' => request('match_no'),
-            'team1_id' => request('team1_id'),
-            'team2_id' => request('team2_id'),
+            'match_id' => request('id'),
             'overs' => request('overs'),
             'tournament' => request('tournament'),
             'toss' => request('toss'),
             'choose' => request('choose'),
         ]);
         MatchDetail::create([
-            'match_id' => $m->id,
-            'match_no' => request('match_no'),
+            'match_id' => $m->match_id,
             'team_id' => request('team1_id'),
             'tournament' => request('tournament'),
         ]);
 
         MatchDetail::create([
-            'match_id' => $m->id,
-            'match_no' => request('match_no'),
+            'match_id' => $m->match_id,
             'team_id' => request('team2_id'),
             'tournament' => request('tournament'),
         ]);
@@ -63,8 +59,7 @@ class LiveScoreController extends Controller
                 $obj = Players::where('player_id',$request->$var)->first();
             
                 MatchPlayers::create([
-                    'match_id' => $m->id,
-                    'match_no' => request('match_no'),
+                    'match_id' => $m->match_id,
                     'player_id' => $request->$var,
                     'team_id' => $obj->Teams->id,
                     'tournament' => request('tournament'),
@@ -76,19 +71,31 @@ class LiveScoreController extends Controller
     }
             
             
-    public function LiveScoreShow($match,$tournament){
-            $match_player = MatchPlayers::where('match_no',$match)->where('tournament',$tournament)->get();
+    public function LiveScoreShow($id,$tournament){
+            $match_player = MatchPlayers::where('match_id',$id)->where('tournament',$tournament)->get();
         return view('Admin/LiveScore/show',compact('match_player')); 
     }
 
     public function LiveScore(Request $request){
-            return $request->all();
-        // MatchPlayers::where('match_no',$request->match_no)
-            //                 ->where('tournament',$request->tournament)
-            //                 ->where('team_id',$request->team_id)
-            //                 ->update(['score'=>$request->score]);
-            $match = MatchDetail::where('match_no',$request->match_no)->where('tournament',$request->tournament)->get();
-        return view('Admin/LiveScore/show',compact('match'));
+            // return $request->all();
+        if($request->strike1 && $request->strike2){
+        MatchPlayers::where('match_id',$request->match_id)
+                            ->where('tournament',$request->tournament)
+                            ->where('team_id',$request->team_id)
+                            ->where('player_id',$request->strike1)
+                            ->update(['bt_status'=>1]);
+        MatchPlayers::where('match_id',$request->match_id)
+                            ->where('tournament',$request->tournament)
+                            ->where('team_id',$request->team_id)
+                            ->where('player_id',$request->strike2)
+                            ->update(['bt_status'=>1]);
+            }
+        
+        $matchs = Match::where('match_id',$request->match_id)->where('tournament',$request->tournament)->first();
+        // return $match->MatchPlayers;
+        $match_player = NULL;
+        // return $matchs->toss;
+        return view('Admin/LiveScore/show',compact('matchs','match_player'));
     }
     
 }

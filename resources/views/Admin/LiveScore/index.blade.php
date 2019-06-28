@@ -34,10 +34,10 @@
                   <td>Vs</td>
 								  <td>{{$s->Teams2->team_name}}</td>
 									<td>
-								  <a class="btn btn-warning btn-sm" href="/admin/StartScore/{{$s->match_no}}">Start</a>
+								  <a class="btn btn-warning btn-sm" href="/admin/StartScore/{{$s->id}}">Start</a>
 								  @foreach($start as $st)
-									@if($st->match_no == $s->match_no)
-									  <a class="btn btn-dark btn-sm" href="/admin/LiveScore/{{$s->match_no}}/{{$st->tournament}}">Score</a>
+									@if($st->match_id == $s->id)
+									  <a class="btn btn-dark btn-sm" href="/admin/LiveScore/{{$s->id}}/{{$st->tournament}}">Score</a>
 									@endif
 								  @endforeach
 									</td>

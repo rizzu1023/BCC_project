@@ -26,20 +26,20 @@
                         <!-- <a class="btn btn-success btn-sm" href="">Edit</a> -->
                         <form method="POST" action="{{route('Post_BrowseResult')}}">
                          @csrf
-                           <input type="hidden" value="{{$result[$i]->match_no}}" name="match_no"/>
+                           <input type="hidden" value="{{$result[$i]->match_id}}" name="match_id"/>
                            <input type="hidden" value="{{$result[$i]->tournament}}" name="tournament"/>
 								           <button type="submit" class="btn btn-sm btn-primary">Browse</button>
 
                         </form>
                         </td>
-                        <th scope="row">{{$result[$i]->match_no}}</th>
+                        <th scope="row">{{$result[$i]->match_id}}</th>
                         <td>{{$result[$i]->Teams->team_name}}</td>
                         <td>Vs</td>
                         <td>{{$result[$i+1]->Teams->team_name}}</td>
                         <td>
                           <form action="{{route('Post_DeleteResult')}}" method="POST">
 						            		@csrf
-								          <input type="hidden" value="{{$result[$i]->match_no}}" name="match_no">
+								          <input type="hidden" value="{{$result[$i]->match_id}}" name="match_id">
 								          <button class="btn btn-sm btn-danger">Delete</button>
                           </form>
                         </td>

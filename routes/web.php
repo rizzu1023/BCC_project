@@ -41,10 +41,10 @@ Route::prefix('admin')->group(function(){
     
     Route::get('/LiveScore','LiveScoreController@LiveScoreindex')->name('LiveScore.index');
 
-    Route::get('/StartScore/{match_no}','LiveScoreController@StartScore')->name('StartScore');
+    Route::get('/StartScore/{id}','LiveScoreController@StartScore')->name('StartScore');
     Route::post('/ScoreDetails','LiveScoreController@ScoreDetails')->name('ScoreDetails');
     
-    Route::get('/LiveScore/{match}/{tournament}','LiveScoreController@LiveScoreShow')->name('LiveScore.show');
+    Route::get('/LiveScore/{id}/{tournament}','LiveScoreController@LiveScoreShow')->name('LiveScore.show');
     Route::put('/LiveScore','LiveScoreController@LiveScore')->name('LiveScore');        
 
 });

@@ -42,7 +42,7 @@
         		<div class="r3_counter_box">
                     <div class="stats">
                       <span>Match</span>
-                      <h5><strong>{{$match->match_no}}</strong></h5>
+                      <h5><strong>{{$match->match_id}}</strong></h5>
                     </div>
                 </div>
         	</div>
@@ -165,7 +165,7 @@
 
 						<form action="{{route('Post_DeleteResult')}}" method="POST">
 								@csrf
-								<input type="hidden" value="{{$match->match_no}}" name="match_no">
+								<input type="hidden" value="{{$match->match_id}}" name="match_id">
 								<button class="btn btn-sm btn-danger">Delete Result</button>
 						</form>
 

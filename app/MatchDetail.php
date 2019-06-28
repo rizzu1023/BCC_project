@@ -13,7 +13,7 @@ class MatchDetail extends Model
   }
 
   public function Match(){
-    return $this->belongsTo('App\Match','match_id','id');
+    return $this->belongsTo('App\Match','match_id','match_id');
   }
 }
  

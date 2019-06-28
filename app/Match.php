@@ -21,10 +21,10 @@ class Match extends Model
     }
 
     public function MatchDetail(){
-        return $this->hasMany('App\MatchDetail','match_id','id');
+        return $this->hasMany('App\MatchDetail','match_id','match_id');
     }
 
     public function MatchPlayers(){
-        return $this->hasMany('App\MatchPlayers','match_id','id');
+        return $this->hasMany('App\MatchPlayers','match_id','match_id');
     }
 }
