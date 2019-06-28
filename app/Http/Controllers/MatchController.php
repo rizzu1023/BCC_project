@@ -28,12 +28,12 @@ class MatchController extends Controller
     }
 
     public function Post_DeleteResult(Request $request){
-        $result= MatchDetail::where('tournament','BCC2019')->orderBy('match_id','asc')->get();
+        $result= MatchDetail::where('tournament',$request->tournament)->orderBy('match_id','asc')->get();
         $match_id = $request->match_id;
-        $match = Match::where('match_id',$match_id)->where('tournament','BCC2019')->first();
+        $match = Match::where('match_id',$match_id)->where('tournament',$request->tournament)->first();
         $match->delete();
-        // dd(count($match));
-        $match_detail = MatchDetail::where('match_id',$match_id)->where('tournament','BCC2019')->get();
+        // dd(count($match)); 
+        $match_detail = MatchDetail::where('match_id',$match_id)->where('tournament',$request->tournament)->get();
         for($i=0; $i<count($match_detail); $i++){
           $m = MatchDetail::where('match_id',$match_id)->first();
           $m->delete();

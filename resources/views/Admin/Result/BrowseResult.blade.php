@@ -40,6 +40,7 @@
                           <form action="{{route('Post_DeleteResult')}}" method="POST">
 						            		@csrf
 								          <input type="hidden" value="{{$result[$i]->match_id}}" name="match_id">
+                          <input type="hidden" value="{{$result[$i]->tournament}}" name="tournament"/>
 								          <button class="btn btn-sm btn-danger">Delete</button>
                           </form>
                         </td>
