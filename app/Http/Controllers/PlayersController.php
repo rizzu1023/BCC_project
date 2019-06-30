@@ -28,6 +28,7 @@ class PlayersController extends Controller
         $id = NULL;
         $player_role = NULL;
 
+
         return view('admin/Player/index',compact('player','team','id','player_role'));
     }
 
@@ -39,6 +40,7 @@ class PlayersController extends Controller
     public function create()
     {
         $team = Teams::all();
+
         return view('admin/Player/create',compact('team'));
     }
 

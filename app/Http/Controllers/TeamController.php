@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Response;
 use Illuminate\Support\Facades\Redirect;
 
 use App\Teams;
@@ -32,7 +33,8 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('admin/Team/create');
+        // $message = NULL;
+        // return view('admin/Team/create',compact('message'));
     }
  
     /**
@@ -43,8 +45,11 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
+        // $input = request()->all(); 
         
         $t = Teams::create(request(['team_code','team_name','team_title']));
+        return response()->json(['message'=> 'Team has been successfully added']);
+        // return Response::json(['message'=>$message]);
         // $t->id;
         
         // $team = Teams::find($t->id);

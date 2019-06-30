@@ -7,8 +7,41 @@
 
 			@include('Admin.layouts.message')
 
+			<div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+
+              <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h3>Add Team</h3>
+                </div>
+					<div class="form-body">
+							<!-- <form method="POST" action="{{route('Team.store')}}"> -->
+							<form id="teamForm">
+							@csrf
+								<div class="form-group">
+									<label for="field1">Team Code</label>
+									<input type="text" class="form-control" id="field1" name="team_code" placeholder="eg. MI">
+								</div>
+								<div class="form-group">
+									<label for="field1">Team Name</label>
+									<input type="text" class="form-control" id="field1" name="team_name" placeholder="eg. Mumbai Indians">
+								</div> 
+								<div class="form-group">
+									<label for="field1">Team Title</label>
+									<input type="text" class="form-control" id="field1" name="team_title" placeholder="eg .2">
+								</div>
+                  				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-default btn-submit">Submit</button> 
+							</form>
+						</div>
+            </div>
+          </div>
+        </div>
+
+
 				<h3 class="title1">Teams</h3>
-                <a style="margin-bottom:20px;" class="btn btn-primary btn-flat btn-pri" href="{{route('Team.create')}}"><i class="fa fa-plus"></i>Add</a>
+                <a style="margin-bottom:20px;" id="addButton" class="btn btn-primary btn-flat btn-pri"><i class="fa fa-plus"></i>Add</a>
 				<div class="row">
 					<form method="POST" action="{{route('teamFilter')}}">
 							@csrf
@@ -58,5 +91,30 @@
                     </div>
 			</div>
 </div>
+
+@endsection
+
+
+@section('script')
+
+<script>
+$('#addButton').on('click', function(e){
+      $("#myModal").modal('show');
+});
+
+$('#teamForm').on('submit', function(e){
+	e.preventDefault();
+
+	$.ajax({
+		type : "POST",
+		url : "{{route('Team.store')}}",
+		data : $(this).serialize(),
+		success : function(data){
+			$("#myModal").modal('hide');
+			location.reload();
+		}
+	});
+});
+</script>
 
 @endsection

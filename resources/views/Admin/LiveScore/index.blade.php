@@ -30,14 +30,20 @@
                        @foreach($schedule as $s)
                 <tr>
 								  <th scope="row">{{$s->match_no}}</th>
-								  <td>{{$s->Teams1->team_name}}</td>
+								  <td>{{$s->Teams1->team_name}}</td> 
                   <td>Vs</td>
 								  <td>{{$s->Teams2->team_name}}</td>
 									<td>
 								  <a class="btn btn-warning btn-sm" href="/admin/StartScore/{{$s->id}}">Start</a>
 								  @foreach($start as $st)
 									@if($st->match_id == $s->id)
-									  <a class="btn btn-dark btn-sm" href="/admin/LiveScore/{{$s->id}}/{{$st->tournament}}">Score</a>
+									  <a class="btn btn-dark btn-sm" href="/admin/LiveUpdate/{{$s->id}}/{{$st->tournament}}">Score</a>
+											<!-- <form style="display:inline-block" action="{{route('LiveUpdate')}}" method="POST">
+												@csrf
+												<input type="hidden" name="id" value="{{$s->id}}">
+												<input type="hidden" name="tournament" value="{{$s->tournament}}">
+												<button type="submit" class="btn btn-dark btn-sm">Score</button>
+											</form> -->
 									@endif
 								  @endforeach
 									</td>

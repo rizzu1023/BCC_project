@@ -4,7 +4,7 @@
 
 <div id="page-wrapper">
 			<div class="main-page">
-				<h3 class="title1">Dashboapsdfgadfgrd</h3>
+				<h3 class="title1">Dashboard</h3>
 					
 			</div>
 </div>
