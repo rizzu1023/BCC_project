@@ -12,6 +12,7 @@ use App\Players;
 use App\MatchPlayers;
 use App\Match;
 use App\MatchDetail;
+use DB;
 
 
 class LiveScoreController extends Controller
@@ -120,8 +121,39 @@ class LiveScoreController extends Controller
                 }
             }
 
+            if($request->value){
+                MatchDetail::where('match_id',$request->match_id)
+                    ->where('tournament',$request->tournament)
+                    ->where('team_id',$request->team_id)
+                    ->increment('score',$request->value);
+
+                    if($request->value == 1 or $request->value == 2 or $request->value == 3){
+                        MatchPlayers::where('match_id',$request->match_id)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->team_id)
+                        ->where('player_id',$request->player_id)
+                        ->increment('bt_runs',$request->value,['bt_balls'=> DB::raw('bt_balls + 1')]); 
+                    }
+                    if($request->value == 4){
+                        MatchPlayers::where('match_id',$request->match_id)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->team_id)
+                        ->where('player_id',$request->player_id)
+                        ->increment('bt_runs',$request->value,['bt_balls'=> DB::raw('bt_balls + 1'),
+                        'bt_fours'=> DB::raw('bt_fours + 1')] );
+                    }
+                    if($request->value == 6){
+                    MatchPlayers::where('match_id',$request->match_id)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->team_id)
+                        ->where('player_id',$request->player_id)
+                        ->increment('bt_runs',$request->value,['bt_balls'=> DB::raw('bt_balls + 1'),
+                                                               'bt_sixes'=> DB::raw('bt_sixes + 1')] );
+                    }
+                }
+
        
-            return response()->json(['message'=>'done']);
+            return response()->json(['message'=>$request->value]);
             }
 
     }

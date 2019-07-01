@@ -103,7 +103,9 @@
                                 <input type="hidden" name="team_id" value="{{$mp->team_id}}">
                           <input type="hidden" name="match_id" value="{{$mp->match_id}}">
                           <input type="hidden" name="tournament" value="{{$mp->tournament}}">
-                              @php($i++)
+                              @php
+                                 $i++;
+                              @endphp
                               @endif
                               @endforeach
                           </div>
@@ -126,7 +128,7 @@
                   @endif
                 @endforeach
 
-                          <form action="{{route('LiveUpdate')}}" method="POST">
+                          <form id="updateForm">
                           @csrf
                     <table class="table">
                       <thead>
@@ -143,12 +145,20 @@
                       @foreach($matchs->MatchPlayers as $m)
                         @if($m->team_id == $batting && $m->bt_status == '1')
                         <tr>
-                          <td><input type="radio" name="player_id" value="{{$m->player_id}}" checked> {{$m->Players->player_name}}</td>
+                          <td><input type="radio" id="player_id" name="player_id" value="{{$m->player_id}}" checked > {{$m->Players->player_name}}</td>
+                          <input type="hidden" name="team_id" value="{{$m->team_id}}">
                           <td>{{$m->bt_runs}}</td>
                           <td>{{$m->bt_balls}}</td>
                           <td>{{$m->bt_fours}}</td>
                           <td>{{$m->bt_sixes}}</td>
-                          <td>SR</td>
+                          @php 
+                            $sr = 0;
+                            if($m->bt_balls > 0){
+                            $srs = ($m->bt_runs/$m->bt_balls)*100;
+                            $sr = number_format((float)$srs, 2, '.', '');
+                            }
+                          @endphp
+                          <td>{{$sr}}</td>
                         </tr>
                         @endif
                       @endforeach
@@ -156,8 +166,12 @@
                       <input type="hidden" name="tournament" value="{{$matchs->tournament}}">
                       </tbody>
                     </table>
-                      <button id="six" type="submit" class="bt">6</button>
-                      <button id="four" type="submit" class="bt">4</button>
+                      <button id="single" type="submit" value="1" class="bt">1</button>
+                      <button id="double" type="submit" value="2" class="bt">2</button>
+                      <button id="triple" type="submit" value="3" class="bt">3</button>
+                      <button id="four" type="submit"   value="4" class="bt">4</button>
+                      <button id="six" type="submit" value="6" class="bt">6</button>
+                      </form>
           </div>
         </div>
 
@@ -202,19 +216,26 @@
         });
     });
 
-    $("#six").on('click',function(e){
+      var team_id = $("input[name=team_id]").val();
+      var match_id = $("input[name=match_id]").val();
+      var tournament = $("input[name=tournament]").val();
+
+    $(".bt").on('click',function(e){
       e.preventDefault();
-       var formdata = $(this).serialize();
+      var player_id = $("input[name=player_id]:checked").val();
+      var value = $(this).val();
+      
       $.ajax({
         type : "POST",
         url : "{{route('LiveUpdate')}}",
-        data : { 'foo' : 'barr', 'formdata' : formdata },
+        data : { player_id : player_id, team_id : team_id, match_id : match_id, tournament : tournament, value : value },
         success : function(data){
-          alert(data.message);
+          // alert(data.message);
           location.reload();
         } 
       });
     });
+
     </script>
  
 
