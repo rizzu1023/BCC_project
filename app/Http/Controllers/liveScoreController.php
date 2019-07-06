@@ -105,19 +105,29 @@ class LiveScoreController extends Controller
 
     public function LiveUpdate(Request $request){
         if($request->ajax()){
-            for($i=1; $i<12; $i++){
-                $var = "strike".$i;
-                if($request->$var != NULL){
-                    MatchPlayers::where('match_id',$request->match_id)
-                    ->where('tournament',$request->tournament)
-                    ->where('team_id',$request->team_id)
-                    ->where('player_id',$request->$var)
-                    ->update(['bt_status'=>10]);
-                }
+          
+            if($request->striker_id || $request->nonstriker_id || $request->attacker_id){
+            MatchPlayers::where('match_id',$request->match_id)
+                ->where('tournament',$request->tournament)
+                ->where('team_id',$request->bt_team_id)
+                ->where('player_id',$request->strike_id)
+                ->update(['bt_status'=>11]);
+
+            MatchPlayers::where('match_id',$request->match_id)
+                ->where('tournament',$request->tournament)
+                ->where('team_id',$request->bt_team_id)
+                ->where('player_id',$request->nonstrike_id)
+                ->update(['bt_status'=>10]);
+            
+            MatchPlayers::where('match_id',$request->match_id)
+                ->where('tournament',$request->tournament)
+                ->where('team_id',$request->bw_team_id)
+                ->where('player_id',$request->attacker_id)
+                ->update(['bt_status'=>11]);
             }
 
-
             if($request->value){
+              
                 MatchDetail::where('match_id',$request->match_id)
                     ->where('tournament',$request->tournament)
                     ->where('team_id',$request->team_id)
