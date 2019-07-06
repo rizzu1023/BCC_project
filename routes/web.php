@@ -44,8 +44,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/StartScore/{id}','LiveScoreController@StartScore')->name('StartScore');
     Route::post('/ScoreDetails','LiveScoreController@ScoreDetails')->name('ScoreDetails');
     
-    Route::get('/LiveScore/{id}/{tournament}','LiveScoreController@LiveScoreShow')->name('LiveScore.show');
-    Route::put('/LiveScore','LiveScoreController@LiveScore')->name('LiveScore');        
+    // Route::get('/LiveScore/{id}/{tournament}','LiveScoreController@LiveScoreShow')->name('LiveScore.show');
+    // Route::put('/LiveScore','LiveScoreController@LiveScore')->name('LiveScore');        
 
     Route::get('/LiveUpdate/{id}/{tournament}','LiveScoreController@LiveUpdateShow')->name('LiveUpdate.show');
     Route::post('/LiveUpdate','LiveScoreController@LiveUpdate')->name('LiveUpdate');

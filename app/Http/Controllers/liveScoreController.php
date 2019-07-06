@@ -71,34 +71,6 @@ class LiveScoreController extends Controller
         return redirect::route('LiveScore.index');
     }
             
-            
-    // public function LiveScoreShow($id,$tournament){
-    //     $match_player = MatchPlayers::where('match_id',$id)->where('tournament',$tournament)->get();
-    //     $matchs = NULL;
-    //     $batOrBowl = Match::where('match_id',$id)->where('tournament',$tournament)->first();
-    //     return view('Admin/LiveScore/show',compact('match_player','matchs','batOrBowl')); 
-    // }
-
-    // public function LiveScore(Request $request){
-    //         // return $request->all();
-    //         return response()->json(['message'=>$request->match_id]);
-    //     for($i=1; $i<12; $i++){
-    //         $var = "strike".$i;
-    //         if($request->$var !=NULL){
-    //         MatchPlayers::where('match_id',$request->match_id)
-    //                             ->where('tournament',$request->tournament)
-    //                             ->where('team_id',$request->team_id)
-    //                             ->where('player_id',$request->$var)
-    //                             ->update(['bt_status'=>1]);
-    //           }
-    //         }
-    //     $batOrBowl = Match::where('match_id',$request->match_id)->where('tournament',$request->tournament)->first();
-    //     $matchs = Match::where('match_id',$request->match_id)->where('tournament',$request->tournament)->first();
-    //     // return $match->MatchPlayers;
-    //     $match_player = NULL;
-    //     // return $matchs->toss;  
-    //     return view('Admin/LiveScore/show',compact('matchs','match_player','batOrBowl'));
-    // }
     
 
     public function LiveUpdateShow($id,$tournament){
@@ -106,10 +78,33 @@ class LiveScoreController extends Controller
         return view('Admin/LiveScore/show',compact('matchs')); 
     }
 
+    public function StrikeRotate($player_id,$match_id,$team_id,$tournament){
+        $nonstriker = MatchPlayers::where('match_id',$match_id)
+        ->where('tournament',$tournament)
+        ->where('team_id',$team_id)
+        ->where('bt_status',10)->first();
+
+        $striker = MatchPlayers::where('match_id',$match_id)
+        ->where('tournament',$tournament)
+        ->where('team_id',$team_id)
+        ->where('bt_status',11)->first();
+
+        MatchPlayers::where('match_id',$match_id)
+        ->where('tournament',$tournament)
+        ->where('team_id',$team_id)
+        ->where('player_id',$nonstriker->player_id)
+        ->update(['bt_status'=>11]);
+
+        MatchPlayers::where('match_id',$match_id)
+        ->where('tournament',$tournament)
+        ->where('team_id',$team_id)
+        ->where('player_id',$striker->player_id)
+        ->update(['bt_status'=>10]);
+
+    }
 
     public function LiveUpdate(Request $request){
         if($request->ajax()){
-             
             for($i=1; $i<12; $i++){
                 $var = "strike".$i;
                 if($request->$var != NULL){
@@ -117,9 +112,10 @@ class LiveScoreController extends Controller
                     ->where('tournament',$request->tournament)
                     ->where('team_id',$request->team_id)
                     ->where('player_id',$request->$var)
-                    ->update(['bt_status'=>1]);
+                    ->update(['bt_status'=>10]);
                 }
             }
+
 
             if($request->value){
                 MatchDetail::where('match_id',$request->match_id)
@@ -133,6 +129,9 @@ class LiveScoreController extends Controller
                         ->where('team_id',$request->team_id)
                         ->where('player_id',$request->player_id)
                         ->increment('bt_runs',$request->value,['bt_balls'=> DB::raw('bt_balls + 1')]); 
+
+                        if($request->value == 1 or $request->value == 3)
+                        return $this->StrikeRotate($request->player_id,$request->match_id,$request->team_id,$request->tournament);
                     }
                     if($request->value == 4){
                         MatchPlayers::where('match_id',$request->match_id)
@@ -152,9 +151,22 @@ class LiveScoreController extends Controller
                     }
                 }
 
-       
-            return response()->json(['message'=>$request->value]);
+                $userjobs  = "adfffffff";
+                // $returnHTML = view('Admin/LiveScore/show')->with('userjobs', $userjobs)->render();
+                // return response()->json(array('success' => true, 'html'=>$returnHTML));
+            
+                return response()->json(compact('userjobs'),200);
+                // return response()->json(['message'=>$request->value]);
             }
-
     }
-}
+} 
+
+
+
+
+// bt_status
+// 11 = striker
+// 10 = non striker
+// DNB = Did not bat
+// 0 = out
+// 1 = notout

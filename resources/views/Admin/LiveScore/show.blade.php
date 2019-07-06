@@ -70,7 +70,7 @@
         $opening = true;
         foreach($matchs->MatchPlayers as $mp){
           if($mp->team_id == $batting)
-            if($mp->bt_status == 1)
+            if($mp->bt_status == 10 || $mp->bt_status == 11)
               $opening = false;
         }
 @endphp
@@ -86,13 +86,13 @@
               <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                  <h3>Select two batsman</h3>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                   <form id="modal">
                   @csrf
                     <div class="row">
                       <div class="col-md-6 single-div">
+                          <h3>Select opening batsman</h3><br>
                               @php
                                 $str = "strike";
                                 $i = 1;
@@ -101,21 +101,36 @@
                               @if($mp->team_id == $batting)
                                 <input class="single-checkbox" type="checkbox" name="{{$str.$i}}" value="{{$mp->player_id}}"><div class="single-name">{{$i}} {{$mp->Players->player_name}}</div><br>
                                 <input type="hidden" name="team_id" value="{{$mp->team_id}}">
-                          <input type="hidden" name="match_id" value="{{$mp->match_id}}">
-                          <input type="hidden" name="tournament" value="{{$mp->tournament}}">
+                                <input type="hidden" name="match_id" value="{{$mp->match_id}}">
+                                <input type="hidden" name="tournament" value="{{$mp->tournament}}">
                               @php
                                  $i++;
                               @endphp
                               @endif
                               @endforeach
                           </div>
+                      <div class="col-md-6 single-div">
+                      <h3>Select Bowler</h3><br>
+
+                      <select class="form-control" id="exampleFormControlSelect2" name="strike_id">
+											<option value="">Select Bowler</option>
+											 @foreach($matchs->MatchPlayers as $mp)
+                              @if($mp->team_id == $bowling)
+                                <option value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                              @php
+                                 $i++;
+                        @endphp
+                        @endif
+                        @endforeach
+										</select>
+                      </div>
                     </div>
                           <button type="submit" class="btn btn-default btn-sm">Submit</button>
                   </form>
             </div>
           </div>
         </div>
-
+      
           
       @if($matchs)
 
@@ -143,9 +158,9 @@
                       </thead>
                       <tbody>
                       @foreach($matchs->MatchPlayers as $m)
-                        @if($m->team_id == $batting && $m->bt_status == '1')
+                        @if($m->team_id == $batting && $m->bt_status == '10' || $m->bt_status == '11')
                         <tr>
-                          <td><input type="radio" id="player_id" name="player_id" value="{{$m->player_id}}" checked > {{$m->Players->player_name}}</td>
+                          <td><input type="radio" id="player_id" name="player_id" value="{{$m->player_id}}" @if($m->bt_status==11) checked @endif> {{$m->Players->player_name}}</td>
                           <input type="hidden" name="team_id" value="{{$m->team_id}}">
                           <td>{{$m->bt_runs}}</td>
                           <td>{{$m->bt_balls}}</td>
@@ -198,13 +213,12 @@
        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
     });
-    
+
+    //for opening batsman selection
     $('#modal').on('submit', function(e){
-        
         e.preventDefault();
 
         $.ajax({
-
           type : "POST",
           url : '{{Route('LiveUpdate')}}',
           data : $(this).serialize(),
@@ -216,23 +230,25 @@
         });
     });
 
+
+    //for live update
+    $(".bt").on('click',function(e){
+      e.preventDefault();
       var team_id = $("input[name=team_id]").val();
       var match_id = $("input[name=match_id]").val();
       var tournament = $("input[name=tournament]").val();
-
-    $(".bt").on('click',function(e){
-      e.preventDefault();
       var player_id = $("input[name=player_id]:checked").val();
       var value = $(this).val();
       
       $.ajax({
         type : "POST",
         url : "{{route('LiveUpdate')}}",
+        // headers: {'X-Requested-With': 'XMLHttpRequest'},
         data : { player_id : player_id, team_id : team_id, match_id : match_id, tournament : tournament, value : value },
         success : function(data){
-          // alert(data.message);
-          location.reload();
-        } 
+          // alert(data.userjobs);
+          location.reload(true);
+        }  
       });
     });
 
