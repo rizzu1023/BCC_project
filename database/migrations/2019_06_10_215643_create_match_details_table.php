@@ -20,7 +20,7 @@ class CreateMatchDetailsTable extends Migration
             $table->integer('team_id');
             $table->integer('score')->default(0);
             $table->integer('wicket')->default(0);
-            $table->string('overs_played')->default(0);
+            $table->float('overs_played',3,1)->default(0);
             $table->integer('no_ball')->default(0);
             $table->integer('wide')->default(0);
             $table->integer('byes')->default(0);

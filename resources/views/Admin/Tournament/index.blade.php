@@ -24,7 +24,6 @@
                                 <tr>
 								  <td>
 								  <a class="btn btn-success btn-sm" href="/admin/Tournament/{{$t->id}}/edit">Edit</a>
-								  <a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Show</a>
 								  <form style="display:inline-block" method="POST" action="/admin/Tournament/{{$t->id}}">
 								  @csrf
 								  	@method('DELETE')
@@ -34,6 +33,8 @@
 								  </td>
 								  <th scope="row">{{$t->id}}</th>
 								  <td>{{$t->tournament_name}}</td>
+								  <td><a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Add Teams</a></td>
+
 							    </tr>
                             @endforeach
 							</tbody>

@@ -20,19 +20,19 @@ class CreateMatchPlayersTable extends Migration
             $table->string('team_id');
             $table->string('player_id'); 
 
+            $table->string('bt_status')->default('DNB');
             $table->integer('bt_runs')->default(0);
             $table->integer('bt_balls')->default(0);
             $table->integer('bt_fours')->default(0);
             $table->integer('bt_sixes')->default(0);
-            $table->string('bt_status')->default('DNB');
             
-            // $table->string('bw_status')->default('DNB');
-            // $table->float('bw_overs',2,1)->default(0);
-            // $table->integer('bw_wickets')->default(0);
-            // $table->integer('bw_runs')->default(0);
-            // $table->integer('bw_maiden')->default(0);
-            // $table->integer('bw_nb')->default(0);
-            // $table->integer('bw_wide')->default(0);
+            $table->string('bw_status')->default('DNB');
+            $table->float('bw_overs',3,1)->default(0);
+            $table->integer('bw_wickets')->default(0);
+            $table->integer('bw_runs')->default(0);
+            $table->integer('bw_maiden')->default(0);
+            $table->integer('bw_nb')->default(0);
+            $table->integer('bw_wide')->default(0);
 
             $table->string('tournament');
             $table->timestamps();

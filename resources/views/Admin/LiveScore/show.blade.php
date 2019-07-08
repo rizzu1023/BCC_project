@@ -122,7 +122,7 @@
 											<option value="">Select Bowler</option>
 											 @foreach($matchs->MatchPlayers as $mp)
                               @if($mp->team_id == $bowling)
-                                <option value="{{$mp->player_id}}">{{$mp->player_id}}</option>
+                                <option value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
                               @endif
                         @endforeach
 								  		</select>
@@ -146,7 +146,7 @@
             
                 @foreach($matchs->MatchDetail as $md)
                   @if($md->team_id == $batting)
-                  <div class="col-md-12 team-name"><h3>{{$md->Teams->team_code}} {{$md->score}}-{{$md->wicket}} ({{$md->overs_played}})</h3></div>
+                  <div class="col-md-12 team-name"><h3>{{$md->Teams->team_code}}  {{$md->score}}/{{$md->wicket}} ({{$md->overs_played}})</h3></div>
                   @endif
                 @endforeach
 
@@ -202,14 +202,14 @@
                       </thead>
                       <tbody>
                       @foreach($matchs->MatchPlayers as $m)
-                        @if($m->team_id == $bowling && $m->bt_status == '11')
+                        @if($m->team_id == $bowling && $m->bw_status == '11')
                         <tr>
                           <td>{{$m->Players->player_name}}</td>
                           <input type="hidden" value="{{$m->player_id}}" name="attacker_id">
-                          <td>{{$m->bt_runs}}</td>
-                          <td>{{$m->bt_balls}}</td>
-                          <td>{{$m->bt_fours}}</td>
-                          <td>{{$m->bt_sixes}}</td>
+                          <td>{{$m->bw_overs}}</td>
+                          <td>{{$m->bw_maiden}}</td>
+                          <td>{{$m->bw_runs}}</td>
+                          <td>{{$m->bw_wickets}}</td>
                           @php 
                             $sr = 0;
                             if($m->bt_balls > 0){
@@ -279,7 +279,7 @@
     });
 
 
-    //for live update
+    //for live update 
     $(".bt").on('click',function(e){
       e.preventDefault();
       var bt_team_id = "{{$batting}}";

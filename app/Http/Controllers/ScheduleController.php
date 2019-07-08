@@ -34,13 +34,24 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        $team = Teams::all();
+        $team = NULL;
+        $tournament_name = NULL;
         $tournament = Tournament::all();
-        return view('admin/Schedule/create',compact('team','tournament'));
+        return view('admin/Schedule/create',compact('team','tournament','tournament_name'));
+    }
+    public function scheduleTournament(Request $request){
+        $tournament_id = request('tournament_id');
+        $team = Teams::whereHas('tournaments',function($query) use($tournament_id){
+            $query->where('tournament_id',$tournament_id);
+        })->get();
+        $tournament = Tournament::all();
+        $temp = Tournament::find($tournament_id);
+        $tournament_name = $temp->tournament_name;
+        return view('admin/Schedule/create',compact('team','tournament','tournament_name'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage. 
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
