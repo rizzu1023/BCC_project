@@ -18,8 +18,8 @@ class PlayersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-  
-    
+
+
     public function index()
     {
         $player = Players::orderBy('team_id','asc')->get();
@@ -40,7 +40,6 @@ class PlayersController extends Controller
     public function create()
     {
         $team = Teams::all();
-
         return view('admin/Player/create',compact('team'));
     }
 
@@ -52,7 +51,7 @@ class PlayersController extends Controller
      */
     public function store(Request $request, Players $Player)
     {
-        
+
         $Player->addPlayer();
 
         Batting::create(request(['player_id']));
@@ -98,7 +97,7 @@ class PlayersController extends Controller
      */
     public function update(Request $request, Players $Player)
     {
-       
+
         $bt = Batting::where('player_id',$Player->player_id)->first();
         $bw = Bowling::where('player_id',$Player->player_id)->first();
 
@@ -106,7 +105,7 @@ class PlayersController extends Controller
 
         $bt->update(request(['player_id']));
         $bw->update(request(['player_id']));
-      
+
         return redirect::route('Players.index')->with('message',"Update Successfull");
     }
 
@@ -139,7 +138,7 @@ class PlayersController extends Controller
         elseif($request->id || $request->player_role){
             $player = Players::where('team_id',$request->id)->orWhere('player_role',$request->player_role)->get();
         }
-      
+
         else{
             return redirect::route('Players.index')->with('message','select a filter');
         }
@@ -148,5 +147,5 @@ class PlayersController extends Controller
         $team = Teams::all();
         return view('admin/Player/index',compact('player','team','id','player_role'));
       }
- 
+
 }

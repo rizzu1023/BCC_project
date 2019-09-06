@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/Main/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/Main/css/main.css')}}" >
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 </head>
 <body>
   <header class="site-header">
@@ -35,7 +35,7 @@
       </div>
     </div>
 </nav>
-</header> 
+</header>
       <main>
              @yield('content')
       </main>

@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
 use App\Teams;
 use App\Schedule;
 use App\Players;
@@ -199,15 +198,30 @@ class LiveScoreController extends Controller
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
+                    
                     if($request->value == 4){
-                        MatchPlayers::where('match_id',$request->match_id)
+                        // dump($request->value);
+                        $var = MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
                         ->where('player_id',$request->player_id)
                         ->increment('bt_runs',$request->value,['bt_balls'=> DB::raw('bt_balls + 1'),
                                                                'bt_fours'=> DB::raw('bt_fours + 1')] );
+                        // dump($var);
+                        MatchPlayers::where('match_id',$request->match_id)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->bw_team_id)
+                        ->where('player_id',$request->attacker_id)
+                        ->increment('bw_runs',$request->value,['bw_overs'=> DB::raw('bw_overs + 0.1')]);
 
-                      
+                        $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
+
+                        MatchDetail::where('match_id',$request->match_id)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->bt_team_id)
+                        ->increment('score',$request->value,['overs_played' => DB::raw('overs_played + 0.1')]);
+
+                        $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
                     if($request->value == 6){
                     MatchPlayers::where('match_id',$request->match_id)
@@ -216,24 +230,39 @@ class LiveScoreController extends Controller
                         ->where('player_id',$request->player_id)
                         ->increment('bt_runs',$request->value,['bt_balls'=> DB::raw('bt_balls + 1'),
                                                                'bt_sixes'=> DB::raw('bt_sixes + 1')] );
+
+                    MatchPlayers::where('match_id',$request->match_id)
+                    ->where('tournament',$request->tournament)
+                    ->where('team_id',$request->bw_team_id)
+                    ->where('player_id',$request->attacker_id)
+                    ->increment('bw_runs',$request->value,['bw_overs'=> DB::raw('bw_overs + 0.1')]); 
+                    
+                    $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
+                    
+                    MatchDetail::where('match_id',$request->match_id)
+                            ->where('tournament',$request->tournament)
+                            ->where('team_id',$request->bt_team_id)
+                            ->increment('score',$request->value,['overs_played' => DB::raw('overs_played + 0.1')]);
+
+                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
                 }
 
-                // $userjobs  = "true";
+                $userjobs  = "true";
                 // $returnHTML = view('Admin/LiveScore/show')->with('userjobs', $userjobs)->render();
                 // return response()->json(array('success' => true, 'html'=>$returnHTML));
             
-                // return response()->json(compact('userjobs'),200);
+                return response()->json(compact('userjobs'),200);
                 // return response()->json(['message'=>$request->value]);
             }
             
-                            $product = "heiiiiiiiiiiiiiiiiiiiii";
-                            return Response::json(array(view('Admin/LiveScore/show')->with('product',$product),'product'=>$product));
+                            // $product = "heiiiiiiiiiiiiiiiiiiiii";
+                            // return Response::json(array(view('Admin/LiveScore/show')->with('product',$product),'product'=>$product));
         }
 } 
 
 
-
+ 
 
 // bt_status
 // 11 = striker

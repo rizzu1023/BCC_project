@@ -1,5 +1,5 @@
 @extends('Admin.layouts.base')
- 
+
 @section('content')
 
 <div id="page-wrapper">
@@ -26,13 +26,13 @@
 								<div class="form-group">
 									<label for="field1">Team Name</label>
 									<input type="text" class="form-control" id="field1" name="team_name" placeholder="eg. Mumbai Indians">
-								</div> 
+								</div>
 								<div class="form-group">
 									<label for="field1">Team Title</label>
 									<input type="text" class="form-control" id="field1" name="team_title" placeholder="eg .2">
 								</div>
                   				<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-default btn-submit">Submit</button> 
+								<button type="submit" class="btn btn-default btn-submit">Submit</button>
 							</form>
 						</div>
             </div>
@@ -66,9 +66,9 @@
 								  <th>Team Name</th>
 								  <th>Titles</th>
 								</tr>
-							</thead> 
+							</thead>
 							<tbody>
-                            @foreach($team as $t) 
+                            @foreach($team as $t)
                                 <tr>
 								  <td>
 								  <a class="btn btn-warning btn-sm" href="/admin/Team/{{$t->id}}">Show</a>

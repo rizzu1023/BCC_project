@@ -12,7 +12,7 @@
 								<!-- <div class="col-md-4"> -->
 										<form method="POST" action="{{route('playerFilter')}}">
 											@csrf
-											<div class="form-group col-md-4"> 
+											<div class="form-group col-md-4">
 													<select class="form-control" id="id" name="id">
 														<option value="{{$id['id']}}">@if($id){{$id->team_name}}@else<p>ALL</p>@endif</option>
 														@foreach($team as $t)
@@ -34,7 +34,7 @@
 										</form>
 									<!-- </div> -->
 
-								
+
 								</div>
 				<div class="tables">
 					<div class="panel-body widget-shadow">
@@ -64,7 +64,7 @@
 								  </form>
 
 								  </td>
-								  <th scope="row">{{$i}}</th>
+								  <th scope="row">{{$i}}</th> 
 								  <td>{{$p->player_id}}</td>
 								  <td>{{$p->player_name}}</td>
 								  <td>{{$p->player_role}}</td>
