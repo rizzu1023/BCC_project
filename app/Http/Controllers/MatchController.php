@@ -10,13 +10,13 @@ use App\MatchDetail;
 use App\Players;
 use App\MatchPlayers;
 use App\Schedule;
+use DB;
 
 class MatchController extends Controller
 { 
   
     public function BrowseResult(){
-        $result= MatchDetail::orderBy('match_id','asc')->get();
-        // return $result;
+      $result= MatchDetail::orderBy('match_id','asc')->get();
         return view('Admin/Result/BrowseResult',compact('result'));
     }
 
