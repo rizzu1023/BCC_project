@@ -104,34 +104,47 @@ class LiveScoreController extends Controller
 
         if($attacker_id){
             
-        $bw_overs = MatchPlayers::select('bw_overs')->where('match_id',$match_id)
+        $bw_overball = MatchPlayers::select('bw_overball')->where('match_id',$match_id)
         ->where('tournament',$tournament)
         ->where('team_id',$team_id)
         ->where('player_id',$attacker_id)->first();
 
-        $rem = fmod($bw_overs->bw_overs,1);
-        if($rem > 0.5){
+        // $rem = fmod($bw_overs->bw_overs,1);
+        // if($rem > 0.5){
+        if($bw_overball->bw_overball > 5){
             MatchPlayers::where('match_id',$match_id)
             ->where('tournament',$tournament)
             ->where('team_id',$team_id)
             ->where('player_id',$attacker_id)
-            ->update(['bw_overs'=> DB::raw('bw_overs + 0.4')]);
+            ->update(['bw_overball'=> 0]);
+
+            MatchPlayers::where('match_id',$match_id)
+            ->where('tournament',$tournament)
+            ->where('team_id',$team_id)
+            ->where('player_id',$attacker_id)
+            ->increment('bw_over',1);
             
             dump("match player + 4");
 
         }
      }
        else{
-           $bt_overs = MatchDetail::select('overs_played')->where('match_id',$match_id)
+           $overball = MatchDetail::select('overball')->where('match_id',$match_id)
                 ->where('tournament',$tournament)
                 ->where('team_id',$team_id)->first();
 
-            $rem = fmod($bt_overs->overs_played,1);
-            if($rem > 0.5){
+            // $rem = fmod($bt_overs->overs_played,1);
+            // if($rem > 0.5){
+            if($overball->overball > 5){
                 MatchDetail::where('match_id',$match_id)
                     ->where('team_id',$team_id)
                     ->where('tournament',$tournament)
-                    ->update(['overs_played' => DB::raw('overs_played + 0.4')]);
+                    ->update(['overball' => 0]);
+                
+                MatchDetail::where('match_id',$match_id)
+                    ->where('team_id',$team_id)
+                    ->where('tournament',$tournament)
+                    ->increment('over',1);
 
                 $this->StrikeRotate($match_id,$team_id,$tournament);
             }
@@ -170,7 +183,7 @@ class LiveScoreController extends Controller
             }
 
             if($request->value){
-                
+                    //for dot ball
                     if($request->value == 8){
                         //Batsman update
                         MatchPlayers::where('match_id',$request->match_id)
@@ -184,7 +197,7 @@ class LiveScoreController extends Controller
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs', 0.1);
+                        ->increment('bw_overball', 1);
 
                         //Check for over
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
@@ -193,7 +206,7 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('overs_played',0.1);
+                        ->increment('overball',1);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
@@ -211,14 +224,14 @@ class LiveScoreController extends Controller
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_runs',$request->value,['bw_overs'=> DB::raw('bw_overs + 0.1')]);
+                        ->increment('bw_runs',$request->value,['bw_overball'=> DB::raw('bw_overball + 1')]);
                         
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
                         
                         MatchDetail::where('match_id',$request->match_id)
                             ->where('tournament',$request->tournament)
                             ->where('team_id',$request->bt_team_id)
-                            ->increment('score',$request->value,['overs_played' => DB::raw('overs_played + 0.1')]);
+                            ->increment('score',$request->value,['overball' => DB::raw('overball + 1')]);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
@@ -235,14 +248,14 @@ class LiveScoreController extends Controller
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_runs',$request->value,['bw_overs'=> DB::raw('bw_overs + 0.1')]);
+                        ->increment('bw_runs',$request->value,['bw_overball'=> DB::raw('bw_overball + 1')]);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
 
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',$request->value,['overs_played' => DB::raw('overs_played + 0.1')]);
+                        ->increment('score',$request->value,['overball' => DB::raw('overball + 1')]);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
@@ -258,14 +271,14 @@ class LiveScoreController extends Controller
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_runs',$request->value,['bw_overs'=> DB::raw('bw_overs + 0.1')]); 
+                        ->increment('bw_runs',$request->value,['bw_overball'=> DB::raw('bw_overball + 1')]); 
                         
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
                         
                         MatchDetail::where('match_id',$request->match_id)
                                 ->where('tournament',$request->tournament)
                                 ->where('team_id',$request->bt_team_id)
-                                ->increment('score',$request->value,['overs_played' => DB::raw('overs_played + 0.1')]);
+                                ->increment('score',$request->value,['overball' => DB::raw('overball + 1')]);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
@@ -344,14 +357,14 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',1,['overs_played' => DB::raw('overs_played + 0.1'), 'byes' => DB::raw('byes + 1')]);
+                        ->increment('score',1,['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 1')]);
 
 
                         MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs',0.1);
+                        ->increment('bw_overball',1);
 
                         $this->StrikeRotate($request->match_id,$request->bt_team_id,$request->tournament);
 
@@ -362,14 +375,14 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',2,['overs_played' => DB::raw('overs_played + 0.1'), 'byes' => DB::raw('byes + 2')]);
+                        ->increment('score',2,['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 2')]);
 
 
                         MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs',0.1);
+                        ->increment('bw_overball',1);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
@@ -378,14 +391,14 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',3,['overs_played' => DB::raw('overs_played + 0.1'), 'byes' => DB::raw('byes + 3')]);
+                        ->increment('score',3,['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 3')]);
 
 
                         MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs',0.1);
+                        ->increment('bw_overball',1);
 
                         $this->StrikeRotate($request->match_id,$request->bt_team_id,$request->tournament);
 
@@ -396,14 +409,14 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',4,['overs_played' => DB::raw('overs_played + 0.1'), 'byes' => DB::raw('byes + 4')]);
+                        ->increment('score',4,['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 4')]);
 
 
                         MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs',0.1);
+                        ->increment('bw_overball',1);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
@@ -413,14 +426,14 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',1,['overs_played' => DB::raw('overs_played + 0.1'), 'legbyes' => DB::raw('legbyes + 1')]);
+                        ->increment('score',1,['overball' => DB::raw('overball + 1'), 'legbyes' => DB::raw('legbyes + 1')]);
 
 
                         MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs',0.1);
+                        ->increment('bw_overball',1);
 
                         $this->StrikeRotate($request->match_id,$request->bt_team_id,$request->tournament);
 
@@ -431,14 +444,14 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',2,['overs_played' => DB::raw('overs_played + 0.1'), 'legbyes' => DB::raw('legbyes + 2')]);
+                        ->increment('score',2,['overball' => DB::raw('overball + 1'), 'legbyes' => DB::raw('legbyes + 2')]);
 
 
                         MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs',0.1);
+                        ->increment('bw_overball',1);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
@@ -447,14 +460,14 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',3,['overs_played' => DB::raw('overs_played + 0.1'), 'legbyes' => DB::raw('legbyes + 3')]);
+                        ->increment('score',3,['overball' => DB::raw('overball + 1'), 'legbyes' => DB::raw('legbyes + 3')]);
 
 
                         MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs',0.1);
+                        ->increment('bw_overball',1);
 
                         $this->StrikeRotate($request->match_id,$request->bt_team_id,$request->tournament);
 
@@ -465,14 +478,14 @@ class LiveScoreController extends Controller
                         MatchDetail::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bt_team_id)
-                        ->increment('score',4,['overs_played' => DB::raw('overs_played + 0.1'), 'legbyes' => DB::raw('legbyes + 4')]);
+                        ->increment('score',4,['overball' => DB::raw('overball + 1'), 'legbyes' => DB::raw('legbyes + 4')]);
 
 
                         MatchPlayers::where('match_id',$request->match_id)
                         ->where('tournament',$request->tournament)
                         ->where('team_id',$request->bw_team_id)
                         ->where('player_id',$request->attacker_id)
-                        ->increment('bw_overs',0.1);
+                        ->increment('bw_overball',1);
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }

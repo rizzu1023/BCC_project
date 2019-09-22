@@ -27,7 +27,9 @@ class CreateMatchPlayersTable extends Migration
             $table->integer('bt_sixes')->default(0);
             
             $table->string('bw_status')->default('DNB');
-            $table->float('bw_overs',3,1)->default(0);
+            // $table->float('bw_overs',3,1)->default(0);
+            $table->integer('bw_over')->default(0);
+            $table->integer('bw_overball')->default(0);
             $table->integer('bw_wickets')->default(0);
             $table->integer('bw_runs')->default(0);
             $table->integer('bw_maiden')->default(0);

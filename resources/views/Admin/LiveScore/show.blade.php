@@ -146,7 +146,7 @@
             
                 @foreach($matchs->MatchDetail as $md)
                   @if($md->team_id == $batting)
-                  <div class="col-md-12 team-name"><h3>{{$md->Teams->team_code}}  {{$md->score}}/{{$md->wicket}} ({{$md->overs_played}})</h3></div>
+                  <div class="col-md-12 team-name"><h3>{{$md->Teams->team_code}}  {{$md->score}}/{{$md->wicket}} ({{$md->over}}.{{$md->overball}})</h3></div>
                   @endif
                 @endforeach
 
@@ -206,7 +206,7 @@
                         <tr>
                           <td>{{$m->Players->player_name}}</td>
                           <input type="hidden" value="{{$m->player_id}}" name="attacker_id">
-                          <td>{{$m->bw_overs}}</td>
+                          <td>{{$m->bw_over}}.{{$m->bw_overball}}</td>
                           <td>{{$m->bw_maiden}}</td>
                           <td>{{$m->bw_runs}}</td>
                           <td>{{$m->bw_wickets}}</td>
