@@ -476,6 +476,31 @@ class LiveScoreController extends Controller
 
                         $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
                     }
+
+                    if($request->value == 'nb'){
+                        //Team update
+                        MatchDetail::where('match_id',$request->match_id)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->bt_team_id)
+                        ->increment('score',1,['no_ball' => DB::raw('no_ball + 1')]);
+
+                        //batsman update
+                        MatchPlayers::where('match_id',$request->match_id)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->bt_team_id)
+                        ->where('player_id',$request->player_id)
+                        ->increment('bt_runs',1,['bt_balls'=> DB::raw('bt_balls + 1')]);
+
+                        //bowler update
+                        MatchPlayers::where('match_id',$request->match_id)
+                        ->where('tournament',$request->tournament)
+                        ->where('team_id',$request->bw_team_id)
+                        ->where('player_id',$request->attacker_id)
+                        ->increment('bw_runs',1,['bw_nb'=> DB::raw('bw_nb + 1')]);
+
+                        $this->StrikeRotate($request->match_id,$request->bt_team_id,$request->tournament);
+
+                    }
                   
                 }
 

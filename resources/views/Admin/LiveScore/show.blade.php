@@ -253,12 +253,12 @@
                       <button id="byes4" type="submit" value="b4" class="bt">4 b</button>
                       <br><br>
 
-                      
-
-
-
-
-                      
+                      <button id="noball" type="submit" value="nb" class="bt">nb + 0</button>
+                      <button id="noball" type="submit" value="nb1" class="bt">nb + 1</button>
+                      <button id="noball" type="submit" value="nb2" class="bt">nb + 2</button>
+                      <button id="noball" type="submit" value="nb3" class="bt">nb + 3</button>
+                      <button id="noball" type="submit" value="nb4" class="bt">nb + 4</button>
+                      <br><br>
 
                 </form>
 
