@@ -31,8 +31,6 @@ class LiveScoreController extends Controller
         return view('Admin/LiveScore/StartScore',compact('schedule','players1','players2'));
     }
 
-
-
     public function ScoreDetails(Request $request){
         $m = Match::create([
             'match_id' => request('id'),
@@ -70,10 +68,6 @@ class LiveScoreController extends Controller
     
         return redirect::route('LiveScore.index');
     }
-            
-    
-
-   
     
     public function StrikeRotate($match_id,$team_id,$tournament){
         $nonstriker = MatchPlayers::where('match_id',$match_id)
@@ -150,9 +144,6 @@ class LiveScoreController extends Controller
             }
        }
     }
-
-
-
 
     public function LiveUpdateShow($id,$tournament){
         $matchs = Match::where('match_id',$id)->where('tournament',$tournament)->first();
