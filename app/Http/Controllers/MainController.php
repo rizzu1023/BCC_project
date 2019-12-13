@@ -9,6 +9,7 @@ use App\Players;
 class MainController extends Controller
 {
     public function GetIndex(){
+    
         return view('Main/index');
     }
 
@@ -28,5 +29,8 @@ class MainController extends Controller
         return view('Main/stats');
     }
 
+    public function players(){
+        return Players::all();
+    }
 
 }

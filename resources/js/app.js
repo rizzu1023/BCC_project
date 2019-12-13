@@ -1,32 +1,44 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import Vue from 'vue';
 
 require('./bootstrap');
 
 window.Vue = require('vue');
-
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+window.axios = require('axios');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+Vue.component('Accordion', require('./components/Accordion.vue').default);
+Vue.component('Dropdown', require('./components/Dropdown.vue').default);
+Vue.component('List', require('./components/List.vue').default);
+Vue.component('Players', require('./components/Players.vue').default);
 
 const app = new Vue({
-    el: '#app',
+    'el' : '#app',
+
+    // components : {
+    //     PlayerList,
+    // },
+
+    mounted : function(){
+        axios.get('http://localhost:8000/api/players')
+            .then(response => this.posts = response.data)
+            .catch(error => this.posts = [{title : 'No posts found'}]);
+        // axios.get('http://localhost:8000/api/players')
+        // .then(function(response){
+            // console.log(response);
+        // })
+        // .catch(function(error){
+            // console.log(error);
+        // });
+        },
+
+    data : {
+        // items : [
+        //     { id : 1, title : 'Title 1 this' , description : 'This is Description 1' },
+        //     { id : 2, title : 'Title 2' , description : 'This is Description 2' },
+        //     { id : 3, title : 'Title 3' , description : 'This is Description 3' },
+        //     { id : 4, title : 'Title 4' , description : 'This is Description 4' },
+        // ],
+
+        posts : null,
+    },
 });

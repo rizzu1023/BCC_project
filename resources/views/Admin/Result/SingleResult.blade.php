@@ -103,7 +103,7 @@
 			<!-- </div> -->
       <div class="tables ftable">
 				<div class="panel-body widget-shadow">
-				<div class="col-md-12 team-name"><h3>{{$match_detail[0]->Teams->team_name}}</h3><span>Total {{$match_detail[0]->score}}-{{$match_detail[0]->wicket}} ({{$match_detail[0]->overs_played}})</span></div>
+				<div class="col-md-12 team-name"><h3>{{$match_detail[0]->Teams->team_name}}</h3><span>Total {{$match_detail[0]->score}}-{{$match_detail[0]->wicket}} ({{$match_detail[0]->over}}.{{$match_detail[0]->overball}})</span></div>
 
 
 						<table class="table">
@@ -134,7 +134,7 @@
 
 					<div class="tables">
 					<div class="panel-body widget-shadow">
-				<div class="col-md-12 team-name"><h3>{{$match_detail[1]->Teams->team_name}}</h3><span>Total {{$match_detail[1]->score}}-{{$match_detail[1]->wicket}} ({{$match_detail[1]->overs_played}})</span></div>
+				<div class="col-md-12 team-name"><h3>{{$match_detail[1]->Teams->team_name}}</h3><span>Total {{$match_detail[1]->score}}-{{$match_detail[1]->wicket}} ({{$match_detail[1]->over}}.{{$match_detail[1]->overball}})</span></div>
 						<table class="table">
 							<thead>
 								<tr>

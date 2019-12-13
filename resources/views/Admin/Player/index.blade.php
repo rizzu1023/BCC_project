@@ -68,9 +68,7 @@
 								  <td>{{$p->player_id}}</td>
 								  <td>{{$p->player_name}}</td>
 								  <td>{{$p->player_role}}</td>
-								  @if($p->Teams)
-								  <td>{{$p->Teams->team_name}}</td>
-							      @endif
+								  <td>{{$p->Teams->team_name ?? ''}}</td>
 								</tr>
                                 @php($i++)
                             @endforeach

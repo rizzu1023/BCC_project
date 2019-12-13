@@ -4,8 +4,15 @@
 @section('content')
 
 <div class="container">
-        <h1>Home page</h1>
-        <a class="btn btn-success" href="/admin">Admin</a>
+<div id="app">
+          <!-- <Accordion v-for="item in items" :key="item.id" :data="item"></Accordion> -->
+          <!-- <Players v-for="post in posts" :key="post.id" :data="post"></Players> -->
+          <!-- <List></List> -->
+          <Players></Players>
+          <!-- <ul> -->
+            <!-- <li v-for="post in posts" v-text="post.player_id"><li> -->
+          <!-- </ul> -->
+</div>
 </div>
    
 

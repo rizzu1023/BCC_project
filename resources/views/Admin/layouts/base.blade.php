@@ -52,10 +52,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
     @yield('content')
 
-
-
-
-
     </div>
 
 
@@ -73,7 +69,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 				showLeftPush = document.getElementById( 'showLeftPush' ),
 				body = document.body;
-
+ 
 			showLeftPush.onclick = function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
@@ -89,8 +85,9 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 		</script>
 		
 
-		@yield('script')
-	<!-- //Classie --><!-- //for toggle left push menu script -->
+	<script src="{{asset('js/app.js')}}"></script>
+		
+	@yield('script')
 
 	<!--scrolling js-->
 	<script src="{{asset('assets/Admin/js/jquery.nicescroll.js')}}"></script>

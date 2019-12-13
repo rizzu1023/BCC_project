@@ -56,7 +56,7 @@
 					</thead>
 					<tbody>
 					<tr>
-						<td>Matches</td>
+						<td>Matches</td> 
 						<td>{{$bt['bt_matches']}}</td>
 					</tr>
 					<tr>

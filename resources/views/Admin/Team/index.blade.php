@@ -42,7 +42,7 @@
 
 				<h3 class="title1">Teams</h3>
                 <a style="margin-bottom:20px;" id="addButton" class="btn btn-primary btn-flat btn-pri"><i class="fa fa-plus"></i>Add</a>
-				<div class="row">
+								<div class="row">
 					<form method="POST" action="{{route('teamFilter')}}">
 							@csrf
 							<div class="form-group col-md-4">
@@ -54,7 +54,7 @@
 									</select>
 							</div>
 					</form>
-				</div>
+					</div>
 			    <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
