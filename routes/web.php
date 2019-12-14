@@ -37,15 +37,16 @@ Route::prefix('admin')->group(function(){
     Route::post('/Post_BrowseResult', 'MatchController@Post_BrowseResult')->name('Post_BrowseResult');
     Route::post('/Post_DeleteResult', 'MatchController@Post_DeleteResult')->name('Post_DeleteResult');
 
-    
-    
-    
+
+
+
     Route::get('/LiveScore','LiveScoreController@LiveScoreindex')->name('LiveScore.index');
 
     Route::get('/StartScore/{id}','LiveScoreController@StartScore')->name('StartScore');
     Route::post('/ScoreDetails','LiveScoreController@ScoreDetails')->name('ScoreDetails');
-    
+
     Route::get('/LiveUpdate/{id}/{tournament}','LiveScoreController@LiveUpdateShow')->name('LiveUpdate.show');
+    Route::get('/LiveScoreCard/{id}/{tournament}','LiveScoreController@LiveScoreCard')->name('LiveScoreCard');
     Route::post('/LiveUpdate','LiveScoreController@LiveUpdate')->name('LiveUpdate');
 
 });

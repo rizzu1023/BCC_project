@@ -12,6 +12,13 @@ class MatchPlayers extends Model
         return $this->belongsTo('App\Players','player_id','player_id');
     }
 
+    public function wicketPrimary(){
+        return $this->belongsTo('App\Players','wicket_primary','player_id');
+    }
+    public function wicketSecondary(){
+        return $this->belongsTo('App\Players','wicket_secondary','player_id');
+    }
+
     public function Teams(){
         return $this->belongsTo('App\Teams','team_id','id');
     }
@@ -19,4 +26,6 @@ class MatchPlayers extends Model
     public function Match(){
         return $this->belongsTo('App\Match','match_id','match_id');
     }
+
+
 }

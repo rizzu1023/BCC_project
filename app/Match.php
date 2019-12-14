@@ -25,6 +25,6 @@ class Match extends Model
     }
 
     public function MatchPlayers(){
-        return $this->hasMany('App\MatchPlayers','match_id','match_id');
+        return $this->hasMany('App\MatchPlayers','match_id','match_id')->orderBy('updated_at','asc');
     }
 }

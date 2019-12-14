@@ -1,5 +1,8 @@
 @extends('Admin.layouts.base')
 
+@section('topbar_link')
+    <a href="/admin/LiveScoreCard/{{$matchs->match_id}}/{{$matchs->tournament}}" class="btn btn-primary" style="margin-top:10px ">Scorecard</a>
+@endsection
 
 @section('css')
 
@@ -233,38 +236,41 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="exampleFormControlSelect2">Wicket Type</label>
-                                        <select class="form-control" id="exampleFormControlSelect2"
+                                        <select class="form-control" id="wicket_type"
                                                 name="wicket_type"
                                                 required>
-                                            <option selected value="bold">Bold</option>
-                                            <option selected value="lbw">LBW</option>
-                                            <option selected value="catch">Catch</option>
-                                            <option selected value="runout">Run Out</option>
+                                            <option selected disabled>Select</option>
+                                            <option value="bold">Bold</option>
+                                            <option value="lbw">LBW</option>
+                                            <option value="catch">Catch</option>
+                                            <option value="stump">Stump</option>
+                                            <option value="runout">Run Out</option>
+                                            <option value="hitwicket">Hit Wicket</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="exampleFormControlSelect2">Bowled By</label>
-                                        <select class="form-control" id="exampleFormControlSelect2"
+                                    <div class="col-md-6" id="div_wicket_primary">
+                                        <label for="wicket_primary" id="label_wicket_primary"></label>
+                                        <select class="form-control" id="wicket_primary"
                                                 name="wicket_primary"
                                                 required>
+{{--                                            <option disabled selected>Select</option>--}}
                                             @foreach($matchs->MatchPlayers as $mp)
                                                 @if($mp->team_id == $bowling)
                                                     @if($mp->bw_status == '11')
-                                                        <option selected
-                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                        <option selected value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
                                                     @endif
                                                 @endif
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="exampleFormControlSelect2">Catch By</label>
-                                        <select class="form-control" id="exampleFormControlSelect2"
+                                    <div class="col-md-6" id="div_wicket_secondary">
+                                        <label for="wicket_secondary" id="label_wicket_secondary"></label>
+                                        <select class="form-control" id="wicket_secondary"
                                                 name="wicket_secondary"
-                                                required>
-                                            <option disabled selected>Catch by</option>
+                                                required disabled>
+                                            <option disabled selected>Select</option>
                                             @foreach($matchs->MatchPlayers as $mp)
                                                 @if($mp->team_id == $bowling)
                                                     <option
@@ -325,7 +331,7 @@
                             <table class="table">
                                 <thead>
                                 <tr class="bg-dark">
-                                    <th>{{$isOver}} & {{$isWicket}}</th>
+                                    <th>Batsman</th>
                                     <th>Runs</th>
                                     <th>Balls</th>
                                     <th>Fours</th>
@@ -360,7 +366,6 @@
 
                                 </tbody>
                             </table>
-
 
                             <table class="table">
                                 <thead>
@@ -468,6 +473,60 @@
 
             if (isWicket) {
                 $("#wicketModal").modal('show');
+
+                $('#div_wicket_primary').hide();
+                $('#div_wicket_secondary').hide();
+
+                $('#wicket_type').on('change', function () {
+                    var wicket_type = $("#wicket_type").val();
+                    if(wicket_type === 'catch'){
+                        $('#wicket_secondary').prop('disabled',false);
+                        $('#label_wicket_secondary').html('Catch By');
+                        $('#label_wicket_primary').html('Bowl By');
+                        $('#div_wicket_primary').show();
+                        $('#div_wicket_secondary').show();
+
+                    }
+                    if(wicket_type === 'stump'){
+                        $('#wicket_secondary').prop('disabled',false);
+                        $('#label_wicket_secondary').html('Stumped By');
+                        $('#label_wicket_primary').html('Bowl By');
+                        $('#div_wicket_primary').show();
+                        $('#div_wicket_secondary').show();
+
+                    }
+                    if(wicket_type === 'runout'){
+                        $('#wicket_secondary').prop('disabled',false);
+                        $('#label_wicket_secondary').html('Run out By(Optional)');
+                        $('#label_wicket_primary').html('Run out By');
+                        $('#div_wicket_primary').show();
+                        $('#div_wicket_secondary').show();
+                    }
+                    if(wicket_type === 'hitwicket'){
+                        $('#wicket_secondary').prop('disabled',true);
+                        $('#label_wicket_primary').html('Bowl By');
+                        $('#div_wicket_secondary').hide();
+                        $('#div_wicket_primary').show();
+
+                    }
+                    if(wicket_type === 'bold'){
+                        $('#wicket_secondary').prop('disabled',true);
+                        $('#label_wicket_primary').html('Bowled By');
+                        $('#div_wicket_secondary').hide();
+                        $('#div_wicket_primary').show();
+
+
+                    }
+                    if(wicket_type === 'lbw'){
+                        $('#wicket_secondary').prop('disabled',true);
+                        $('#label_wicket_primary').html('Bowl By');
+                        $('#div_wicket_primary').show();
+                        $('#div_wicket_secondary').hide();
+
+
+                    }
+                });
+
             }
         });
     </script>
@@ -494,6 +553,7 @@
             });
         });
 
+        // for wicket
         $('#newBatsmanForm').on('submit', function (e) {
             e.preventDefault();
 
@@ -556,6 +616,7 @@
                 }
             });
         });
+
 
     </script>
 
