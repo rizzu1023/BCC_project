@@ -24,6 +24,8 @@ class CreateMatchDetailsTable extends Migration
             $table->integer('over')->default(0);
             $table->integer('overball')->default(0);
             $table->integer('no_ball')->default(0);
+
+            $table->string('isBatting');
             $table->integer('wide')->default(0);
             $table->integer('byes')->default(0);
             $table->integer('legbyes')->default(0);

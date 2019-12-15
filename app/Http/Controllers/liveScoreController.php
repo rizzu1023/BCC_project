@@ -72,17 +72,72 @@ class LiveScoreController extends Controller
             'toss' => request('toss'),
             'choose' => request('choose'),
         ]);
-        MatchDetail::create([
-            'match_id' => $m->match_id,
-            'team_id' => request('team1_id'),
-            'tournament' => request('tournament'),
-        ]);
 
-        MatchDetail::create([
-            'match_id' => $m->match_id,
-            'team_id' => request('team2_id'),
-            'tournament' => request('tournament'),
-        ]);
+        if($request->choose == 'Bat')
+            if($request->toss == $request->team1_id){
+                MatchDetail::create([
+                    'match_id' => $m->match_id,
+                    'team_id' => request('team1_id'),
+                    'isBatting' => 1,
+                    'tournament' => request('tournament'),
+                ]);
+
+                MatchDetail::create([
+                    'match_id' => $m->match_id,
+                    'team_id' => request('team2_id'),
+                    'isBatting' => 0,
+                    'tournament' => request('tournament'),
+                ]);
+            }
+            else{
+                MatchDetail::create([
+                    'match_id' => $m->match_id,
+                    'team_id' => request('team1_id'),
+                    'isBatting' => 0,
+                    'tournament' => request('tournament'),
+                ]);
+
+                MatchDetail::create([
+                    'match_id' => $m->match_id,
+                    'team_id' => request('team2_id'),
+                    'isBatting' => 1,
+                    'tournament' => request('tournament'),
+                ]);
+            }
+
+        else{
+            if($request->toss == $request->team1_id){
+                MatchDetail::create([
+                    'match_id' => $m->match_id,
+                    'team_id' => request('team1_id'),
+                    'isBatting' => 0,
+                    'tournament' => request('tournament'),
+                ]);
+
+                MatchDetail::create([
+                    'match_id' => $m->match_id,
+                    'team_id' => request('team2_id'),
+                    'isBatting' => 1,
+                    'tournament' => request('tournament'),
+                ]);
+            }
+            else{
+                MatchDetail::create([
+                    'match_id' => $m->match_id,
+                    'team_id' => request('team1_id'),
+                    'isBatting' => 1,
+                    'tournament' => request('tournament'),
+                ]);
+
+                MatchDetail::create([
+                    'match_id' => $m->match_id,
+                    'team_id' => request('team2_id'),
+                    'isBatting' => 0,
+                    'tournament' => request('tournament'),
+                ]);
+            }
+        }
+
 
         for ($i = 1; $i < 23; $i++) {
 

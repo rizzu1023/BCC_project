@@ -87,3 +87,42 @@ event(new strikeRotateEvent($request));
 }
 
 
+
+
+
+if($matchs['choose'] == 'Bat')
+{
+if($matchs->MatchDetail['0']->team_id == $matchs['toss']){
+$batting = $matchs->MatchDetail['0']->team_id;
+$bowling = $matchs->MatchDetail['1']->team_id;
+
+$isOver = $matchs->MatchDetail['0']->isOver;
+$isWicket = $matchs->MatchDetail['0']->isWicket;
+}
+else{
+$batting = $matchs->MatchDetail['1']->team_id;
+$bowling = $matchs->MatchDetail['0']->team_id;
+
+$isOver = $matchs->MatchDetail['1']->isOver;
+$isWicket = $matchs->MatchDetail['1']->isWicket;
+}
+}
+else{
+if($matchs->MatchDetail['0']->team_id == $matchs['toss']){
+$batting = $matchs->MatchDetail['1']->team_id;
+$bowling = $matchs->MatchDetail['0']->team_id;
+
+$isOver = $matchs->MatchDetail['0']->isOver;
+$isWicket = $matchs->MatchDetail['0']->isWicket;
+
+}
+else{
+$batting = $matchs->MatchDetail['0']->team_id;
+$bowling = $matchs->MatchDetail['1']->team_id;
+
+$isOver = $matchs->MatchDetail['1']->isOver;
+$isWicket = $matchs->MatchDetail['1']->isWicket;
+}
+}
+
+

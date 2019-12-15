@@ -23,49 +23,14 @@
 @endsection
 
 @section('content')
-
-
     @php
-        if($matchs['choose'] == 'Bat')
-          {
-            if($matchs->MatchDetail['0']->team_id == $matchs['toss']){
-              $batting = $matchs->MatchDetail['0']->team_id;
-              $bowling = $matchs->MatchDetail['1']->team_id;
-
-              $isOver = $matchs->MatchDetail['0']->isOver;
-              $isWicket = $matchs->MatchDetail['0']->isWicket;
-            }
-            else{
-              $batting = $matchs->MatchDetail['1']->team_id;
-              $bowling = $matchs->MatchDetail['0']->team_id;
-
-              $isOver = $matchs->MatchDetail['1']->isOver;
-              $isWicket = $matchs->MatchDetail['1']->isWicket;
-            }
-          }
-        else{
-          if($matchs->MatchDetail['0']->team_id == $matchs['toss']){
-              $batting = $matchs->MatchDetail['1']->team_id;
-              $bowling = $matchs->MatchDetail['0']->team_id;
-
-              $isOver = $matchs->MatchDetail['0']->isOver;
-              $isWicket = $matchs->MatchDetail['0']->isWicket;
-
-            }
-            else{
-              $batting = $matchs->MatchDetail['0']->team_id;
-              $bowling = $matchs->MatchDetail['1']->team_id;
-
-              $isOver = $matchs->MatchDetail['1']->isOver;
-              $isWicket = $matchs->MatchDetail['1']->isWicket;
-            }
+        if($matchs->MatchDetail['0']->isBatting){
+            $batting = $matchs->MatchDetail['0']->team_id;
+            $bowling = $matchs->MatchDetail['1']->team_id;
         }
-
-        $opening = true;
-        foreach($matchs->MatchPlayers as $mp){
-          if($mp->team_id == $batting)
-            if($mp->bt_status == 10 || $mp->bt_status == 11)
-              $opening = false;
+        else{
+            $batting = $matchs->MatchDetail['1']->team_id;
+            $bowling = $matchs->MatchDetail['0']->team_id;
         }
     @endphp
 
