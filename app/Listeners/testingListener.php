@@ -2,11 +2,9 @@
 
 namespace App\Listeners;
 
-use App\Events\app\Events\firstEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-
-class secondListener
+class testingListener
 {
     /**
      * Create the event listener.
@@ -21,11 +19,11 @@ class secondListener
     /**
      * Handle the event.
      *
-     * @param  firstEvent  $event
-     * @return void
+     * @param  object  $event
+     * @return string
      */
     public function handle($event)
     {
-        dump("hieeeee");
+        return "dfadf";
     }
 }

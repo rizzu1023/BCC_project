@@ -3,6 +3,18 @@
 namespace App\Http\Controllers;
 
 
+use App\Events\dotBallEvent;
+use App\Events\fourRunEvent;
+use App\Events\legByesFourRunEvent;
+use App\Events\legByesOneRunEvent;
+use App\Events\legByesThreeRunEvent;
+use App\Events\legByesTwoRunEvent;
+use App\Events\OneRunEvent;
+use App\Events\sixRunEvent;
+use App\Events\strikeRotateEvent;
+use App\Events\testingEvent;
+use App\Events\twoRunEvent;
+use App\Events\threeRunEvent;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -72,33 +84,8 @@ class LiveScoreController extends Controller
         return redirect::route('LiveScore.index');
     }
 
-    public function StrikeRotate($match_id, $team_id, $tournament)
-    {
-        $nonstriker = MatchPlayers::where('match_id', $match_id)
-            ->where('tournament', $tournament)
-            ->where('team_id', $team_id)
-            ->where('bt_status', 10)->first();
 
-        $striker = MatchPlayers::where('match_id', $match_id)
-            ->where('tournament', $tournament)
-            ->where('team_id', $team_id)
-            ->where('bt_status', 11)->first();
-
-        MatchPlayers::where('match_id', $match_id)
-            ->where('tournament', $tournament)
-            ->where('team_id', $team_id)
-            ->where('player_id', $nonstriker->player_id)
-            ->update(['bt_status' => 11]);
-
-        MatchPlayers::where('match_id', $match_id)
-            ->where('tournament', $tournament)
-            ->where('team_id', $team_id)
-            ->where('player_id', $striker->player_id)
-            ->update(['bt_status' => 10]);
-
-    }
-
-    public function CheckForOver($tournament, $match_id, $team_id, $attacker_id = NULL)
+    public function CheckForOver($tournament, $match_id, $team_id, $request, $attacker_id = NULL)
     {
 
         if ($attacker_id) {
@@ -108,36 +95,34 @@ class LiveScoreController extends Controller
                 ->where('team_id', $team_id)
                 ->where('player_id', $attacker_id)->first();
 
-            MatchDetail::where('match_id', $match_id)
-                ->where('tournament', $tournament)
-                ->where('team_id', $team_id)
-                ->update(['isOver' => 0]);
+            /*  MatchDetail::where('match_id', $match_id)
+                  ->where('tournament', $tournament)
+                  ->where('team_id', $team_id)
+                  ->update(['isOver' => 0]);*/
 
             // $rem = fmod($bw_overs->bw_overs,1);
             // if($rem > 0.5){
-            if ($bw_overball->bw_overball > 5) {
+            /*     if ($bw_overball->bw_overball > 5) {
 
 
-                MatchPlayers::where('match_id', $match_id)
-                    ->where('tournament', $tournament)
-                    ->where('team_id', $team_id)
-                    ->where('player_id', $attacker_id)
-                    ->update(['bw_overball' => 0]);
+                     MatchPlayers::where('match_id', $match_id)
+                         ->where('tournament', $tournament)
+                         ->where('team_id', $team_id)
+                         ->where('player_id', $attacker_id)
+                         ->update(['bw_overball' => 0]);
 
-                MatchPlayers::where('match_id', $match_id)
-                    ->where('tournament', $tournament)
-                    ->where('team_id', $team_id)
-                    ->where('player_id', $attacker_id)
-                    ->increment('bw_over', 1);
+                     MatchPlayers::where('match_id', $match_id)
+                         ->where('tournament', $tournament)
+                         ->where('team_id', $team_id)
+                         ->where('player_id', $attacker_id)
+                         ->increment('bw_over', 1);
 
-                MatchDetail::where('match_id', $match_id)
-                    ->where('tournament', $tournament)
-                    ->where('team_id', $team_id)
-                    ->update(['isOver' => 1]);
+                     MatchDetail::where('match_id', $match_id)
+                         ->where('tournament', $tournament)
+                         ->where('team_id', $team_id)
+                         ->update(['isOver' => 1]);
 
-//                dump("match player + 4");
-
-            }
+                 }*/
         } else {
             $overball = MatchDetail::select('overball')->where('match_id', $match_id)
                 ->where('tournament', $tournament)
@@ -156,7 +141,8 @@ class LiveScoreController extends Controller
                     ->where('tournament', $tournament)
                     ->increment('over', 1);
 
-                $this->StrikeRotate($match_id, $team_id, $tournament);
+                event(new strikeRotateEvent($request));
+
             }
         }
     }
@@ -164,16 +150,22 @@ class LiveScoreController extends Controller
     public function LiveUpdateShow($id, $tournament)
     {
         $matchs = Match::where('match_id', $id)->where('tournament', $tournament)->first();
+
         return view('Admin/LiveScore/show', compact('matchs'));
     }
 
-    public function LiveScoreCard($id, $tournament){
+    public function LiveScoreCard($id, $tournament)
+    {
+
         $matchs = Match::where('match_id', $id)->where('tournament', $tournament)->first();
+
         return view('Admin/LiveScore/scorecard', compact('matchs'));
     }
 
     public function LiveUpdate(Request $request)
     {
+//        event(new testingEvent("fads"));
+
         if ($request->ajax()) {
 
 
@@ -228,7 +220,7 @@ class LiveScoreController extends Controller
 
                 MatchDetail::where('match_id', $request->match_id)
                     ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bw_team_id)
+                    ->where('team_id', $request->bt_team_id)
                     ->update(['isOver' => 0]);
 
             }
@@ -247,153 +239,67 @@ class LiveScoreController extends Controller
                     ->where('team_id', $request->bw_team_id)
                     ->where('bw_status', '11')
                     ->increment('bw_overball', 1, ['bw_wickets' => DB::raw('bw_wickets + 1')]);
-            }
 
 //              current batsman fetch karega
-            $current_batsman = MatchPlayers::where('match_id', $request->match_id)
-                ->where('tournament', $request->tournament)
-                ->where('team_id', $request->bt_team_id)
-                ->where('bt_status', 11)->first();
+                $current_batsman = MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->where('bt_status', 11)->first();
 
 //              current batsman ko batting se hatayega
-            if($request->wicket_type == 'bold' || $request->wicket_type == 'lbw' || $request->wicket_type == 'hitwicket'){
-                $current_batsman->wicket_type = $request->wicket_type;
-                $current_batsman->wicket_primary = $request->wicket_primary;
-                $current_batsman->bt_balls = $current_batsman->bt_balls + 1;
-                $current_batsman->bt_status = 0;
-                $current_batsman->save();
-            }
-            if($request->wicket_type == 'catch' || $request->wicket_type == 'stump'){
-                $current_batsman->wicket_type = $request->wicket_type;
-                $current_batsman->wicket_primary = $request->wicket_primary;
-                $current_batsman->wicket_secondary = $request->wicket_secondary;
-                $current_batsman->bt_balls = $current_batsman->bt_balls + 1;
-                $current_batsman->bt_status = 0;
-                $current_batsman->save();
-            }
+                if ($request->wicket_type == 'bold' || $request->wicket_type == 'lbw' || $request->wicket_type == 'hitwicket') {
+                    $current_batsman->wicket_type = $request->wicket_type;
+                    $current_batsman->wicket_primary = $request->wicket_primary;
+                    $current_batsman->bt_balls = $current_batsman->bt_balls + 1;
+                    $current_batsman->bt_status = 0;
+                    $current_batsman->save();
+                }
+                if ($request->wicket_type == 'catch' || $request->wicket_type == 'stump') {
+                    $current_batsman->wicket_type = $request->wicket_type;
+                    $current_batsman->wicket_primary = $request->wicket_primary;
+                    $current_batsman->wicket_secondary = $request->wicket_secondary;
+                    $current_batsman->bt_balls = $current_batsman->bt_balls + 1;
+                    $current_batsman->bt_status = 0;
+                    $current_batsman->save();
+                }
 
 
 //                naye batsman ko batting pe layega
-            MatchPlayers::where('match_id', $request->match_id)
-                ->where('tournament', $request->tournament)
-                ->where('team_id', $request->bt_team_id)
-                ->where('player_id', $request->newBatsman_id)
-                ->update(['bt_status' => 11]);
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->where('player_id', $request->newBatsman_id)
+                    ->update(['bt_status' => 11]);
 
 
-            MatchDetail::where('match_id', $request->match_id)
-                ->where('tournament', $request->tournament)
-                ->where('team_id', $request->bt_team_id)
-                ->update(['isWicket' => 0]);
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->update(['isWicket' => 0]);
+
+            }
 
         }
-
         if ($request->value) {
+
             //for dot ball
             if ($request->value == 8) {
-                //Batsman update
-                MatchPlayers::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->where('player_id', $request->player_id)
-                    ->increment('bt_balls');
-
-                //Bowler update
-                MatchPlayers::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bw_team_id)
-                    ->where('player_id', $request->attacker_id)
-                    ->increment('bw_overball', 1);
-
-                //Check for over
-                $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
-
-                //Team update
-                MatchDetail::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->increment('overball', 1);
-
-                $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
+                event(new dotBallEvent($request));
             }
-            if ($request->value == 1 or $request->value == 2 or $request->value == 3) {
-
-//                    ye run add karega aur ek ball add karega
-                MatchPlayers::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->where('player_id', $request->player_id)
-                    ->increment('bt_runs', $request->value, ['bt_balls' => DB::raw('bt_balls + 1')]);
-
-//                    ye strike rotate karega
-                if ($request->value == 1 or $request->value == 3)
-                    $this->StrikeRotate($request->match_id, $request->bt_team_id, $request->tournament);
-
-//                    ye bowler ke run add karega aur ball add karega
-                MatchPlayers::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bw_team_id)
-                    ->where('player_id', $request->attacker_id)
-                    ->increment('bw_runs', $request->value, ['bw_overball' => DB::raw('bw_overball + 1')]);
-
-//                    ye over ke liye check karega
-                $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
-
-//                    ye team k score ko update karega aur ball bhi
-                MatchDetail::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->increment('score', $request->value, ['overball' => DB::raw('overball + 1')]);
-
-//                    ye team ke liye over check karega
-                $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
+            if ($request->value == 1) {
+                event(new OneRunEvent($request));
+            }
+            if ($request->value == 2) {
+                event(new twoRunEvent($request));
+            }
+            if ($request->value == 3) {
+                event(new threeRunEvent($request));
             }
             if ($request->value == 4) {
-                // dump($request->value);
-                MatchPlayers::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->where('player_id', $request->player_id)
-                    ->increment('bt_runs', $request->value, ['bt_balls' => DB::raw('bt_balls + 1'),
-                        'bt_fours' => DB::raw('bt_fours + 1')]);
-
-                MatchPlayers::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bw_team_id)
-                    ->where('player_id', $request->attacker_id)
-                    ->increment('bw_runs', $request->value, ['bw_overball' => DB::raw('bw_overball + 1')]);
-
-                $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
-
-                MatchDetail::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->increment('score', $request->value, ['overball' => DB::raw('overball + 1')]);
-
-                $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
+                event(new fourRunEvent($request));
             }
             if ($request->value == 6) {
-                MatchPlayers::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->where('player_id', $request->player_id)
-                    ->increment('bt_runs', $request->value, ['bt_balls' => DB::raw('bt_balls + 1'),
-                        'bt_sixes' => DB::raw('bt_sixes + 1')]);
-
-                MatchPlayers::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bw_team_id)
-                    ->where('player_id', $request->attacker_id)
-                    ->increment('bw_runs', $request->value, ['bw_overball' => DB::raw('bw_overball + 1')]);
-
-                $this->CheckForOver($request->tournament, $request->match_id, $request->bw_team_id, $request->attacker_id);
-
-                MatchDetail::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->increment('score', $request->value, ['overball' => DB::raw('overball + 1')]);
-
-                $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
+                event(new sixRunEvent($request));
             }
 
             if ($request->value == "W") {
@@ -401,242 +307,191 @@ class LiveScoreController extends Controller
                     ->where('tournament', $request->tournament)
                     ->where('team_id', $request->bt_team_id)
                     ->update(['isWicket' => 1]);
-
-//
-
-                if ($request->value == 'wd') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 1, ['wide' => DB::raw('wide + 1')]);
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_runs', 1, ['bw_wide' => DB::raw('bw_wide + 1')]);
-                }
-                if ($request->value == 'wd1') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 2, ['wide' => DB::raw('wide + 2')]);
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_runs', 2, ['bw_wide' => DB::raw('bw_wide + 2')]);
-
-                    $this->StrikeRotate($request->match_id, $request->bt_team_id, $request->tournament);
-
-                }
-                if ($request->value == 'wd2') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 3, ['wide' => DB::raw('wide + 3')]);
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_runs', 3, ['bw_wide' => DB::raw('bw_wide + 3')]);
-                }
-                if ($request->value == 'wd3') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 4, ['wide' => DB::raw('wide + 4')]);
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_runs', 4, ['bw_wide' => DB::raw('bw_wide + 4')]);
-                }
-                if ($request->value == 'wd4') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 5, ['wide' => DB::raw('wide + 5')]);
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_runs', 5, ['bw_wide' => DB::raw('bw_wide + 5')]);
-                }
-
-                if ($request->value == 'b1') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 1, ['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 1')]);
+            }
 
 
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_overball', 1);
+            if ($request->value == 'wd') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 1, ['wide' => DB::raw('wide + 1')]);
 
-                    $this->StrikeRotate($request->match_id, $request->bt_team_id, $request->tournament);
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_runs', 1, ['bw_wide' => DB::raw('bw_wide + 1')]);
+            }
+            if ($request->value == 'wd1') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 2, ['wide' => DB::raw('wide + 2')]);
 
-                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
-                }
-                if ($request->value == 'b2') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 2, ['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 2')]);
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_runs', 2, ['bw_wide' => DB::raw('bw_wide + 2')]);
 
+                event(new strikeRotateEvent($request));
 
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_overball', 1);
-
-                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
-                }
-                if ($request->value == 'b3') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 3, ['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 3')]);
-
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_overball', 1);
-
-                    $this->StrikeRotate($request->match_id, $request->bt_team_id, $request->tournament);
-
-                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
-                }
-                if ($request->value == 'b4') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 4, ['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 4')]);
-
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_overball', 1);
-
-                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
-                }
-
-                if ($request->value == 'lb1') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 1, ['overball' => DB::raw('overball + 1'), 'legbyes' => DB::raw('legbyes + 1')]);
-
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_overball', 1);
-
-                    $this->StrikeRotate($request->match_id, $request->bt_team_id, $request->tournament);
-
-                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
-                }
-                if ($request->value == 'lb2') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 2, ['overball' => DB::raw('overball + 1'), 'legbyes' => DB::raw('legbyes + 2')]);
-
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_overball', 1);
-
-                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
-                }
-                if ($request->value == 'lb3') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 3, ['overball' => DB::raw('overball + 1'), 'legbyes' => DB::raw('legbyes + 3')]);
-
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_overball', 1);
-
-                    $this->StrikeRotate($request->match_id, $request->bt_team_id, $request->tournament);
-
-                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
-                }
-                if ($request->value == 'lb4') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 4, ['overball' => DB::raw('overball + 1'), 'legbyes' => DB::raw('legbyes + 4')]);
-
-
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_overball', 1);
-
-                    $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
-                }
-
-                if ($request->value == 'nb') {
-                    //Team update
-                    MatchDetail::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->increment('score', 1, ['no_ball' => DB::raw('no_ball + 1')]);
-
-                    //batsman update
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bt_team_id)
-                        ->where('player_id', $request->player_id)
-                        ->increment('bt_runs', 1, ['bt_balls' => DB::raw('bt_balls + 1')]);
-
-                    //bowler update
-                    MatchPlayers::where('match_id', $request->match_id)
-                        ->where('tournament', $request->tournament)
-                        ->where('team_id', $request->bw_team_id)
-                        ->where('player_id', $request->attacker_id)
-                        ->increment('bw_runs', 1, ['bw_nb' => DB::raw('bw_nb + 1')]);
-
-                    $this->StrikeRotate($request->match_id, $request->bt_team_id, $request->tournament);
-
-                }
 
             }
+            if ($request->value == 'wd2') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 3, ['wide' => DB::raw('wide + 3')]);
+
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_runs', 3, ['bw_wide' => DB::raw('bw_wide + 3')]);
+            }
+            if ($request->value == 'wd3') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 4, ['wide' => DB::raw('wide + 4')]);
+
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_runs', 4, ['bw_wide' => DB::raw('bw_wide + 4')]);
+
+                event(new strikeRotateEvent($request));
+
+            }
+            if ($request->value == 'wd4') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 5, ['wide' => DB::raw('wide + 5')]);
+
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_runs', 5, ['bw_wide' => DB::raw('bw_wide + 5')]);
+            }
+
+            if ($request->value == 'b1') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 1, ['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 1')]);
+
+
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_overball', 1);
+
+                event(new strikeRotateEvent($request));
+
+
+                $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id, $request);
+            }
+            if ($request->value == 'b2') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 2, ['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 2')]);
+
+
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_overball', 1);
+
+                $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id, $request);
+            }
+            if ($request->value == 'b3') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 3, ['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 3')]);
+
+
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_overball', 1);
+
+                event(new strikeRotateEvent($request));
+
+                $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id, $request);
+            }
+            if ($request->value == 'b4') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 4, ['overball' => DB::raw('overball + 1'), 'byes' => DB::raw('byes + 4')]);
+
+
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_overball', 1);
+
+                $this->CheckForOver($request->tournament, $request->match_id, $request->bt_team_id);
+            }
+
+            if ($request->value == 'lb1') {
+                event(new legByesOneRunEvent($request));
+            }
+            if ($request->value == 'lb2') {
+                event(new legByesTwoRunEvent($request));
+            }
+            if ($request->value == 'lb3') {
+                event(new legByesThreeRunEvent($request));
+            }
+            if ($request->value == 'lb4') {
+                event(new legByesFourRunEvent($request));
+            }
+
+            if ($request->value == 'nb') {
+                //Team update
+                MatchDetail::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->increment('score', 1, ['no_ball' => DB::raw('no_ball + 1')]);
+
+                //batsman update
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bt_team_id)
+                    ->where('player_id', $request->player_id)
+                    ->increment('bt_runs', 1, ['bt_balls' => DB::raw('bt_balls + 1')]);
+
+                //bowler update
+                MatchPlayers::where('match_id', $request->match_id)
+                    ->where('tournament', $request->tournament)
+                    ->where('team_id', $request->bw_team_id)
+                    ->where('player_id', $request->attacker_id)
+                    ->increment('bw_runs', 1, ['bw_nb' => DB::raw('bw_nb + 1')]);
+
+                event(new strikeRotateEvent($request));
+
+
+            }
+
 
             $userjobs = "true";
             // $returnHTML = view('Admin/LiveScore/show')->with('userjobs', $userjobs)->render();

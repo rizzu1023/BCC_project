@@ -2,31 +2,30 @@
 
 namespace App\Listeners;
 
-use App\Events\app\Events\firstEvent;
+use App\Events\dotBallEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class firstListener
+class checkForOverListener
 {
     /**
      * Create the event listener.
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     //
-    // }
+    public function __construct()
+    {
+        //
+    }
 
     /**
      * Handle the event.
      *
-     * @param  firstEvent  $event
+     * @param  dotBallEvent  $event
      * @return void
      */
-    public function handle($event)
+    public function handle(dotBallEvent $event)
     {
-        // dd($event);
-        dump($event->schedule);
+        //
     }
 }
