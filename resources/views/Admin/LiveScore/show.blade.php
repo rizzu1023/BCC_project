@@ -191,7 +191,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         {{--                                        <label for="exampleFormControlSelect2">Select Bowler</label>--}}
-                                        <select class="form-control" id="exampleFormControlSelect2" name="attacker_id"
+                                        <select class="form-control" id="exampleFormControlSelect2" name="newBowler_id"
                                                 required>
                                             <option disabled selected>Select Bowler</option>
                                             @foreach($matchs->MatchPlayers as $mp)
@@ -440,6 +440,8 @@
                             <button id="noball" type="submit" value="nb2" class="bt">nb + 2</button>
                             <button id="noball" type="submit" value="nb3" class="bt">nb + 3</button>
                             <button id="noball" type="submit" value="nb4" class="bt">nb + 4</button>
+                            <button id="noball" type="submit" value="nb5" class="bt">nb + 5</button>
+                            <button id="noball" type="submit" value="nb6" class="bt">nb + 6</button>
                             <br><br>
 
                         </form>
@@ -522,8 +524,6 @@
                         $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_primary').show();
                         $('#div_wicket_secondary').hide();
-
-
                     }
                 });
 

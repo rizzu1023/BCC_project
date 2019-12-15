@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use App\Events\dotBallEvent;
+use App\Events\noballSixRunEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class checkForOverListener
+class bowlerSevenRunUpdateListener
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class checkForOverListener
     /**
      * Handle the event.
      *
-     * @param  dotBallEvent  $event
+     * @param  noballSixRunEvent  $event
      * @return void
      */
-    public function handle(dotBallEvent $event)
+    public function handle(noballSixRunEvent $event)
     {
         //
     }
