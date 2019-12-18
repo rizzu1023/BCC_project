@@ -80,6 +80,12 @@
                                 @elseif($m->bt_status == 0 && $m->wicket_type == 'stump')
                                     <b>st</b> {{$m->wicketSecondary->player_name}}
                                     <b>b</b> {{$m->wicketPrimary->player_name}}
+                                @elseif($m->bt_status == 0 && $m->wicket_type == 'runout')
+                                    @if($m->wicket_secondary == '--')
+                                        <b>runout</b>({{$m->wicketPrimary->player_name}})
+                                    @else
+                                        <b>runout</b>({{$m->wicketPrimary->player_name}}/{{$m->wicketSecondary->player_name}})
+                                    @endif
                                 @elseif($m->bt_status == 10 || $m->bt_status == 11)
                                     batting
                                 @endif
@@ -112,12 +118,13 @@
                     @endforeach
                 </tr>
                 <tr>
-                <td>Extras</td>
-                <td></td>
+                    <td>Extras</td>
+                    <td></td>
                     @foreach($matchs->MatchDetail as $md)
                         @if($md->team_id == $batting)
                             <td colspan="4">
-                                {{$md->byes + $md->legbyes + $md->no_ball + $md->wide}} (b {{$md->byes}}, lb {{$md->legbyes}}, w {{$md->wide}}, nb {{$md->no_ball}})
+                                {{$md->byes + $md->legbyes + $md->no_ball + $md->wide}} (b {{$md->byes}},
+                                lb {{$md->legbyes}}, w {{$md->wide}}, nb {{$md->no_ball}})
                             </td>
                         @endif
                     @endforeach

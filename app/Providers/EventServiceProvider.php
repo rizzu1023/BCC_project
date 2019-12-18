@@ -17,7 +17,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
 
         \App\Events\testingEvent::class => [
-          \App\Listeners\testingListener::class,
+            \App\Listeners\testingListener::class,
         ],
         \App\Events\strikeRotateEvent::class => [
             \App\Listeners\strikeRotateListener::class,
@@ -87,6 +87,21 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\isOverForTeam::class,
         ],
 
+//        wicket events
+
+        \App\Events\wicketEvent::class => [
+//            \App\Listeners\batsmanBallUpdateListener::class,
+            \App\Listeners\currentBatsmanRemoveListener::class,
+            \App\Listeners\newBatsmanAddedListener::class,
+            \App\Listeners\bowlerBallUpdateListener::class,
+            \App\Listeners\bowlerWicketUpdateListener::class,
+            \App\Listeners\teamBallUpdateListener::class,
+            \App\Listeners\teamWicketUpdateListener::class,
+            \App\Listeners\isWicketFalseListener::class,
+            \App\Listeners\isOverForBowler::class,
+            \App\Listeners\isOverForTeam::class,
+
+        ],
 //        Leg Byes Events
 
         \App\Events\legByesOneRunEvent::class => [
@@ -269,7 +284,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\teamOneRunUpdateListener::class,
             \App\Listeners\teamOneNoballUpdateListener::class,
         ],
-
 
 
 //        start inning event

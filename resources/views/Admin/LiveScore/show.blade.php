@@ -1,7 +1,8 @@
 @extends('Admin.layouts.base')
 
 @section('topbar_link')
-    <a href="/admin/LiveScoreCard/{{$matchs->match_id}}/{{$matchs->tournament}}" class="btn btn-primary" style="margin-top:10px ">Scorecard</a>
+    <a href="/admin/LiveScoreCard/{{$matchs->match_id}}/{{$matchs->tournament}}" class="btn btn-primary"
+       style="margin-top:10px ">Scorecard</a>
 @endsection
 
 @section('css')
@@ -233,16 +234,44 @@
                                         <select class="form-control" id="wicket_primary"
                                                 name="wicket_primary"
                                                 required>
-{{--                                            <option disabled selected>Select</option>--}}
+                                            {{--                                            <option disabled selected>Select</option>--}}
                                             @foreach($matchs->MatchPlayers as $mp)
                                                 @if($mp->team_id == $bowling)
                                                     @if($mp->bw_status == '11')
-                                                        <option selected value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                        <option selected
+                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
                                                     @endif
                                                 @endif
                                             @endforeach
                                         </select>
                                     </div>
+
+{{--                                    wicket_primary for runout--}}
+                                    <div class="col-md-6" id="div_wicket_primary_runout" style="display: none">
+                                        <label for="wicket_primary" id="label_wicket_primary">Run Out By</label>
+                                        <select class="form-control" id="wicket_primary"
+                                                name="wicket_primary"
+                                                required>
+                                            {{-- <option disabled selected>Select</option>--}}
+                                            @foreach($matchs->MatchPlayers as $mp)
+                                                @if($mp->team_id == $bowling)
+                                                        <option selected
+                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    {{--                                   this is for over check for bowler--}}
+                                    @foreach($matchs->MatchPlayers as $mp)
+                                        @if($mp->team_id == $bowling)
+                                            @if($mp->bw_status == '11')
+                                                <input type="hidden" value="{{$mp->player_id}}" name="attacker_id"/>
+                                            @endif
+                                        @endif
+                                    @endforeach
+
+                                    {{--wicket secondary--}}
                                     <div class="col-md-6" id="div_wicket_secondary">
                                         <label for="wicket_secondary" id="label_wicket_secondary"></label>
                                         <select class="form-control" id="wicket_secondary"
@@ -257,6 +286,10 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                </div>
+                                <div id="div_batsman_cross" style="display: none">
+                                    <label for="input_batsman_cross" style="margin-top: 10px">did Batsman Crossed?</label>
+                                    <input type="checkbox" name="isBatsmanCross" id="input_batsman_cross"/>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -459,47 +492,56 @@
 
                 $('#wicket_type').on('change', function () {
                     var wicket_type = $("#wicket_type").val();
-                    if(wicket_type === 'catch'){
-                        $('#wicket_secondary').prop('disabled',false);
+                    if (wicket_type === 'catch') {
+                        $('#wicket_secondary').prop('disabled', false);
+                        $('#wicket_secondary').prop('required', true);
                         $('#label_wicket_secondary').html('Catch By');
                         $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_primary').show();
+                        $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_secondary').show();
+                        $('#div_batsman_cross').show();
 
                     }
-                    if(wicket_type === 'stump'){
-                        $('#wicket_secondary').prop('disabled',false);
+                    if (wicket_type === 'stump') {
+                        $('#wicket_secondary').prop('disabled', false);
+                        $('#wicket_secondary').prop('required', true);
                         $('#label_wicket_secondary').html('Stumped By');
                         $('#label_wicket_primary').html('Bowl By');
+                        $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_primary').show();
                         $('#div_wicket_secondary').show();
 
                     }
-                    if(wicket_type === 'runout'){
-                        $('#wicket_secondary').prop('disabled',false);
+                    if (wicket_type === 'runout') {
+                        $('#wicket_secondary').prop('disabled', false);
+                        $('#wicket_secondary').prop('required', false);
                         $('#label_wicket_secondary').html('Run out By(Optional)');
-                        $('#label_wicket_primary').html('Run out By');
-                        $('#div_wicket_primary').show();
+                        $('#div_wicket_primary').hide();
+                        $('#div_wicket_primary_runout').show();
                         $('#div_wicket_secondary').show();
                     }
-                    if(wicket_type === 'hitwicket'){
-                        $('#wicket_secondary').prop('disabled',true);
+                    if (wicket_type === 'hitwicket') {
+                        $('#wicket_secondary').prop('disabled', true);
                         $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_secondary').hide();
+                        $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_primary').show();
 
                     }
-                    if(wicket_type === 'bold'){
-                        $('#wicket_secondary').prop('disabled',true);
+                    if (wicket_type === 'bold') {
+                        $('#wicket_secondary').prop('disabled', true);
                         $('#label_wicket_primary').html('Bowled By');
                         $('#div_wicket_secondary').hide();
+                        $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_primary').show();
 
 
                     }
-                    if(wicket_type === 'lbw'){
-                        $('#wicket_secondary').prop('disabled',true);
+                    if (wicket_type === 'lbw') {
+                        $('#wicket_secondary').prop('disabled', true);
                         $('#label_wicket_primary').html('Bowl By');
+                        $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_primary').show();
                         $('#div_wicket_secondary').hide();
                     }
