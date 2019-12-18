@@ -10,13 +10,16 @@ Vue.component('Accordion', require('./components/Accordion.vue').default);
 Vue.component('Dropdown', require('./components/Dropdown.vue').default);
 Vue.component('List', require('./components/List.vue').default);
 Vue.component('Players', require('./components/Players.vue').default);
+Vue.component('LiveScore', require('./components/LiveScore.vue').default);
 
 const app = new Vue({
     'el' : '#app',
 
-    // components : {
-    //     PlayerList,
-    // },
+    components : {
+        // PlayerList,
+        // LiveScore,
+        // ExampleComponent,
+    },
 
     mounted : function(){
         axios.get('http://localhost:8000/api/players')
