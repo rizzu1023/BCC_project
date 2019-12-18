@@ -50368,10 +50368,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       }];
     }); // axios.get('http://localhost:8000/api/players')
     // .then(function(response){
-    // console.log(response); 
+    // console.log(response);
     // })
     // .catch(function(error){
-    // console.log(error); 
+    // console.log(error);
     // });
   },
   data: {
