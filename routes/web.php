@@ -3,7 +3,7 @@
 
 
 //frontend Routes
-Route::get('/', 'MainController@GetIndex');
+Route::get('/index', 'MainController@GetIndex');
 Route::get('/pointsTable', 'MainController@GetPointsTable');
 Route::get('/teams', 'MainController@GetTeams');
 Route::get('/schedule', 'MainController@GetSchedule');
@@ -51,3 +51,5 @@ Route::prefix('admin')->group(function(){
 
 });
 
+
+Route::get('/{any}', 'AppController@index')->where('any','.*');
