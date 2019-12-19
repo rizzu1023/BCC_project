@@ -1705,13 +1705,124 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+$(document).ready(function () {});
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Accordion",
-  props: ['data'],
   data: function data() {
     return {
-      toggle: false
+      matchData: null
     };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://localhost:8000/api/data/2/IPL2019').then(function (response) {
+      return _this.matchData = response.data;
+    })["catch"](function (error) {
+      console.log(error);
+    }); // this.battingLogic(this.matchData);
+  },
+  methods: {
+    battingLogic: function battingLogic(matchData) {
+      alert(this.matchData);
+    }
   }
 });
 
@@ -1820,6 +1931,416 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LiveScore.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LiveScore.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "LiveScore"
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Players.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Players.vue?vue&type=script&lang=js& ***!
@@ -1829,7 +2350,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -37936,25 +38456,390 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("p", [_vm._v(_vm._s(_vm.data.title))]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            _vm.toggle = !_vm.toggle
-          }
-        }
-      },
-      [_vm._v("Details")]
-    ),
-    _vm._v(" "),
-    _vm.toggle ? _c("p", [_vm._v(_vm._s(_vm.data.description))]) : _vm._e()
+  return _c("div", { attrs: { id: "page-wrapper" } }, [
+    _c("div", { staticClass: "main-page" }, [
+      _c("div", { staticClass: "tables ftable" }, [
+        _c("div", { staticClass: "panel-body widget-shadow" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("form", { attrs: { id: "updateForm" } }, [
+            _c("table", { staticClass: "table" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(10, function(i) {
+                  return _vm.matchData
+                    ? _c("tr", { key: i }, [
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.matchData.matchPlayers[i].playerDetail
+                                .player_name
+                            )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.matchData.matchPlayers[i].bt_runs))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.matchData.matchPlayers[i].bt_balls))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.matchData.matchPlayers[i].bt_fours))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.matchData.matchPlayers[i].bt_sixes))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("12")])
+                      ])
+                    : _vm._e()
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "dot", type: "submit", value: "8" }
+              },
+              [_vm._v("0")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "single", type: "submit", value: "1" }
+              },
+              [_vm._v("1")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "double", type: "submit", value: "2" }
+              },
+              [_vm._v("2")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "triple", type: "submit", value: "3" }
+              },
+              [_vm._v("3")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "four", type: "submit", value: "4" }
+              },
+              [_vm._v("4")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "six", type: "submit", value: "6" }
+              },
+              [_vm._v("6")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "wicket", type: "submit", value: "W" }
+              },
+              [_vm._v("W")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "wide", type: "submit", value: "wd" }
+              },
+              [_vm._v("Wide + 0")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "wide1", type: "submit", value: "wd1" }
+              },
+              [_vm._v("Wide + 1")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "wide2", type: "submit", value: "wd2" }
+              },
+              [_vm._v("Wide + 2")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "wide3", type: "submit", value: "wd3" }
+              },
+              [_vm._v("Wide + 3")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "wide4", type: "submit", value: "wd2" }
+              },
+              [_vm._v("Wide + 4")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "legbyes1", type: "submit", value: "lb1" }
+              },
+              [_vm._v("1 lb")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "legbyes2", type: "submit", value: "lb2" }
+              },
+              [_vm._v("2 lb")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "legbyes3", type: "submit", value: "lb3" }
+              },
+              [_vm._v("3 lb")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "legbyes4", type: "submit", value: "lb4" }
+              },
+              [_vm._v("4 lb")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "byes1", type: "submit", value: "b1" }
+              },
+              [_vm._v("1 b")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "byes2", type: "submit", value: "b2" }
+              },
+              [_vm._v("2 b")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "byes3", type: "submit", value: "b3" }
+              },
+              [_vm._v("3 b")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "byes4", type: "submit", value: "b4" }
+              },
+              [_vm._v("4 b")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "noball", type: "submit", value: "nb" }
+              },
+              [_vm._v("nb + 0")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "noball1", type: "submit", value: "nb1" }
+              },
+              [_vm._v("nb + 1")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "noball2", type: "submit", value: "nb2" }
+              },
+              [_vm._v("nb + 2")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "noball3", type: "submit", value: "nb3" }
+              },
+              [_vm._v("nb + 3")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "noball4", type: "submit", value: "nb4" }
+              },
+              [_vm._v("nb + 4")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "noball5", type: "submit", value: "nb5" }
+              },
+              [_vm._v("nb + 5")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "bt",
+                attrs: { id: "noball6", type: "submit", value: "nb6" }
+              },
+              [_vm._v("nb + 6")]
+            ),
+            _vm._v(" "),
+            _c("br"),
+            _c("br")
+          ])
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 team-name" }, [
+      _c("h3", [_vm._v("123-4 (12.2)")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", { staticClass: "bg-dark" }, [
+        _c("th", [_vm._v("Batsman")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Runs")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Balls")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fours")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Sixes")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("SR")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("table", { staticClass: "table" }, [
+      _c("thead", [
+        _c("tr", { staticClass: "bg-dark" }, [
+          _c("th", [_vm._v("Bowler")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Overs")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Maiden")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Runs")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Wicket")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Eco")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tbody", [
+        _c("tr", [
+          _c("td", [_vm._v("Bowler1")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("12")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("0")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("3")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("1")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("121")])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -38103,6 +38988,24 @@ var render = function() {
 }
 var staticRenderFns = []
 render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LiveScore.vue?vue&type=template&id=24cbefaa&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LiveScore.vue?vue&type=template&id=24cbefaa&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {}
+var staticRenderFns = []
 
 
 
@@ -50352,11 +51255,13 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Accordion', __webpack_requ
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Dropdown', __webpack_require__(/*! ./components/Dropdown.vue */ "./resources/js/components/Dropdown.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('List', __webpack_require__(/*! ./components/List.vue */ "./resources/js/components/List.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_require__(/*! ./components/Players.vue */ "./resources/js/components/Players.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('LiveScore', __webpack_require__(/*! ./components/LiveScore.vue */ "./resources/js/components/LiveScore.vue")["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   'el': '#app',
-  // components : {
-  //     PlayerList,
-  // },
+  components: {// PlayerList,
+    // LiveScore,
+    // ExampleComponent,
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -50368,10 +51273,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       }];
     }); // axios.get('http://localhost:8000/api/players')
     // .then(function(response){
-    // console.log(response); 
+    // console.log(response);
     // })
     // .catch(function(error){
-    // console.log(error); 
+    // console.log(error);
     // });
   },
   data: {
@@ -50716,6 +51621,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_template_id_1856aeee_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_List_vue_vue_type_template_id_1856aeee_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/LiveScore.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/LiveScore.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _LiveScore_vue_vue_type_template_id_24cbefaa_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LiveScore.vue?vue&type=template&id=24cbefaa&scoped=true& */ "./resources/js/components/LiveScore.vue?vue&type=template&id=24cbefaa&scoped=true&");
+/* harmony import */ var _LiveScore_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LiveScore.vue?vue&type=script&lang=js& */ "./resources/js/components/LiveScore.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _LiveScore_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _LiveScore_vue_vue_type_template_id_24cbefaa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _LiveScore_vue_vue_type_template_id_24cbefaa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "24cbefaa",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/LiveScore.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/LiveScore.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/LiveScore.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveScore_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./LiveScore.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LiveScore.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveScore_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/LiveScore.vue?vue&type=template&id=24cbefaa&scoped=true&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/LiveScore.vue?vue&type=template&id=24cbefaa&scoped=true& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveScore_vue_vue_type_template_id_24cbefaa_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./LiveScore.vue?vue&type=template&id=24cbefaa&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LiveScore.vue?vue&type=template&id=24cbefaa&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveScore_vue_vue_type_template_id_24cbefaa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LiveScore_vue_vue_type_template_id_24cbefaa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

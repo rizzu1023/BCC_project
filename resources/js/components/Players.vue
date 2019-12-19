@@ -17,17 +17,16 @@
                     <td v-text="post.player_id"></td>
                     <td v-text="post.player_name"></td>
                     <td v-text="post.player_role"></td>
-                    <td v-text="post.team_id"></td> 
+                    <td v-text="post.team_id"></td>
                 </tr>
-                
+
                 </tbody>
                 </table>
                 </div>
            </div>
-        </div>
-    
-       
-    
+
+
+
 </template>
 
 <script>
@@ -41,14 +40,14 @@
         },
 
          computed : {
-            backgroundColor : function(){ 
+            backgroundColor : function(){
             if(this.color == 4){
             return{
-                'blue-color' : true, 
+                'blue-color' : true,
             }
             if(this.color == 3){
                return{
-                'blue-color' : true, 
+                'blue-color' : true,
             }
             }
             }
@@ -62,9 +61,9 @@
             }
         },
 
-       
+
         }
-    
+
 </script>
 
 <style scoped>

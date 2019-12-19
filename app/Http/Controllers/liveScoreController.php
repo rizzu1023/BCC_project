@@ -34,6 +34,8 @@ use App\Events\wideOneRunEvent;
 use App\Events\wideThreeRunEvent;
 use App\Events\wideTwoRunEvent;
 use App\Events\wideZeroRunEvent;
+use App\Http\Resources\MatchDetailResource;
+use App\Http\Resources\MatchResource;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -173,6 +175,11 @@ class LiveScoreController extends Controller
         $matchs = Match::where('match_id', $id)->where('tournament', $tournament)->first();
 
         return view('Admin/LiveScore/scorecard', compact('matchs'));
+    }
+
+    public function MatchData($id, $tournament){
+        $data = Match::where('match_id', $id)->where('tournament', $tournament)->first();
+        return new MatchResource($data);
     }
 
     public function LiveUpdate(Request $request)
