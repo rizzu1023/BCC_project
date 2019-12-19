@@ -288,7 +288,8 @@
                                     </div>
                                 </div>
                                 <div id="div_batsman_cross" style="display: none">
-                                    <label for="input_batsman_cross" style="margin-top: 10px">did Batsman Crossed?</label>
+                                    <label for="input_batsman_cross" style="margin-top: 10px">did Batsman
+                                        Crossed?</label>
                                     <input type="checkbox" name="isBatsmanCross" id="input_batsman_cross"/>
                                 </div>
                                 <div class="row">
