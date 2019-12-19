@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/players','MainController@players');
+Route::get('/data/{id}/{tournament}','LiveScoreController@MatchData');

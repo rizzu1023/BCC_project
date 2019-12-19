@@ -246,7 +246,7 @@
                                         </select>
                                     </div>
 
-{{--                                    wicket_primary for runout--}}
+                                    {{--                                    wicket_primary for runout--}}
                                     <div class="col-md-6" id="div_wicket_primary_runout" style="display: none">
                                         <label for="wicket_primary" id="label_wicket_primary">Run Out By</label>
                                         <select class="form-control" id="wicket_primary"
@@ -255,8 +255,8 @@
                                             {{-- <option disabled selected>Select</option>--}}
                                             @foreach($matchs->MatchPlayers as $mp)
                                                 @if($mp->team_id == $bowling)
-                                                        <option selected
-                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                    <option selected
+                                                            value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
                                                 @endif
                                             @endforeach
                                         </select>
