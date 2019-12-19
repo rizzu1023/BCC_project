@@ -20,8 +20,8 @@ class MatchResource extends JsonResource
             'tournament' => $this->tournament,
             'toss' => $this->toss,
             'choose' => $this->choose,
-            'matchDetail' => $this->matchDetail,
-            'playerDetail' => $this->matchPlayers,
+            'matchDetail' => $this->MatchDetail,
+            'matchPlayers' => MatchPlayersResource::collection($this->MatchPlayers),
         ];
     }
 }

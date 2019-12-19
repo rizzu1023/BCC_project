@@ -19,12 +19,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td v-text="matchData.playerDetail[0]"></td>
-                                <td>23</td>
-                                <td>12</td>
-                                <td>4</td>
-                                <td>0</td>
+                            <tr v-if="matchData" v-for="i in 10" :key="i">
+                                <td>{{ matchData.matchPlayers[i].playerDetail.player_name }}</td>
+                                <td>{{ matchData.matchPlayers[i].bt_runs }}</td>
+                                <td>{{ matchData.matchPlayers[i].bt_balls}}</td>
+                                <td>{{ matchData.matchPlayers[i].bt_fours}}</td>
+                                <td>{{ matchData.matchPlayers[i].bt_sixes}}</td>
                                 <td>12</td>
                             </tr>
 

@@ -2381,7 +2381,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Players',
   mounted: function mounted() {
@@ -38467,25 +38466,42 @@ var render = function() {
             _c("table", { staticClass: "table" }, [
               _vm._m(1),
               _vm._v(" "),
-              _c("tbody", [
-                _c("tr", [
-                  _c("td", {
-                    domProps: {
-                      textContent: _vm._s(_vm.matchData.playerDetail[0])
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("23")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("12")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("0")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("12")])
-                ])
-              ])
+              _c(
+                "tbody",
+                _vm._l(10, function(i) {
+                  return _vm.matchData
+                    ? _c("tr", { key: i }, [
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.matchData.matchPlayers[i].playerDetail
+                                .player_name
+                            )
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.matchData.matchPlayers[i].bt_runs))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.matchData.matchPlayers[i].bt_balls))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.matchData.matchPlayers[i].bt_fours))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm.matchData.matchPlayers[i].bt_sixes))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("12")])
+                      ])
+                    : _vm._e()
+                }),
+                0
+              )
             ]),
             _vm._v(" "),
             _vm._m(2),
