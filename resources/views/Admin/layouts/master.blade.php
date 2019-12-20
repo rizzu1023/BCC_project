@@ -72,8 +72,8 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/example">
-                        <i class="nav-icon icon-pencil"></i> Example</router-link>
+                    <router-link class="nav-link" to="/player">
+                        <i class="nav-icon icon-pencil"></i> Players</router-link>
                 </li>
 
             </ul>
@@ -81,7 +81,7 @@
 
     </div>
     <main class="main">
-        <div class="container-fluid">
+        <div class="container">
             <div class="animated fadeIn">
                     <router-view></router-view>
                 </div>

@@ -17,5 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/players','MainController@players');
-Route::get('/data/{id}/{tournament}','LiveScoreController@MatchData');
+//Route::get('/players','MainController@players');
+Route::get('/data/{id}/{tournament}', 'LiveScoreController@MatchData');
+
+Route::prefix('admin')->group(function () {
+    Route::apiResource('/Players', 'API\PlayersController');
+    Route::apiResource('/Team', 'API\TeamController');
+
+});

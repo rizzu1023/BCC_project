@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Players from './components/Players';
-import ExampleComponent from './components/ExampleComponent';
 import LiveScore from "./components/LiveScore";
 import Accordion from "./components/Accordion";
+
 
 Vue.use(VueRouter);
 
