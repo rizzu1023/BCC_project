@@ -7,7 +7,7 @@
                 <div class="modal-content">
                     <form @submit.prevent="editMode ? editPlayer() : addPlayer()">
                         <div class="modal-header">
-                            <h4 v-show="!editMode"class="modal-title">Add Player</h4>
+                            <h4 v-show="!editMode" class="modal-title">Add Player</h4>
                             <h4 v-show="editMode" class="modal-title">Edit Player</h4>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
@@ -26,12 +26,14 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <input class="form-control" id="email2" type="text" v-model="form.player_name"
-                                               placeholder="Player Name" required :class="{ 'is-invalid': form.errors.has('player_name') }">
+                                               placeholder="Player Name" required
+                                               :class="{ 'is-invalid': form.errors.has('player_name') }">
                                         <has-error :form="form" field="player_name"></has-error>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" id="ccyear" required v-model="form.player_role" :class="{ 'is-invalid': form.errors.has('player_role') }">
+                                    <select class="form-control" id="ccyear" required v-model="form.player_role"
+                                            :class="{ 'is-invalid': form.errors.has('player_role') }">
                                         <option :selected="true">Player Role</option>
                                         <option value="BT">Batsman</option>
                                         <option value="BW">Bowler</option>
@@ -42,7 +44,8 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control" id="ccyea"  v-model="form.team_id" :class="{ 'is-invalid': form.errors.has('team_id') }">
+                                    <select class="form-control" id="ccyea" v-model="form.team_id"
+                                            :class="{ 'is-invalid': form.errors.has('team_id') }">
                                         <option>Select Team</option>
                                         <option v-for="team in teams" :key="team.team_id" :data="team"
                                                 v-bind:value="team.id">{{ team.team_name }}
@@ -67,33 +70,34 @@
         </button>
         <!--    Table-->
         <div class="tables mt-2 table-responsive table-hover">
-            <div class="panel-body widget-shadow">
-                <table class="table">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Modify</th>
-                        <th scope="col">Player ID</th>
-                        <th scope="col">Player Name</th>
-                        <th scope="col">Player Role</th>
-                        <th scope="col">Player Team</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="player in players" :key="player.id" :data="player">
-                        <td>
-                            <button @click="editModal(player)" class="btn btn-sm btn-success">Edit</button>
-                            <button @click="deletePlayer(player.id)" class="btn btn-sm btn-danger">Delete</button>
-                        </td>
-                        <td v-text="player.player_id"></td>
-                        <td v-text="player.player_name"></td>
-                        <td v-text="player.player_role"></td>
-                        <td v-text="player.player_team.team_name"></td>
-                    </tr>
+                    <div class="panel-body widget-shadow">
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Modify</th>
+                                <th scope="col">Player ID</th>
+                                <th scope="col">Player Name</th>
+                                <th scope="col">Player Role</th>
+                                <th scope="col">Player Team</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="player in players" :key="player.id" :data="player">
+                                <td>
+                                    <button @click="editModal(player)" class="btn btn-sm btn-success">Edit</button>
+                                    <button @click="deletePlayer(player.id)" class="btn btn-sm btn-danger">Delete
+                                    </button>
+                                </td>
+                                <td v-text="player.player_id"></td>
+                                <td v-text="player.player_name"></td>
+                                <td v-text="player.player_role"></td>
+                                <td v-text="player.player_team.team_name"></td>
+                            </tr>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
     </div>
 
 
@@ -159,11 +163,10 @@
             },
 
             editPlayer() {
-                this.form.put('http://localhost:8000/api/admin/Players/' + this.form.id).
-                    then(() => {
-                        this.loadPlayers();
-                        $('#addPlayer').modal('hide');
-                }).catch(function(error){
+                this.form.put('http://localhost:8000/api/admin/Players/' + this.form.id).then(() => {
+                    this.loadPlayers();
+                    $('#addPlayer').modal('hide');
+                }).catch(function (error) {
                     console.log(error);
                 });
             },
@@ -204,10 +207,10 @@
             return {
                 players: null,
                 teams: null,
-                editMode : true,
+                editMode: true,
 
                 form: new form({
-                    id : '',
+                    id: '',
                     player_id: '',
                     player_name: '',
                     player_role: '',

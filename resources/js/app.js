@@ -7,6 +7,9 @@ import LiveScore from "./components/LiveScore";
 import { Form, HasError, AlertError } from 'vform'
 import Players from "./components/Players";
 import Swal from 'sweetalert2'
+import Team from "./components/Team";
+import Batting from "./components/Batting";
+import Bowling from "./components/Bowling";
 
 window.Swal = Swal;
 window.form = Form;
@@ -33,6 +36,9 @@ Vue.component(AlertError.name, AlertError);
 Vue.component('Accordion', require('./components/Accordion.vue').default);
 Vue.component('ExampleComponent', require('./components/ExampleComponent').default);
 Vue.component('Players', require('./components/Players').default);
+Vue.component('Team', require('./components/Team').default);
+Vue.component('Batting', require('./components/Batting').default);
+Vue.component('Bowling', require('./components/Bowling').default);
 
 
 
@@ -46,6 +52,9 @@ const app = new Vue({
         ExampleComponent,
         LiveScore,
         Players,
+        Team,
+        Batting,
+        Bowling,
     },
 
     router : routes,

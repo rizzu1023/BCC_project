@@ -52,7 +52,7 @@
 
 @section('content')
     @php
-        if($matchs->MatchDetail['0']->isBatting){
+        if($matchs->MatchDetail['0']->isBatting == '1'){
             $batting = $matchs->MatchDetail['0']->team_id;
             $bowling = $matchs->MatchDetail['1']->team_id;
 
@@ -75,6 +75,7 @@
         }
     @endphp
 
+    @if($matchs->status == '1' || $matchs->status == '2')
     <div id="page-wrapper">
         <div class="main-page">
             <!-- <div class="container"> -->
@@ -85,7 +86,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Select Openig Batsman & Bowler</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Select Opening Batsman & Bowler</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -334,7 +335,7 @@
                         @foreach($matchs->MatchDetail as $md)
                             @if($md->team_id == $batting)
                                 <div class="col-md-12 team-name"><h3>{{$md->Teams->team_code}}  {{$md->score}}
-                                        /{{$md->wicket}} ({{$md->over}}.{{$md->overball}})</h3></div>
+                                        /{{$md->wicket}} ({{$md->over}}.{{$md->overball}})</h3><button class="btn btn-danger" style="float: right">End Inning</button> </div>
                             @endif
                         @endforeach
 
@@ -469,6 +470,7 @@
         </div>
     </div>
     <!-- </div> -->
+    @endif
 
 @endsection
 
@@ -632,7 +634,7 @@
                     value: value
                 },
                 success: function (data) {
-                    // alert(data.userjobs);
+                    // alert(data.userjobsE);
                     location.reload(true);
                 }
             });

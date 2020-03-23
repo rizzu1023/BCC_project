@@ -72,9 +72,22 @@
                     </router-link>
                 </li>
                 <li class="nav-item">
+                    <router-link class="nav-link" to="/team">
+                        <i class="nav-icon icon-pencil"></i> Teams</router-link>
+                </li>
+                <li class="nav-item">
                     <router-link class="nav-link" to="/player">
                         <i class="nav-icon icon-pencil"></i> Players</router-link>
                 </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" to="/batting">
+                        <i class="nav-icon icon-pencil"></i> Batting </router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" to="/bowling">
+                        <i class="nav-icon icon-pencil"></i> Bowling</router-link>
+                </li>
+
 
             </ul>
         </nav>

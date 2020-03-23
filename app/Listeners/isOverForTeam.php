@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Events\strikeRotateEvent;
 use App\MatchDetail;
+use App\Match;
 use App\MatchPlayers;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -28,10 +29,12 @@ class isOverForTeam
      */
     public function handle($event)
     {
-        $overball = MatchDetail::select('overball')->where('match_id', $event->request->match_id)
+        $overball = MatchDetail::where('match_id', $event->request->match_id)
             ->where('tournament', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)->first();
 
+
+        
         if ($overball->overball > 5) {
             MatchDetail::where('match_id', $event->request->match_id)
                 ->where('team_id', $event->request->bt_team_id)
@@ -72,6 +75,19 @@ class isOverForTeam
                 ->where('player_id', $striker->player_id)
                 ->update(['bt_status' => 10]);
         }
+
+
+        // if($overball->over == '2'){
+        //     MatchDetail::where('match_id', $event->request->match_id)
+        //     ->where('team_id', $event->request->bt_team_id)
+        //     ->where('tournament', $event->request->tournament)
+        //     ->update(['isBatting' => 0]);
+
+        //     MatchDetail::where('match_id', $event->request->match_id)
+        //     ->where('team_id', $event->request->bw_team_id)
+        //     ->where('tournament', $event->request->tournament)
+        //     ->update(['isBatting' => 1]);
+        // }
 
 
     }

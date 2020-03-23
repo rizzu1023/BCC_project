@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Resources\TeamResource;
-use App\Teams;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class TeamController extends Controller
+class BowlingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,7 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return TeamResource::collection(Teams::all());
+        //
     }
 
     /**
@@ -27,17 +25,7 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'team_code' => 'required|unique:teams',
-            'team_name' => 'required',
-            'team_title' => 'required|numeric',
-        ]);
-
-        return Teams::create([
-            'team_code' => $request['team_code'],
-            'team_name' => $request['team_name'],
-            'team_title' => $request['team_title'],
-        ]);
+        //
     }
 
     /**
@@ -48,7 +36,7 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -60,17 +48,7 @@ class TeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $team = Teams::findOrFail($id);
-
-        $this->validate($request,[
-            'team_code' => 'required',
-            'team_name' => 'required',
-            'team_title' => 'required|numeric',
-        ]);
-
-        $team->update($request->all());
-
-        return ['message' , 'Team updated'];
+        //
     }
 
     /**
@@ -81,8 +59,6 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        $team = Teams::findOrFail($id);
-        $team->delete();
-        return ['message' => 'Team Deleted'];
+        //
     }
 }

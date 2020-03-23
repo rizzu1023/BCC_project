@@ -13,7 +13,6 @@ Route::get('/stats', 'MainController@GetStats');
 //Admin Routes
 Route::prefix('admin')->group(function(){
     Route::get('/', 'AdminController@GetDashboard')->name('GetDashboard');
-
     Route::resource('/Tournament','TournamentController');  //Tournament
     Route::post('/Tournament/addTeam','TournamentController@Tournament_add_Team')->name('Tournament_add_Team');
     Route::post('/Tournament/destroyTeam','TournamentController@Tournament_destroy_Team')->name('Tournament_destroy_Team');

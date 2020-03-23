@@ -21,7 +21,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/data/{id}/{tournament}', 'LiveScoreController@MatchData');
 
 Route::prefix('admin')->group(function () {
+
     Route::apiResource('/Players', 'API\PlayersController');
+
     Route::apiResource('/Team', 'API\TeamController');
+
+    Route::apiResource('/Schedule', 'API\ScheduleController');
+
+    Route::apiResource('/Batting', 'API\BattingController');
+    Route::apiResource('/Bowling', 'API\BowlingController');
 
 });

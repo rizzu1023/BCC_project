@@ -18,10 +18,10 @@ class CreateMatchesTable extends Migration
             $table->integer('match_id')->unique();
             // $table->string('match_no')->unique();
             // $table->integer('team1_id');
-            // $table->integer('team2_id');
             $table->string('overs');
             $table->string('toss');
             $table->string("choose");
+             $table->integer('status')->default(0);
             $table->string('won')->default('--');
             $table->string('description')->default('--');
             $table->string('mom')->default('--');
