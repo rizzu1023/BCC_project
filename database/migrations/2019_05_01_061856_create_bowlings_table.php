@@ -20,6 +20,8 @@ class CreateBowlingsTable extends Migration
             $table->integer('bw_innings')->default(0);
             $table->integer('bw_balls')->default(0);
             $table->integer('bw_wickets')->default(0);
+            $table->timestamp('deleted_at')->nullable();
+
             $table->timestamps();
         });
     }

@@ -25,7 +25,8 @@ class CreateMatchesTable extends Migration
             $table->string('won')->default('--');
             $table->string('description')->default('--');
             $table->string('mom')->default('--');
-            $table->string('tournament');
+            $table->integer('tournament_id');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

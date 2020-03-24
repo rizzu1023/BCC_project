@@ -32,7 +32,7 @@
                 </a>
               </li>
               <li class="treeview">
-                <a href="{{route('Players.index')}}">
+                <a href="/admin/5/Player">
                 <i class="fa fa-user"></i>
                 <span>Players</span>
                 </a>
@@ -74,7 +74,7 @@
                 <span>Results</span>
                 </a>
               </li>
-	      	
+
             </ul>
           </div>
           <!-- /.navbar-collapse -->

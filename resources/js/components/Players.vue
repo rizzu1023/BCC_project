@@ -1,4 +1,5 @@
 <template>
+
     <div id="player">
         <!--            //modal-->
         <div class="modal fade" id="addPlayer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

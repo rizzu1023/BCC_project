@@ -11,7 +11,7 @@ Route::get('/stats', 'MainController@GetStats');
 
 
 //Admin Routes
-Route::prefix('admin')->group(function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/', 'AdminController@GetDashboard')->name('GetDashboard');
     Route::resource('/Tournament','TournamentController');  //Tournament
     Route::post('/Tournament/addTeam','TournamentController@Tournament_add_Team')->name('Tournament_add_Team');
@@ -23,8 +23,8 @@ Route::prefix('admin')->group(function(){
     Route::resource('/Players','PlayersController');    //Player
     Route::post('/Players/filter','PlayersController@playerFilter')->name('playerFilter');
 
-    Route::resource('/Schedule','ScheduleController');  //Schedule
-    Route::post('/Schedule/create/tournament','ScheduleController@scheduleTournament')->name('scheduleTournament');
+//    Route::resource('/Schedule','ScheduleController');  //Schedule
+//    Route::post('/Schedule/create/tournament','ScheduleController@scheduleTournament')->name('scheduleTournament');
 
     Route::resource('/PointsTable','PointsTableController');  //PointsTable
 
@@ -48,7 +48,15 @@ Route::prefix('admin')->group(function(){
     Route::get('/LiveScoreCard/{id}/{tournament}','LiveScoreController@LiveScoreCard')->name('LiveScoreCard');
     Route::post('/LiveUpdate','LiveScoreController@LiveUpdate')->name('LiveUpdate');
 
+
+    Route::resource('tournaments.schedules','ShallowController');
+    Route::resource('tournaments.teams','TeamController');
 });
 
 
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/{any}', 'AppController@index')->where('any','.*');

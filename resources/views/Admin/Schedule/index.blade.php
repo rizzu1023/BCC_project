@@ -8,12 +8,12 @@
 
 	@include('Admin.layouts.message')
 				<h3 class="title1">Schedule</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Schedule.create')}}"><i class="fa fa-plus"></i>Add</a>
+                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('tournaments.schedules.create',$tournament->id)}}"><i class="fa fa-plus"></i>Add</a>
                 <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
 							<thead>
-								<tr> 
+								<tr>
 								  <th></th>
 								  <th>Match No</th>
 								  <th>Team 1</th>
@@ -27,8 +27,8 @@
                 @foreach($schedule as $s)
                 <tr>
 								  <td>
-								  <a class="btn btn-success btn-sm" href="/admin/Schedule/{{$s->id}}/edit">Edit</a>
-								  <form style="display:inline-block" method="POST" action="/admin/Schedule/{{$s->id}}">
+								  <a class="btn btn-success btn-sm" href="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}/edit">Edit</a>
+								  <form style="display:inline-block" method="POST" action="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}">
 								  	@csrf
 										@method('DELETE')
 									  <input type="hidden" value="{{$s->id}}" name="id">

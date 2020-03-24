@@ -29,9 +29,10 @@ class CreateMatchDetailsTable extends Migration
             $table->integer('wide')->default(0);
             $table->integer('byes')->default(0);
             $table->integer('legbyes')->default(0);
-            $table->string("tournament");
+            $table->integer('tournament_id');
             $table->integer('isOver')->default(0);
             $table->integer('isWicket')->default(0);
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

@@ -20,6 +20,7 @@ class CreateBattingsTable extends Migration
             $table->integer('bt_innings')->default(0);
             $table->integer('bt_balls')->default(0);
             $table->integer('bt_fours')->default(0);
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

@@ -18,8 +18,8 @@
 								  <th>Tournament_id</th>
 								  <th>Tournament Name</th>
 								</tr>
-							</thead> 
-							<tbody> 
+							</thead>
+							<tbody>
                             @foreach($Tournament as $t)
                                 <tr>
 								  <td>
@@ -33,7 +33,7 @@
 								  </td>
 								  <th scope="row">{{$t->id}}</th>
 								  <td>{{$t->tournament_name}}</td>
-								  <td><a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Add Teams</a></td>
+								  <td><a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Explore</a></td>
 
 							    </tr>
                             @endforeach

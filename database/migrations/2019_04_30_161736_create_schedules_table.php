@@ -20,7 +20,8 @@ class CreateSchedulesTable extends Migration
             $table->string('team2_id');
             $table->time('times');
             $table->date('dates');
-            $table->string('tournament');
+            $table->integer('tournament_id');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

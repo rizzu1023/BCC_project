@@ -22,7 +22,8 @@ class CreatePointsTablesTable extends Migration
             $table->integer('draw')->default(0);
             $table->integer('points')->default(0);
             $table->integer('nrr')->default(0);
-            $table->string('tournament');
+            $table->integer('tournament_id');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
