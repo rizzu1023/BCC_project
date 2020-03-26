@@ -8,7 +8,7 @@
 			@include('Admin.layouts.message')
 
 				<h3 class="title1">Tournaments</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Tournament.create')}}"><i class="fa fa-plus"></i>Add</a>
+                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('Tournament.create')}}"><i class="fa fa-plus"></i>Create New Tournament</a>
                 <div class="tables">
 					<div class="panel-body widget-shadow">
 						<table class="table">
@@ -33,7 +33,8 @@
 								  </td>
 								  <th scope="row">{{$t->id}}</th>
 								  <td>{{$t->tournament_name}}</td>
-								  <td><a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Explore</a></td>
+								  <td><a class="btn btn-dark btn-sm" href="/admin/tournaments/{{$t->id}}/teams">Teams</a>
+								  <a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Add Team</a></td>
 
 							    </tr>
                             @endforeach

@@ -28,7 +28,7 @@ class newBowlerSelectListener
     public function handle($event)
     {
         MatchPlayers::where('match_id', $event->request->match_id)
-            ->where('tournament', $event->request->tournament)
+            ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bw_team_id)
             ->where('player_id', $event->request->newBowler_id)
             ->update(['bw_status' => 11]);

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 class ShallowController extends Controller
 {
 
-    public function index(Tournament $tournament, Schedule $schedule)
+    public function index(Tournament $tournament)
     {
         $schedule = Schedule::where('tournament_id',$tournament->id)->get();
         return view('Admin.Schedule.index',compact('schedule','tournament'));

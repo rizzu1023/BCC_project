@@ -28,14 +28,14 @@ class batsmanSixBoundaryUpdateListener
     public function handle($event)
     {
         MatchPlayers::where('match_id', $event->request->match_id)
-            ->where('tournament', $event->request->tournament)
+            ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)
             ->where('player_id', $event->request->player_id)
             ->increment('bt_sixes');
 
 
         /* MatchPlayers::where('match_id', $request->match_id)
-             ->where('tournament', $request->tournament)
+             ->where('tournament_id', $request->tournament)
              ->where('team_id', $request->bt_team_id)
              ->where('player_id', $request->player_id)
              ->increment('bt_runs', $request->value, ['bt_balls' => DB::raw('bt_balls + 1')]);*/

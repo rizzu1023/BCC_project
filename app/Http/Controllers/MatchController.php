@@ -13,27 +13,27 @@ use App\Schedule;
 use DB;
 
 class MatchController extends Controller
-{ 
-  
+{
+
     public function BrowseResult(){
       $result= MatchDetail::orderBy('match_id','asc')->get();
         return view('Admin/Result/BrowseResult',compact('result'));
     }
 
     public function Post_BrowseResult(Request $request){
-        $match = Match::where('tournament',$request->tournament)->where('match_id',$request->match_id)->first();
-        $match_detail = MatchDetail::where('tournament',$request->tournament)->where('match_id',$request->match_id)->get();
+        $match = Match::where('tournament_id',$request->tournament)->where('match_id',$request->match_id)->first();
+        $match_detail = MatchDetail::where('tournament_id',$request->tournament)->where('match_id',$request->match_id)->get();
         $single_result = MatchPlayers::where('match_id',$request->match_id)->get();
         return view('Admin/Result/SingleResult',compact('single_result','match','match_detail'));
     }
 
     public function Post_DeleteResult(Request $request){
-        $result= MatchDetail::where('tournament',$request->tournament)->orderBy('match_id','asc')->get();
+        $result= MatchDetail::where('tournament_id',$request->tournament)->orderBy('match_id','asc')->get();
         $match_id = $request->match_id;
-        $match = Match::where('match_id',$match_id)->where('tournament',$request->tournament)->first();
+        $match = Match::where('match_id',$match_id)->where('tournament_id',$request->tournament)->first();
         $match->delete();
-        // dd(count($match)); 
-        $match_detail = MatchDetail::where('match_id',$match_id)->where('tournament',$request->tournament)->get();
+        // dd(count($match));
+        $match_detail = MatchDetail::where('match_id',$match_id)->where('tournament_id',$request->tournament)->get();
         for($i=0; $i<count($match_detail); $i++){
           $m = MatchDetail::where('match_id',$match_id)->first();
           $m->delete();

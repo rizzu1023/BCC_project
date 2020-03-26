@@ -72,7 +72,7 @@
                 <input type="hidden" name="id" value="{{$schedule->id}}">
                 <input type="hidden" name="team1_id" value="{{$schedule->team1_id}}">
                 <input type="hidden" name="team2_id" value="{{$schedule->team2_id}}">
-                <input type="hidden" name="tournament" value="{{$schedule->tournament}}">
+                <input type="hidden" name="tournament_id" value="{{$schedule->tournament_id}}">
 
             <button type="submit" class="btn btn-default">Submit Details</button>
 

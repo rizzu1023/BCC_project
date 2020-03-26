@@ -1,7 +1,7 @@
 @extends('Admin.layouts.base')
 
 @section('topbar_link')
-    <a href="/admin/LiveScoreCard/{{$matchs->match_id}}/{{$matchs->tournament}}" class="btn btn-primary"
+    <a href="/admin/LiveScoreCard/{{$matchs->match_id}}/{{$matchs->tournament_id}}" class="btn btn-primary"
        style="margin-top:10px ">Scorecard</a>
 @endsection
 
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">
-                                <input type="hidden" name="tournament" value="{{$matchs['tournament']}}">
+                                <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
                                 <input type="hidden" name="bw_team_id" value="{{$bowling}}">
                                 <input type="hidden" name="bt_team_id" value="{{$batting}}">
                                 <input type="hidden" name="startInning" value="1">
@@ -186,7 +186,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">
-                                <input type="hidden" name="tournament" value="{{$matchs['tournament']}}">
+                                <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
                                 <input type="hidden" name="bw_team_id" value="{{$bowling}}">
                                 <input type="hidden" name="bt_team_id" value="{{$batting}}">
                                 <input type="hidden" name="newOver" value="1">
@@ -312,7 +312,7 @@
                                 </div>
 
                                 <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">
-                                <input type="hidden" name="tournament" value="{{$matchs['tournament']}}">
+                                <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
                                 <input type="hidden" name="bw_team_id" value="{{$bowling}}">
                                 <input type="hidden" name="bt_team_id" value="{{$batting}}">
                                 <input type="hidden" name="newBatsman" value="1">
@@ -413,7 +413,7 @@
                                     @endif
                                 @endforeach
                                 <input type="hidden" name="match_id" value="{{$matchs->match_id}}">
-                                <input type="hidden" name="tournament" value="{{$matchs->tournament}}">
+                                <input type="hidden" name="tournament" value="{{$matchs->tournament_id}}">
                                 </tbody>
                             </table>
 

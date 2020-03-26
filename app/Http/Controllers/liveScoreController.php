@@ -36,6 +36,7 @@ use App\Events\wideTwoRunEvent;
 use App\Events\wideZeroRunEvent;
 use App\Http\Resources\MatchDetailResource;
 use App\Http\Resources\MatchResource;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -45,7 +46,6 @@ use App\Players;
 use App\MatchPlayers;
 use App\Match;
 use App\MatchDetail;
-use DB;
 
 
 class LiveScoreController extends Controller
@@ -60,8 +60,14 @@ class LiveScoreController extends Controller
     public function StartScore($id)
     {
         $schedule = Schedule::where('id', $id)->first();
-        $players1 = Players::where('team_id', $schedule->team1_id)->get();
-        $players2 = Players::where('team_id', $schedule->team2_id)->get();
+        $team1_id = $schedule->team1_id;
+        $players1 = Players::whereHas('teams',function ($query) use($team1_id){
+            $query->where('team_id',$team1_id);
+        })->get();
+        $team2_id = $schedule->team2_id;
+        $players2 = Players::whereHas('teams',function ($query) use($team2_id){
+            $query->where('team_id',$team2_id);
+        })->get();
 
         return view('Admin/LiveScore/StartScore', compact('schedule', 'players1', 'players2'));
     }
@@ -71,7 +77,7 @@ class LiveScoreController extends Controller
         $m = Match::create([
             'match_id' => request('id'),
             'overs' => request('overs'),
-            'tournament' => request('tournament'),
+            'tournament_id' => request('tournament_id'),
             'toss' => request('toss'),
             'choose' => request('choose'),
         ]);
@@ -82,14 +88,14 @@ class LiveScoreController extends Controller
                     'match_id' => $m->match_id,
                     'team_id' => request('team1_id'),
                     'isBatting' => 1,
-                    'tournament' => request('tournament'),
+                    'tournament_id' => request('tournament_id'),
                 ]);
 
                 MatchDetail::create([
                     'match_id' => $m->match_id,
                     'team_id' => request('team2_id'),
                     'isBatting' => 0,
-                    'tournament' => request('tournament'),
+                    'tournament_id' => request('tournament_id'),
                 ]);
             }
             else{
@@ -97,14 +103,14 @@ class LiveScoreController extends Controller
                     'match_id' => $m->match_id,
                     'team_id' => request('team1_id'),
                     'isBatting' => 0,
-                    'tournament' => request('tournament'),
+                    'tournament_id' => request('tournament_id'),
                 ]);
 
                 MatchDetail::create([
                     'match_id' => $m->match_id,
                     'team_id' => request('team2_id'),
                     'isBatting' => 1,
-                    'tournament' => request('tournament'),
+                    'tournament_id' => request('tournament_id'),
                 ]);
             }
 
@@ -114,14 +120,14 @@ class LiveScoreController extends Controller
                     'match_id' => $m->match_id,
                     'team_id' => request('team1_id'),
                     'isBatting' => 0,
-                    'tournament' => request('tournament'),
+                    'tournament_id' => request('tournament_id'),
                 ]);
 
                 MatchDetail::create([
                     'match_id' => $m->match_id,
                     'team_id' => request('team2_id'),
                     'isBatting' => 1,
-                    'tournament' => request('tournament'),
+                    'tournament_id' => request('tournament_id'),
                 ]);
             }
             else{
@@ -129,14 +135,14 @@ class LiveScoreController extends Controller
                     'match_id' => $m->match_id,
                     'team_id' => request('team1_id'),
                     'isBatting' => 1,
-                    'tournament' => request('tournament'),
+                    'tournament_id' => request('tournament_id'),
                 ]);
 
                 MatchDetail::create([
                     'match_id' => $m->match_id,
                     'team_id' => request('team2_id'),
                     'isBatting' => 0,
-                    'tournament' => request('tournament'),
+                    'tournament_id' => request('tournament_id'),
                 ]);
             }
         }
@@ -147,12 +153,17 @@ class LiveScoreController extends Controller
             $var = "t1p" . $i;
             if ($request->$var != null) {
                 $obj = Players::where('player_id', $request->$var)->first();
+                $team = $leagues = DB::table('player_team')
+                    ->where('player_team.player_id',$obj->id)
+                    ->join('team_tournament', 'team_tournament.team_id', '=', 'player_team.team_id')
+                    ->where('team_tournament.tournament_id', $request->tournament_id)
+                    ->first();
 
                 MatchPlayers::create([
                     'match_id' => $m->match_id,
                     'player_id' => $request->$var,
-                    'team_id' => $obj->Teams->id,
-                    'tournament' => request('tournament'),
+                    'team_id' => $team->team_id,
+                    'tournament_id' => request('tournament_id'),
                 ]);
             }
         }
@@ -164,7 +175,7 @@ class LiveScoreController extends Controller
 
     public function LiveUpdateShow($id, $tournament)
     {
-        $matchs = Match::where('match_id', $id)->where('tournament', $tournament)->first();
+        $matchs = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
 
         return view('Admin/LiveScore/show', compact('matchs'));
     }
@@ -172,13 +183,13 @@ class LiveScoreController extends Controller
     public function LiveScoreCard($id, $tournament)
     {
 
-        $matchs = Match::where('match_id', $id)->where('tournament', $tournament)->first();
+        $matchs = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
 
         return view('Admin/LiveScore/scorecard', compact('matchs'));
     }
 
     public function MatchData($id, $tournament){
-        $data = Match::where('match_id', $id)->where('tournament', $tournament)->first();
+        $data = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
         return new MatchResource($data);
     }
 
@@ -278,7 +289,7 @@ class LiveScoreController extends Controller
 
             if ($request->value == "W") {
                 MatchDetail::where('match_id', $request->match_id)
-                    ->where('tournament', $request->tournament)
+                    ->where('tournament_id', $request->tournament)
                     ->where('team_id', $request->bt_team_id)
                     ->update(['isWicket' => 1]);
             }

@@ -18,7 +18,6 @@ class CreatePlayersTable extends Migration
             $table->string('player_id')->unique();
             $table->string('player_name');
             $table->string('player_role');
-            $table->integer('team_id');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

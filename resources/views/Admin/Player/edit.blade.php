@@ -8,7 +8,7 @@
 				<div class="form-grids row widget-shadow" data-example-id="basic-forms">
 
 						<div class="form-body">
-							<form method="POST" action="/admin/Players/{{$player['id']}}">
+							<form method="POST" action="{{route('teams.players.update',['team'=>$team->id,'player'=>$player->id])}}">
 							@csrf
 							@method('PUT')
 								<div class="form-group">
@@ -26,23 +26,7 @@
 									<input type="text" class="form-control" id="field1" name="player_role" value="{{$player['player_role']}}">
 								<div>{{ $errors->first('player_role')}}</div>
 								</div>
-								<div class="form-group">
-										<label for="exampleFormControlSelect2">Select Team</label>
-										<select class="form-control" id="exampleFormControlSelect2" name="team_id">
-											@if($player->Teams)
-											<option value="{{$player['team_id']}}">{{$player->Teams->team_name}}</option>
-											@else
-											<option value="">Select Team</option>
-											@endif
-											@foreach($team as $t)
-												<option value="{{$t->id}}">{{$t->team_name}}</option>
-											@endforeach
-										</select>
-										<div>{{ $errors->first('team_id')}}</div>
-								</div>
 
-
-                <input type="hidden" value="{{$player['id']}}" name="id">
 								<button type="submit" class="btn btn-default">Update</button>
 							</form>
 						</div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Response;
 use Illuminate\Support\Facades\Redirect;
 
 use App\Teams;
@@ -14,16 +13,19 @@ use App\Schedule;
 
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response 
-     */
-    public function index()
+
+    public function index(Tournament $tournament)
     {
-        $team = Teams::all();
-        $tournament = Tournament::all();
-        return view('admin/Team/index',compact('team','tournament'));
+
+        $tournament_id = $tournament->id;
+        $team = Teams::whereHas('tournaments',function($query) use($tournament_id){
+            $query->where('tournament_id',$tournament_id)->where('user_id',auth()->user()->id);
+        })->get();
+        if($tournament->user_id == auth()->user()->id){
+            return view('admin/Team/index',compact('team','tournament'));
+        }
+        else
+            return "Page Not Found";
     }
 
     /**
@@ -36,93 +38,55 @@ class TeamController extends Controller
         // $message = NULL;
         // return view('admin/Team/create',compact('message'));
     }
- 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+
+    public function store(Request $request,$tournament)
     {
-        // $input = request()->all(); 
-        
-        $t = Teams::create(request(['team_code','team_name','team_title']));
+
+        $team = Teams::create(request(['team_code','team_name','team_title']));
+
+        $tnt = Tournament::find($tournament);
+        $team->Tournaments()->syncWithoutDetaching($tnt);
+
         return response()->json(['message'=> 'Team has been successfully added']);
-        // return Response::json(['message'=>$message]);
-        // $t->id;
-        
-        // $team = Teams::find($t->id);
-        
-        // $tournament = Tournament::find(request('tournament_id'));
-        // $team->Tournaments()->syncWithoutDetaching($tournament);
         return redirect::route('Team.index')->with('message','Team has been successfully added');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Teams $Team)
+
+    public function show(Tournament $tournament,Teams $Team)
     {
         $id = $Team->id;
         $tournament = Tournament::whereHas('teams',function($query) use($id){
             $query->where('team_id',$id);
-        })->get(); 
+        })->get();
         // return $tournament;
         return view('admin/Team/show',compact('Team','tournament'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Tournament $tournament, Teams $team)
     {
-        $team = Teams::find($id);
-        return view('admin/Team/edit',compact('team'));
+        $team = Teams::find($team->id);
+        return view('admin/Team/edit',compact('team','tournament'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    { 
-        $team = Teams::find($id);
+    public function update(Request $request, Tournament $tournament, Teams $team)
+    {
         $team->update(request(['team_code','team_name','team_won']));
-        return redirect::route('Team.index')->with('message','Team has been succesfully updated');
+        return redirect::route('tournaments.teams.index',$tournament->id)->with('message','Team has been succesfully updated');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request, Teams $Team)
+    public function destroy(Tournament $tournament,Teams $team)
     {
-        $schedule = Schedule::where('team1_id',$Team->id)->orWhere('team2_id',$Team->id)->first();
+        $schedule = Schedule::where('team1_id',$team->id)->orWhere('team2_id',$team->id)->first();
         if($schedule){
             return back()->with('message','First Delete Schedule of This Team');
         }
         else{
-            $Team->delete();
+            $team->delete();
             return back()->with('message','Team has been successfully deleted');
         }
-    
 
-     
-        // $pointstable = PointsTable::where('team_id',$team->team_id)->first();
-        // $pointstable->delete();
 
     }
 
@@ -132,7 +96,7 @@ class TeamController extends Controller
             $tournament = Tournament::all();
             $team = Teams::whereHas('tournaments',function($query) use($id){
                     $query->where('tournament_id',$id);
-                })->get(); 
+                })->get();
             return view('Admin/Team/index',compact('tournament','team'));
     }
 }

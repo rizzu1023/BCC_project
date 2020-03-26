@@ -28,21 +28,21 @@ class newBatsmanAddedListener
     public function handle($event)
     {
         MatchPlayers::where('match_id', $event->request->match_id)
-            ->where('tournament', $event->request->tournament)
+            ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)
             ->where('player_id', $event->request->newBatsman_id)
             ->update(['bt_status' => 11]);
 
          if($event->request->isBatsmanCross){
              $nonstriker_batsman = MatchPlayers::where('match_id', $event->request->match_id)
-                 ->where('tournament', $event->request->tournament)
+                 ->where('tournament_id', $event->request->tournament)
                  ->where('team_id', $event->request->bt_team_id)
                  ->where('bt_status', 10)->first();
              $nonstriker_batsman->bt_status = 11;
              $nonstriker_batsman->save();
 
              MatchPlayers::where('match_id', $event->request->match_id)
-                 ->where('tournament', $event->request->tournament)
+                 ->where('tournament_id', $event->request->tournament)
                  ->where('team_id', $event->request->bt_team_id)
                  ->where('player_id', $event->request->newBatsman_id)
                  ->update(['bt_status' => 10]);

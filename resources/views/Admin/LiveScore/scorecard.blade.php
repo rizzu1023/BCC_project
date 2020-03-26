@@ -1,7 +1,7 @@
 @extends('Admin.layouts.base')
 
 @section('topbar_link')
-    <a href="/admin/LiveUpdate/{{$matchs->match_id}}/{{$matchs->tournament}}" class="btn btn-primary"
+    <a href="/admin/LiveUpdate/{{$matchs->match_id}}/{{$matchs->tournament_id}}" class="btn btn-primary"
        style="margin-top:10px ">Live Score</a>
 @endsection
 

@@ -41,7 +41,7 @@ class TournamentController extends Controller
 
 
 
-        $Tournament = Tournament::all();
+        $Tournament = Tournament::where('user_id',auth()->user()->id)->get();
         return view('Admin/Tournament/index',compact('Tournament'));
     }
 
@@ -78,7 +78,10 @@ class TournamentController extends Controller
      */
     public function show(Tournament $Tournament)
     {
-        $Team = Teams::all();
+        $id = auth()->user()->id;
+        $Team = Teams::whereHas('tournaments',function($query) use($id){
+            $query->where('user_id',$id);
+        })->get();
         $id = $Tournament->id;
         $tournament_team = Teams::whereHas('tournaments',function($query) use($id){
             $query->where('tournament_id',$id);

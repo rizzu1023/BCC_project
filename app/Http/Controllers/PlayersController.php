@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Tournament;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Players;
@@ -13,59 +14,49 @@ use App\MatchPlayers;
 
 class PlayersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
-
-    public function index()
+    public function index(Teams $team, Players $player)
     {
-        $player = Players::orderBy('team_id', 'asc')->get();
-        $team = Teams::all();
-        // dd($team);
-        $id = NULL;
-        $player_role = NULL;
-
-        return view('admin/Player/index', compact('player', 'team', 'id', 'player_role'));
+        $team_id = $team->id;
+        $players = Players::whereHas('teams',function($query) use($team_id){
+            $query->where('team_id',$team_id);
+        })->get();
+//        return $players;
+//        $players = Players::where('team_id',$team->id)->orderBy('team_id', 'asc')->get();
+        return view('admin/Player/index', compact('players','team'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function create(Teams $team)
     {
-        $team = Teams::all();
         return view('admin/Player/create', compact('team'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, Players $Player)
-    {
 
-        $Player->addPlayer();
+    public function store(Request $request, Teams $team)
+    {
+        $data = request()->validate([
+            'player_id' => 'required',
+            'player_name' => 'required',
+            'player_role' => 'required',
+        ]);
+
+        $player = Players::create([
+            'player_id' => $request->player_id,
+            'player_name' => $request->player_name,
+            'player_role' => $request->player_role,
+        ]);
+
+        $player->Teams()->syncWithoutDetaching($team);
 
         Batting::create(request(['player_id']));
         Bowling::create(request(['player_id']));
 
-        return redirect::route('Players.index')->with('message', 'Player has been added');
+        return redirect::route('teams.players.index',$team->id)->with('message', 'Player has been added');
         // return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Players $players
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Players $Player)
     {
         $bt = Batting::where('player_id', $Player->player_id)->first();
@@ -74,52 +65,45 @@ class PlayersController extends Controller
         return view('admin/Player/show', compact('Player', 'bt', 'bw', 'teams'));
     }
 
-    public function edit(Players $Player)
+    public function edit(Teams $team, Players $player)
     {
-        $player = $Player;
-        $team = Teams::all();
         return view('admin/Player/edit', compact('player', 'team'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Players $players
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Players $Player)
+
+    public function update(Request $request,Teams $team, Players $player)
     {
 
-        $bt = Batting::where('player_id', $Player->player_id)->first();
-        $bw = Bowling::where('player_id', $Player->player_id)->first();
+        $bt = Batting::where('player_id', $player->player_id)->first();
+        $bw = Bowling::where('player_id', $player->player_id)->first();
 
-        $Player->updatePlayer();
+        $data= request()->validate([
+            'player_id' => 'required|min:2',
+            'player_name' => 'required',
+            'player_role' => 'required',
+        ]);
+
+        $player->update($data);
 
         $bt->update(request(['player_id']));
         $bw->update(request(['player_id']));
 
-        return redirect::route('Players.index')->with('message', "Update Successfull");
+        return redirect::route('teams.players.index',$team->id)->with('message', "Update Successfull");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Players $players
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Players $Player)
+
+    public function destroy(Teams $team,Players $player)
     {
         // $player = Players::find($id);
-        $Player->delete();
+        $player->delete();
 
-        $pid = $Player->player_id;
+        $pid = $player->player_id;
 
         $bt_player = Batting::where('player_id', $pid)->first();
-        // $bt_player->delete();
+         $bt_player->delete();
 
         $bw_player = Bowling::where('player_id', $pid)->first();
-        // $bw_player->delete();
+         $bw_player->delete();
 
         return back()->with('message', 'Succesfully Deleted');
     }
