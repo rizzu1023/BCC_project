@@ -68,7 +68,7 @@
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link" to="/livescore">
-                        <i class="nav-icon icon-drop"></i> LiveScore
+                        <i class="nav-icon icon-drop"></i> LiveScores
                     </router-link>
                 </li>
                 <li class="nav-item">

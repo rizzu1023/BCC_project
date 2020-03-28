@@ -22,7 +22,7 @@ Route::get('/data/{id}/{tournament}', 'LiveScoreController@MatchData');
 
 Route::prefix('admin')->group(function () {
 
-    Route::apiResource('/Players', 'API\PlayersController');
+//    Route::apiResource('/Players', 'API\PlayersController');
 
     Route::apiResource('/Team', 'API\TeamController');
 
@@ -32,3 +32,13 @@ Route::prefix('admin')->group(function () {
     Route::apiResource('/Bowling', 'API\BowlingController');
 
 });
+
+Route::apiResource('/tournament', 'API\TournamentController');
+Route::apiResource('/tournaments.teams', 'API\TeamController');
+Route::apiResource('/tournaments.schedules', 'API\ScheduleController');
+//Route::apiResource('/teams.players', 'API\PlayersController');
+
+
+Route::get('/teams/{team}/players','API\PlayersController@index');
+Route::get('/player/{player_id}','API\PlayersController@show');
+

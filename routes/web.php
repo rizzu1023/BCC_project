@@ -9,6 +9,8 @@ Route::get('/teams', 'MainController@GetTeams');
 Route::get('/schedule', 'MainController@GetSchedule');
 Route::get('/stats', 'MainController@GetStats');
 
+Route::view('/blank','Main.layouts.layout');
+
 
 //Admin Routes
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
@@ -47,7 +49,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/LiveUpdate','LiveScoreController@LiveUpdate')->name('LiveUpdate');
 
 
-    Route::resource('tournaments.schedules','ShallowController');
+    Route::resource('tournaments.schedules','ScheduleController');
     Route::resource('tournaments.teams','TeamController');
     Route::resource('teams.players','PlayersController');
 });

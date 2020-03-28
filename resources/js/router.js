@@ -2,22 +2,30 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Players from './components/Players';
 import LiveScore from "./components/LiveScore";
+import Tournament from "./components/Tournament";
 import Accordion from "./components/Accordion";
 import Team from "./components/Team";
+import TournamentDetail from "./components/TournamentDetail";
 import Batting from "./components/Batting";
 import Bowling from "./components/Bowling";
+import PlayerDetail from "./components/PlayerDetail";
 
 
 Vue.use(VueRouter);
 
+let TeamDetail;
 export default new VueRouter({
     routes : [
         { path : '/' , component : Accordion },
         { path : '/livescore' , component : LiveScore },
         { path : '/player' , component : Players },
+        { path : '/player/:player_id' , component : PlayerDetail },
         { path : '/team' , component : Team },
-        { path : '/batting' , component : Batting },
-        { path : '/bowling' , component : Bowling },
+        { path : '/teams/:team/players' , component : Players },
+        { path : '/tournament' , component : Tournament },
+        { path : '/tournament/:tournament_id' , component : TournamentDetail },
+        // { path : '/tournament/detail/teams' , component : Accordion },
+        // { path : '/tournament/detail/schedule' , component : Bowling },
     ],
     mode : 'history',
 });

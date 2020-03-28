@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Resources\PlayersResource;
 use App\Players;
+use App\Teams;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,11 +13,14 @@ class PlayersController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Teams $team)
     {
-        $player = Players::orderBy('team_id', 'asc')->get();
+        $team_id = $team->id;
+        $player = Players::whereHas('teams',function($query) use($team_id){
+            $query->where('team_id',$team_id);
+        })->get();
         return PlayersResource::collection($player);
     }
 
@@ -47,11 +51,11 @@ class PlayersController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return PlayersResource
      */
-    public function show($id)
+    public function show(Players $player_id)
     {
-        //
+       return new PlayersResource($player_id);
     }
 
     /**

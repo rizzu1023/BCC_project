@@ -1,4 +1,5 @@
 <template>
+<!--    <h1>I am {{ $route.params.name }}</h1>-->
     <h1>I am Accordion</h1>
 </template>
 <script>

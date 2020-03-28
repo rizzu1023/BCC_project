@@ -2,112 +2,93 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use App\Events\firstEvent;
-
-
 use App\Schedule;
 use App\Teams;
 use App\Tournament;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ScheduleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $schedule = Schedule::all();
-        // event(New firstEvent($schedule));
-        return view('admin/Schedule/index',compact('schedule'));
 
+    public function index(Tournament $tournament)
+    {
+        $schedule = Schedule::where('tournament_id',$tournament->id)->get();
+        return view('Admin.Schedule.index',compact('schedule','tournament'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function create(Tournament $tournament)
     {
-        $team = NULL;
-        $tournament_name = NULL;
-        $tournament = Tournament::all();
-        return view('admin/Schedule/create',compact('team','tournament','tournament_name'));
-    }
-    public function scheduleTournament(Request $request){
-        $tournament_id = request('tournament_id');
-        $team = Teams::whereHas('tournaments',function($query) use($tournament_id){
-            $query->where('tournament_id',$tournament_id);
+        $tournament_id = $tournament->id;
+        $teams = Teams::whereHas('tournaments',function($query) use($tournament_id){
+            $query->where('tournament_id',$tournament_id)->where('user_id',auth()->user()->id);
         })->get();
-        $tournament = Tournament::all();
-        $temp = Tournament::find($tournament_id);
-        $tournament_name = $temp->tournament_name;
-        return view('admin/Schedule/create',compact('team','tournament','tournament_name'));
+        return view('Admin.Schedule.create',compact('teams','tournament'));
     }
 
-    /**
-     * Store a newly created resource in storage. 
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request, Schedule $Schedule)
+
+    public function store(Request $request, $tournament)
     {
-        $Schedule->addSchedule(); 
-        return redirect::route('Schedule.index')->with('message','Succesfully Added');
+        $data = request()->validate([
+            'match_no' => 'required',
+            'team1_id' => 'required',
+            'team2_id' => 'required',
+            'times' => 'required',
+            'dates' => 'required',
+        ]);
+
+        Schedule::create([
+            'match_no' => $request->match_no,
+            'team1_id' => $request->team1_id,
+            'team2_id' => $request->team2_id,
+            'times' => $request->times,
+            'dates' => $request->dates,
+            'tournament_id' => $tournament,
+        ]);
+        return redirect::route('tournaments.schedules.index',$tournament)->with('message','Succesfully Added');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Schedule  $schedule
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Schedule $schedule)
+    public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Schedule  $schedule
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Schedule $Schedule)
+    public function edit(Tournament $tournament,Schedule $schedule)
     {
-       $team = Teams::all();
-       $tournament = Tournament::all();
-       return view('admin/Schedule/edit',compact('Schedule','team','tournament'));
+        $tournament_id = $tournament->id;
+        $teams = Teams::whereHas('tournaments',function($query) use($tournament_id){
+            $query->where('tournament_id',$tournament_id)->where('user_id',auth()->user()->id);
+        })->get();
+        return view('Admin.Schedule.edit',compact('Schedule','teams','tournament'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Schedule  $schedule
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Schedule $Schedule)
+
+    public function update(Request $request, Tournament $tournament,Schedule $schedule)
     {
-        $Schedule->updateSchedule();
-        return redirect::route('Schedule.index')->with('message','Succesfully Update');
+        $valid_data = $request->validate([
+            'match_no' => 'required',
+            'team1_id' => 'required',
+            'team2_id' => 'required',
+            'times' => 'required',
+            'dates' => 'required',
+            'tournament_id' => 'required',
+        ]);
+
+        $schedule->update($valid_data);
+        return redirect::route('tournaments.schedules.index',$tournament->id)->with('message','Succesfully Added');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Schedule  $schedule
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Schedule $Schedule)
+    public function destroy(Tournament $tournament,Schedule $schedule)
     {
-        $Schedule->delete();
+        $schedule->delete();
         return back()->with('message','Successfully Deleted');
     }
 }

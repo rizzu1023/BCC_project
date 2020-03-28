@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Resources\TeamResource;
 use App\Teams;
+use App\Tournament;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -12,11 +13,15 @@ class TeamController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index()
+    public function index(Tournament $tournament)
     {
-        return TeamResource::collection(Teams::all());
+        $tournament_id = $tournament->id;
+        $team = Teams::whereHas('tournaments',function($query) use($tournament_id){
+            $query->where('tournament_id',$tournament_id);
+        })->get();
+        return TeamResource::collection($team);
     }
 
     /**

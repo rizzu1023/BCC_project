@@ -2,23 +2,21 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Resources\ScheduleResource;
-use App\Schedule;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\TournamentResource;
 use App\Tournament;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class ScheduleController extends Controller
+class TournamentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function index(Tournament $tournament)
+    public function index()
     {
-        $schedule = Schedule::where('tournament_id',$tournament->id)->get();
-        return ScheduleResource::collection($schedule);
+        return TournamentResource::collection(Tournament::all());
     }
 
     /**
@@ -35,10 +33,10 @@ class ScheduleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Schedule  $schedule
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Schedule $schedule)
+    public function show($id)
     {
         //
     }
@@ -47,10 +45,10 @@ class ScheduleController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Schedule  $schedule
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Schedule $schedule)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -58,10 +56,10 @@ class ScheduleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Schedule  $schedule
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Schedule $schedule)
+    public function destroy($id)
     {
         //
     }
