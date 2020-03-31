@@ -5,8 +5,15 @@
             <div v-for="player in players" :key="player.id" :data="player">
                 <router-link :to="'/player/' + player.id " style="text-decoration:none; color:#000">
                     <li class="list-group-item" style="border-radius: 0;">
-                        <h5 style="font-weight:bold" v-text="player.player_name"></h5>
-                        <span style="font-size: 12px" v-text="player.player_role"></span>
+                        <div class="row">
+                            <div class="col-2">
+                                <img width="40px" height="40px" src="/assets/Main/image/avatar.jpg" alt="avatar"/>
+                            </div>
+                            <div class="col-10">
+                                <h6 v-text="player.player_name"></h6>
+                                <span class="text-muted" style="font-size: 12px" v-text="player.player_role"></span>
+                            </div>
+                        </div>
                     </li>
                 </router-link>
             </div>
@@ -60,7 +67,7 @@
 
             loadPlayers() {
                 // player fetching
-                var $url = "http://localhost:8000/api/teams/" + this.$route.params.team + "/players";
+                var $url = this.$domainName + "teams/" + this.$route.params.team + "/players";
                 axios.get($url)
                     .then(response => this.players = response.data)
                     .catch(function (error) {
@@ -139,5 +146,20 @@
 </script>
 
 <style scoped>
+    .list-group-item {
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+    }
 
+    .list-group-item span {
+        font-size: 0.8rem;
+    }
+
+    .list-group-item h6 {
+        margin-bottom: 0.1rem;
+    }
+    .list-group-item .row img{
+        /*border-radius: 50%;*/
+    }
 </style>

@@ -158,7 +158,7 @@
 
         </header>
         <div class="c-body">
-            <main class="c-main">
+            <main class="c-main p-0">
                 <div class="">
                     <div class="fade-in">
                         <router-view></router-view>

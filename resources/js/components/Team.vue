@@ -4,7 +4,7 @@
                 <div  v-for="team in teams" :key="team.id" :data="team">
                 <router-link :to="'/teams/'+team.id+'/players'" style="text-decoration:none; color:#000">
                     <li class="list-group-item" style="border-radius: 0;">
-                        <h5 style="font-weight:bold" v-text="team.team_name"></h5>
+                        <span v-text="team.team_name"></span>
                     </li>
                 </router-link>
                 </div>
@@ -75,7 +75,7 @@
 
             loadTeams() {
                 //team fetching
-                var $url = "http://localhost:8000/api/tournaments/" + this.$route.params.tournament_id + "/teams";
+                var $url = this.$domainName + "tournaments/" + this.$route.params.tournament_id + "/teams";
                 axios.get($url)
                     .then(response => this.teams = response.data)
                     .catch(function (error) {
@@ -103,5 +103,12 @@
 </script>
 
 <style scoped>
-
+    .list-group-item{
+        border-right: 0;
+        border-left: 0;
+        border-top:0;
+    }
+    .list-group-item span{
+        font-size: 0.8rem;
+    }
 </style>

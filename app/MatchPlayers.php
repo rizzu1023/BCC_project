@@ -27,5 +27,9 @@ class MatchPlayers extends Model
         return $this->belongsTo('App\Match','match_id','match_id');
     }
 
+    public function MatchDetail(){
+        return $this->belongsTo('App\MatchDetail','match_id','match_id');
+    }
+
 
 }

@@ -32,7 +32,8 @@
 
         methods : {
             loadPlayers() {
-                axios.get('http://localhost:8000/api/tournament')
+                var $url = this.$domainName + "tournament";
+                    axios.get($url)
                     .then(response => this.tournaments = response.data)
                     .catch(function (error){
                         console.log(error);

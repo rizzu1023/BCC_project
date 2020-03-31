@@ -1,6 +1,6 @@
 <template>
     <div id="playerInfo">
-            <h4  v-if="player.player">{{ player.player_name}}</h4>
+            <h4>{{ player.player_name}}</h4>
     </div>
 </template>
 
@@ -15,10 +15,10 @@
 
     methods : {
         loadPlayer() {
-            var $url = "http://localhost:8000/api/player/" + this.$route.params.player_id;
+            var $url = this.$domainName + "player/" + this.$route.params.player_id;
             axios.get($url)
                 .then(response => this.player = response.data)
-                .catch(function(error){
+                .catch(function (error) {
                     console.log(error);
                 });
         }
@@ -26,7 +26,9 @@
 
     data : function(){
         return {
-            player : null,
+            player : {
+
+            },
         }
     },
     }
