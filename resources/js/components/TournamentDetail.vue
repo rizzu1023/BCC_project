@@ -41,20 +41,12 @@
         border : 0px;
         border-radius : 0px;
         color : #343434;
-        /*padding-left : 12px;*/
-        /*padding-right : 12px;*/
         padding: 12px;
     }
 
     .nav-item .active{
         color : #343434;
         font-weight : bold;
-    }
-
-    .nav {
-        /*width: 100vw;*/
-        /*position: fixed;*/
-        /*top: 150px;*/
     }
 
     .tab-content{

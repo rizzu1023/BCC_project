@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
 
-                    
+
                     <tr  v-for="stat in stats" :key="stat.id" :data="stat">
 <!--                    <tr v-if="type === 'mostRuns'" v-for="stat in stats" :key="stat.id" :data="stat">-->
 
@@ -164,7 +164,7 @@
     .table thead th {
         font-size: 0.8rem;
     }
-    .table tbody td:hover, .table tbody td:active , .table tbody td:focus{
-        background:orange;
-    }
+    /*.table tbody td:hover, .table tbody td:active , .table tbody td:focus{*/
+    /*    background:orange;*/
+    /*}*/
 </style>
