@@ -7,10 +7,10 @@
             <div>
                 <router-link :to="'/teams/players'" style="text-decoration:none; color:#000">
                     <li class="list-group-item" style="border-radius: 0;">
-                        <h6>Chennai Super Kings</h6>
+                        <h6>Team 1</h6>
                     </li>
                     <li class="list-group-item" style="border-radius: 0;">
-                        <h6>Mumbai Indians</h6>
+                        <h6>Team 2</h6>
                     </li>
                 </router-link>
             </div>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="row">
                     <label class="col-4">Toss</label>
-                    <span class="col-8">Mumbai Indians</span>
+                    <span class="col-8">Team 1</span>
                 </div>
             </div>
         </div>

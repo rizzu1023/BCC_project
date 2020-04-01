@@ -3,7 +3,7 @@
         <div class="row m-0">
             <div class="col-12 p-0">
                 <div class="nav-tabs-boxed">
-                    <ul class="nav nav-tabs" role="tablist">
+                    <ul class="nav nav-tabs live" role="tablist">
                         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule">MATCHES</a></li>
                         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#squad" role="tab" aria-controls="squad">TEAMS</a></li>
                         <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#stats" role="tab" aria-controls="stats">STATS</a></li>
@@ -34,8 +34,14 @@
 </script>
 
 <style scoped>
+    .nav-tabs-boxed{
+        background: #fff;
+    }
+
+
     .nav-item{
         font-size: 11px;
+        background: #fff;
     }
 
     .nav-item .nav-link{
@@ -45,16 +51,15 @@
         padding: 12px;
     }
 
-    .nav-item .active{
+    .live .nav-item .active{
         color : #343434;
         font-weight : bold;
+        border-bottom: 2px solid #343434;
     }
 
     .tab-content{
         border-radius: 0;
-        border-left: 0;
-        border-right: 0;
-        border-bottom: 0;
+        border : 0;
     }
 
 

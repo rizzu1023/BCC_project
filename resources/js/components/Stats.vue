@@ -88,7 +88,7 @@
 <style scoped>
     .table-header{
         background: #343434;
-        color: white;
+        color: #fff;
     }
     .table-header span{
         font-size: 0.8rem
