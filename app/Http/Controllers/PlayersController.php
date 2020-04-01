@@ -23,13 +23,13 @@ class PlayersController extends Controller
         })->get();
 //        return $players;
 //        $players = Players::where('team_id',$team->id)->orderBy('team_id', 'asc')->get();
-        return view('admin/Player/index', compact('players','team'));
+        return view('Admin/Player/index', compact('players','team'));
     }
 
 
     public function create(Teams $team)
     {
-        return view('admin/Player/create', compact('team'));
+        return view('Admin/Player/create', compact('team'));
     }
 
 
@@ -62,12 +62,12 @@ class PlayersController extends Controller
         $bt = Batting::where('player_id', $Player->player_id)->first();
         $bw = Bowling::where('player_id', $Player->player_id)->first();
         $teams = MatchPlayers::where('player_id', $Player->player_id)->select('team_id')->distinct()->get();
-        return view('admin/Player/show', compact('Player', 'bt', 'bw', 'teams'));
+        return view('Admin/Player/show', compact('Player', 'bt', 'bw', 'teams'));
     }
 
     public function edit(Teams $team, Players $player)
     {
-        return view('admin/Player/edit', compact('player', 'team'));
+        return view('Admin/Player/edit', compact('player', 'team'));
     }
 
 
@@ -120,7 +120,7 @@ class PlayersController extends Controller
         $id = Teams::where('id', request('id'))->first();
         $player_role = request('player_role');
         $team = Teams::all();
-        return view('admin/Player/index', compact('player', 'team', 'id', 'player_role'));
+        return view('Admin/Player/index', compact('player', 'team', 'id', 'player_role'));
     }
 
 }

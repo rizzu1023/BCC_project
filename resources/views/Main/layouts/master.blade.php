@@ -9,7 +9,7 @@
     {{--    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <title>CoreUI</title>
+    <title>Cricket</title>
 </head>
 <body class="c-app">
 <div id="app">
@@ -26,31 +26,31 @@
 
 
         <ul class="c-sidebar-nav">
-            <li class="c-sidebar-nav-item">
-                <router-link class="nav-link" to="/">
-                    <i class="nav-icon icon-pencil"></i> Dashboard
-                </router-link>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <router-link class="nav-link" to="/tournament">
-                    <i class="nav-icon icon-pencil"></i> Tournament
-                </router-link>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <router-link class="nav-link" to="/team">
-                    <i class="nav-icon icon-pencil"></i> Teams
-                </router-link>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <router-link class="nav-link" to="/livescore">
-                    <i class="nav-icon icon-drop"></i> LiveScores
-                </router-link>
-            </li>
-            <li class="c-sidebar-nav-item">
-                <router-link class="nav-link" to="/player">
-                    <i class="nav-icon icon-pencil"></i> Players
-                </router-link>
-            </li>
+{{--            <li class="c-sidebar-nav-item">--}}
+{{--                <router-link class="nav-link" to="/">--}}
+{{--                    <i class="nav-icon icon-pencil"></i> Dashboard--}}
+{{--                </router-link>--}}
+{{--            </li>--}}
+{{--            <li class="c-sidebar-nav-item">--}}
+{{--                <router-link class="nav-link" to="/tournament">--}}
+{{--                    <i class="nav-icon icon-pencil"></i> Tournament--}}
+{{--                </router-link>--}}
+{{--            </li>--}}
+{{--            <li class="c-sidebar-nav-item">--}}
+{{--                <router-link class="nav-link" to="/team">--}}
+{{--                    <i class="nav-icon icon-pencil"></i> Teams--}}
+{{--                </router-link>--}}
+{{--            </li>--}}
+{{--            <li class="c-sidebar-nav-item">--}}
+{{--                <router-link class="nav-link" to="/livescore">--}}
+{{--                    <i class="nav-icon icon-drop"></i> LiveScores--}}
+{{--                </router-link>--}}
+{{--            </li>--}}
+{{--            <li class="c-sidebar-nav-item">--}}
+{{--                <router-link class="nav-link" to="/player">--}}
+{{--                    <i class="nav-icon icon-pencil"></i> Players--}}
+{{--                </router-link>--}}
+{{--            </li>--}}
 
         </ul>
 

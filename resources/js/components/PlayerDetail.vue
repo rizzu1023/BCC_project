@@ -11,8 +11,8 @@
                     </ul>
                     <div class="tab-content m-0 p-0">
                         <div class="tab-pane active" id="schedule"><PlayerInfo></PlayerInfo></div>
-                        <div class="tab-pane" id="squad">batting</div>
-                        <div class="tab-pane" id="stats">bowling</div>
+                        <div class="tab-pane" id="squad"><PlayerBatting></PlayerBatting></div>
+                        <div class="tab-pane" id="stats"><PlayerBowling></PlayerBowling></div>
 <!--                        <div class="tab-pane" id="pointstable">Hello i am poinstable</div>-->
                     </div>
                 </div>
@@ -23,9 +23,11 @@
 
 <script>
     import PlayerInfo from "./PlayerInfo";
+    import PlayerBatting from "./PlayerBatting";
+    import PlayerBowling from "./PlayerBowling";
     export default {
         name: "PlayerDetail",
-        components: {PlayerInfo}
+        components: {PlayerBowling, PlayerBatting, PlayerInfo}
     }
 </script>
 

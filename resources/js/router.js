@@ -18,13 +18,13 @@ Vue.use(VueRouter);
 let TeamDetail;
 export default new VueRouter({
     routes : [
-        { path : '/' , component : Accordion },
-        { path : '/livescore' , component : LiveScore },
+        { path : '/' , component : Tournament },
+        // { path : '/livescore' , component : LiveScore },
         { path : '/player' , component : Players },
         { path : '/player/:player_id' , component : PlayerDetail },
         { path : '/team' , component : Team },
         { path : '/teams/:team/players' , component : Players },
-        { path : '/tournament' , component : Tournament },
+        // { path : '/tournament' , component : Tournament },
         { path : '/tournament/:tournament_id' , component : TournamentDetail },
         { path : '/tournament/:tournament_id/match/:match_id/:team1_id/:team2_id' , component : MatchDetail },
         { path : '/stats/:tournament_id/:type', component : StatsDetail },

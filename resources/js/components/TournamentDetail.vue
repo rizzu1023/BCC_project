@@ -1,7 +1,7 @@
 <template>
     <div id="tournamentDetail">
-        <div class="row">
-            <div class="col-12">
+        <div class="row m-0">
+            <div class="col-12 p-0">
                 <div class="nav-tabs-boxed">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule">MATCHES</a></li>
@@ -13,7 +13,7 @@
                         <div class="tab-pane active" id="schedule"><Schedule></Schedule></div>
                         <div class="tab-pane" id="squad"><Team></Team></div>
                         <div class="tab-pane" id="stats"><Stats></Stats></div>
-                        <div class="tab-pane" id="pointstable">Hello i am poinstable</div>
+                        <div class="tab-pane" id="pointstable"><PointsTable></PointsTable></div>
                     </div>
                 </div>
             </div>
@@ -24,9 +24,10 @@
 <script>
     import Schedule from "./Schedule";
     import Stats from "./Stats";
+    import PointsTable from "./PointsTable";
     export default {
         name: "TournamentDetail",
-        components: {Stats, Schedule},
+        components: {PointsTable, Stats, Schedule},
 
 
     }
@@ -34,7 +35,7 @@
 
 <style scoped>
     .nav-item{
-        font-size: 12px;
+        font-size: 11px;
     }
 
     .nav-item .nav-link{
