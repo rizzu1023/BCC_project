@@ -21,6 +21,6 @@ class AdminController extends Controller
         $players = Players::all()->count();
         $tournaments = Tournament::all()->count();
         $matches = Schedule::all()->count();
-        return view('admin/dashboard',compact('teams','players','tournaments','matches'));
+        return view('Admin/dashboard',compact('teams','players','tournaments','matches'));
     }
 }

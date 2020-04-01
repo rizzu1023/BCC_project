@@ -17,7 +17,7 @@ class BattingController extends Controller
     public function index()
     {
         $batting = Batting::all();
-        return view('admin/Batting/index', compact('batting'));
+        return view('Admin/Batting/index', compact('batting'));
     }
 
     /**

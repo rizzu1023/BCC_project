@@ -17,7 +17,7 @@ class PointsTableController extends Controller
     public function index()
     {
         $pointstable = PointsTable::all();
-        return view('admin/PointsTable/index', compact('pointstable'));
+        return view('Admin/PointsTable/index', compact('pointstable'));
     }
 
     /**

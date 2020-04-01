@@ -22,7 +22,7 @@ class TeamController extends Controller
             $query->where('tournament_id',$tournament_id)->where('user_id',auth()->user()->id);
         })->get();
         if($tournament->user_id == auth()->user()->id){
-            return view('admin/Team/index',compact('team','tournament'));
+            return view('Admin/Team/index',compact('team','tournament'));
         }
         else
             return "Page Not Found";
@@ -61,13 +61,13 @@ class TeamController extends Controller
             $query->where('team_id',$id);
         })->get();
         // return $tournament;
-        return view('admin/Team/show',compact('Team','tournament'));
+        return view('Admin/Team/show',compact('Team','tournament'));
     }
 
     public function edit(Tournament $tournament, Teams $team)
     {
         $team = Teams::find($team->id);
-        return view('admin/Team/edit',compact('team','tournament'));
+        return view('Admin/Team/edit',compact('team','tournament'));
     }
 
     public function update(Request $request, Tournament $tournament, Teams $team)

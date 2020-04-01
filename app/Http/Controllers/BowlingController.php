@@ -17,7 +17,7 @@ class BowlingController extends Controller
     public function index()
     {
         $bowling = Bowling::all();
-        return view('admin/Bowling/index', compact('bowling'));
+        return view('Admin/Bowling/index', compact('bowling'));
     }
 
     /**
