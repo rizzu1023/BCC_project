@@ -46,7 +46,7 @@
             </router-link>
         </ul>
 
-        <div class="bg-dark py-2 px-4">
+        <div class="py-2 px-4 table-header">
             <span>Bowling</span>
         </div>
         <ul class="list-group">
@@ -87,11 +87,12 @@
 
 <style scoped>
     .table-header{
-        background: #343434;
-        color: #fff;
+        background: #c2f1db;
     }
     .table-header span{
-        font-size: 0.8rem
+        font-size: 0.8rem;
+        color: #545a5f;
+        font-weight : bold;
     }
 
     .list-group-item{

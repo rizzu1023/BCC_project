@@ -1,6 +1,9 @@
 <template>
 
     <div id="playerDetail">
+        <div class="py-2 px-4 table-header">
+            <span>INDIA</span>
+        </div>
         <ul class="list-group">
             <div v-for="player in players" :key="player.id" :data="player">
                 <router-link :to="'/player/' + player.id " style="text-decoration:none; color:#000">
@@ -161,5 +164,16 @@
     }
     .list-group-item .row img{
         /*border-radius: 50%;*/
+    }
+
+    .table-header{
+        background: #545a5f;
+        color: #FFF;
+        text-align: center;
+    }
+    .table-header span{
+        font-size: 0.85rem;
+        font-weight : bold;
+        text-transform : uppercase;
     }
 </style>

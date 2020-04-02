@@ -109,6 +109,6 @@
         border-top:0;
     }
     .list-group-item span{
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
 </style>

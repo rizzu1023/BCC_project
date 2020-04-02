@@ -33,29 +33,29 @@
 </script>
 
 <style scoped>
+    .nav-tabs-boxed{
+        background: #545a5f;
+    }
+
+
     .nav-item{
-        font-size: 13px;
-        background: #fff;
+        font-size: 0.85rem;
+        background: #545a5f;
+
     }
 
     .nav-item .nav-link{
         border : 0px;
         border-radius : 0px;
-        color : #343434;
-    }
-    .nav-item{
-        font-size: 13px;
-        background: #fff;
-    }
-
-    .nav-tabs-boxed{
-        background: #fff;
+        color : #cbcbcb;
+        padding: 12px;
     }
 
     .live .nav-item .active{
-        color : #343434;
+        color : #fff;
+        background: #545a5f;
         font-weight : bold;
-        border-bottom: 2px solid #343434;
+        border-bottom: 3px solid #fff;
     }
 
     .tab-content{

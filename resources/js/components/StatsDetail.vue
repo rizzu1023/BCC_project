@@ -2,8 +2,24 @@
     <div id="statsDetail">
         <div class="tables table-responsive table-hover">
             <div class="panel-body widget-shadow">
+                <div class="py-2 px-4 table-header">
+                    <span v-if="type == 'mostRuns'">Most Runs</span>
+                    <span v-if="type == 'bestBattingAverage'">Best Batting Average</span>
+                    <span v-if="type == 'bestBattingStrikeRate'">Best Batting Strike Rate</span>
+                    <span v-if="type == 'highestScores'">Highest Scores</span>
+                    <span v-if="type == 'mostHundreds'">Most Hundreds</span>
+                    <span v-if="type == 'mostFifties'">Most Fifties</span>
+                    <span v-if="type == 'mostSixes'">Most Sixes</span>
+                    <span v-if="type == 'mostFours'">Most Fours</span>
+                    <span v-if="type == 'mostWickets'">Most Wickets</span>
+                    <span v-if="type == 'bestBowlingAverage'">Best Bowling  Average</span>
+                    <span v-if="type == 'bestBowling'">Best Bowling</span>
+                    <span v-if="type == 'bestEconomy'">Best Economy</span>
+                    <span v-if="type == 'bestBowlingStrikeRate'">Best Bowling Strike Rate</span>
+
+                </div>
                 <table class="table">
-                    <thead class="thead-dark">
+                    <thead>
                     <tr>
                         <th scope="col">Batsman</th>
                         <th scope="col" v-if="type === 'mostRuns' || type === 'bestBattingAverage' || type === 'bestBattingStrikeRate' || type === 'mostSixes' || type === 'mostFours' || type === 'mostHundreds' || type === 'mostFifties'">M</th>
@@ -159,12 +175,30 @@
 
 <style scoped>
     .table tbody tr td {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
     .table thead th {
         font-size: 0.8rem;
     }
+    .table thead{
+        background : #c2f1db;
+        color : #545a5f;
+    }
+    .table thead tr th{
+        border:none;
+    }
     /*.table tbody td:hover, .table tbody td:active , .table tbody td:focus{*/
     /*    background:orange;*/
     /*}*/
+
+        .table-header{
+            background: #545a5f;
+            color: #FFF;
+            text-align: center;
+        }
+        .table-header span{
+            font-size: 0.85rem;
+            font-weight : bold;
+            text-transform : uppercase;
+        }
 </style>

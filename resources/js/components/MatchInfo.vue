@@ -1,6 +1,6 @@
 <template>
     <div id="matchInfo">
-        <div class="bg-dark py-2 px-4">
+        <div class="table-header py-2 px-4">
             <span style="font-size:13px">SQUADS</span>
         </div>
         <ul class="list-group">
@@ -15,7 +15,7 @@
                 </router-link>
             </div>
         </ul>
-        <div class="bg-dark py-2 px-4" style="font-size:13px">
+        <div class="table-header py-2 px-4">
             <span>INFO</span>
         </div>
         <div class="card">
@@ -48,5 +48,13 @@
 </script>
 
 <style scoped>
-
+    .table-header{
+        background: #c2f1db;
+        color: #545a5f;
+    }
+    .table-header span{
+        font-size: 0.85rem;
+        font-weight : bold;
+        text-transform : uppercase;
+    }
 </style>

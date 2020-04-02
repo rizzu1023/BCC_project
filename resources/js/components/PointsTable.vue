@@ -1,7 +1,7 @@
 <template>
     <div id="pointsTable">
-        <div class="text-center mt-5">
-        <h4>Working on it...</h4>
+        <div class="text-center ">
+        <h4 class="pt-5">Working on it...</h4>
         </div>
     </div>
 </template>

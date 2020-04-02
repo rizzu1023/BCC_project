@@ -8,13 +8,33 @@
     <!-- CoreUI CSS -->
     {{--    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <style>
+        .c-header{
+            background: #545a5f;
+            color: #fff;
+            border: 0;
+        }
+        .c-header-text{
+            text-align: center;
+            width: 100%;
+        }
+        .c-header-text span{
+            display: block;
+            color: #fff;
+            font-size: 1.5rem;
+            height: 100%;
+            line-height: 56px;
+        }
+
+    </style>
+    @yield('css')
 
     <title>Cricket</title>
 </head>
 <body class="c-app">
 <div id="app">
 
-    <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar" >
         <div class="c-sidebar-brand d-lg-down-none">
             <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
                 <use xlink:href="assets/brand/coreui.svg#full"></use>
@@ -58,23 +78,23 @@
     </div>
     <div class="c-wrapper c-fixed-components">
         <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
-            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"
-                    data-class="c-sidebar-show">
-                <svg class="c-icon c-icon-lg">
-                    <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-menu"></use>
-                </svg>
-            </button>
-            <a class="c-header-brand d-lg-none" href="#">
-                <svg width="118" height="46" alt="CoreUI Logo">
-                    <use xlink:href="assets/brand/coreui.svg#full"></use>
-                </svg>
-            </a>
-            <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"
-                    data-class="c-sidebar-lg-show" responsive="true">
-                <svg class="c-icon c-icon-lg">
-                    <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-menu"></use>
-                </svg>
-            </button>
+            <div class="c-header-text">
+                <span>CWC19</span>
+            </div>
+{{--            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"--}}
+{{--                    data-class="c-sidebar-show">--}}
+{{--                <svg class="c-icon c-icon-lg">--}}
+{{--                    <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-menu"></use>--}}
+{{--                </svg>--}}
+{{--            </button>--}}
+{{--            <div class="c-header-bran top-header">--}}
+{{--            </div>--}}
+{{--            <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar"--}}
+{{--                    data-class="c-sidebar-lg-show" responsive="true">--}}
+{{--                <svg class="c-icon c-icon-lg">--}}
+{{--                    <use xlink:href="node_modules/@coreui/icons/sprites/free.svg#cil-menu"></use>--}}
+{{--                </svg>--}}
+{{--            </button>--}}
 {{--            <ul class="c-header-nav d-md-down-none">--}}
 {{--                <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Dashboard</a></li>--}}
 {{--                <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Users</a></li>--}}
