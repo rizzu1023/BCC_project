@@ -44279,8 +44279,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "matchDetail" } }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
+    _c("div", { staticClass: "row m-0" }, [
+      _c("div", { staticClass: "col-12 p-0" }, [
         _c("div", { staticClass: "nav-tabs-boxed" }, [
           _vm._m(0),
           _vm._v(" "),
@@ -60975,9 +60975,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ExampleComponent', __webpa
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_require__(/*! ./components/Players */ "./resources/js/components/Players.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Team', __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Batting', __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]); // Vue.prototype.$domainName = 'http://localhost:8000/api/';
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://3.7.68.148/api/';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://localhost:8000/api/'; // Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 

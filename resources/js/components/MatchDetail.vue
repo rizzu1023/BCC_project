@@ -1,7 +1,7 @@
 <template>
     <div id="matchDetail">
-        <div class="row">
-            <div class="col-12">
+        <div class="row m-0">
+            <div class="col-12 p-0">
                 <div class="nav-tabs-boxed">
                     <ul class="nav nav-tabs live" role="tablist">
                         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#squad" role="tab" aria-controls="profile">INFO</a></li>
