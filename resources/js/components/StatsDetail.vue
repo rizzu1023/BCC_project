@@ -67,7 +67,7 @@
                         <td v-if="type === 'highestScores'">{{ calculateStrikeRate(stat.bt_runs,stat.bt_balls)}}</td>
 
                         <td v-if="type === 'mostRuns'">{{ stat.bt_runs}}</td>
-                        <td v-if="type === 'highestScores'">{{ stat.match.team_id }}</td>
+                        <td v-if="type === 'highestScores'">{{ stat.team_id }}</td>
                         <td v-if="type === 'bestBattingAverage'">{{ stat.average }}</td>
 <!--                        <td v-if="type === 'bestBattingAverage' && stat.bt_average == null">{{ stat.bt_runs }}</td>-->
                         <td v-if="type === 'bestBattingStrikeRate'">{{ calculateStrikeRate(stat.bt_runs,stat.bt_balls) }}</td>

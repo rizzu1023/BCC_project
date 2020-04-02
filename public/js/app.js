@@ -2080,6 +2080,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2235,6 +2241,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PlayerInfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlayerInfo */ "./resources/js/components/PlayerInfo.vue");
 /* harmony import */ var _PlayerBatting__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlayerBatting */ "./resources/js/components/PlayerBatting.vue");
 /* harmony import */ var _PlayerBowling__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlayerBowling */ "./resources/js/components/PlayerBowling.vue");
+//
+//
 //
 //
 //
@@ -3001,6 +3009,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Schedule__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Schedule */ "./resources/js/components/Schedule.vue");
 /* harmony import */ var _Stats__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Stats */ "./resources/js/components/Stats.vue");
 /* harmony import */ var _PointsTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PointsTable */ "./resources/js/components/PointsTable.vue");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7581,7 +7596,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #545a5f;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #545a5f;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n}\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #545a5f;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #545a5f;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #545a5f;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -7619,7 +7634,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-item .nav-link[data-v-37bfe506]{\n    border : 0px;\n    border-radius : 0px;\n    color : #343434;\n    padding: 12px;\n}\n.nav-item[data-v-37bfe506]{\n    font-size: 13px;\n    background: #fff;\n}\n.nav-tabs-boxed[data-v-37bfe506]{\n    background: #fff;\n}\n.live .nav-item .active[data-v-37bfe506]{\n    color : #343434;\n    font-weight : bold;\n    border-bottom: 2px solid #343434;\n}\n.tab-content[data-v-37bfe506]{\n    border-radius: 0;\n    border : 0;\n}\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-37bfe506]{\n    background: #545a5f;\n}\n.nav-item[data-v-37bfe506]{\n    font-size: 0.85rem;\n    background: #545a5f;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-37bfe506]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-37bfe506]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-37bfe506]{\n    color : #fff;\n    text-decoration: none;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-37bfe506] {\n    position: fixed;\n    top: 56px;\n    background: #545a5f;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-37bfe506]{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -7771,7 +7786,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #545a5f;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.85rem;\n    background: #545a5f;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-628fc105]{\n    color : #fff;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #545a5f;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.85rem;\n    background: #545a5f;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    background: #545a5f;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -44282,118 +44297,44 @@ var render = function() {
     _c("div", { staticClass: "row m-0" }, [
       _c("div", { staticClass: "col-12 p-0" }, [
         _c("div", { staticClass: "nav-tabs-boxed" }, [
-          _vm._m(0),
+          _c(
+            "ul",
+            { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
+            [
+              _c("router-link", { attrs: { to: "info" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("info")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "live" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Live")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "scorecard" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Scorecard")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "overs" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Overs")])
+                ])
+              ])
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "tab-content m-0 p-0" }, [
-            _c(
-              "div",
-              { staticClass: "tab-pane active", attrs: { id: "squad" } },
-              [_c("MatchInfo")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tab-pane ", attrs: { id: "schedule" } },
-              [_c("LiveMatch")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tab-pane", attrs: { id: "stats" } },
-              [_c("Scorecard")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tab-pane", attrs: { id: "pointstable" } },
-              [_c("MatchOvers")],
-              1
-            )
-          ])
+          _c("div", { staticClass: "tab-content p-0" }, [_c("router-view")], 1)
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "ul",
-      { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
-      [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#squad",
-                role: "tab",
-                "aria-controls": "profile"
-              }
-            },
-            [_vm._v("INFO")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link ",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#schedule",
-                role: "tab",
-                "aria-controls": "home"
-              }
-            },
-            [_vm._v("LIVE")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#stats",
-                role: "tab",
-                "aria-controls": "profile"
-              }
-            },
-            [_vm._v("SCORECARD")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#pointstable",
-                role: "tab",
-                "aria-controls": "messages"
-              }
-            },
-            [_vm._v("OVERS")]
-          )
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -44572,8 +44513,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "playerBatting" } }, [
-      _c("div", { staticClass: "text-center mt-5" }, [
-        _c("h4", [_vm._v("Working on it...")])
+      _c("div", { staticClass: "text-center p-5" }, [
+        _c("h4", { staticClass: "p-5" }, [_vm._v("Working on it...")])
       ])
     ])
   }
@@ -44607,8 +44548,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "playerBowling" } }, [
-      _c("div", { staticClass: "text-center mt-5" }, [
-        _c("h4", [_vm._v("Working on it...")])
+      _c("div", { staticClass: "text-center p-5" }, [
+        _c("h4", { staticClass: "p-5" }, [_vm._v("Working on it...")])
       ])
     ])
   }
@@ -44638,95 +44579,43 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12" }, [
         _c("div", { staticClass: "nav-tabs-boxed" }, [
-          _vm._m(0),
+          _c(
+            "ul",
+            { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
+            [
+              _c("router-link", { attrs: { to: "info" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Info")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "batting" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Batting")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "bowling" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Bowling")])
+                ])
+              ])
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "tab-content m-0 p-0" }, [
-            _c(
-              "div",
-              { staticClass: "tab-pane active", attrs: { id: "schedule" } },
-              [_c("PlayerInfo")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tab-pane", attrs: { id: "squad" } },
-              [_c("PlayerBatting")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tab-pane", attrs: { id: "stats" } },
-              [_c("PlayerBowling")],
-              1
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "tab-content m-0 p-0" },
+            [_c("router-view")],
+            1
+          )
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "ul",
-      { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
-      [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#schedule",
-                role: "tab",
-                "aria-controls": "home"
-              }
-            },
-            [_vm._v("INFO")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#squad",
-                role: "tab",
-                "aria-controls": "profile"
-              }
-            },
-            [_vm._v("BATTING")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#stats",
-                role: "tab",
-                "aria-controls": "profile"
-              }
-            },
-            [_vm._v("BOWLING")]
-          )
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -44809,7 +44698,7 @@ var render = function() {
               "router-link",
               {
                 staticStyle: { "text-decoration": "none", color: "#000" },
-                attrs: { to: "/player/" + player.id }
+                attrs: { to: "/player/" + player.id + "/info" }
               },
               [
                 _c(
@@ -44943,7 +44832,8 @@ var render = function() {
                     "/" +
                     schedule.team1_id.id +
                     "/" +
-                    schedule.team2_id.id
+                    schedule.team2_id.id +
+                    "/info"
                 }
               },
               [
@@ -45548,7 +45438,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.type === "highestScores"
-                  ? _c("td", [_vm._v(_vm._s(stat.match.team_id))])
+                  ? _c("td", [_vm._v(_vm._s(stat.team_id))])
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.type === "bestBattingAverage"
@@ -45716,7 +45606,7 @@ var render = function() {
               "router-link",
               {
                 staticStyle: { "text-decoration": "none", color: "#000" },
-                attrs: { to: "/tournament/" + tournament.id }
+                attrs: { to: "/tournament/" + tournament.id + "/schedule" }
               },
               [
                 _c("li", { staticClass: "list-group-item" }, [
@@ -45767,118 +45657,44 @@ var render = function() {
     _c("div", { staticClass: "row m-0" }, [
       _c("div", { staticClass: "col-12 p-0" }, [
         _c("div", { staticClass: "nav-tabs-boxed" }, [
-          _vm._m(0),
+          _c(
+            "ul",
+            { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
+            [
+              _c("router-link", { attrs: { to: "schedule" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Schedule")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "teams" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Teams")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "stats" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Stats")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("router-link", { attrs: { to: "pointsTable" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("PointsTable")])
+                ])
+              ])
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "tab-content m-0 p-0" }, [
-            _c(
-              "div",
-              { staticClass: "tab-pane active", attrs: { id: "schedule" } },
-              [_c("Schedule")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tab-pane", attrs: { id: "squad" } },
-              [_c("Team")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tab-pane", attrs: { id: "stats" } },
-              [_c("Stats")],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "tab-pane", attrs: { id: "pointstable" } },
-              [_c("PointsTable")],
-              1
-            )
-          ])
+          _c("div", { staticClass: "tab-content p-0" }, [_c("router-view")], 1)
         ])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "ul",
-      { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
-      [
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link active",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#schedule",
-                role: "tab",
-                "aria-controls": "schedule"
-              }
-            },
-            [_vm._v("MATCHES")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#squad",
-                role: "tab",
-                "aria-controls": "squad"
-              }
-            },
-            [_vm._v("TEAMS")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#stats",
-                role: "tab",
-                "aria-controls": "stats"
-              }
-            },
-            [_vm._v("STATS")]
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", { staticClass: "nav-item" }, [
-          _c(
-            "a",
-            {
-              staticClass: "nav-link",
-              attrs: {
-                "data-toggle": "tab",
-                href: "#pointstable",
-                role: "tab",
-                "aria-controls": "messages"
-              }
-            },
-            [_vm._v("POINTS TABLE")]
-          )
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -60975,8 +60791,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ExampleComponent', __webpa
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_require__(/*! ./components/Players */ "./resources/js/components/Players.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Team', __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Batting', __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://localhost:8000/api/'; // Vue.prototype.$domainName = 'http://3.7.68.148/api/';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]); // Vue.prototype.$domainName = 'http://localhost:8000/api/';
+
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://3.7.68.148/api/';
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
@@ -62773,12 +62590,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Tournament__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Tournament */ "./resources/js/components/Tournament.vue");
 /* harmony import */ var _components_Accordion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Accordion */ "./resources/js/components/Accordion.vue");
 /* harmony import */ var _components_Team__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue");
-/* harmony import */ var _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/TournamentDetail */ "./resources/js/components/TournamentDetail.vue");
-/* harmony import */ var _components_Batting__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue");
-/* harmony import */ var _components_Bowling__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue");
-/* harmony import */ var _components_PlayerDetail__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/PlayerDetail */ "./resources/js/components/PlayerDetail.vue");
-/* harmony import */ var _components_StatsDetail__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/StatsDetail */ "./resources/js/components/StatsDetail.vue");
-/* harmony import */ var _components_MatchDetail__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/MatchDetail */ "./resources/js/components/MatchDetail.vue");
+/* harmony import */ var _components_Stats__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Stats */ "./resources/js/components/Stats.vue");
+/* harmony import */ var _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/TournamentDetail */ "./resources/js/components/TournamentDetail.vue");
+/* harmony import */ var _components_Batting__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue");
+/* harmony import */ var _components_Bowling__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue");
+/* harmony import */ var _components_PlayerDetail__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/PlayerDetail */ "./resources/js/components/PlayerDetail.vue");
+/* harmony import */ var _components_StatsDetail__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/StatsDetail */ "./resources/js/components/StatsDetail.vue");
+/* harmony import */ var _components_MatchDetail__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/MatchDetail */ "./resources/js/components/MatchDetail.vue");
+/* harmony import */ var _components_PointsTable__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/PointsTable */ "./resources/js/components/PointsTable.vue");
+/* harmony import */ var _components_Schedule__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Schedule */ "./resources/js/components/Schedule.vue");
+/* harmony import */ var _components_MatchInfo__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/MatchInfo */ "./resources/js/components/MatchInfo.vue");
+/* harmony import */ var _components_LiveMatch__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/LiveMatch */ "./resources/js/components/LiveMatch.vue");
+/* harmony import */ var _components_Scorecard__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/Scorecard */ "./resources/js/components/Scorecard.vue");
+/* harmony import */ var _components_MatchOvers__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/MatchOvers */ "./resources/js/components/MatchOvers.vue");
+/* harmony import */ var _components_PlayerInfo__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/PlayerInfo */ "./resources/js/components/PlayerInfo.vue");
+/* harmony import */ var _components_PlayerBatting__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/PlayerBatting */ "./resources/js/components/PlayerBatting.vue");
+/* harmony import */ var _components_PlayerBowling__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/PlayerBowling */ "./resources/js/components/PlayerBowling.vue");
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -62804,23 +62641,61 @@ var TeamDetail;
     component: _components_Players__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
     path: '/player/:player_id',
-    component: _components_PlayerDetail__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _components_PlayerDetail__WEBPACK_IMPORTED_MODULE_11__["default"],
+    children: [{
+      path: 'info',
+      component: _components_PlayerInfo__WEBPACK_IMPORTED_MODULE_20__["default"]
+    }, {
+      path: 'batting',
+      component: _components_PlayerBatting__WEBPACK_IMPORTED_MODULE_21__["default"]
+    }, {
+      path: 'bowling',
+      component: _components_PlayerBowling__WEBPACK_IMPORTED_MODULE_22__["default"]
+    }]
   }, {
     path: '/team',
     component: _components_Team__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '/teams/:team/players',
     component: _components_Players__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }, // { path : '/tournament' , component : Tournament },
-  {
+  }, {
+    path: '/tournament',
+    component: _components_Tournament__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }, {
     path: '/tournament/:tournament_id',
-    component: _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_7__["default"]
+    component: _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_8__["default"],
+    children: [{
+      path: 'schedule',
+      component: _components_Schedule__WEBPACK_IMPORTED_MODULE_15__["default"]
+    }, {
+      path: 'teams',
+      component: _components_Team__WEBPACK_IMPORTED_MODULE_6__["default"]
+    }, {
+      path: 'stats',
+      component: _components_Stats__WEBPACK_IMPORTED_MODULE_7__["default"]
+    }, {
+      path: 'pointsTable',
+      component: _components_PointsTable__WEBPACK_IMPORTED_MODULE_14__["default"]
+    }]
   }, {
     path: '/tournament/:tournament_id/match/:match_id/:team1_id/:team2_id',
-    component: _components_MatchDetail__WEBPACK_IMPORTED_MODULE_12__["default"]
+    component: _components_MatchDetail__WEBPACK_IMPORTED_MODULE_13__["default"],
+    children: [{
+      path: 'info',
+      component: _components_MatchInfo__WEBPACK_IMPORTED_MODULE_16__["default"]
+    }, {
+      path: 'live',
+      component: _components_LiveMatch__WEBPACK_IMPORTED_MODULE_17__["default"]
+    }, {
+      path: 'scorecard',
+      component: _components_Scorecard__WEBPACK_IMPORTED_MODULE_18__["default"]
+    }, {
+      path: 'overs',
+      component: _components_MatchOvers__WEBPACK_IMPORTED_MODULE_19__["default"]
+    }]
   }, {
     path: '/stats/:tournament_id/:type',
-    component: _components_StatsDetail__WEBPACK_IMPORTED_MODULE_11__["default"]
+    component: _components_StatsDetail__WEBPACK_IMPORTED_MODULE_12__["default"]
   } // { path : '/tournament/detail/teams' , component : Accordion },
   // { path : '/tournament/detail/schedule' , component : Bowling },
   ],

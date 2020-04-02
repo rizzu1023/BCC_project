@@ -40,8 +40,8 @@ Vue.component('Team', require('./components/Team').default);
 Vue.component('Batting', require('./components/Batting').default);
 Vue.component('Bowling', require('./components/Bowling').default);
 
-Vue.prototype.$domainName = 'http://localhost:8000/api/';
-// Vue.prototype.$domainName = 'http://3.7.68.148/api/';
+// Vue.prototype.$domainName = 'http://localhost:8000/api/';
+Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
 require('./bootstrap');
 

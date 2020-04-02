@@ -4,16 +4,18 @@
             <div class="col-12">
                 <div class="nav-tabs-boxed">
                     <ul class="nav nav-tabs live" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#schedule" role="tab" aria-controls="home">INFO</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#squad" role="tab" aria-controls="profile">BATTING</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#stats" role="tab" aria-controls="profile">BOWLING</a></li>
-<!--                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#pointstable" role="tab" aria-controls="messages">Points Table</a></li>-->
+                        <router-link to="info">
+                            <li class="nav-item"><a class="nav-link">Info</a></li>
+                        </router-link>
+                        <router-link to="batting">
+                            <li class="nav-item"><a class="nav-link">Batting</a></li>
+                        </router-link>
+                        <router-link to="bowling">
+                            <li class="nav-item"><a class="nav-link">Bowling</a></li>
+                        </router-link>
                     </ul>
                     <div class="tab-content m-0 p-0">
-                        <div class="tab-pane active" id="schedule"><PlayerInfo></PlayerInfo></div>
-                        <div class="tab-pane" id="squad"><PlayerBatting></PlayerBatting></div>
-                        <div class="tab-pane" id="stats"><PlayerBowling></PlayerBowling></div>
-<!--                        <div class="tab-pane" id="pointstable">Hello i am poinstable</div>-->
+                      <router-view></router-view>
                     </div>
                 </div>
             </div>
@@ -33,31 +35,48 @@
 
 <style scoped>
 
+    .nav-tabs-boxed{
+        background: #545a5f;
+    }
+
+
+    .nav-item{
+        font-size: 0.85rem;
+        background: #545a5f;
+        text-transform: uppercase;
+
+    }
 
     .nav-item .nav-link{
         border : 0px;
         border-radius : 0px;
-        color : #343434;
+        color : #cbcbcb;
         padding: 12px;
-    }
-
-    .nav-item{
-        font-size: 13px;
-        background: #fff;
-    }
-
-    .nav-tabs-boxed{
-        background: #fff;
-    }
-
-    .live .nav-item .active{
-        color : #343434;
-        font-weight : bold;
-        border-bottom: 2px solid #343434;
     }
 
     .tab-content{
         border-radius: 0;
         border : 0;
+        margin-top: 47.5px;
+    }
+
+    .router-link-exact-active .nav-item .nav-link{
+        color : #fff;
+        text-decoration: none;
+        background: #545a5f;
+        font-weight : bold;
+        border-bottom: 3px solid #fff;
+    }
+
+    .nav-tabs {
+        position: fixed;
+        top: 56px;
+        background: #545a5f;
+        width : 100vw;
+        z-index : 1000;
+    }
+
+    .nav-tabs a{
+        text-decoration: none;
     }
 </style>

@@ -6,7 +6,7 @@
         </div>
         <ul class="list-group">
             <div v-for="player in players" :key="player.id" :data="player">
-                <router-link :to="'/player/' + player.id " style="text-decoration:none; color:#000">
+                <router-link :to="'/player/' + player.id + '/info'" style="text-decoration:none; color:#000">
                     <li class="list-group-item" style="border-radius: 0;">
                         <div class="row">
                             <div class="col-2">

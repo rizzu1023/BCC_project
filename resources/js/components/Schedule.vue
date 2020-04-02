@@ -2,7 +2,7 @@
     <div id="schedule">
         <ul class="list-group">
             <div  v-for="schedule in schedules" :key="schedule.id" :data="schedule">
-                <router-link :to="'/tournament/'+schedule.tournament_id+'/match/' + schedule.id + '/' + schedule.team1_id.id + '/' + schedule.team2_id.id" style="text-decoration:none; color:#000">
+                <router-link :to="'/tournament/'+schedule.tournament_id+'/match/' + schedule.id + '/' + schedule.team1_id.id + '/' + schedule.team2_id.id + '/info'" style="text-decoration:none; color:#000">
                     <li class="list-group-item">
                         <span class="text-muted" style="font-size: 12px">Match {{ schedule.match_no }}</span>
                         <h6 class="mt-2"><b>{{ schedule.team1_id.team_name }}</b></h6>

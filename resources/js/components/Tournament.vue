@@ -2,7 +2,7 @@
     <div id="tournament" >
         <ul class="list-group">
             <div v-for="tournament in tournaments" :key="tournament.id" :data="tournament">
-            <router-link :to="'/tournament/' + tournament.id" style="text-decoration:none; color:#000">
+            <router-link :to="'/tournament/' + tournament.id + '/schedule'" style="text-decoration:none; color:#000">
             <li class="list-group-item">
                 <h5 style="font-weight:bold" v-text="tournament.tournament_name"></h5>
                 <span style="font-size: 12px"> Jan 24 - Apr 09</span>

@@ -4,16 +4,23 @@
             <div class="col-12 p-0">
                 <div class="nav-tabs-boxed">
                     <ul class="nav nav-tabs live" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule">MATCHES</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#squad" role="tab" aria-controls="squad">TEAMS</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#stats" role="tab" aria-controls="stats">STATS</a></li>
-                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#pointstable" role="tab" aria-controls="messages">POINTS TABLE</a></li>
+<!--                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule">MATCHES</a></li>-->
+                        <router-link to="schedule">
+                            <li class="nav-item"><a class="nav-link">Schedule</a></li>
+                        </router-link>
+                        <router-link to='teams'>
+                             <li class="nav-item"><a class="nav-link">Teams</a></li>
+                        </router-link>
+                        <router-link to="stats">
+                            <li class="nav-item"><a class="nav-link">Stats</a></li>
+                        </router-link>
+                        <router-link to="pointsTable">
+                            <li class="nav-item"><a class="nav-link">PointsTable</a></li>
+                        </router-link>
                     </ul>
-                    <div class="tab-content m-0 p-0">
-                        <div class="tab-pane active" id="schedule"><Schedule></Schedule></div>
-                        <div class="tab-pane" id="squad"><Team></Team></div>
-                        <div class="tab-pane" id="stats"><Stats></Stats></div>
-                        <div class="tab-pane" id="pointstable"><PointsTable></PointsTable></div>
+                    <div class="tab-content p-0">
+                           <router-view></router-view>
+<!--                        <div class="tab-pane active" id="schedule"><Schedule></Schedule></div>-->
                     </div>
                 </div>
             </div>
@@ -42,6 +49,7 @@
     .nav-item{
         font-size: 0.85rem;
         background: #545a5f;
+        text-transform: uppercase;
 
     }
 
@@ -52,17 +60,34 @@
         padding: 12px;
     }
 
-    .live .nav-item .active{
+    .tab-content{
+        border-radius: 0;
+        border : 0;
+        margin-top: 47.5px;
+    }
+
+    .router-link-exact-active .nav-item .nav-link{
         color : #fff;
+        text-decoration: none;
         background: #545a5f;
         font-weight : bold;
         border-bottom: 3px solid #fff;
     }
 
-    .tab-content{
-        border-radius: 0;
-        border : 0;
+    .nav-tabs {
+        position: fixed;
+        top: 56px;
+        background: #545a5f;
+        width : 100vw;
+        z-index : 1000;
     }
+
+    .nav-tabs a{
+        text-decoration: none;
+    }
+
+
+
 
 
 </style>
