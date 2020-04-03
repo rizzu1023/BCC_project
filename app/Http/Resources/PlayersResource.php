@@ -6,12 +6,21 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class PlayersResource extends JsonResource
 {
+    private $team_name;
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
+//     * @param  \Illuminate\Http\Request  $request
+//     * @return array
      */
+//    public function __construct($resource , $team_name)
+//    {
+//        parent::__construct($resource);
+//        $this->resource = $resource;
+//        $this->team_name = $team_name;
+//
+//    }
+
     public function toArray($request)
     {
         return [
