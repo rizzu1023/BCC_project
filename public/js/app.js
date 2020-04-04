@@ -2823,6 +2823,185 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scorecard",
   mounted: function mounted() {
@@ -2864,7 +3043,9 @@ __webpack_require__.r(__webpack_exports__);
           'extras': {},
           'score': {}
         }
-      } // 'team1_players' : this.matchScorecard.team1_players,
+      },
+      team1: false,
+      team2: false // 'team2_players' : this.matchScorecard.team2_players,
 
     };
   }
@@ -8040,7 +8221,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7]{\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7]{\n    padding: 12px;\n    /*background : #545a5f;*/\n    /*color: #fff;*/\n    font-weight : bold;\n    background : #c2f1db;\n    color: #545a5f;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7]{\n    margin-bottom : 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7]{\n    font-size: 0.7rem;\n    border : 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7]{\n    border : 0;\n    background: #545a5f;\n    color : #fff;\n    padding : 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7]{\n    font-size : 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table td[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1){\n    text-align : left;\n    padding : 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom : 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align : left;\n    padding-left : 12px;\n    padding-right : 12px;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7]{\n    margin: 0;\n    color : #545a5f;\n    font-size : 0.65rem;\n}\n#scorecard .list-group[data-v-22a9a9c7]{\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin : 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7]{\n    font-weight : bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7]{\n    text-align : right;\n}\n\n\n", ""]);
+exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7]{\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7]{\n    padding: 12px;\n    /*background : #545a5f;*/\n    /*color: #fff;*/\n    font-weight : bold;\n    background : #c2f1db;\n    color: #545a5f;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7]{\n    margin-bottom : 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7]{\n    font-size: 0.7rem;\n    border : 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7]{\n    border : 0;\n    background: #545a5f;\n    color : #fff;\n    padding : 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7]{\n    font-size : 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table tbody tr td a[data-v-22a9a9c7] {\n    text-decoration: none;\n    color : #212529;\n}\n#scorecard table td[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1){\n    text-align : left;\n    padding : 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom : 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align : left;\n    padding-left : 12px;\n    padding-right : 12px;\n}\n#scorecard table tbody tr[data-v-22a9a9c7]:first-child{\n    border : 0;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7]{\n    margin: 0;\n    color : #545a5f;\n    font-size : 0.65rem;\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin : 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7]{\n    font-weight : bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7]{\n    text-align : right;\n}\n\n\n", ""]);
 
 // exports
 
@@ -45470,161 +45651,715 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "scorecard" } }, [
-    _c("div", { staticClass: "team-header" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-6 team-name" }, [
-          _c("span", [
-            _vm._v(_vm._s(_vm.matchScorecard.team1.detail.team_code) + " inn")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-6 team-score" }, [
-          _c("span", [
-            _vm._v(
-              _vm._s(_vm.matchScorecard.team1.score.score) +
-                " -" +
-                _vm._s(_vm.matchScorecard.team1.score.wicket) +
-                " (" +
-                _vm._s(_vm.matchScorecard.team1.score.over) +
-                "." +
-                _vm._s(_vm.matchScorecard.team1.score.overball) +
-                ")"
-            )
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "tables table-responsive" }, [
-      _c("table", { staticClass: "table invoice" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.matchScorecard.team1.batsman, function(player) {
-            return _vm.matchScorecard.team1
-              ? _c("tr", { key: player.id, attrs: { data: player } }, [
-                  _c("td", [
-                    _vm._v(
-                      "\n                        " +
-                        _vm._s(player.player_id) +
-                        "\n                        "
-                    ),
-                    _c("p", [_vm._v("c Fortuin b Budaza")])
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.bt_runs))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.bt_balls))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.bt_sixes))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.bt_fours))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      _vm._s(
-                        _vm.calculateStrikeRate(player.bt_runs, player.bt_balls)
-                      )
-                    )
-                  ])
-                ])
-              : _vm._e()
-          }),
-          0
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("ul", { staticClass: "list-group" }, [
-      _c("li", { staticClass: "list-group-item" }, [
+    _c(
+      "div",
+      {
+        staticClass: "team-header",
+        on: {
+          click: function($event) {
+            _vm.team1 = !_vm.team1
+          }
+        }
+      },
+      [
         _c("div", { staticClass: "row" }, [
-          _vm._m(1),
+          _c("div", { staticClass: "col-6 team-name" }, [
+            _c("span", [
+              _vm._v(_vm._s(_vm.matchScorecard.team1.detail.team_code) + " inn")
+            ])
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 right-col" }, [
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  _vm._s(
-                    _vm.matchScorecard.team1.extras.no_ball +
-                      _vm.matchScorecard.team1.extras.legbyes +
-                      _vm.matchScorecard.team1.extras.byes +
-                      _vm.matchScorecard.team1.extras.wide
-                  )
-                )
-              ]),
+          _c("div", { staticClass: "col-6 team-score" }, [
+            _c("span", [
               _vm._v(
-                "\n                            b " +
-                  _vm._s(_vm.matchScorecard.team1.extras.byes) +
-                  ", lb " +
-                  _vm._s(_vm.matchScorecard.team1.extras.legbyes) +
-                  ", w " +
-                  _vm._s(_vm.matchScorecard.team1.extras.wide) +
-                  ", nb " +
-                  _vm._s(_vm.matchScorecard.team1.extras.no_ball)
+                _vm._s(_vm.matchScorecard.team1.score.score) +
+                  " -" +
+                  _vm._s(_vm.matchScorecard.team1.score.wicket) +
+                  " (" +
+                  _vm._s(_vm.matchScorecard.team1.score.over) +
+                  "." +
+                  _vm._s(_vm.matchScorecard.team1.score.overball) +
+                  ")"
               )
             ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("div", { staticClass: "row" }, [
-          _vm._m(2),
+      ]
+    ),
+    _vm._v(" "),
+    _vm.team1
+      ? _c("div", { attrs: { id: "team1" } }, [
+          _c("div", { staticClass: "tables table-responsive" }, [
+            _c("table", { staticClass: "table invoice" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.matchScorecard.team1.batsman, function(player) {
+                  return _vm.matchScorecard.team1
+                    ? _c("tr", { key: player.id, attrs: { data: player } }, [
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [
+                                player.bt_status == 10
+                                  ? _c("div", [
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(
+                                            player.playerDetail.player_name
+                                          ) +
+                                          "\n                                    "
+                                      ),
+                                      _c("p", [_vm._v("Batting")])
+                                    ])
+                                  : player.bt_status == 11
+                                  ? _c("div", [
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(
+                                            player.playerDetail.player_name
+                                          ) +
+                                          "\n                                    "
+                                      ),
+                                      _c("p", [_vm._v("Batting")])
+                                    ])
+                                  : _c("div", [
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(
+                                            player.playerDetail.player_name
+                                          ) +
+                                          "\n\n                                    "
+                                      ),
+                                      player.wicket_type == "bold"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "b " +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                )
+                                            )
+                                          ])
+                                        : player.wicket_type == "catch"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "c " +
+                                                _vm._s(
+                                                  player.wicketSecondary
+                                                    .player_name
+                                                ) +
+                                                " b " +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                )
+                                            )
+                                          ])
+                                        : player.wicket_type == "stump"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "st " +
+                                                _vm._s(
+                                                  player.wicketSecondary
+                                                    .player_name
+                                                ) +
+                                                " b " +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                )
+                                            )
+                                          ])
+                                        : player.wicket_type == "lbw"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "lbw " +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                )
+                                            )
+                                          ])
+                                        : player.wicket_type == "runout" &&
+                                          player.wicketSecondary.player_name ==
+                                            "--"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "runout (" +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                ) +
+                                                ")"
+                                            )
+                                          ])
+                                        : _c("p", [
+                                            _vm._v(
+                                              "runout (" +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                ) +
+                                                "/" +
+                                                _vm._s(
+                                                  player.wicketSecondary
+                                                    .player_name
+                                                ) +
+                                                ")"
+                                            )
+                                          ])
+                                    ])
+                              ]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "b",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: "/player/" + player.id + "/info"
+                                  }
+                                },
+                                [_vm._v(_vm._s(player.bt_runs))]
+                              )
+                            ],
+                            1
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [_vm._v(_vm._s(player.bt_balls))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [_vm._v(_vm._s(player.bt_fours))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [_vm._v(_vm._s(player.bt_sixes))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.calculateStrikeRate(
+                                      player.bt_runs,
+                                      player.bt_balls
+                                    )
+                                  )
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    : _vm._e()
+                }),
+                0
+              )
+            ])
+          ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-6 right-col" }, [
-            _c("p", [
-              _c("b", [
-                _vm._v(
-                  _vm._s(_vm.matchScorecard.team1.score.score) +
-                    " -" +
-                    _vm._s(_vm.matchScorecard.team1.score.wicket) +
-                    " (" +
-                    _vm._s(_vm.matchScorecard.team1.score.over) +
-                    "." +
-                    _vm._s(_vm.matchScorecard.team1.score.overball) +
-                    ")"
-                )
+          _c("ul", { staticClass: "list-group" }, [
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("div", { staticClass: "row" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 right-col" }, [
+                  _c("p", [
+                    _c("b", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.matchScorecard.team1.extras.no_ball +
+                            _vm.matchScorecard.team1.extras.legbyes +
+                            _vm.matchScorecard.team1.extras.byes +
+                            _vm.matchScorecard.team1.extras.wide
+                        )
+                      )
+                    ]),
+                    _vm._v(
+                      "\n                                b " +
+                        _vm._s(_vm.matchScorecard.team1.extras.byes) +
+                        ", lb " +
+                        _vm._s(_vm.matchScorecard.team1.extras.legbyes) +
+                        ", w " +
+                        _vm._s(_vm.matchScorecard.team1.extras.wide) +
+                        ", nb " +
+                        _vm._s(_vm.matchScorecard.team1.extras.no_ball)
+                    )
+                  ])
+                ])
               ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("div", { staticClass: "row" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 right-col" }, [
+                  _c("p", [
+                    _c("b", [
+                      _vm._v(
+                        _vm._s(_vm.matchScorecard.team1.score.score) +
+                          " -" +
+                          _vm._s(_vm.matchScorecard.team1.score.wicket) +
+                          " (" +
+                          _vm._s(_vm.matchScorecard.team1.score.over) +
+                          "." +
+                          _vm._s(_vm.matchScorecard.team1.score.overball) +
+                          ")"
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "tables table-responsive" }, [
+            _c("table", { staticClass: "table invoice" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.matchScorecard.team1.bowler, function(player) {
+                  return _vm.matchScorecard.team1
+                    ? _c("tr", { key: player.id, attrs: { data: player } }, [
+                        _c("td", [
+                          _vm._v(_vm._s(player.playerDetail.player_name))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(player.bw_over) +
+                              "." +
+                              _vm._s(player.bw_overball)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(player.bw_maiden))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(player.bw_runs))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(player.bw_wickets))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("12.2")])
+                      ])
+                    : _vm._e()
+                }),
+                0
+              )
             ])
           ])
         ])
-      ])
-    ]),
+      : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "tables table-responsive" }, [
-      _c("table", { staticClass: "table invoice" }, [
-        _vm._m(3),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.matchScorecard.team1.bowler, function(player) {
-            return _vm.matchScorecard.team1
-              ? _c("tr", { key: player.id, attrs: { data: player } }, [
-                  _c("td", [_vm._v(_vm._s(player.player_id))]),
-                  _vm._v(" "),
-                  _c("td", [
+    _c(
+      "div",
+      {
+        staticClass: "team-header",
+        on: {
+          click: function($event) {
+            _vm.team2 = !_vm.team2
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-6 team-name" }, [
+            _c("span", [
+              _vm._v(_vm._s(_vm.matchScorecard.team2.detail.team_code) + " inn")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-6 team-score" }, [
+            _c("span", [
+              _vm._v(
+                _vm._s(_vm.matchScorecard.team2.score.score) +
+                  " -" +
+                  _vm._s(_vm.matchScorecard.team2.score.wicket) +
+                  " (" +
+                  _vm._s(_vm.matchScorecard.team2.score.over) +
+                  "." +
+                  _vm._s(_vm.matchScorecard.team2.score.overball) +
+                  ")"
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _vm.team2
+      ? _c("div", { attrs: { id: "team2" } }, [
+          _c("div", { staticClass: "tables table-responsive" }, [
+            _c("table", { staticClass: "table invoice" }, [
+              _vm._m(4),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.matchScorecard.team2.batsman, function(player) {
+                  return _vm.matchScorecard.team2
+                    ? _c("tr", { key: player.id, attrs: { data: player } }, [
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [
+                                player.bt_status == 10
+                                  ? _c("div", [
+                                      _vm._v(
+                                        "\n                            " +
+                                          _vm._s(
+                                            player.playerDetail.player_name
+                                          ) +
+                                          "\n                        "
+                                      ),
+                                      _c("p", [_vm._v("Batting")])
+                                    ])
+                                  : player.bt_status == 11
+                                  ? _c("div", [
+                                      _vm._v(
+                                        "\n                            " +
+                                          _vm._s(
+                                            player.playerDetail.player_name
+                                          ) +
+                                          "\n                            "
+                                      ),
+                                      _c("p", [_vm._v("Batting")])
+                                    ])
+                                  : _c("div", [
+                                      _vm._v(
+                                        "\n                            " +
+                                          _vm._s(
+                                            player.playerDetail.player_name
+                                          ) +
+                                          "\n\n                            "
+                                      ),
+                                      player.wicket_type == "bold"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "b " +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                )
+                                            )
+                                          ])
+                                        : player.wicket_type == "catch"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "c " +
+                                                _vm._s(
+                                                  player.wicketSecondary
+                                                    .player_name
+                                                ) +
+                                                " b " +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                )
+                                            )
+                                          ])
+                                        : player.wicket_type == "stump"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "st " +
+                                                _vm._s(
+                                                  player.wicketSecondary
+                                                    .player_name
+                                                ) +
+                                                " b " +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                )
+                                            )
+                                          ])
+                                        : player.wicket_type == "lbw"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "lbw " +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                )
+                                            )
+                                          ])
+                                        : player.wicket_type == "runout" &&
+                                          player.wicketSecondary.player_name ==
+                                            "--"
+                                        ? _c("p", [
+                                            _vm._v(
+                                              "runout (" +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                ) +
+                                                ")"
+                                            )
+                                          ])
+                                        : _c("p", [
+                                            _vm._v(
+                                              "runout (" +
+                                                _vm._s(
+                                                  player.wicketPrimary
+                                                    .player_name
+                                                ) +
+                                                "/" +
+                                                _vm._s(
+                                                  player.wicketSecondary
+                                                    .player_name
+                                                ) +
+                                                ")"
+                                            )
+                                          ])
+                                    ])
+                              ]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "b",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: "/player/" + player.id + "/info"
+                                  }
+                                },
+                                [_vm._v(_vm._s(player.bt_runs))]
+                              )
+                            ],
+                            1
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [_vm._v(_vm._s(player.bt_balls))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [_vm._v(_vm._s(player.bt_fours))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [_vm._v(_vm._s(player.bt_sixes))]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          [
+                            _c(
+                              "router-link",
+                              {
+                                attrs: { to: "/player/" + player.id + "/info" }
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(
+                                    _vm.calculateStrikeRate(
+                                      player.bt_runs,
+                                      player.bt_balls
+                                    )
+                                  )
+                                )
+                              ]
+                            )
+                          ],
+                          1
+                        )
+                      ])
+                    : _vm._e()
+                }),
+                0
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "list-group" }, [
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("div", { staticClass: "row" }, [
+                _vm._m(5),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 right-col" }, [
+                  _c("p", [
+                    _c("b", [
+                      _vm._v(
+                        _vm._s(
+                          _vm.matchScorecard.team2.extras.no_ball +
+                            _vm.matchScorecard.team2.extras.legbyes +
+                            _vm.matchScorecard.team2.extras.byes +
+                            _vm.matchScorecard.team2.extras.wide
+                        )
+                      )
+                    ]),
                     _vm._v(
-                      _vm._s(player.bw_over) + "." + _vm._s(player.bw_overball)
+                      "\n                            b " +
+                        _vm._s(_vm.matchScorecard.team2.extras.byes) +
+                        ", lb " +
+                        _vm._s(_vm.matchScorecard.team2.extras.legbyes) +
+                        ", w " +
+                        _vm._s(_vm.matchScorecard.team2.extras.wide) +
+                        ", nb " +
+                        _vm._s(_vm.matchScorecard.team2.extras.no_ball)
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.bw_maiden))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.bw_runs))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(player.bw_wickets))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("12.2")])
+                  ])
                 ])
-              : _vm._e()
-          }),
-          0
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _vm._m(4)
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("div", { staticClass: "row" }, [
+                _vm._m(6),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6 right-col" }, [
+                  _c("p", [
+                    _c("b", [
+                      _vm._v(
+                        _vm._s(_vm.matchScorecard.team2.score.score) +
+                          " -" +
+                          _vm._s(_vm.matchScorecard.team2.score.wicket) +
+                          " (" +
+                          _vm._s(_vm.matchScorecard.team2.score.over) +
+                          "." +
+                          _vm._s(_vm.matchScorecard.team2.score.overball) +
+                          ")"
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "tables table-responsive" }, [
+            _c("table", { staticClass: "table invoice" }, [
+              _vm._m(7),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.matchScorecard.team2.bowler, function(player) {
+                  return _vm.matchScorecard.team2
+                    ? _c("tr", { key: player.id, attrs: { data: player } }, [
+                        _c("td", [
+                          _vm._v(_vm._s(player.playerDetail.player_name))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(player.bw_over) +
+                              "." +
+                              _vm._s(player.bw_overball)
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(player.bw_maiden))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(player.bw_runs))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(player.bw_wickets))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("12.2")])
+                      ])
+                    : _vm._e()
+                }),
+                0
+              )
+            ])
+          ])
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -45688,43 +46423,55 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tables table-responsive" }, [
-      _c("table", { staticClass: "table invoice" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Fall of Wicket")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Score")]),
-            _vm._v(" "),
-            _c("th", { attrs: { scope: "col" } }, [_vm._v("Over")])
-          ])
-        ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Batsman")]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v("V Kohli")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("15-1")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("2.3")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("R Sharma")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("45-2")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("8.2")])
-          ]),
-          _vm._v(" "),
-          _c("tr", [
-            _c("td", [_vm._v("MS Dhoni")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("110-3")]),
-            _vm._v(" "),
-            _c("td", [_vm._v("17.5")])
-          ])
-        ])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("R")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("4s")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("6s")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("SR")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 left-col" }, [
+      _c("p", [_vm._v("Extras")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 left-col" }, [
+      _c("p", [_vm._v("Total")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Bowler")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("O")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("M")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("R")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("W")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ER")])
       ])
     ])
   }

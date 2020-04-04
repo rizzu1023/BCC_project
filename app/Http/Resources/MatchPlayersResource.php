@@ -17,6 +17,7 @@ class MatchPlayersResource extends JsonResource
 //        return parent::toArray($request);
         return [
             'id' => $this->id,
+            'player_id' => $this->player_id,
             'match_id' => $this->match_id,
             'team_id' => $this->team_id,
             'bt_status' => $this->bt_status,
@@ -24,7 +25,21 @@ class MatchPlayersResource extends JsonResource
             'bt_balls' => $this->bt_balls,
             'bt_fours' => $this->bt_fours,
             'bt_sixes' => $this->bt_sixes,
+            'bw_status' => $this->bw_status,
+            'bw_over' => $this->bw_over,
+            'bw_overball' => $this->bw_overball,
+            'bw_wickets' => $this->bw_wickets,
+            'bw_runs' => $this->bw_runs,
+            'bw_nb' => $this->bw_nb,
+            'bw_maiden' => $this->bw_maiden,
+            'bw_nb' => $this->bw_nb,
+            'wicket_type' => $this->wicket_type,
+            'wicket_primary' => $this->wicket_primary,
+            'wicket_secondary' => $this->wicket_secondary,
+            'tournament_id' => $this->tournament_id,
             'playerDetail' => $this->Players,
+            'wicketPrimary' => $this->wicketPrimary,
+            'wicketSecondary' => $this->wicketSecondary,
         ];
 
     }

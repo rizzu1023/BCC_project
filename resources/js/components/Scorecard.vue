@@ -3,7 +3,7 @@
 <!--            <div class="table-header">-->
 <!--                <span>India won by 4 runs</span>-->
 <!--            </div>-->
-        <div class="team-header">
+        <div class="team-header" v-on:click="team1 = !team1">
             <div class="row">
                 <div class="col-6 team-name">
                     <span>{{matchScorecard.team1.detail.team_code}} inn</span>
@@ -13,7 +13,167 @@
                 </div>
             </div>
         </div>
-        <div class="tables table-responsive">
+        <div id="team1" v-if="team1">
+            <div class="tables table-responsive">
+                <table class="table invoice">
+                    <thead>
+                    <tr>
+                        <th scope="col">Batsman</th>
+                        <th scope="col">R</th>
+                        <th scope="col">B</th>
+                        <th scope="col">4s</th>
+                        <th scope="col">6s</th>
+                        <th scope="col">SR</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.batsman" :key="player.id" :data="player">
+                        <td>
+                            <router-link :to="'/player/' + player.id + '/info'">
+                                <div v-if="player.bt_status == 10">
+                                    {{player.playerDetail.player_name}}
+                                    <p>Batting</p>
+                                </div>
+                                <div v-else-if="player.bt_status == 11">
+                                    {{player.playerDetail.player_name}}
+                                    <p>Batting</p>
+                                </div>
+                                <div v-else>
+                                    {{player.playerDetail.player_name}}
+
+                                    <p v-if="player.wicket_type == 'bold'">b {{player.wicketPrimary.player_name }}</p>
+                                    <p v-else-if="player.wicket_type == 'catch'">c {{ player.wicketSecondary.player_name }} b {{player.wicketPrimary.player_name }}</p>
+                                    <p v-else-if="player.wicket_type == 'stump'">st {{ player.wicketSecondary.player_name }} b {{player.wicketPrimary.player_name }}</p>
+                                    <p v-else-if="player.wicket_type == 'lbw'">lbw {{player.wicketPrimary.player_name }}</p>
+                                    <p v-else-if="player.wicket_type == 'runout' && player.wicketSecondary.player_name == '--'">runout ({{player.wicketPrimary.player_name }})</p>
+                                    <p v-else >runout ({{player.wicketPrimary.player_name }}/{{player.wicketSecondary.player_name}})</p>
+                                </div>
+                            </router-link>
+                        </td>
+                        <td><b><router-link :to="'/player/' + player.id + '/info'">{{player.bt_runs}}</router-link></b></td>
+                        <td><router-link :to="'/player/' + player.id + '/info'">{{player.bt_balls}}</router-link></td>
+                        <td><router-link :to="'/player/' + player.id + '/info'">{{player.bt_fours}}</router-link></td>
+                        <td><router-link :to="'/player/' + player.id + '/info'">{{player.bt_sixes}}</router-link></td>
+                        <td><router-link :to="'/player/' + player.id + '/info'">{{ calculateStrikeRate(player.bt_runs,player.bt_balls) }}</router-link></td>
+                    </tr>
+                    <!--                <tr>-->
+                    <!--                    <td>R Sharma<p>b Mokoena</p></td>-->
+                    <!--                    <td>123</td>-->
+                    <!--                    <td>110</td>-->
+                    <!--                    <td>6</td>-->
+                    <!--                    <td>5</td>-->
+                    <!--                    <td>1</td>-->
+                    <!--                </tr>-->
+                    <!--                <tr>-->
+                    <!--                    <td>R Sharma<p>b Mokoena</p></td>-->
+                    <!--                    <td>123</td>-->
+                    <!--                    <td>110</td>-->
+                    <!--                    <td>6</td>-->
+                    <!--                    <td>5</td>-->
+                    <!--                    <td>1</td>-->
+                    <!--                </tr>-->
+                    </tbody>
+                </table>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-6 left-col">
+                            <p>Extras</p>
+                        </div>
+                        <div class="col-6 right-col">
+                            <p><b>{{ matchScorecard.team1.extras.no_ball + matchScorecard.team1.extras.legbyes + matchScorecard.team1.extras.byes + matchScorecard.team1.extras.wide }}</b>
+                                b {{ matchScorecard.team1.extras.byes }}, lb {{ matchScorecard.team1.extras.legbyes }}, w {{ matchScorecard.team1.extras.wide }}, nb {{ matchScorecard.team1.extras.no_ball }}</p>
+                        </div>
+                    </div >
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-6 left-col">
+                            <p>Total</p>
+                        </div>
+                        <div class="col-6 right-col">
+                            <p><b>{{matchScorecard.team1.score.score}} -{{matchScorecard.team1.score.wicket}} ({{matchScorecard.team1.score.over}}.{{matchScorecard.team1.score.overball}})</b></p>
+                        </div>
+                    </div >
+                </li>
+            </ul>
+            <div class="tables table-responsive">
+                <table class="table invoice">
+                    <thead>
+                    <tr>
+                        <th scope="col">Bowler</th>
+                        <th scope="col">O</th>
+                        <th scope="col">M</th>
+                        <th scope="col">R</th>
+                        <th scope="col">W</th>
+                        <th scope="col">ER</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.bowler" :key="player.id" :data="player">
+                        <td>{{player.playerDetail.player_name}}</td>
+                        <td>{{player.bw_over}}.{{player.bw_overball}}</td>
+                        <td>{{player.bw_maiden}}</td>
+                        <td>{{player.bw_runs}}</td>
+                        <td>{{player.bw_wickets}}</td>
+                        <td>12.2</td>
+                    </tr>
+
+                    <!--                <tr>-->
+                    <!--                    <td>K Ahmed</td>-->
+                    <!--                    <td>1</td>-->
+                    <!--                    <td>0</td>-->
+                    <!--                    <td>6</td>-->
+                    <!--                    <td>0</td>-->
+                    <!--                    <td>12.2</td>-->
+                    <!--                </tr>-->
+
+                    </tbody>
+                </table>
+            </div>
+<!--            <div class="tables table-responsive">-->
+<!--                <table class="table invoice">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th scope="col">Fall of Wicket</th>-->
+<!--                        <th scope="col">Score</th>-->
+<!--                        <th scope="col">Over</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr>-->
+<!--                        <td>V Kohli</td>-->
+<!--                        <td>15-1</td>-->
+<!--                        <td>2.3</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>R Sharma</td>-->
+<!--                        <td>45-2</td>-->
+<!--                        <td>8.2</td>-->
+<!--                    </tr>-->
+<!--                    <tr>-->
+<!--                        <td>MS Dhoni</td>-->
+<!--                        <td>110-3</td>-->
+<!--                        <td>17.5</td>-->
+<!--                    </tr>-->
+
+<!--                    </tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+        </div>
+        <div class="team-header" v-on:click="team2 = !team2">
+            <div class="row">
+                <div class="col-6 team-name">
+                    <span>{{matchScorecard.team2.detail.team_code}} inn</span>
+                </div>
+                <div class="col-6 team-score">
+                    <span>{{matchScorecard.team2.score.score}} -{{matchScorecard.team2.score.wicket}} ({{matchScorecard.team2.score.over}}.{{matchScorecard.team2.score.overball}})</span>
+                </div>
+            </div>
+        </div>
+        <div id="team2" v-if="team2">
+            <div class="tables table-responsive">
             <table class="table invoice">
                 <thead>
                 <tr>
@@ -26,16 +186,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.batsman" :key="player.id" :data="player">
+                <tr v-if="matchScorecard.team2" v-for="player in matchScorecard.team2.batsman" :key="player.id" :data="player">
                     <td>
-                        {{player.player_id}}
-                        <p>c Fortuin b Budaza</p>
+                    <router-link :to="'/player/' + player.id + '/info'">
+                        <div v-if="player.bt_status == 10">
+                            {{player.playerDetail.player_name}}
+                        <p>Batting</p>
+                        </div>
+                        <div v-else-if="player.bt_status == 11">
+                            {{player.playerDetail.player_name}}
+                            <p>Batting</p>
+                        </div>
+                        <div v-else>
+                            {{player.playerDetail.player_name}}
+
+                            <p v-if="player.wicket_type == 'bold'">b {{player.wicketPrimary.player_name }}</p>
+                            <p v-else-if="player.wicket_type == 'catch'">c {{ player.wicketSecondary.player_name }} b {{player.wicketPrimary.player_name }}</p>
+                            <p v-else-if="player.wicket_type == 'stump'">st {{ player.wicketSecondary.player_name }} b {{player.wicketPrimary.player_name }}</p>
+                            <p v-else-if="player.wicket_type == 'lbw'">lbw {{player.wicketPrimary.player_name }}</p>
+                            <p v-else-if="player.wicket_type == 'runout' && player.wicketSecondary.player_name == '--'">runout ({{player.wicketPrimary.player_name }})</p>
+                            <p v-else >runout ({{player.wicketPrimary.player_name }}/{{player.wicketSecondary.player_name}})</p>
+                        </div>
+                    </router-link>
                     </td>
-                    <td>{{player.bt_runs}}</td>
-                    <td>{{player.bt_balls}}</td>
-                    <td>{{player.bt_sixes}}</td>
-                    <td>{{player.bt_fours}}</td>
-                    <td>{{ calculateStrikeRate(player.bt_runs,player.bt_balls) }}</td>
+                    <td><b><router-link :to="'/player/' + player.id + '/info'">{{player.bt_runs}}</router-link></b></td>
+                    <td><router-link :to="'/player/' + player.id + '/info'">{{player.bt_balls}}</router-link></td>
+                    <td><router-link :to="'/player/' + player.id + '/info'">{{player.bt_fours}}</router-link></td>
+                    <td><router-link :to="'/player/' + player.id + '/info'">{{player.bt_sixes}}</router-link></td>
+                    <td><router-link :to="'/player/' + player.id + '/info'">{{ calculateStrikeRate(player.bt_runs,player.bt_balls) }}</router-link></td>
                 </tr>
 <!--                <tr>-->
 <!--                    <td>R Sharma<p>b Mokoena</p></td>-->
@@ -56,15 +234,15 @@
                 </tbody>
             </table>
         </div>
-        <ul class="list-group">
+            <ul class="list-group">
             <li class="list-group-item">
                 <div class="row">
                     <div class="col-6 left-col">
                         <p>Extras</p>
                     </div>
                     <div class="col-6 right-col">
-                        <p><b>{{ matchScorecard.team1.extras.no_ball + matchScorecard.team1.extras.legbyes + matchScorecard.team1.extras.byes + matchScorecard.team1.extras.wide }}</b>
-                            b {{ matchScorecard.team1.extras.byes }}, lb {{ matchScorecard.team1.extras.legbyes }}, w {{ matchScorecard.team1.extras.wide }}, nb {{ matchScorecard.team1.extras.no_ball }}</p>
+                        <p><b>{{ matchScorecard.team2.extras.no_ball + matchScorecard.team2.extras.legbyes + matchScorecard.team2.extras.byes + matchScorecard.team2.extras.wide }}</b>
+                            b {{ matchScorecard.team2.extras.byes }}, lb {{ matchScorecard.team2.extras.legbyes }}, w {{ matchScorecard.team2.extras.wide }}, nb {{ matchScorecard.team2.extras.no_ball }}</p>
                     </div>
                 </div >
             </li>
@@ -74,12 +252,12 @@
                         <p>Total</p>
                     </div>
                     <div class="col-6 right-col">
-                        <p><b>{{matchScorecard.team1.score.score}} -{{matchScorecard.team1.score.wicket}} ({{matchScorecard.team1.score.over}}.{{matchScorecard.team1.score.overball}})</b></p>
+                        <p><b>{{matchScorecard.team2.score.score}} -{{matchScorecard.team2.score.wicket}} ({{matchScorecard.team2.score.over}}.{{matchScorecard.team2.score.overball}})</b></p>
                     </div>
                 </div >
             </li>
         </ul>
-        <div class="tables table-responsive">
+            <div class="tables table-responsive">
             <table class="table invoice">
                 <thead>
                 <tr>
@@ -92,8 +270,8 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.bowler" :key="player.id" :data="player">
-                    <td>{{player.player_id}}</td>
+                <tr v-if="matchScorecard.team2" v-for="player in matchScorecard.team2.bowler" :key="player.id" :data="player">
+                    <td>{{player.playerDetail.player_name}}</td>
                     <td>{{player.bw_over}}.{{player.bw_overball}}</td>
                     <td>{{player.bw_maiden}}</td>
                     <td>{{player.bw_runs}}</td>
@@ -113,34 +291,35 @@
                 </tbody>
             </table>
         </div>
-        <div class="tables table-responsive">
-            <table class="table invoice">
-                <thead>
-                <tr>
-                    <th scope="col">Fall of Wicket</th>
-                    <th scope="col">Score</th>
-                    <th scope="col">Over</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>V Kohli</td>
-                    <td>15-1</td>
-                    <td>2.3</td>
-                </tr>
-                <tr>
-                    <td>R Sharma</td>
-                    <td>45-2</td>
-                    <td>8.2</td>
-                </tr>
-                <tr>
-                    <td>MS Dhoni</td>
-                    <td>110-3</td>
-                    <td>17.5</td>
-                </tr>
+<!--            <div class="tables table-responsive">-->
+<!--            <table class="table invoice">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col">Fall of Wicket</th>-->
+<!--                    <th scope="col">Score</th>-->
+<!--                    <th scope="col">Over</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                    <td>V Kohli</td>-->
+<!--                    <td>15-1</td>-->
+<!--                    <td>2.3</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>R Sharma</td>-->
+<!--                    <td>45-2</td>-->
+<!--                    <td>8.2</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>MS Dhoni</td>-->
+<!--                    <td>110-3</td>-->
+<!--                    <td>17.5</td>-->
+<!--                </tr>-->
 
-                </tbody>
-            </table>
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
         </div>
 
     </div>
@@ -192,7 +371,10 @@
                             'score' : {},
                         },
                 },
-                // 'team1_players' : this.matchScorecard.team1_players,
+
+                team1 : false,
+                team2 : false,
+                // 'team2_players' : this.matchScorecard.team2_players,
             }
         }
     }
@@ -234,8 +416,14 @@
     #scorecard table tbody tr td{
         font-size : 0.7rem;
         padding: 8px 6px;
+
     }
-    #scorecard table td{
+    #scorecard table tbody tr td a {
+        text-decoration: none;
+        color : #212529;
+    }
+
+        #scorecard table td{
         text-align: right;
     }
     #scorecard table thead th{
@@ -256,6 +444,10 @@
 
     }
 
+    #scorecard table tbody tr:first-child{
+        border : 0;
+    }
+
     #scorecard table td:last-child{
         padding-right:12px;
 
@@ -269,10 +461,6 @@
         margin: 0;
         color : #545a5f;
         font-size : 0.65rem;
-    }
-
-    #scorecard .list-group{
-
     }
 
     #scorecard .list-group .list-group-item{

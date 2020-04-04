@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MatchPlayersResource;
+use App\Http\Resources\PlayersResource;
 use App\Match;
 use App\MatchDetail;
 use App\MatchPlayers;
@@ -57,20 +59,21 @@ class MatchController extends Controller
         $team2_extras = MatchDetail::select('no_ball','wide','byes','legbyes')->where('team_id',$team2_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first();
         $team2_score = MatchDetail::select('score','wicket','over','overball')->where('team_id',$team2_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first();
 
+
         return [
             'team1' => [
                 'detail' => $team1_detail,
-                'batsman' => $team1_batsman,
-                'notout_batsman' => $team1_notout_batsman,
-                'bowler' => $team1_bowler,
+                'batsman' => MatchPlayersResource::collection($team1_batsman),
+                'notout_batsman' => MatchPlayersResource::collection($team1_notout_batsman),
+                'bowler' => MatchPlayersResource::collection($team1_bowler),
                 'extras' => $team1_extras,
                 'score' => $team1_score,
             ],
             'team2' => [
                 'detail' => $team2_detail,
-                'batsman' => $team2_batsman,
-                'notout_batsman' => $team2_notout_batsman,
-                'bowler' => $team2_bowler,
+                'batsman' => MatchPlayersResource::collection($team2_batsman),
+                'notout_batsman' => MatchPlayersResource::collection($team2_notout_batsman),
+                'bowler' => MatchPlayersResource::collection($team2_bowler),
                 'extras' => $team2_extras,
                 'score' => $team2_score,
 
