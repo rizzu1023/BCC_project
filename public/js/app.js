@@ -2258,7 +2258,7 @@ __webpack_require__.r(__webpack_exports__);
     loadMatchInfo: function loadMatchInfo() {
       var _this = this;
 
-      var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id;
+      var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/matchInfo';
       axios.get($url).then(function (response) {
         return _this.teamInfo = response.data;
       }) // .then(function(response){
@@ -2635,6 +2635,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Schedule",
   mounted: function mounted() {
@@ -2650,6 +2651,10 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    header_string: function header_string(team1, team2) {
+      var value = team1 + ' vs ' + team2;
+      Event.$emit('headerString', value);
     }
   },
   data: function data() {
@@ -2818,14 +2823,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Scorecard"
+  name: "Scorecard",
+  mounted: function mounted() {
+    this.loadMatchScorecard();
+  },
+  methods: {
+    loadMatchScorecard: function loadMatchScorecard() {
+      var _this = this;
+
+      var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/scorecard';
+      axios.get($url).then(function (response) {
+        return _this.matchScorecard = response.data;
+      }) // .then(function(response){
+      //     console.log(response.data);
+      // })
+      ["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    calculateStrikeRate: function calculateStrikeRate(runs, ball) {
+      if (ball == '0') {
+        return 100;
+      } else {
+        var val = runs / ball * 100;
+        return val.toFixed(2);
+      }
+    }
+  },
+  data: function data() {
+    return {
+      'matchScorecard': {
+        'team1': {
+          'detail': {},
+          'extras': {},
+          'score': {}
+        },
+        'team2': {
+          'detail': {},
+          'extras': {},
+          'score': {}
+        }
+      } // 'team1_players' : this.matchScorecard.team1_players,
+
+    };
+  }
 });
 
 /***/ }),
@@ -2921,7 +2963,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Stats"
+  name: "Stats",
+  mounted: function mounted() {// Event.$emit('firstEvent');
+  }
 });
 
 /***/ }),
@@ -3238,10 +3282,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Tournament",
   mounted: function mounted() {
-    this.loadPlayers();
+    this.loadTournaments(); // Event.$emit('firstEvent','from t');
   },
   methods: {
-    loadPlayers: function loadPlayers() {
+    header_string: function header_string(tournament) {
+      Event.$emit('headerString', tournament);
+    },
+    loadTournaments: function loadTournaments() {
       var _this = this;
 
       var $url = this.$domainName + "tournament";
@@ -7860,7 +7907,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .main-score p[data-v-d9645c44]{\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #c2f1db;\n    color : #545a5f;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #c2f1db;\n    color : #545a5f;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -7898,7 +7945,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90]{\n    background: #c2f1db;\n    color: #545a5f;\n}\n#matchInfo .table-header span[data-v-3fc29e90]{\n    font-size: 0.8rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#matchInfo  .card[data-v-3fc29e90]{\n    border-radius : 0;\n     border : none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90]{\n    font-size: 0.8rem;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90]{\n    color: #545a5f;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90]{\n    color : #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90]{\n     border : 0;\n     border-radius: 0;\n}\n#matchInfo .list-group .first[data-v-3fc29e90]{\n     border-bottom : 0.05rem solid lightgray;\n}\n", ""]);
+exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90]{\n    background: #c2f1db;\n    color: #545a5f;\n    padding : 8px 20px;\n}\n#matchInfo .table-header span[data-v-3fc29e90]{\n    font-size: 0.8rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#matchInfo  .card[data-v-3fc29e90]{\n    border-radius : 0;\n     border : none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90]{\n    font-size: 0.8rem;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90]{\n    color: #545a5f;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90]{\n    color : #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90]{\n     border : 0;\n     border-radius: 0;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90]{\n     margin : 0px;\n}\n#matchInfo .list-group .first[data-v-3fc29e90]{\n     border-bottom : 0.05rem solid lightgray;\n}\n", ""]);
 
 // exports
 
@@ -7974,7 +8021,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.list-group-item[data-v-5f748482]{\n    border-radius: none;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n}\n", ""]);
+exports.push([module.i, "\n.list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n}\n", ""]);
 
 // exports
 
@@ -7993,7 +8040,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7]{\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7]{\n    padding: 12px;\n    /*background : #545a5f;*/\n    /*color: #fff;*/\n    font-weight : bold;\n    background : #c2f1db;\n    color: #545a5f;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7]{\n    margin-bottom : 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7]{\n    font-size: 0.7rem;\n    border : 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7]{\n    border : 0;\n    background: #545a5f;\n    color : #fff;\n    padding-top : 4px;\n    padding-bottom : 4px;\n}\n#scorecard table tbody tr td[data-v-22a9a9c7]{\n    font-size : 0.7rem;\n    padding: 6px 6px;\n}\n#scorecard table td[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table th[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1){\n    text-align : left;\n    padding : 12px;\n    color: #0198E1;\n    padding-top: 6px;\n    padding-bottom : 6px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align : left;\n    padding-left : 12px;\n    padding-right : 12px;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7]{\n    margin: 0;\n    color : #545a5f;\n    font-size : 0.65rem;\n}\n#scorecard .list-group[data-v-22a9a9c7]{\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 6px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin : 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7]{\n    font-weight : bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7]{\n    text-align : right;\n}\n\n\n", ""]);
+exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7]{\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7]{\n    padding: 12px;\n    /*background : #545a5f;*/\n    /*color: #fff;*/\n    font-weight : bold;\n    background : #c2f1db;\n    color: #545a5f;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7]{\n    margin-bottom : 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7]{\n    font-size: 0.7rem;\n    border : 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7]{\n    border : 0;\n    background: #545a5f;\n    color : #fff;\n    padding : 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7]{\n    font-size : 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table td[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1){\n    text-align : left;\n    padding : 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom : 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align : left;\n    padding-left : 12px;\n    padding-right : 12px;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7]{\n    margin: 0;\n    color : #545a5f;\n    font-size : 0.65rem;\n}\n#scorecard .list-group[data-v-22a9a9c7]{\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin : 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7]{\n    font-weight : bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7]{\n    text-align : right;\n}\n\n\n", ""]);
 
 // exports
 
@@ -44938,7 +44985,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "table-header py-2 px-4" }, [
+    return _c("div", { staticClass: "table-header" }, [
       _c("span", [_vm._v("SQUADS")])
     ])
   },
@@ -44946,7 +44993,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "table-header py-2 px-4" }, [
+    return _c("div", { staticClass: "table-header" }, [
       _c("span", [_vm._v("INFO")])
     ])
   },
@@ -45349,33 +45396,47 @@ var render = function() {
                 }
               },
               [
-                _c("li", { staticClass: "list-group-item" }, [
-                  _c(
-                    "span",
-                    {
-                      staticClass: "text-muted",
-                      staticStyle: { "font-size": "12px" }
-                    },
-                    [_vm._v("Match " + _vm._s(schedule.match_no))]
-                  ),
-                  _vm._v(" "),
-                  _c("h6", { staticClass: "mt-2" }, [
-                    _c("b", [_vm._v(_vm._s(schedule.team1_id.team_name))])
-                  ]),
-                  _vm._v(" "),
-                  _c("h6", [
-                    _c("b", [_vm._v(_vm._s(schedule.team2_id.team_name))])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "text-danger",
-                      staticStyle: { "font-size": "12px" }
-                    },
-                    [_vm._v(_vm._s(schedule.times))]
-                  )
-                ])
+                _c(
+                  "li",
+                  {
+                    staticClass: "list-group-item",
+                    on: {
+                      click: function($event) {
+                        return _vm.header_string(
+                          schedule.team1_id.team_code,
+                          schedule.team2_id.team_code
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-muted",
+                        staticStyle: { "font-size": "12px" }
+                      },
+                      [_vm._v("Match " + _vm._s(schedule.match_no))]
+                    ),
+                    _vm._v(" "),
+                    _c("h6", { staticClass: "mt-2" }, [
+                      _c("b", [_vm._v(_vm._s(schedule.team1_id.team_name))])
+                    ]),
+                    _vm._v(" "),
+                    _c("h6", [
+                      _c("b", [_vm._v(_vm._s(schedule.team2_id.team_name))])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "text-danger",
+                        staticStyle: { "font-size": "12px" }
+                      },
+                      [_vm._v(_vm._s(schedule.times))]
+                    )
+                  ]
+                )
               ]
             )
           ],
@@ -45408,226 +45469,260 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "scorecard" } }, [
+    _c("div", { staticClass: "team-header" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-6 team-name" }, [
+          _c("span", [
+            _vm._v(_vm._s(_vm.matchScorecard.team1.detail.team_code) + " inn")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6 team-score" }, [
+          _c("span", [
+            _vm._v(
+              _vm._s(_vm.matchScorecard.team1.score.score) +
+                " -" +
+                _vm._s(_vm.matchScorecard.team1.score.wicket) +
+                " (" +
+                _vm._s(_vm.matchScorecard.team1.score.over) +
+                "." +
+                _vm._s(_vm.matchScorecard.team1.score.overball) +
+                ")"
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "tables table-responsive" }, [
+      _c("table", { staticClass: "table invoice" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.matchScorecard.team1.batsman, function(player) {
+            return _vm.matchScorecard.team1
+              ? _c("tr", { key: player.id, attrs: { data: player } }, [
+                  _c("td", [
+                    _vm._v(
+                      "\n                        " +
+                        _vm._s(player.player_id) +
+                        "\n                        "
+                    ),
+                    _c("p", [_vm._v("c Fortuin b Budaza")])
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(player.bt_runs))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(player.bt_balls))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(player.bt_sixes))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(player.bt_fours))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(
+                        _vm.calculateStrikeRate(player.bt_runs, player.bt_balls)
+                      )
+                    )
+                  ])
+                ])
+              : _vm._e()
+          }),
+          0
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("ul", { staticClass: "list-group" }, [
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-6 right-col" }, [
+            _c("p", [
+              _c("b", [
+                _vm._v(
+                  _vm._s(
+                    _vm.matchScorecard.team1.extras.no_ball +
+                      _vm.matchScorecard.team1.extras.legbyes +
+                      _vm.matchScorecard.team1.extras.byes +
+                      _vm.matchScorecard.team1.extras.wide
+                  )
+                )
+              ]),
+              _vm._v(
+                "\n                            b " +
+                  _vm._s(_vm.matchScorecard.team1.extras.byes) +
+                  ", lb " +
+                  _vm._s(_vm.matchScorecard.team1.extras.legbyes) +
+                  ", w " +
+                  _vm._s(_vm.matchScorecard.team1.extras.wide) +
+                  ", nb " +
+                  _vm._s(_vm.matchScorecard.team1.extras.no_ball)
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("div", { staticClass: "row" }, [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-6 right-col" }, [
+            _c("p", [
+              _c("b", [
+                _vm._v(
+                  _vm._s(_vm.matchScorecard.team1.score.score) +
+                    " -" +
+                    _vm._s(_vm.matchScorecard.team1.score.wicket) +
+                    " (" +
+                    _vm._s(_vm.matchScorecard.team1.score.over) +
+                    "." +
+                    _vm._s(_vm.matchScorecard.team1.score.overball) +
+                    ")"
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "tables table-responsive" }, [
+      _c("table", { staticClass: "table invoice" }, [
+        _vm._m(3),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.matchScorecard.team1.bowler, function(player) {
+            return _vm.matchScorecard.team1
+              ? _c("tr", { key: player.id, attrs: { data: player } }, [
+                  _c("td", [_vm._v(_vm._s(player.player_id))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(player.bw_over) + "." + _vm._s(player.bw_overball)
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(player.bw_maiden))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(player.bw_runs))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(player.bw_wickets))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("12.2")])
+                ])
+              : _vm._e()
+          }),
+          0
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(4)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "scorecard" } }, [
-      _c("div", { staticClass: "table-header" }, [
-        _c("span", [_vm._v("India won by 4 runs")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "team-header" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-6 team-name" }, [
-            _c("span", [_vm._v("IND inn")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 team-score" }, [
-            _c("span", [_vm._v("299-10 (99.4)")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "tables table-responsive" }, [
-        _c("table", { staticClass: "table invoice" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Batsman")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("R")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("4s")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("6s")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("SR")])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [
-                _vm._v("\n                    V Kohli\n                    "),
-                _c("p", [_vm._v("c Fortuin b Budaza")])
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v("123")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("110")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("6")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("5")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("123.2")])
-            ]),
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Batsman")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("R")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("B")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("4s")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("6s")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("SR")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 left-col" }, [
+      _c("p", [_vm._v("Extras")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6 left-col" }, [
+      _c("p", [_vm._v("Total")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Bowler")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("O")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("M")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("R")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("W")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ER")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tables table-responsive" }, [
+      _c("table", { staticClass: "table invoice" }, [
+        _c("thead", [
+          _c("tr", [
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Fall of Wicket")]),
             _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("R Sharma"), _c("p", [_vm._v("b Mokoena")])]),
-              _vm._v(" "),
-              _c("td", [_vm._v("123")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("110")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("6")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("5")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("1")])
-            ]),
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Score")]),
             _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("R Sharma"), _c("p", [_vm._v("b Mokoena")])]),
-              _vm._v(" "),
-              _c("td", [_vm._v("123")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("110")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("6")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("5")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("1")])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("ul", { staticClass: "list-group" }, [
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-6 left-col" }, [
-              _c("p", [_vm._v("Extras")])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6 right-col" }, [
-              _c("p", [
-                _c("b", [_vm._v("12 ")]),
-                _vm._v("  b 1, lb 2, w 11, nb 0")
-              ])
-            ])
+            _c("th", { attrs: { scope: "col" } }, [_vm._v("Over")])
           ])
         ]),
         _vm._v(" "),
-        _c("li", { staticClass: "list-group-item" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-6 left-col" }, [
-              _c("p", [_vm._v("Total")])
-            ]),
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [_vm._v("V Kohli")]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-6 right-col" }, [
-              _c("p", [_c("b", [_vm._v("180 -10 (44.3)")])])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "tables table-responsive" }, [
-        _c("table", { staticClass: "table invoice" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Bowler")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("O")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("M")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("R")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("W")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("ER")])
-            ])
+            _c("td", [_vm._v("15-1")]),
+            _vm._v(" "),
+            _c("td", [_vm._v("2.3")])
           ]),
           _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_vm._v("M Shami")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("1")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("0")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("6")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("0")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("12.2")])
-            ]),
+          _c("tr", [
+            _c("td", [_vm._v("R Sharma")]),
             _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("B Kumar")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("1")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("0")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("6")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("0")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("12.2")])
-            ]),
+            _c("td", [_vm._v("45-2")]),
             _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("K Ahmed")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("1")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("0")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("6")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("0")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("12.2")])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "tables table-responsive" }, [
-        _c("table", { staticClass: "table invoice" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Fall of Wicket")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Score")]),
-              _vm._v(" "),
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Over")])
-            ])
+            _c("td", [_vm._v("8.2")])
           ]),
           _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_vm._v("V Kohli")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("15-1")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("2.3")])
-            ]),
+          _c("tr", [
+            _c("td", [_vm._v("MS Dhoni")]),
             _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("R Sharma")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("45-2")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("8.2")])
-            ]),
+            _c("td", [_vm._v("110-3")]),
             _vm._v(" "),
-            _c("tr", [
-              _c("td", [_vm._v("MS Dhoni")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("110-3")]),
-              _vm._v(" "),
-              _c("td", [_vm._v("17.5")])
-            ])
+            _c("td", [_vm._v("17.5")])
           ])
         ])
       ])
@@ -46333,18 +46428,29 @@ var render = function() {
                 attrs: { to: "/tournament/" + tournament.id + "/schedule" }
               },
               [
-                _c("li", { staticClass: "list-group-item" }, [
-                  _c("h5", {
-                    staticStyle: { "font-weight": "bold" },
-                    domProps: {
-                      textContent: _vm._s(tournament.tournament_name)
+                _c(
+                  "li",
+                  {
+                    staticClass: "list-group-item",
+                    on: {
+                      click: function($event) {
+                        return _vm.header_string(tournament.tournament_name)
+                      }
                     }
-                  }),
-                  _vm._v(" "),
-                  _c("span", { staticStyle: { "font-size": "12px" } }, [
-                    _vm._v(" Jan 24 - Apr 09")
-                  ])
-                ])
+                  },
+                  [
+                    _c("h5", {
+                      staticStyle: { "font-weight": "bold" },
+                      domProps: {
+                        textContent: _vm._s(tournament.tournament_name)
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticStyle: { "font-size": "12px" } }, [
+                      _vm._v(" Jan 24 - Apr 09")
+                    ])
+                  ]
+                )
               ]
             )
           ],
@@ -61472,15 +61578,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _components_Accordion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Accordion */ "./resources/js/components/Accordion.vue");
 /* harmony import */ var _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/ExampleComponent */ "./resources/js/components/ExampleComponent.vue");
-/* harmony import */ var _components_LiveScore__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/LiveScore */ "./resources/js/components/LiveScore.vue");
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
-/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_Players__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Players */ "./resources/js/components/Players.vue");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
-/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_Team__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue");
-/* harmony import */ var _components_Batting__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue");
-/* harmony import */ var _components_Bowling__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue");
+/* harmony import */ var _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/TournamentDetail */ "./resources/js/components/TournamentDetail.vue");
+/* harmony import */ var _components_LiveScore__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/LiveScore */ "./resources/js/components/LiveScore.vue");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vform */ "./node_modules/vform/dist/vform.common.js");
+/* harmony import */ var vform__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vform__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_Players__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/Players */ "./resources/js/components/Players.vue");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_Team__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue");
+/* harmony import */ var _components_Batting__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue");
+/* harmony import */ var _components_Bowling__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue");
 
 
 
@@ -61493,23 +61600,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a;
-window.form = vform__WEBPACK_IMPORTED_MODULE_6__["Form"]; // sweet alert
 
-var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.mixin({
+window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_9___default.a;
+window.form = vform__WEBPACK_IMPORTED_MODULE_7__["Form"];
+window.Event = new vue__WEBPACK_IMPORTED_MODULE_0___default.a(); // sweet alert
+
+var Toast = sweetalert2__WEBPACK_IMPORTED_MODULE_9___default.a.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
   timer: 2000,
   timerProgressBar: true,
   onOpen: function onOpen(toast) {
-    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.stopTimer);
-    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_8___default.a.resumeTimer);
+    toast.addEventListener('mouseenter', sweetalert2__WEBPACK_IMPORTED_MODULE_9___default.a.stopTimer);
+    toast.addEventListener('mouseleave', sweetalert2__WEBPACK_IMPORTED_MODULE_9___default.a.resumeTimer);
   }
 });
 window.Toast = Toast;
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MODULE_6__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_6__["HasError"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MODULE_6__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_6__["AlertError"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MODULE_7__["HasError"].name, vform__WEBPACK_IMPORTED_MODULE_7__["HasError"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component(vform__WEBPACK_IMPORTED_MODULE_7__["AlertError"].name, vform__WEBPACK_IMPORTED_MODULE_7__["AlertError"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Accordion', __webpack_require__(/*! ./components/Accordion.vue */ "./resources/js/components/Accordion.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ExampleComponent', __webpack_require__(/*! ./components/ExampleComponent */ "./resources/js/components/ExampleComponent.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_require__(/*! ./components/Players */ "./resources/js/components/Players.vue")["default"]);
@@ -61523,15 +61632,26 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
+  mounted: function mounted() {
+    var _this = this;
+
+    Event.$on('headerString', function (value) {
+      _this.header_string = value;
+    });
+  },
   component: {
     ExampleComponent: _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_4__["default"],
-    LiveScore: _components_LiveScore__WEBPACK_IMPORTED_MODULE_5__["default"],
-    Players: _components_Players__WEBPACK_IMPORTED_MODULE_7__["default"],
-    Team: _components_Team__WEBPACK_IMPORTED_MODULE_9__["default"],
-    Batting: _components_Batting__WEBPACK_IMPORTED_MODULE_10__["default"],
-    Bowling: _components_Bowling__WEBPACK_IMPORTED_MODULE_11__["default"]
+    TournamentDetail: _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_5__["default"],
+    LiveScore: _components_LiveScore__WEBPACK_IMPORTED_MODULE_6__["default"],
+    Players: _components_Players__WEBPACK_IMPORTED_MODULE_8__["default"],
+    Team: _components_Team__WEBPACK_IMPORTED_MODULE_10__["default"],
+    Batting: _components_Batting__WEBPACK_IMPORTED_MODULE_11__["default"],
+    Bowling: _components_Bowling__WEBPACK_IMPORTED_MODULE_12__["default"]
   },
-  router: _router__WEBPACK_IMPORTED_MODULE_1__["default"]
+  router: _router__WEBPACK_IMPORTED_MODULE_1__["default"],
+  data: {
+    header_string: ''
+  }
 });
 
 /***/ }),

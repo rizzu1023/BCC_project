@@ -34,6 +34,10 @@
     import PointsTable from "./PointsTable";
     export default {
         name: "TournamentDetail",
+
+
+
+
         components: {PointsTable, Stats, Schedule},
 
 

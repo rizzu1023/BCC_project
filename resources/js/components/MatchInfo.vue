@@ -1,6 +1,6 @@
 <template>
     <div id="matchInfo">
-        <div class="table-header py-2 px-4">
+        <div class="table-header">
             <span>SQUADS</span>
         </div>
         <ul class="list-group">
@@ -19,7 +19,7 @@
                 </router-link>
             </div>
         </ul>
-        <div class="table-header py-2 px-4">
+        <div class="table-header">
             <span>INFO</span>
         </div>
         <div class="card">
@@ -59,7 +59,7 @@
 
         methods : {
            loadMatchInfo(){
-               var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id;
+               var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/matchInfo';
                axios.get($url)
                    .then(response => this.teamInfo = response.data)
                    // .then(function(response){
@@ -85,6 +85,7 @@
      #matchInfo .table-header{
         background: #c2f1db;
         color: #545a5f;
+        padding : 8px 20px;
     }
      #matchInfo .table-header span{
         font-size: 0.8rem;
@@ -112,6 +113,9 @@
      #matchInfo .list-group .list-group-item{
          border : 0;
          border-radius: 0;
+     }
+     #matchInfo .list-group .list-group-item h6{
+         margin : 0px;
      }
      #matchInfo .list-group .first{
          border-bottom : 0.05rem solid lightgray;

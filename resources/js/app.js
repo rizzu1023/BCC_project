@@ -3,6 +3,7 @@ import routes from './router';
 import axios from 'axios';
 import Accordion from "./components/Accordion";
 import ExampleComponent from "./components/ExampleComponent";
+import TournamentDetail from "./components/TournamentDetail";
 import LiveScore from "./components/LiveScore";
 import { Form, HasError, AlertError } from 'vform'
 import Players from "./components/Players";
@@ -13,6 +14,8 @@ import Bowling from "./components/Bowling";
 
 window.Swal = Swal;
 window.form = Form;
+
+window.Event = new Vue();
 
 // sweet alert
 const Toast = Swal.mixin({
@@ -43,14 +46,23 @@ Vue.component('Bowling', require('./components/Bowling').default);
 // Vue.prototype.$domainName = 'http://localhost:8000/api/';
 Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
+
+
 require('./bootstrap');
 
 
 const app = new Vue({
     el: '#app',
 
+    mounted : function (){
+        Event.$on('headerString', (value) => {
+            this.header_string = value;
+        });
+    },
+
     component : {
         ExampleComponent,
+        TournamentDetail,
         LiveScore,
         Players,
         Team,
@@ -59,4 +71,8 @@ const app = new Vue({
     },
 
     router : routes,
+
+    data: {
+        header_string : ''
+    }
 });

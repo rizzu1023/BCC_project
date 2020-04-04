@@ -3,11 +3,12 @@
         <ul class="list-group">
             <div  v-for="schedule in schedules" :key="schedule.id" :data="schedule">
                 <router-link :to="'/tournament/'+schedule.tournament_id+'/match/' + schedule.id + '/' + schedule.team1_id.id + '/' + schedule.team2_id.id + '/info'" style="text-decoration:none; color:#000">
-                    <li class="list-group-item">
+                    <li class="list-group-item" v-on:click="header_string(schedule.team1_id.team_code,schedule.team2_id.team_code)">
                         <span class="text-muted" style="font-size: 12px">Match {{ schedule.match_no }}</span>
                         <h6 class="mt-2"><b>{{ schedule.team1_id.team_name }}</b></h6>
                         <h6><b>{{ schedule.team2_id.team_name}}</b></h6>
                         <span class="text-danger" style="font-size: 12px">{{ schedule.times}}</span>
+
                     </li>
                 </router-link>
             </div>
@@ -16,6 +17,10 @@
 </template>
 
 <script>
+
+
+
+
     export default {
         name: "Schedule",
 
@@ -33,6 +38,12 @@
                     });
 
             },
+
+            header_string(team1, team2){
+                var value = team1 + ' vs ' + team2;
+                Event.$emit('headerString',value);
+
+            }
         },
 
         data : function(){
@@ -45,7 +56,7 @@
 
 <style scoped>
     .list-group-item{
-        border-radius: none;
+        border-radius: 0;
         border-right: 0;
         border-left: 0;
         border-top:0;

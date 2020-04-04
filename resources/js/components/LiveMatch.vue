@@ -113,8 +113,7 @@
     #liveMatch .card p{
         margin : 0;
     }
-    #liveMatch .main-score p{
-    }
+
     #liveMatch .crr p, .rrr p{
         font-weight: bold;
     }
@@ -140,6 +139,10 @@
 
     #liveMatch .list-group-item .target{
         text-align : right;
+    }
+
+    #liveMatch .main-score h6{
+        font-size: 1.1rem;
     }
 
     #liveMatch table thead tr th{

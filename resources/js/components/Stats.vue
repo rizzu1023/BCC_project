@@ -81,7 +81,11 @@
 
 <script>
     export default {
-        name: "Stats"
+        name: "Stats",
+
+        mounted: function () {
+            // Event.$emit('firstEvent');
+        },
     }
 </script>
 

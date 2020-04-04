@@ -1,15 +1,15 @@
 <template>
     <div id="scorecard">
-            <div class="table-header">
-                <span>India won by 4 runs</span>
-            </div>
+<!--            <div class="table-header">-->
+<!--                <span>India won by 4 runs</span>-->
+<!--            </div>-->
         <div class="team-header">
             <div class="row">
                 <div class="col-6 team-name">
-                    <span>IND inn</span>
+                    <span>{{matchScorecard.team1.detail.team_code}} inn</span>
                 </div>
                 <div class="col-6 team-score">
-                    <span>299-10 (99.4)</span>
+                    <span>{{matchScorecard.team1.score.score}} -{{matchScorecard.team1.score.wicket}} ({{matchScorecard.team1.score.over}}.{{matchScorecard.team1.score.overball}})</span>
                 </div>
             </div>
         </div>
@@ -26,33 +26,33 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.batsman" :key="player.id" :data="player">
                     <td>
-                        V Kohli
+                        {{player.player_id}}
                         <p>c Fortuin b Budaza</p>
                     </td>
-                    <td>123</td>
-                    <td>110</td>
-                    <td>6</td>
-                    <td>5</td>
-                    <td>123.2</td>
+                    <td>{{player.bt_runs}}</td>
+                    <td>{{player.bt_balls}}</td>
+                    <td>{{player.bt_sixes}}</td>
+                    <td>{{player.bt_fours}}</td>
+                    <td>{{ calculateStrikeRate(player.bt_runs,player.bt_balls) }}</td>
                 </tr>
-                <tr>
-                    <td>R Sharma<p>b Mokoena</p></td>
-                    <td>123</td>
-                    <td>110</td>
-                    <td>6</td>
-                    <td>5</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>R Sharma<p>b Mokoena</p></td>
-                    <td>123</td>
-                    <td>110</td>
-                    <td>6</td>
-                    <td>5</td>
-                    <td>1</td>
-                </tr>
+<!--                <tr>-->
+<!--                    <td>R Sharma<p>b Mokoena</p></td>-->
+<!--                    <td>123</td>-->
+<!--                    <td>110</td>-->
+<!--                    <td>6</td>-->
+<!--                    <td>5</td>-->
+<!--                    <td>1</td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>R Sharma<p>b Mokoena</p></td>-->
+<!--                    <td>123</td>-->
+<!--                    <td>110</td>-->
+<!--                    <td>6</td>-->
+<!--                    <td>5</td>-->
+<!--                    <td>1</td>-->
+<!--                </tr>-->
                 </tbody>
             </table>
         </div>
@@ -63,7 +63,8 @@
                         <p>Extras</p>
                     </div>
                     <div class="col-6 right-col">
-                        <p><b>12 </b>  b 1, lb 2, w 11, nb 0</p>
+                        <p><b>{{ matchScorecard.team1.extras.no_ball + matchScorecard.team1.extras.legbyes + matchScorecard.team1.extras.byes + matchScorecard.team1.extras.wide }}</b>
+                            b {{ matchScorecard.team1.extras.byes }}, lb {{ matchScorecard.team1.extras.legbyes }}, w {{ matchScorecard.team1.extras.wide }}, nb {{ matchScorecard.team1.extras.no_ball }}</p>
                     </div>
                 </div >
             </li>
@@ -73,7 +74,7 @@
                         <p>Total</p>
                     </div>
                     <div class="col-6 right-col">
-                        <p><b>180 -10 (44.3)</b></p>
+                        <p><b>{{matchScorecard.team1.score.score}} -{{matchScorecard.team1.score.wicket}} ({{matchScorecard.team1.score.over}}.{{matchScorecard.team1.score.overball}})</b></p>
                     </div>
                 </div >
             </li>
@@ -91,30 +92,23 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>M Shami</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>6</td>
-                    <td>0</td>
+                <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.bowler" :key="player.id" :data="player">
+                    <td>{{player.player_id}}</td>
+                    <td>{{player.bw_over}}.{{player.bw_overball}}</td>
+                    <td>{{player.bw_maiden}}</td>
+                    <td>{{player.bw_runs}}</td>
+                    <td>{{player.bw_wickets}}</td>
                     <td>12.2</td>
                 </tr>
-                <tr>
-                    <td>B Kumar</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>6</td>
-                    <td>0</td>
-                    <td>12.2</td>
-                </tr>
-                <tr>
-                    <td>K Ahmed</td>
-                    <td>1</td>
-                    <td>0</td>
-                    <td>6</td>
-                    <td>0</td>
-                    <td>12.2</td>
-                </tr>
+
+<!--                <tr>-->
+<!--                    <td>K Ahmed</td>-->
+<!--                    <td>1</td>-->
+<!--                    <td>0</td>-->
+<!--                    <td>6</td>-->
+<!--                    <td>0</td>-->
+<!--                    <td>12.2</td>-->
+<!--                </tr>-->
 
                 </tbody>
             </table>
@@ -154,7 +148,53 @@
 
 <script>
     export default {
-        name: "Scorecard"
+        name: "Scorecard",
+
+        mounted : function () {
+            this.loadMatchScorecard();
+        },
+
+        methods : {
+            loadMatchScorecard(){
+                var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/scorecard';
+                axios.get($url)
+                    .then(response => this.matchScorecard = response.data)
+                    // .then(function(response){
+                    //     console.log(response.data);
+                    // })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+
+            calculateStrikeRate(runs,ball){
+                if(ball == '0') {
+                    return 100
+                }
+                else {
+                    let val = (runs / ball) * 100;
+                    return val.toFixed(2)
+                }
+            },
+        },
+
+        data : function () {
+            return {
+                'matchScorecard' : {
+                        'team1' : {
+                            'detail' : {},
+                            'extras' : {},
+                            'score' : {},
+                        },
+                        'team2' : {
+                            'detail' : {},
+                            'extras' : {},
+                            'score' : {},
+                        },
+                },
+                // 'team1_players' : this.matchScorecard.team1_players,
+            }
+        }
     }
 </script>
 
@@ -187,18 +227,18 @@
         border : 0;
         background: #545a5f;
         color : #fff;
-        padding-top : 4px;
-        padding-bottom : 4px;
+        padding : 6px;
+        /*padding-bottom : 6px;*/
     }
 
     #scorecard table tbody tr td{
         font-size : 0.7rem;
-        padding: 6px 6px;
+        padding: 8px 6px;
     }
     #scorecard table td{
         text-align: right;
     }
-    #scorecard table th{
+    #scorecard table thead th{
         text-align: right;
     }
 
@@ -206,8 +246,8 @@
         text-align : left;
         padding : 12px;
         color: #0198E1;
-        padding-top: 6px;
-        padding-bottom : 6px;
+        padding-top: 8px;
+        padding-bottom : 8px;
     }
     #scorecard table th:nth-child(1) {
         text-align : left;
@@ -240,7 +280,7 @@
         border-left: 0;
         border-radius: 0;
         font-size : 0.7rem;
-        padding: 6px 12px;
+        padding: 8px 12px;
     }
     #scorecard .list-group .list-group-item p {
         margin : 0;

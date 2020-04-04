@@ -79,7 +79,7 @@
     <div class="c-wrapper c-fixed-components">
         <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
             <div class="c-header-text">
-                <span>CWC19</span>
+                <span v-text="header_string"></span>
             </div>
 {{--            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"--}}
 {{--                    data-class="c-sidebar-show">--}}
@@ -188,6 +188,7 @@
         </div>
     </div>
 </div>
+
 <!-- Optional JavaScript -->
 <!-- Popper.js first, then CoreUI JS -->
 <script src="{{asset('js/app.js')}}"></script>
@@ -196,5 +197,8 @@
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/js/coreui.min.js"></script>
 
+<script>
+    // alert(colors.black);
+</script>
 </body>
 </html>

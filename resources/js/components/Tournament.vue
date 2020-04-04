@@ -3,7 +3,7 @@
         <ul class="list-group">
             <div v-for="tournament in tournaments" :key="tournament.id" :data="tournament">
             <router-link :to="'/tournament/' + tournament.id + '/schedule'" style="text-decoration:none; color:#000">
-            <li class="list-group-item">
+            <li class="list-group-item" v-on:click="header_string(tournament.tournament_name)">
                 <h5 style="font-weight:bold" v-text="tournament.tournament_name"></h5>
                 <span style="font-size: 12px"> Jan 24 - Apr 09</span>
             </li>
@@ -26,12 +26,20 @@
         name: "Tournament",
 
         mounted : function () {
-            this.loadPlayers();
+            this.loadTournaments();
+
+            // Event.$emit('firstEvent','from t');
+
         },
 
 
         methods : {
-            loadPlayers() {
+
+            header_string(tournament){
+                Event.$emit('headerString',tournament);
+            },
+
+            loadTournaments() {
                 var $url = this.$domainName + "tournament";
                     axios.get($url)
                     .then(response => this.tournaments = response.data)
