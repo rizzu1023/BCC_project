@@ -1,5 +1,6 @@
 <template>
     <div id="scorecard">
+        <div id="scorecardDetail" v-if="matchScorecard.match_detail">
 <!--            <div class="table-header">-->
 <!--                <span>India won by 4 runs</span>-->
 <!--            </div>-->
@@ -186,7 +187,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-if="matchScorecard.team2" v-for="player in matchScorecard.team2.batsman" :key="player.id" :data="player">
+                <tr>
                     <td>
                     <router-link :to="'/player/' + player.id + '/info'">
                         <div v-if="player.bt_status == 10">
@@ -321,7 +322,10 @@
 <!--            </table>-->
 <!--        </div>-->
         </div>
-
+        </div>
+        <div id="not_started" v-else>
+            <span>Match has not started yet.</span>
+        </div>
     </div>
 </template>
 
@@ -479,6 +483,13 @@
     }
     #scorecard .list-group .right-col{
         text-align : right;
+    }
+
+    #scorecard #not_started{
+        width: 100vw;
+        text-align: center;
+        background: #f8fafc;
+        margin-top: 45vh;
     }
 
 

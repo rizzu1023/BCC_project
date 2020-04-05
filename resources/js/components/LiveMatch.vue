@@ -1,11 +1,12 @@
 <template>
     <div id="liveMatch">
-               <div class="card">
+        <div id="liveMatchShow" v-if="liveMatchScorecard.match_detail">
+        <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 main-score">
-                            <h6>INDIA</h6>
-                            <p><b>148-4</b><span class="text-muted">(19.4)</span></p>
+                            <h6>{{ liveMatchScorecard.match_detail.team_detail.team_code }}</h6>
+                            <p><b>{{ liveMatchScorecard.match_detail.score }}-{{ liveMatchScorecard.match_detail.wicket }}</b><span class="text-muted">({{ liveMatchScorecard.match_detail.over }}.{{ liveMatchScorecard.match_detail.overball }})</span></p>
                         </div>
                         <div class="col-3 rrr">
                             <span class="text-muted">RRR</span>
@@ -13,11 +14,11 @@
                         </div>
                         <div class="col-3 crr">
                             <span class="text-muted">CRR</span>
-                            <p>4.53</p>
+                            <p>{{ calculateRunRate(liveMatchScorecard.match_detail.score,liveMatchScorecard.match_detail.over,liveMatchScorecard.match_detail.overball) }}</p>
                         </div>
-                        <div class="col-12 need-run">
-                            <p class="m-0">India need 85 runs to win</p>
-                        </div>
+<!--                        <div class="col-12 need-run">-->
+<!--                            <p class="m-0">India need 85 runs to win</p>-->
+<!--                        </div>-->
                     </div>
                 </div>
 
@@ -47,21 +48,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>V Kohli</td>
-                        <td>123</td>
-                        <td>110</td>
-                        <td>6</td>
-                        <td>5</td>
-                        <td>132.99</td>
-                    </tr>
-                    <tr>
-                        <td>R Sharma</td>
-                        <td>123</td>
-                        <td>110</td>
-                        <td>6</td>
-                        <td>5</td>
-                        <td>132.99</td>
+                    <tr v-if="liveMatchScorecard.current_batsman" v-for="player in liveMatchScorecard.current_batsman" :key="player.id" :data="player">
+                    <td v-if="player.bt_status == '11'">{{ player.playerDetail.player_name}} *</td>
+                    <td v-else>{{ player.playerDetail.player_name}}</td>
+                        <td>{{ player.bt_runs }}</td>
+                        <td>{{ player.bt_balls }}</td>
+                        <td>{{ player.bt_fours }}</td>
+                        <td>{{ player.bt_sixes }}</td>
+                        <td>{{ calculateStrikeRate(player.bt_runs,player.bt_balls) }}</td>
+
                     </tr>
                     </tbody>
                 </table>
@@ -80,23 +75,100 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>M Starc</td>
-                            <td>12</td>
-                            <td>1</td>
-                            <td>65</td>
-                            <td>1</td>
-                            <td>13.6</td>
+                            <td>{{ liveMatchScorecard.current_bowler.playerDetail.player_name}}</td>
+                            <td>{{ liveMatchScorecard.current_bowler.bw_over }}.{{ liveMatchScorecard.current_bowler.bw_overball }}</td>
+                            <td>{{ liveMatchScorecard.current_bowler.bw_maiden }}</td>
+                            <td>{{ liveMatchScorecard.current_bowler.bw_runs }}</td>
+                            <td>{{ liveMatchScorecard.current_bowler.bw_wickets }}</td>
+                            <td>{{ calculateBowlingEconomy(liveMatchScorecard.current_bowler.bw_runs, liveMatchScorecard.current_bowler.bw_over, liveMatchScorecard.current_bowler.bw_overball) }}</td>
                         </tr>
                         </tbody>
                     </table>
+        </div>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-6 left-col">
+                            <p>Extras</p>
+                        </div>
+                        <div class="col-6 right-col">
+                            <p><b>{{ liveMatchScorecard.match_detail.wide + liveMatchScorecard.match_detail.no_ball + liveMatchScorecard.match_detail.byes + liveMatchScorecard.match_detail.legbyes }}</b>
+                                b {{ liveMatchScorecard.match_detail.byes }}, lb {{ liveMatchScorecard.match_detail.legbyes }}, w {{ liveMatchScorecard.match_detail.wide }}, nb {{ liveMatchScorecard.match_detail.no_ball }}</p>
+                        </div>
+                    </div >
+                </li>
+            </ul>
+        </div>
+        <div id="not_started" v-else>
+            <span>Match has not started yet.</span>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: "LiveMatch"
+        name: "LiveMatch",
+
+        mounted : function () {
+            this.loadLiveMatchScorecard();
+
+        },
+
+        methods : {
+            loadLiveMatchScorecard(){
+                var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/live';
+                axios.get($url)
+                    .then(response => this.liveMatchScorecard = response.data)
+                    // .then(function(response){
+                    //     console.log(response.data);
+                    // })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
+
+            calculateStrikeRate(runs,ball){
+                if(ball == '0') {
+                    return 100
+                }
+                else {
+                    let val = (runs / ball) * 100;
+                    return val.toFixed(2)
+                }
+            },
+
+            calculateRunRate(runs,overs,balls){
+                let over = Number(overs) + (Number(balls) * 10)/60;
+                let run_rate = (Number(runs)/Number(over)).toFixed(2);
+                return run_rate;
+            },
+
+            calculateBowlingEconomy(runs,overs,balls){
+                let over = Number(overs) + (Number(balls)*10)/60;
+                let economy = (Number(runs)/Number(over)).toFixed(2);
+                return economy;
+            }
+        },
+
+        data : function () {
+            return {
+                'liveMatchScorecard' : {
+                    'match_detail' : {
+                        'team_detail' : {},
+                    },
+                    'current_bowler' : {
+                        'playerDetail' : {},
+                    },
+                },
+
+                team1 : false,
+                team2 : false,
+                // 'team2_players' : this.matchScorecard.team2_players,
+            }
+        }
+
     }
+
 </script>
 
 <style scoped>
@@ -153,6 +225,7 @@
     }
     #liveMatch table {
         border-collapse :collapse;
+        margin : 0;
     }
 
 
@@ -182,6 +255,31 @@
     }
     #liveMatch table th:nth-child(1) {
         text-align : left
+    }
+
+    #liveMatch  #not_started{
+        width: 100vw;
+        text-align: center;
+        background: #f8fafc;
+        margin-top: 45vh;
+    }
+
+    #liveMatch .list-group .list-group-item{
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+        font-size : 0.7rem;
+        padding: 8px 12px;
+    }
+    #liveMatch .list-group .list-group-item p {
+        margin : 0;
+    }
+
+    #liveMatch .list-group .left-col{
+        font-weight : bold;
+    }
+    #liveMatch .list-group .right-col{
+        text-align : right;
     }
 
 

@@ -17,7 +17,21 @@ class MatchDetailResource extends JsonResource
 //        return parent::toArray($request);
         return [
             'id' => $this->id,
-            'team' => $this->Teams,
+            'match_id' => $this->match_id,
+            'team_id' => $this->team_id,
+            'score' => $this->score,
+            'wicket' => $this->wicket,
+            'over' => $this->over,
+            'overball' => $this->overball,
+            'isBatting' =>$this->isBatting,
+            'no_ball' => $this->no_ball,
+            'wide' => $this->wide,
+            'byes' => $this->byes,
+            'legbyes' => $this->legbyes,
+            'tournament_id' => $this->tournament_id,
+            'isOver' => $this->isOver,
+            'isWicket' => $this->isWicket,
+            'team_detail' => $this->Teams,
         ];
     }
 }
