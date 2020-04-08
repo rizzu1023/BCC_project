@@ -36,13 +36,13 @@
 <style scoped>
 
     .nav-tabs-boxed{
-        background: #545a5f;
+        background: #1e72fa;
     }
 
 
     .nav-item{
         font-size: 0.85rem;
-        background: #545a5f;
+        background: #1e72fa;
         text-transform: uppercase;
 
     }
@@ -63,7 +63,7 @@
     .router-link-exact-active .nav-item .nav-link{
         color : #fff;
         text-decoration: none;
-        background: #545a5f;
+        background: #1e72fa;
         font-weight : bold;
         border-bottom: 3px solid #fff;
     }
@@ -71,7 +71,7 @@
     .nav-tabs {
         position: fixed;
         top: 56px;
-        background: #545a5f;
+        background: #1e72fa;
         width : 100vw;
         z-index : 1000;
     }

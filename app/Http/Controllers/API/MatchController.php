@@ -5,10 +5,12 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\MatchDetailResource;
 use App\Http\Resources\MatchPlayersResource;
+use App\Http\Resources\MatchTrackResource;
 use App\Http\Resources\PlayersResource;
 use App\Match;
 use App\MatchDetail;
 use App\MatchPlayers;
+use App\MatchTrack;
 use App\Players;
 use App\Schedule;
 use App\Teams;
@@ -43,6 +45,33 @@ class MatchController extends Controller
             'times' => $match->times,
             'toss' => $toss_team,
         ];
+    }
+
+
+
+    public function live($tournament_id,$match_id,$team1_id,$team2_id){
+       $match_detail = NULL;
+
+       $current_batsman = [];
+       $current_bowler = NULL;
+
+       $batting_team = MatchDetail::where('isBatting',1)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first();
+        if($batting_team){
+            $match_detail = new MatchDetailResource($batting_team);
+            $batsman = MatchPlayers::whereIn('bt_status',['10','11'])->where('team_id',$batting_team->team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->get();
+            if($batsman)
+            $current_batsman = MatchPlayersResource::collection($batsman);
+
+            $bowler = MatchPlayers::where('bw_status','11')->where('team_id','<>',$batting_team->team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first();
+            if($bowler)
+             $current_bowler = new MatchPlayersResource($bowler);
+        }
+        return [
+            'match_detail' => $match_detail,
+            'current_batsman' => $current_batsman,
+            'current_bowler' => $current_bowler,
+           ];
+
     }
 
     public function scorecard($tournament_id,$match_id,$team1_id,$team2_id){
@@ -113,28 +142,65 @@ class MatchController extends Controller
 
     }
 
-    public function live($tournament_id,$match_id,$team1_id,$team2_id){
-       $match_detail = NULL;
-
-       $current_batsman = [];
-       $current_bowler = NULL;
-
-       $batting_team = MatchDetail::where('isBatting',1)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first();
-        if($batting_team){
-            $match_detail = new MatchDetailResource($batting_team);
-            $batsman = MatchPlayers::whereIn('bt_status',['10','11'])->where('team_id',$batting_team->team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->get();
-            if($batsman)
-            $current_batsman = MatchPlayersResource::collection($batsman);
-
-            $bowler = MatchPlayers::where('bw_status','11')->where('team_id','<>',$batting_team->team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first();
-            if($bowler)
-             $current_bowler = new MatchPlayersResource($bowler);
+    public function overs($tournament_id,$match_id,$team1_id,$team2_id){
+        $match_detail = Match::where('match_id',$match_id)->first();
+        if($match_detail){
+            if($match_detail->toss == $team1_id && $match_detail->choose == 'Bat'){
+                $batting_team_id = $team1_id;
+                $bowling_team_id = $team2_id;
+            }
+            else{
+                $batting_team_id = $team2_id;
+                $bowling_team_id = $team1_id;
+            }
         }
-        return [
-            'match_detail' => $match_detail,
-            'current_batsman' => $current_batsman,
-            'current_bowler' => $current_bowler,
-           ];
+        $overs = MatchTrack::selectRaw('Min(attacker_id) as attacker_id,over as over_no, SUM(run) as runs, SUM(wickets) as wickets')
+            ->groupBy('over')
+            ->where('match_id',$match_id)
+            ->where('team_id',$bowling_team_id)
+            ->where('tournament_id',$tournament_id)
+            ->orderBy('over','desc')
+            ->get();
+
+        $over_detail = MatchTrack::select('over', 'action','run')
+            ->where('match_id',$match_id)
+            ->where('team_id',$bowling_team_id)
+            ->where('tournament_id',$tournament_id)
+            ->orderBy('over','desc')
+            ->get();
+
+        $result_collection = MatchTrackResource::collection($overs);
+        $over_details = collect($over_detail)->groupBy('over');
+        $result = collect();
+        foreach($result_collection as $rc){
+            $r = collect($rc)->merge(['over_detail' => $over_details[$rc->over_no]]);
+            $result->push($r);
+        }
+
+        $overs2 = MatchTrack::selectRaw('Min(attacker_id) as attacker_id,over as over_no, SUM(run) as runs, SUM(wickets) as wickets')
+            ->groupBy('over')
+            ->where('match_id',$match_id)
+            ->where('team_id',$batting_team_id)
+            ->where('tournament_id',$tournament_id)
+            ->orderBy('over','desc')
+            ->get();
+
+        $over_detail2 = MatchTrack::select('over', 'action','run')
+            ->where('match_id',$match_id)
+            ->where('team_id',$batting_team_id)
+            ->where('tournament_id',$tournament_id)
+            ->orderBy('over','desc')
+            ->get();
+
+        $result_collection2 = MatchTrackResource::collection($overs2);
+        $over_details2 = collect($over_detail2)->groupBy('over');
+        $result2 = collect();
+        foreach($result_collection2 as $rc){
+            $r = collect($rc)->merge(['over_detail' => $over_details2[$rc->over_no]]);
+            $result2->push($r);
+        }
+
+        return $result->merge($result2);
 
     }
 }

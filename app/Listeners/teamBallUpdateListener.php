@@ -16,7 +16,7 @@ class teamBallUpdateListener
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
@@ -31,5 +31,8 @@ class teamBallUpdateListener
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)
             ->increment('overball', 1);
+
+
+
     }
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .c-header{
-            background: #545a5f;
+            background: #1e72fa;
             color: #fff;
             border: 0;
         }

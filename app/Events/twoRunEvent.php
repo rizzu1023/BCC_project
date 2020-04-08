@@ -14,6 +14,7 @@ class twoRunEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $request;
+    public $event_name;
 
     /**
      * Create a new event instance.
@@ -23,6 +24,7 @@ class twoRunEvent
     public function __construct($request)
     {
         $this->request = $request;
+        $this->event_name = 'two_run';
     }
 
     /**

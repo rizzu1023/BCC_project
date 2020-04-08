@@ -335,6 +335,7 @@
 
         mounted : function () {
             this.loadMatchScorecard();
+            // setInterval(() => this.loadMatchScorecard(), 5000);
         },
 
         methods : {
@@ -391,11 +392,11 @@
 
     #scorecard .team-header{
         padding: 12px;
-        /*background : #545a5f;*/
+        /*background : #1e72fa;*/
         /*color: #fff;*/
         font-weight : bold;
-        background : #c2f1db;
-        color: #545a5f;
+        background : #dbdbdb;
+        color: #1e72fa;
     }
     #scorecard .team-header .team-score{
         text-align: right;
@@ -411,7 +412,7 @@
 
     #scorecard table thead tr th{
         border : 0;
-        background: #545a5f;
+        background: #1e72fa;
         color : #fff;
         padding : 6px;
         /*padding-bottom : 6px;*/
@@ -463,7 +464,7 @@
 
     #scorecard table td:nth-child(1) p{
         margin: 0;
-        color : #545a5f;
+        color : #1e72fa;
         font-size : 0.65rem;
     }
 

@@ -83,8 +83,8 @@
 
 <style scoped>
      #matchInfo .table-header{
-        background: #c2f1db;
-        color: #545a5f;
+        background: #dbdbdb;
+        color: #1e72fa;
         padding : 8px 20px;
     }
      #matchInfo .table-header span{
@@ -104,7 +104,7 @@
      }
 
      #matchInfo .card .card-body lable{
-        color: #545a5f;
+        color: #1e72fa;
     }
      #matchInfo .card .card-body span{
         color : #000;

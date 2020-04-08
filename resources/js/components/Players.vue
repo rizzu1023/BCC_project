@@ -167,7 +167,7 @@
     }
 
     .table-header{
-        background: #545a5f;
+        background: #1e72fa;
         color: #FFF;
         text-align: center;
     }

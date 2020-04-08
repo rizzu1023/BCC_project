@@ -17,6 +17,8 @@ class CreateTournamentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('tournament_name');
             $table->integer('user_id');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

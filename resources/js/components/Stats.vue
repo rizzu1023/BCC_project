@@ -91,11 +91,11 @@
 
 <style scoped>
     .table-header{
-        background: #c2f1db;
+        background: #dbdbdb;
     }
     .table-header span{
         font-size: 0.8rem;
-        color: #545a5f;
+        color: #1e72fa;
         font-weight : bold;
     }
 

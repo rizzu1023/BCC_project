@@ -181,8 +181,8 @@
         font-size: 0.8rem;
     }
     .table thead{
-        background : #c2f1db;
-        color : #545a5f;
+        background : #dbdbdb;
+        color : #1e72fa;
     }
     .table thead tr th{
         border:none;
@@ -192,7 +192,7 @@
     /*}*/
 
         .table-header{
-            background: #545a5f;
+            background: #1e72fa;
             color: #FFF;
             text-align: center;
         }

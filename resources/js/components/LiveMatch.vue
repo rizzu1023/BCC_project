@@ -111,7 +111,7 @@
 
         mounted : function () {
             this.loadLiveMatchScorecard();
-
+            setInterval(() => this.loadLiveMatchScorecard(),5000);
         },
 
         methods : {
@@ -231,8 +231,8 @@
 
     #liveMatch table thead th{
         /*border : 0.5rem;*/
-        background: #c2f1db;
-        color : #545a5f;
+        background: #dbdbdb;
+        color : #1e72fa;
     }
 
     #liveMatch table tbody tr td{

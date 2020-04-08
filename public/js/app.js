@@ -2078,15 +2078,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LiveMatch",
   mounted: function mounted() {
+    var _this = this;
+
     this.loadLiveMatchScorecard();
+    setInterval(function () {
+      return _this.loadLiveMatchScorecard();
+    }, 5000);
   },
   methods: {
     loadLiveMatchScorecard: function loadLiveMatchScorecard() {
-      var _this = this;
+      var _this2 = this;
 
       var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/live';
       axios.get($url).then(function (response) {
-        return _this.liveMatchScorecard = response.data;
+        return _this2.liveMatchScorecard = response.data;
       }) // .then(function(response){
       //     console.log(response.data);
       // })
@@ -2378,8 +2383,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "MatchOvers"
+  name: "MatchOvers",
+  mounted: function mounted() {
+    this.loadMatchOvers(); // setInterval(() => this.loadMatchOvers(), 5000);
+  },
+  methods: {
+    loadMatchOvers: function loadMatchOvers() {
+      var _this = this;
+
+      var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/overs';
+      axios.get($url).then(function (response) {
+        return _this.matchOvers = response.data;
+      }) // .then(function(response){
+      //     console.log(response.data);
+      // })
+      ["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
+  data: function data() {
+    return {
+      'matchOvers': {
+        'attacker_id': {
+          'player_name': null
+        }
+      }
+    };
+  }
 });
 
 /***/ }),
@@ -3092,7 +3150,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scorecard",
   mounted: function mounted() {
-    this.loadMatchScorecard();
+    this.loadMatchScorecard(); // setInterval(() => this.loadMatchScorecard(), 5000);
   },
   methods: {
     loadMatchScorecard: function loadMatchScorecard() {
@@ -8175,7 +8233,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n    margin : 0;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #c2f1db;\n    color : #545a5f;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n#liveMatch  #not_started[data-v-d9645c44]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#liveMatch .list-group .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#liveMatch .list-group .list-group-item p[data-v-d9645c44] {\n    margin : 0;\n}\n#liveMatch .list-group .left-col[data-v-d9645c44]{\n    font-weight : bold;\n}\n#liveMatch .list-group .right-col[data-v-d9645c44]{\n    text-align : right;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n    margin : 0;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #dbdbdb;\n    color : #1e72fa;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n#liveMatch  #not_started[data-v-d9645c44]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#liveMatch .list-group .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#liveMatch .list-group .list-group-item p[data-v-d9645c44] {\n    margin : 0;\n}\n#liveMatch .list-group .left-col[data-v-d9645c44]{\n    font-weight : bold;\n}\n#liveMatch .list-group .right-col[data-v-d9645c44]{\n    text-align : right;\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -8194,7 +8252,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #545a5f;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #545a5f;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #545a5f;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #1e72fa;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -8213,7 +8271,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90]{\n    background: #c2f1db;\n    color: #545a5f;\n    padding : 8px 20px;\n}\n#matchInfo .table-header span[data-v-3fc29e90]{\n    font-size: 0.8rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#matchInfo  .card[data-v-3fc29e90]{\n    border-radius : 0;\n     border : none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90]{\n    font-size: 0.8rem;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90]{\n    color: #545a5f;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90]{\n    color : #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90]{\n     border : 0;\n     border-radius: 0;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90]{\n     margin : 0px;\n}\n#matchInfo .list-group .first[data-v-3fc29e90]{\n     border-bottom : 0.05rem solid lightgray;\n}\n", ""]);
+exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90]{\n    background: #dbdbdb;\n    color: #1e72fa;\n    padding : 8px 20px;\n}\n#matchInfo .table-header span[data-v-3fc29e90]{\n    font-size: 0.8rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#matchInfo  .card[data-v-3fc29e90]{\n    border-radius : 0;\n     border : none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90]{\n    font-size: 0.8rem;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90]{\n    color: #1e72fa;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90]{\n    color : #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90]{\n     border : 0;\n     border-radius: 0;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90]{\n     margin : 0px;\n}\n#matchInfo .list-group .first[data-v-3fc29e90]{\n     border-bottom : 0.05rem solid lightgray;\n}\n", ""]);
 
 // exports
 
@@ -8232,7 +8290,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#matchOvers .card[data-v-9f8151f6]{\n    border-top : 0;\n    border-right : 0;\n    border-left : 0;\n    border-radius : 0;\n}\n#matchOvers .card-body[data-v-9f8151f6] {\n    padding : 12px\n}\n#matchOvers .card-body p[data-v-9f8151f6]{\n    font-size : .85rem;\n    margin-bottom : 6px;\n    font-weight: bold;\n}\n#matchOvers .card-body .left-col span[data-v-9f8151f6]{\n    font-size: .7rem;\n}\n#matchOvers .card-body .right-col span[data-v-9f8151f6] {\n    background: #545a5f;\n    color : white;\n    border-radius : 50%;\n    padding : 2px 6px;\n    font-size : .65rem;\n}\n\n\n", ""]);
+exports.push([module.i, "\n#matchOvers .card[data-v-9f8151f6]{\n    border-top : 0;\n    border-right : 0;\n    border-left : 0;\n    border-radius : 0;\n}\n#matchOvers .card-body[data-v-9f8151f6] {\n    padding : 12px\n}\n#matchOvers .card-body p[data-v-9f8151f6]{\n    font-size : .85rem;\n    margin-bottom : 6px;\n    font-weight: bold;\n}\n#matchOvers .card-body .left-col span[data-v-9f8151f6]{\n    font-size: .7rem;\n}\n#matchOvers .card-body .right-col span div[data-v-9f8151f6]{\n    background: #1e72fa;\n    color : white;\n    border-radius : 50%;\n    padding : 2px 6px;\n    font-size : .65rem;\n    margin-right: 4px;\n    display: inline-block;\n}\n#matchOvers .card-body .right-col span .four[data-v-9f8151f6]{\n    background : lightblue;\n}\n#matchOvers .card-body .right-col span .six[data-v-9f8151f6]{\n    background : pink;\n}\n#matchOvers .card-body .right-col span .one[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .two[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .legbyes[data-v-9f8151f6] {\n    background : orange;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .byes[data-v-9f8151f6] {\n    background : cyan;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .noball[data-v-9f8151f6] {\n    background : blue;\n}\n#matchOvers .card-body .right-col span .wicket[data-v-9f8151f6] {\n    background: red;\n}\n\n\n\n\n", ""]);
 
 // exports
 
@@ -8251,7 +8309,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-37bfe506]{\n    background: #545a5f;\n}\n.nav-item[data-v-37bfe506]{\n    font-size: 0.85rem;\n    background: #545a5f;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-37bfe506]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-37bfe506]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-37bfe506]{\n    color : #fff;\n    text-decoration: none;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-37bfe506] {\n    position: fixed;\n    top: 56px;\n    background: #545a5f;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-37bfe506]{\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-37bfe506]{\n    background: #1e72fa;\n}\n.nav-item[data-v-37bfe506]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-37bfe506]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-37bfe506]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-37bfe506]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-37bfe506] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-37bfe506]{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -8289,7 +8347,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #545a5f;\n    color: #FFF;\n    text-align: center;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n", ""]);
+exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n", ""]);
 
 // exports
 
@@ -8327,7 +8385,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7]{\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7]{\n    padding: 12px;\n    /*background : #545a5f;*/\n    /*color: #fff;*/\n    font-weight : bold;\n    background : #c2f1db;\n    color: #545a5f;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7]{\n    margin-bottom : 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7]{\n    font-size: 0.7rem;\n    border : 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7]{\n    border : 0;\n    background: #545a5f;\n    color : #fff;\n    padding : 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7]{\n    font-size : 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table tbody tr td a[data-v-22a9a9c7] {\n    text-decoration: none;\n    color : #212529;\n}\n#scorecard table td[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1){\n    text-align : left;\n    padding : 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom : 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align : left;\n    padding-left : 12px;\n    padding-right : 12px;\n}\n#scorecard table tbody tr[data-v-22a9a9c7]:first-child{\n    border : 0;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7]{\n    margin: 0;\n    color : #545a5f;\n    font-size : 0.65rem;\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin : 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7]{\n    font-weight : bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7]{\n    text-align : right;\n}\n#scorecard #not_started[data-v-22a9a9c7]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n\n\n", ""]);
+exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7]{\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7]{\n    padding: 12px;\n    /*background : #1e72fa;*/\n    /*color: #fff;*/\n    font-weight : bold;\n    background : #dbdbdb;\n    color: #1e72fa;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7]{\n    margin-bottom : 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7]{\n    font-size: 0.7rem;\n    border : 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7]{\n    border : 0;\n    background: #1e72fa;\n    color : #fff;\n    padding : 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7]{\n    font-size : 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table tbody tr td a[data-v-22a9a9c7] {\n    text-decoration: none;\n    color : #212529;\n}\n#scorecard table td[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7]{\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1){\n    text-align : left;\n    padding : 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom : 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align : left;\n    padding-left : 12px;\n    padding-right : 12px;\n}\n#scorecard table tbody tr[data-v-22a9a9c7]:first-child{\n    border : 0;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child{\n    padding-right:12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7]{\n    margin: 0;\n    color : #1e72fa;\n    font-size : 0.65rem;\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin : 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7]{\n    font-weight : bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7]{\n    text-align : right;\n}\n#scorecard #not_started[data-v-22a9a9c7]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n\n\n", ""]);
 
 // exports
 
@@ -8346,7 +8404,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.table-header[data-v-56c7d5c4]{\n    background: #c2f1db;\n}\n.table-header span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n    color: #545a5f;\n    font-weight : bold;\n}\n.list-group-item[data-v-56c7d5c4]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n}\n.list-group-item span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n}\n", ""]);
+exports.push([module.i, "\n.table-header[data-v-56c7d5c4]{\n    background: #dbdbdb;\n}\n.table-header span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n    color: #1e72fa;\n    font-weight : bold;\n}\n.list-group-item[data-v-56c7d5c4]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n}\n.list-group-item span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n}\n", ""]);
 
 // exports
 
@@ -8365,7 +8423,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead[data-v-cecdae96]{\n    background : #c2f1db;\n    color : #545a5f;\n}\n.table thead tr th[data-v-cecdae96]{\n    border:none;\n}\n/*.table tbody td:hover, .table tbody td:active , .table tbody td:focus{*/\n/*    background:orange;*/\n/*}*/\n.table-header[data-v-cecdae96]{\n        background: #545a5f;\n        color: #FFF;\n        text-align: center;\n}\n.table-header span[data-v-cecdae96]{\n        font-size: 0.85rem;\n        font-weight : bold;\n        text-transform : uppercase;\n}\n", ""]);
+exports.push([module.i, "\n.table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead[data-v-cecdae96]{\n    background : #dbdbdb;\n    color : #1e72fa;\n}\n.table thead tr th[data-v-cecdae96]{\n    border:none;\n}\n/*.table tbody td:hover, .table tbody td:active , .table tbody td:focus{*/\n/*    background:orange;*/\n/*}*/\n.table-header[data-v-cecdae96]{\n        background: #1e72fa;\n        color: #FFF;\n        text-align: center;\n}\n.table-header span[data-v-cecdae96]{\n        font-size: 0.85rem;\n        font-weight : bold;\n        text-transform : uppercase;\n}\n", ""]);
 
 // exports
 
@@ -8422,7 +8480,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #545a5f;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.85rem;\n    background: #545a5f;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #545a5f;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    background: #545a5f;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1e72fa;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -45484,42 +45542,167 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "matchOvers" } }, [
-      _c("div", { attrs: { id: "overs" } }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-3 left-col" }, [
-                _c("p", [_vm._v("Ov 12")]),
+  return _c("div", { attrs: { id: "matchOvers" } }, [
+    _c("div", { attrs: { id: "overs" } }, [
+      _c(
+        "div",
+        { staticClass: "card" },
+        _vm._l(_vm.matchOvers, function(over) {
+          return _c(
+            "div",
+            { key: over.id, staticClass: "card-body", attrs: { data: over } },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3 left-col" }, [
+                  _c("p", [_vm._v("Ov " + _vm._s(over.over_no))]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "text-muted" }, [
+                    _vm._v(_vm._s(over.runs) + " runs")
+                  ])
+                ]),
                 _vm._v(" "),
-                _c("span", { staticClass: "text-muted" }, [_vm._v("19 runs")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-9 right-col" }, [
-                _c("p", [_vm._v("Shane Watsom")]),
-                _vm._v(" "),
-                _c("span", [_vm._v("l1")]),
-                _vm._v(" "),
-                _c("span", [_vm._v("4")]),
-                _vm._v(" "),
-                _c("span", [_vm._v("1")]),
-                _vm._v(" "),
-                _c("span", [_vm._v("2")])
+                _c(
+                  "div",
+                  { staticClass: "col-9 right-col" },
+                  [
+                    _c("p", [_vm._v(_vm._s(over.attacker_id.player_name))]),
+                    _vm._v(" "),
+                    _vm._l(over.over_detail, function(ball) {
+                      return _c(
+                        "span",
+                        { key: ball.id, attrs: { data: ball } },
+                        [
+                          ball.action === "zero"
+                            ? _c("div", { staticClass: "zero" }, [_vm._v("0")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "one"
+                            ? _c("div", { staticClass: "one" }, [_vm._v("1")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "two"
+                            ? _c("div", { staticClass: "two" }, [_vm._v("2")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "four"
+                            ? _c("div", { staticClass: "four" }, [_vm._v("4")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "six"
+                            ? _c("div", { staticClass: "six" }, [_vm._v("6")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "lb1"
+                            ? _c("div", { staticClass: "legbyes" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "lb2"
+                            ? _c("div", { staticClass: "legbyes" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "lb3"
+                            ? _c("div", { staticClass: "legbyes" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "lb4"
+                            ? _c("div", { staticClass: "legbyes" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "b1"
+                            ? _c("div", { staticClass: "byes" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "b2"
+                            ? _c("div", { staticClass: "byes" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "b3"
+                            ? _c("div", { staticClass: "byes" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "b4"
+                            ? _c("div", { staticClass: "byes" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "nb"
+                            ? _c("div", { staticClass: "noball" }, [
+                                _vm._v("nb")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "nb1"
+                            ? _c("div", { staticClass: "noball" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "nb2"
+                            ? _c("div", { staticClass: "noball" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "nb3"
+                            ? _c("div", { staticClass: "noball" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "nb4"
+                            ? _c("div", { staticClass: "noball" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "nb5"
+                            ? _c("div", { staticClass: "noball" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "nb6"
+                            ? _c("div", { staticClass: "noball" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "wicket"
+                            ? _c("div", { staticClass: "wicket" }, [
+                                _vm._v("w")
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    })
+                  ],
+                  2
+                )
               ])
-            ])
-          ])
-        ])
-      ])
+            ]
+          )
+        }),
+        0
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
