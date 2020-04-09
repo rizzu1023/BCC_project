@@ -15,6 +15,7 @@
                             <div v-if="ball.action === 'zero'" class="zero">0</div>
                             <div v-if="ball.action === 'one'" class="one">1</div>
                             <div v-if="ball.action === 'two'" class="two">2</div>
+                            <div v-if="ball.action === 'two'" class="three">3</div>
                             <div v-if="ball.action === 'four'" class="four">4</div>
                             <div v-if="ball.action  === 'six'" class="six">6</div>
                             <div v-if="ball.action  === 'lb1'" class="legbyes">{{ball.action}}</div>
@@ -34,8 +35,14 @@
                             <div v-if="ball.action  === 'nb4'" class="noball">{{ball.action}}</div>
                             <div v-if="ball.action  === 'nb5'" class="noball">{{ball.action}}</div>
                             <div v-if="ball.action  === 'nb6'" class="noball">{{ball.action}}</div>
-                            <div v-if="ball.action  === 'wicket'" class="wicket">w</div>
 
+                            <div v-if="ball.action  === 'wd'" class="wide">{{ball.action}}</div>
+                            <div v-if="ball.action  === 'wd1'" class="wide">{{ball.action}}</div>
+                            <div v-if="ball.action  === 'wd2'" class="wide">{{ball.action}}</div>
+                            <div v-if="ball.action  === 'wd3'" class="wide">{{ball.action}}</div>
+                            <div v-if="ball.action  === 'wd4'" class="wide">{{ball.action}}</div>
+
+                            <div v-if="ball.action  === 'wicket'" class="wicket">w</div>
 
                         </span>
 <!--                        <div v-for="ball in over.over_detail" :key="ball.id" :data="ball">-->

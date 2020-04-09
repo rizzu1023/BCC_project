@@ -60,10 +60,10 @@ class matchTrackListener
         elseif ($event->request->value == 'nb3'){$action = 'nb3';$run = 4;}
         elseif ($event->request->value == 'nb4'){$action = 'nb4';$run = 5;}
         elseif ($event->request->value == 'nb5'){$action = 'nb5';$run = 6;}
-        elseif ($event->request->value == 'nb6'){$action = 'nob6';$run = 7;}
+        elseif ($event->request->value == 'nb6'){$action = 'nb6';$run = 7;}
 
-        elseif ($event->request->value == 'runout'){$action = 'wicket';$run = 0;}
-        elseif ($event->request->value == 'lbw' || $event->request->value == 'bold' || $event->request->value == 'catch' || $event->request->value == 'stump'){$action = 'wicket';$run = 0;}
+        elseif ($event->request->wicket_type == 'runout'){$action = 'wicket';$run = 0;}
+        elseif ($event->request->wicket_type == 'lbw' || $event->request->wicket_type == 'bold' || $event->request->wicket_type == 'catch' || $event->request->wicket_type == 'stump'){$action = 'wicket';$run = 0;}
 
         if($match_detail) {
             MatchTrack::create([

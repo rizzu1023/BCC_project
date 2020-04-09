@@ -2409,6 +2409,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MatchOvers",
   mounted: function mounted() {
@@ -45584,6 +45591,10 @@ var render = function() {
                             ? _c("div", { staticClass: "two" }, [_vm._v("2")])
                             : _vm._e(),
                           _vm._v(" "),
+                          ball.action === "two"
+                            ? _c("div", { staticClass: "three" }, [_vm._v("3")])
+                            : _vm._e(),
+                          _vm._v(" "),
                           ball.action === "four"
                             ? _c("div", { staticClass: "four" }, [_vm._v("4")])
                             : _vm._e(),
@@ -45678,6 +45689,36 @@ var render = function() {
                           _vm._v(" "),
                           ball.action === "nb6"
                             ? _c("div", { staticClass: "noball" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "wd"
+                            ? _c("div", { staticClass: "wide" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "wd1"
+                            ? _c("div", { staticClass: "wide" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "wd2"
+                            ? _c("div", { staticClass: "wide" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "wd3"
+                            ? _c("div", { staticClass: "wide" }, [
+                                _vm._v(_vm._s(ball.action))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          ball.action === "wd4"
+                            ? _c("div", { staticClass: "wide" }, [
                                 _vm._v(_vm._s(ball.action))
                               ])
                             : _vm._e(),

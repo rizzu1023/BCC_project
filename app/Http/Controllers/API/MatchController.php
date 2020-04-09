@@ -143,6 +143,7 @@ class MatchController extends Controller
     }
 
     public function overs($tournament_id,$match_id,$team1_id,$team2_id){
+
         $match_detail = Match::where('match_id',$match_id)->first();
         if($match_detail){
             if($match_detail->toss == $team1_id && $match_detail->choose == 'Bat'){

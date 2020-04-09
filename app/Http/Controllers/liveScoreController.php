@@ -176,7 +176,8 @@ class LiveScoreController extends Controller
     public function LiveUpdateShow($id, $tournament)
     {
         $matchs = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
-
+        $matchs->status = 1;
+        $matchs->save();
         return view('Admin/LiveScore/show', compact('matchs'));
     }
 
