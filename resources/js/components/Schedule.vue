@@ -26,7 +26,7 @@
 
         mounted : function() {
             this.loadSchedule();
-        },
+            },
 
         methods:  {
             loadSchedule() {

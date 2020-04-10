@@ -11,6 +11,8 @@ import Swal from 'sweetalert2'
 import Team from "./components/Team";
 import Batting from "./components/Batting";
 import Bowling from "./components/Bowling";
+import Tournament from "./components/Tournament";
+import VueRouter from "vue-router";
 
 window.Swal = Swal;
 window.form = Form;
@@ -50,6 +52,19 @@ Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
 require('./bootstrap');
 
+// const router = new VueRouter({
+//     router : routes,
+// });
+//
+// routes.beforeEach((to,from,next) => {
+//     if(to.name === 'Schedule' && (from.name === 'Team' || from.name === 'Stats' || from.name === 'PointsTable')){
+//         next({ name: 'Tournament' });
+//     }
+//     if(to.name === 'Team' && (from.name === 'Schedule' || from.name === 'Stats' || from.name === 'PointsTable')){
+//         next({ name: 'Tournament' });
+//     }
+//     else next();
+// });
 
 const app = new Vue({
     el: '#app',
@@ -63,6 +78,7 @@ const app = new Vue({
     component : {
         ExampleComponent,
         TournamentDetail,
+        Tournament,
         LiveScore,
         Players,
         Team,
@@ -73,6 +89,6 @@ const app = new Vue({
     router : routes,
 
     data: {
-        header_string : ''
+        header_string : '',
     }
 });

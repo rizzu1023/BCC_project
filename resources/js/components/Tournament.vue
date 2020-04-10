@@ -27,9 +27,6 @@
 
         mounted : function () {
             this.loadTournaments();
-
-            // Event.$emit('firstEvent','from t');
-
         },
 
 

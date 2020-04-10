@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MatchTrackResource;
+use App\MatchTrack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -45,6 +47,11 @@ class MatchController extends Controller
           $g->delete();
         }
 
+        $matchTrack = MatchTrack::where('match_id',$match_id)->where('tournament_id',$request->tournament)->get();
+        for($j=0; $j<count($matchTrack); $j++){
+            $g = MatchTrack::where('match_id',$match_id)->first();
+            $g->delete();
+        }
         return redirect::route('BrowseResult',compact('result'));
     }
 }

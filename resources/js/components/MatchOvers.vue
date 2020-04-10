@@ -15,7 +15,7 @@
                             <div v-if="ball.action === 'zero'" class="zero">0</div>
                             <div v-if="ball.action === 'one'" class="one">1</div>
                             <div v-if="ball.action === 'two'" class="two">2</div>
-                            <div v-if="ball.action === 'two'" class="three">3</div>
+                            <div v-if="ball.action === 'three'" class="three">3</div>
                             <div v-if="ball.action === 'four'" class="four">4</div>
                             <div v-if="ball.action  === 'six'" class="six">6</div>
                             <div v-if="ball.action  === 'lb1'" class="legbyes">{{ball.action}}</div>

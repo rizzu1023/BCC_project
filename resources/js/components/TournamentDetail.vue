@@ -5,16 +5,16 @@
                 <div class="nav-tabs-boxed">
                     <ul class="nav nav-tabs live" role="tablist">
 <!--                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule">MATCHES</a></li>-->
-                        <router-link to="schedule">
+                        <router-link to="schedule" replace>
                             <li class="nav-item"><a class="nav-link">Schedule</a></li>
                         </router-link>
-                        <router-link to='teams'>
+                        <router-link to='teams' replace>
                              <li class="nav-item"><a class="nav-link">Teams</a></li>
                         </router-link>
-                        <router-link to="stats">
+                        <router-link to="stats" replace>
                             <li class="nav-item"><a class="nav-link">Stats</a></li>
                         </router-link>
-                        <router-link to="pointsTable">
+                        <router-link to="pointsTable" replace>
                             <li class="nav-item"><a class="nav-link">PointsTable</a></li>
                         </router-link>
                     </ul>
@@ -34,8 +34,6 @@
     import PointsTable from "./PointsTable";
     export default {
         name: "TournamentDetail",
-
-
 
 
         components: {PointsTable, Stats, Schedule},

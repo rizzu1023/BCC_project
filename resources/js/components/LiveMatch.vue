@@ -1,6 +1,14 @@
 <template>
     <div id="liveMatch">
-        <div id="liveMatchShow" v-if="liveMatchScorecard.match_detail">
+
+        <div id="not_started" v-if="liveMatchScorecard.isMatch === 'not_found'">
+            <span>Match has not started yet.</span>
+            <!--            <div class="loader-block-main">-->
+            <!--                <div class="loader-bx"></div>-->
+            <!--            </div>-->
+        </div>
+
+        <div id="liveMatchShow" v-else-if="liveMatchScorecard.isMatch">
         <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -99,9 +107,12 @@
                 </li>
             </ul>
         </div>
-        <div id="not_started" v-else>
-            <span>Match has not started yet.</span>
+
+        <div id="loader" v-else>
+                <div id="preloader"></div>
+<!--            <p>blank</p>-->
         </div>
+
     </div>
 </template>
 
@@ -111,7 +122,7 @@
 
         mounted : function () {
             this.loadLiveMatchScorecard();
-            setInterval(() => this.loadLiveMatchScorecard(),5000);
+            // setInterval(() => this.loadLiveMatchScorecard(),5000);
         },
 
         methods : {
@@ -153,13 +164,15 @@
         data : function () {
             return {
                 'liveMatchScorecard' : {
-                    'match_detail' : {
-                        'team_detail' : {},
-                    },
+                    'match_detail' : null,
+
                     'current_bowler' : {
                         'playerDetail' : {},
                     },
+
+                    'isMatch' : false,
                 },
+
 
                 team1 : false,
                 team2 : false,
@@ -172,6 +185,7 @@
 </script>
 
 <style scoped>
+
 
     #liveMatch .card{
         border-radius : 0;
@@ -280,6 +294,29 @@
     }
     #liveMatch .list-group .right-col{
         text-align : right;
+    }
+
+
+    #loader{
+        background: #f8fafc;
+    }
+    #preloader {
+        height: 30px;
+        width: 30px;
+        margin: 40vh auto;
+        border: 5px solid #dbdbdb;
+        border-top: 5px solid #1e72fa;
+        border-radius: 50%;
+        animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
 

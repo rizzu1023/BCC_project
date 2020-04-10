@@ -51,12 +51,14 @@ class MatchController extends Controller
 
     public function live($tournament_id,$match_id,$team1_id,$team2_id){
        $match_detail = NULL;
+       $isMatch = 'not_found';
 
        $current_batsman = [];
        $current_bowler = NULL;
 
        $batting_team = MatchDetail::where('isBatting',1)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first();
         if($batting_team){
+            $isMatch = true;
             $match_detail = new MatchDetailResource($batting_team);
             $batsman = MatchPlayers::whereIn('bt_status',['10','11'])->where('team_id',$batting_team->team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->get();
             if($batsman)
@@ -70,6 +72,7 @@ class MatchController extends Controller
             'match_detail' => $match_detail,
             'current_batsman' => $current_batsman,
             'current_bowler' => $current_bowler,
+            'isMatch' => $isMatch,
            ];
 
     }

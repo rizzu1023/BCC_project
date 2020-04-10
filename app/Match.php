@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model
 {
+//    protected $fillable  = ['status'];
     protected $guarded = [];
 
     public function Teams(){

@@ -21,10 +21,13 @@
         .c-header-text span{
             display: block;
             color: #fff;
+            position: relative;
             font-size: 1.5rem;
             height: 100%;
             line-height: 56px;
         }
+
+
 
     </style>
     @yield('css')
@@ -80,6 +83,7 @@
         <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
             <div class="c-header-text">
                 <span v-text="header_string"></span>
+{{--                <a >Back</a>--}}
             </div>
 {{--            <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar"--}}
 {{--                    data-class="c-sidebar-show">--}}

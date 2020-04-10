@@ -40,29 +40,31 @@ export default new VueRouter({
         },
         { path : '/team' , component : Team },
         { path : '/teams/:team/players' , component : Players },
-        { path : '/tournament' , component : Tournament },
+        { path : '/tournament' , name : 'Tournament',component : Tournament },
 
-        { path : '/tournament/:tournament_id' , component : TournamentDetail ,
+        { path : '/tournament/:tournament_id' , name : 'TournamentDetail', component : TournamentDetail ,
             children : [
-                { path: 'schedule', component : Schedule },
-                { path: 'teams', component : Team},
-                { path: 'stats', component : Stats},
-                { path: 'pointsTable', component : PointsTable},
+                { path: 'schedule', name : 'Schedule',component : Schedule },
+                { path: 'teams', name : 'Team', component : Team},
+                { path: 'stats', name : 'Stats',component : Stats},
+                { path: 'pointsTable', name : 'PointsTable',component : PointsTable},
             ]
         },
 
-        { path : '/tournament/:tournament_id/match/:match_id/:team1_id/:team2_id' , component : MatchDetail,
+        { path : '/tournament/:tournament_id/match/:match_id/:team1_id/:team2_id' , name : 'MatchDetail',component : MatchDetail,
             children : [
-                { path : 'info', component: MatchInfo },
-                { path : 'live', component: LiveMatch },
-                { path : 'scorecard', component: Scorecard },
-                { path : 'overs', component: MatchOvers },
+                { path : 'info', name : 'MatchInfo',component: MatchInfo },
+                { path : 'live', name : 'LiveMatch',component: LiveMatch },
+                { path : 'scorecard', name : 'Scorecard',component: Scorecard },
+                { path : 'overs', name : 'MatchOvers',component: MatchOvers },
             ]
         },
         { path : '/stats/:tournament_id/:type', component : StatsDetail },
         // { path : '/tournament/detail/teams' , component : Accordion },
         // { path : '/tournament/detail/schedule' , component : Bowling },
     ],
+
     mode : 'history',
 });
+
 

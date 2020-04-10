@@ -19,6 +19,12 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\testingEvent::class => [
             \App\Listeners\testingListener::class,
         ],
+        \App\Events\startInningEvent::class => [
+            \App\Listeners\startInningListener::class,
+        ],
+        \App\Events\endInningEvent::class => [
+            \App\Listeners\endInningListener::class,
+        ],
         \App\Events\strikeRotateEvent::class => [
             \App\Listeners\strikeRotateListener::class,
         ],
@@ -316,9 +322,7 @@ class EventServiceProvider extends ServiceProvider
 
 //        start inning event
 
-        \App\Events\startInningEvent::class => [
-            \App\Listeners\startInningListener::class,
-        ],
+
 
     ];
 

@@ -4,16 +4,16 @@
             <div class="col-12 p-0">
                 <div class="nav-tabs-boxed">
                     <ul class="nav nav-tabs live" role="tablist">
-                        <router-link to="info">
+                        <router-link to="info" replace>
                             <li class="nav-item"><a class="nav-link">info</a></li>
                         </router-link>
-                        <router-link to="live">
+                        <router-link to="live" replace>
                             <li class="nav-item"><a class="nav-link">Live</a></li>
                         </router-link>
-                        <router-link to="scorecard">
+                        <router-link to="scorecard" replace>
                             <li class="nav-item"><a class="nav-link">Scorecard</a></li>
                         </router-link>
-                        <router-link to="overs">
+                        <router-link to="overs" replace>
                             <li class="nav-item"><a class="nav-link">Overs</a></li>
                         </router-link>
 <!--                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#pointstable" role="tab" aria-controls="messages">OVERS</a></li>-->

@@ -2075,23 +2075,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LiveMatch",
   mounted: function mounted() {
-    var _this = this;
-
-    this.loadLiveMatchScorecard();
-    setInterval(function () {
-      return _this.loadLiveMatchScorecard();
-    }, 5000);
+    this.loadLiveMatchScorecard(); // setInterval(() => this.loadLiveMatchScorecard(),5000);
   },
   methods: {
     loadLiveMatchScorecard: function loadLiveMatchScorecard() {
-      var _this2 = this;
+      var _this = this;
 
       var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/live';
       axios.get($url).then(function (response) {
-        return _this2.liveMatchScorecard = response.data;
+        return _this.liveMatchScorecard = response.data;
       }) // .then(function(response){
       //     console.log(response.data);
       // })
@@ -2121,12 +2127,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       'liveMatchScorecard': {
-        'match_detail': {
-          'team_detail': {}
-        },
+        'match_detail': null,
         'current_bowler': {
           'playerDetail': {}
-        }
+        },
+        'isMatch': false
       },
       team1: false,
       team2: false // 'team2_players' : this.matchScorecard.team2_players,
@@ -3615,7 +3620,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Tournament",
   mounted: function mounted() {
-    this.loadTournaments(); // Event.$emit('firstEvent','from t');
+    this.loadTournaments();
   },
   methods: {
     header_string: function header_string(tournament) {
@@ -8240,7 +8245,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n    margin : 0;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #dbdbdb;\n    color : #1e72fa;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n#liveMatch  #not_started[data-v-d9645c44]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#liveMatch .list-group .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#liveMatch .list-group .list-group-item p[data-v-d9645c44] {\n    margin : 0;\n}\n#liveMatch .list-group .left-col[data-v-d9645c44]{\n    font-weight : bold;\n}\n#liveMatch .list-group .right-col[data-v-d9645c44]{\n    text-align : right;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n    margin : 0;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #dbdbdb;\n    color : #1e72fa;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n#liveMatch  #not_started[data-v-d9645c44]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#liveMatch .list-group .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#liveMatch .list-group .list-group-item p[data-v-d9645c44] {\n    margin : 0;\n}\n#liveMatch .list-group .left-col[data-v-d9645c44]{\n    font-weight : bold;\n}\n#liveMatch .list-group .right-col[data-v-d9645c44]{\n    text-align : right;\n}\n#loader[data-v-d9645c44]{\n    background: #f8fafc;\n}\n#preloader[data-v-d9645c44] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-d9645c44 1s infinite linear;\n            animation: rotate-data-v-d9645c44 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -44975,7 +44980,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "liveMatch" } }, [
-    _vm.liveMatchScorecard.match_detail
+    _vm.liveMatchScorecard.isMatch === "not_found"
+      ? _c("div", { attrs: { id: "not_started" } }, [
+          _c("span", [_vm._v("Match has not started yet.")])
+        ])
+      : _vm.liveMatchScorecard.isMatch
       ? _c("div", { attrs: { id: "liveMatchShow" } }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
@@ -45172,8 +45181,8 @@ var render = function() {
             ])
           ])
         ])
-      : _c("div", { attrs: { id: "not_started" } }, [
-          _c("span", [_vm._v("Match has not started yet.")])
+      : _c("div", { attrs: { id: "loader" } }, [
+          _c("div", { attrs: { id: "preloader" } })
         ])
   ])
 }
@@ -45359,25 +45368,25 @@ var render = function() {
             "ul",
             { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
             [
-              _c("router-link", { attrs: { to: "info" } }, [
+              _c("router-link", { attrs: { to: "info", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("info")])
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "live" } }, [
+              _c("router-link", { attrs: { to: "live", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Live")])
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "scorecard" } }, [
+              _c("router-link", { attrs: { to: "scorecard", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Scorecard")])
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "overs" } }, [
+              _c("router-link", { attrs: { to: "overs", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Overs")])
                 ])
@@ -45591,7 +45600,7 @@ var render = function() {
                             ? _c("div", { staticClass: "two" }, [_vm._v("2")])
                             : _vm._e(),
                           _vm._v(" "),
-                          ball.action === "two"
+                          ball.action === "three"
                             ? _c("div", { staticClass: "three" }, [_vm._v("3")])
                             : _vm._e(),
                           _vm._v(" "),
@@ -47808,25 +47817,25 @@ var render = function() {
             "ul",
             { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
             [
-              _c("router-link", { attrs: { to: "schedule" } }, [
+              _c("router-link", { attrs: { to: "schedule", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Schedule")])
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "teams" } }, [
+              _c("router-link", { attrs: { to: "teams", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Teams")])
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "stats" } }, [
+              _c("router-link", { attrs: { to: "stats", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Stats")])
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "pointsTable" } }, [
+              _c("router-link", { attrs: { to: "pointsTable", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("PointsTable")])
                 ])
@@ -62905,6 +62914,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Team__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue");
 /* harmony import */ var _components_Batting__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue");
 /* harmony import */ var _components_Bowling__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue");
+/* harmony import */ var _components_Tournament__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/Tournament */ "./resources/js/components/Tournament.vue");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+
+
 
 
 
@@ -62945,7 +62958,20 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_requir
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://3.7.68.148/api/';
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // const router = new VueRouter({
+//     router : routes,
+// });
+//
+// routes.beforeEach((to,from,next) => {
+//     if(to.name === 'Schedule' && (from.name === 'Team' || from.name === 'Stats' || from.name === 'PointsTable')){
+//         next({ name: 'Tournament' });
+//     }
+//     if(to.name === 'Team' && (from.name === 'Schedule' || from.name === 'Stats' || from.name === 'PointsTable')){
+//         next({ name: 'Tournament' });
+//     }
+//     else next();
+// });
+
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
@@ -62959,6 +62985,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   component: {
     ExampleComponent: _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_4__["default"],
     TournamentDetail: _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Tournament: _components_Tournament__WEBPACK_IMPORTED_MODULE_13__["default"],
     LiveScore: _components_LiveScore__WEBPACK_IMPORTED_MODULE_6__["default"],
     Players: _components_Players__WEBPACK_IMPORTED_MODULE_8__["default"],
     Team: _components_Team__WEBPACK_IMPORTED_MODULE_10__["default"],
@@ -64875,37 +64902,48 @@ var TeamDetail;
     component: _components_Players__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, {
     path: '/tournament',
+    name: 'Tournament',
     component: _components_Tournament__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: '/tournament/:tournament_id',
+    name: 'TournamentDetail',
     component: _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_8__["default"],
     children: [{
       path: 'schedule',
+      name: 'Schedule',
       component: _components_Schedule__WEBPACK_IMPORTED_MODULE_15__["default"]
     }, {
       path: 'teams',
+      name: 'Team',
       component: _components_Team__WEBPACK_IMPORTED_MODULE_6__["default"]
     }, {
       path: 'stats',
+      name: 'Stats',
       component: _components_Stats__WEBPACK_IMPORTED_MODULE_7__["default"]
     }, {
       path: 'pointsTable',
+      name: 'PointsTable',
       component: _components_PointsTable__WEBPACK_IMPORTED_MODULE_14__["default"]
     }]
   }, {
     path: '/tournament/:tournament_id/match/:match_id/:team1_id/:team2_id',
+    name: 'MatchDetail',
     component: _components_MatchDetail__WEBPACK_IMPORTED_MODULE_13__["default"],
     children: [{
       path: 'info',
+      name: 'MatchInfo',
       component: _components_MatchInfo__WEBPACK_IMPORTED_MODULE_16__["default"]
     }, {
       path: 'live',
+      name: 'LiveMatch',
       component: _components_LiveMatch__WEBPACK_IMPORTED_MODULE_17__["default"]
     }, {
       path: 'scorecard',
+      name: 'Scorecard',
       component: _components_Scorecard__WEBPACK_IMPORTED_MODULE_18__["default"]
     }, {
       path: 'overs',
+      name: 'MatchOvers',
       component: _components_MatchOvers__WEBPACK_IMPORTED_MODULE_19__["default"]
     }]
   }, {

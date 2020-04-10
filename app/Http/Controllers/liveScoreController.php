@@ -8,6 +8,7 @@ use App\Events\byesOneRunEvent;
 use App\Events\byesThreeRunEvent;
 use App\Events\byesTwoRunEvent;
 use App\Events\dotBallEvent;
+use App\Events\endInningEvent;
 use App\Events\fourRunEvent;
 use App\Events\legByesFourRunEvent;
 use App\Events\legByesOneRunEvent;
@@ -176,8 +177,6 @@ class LiveScoreController extends Controller
     public function LiveUpdateShow($id, $tournament)
     {
         $matchs = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
-        $matchs->status = 1;
-        $matchs->save();
         return view('Admin/LiveScore/show', compact('matchs'));
     }
 
@@ -196,12 +195,14 @@ class LiveScoreController extends Controller
 
     public function LiveUpdate(Request $request)
     {
+
         if ($request->ajax()) {
             if ($request->startInning) event(new startInningEvent($request));
             if ($request->newOver) event(new newOverEvent($request));
 
-            if ($request->newBatsman) {
-                event(new wicketEvent($request));
+             if($request->endInning){event(new endInningEvent($request));}
+            if ($request->newBatsman) {event(new wicketEvent($request));}
+
 //              team ko update karega
 //                MatchDetail::where('match_id', $request->match_id)
 //                    ->where('tournament', $request->tournament)
@@ -252,7 +253,6 @@ class LiveScoreController extends Controller
 //                    ->where('team_id', $request->bt_team_id)
 //                    ->update(['isWicket' => 0]);
 
-            }
 
         }
         if ($request->value) {
