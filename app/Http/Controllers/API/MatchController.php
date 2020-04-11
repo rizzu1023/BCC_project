@@ -78,7 +78,9 @@ class MatchController extends Controller
     }
 
     public function scorecard($tournament_id,$match_id,$team1_id,$team2_id){
-
+        $isMatch = 'not_found';
+        if(Match::where('status', '>', 0)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first())
+            $isMatch = true;
         $match_detail = Match::where('match_id',$match_id)->first();
         if($match_detail){
             if($match_detail->toss == $team1_id && $match_detail->choose == 'Bat'){
@@ -124,6 +126,7 @@ class MatchController extends Controller
         }
 
         return [
+            'isMatch' => $isMatch,
             'match_detail' => $match_detail,
             'team1' => [
                 'detail' => $team1_detail,
@@ -147,64 +150,77 @@ class MatchController extends Controller
 
     public function overs($tournament_id,$match_id,$team1_id,$team2_id){
 
-        $match_detail = Match::where('match_id',$match_id)->first();
-        if($match_detail){
-            if($match_detail->toss == $team1_id && $match_detail->choose == 'Bat'){
-                $batting_team_id = $team1_id;
-                $bowling_team_id = $team2_id;
+        if(!Match::where('status','>', 0)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->first()) {
+            return [
+                'isMatch' => 'not_found',
+            ];
+        }
+        else {
+
+            $match_detail = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+            if ($match_detail) {
+                if ($match_detail->toss == $team1_id && $match_detail->choose == 'Bat') {
+                    $batting_team_id = $team1_id;
+                    $bowling_team_id = $team2_id;
+                } else {
+                    $batting_team_id = $team2_id;
+                    $bowling_team_id = $team1_id;
+                }
             }
-            else{
-                $batting_team_id = $team2_id;
-                $bowling_team_id = $team1_id;
+            $overs = MatchTrack::selectRaw('Min(attacker_id) as attacker_id,over as over_no, SUM(run) as runs, SUM(wickets) as wickets')
+                ->groupBy('over')
+                ->where('match_id', $match_id)
+                ->where('team_id', $bowling_team_id)
+                ->where('tournament_id', $tournament_id)
+                ->orderBy('over', 'desc')
+                ->get();
+
+            $over_detail = MatchTrack::select('over', 'action', 'run', 'overball')
+                ->where('match_id', $match_id)
+                ->where('team_id', $bowling_team_id)
+                ->where('tournament_id', $tournament_id)
+                ->orderBy('over', 'desc')
+                ->orderBy('overball', 'asc')
+                ->get();
+
+            $result_collection = MatchTrackResource::collection($overs);
+            $over_details = collect($over_detail)->groupBy('over');
+            $result = collect();
+            foreach ($result_collection as $rc) {
+                $r = collect($rc)->merge(['over_detail' => $over_details[$rc->over_no]]);
+                $result->push($r);
             }
+
+            $overs2 = MatchTrack::selectRaw('Min(attacker_id) as attacker_id,over as over_no, SUM(run) as runs, SUM(wickets) as wickets')
+                ->groupBy('over')
+                ->where('match_id', $match_id)
+                ->where('team_id', $batting_team_id)
+                ->where('tournament_id', $tournament_id)
+                ->orderBy('over', 'desc')
+                ->get();
+
+            $over_detail2 = MatchTrack::select('over', 'action', 'run', 'overball')
+                ->where('match_id', $match_id)
+                ->where('team_id', $batting_team_id)
+                ->where('tournament_id', $tournament_id)
+                ->orderBy('over', 'desc')
+                ->orderBy('overball', 'asc')
+                ->get();
+
+            $result_collection2 = MatchTrackResource::collection($overs2);
+            $over_details2 = collect($over_detail2)->groupBy('over');
+            $result2 = collect();
+            foreach ($result_collection2 as $rc) {
+                $r = collect($rc)->merge(['over_detail' => $over_details2[$rc->over_no]]);
+                $result2->push($r);
+            }
+
+            return [
+                'isMatch' => true,
+                'overs' => $result->merge($result2),
+            ];
+
         }
-        $overs = MatchTrack::selectRaw('Min(attacker_id) as attacker_id,over as over_no, SUM(run) as runs, SUM(wickets) as wickets')
-            ->groupBy('over')
-            ->where('match_id',$match_id)
-            ->where('team_id',$bowling_team_id)
-            ->where('tournament_id',$tournament_id)
-            ->orderBy('over','desc')
-            ->get();
-
-        $over_detail = MatchTrack::select('over', 'action','run')
-            ->where('match_id',$match_id)
-            ->where('team_id',$bowling_team_id)
-            ->where('tournament_id',$tournament_id)
-            ->orderBy('over','desc')
-            ->get();
-
-        $result_collection = MatchTrackResource::collection($overs);
-        $over_details = collect($over_detail)->groupBy('over');
-        $result = collect();
-        foreach($result_collection as $rc){
-            $r = collect($rc)->merge(['over_detail' => $over_details[$rc->over_no]]);
-            $result->push($r);
-        }
-
-        $overs2 = MatchTrack::selectRaw('Min(attacker_id) as attacker_id,over as over_no, SUM(run) as runs, SUM(wickets) as wickets')
-            ->groupBy('over')
-            ->where('match_id',$match_id)
-            ->where('team_id',$batting_team_id)
-            ->where('tournament_id',$tournament_id)
-            ->orderBy('over','desc')
-            ->get();
-
-        $over_detail2 = MatchTrack::select('over', 'action','run')
-            ->where('match_id',$match_id)
-            ->where('team_id',$batting_team_id)
-            ->where('tournament_id',$tournament_id)
-            ->orderBy('over','desc')
-            ->get();
-
-        $result_collection2 = MatchTrackResource::collection($overs2);
-        $over_details2 = collect($over_detail2)->groupBy('over');
-        $result2 = collect();
-        foreach($result_collection2 as $rc){
-            $r = collect($rc)->merge(['over_detail' => $over_details2[$rc->over_no]]);
-            $result2->push($r);
-        }
-
-        return $result->merge($result2);
 
     }
 }

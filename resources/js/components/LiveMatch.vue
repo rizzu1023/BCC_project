@@ -11,16 +11,16 @@
         <div id="liveMatchShow" v-else-if="liveMatchScorecard.isMatch">
         <div class="card">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-6 main-score">
+                    <div class="row m-0">
+                        <div class="col-6 main-score p-0">
                             <h6>{{ liveMatchScorecard.match_detail.team_detail.team_code }}</h6>
                             <p><b>{{ liveMatchScorecard.match_detail.score }}-{{ liveMatchScorecard.match_detail.wicket }}</b><span class="text-muted">({{ liveMatchScorecard.match_detail.over }}.{{ liveMatchScorecard.match_detail.overball }})</span></p>
                         </div>
-                        <div class="col-3 rrr">
+                        <div class="col-3 rrr p-0">
                             <span class="text-muted">RRR</span>
                             <p>5.53</p>
                         </div>
-                        <div class="col-3 crr">
+                        <div class="col-3 crr p-0">
                             <span class="text-muted">CRR</span>
                             <p>{{ calculateRunRate(liveMatchScorecard.match_detail.score,liveMatchScorecard.match_detail.over,liveMatchScorecard.match_detail.overball) }}</p>
                         </div>
@@ -33,11 +33,11 @@
             </div>
         <ul class="list-group">
             <li class="list-group-item">
-              <div class="row">
-                <div class="col-6 partnership">
+              <div class="row m-0" >
+                <div class="col-6 partnership p-0">
                     <p>P'SHIP <span> 102(80)</span></p>
                 </div>
-                <div class="col-6 target">
+                <div class="col-6 target p-0">
                     <p>TARGET <span> 170</span></p>
                 </div>
               </div >
@@ -95,11 +95,11 @@
         </div>
             <ul class="list-group">
                 <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-6 left-col">
+                    <div class="row m-0">
+                        <div class="col-6 left-col p-0">
                             <p>Extras</p>
                         </div>
-                        <div class="col-6 right-col">
+                        <div class="col-6 right-col p-0">
                             <p><b>{{ liveMatchScorecard.match_detail.wide + liveMatchScorecard.match_detail.no_ball + liveMatchScorecard.match_detail.byes + liveMatchScorecard.match_detail.legbyes }}</b>
                                 b {{ liveMatchScorecard.match_detail.byes }}, lb {{ liveMatchScorecard.match_detail.legbyes }}, w {{ liveMatchScorecard.match_detail.wide }}, nb {{ liveMatchScorecard.match_detail.no_ball }}</p>
                         </div>

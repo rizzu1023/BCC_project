@@ -55,10 +55,12 @@
 </script>
 
 <style scoped>
-    .list-group-item{
+    #tournament .list-group-item{
         border-radius: 0;
         border-top: 0;
         border-right: 0;
         border-left: 0;
+        padding-right: 12px;
+        padding-left: 12px;
     }
 </style>

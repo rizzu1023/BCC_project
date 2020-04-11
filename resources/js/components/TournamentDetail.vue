@@ -6,7 +6,7 @@
                     <ul class="nav nav-tabs live" role="tablist">
 <!--                        <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#schedule" role="tab" aria-controls="schedule">MATCHES</a></li>-->
                         <router-link to="schedule" replace>
-                            <li class="nav-item"><a class="nav-link">Schedule</a></li>
+                            <li class="nav-item"><a class="nav-link">Matches</a></li>
                         </router-link>
                         <router-link to='teams' replace>
                              <li class="nav-item"><a class="nav-link">Teams</a></li>

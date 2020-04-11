@@ -105,12 +105,14 @@
 </script>
 
 <style scoped>
-    .list-group-item{
+    #team .list-group-item{
         border-right: 0;
         border-left: 0;
         border-top:0;
+        padding-left: 12px;
+        padding-right: 12px;
     }
-    .list-group-item span{
-        font-size: 0.85rem;
+    #team .list-group-item span{
+        font-size: 0.9rem;
     }
 </style>

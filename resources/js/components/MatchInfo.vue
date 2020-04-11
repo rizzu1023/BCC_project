@@ -24,23 +24,15 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <div class=" row">
+                <div class="row m-0">
                     <label class="col-4">Match</label>
                     <span class="col-8">{{ teamInfo.match}}</span>
-                </div>
-                <div class=" row">
                     <label class="col-4">Tournament</label>
                     <span class="col-8">{{ teamInfo.tournament}}</span>
-                </div>
-                <div class="row">
                     <label class="col-4">Date</label>
                     <span class="col-8">{{ teamInfo.dates }}</span>
-                </div>
-                <div class="row">
                     <label class="col-4">Time</label>
                     <span class="col-8">{{ teamInfo.times}}</span>
-                </div>
-                <div class="row">
                     <label class="col-4">Toss</label>
                     <span class="col-8">--</span>
                 </div>
@@ -85,7 +77,7 @@
      #matchInfo .table-header{
         background: #dbdbdb;
         color: #1e72fa;
-        padding : 8px 20px;
+        padding : 8px 12px;
     }
      #matchInfo .table-header span{
         font-size: 0.8rem;
@@ -100,6 +92,7 @@
 
      #matchInfo .card .card-body{
         font-size: 0.8rem;
+         padding: 20px 12px;
 
      }
 
@@ -113,6 +106,8 @@
      #matchInfo .list-group .list-group-item{
          border : 0;
          border-radius: 0;
+         padding-left: 12px;
+         padding-right: 12px;
      }
      #matchInfo .list-group .list-group-item h6{
          margin : 0px;
@@ -120,4 +115,16 @@
      #matchInfo .list-group .first{
          border-bottom : 0.05rem solid lightgray;
      }
+
+     #matchInfo .row{
+        padding: 0;
+        margin: 0;
+     }
+    #matchInfo .row .col-4{
+        padding-left: 0;
+    }
+     #matchInfo .row .col-8{
+         padding-right: 0;
+     }
+
 </style>

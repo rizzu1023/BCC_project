@@ -1,14 +1,19 @@
 <template>
     <div id="matchOvers">
         <div id="overs">
-            <div class="card">
-            <div class="card-body" v-for="over in matchOvers" :key="over.id" :data="over">
-                <div class="row" >
-                    <div class="col-3 left-col">
-                        <p>Ov {{ over.over_no }}</p>
+
+            <div id="not_started" v-if="matchOvers.isMatch === 'not_found'">
+                <span>Match has not started yet.</span>
+            </div>
+
+            <div class="card" v-else-if="matchOvers.isMatch">
+            <div class="card-body" v-for="over in matchOvers.overs" :key="over.id" :data="over">
+                <div class="row m-0" >
+                    <div class="col-3 left-col p-0">
+                        <p>Ov {{ over.over_no + 1}}</p>
                         <span class="text-muted">{{ over.runs }} runs</span>
                     </div>
-                    <div class="col-9 right-col">
+                    <div class="col-9 right-col p-0">
                         <p>{{ over.attacker_id.player_name }}</p>
                         <span v-for="ball in over.over_detail" :key="ball.id" :data="ball">
 
@@ -54,6 +59,9 @@
                 </div>
             </div>
 
+            <div id="loader" v-else>
+                <div id="preloader"></div>
+            </div>
         </div>
         </div>
 
@@ -86,10 +94,14 @@
 
         data : function () {
             return {
+                'isMatch' : false,
                 'matchOvers' : {
-                    'attacker_id' : {
-                        'player_name' : null,
-                    }
+                    'overs' : {
+                        'attacker_id' : {
+                            'player_name' : null,
+                        },
+                    },
+
                 },
 
             }
@@ -106,7 +118,8 @@
     }
 
     #matchOvers .card-body {
-        padding : 12px
+        padding : 12px;
+        border-bottom: 0.05rem solid lightgray;
     }
 
     #matchOvers .card-body p{
@@ -157,6 +170,36 @@
 
     #matchOvers .card-body .right-col span .wicket {
         background: red;
+    }
+
+
+    #matchOvers #not_started{
+        width: 100vw;
+        text-align: center;
+        background: #f8fafc;
+        margin-top: 45vh;
+    }
+
+    #loader{
+        background: #f8fafc;
+    }
+    #preloader {
+        height: 30px;
+        width: 30px;
+        margin: 40vh auto;
+        border: 5px solid #dbdbdb;
+        border-top: 5px solid #1e72fa;
+        border-radius: 50%;
+        animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 
 
