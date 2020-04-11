@@ -14,7 +14,7 @@
                     <div class="row m-0">
                         <div class="col-6 main-score p-0">
                             <h6>{{ liveMatchScorecard.match_detail.team_detail.team_code }}</h6>
-                            <p><b>{{ liveMatchScorecard.match_detail.score }}-{{ liveMatchScorecard.match_detail.wicket }}</b><span class="text-muted">({{ liveMatchScorecard.match_detail.over }}.{{ liveMatchScorecard.match_detail.overball }})</span></p>
+                            <p><b>{{ liveMatchScorecard.match_detail.score }}-{{ liveMatchScorecard.match_detail.wicket }} </b><span class="text-muted">({{ liveMatchScorecard.match_detail.over }}.{{ liveMatchScorecard.match_detail.overball }})</span></p>
                         </div>
                         <div class="col-3 rrr p-0">
                             <span class="text-muted">RRR</span>

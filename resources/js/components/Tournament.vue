@@ -1,23 +1,29 @@
 <template>
-    <div id="tournament" >
-        <ul class="list-group">
-            <div v-for="tournament in tournaments" :key="tournament.id" :data="tournament">
-            <router-link :to="'/tournament/' + tournament.id + '/schedule'" style="text-decoration:none; color:#000">
-            <li class="list-group-item" v-on:click="header_string(tournament.tournament_name)">
-                <h5 style="font-weight:bold" v-text="tournament.tournament_name"></h5>
-                <span style="font-size: 12px"> Jan 24 - Apr 09</span>
-            </li>
-            </router-link>
-            </div>
-        </ul>
-<!--        <div class="row">-->
-<!--        <div class="col-sm-6 col-md-4" v-for="tournament in tournaments" :key="tournament.id" :data="tournament">-->
-<!--            <div class="card">-->
-<!--                <div class="card-body" v-text="tournament.tournament_name"></div>-->
-<!--                <div class="card-footer">Explore</div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        </div>-->
+    <div id="tournament">
+        <div  v-if="tournaments">
+            <ul class="list-group">
+                <div v-for="tournament in tournaments" :key="tournament.id" :data="tournament">
+                    <router-link :to="'/tournament/' + tournament.id + '/schedule'"
+                                 style="text-decoration:none; color:#000">
+                        <li class="list-group-item" v-on:click="header_string(tournament.tournament_name)">
+                            <h5 style="font-weight:bold" v-text="tournament.tournament_name"></h5>
+                            <span style="font-size: 12px"> Jan 24 - Apr 09</span>
+                        </li>
+                    </router-link>
+                </div>
+            </ul>
+        </div>
+        <div id="loader" v-else>
+            <div id="preloader"></div>
+        </div>
+        <!--        <div class="row">-->
+        <!--        <div class="col-sm-6 col-md-4" v-for="tournament in tournaments" :key="tournament.id" :data="tournament">-->
+        <!--            <div class="card">-->
+        <!--                <div class="card-body" v-text="tournament.tournament_name"></div>-->
+        <!--                <div class="card-footer">Explore</div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        </div>-->
     </div>
 </template>
 
@@ -25,37 +31,37 @@
     export default {
         name: "Tournament",
 
-        mounted : function () {
+        mounted: function () {
             this.loadTournaments();
         },
 
 
-        methods : {
+        methods: {
 
-            header_string(tournament){
-                Event.$emit('headerString',tournament);
+            header_string(tournament) {
+                Event.$emit('headerString', tournament);
             },
 
             loadTournaments() {
                 var $url = this.$domainName + "tournament";
-                    axios.get($url)
+                axios.get($url)
                     .then(response => this.tournaments = response.data)
-                    .catch(function (error){
+                    .catch(function (error) {
                         console.log(error);
                     });
             },
         },
 
-        data : function () {
+        data: function () {
             return {
-                tournaments : null,
+                tournaments: null,
             }
         },
     }
 </script>
 
 <style scoped>
-    #tournament .list-group-item{
+    #tournament .list-group-item {
         border-radius: 0;
         border-top: 0;
         border-right: 0;
@@ -63,4 +69,28 @@
         padding-right: 12px;
         padding-left: 12px;
     }
+
+    #loader{
+        background: #f8fafc;
+    }
+
+    #preloader {
+        height: 30px;
+        width: 30px;
+        margin: 40vh auto;
+        border: 5px solid #dbdbdb;
+        border-top: 5px solid #1e72fa;
+        border-radius: 50%;
+        animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
 </style>

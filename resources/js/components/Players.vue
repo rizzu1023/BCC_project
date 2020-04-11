@@ -1,10 +1,12 @@
 <template>
 
     <div id="playerDetail">
+        <div v-if="players">
         <div class="py-2 px-4 table-header">
             <span>INDIA</span>
         </div>
-        <ul class="list-group">
+
+        <ul class="list-group" style="margin-top:40px">
             <div v-for="player in players" :key="player.id" :data="player">
                 <router-link :to="'/player/' + player.id + '/info'" style="text-decoration:none; color:#000">
                     <li class="list-group-item" style="border-radius: 0;">
@@ -21,6 +23,11 @@
                 </router-link>
             </div>
         </ul>
+        </div>
+
+        <div id="loader" v-else>
+            <div id="preloader"></div>
+        </div>
     </div>
 
 
@@ -170,10 +177,36 @@
         background: #1e72fa;
         color: #FFF;
         text-align: center;
+        position: fixed;
+        top: 56px;
+        z-index : 1001;
+        width: 100vw;
     }
     .table-header span{
         font-size: 0.85rem;
         font-weight : bold;
         text-transform : uppercase;
+    }
+
+    #loader{
+        background: #f8fafc;
+    }
+    #preloader {
+        height: 30px;
+        width: 30px;
+        margin: 40vh auto;
+        border: 5px solid #dbdbdb;
+        border-top: 5px solid #1e72fa;
+        border-radius: 50%;
+        animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 </style>

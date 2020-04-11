@@ -1,5 +1,6 @@
 <template>
     <div id="team">
+        <div v-if="teams">
             <ul class="list-group">
                 <div  v-for="team in teams" :key="team.id" :data="team">
                 <router-link :to="'/teams/'+team.id+'/players'" style="text-decoration:none; color:#000">
@@ -9,6 +10,10 @@
                 </router-link>
                 </div>
             </ul>
+        </div>
+        <div id="loader" v-else>
+            <div id="preloader"></div>
+        </div>
     </div>
 </template>
 
@@ -114,5 +119,26 @@
     }
     #team .list-group-item span{
         font-size: 0.9rem;
+    }
+    #loader{
+        background: #f8fafc;
+    }
+    #preloader {
+        height: 30px;
+        width: 30px;
+        margin: 40vh auto;
+        border: 5px solid #dbdbdb;
+        border-top: 5px solid #1e72fa;
+        border-radius: 50%;
+        animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     }
 </style>

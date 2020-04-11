@@ -20,7 +20,7 @@ class PlayersController extends Controller
         $team_id = $team->id;
         $player = Players::whereHas('teams',function($query) use($team_id){
             $query->where('team_id',$team_id);
-        })->get();
+        })->orderByRaw("FIELD(player_role, 'Batsman','Wicket Keeper','All Rounder','Bowler')")->get();
         return PlayersResource::collection($player);
     }
 

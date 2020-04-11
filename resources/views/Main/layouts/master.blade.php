@@ -8,7 +8,16 @@
     <!-- CoreUI CSS -->
     {{--    <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">--}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+{{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">--}}
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <style>
+        @font-face{
+            /*font-family : Averta;*/
+{{--            src : url({{ asset('assets/Main/fonts/AvertaDemoPE-ExtraboldItalic.woff2') }});--}}
+        }
+        html body{
+            font-family: 'Open Sans', sans-serif;
+        }
         .c-header{
             background: #1e72fa;
             color: #fff;

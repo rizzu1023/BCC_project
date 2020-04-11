@@ -1,6 +1,6 @@
 <template>
     <div id="statsDetail">
-        <div class="tables table-responsive table-hover">
+        <div class="tables table-responsive table-hover" v-if="stats">
             <div class="panel-body widget-shadow">
                 <div class="py-2 px-4 table-header">
                     <span v-if="type == 'mostRuns'">Most Runs</span>
@@ -90,6 +90,11 @@
                 </table>
             </div>
         </div>
+
+        <div id="loader" v-else>
+            <div id="preloader"></div>
+        </div>
+
 
     </div>
 </template>
@@ -201,4 +206,26 @@
             font-weight : bold;
             text-transform : uppercase;
         }
+
+    #loader{
+        background: #f8fafc;
+    }
+    #preloader {
+        height: 30px;
+        width: 30px;
+        margin: 40vh auto;
+        border: 5px solid #dbdbdb;
+        border-top: 5px solid #1e72fa;
+        border-radius: 50%;
+        animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 </style>

@@ -1,5 +1,6 @@
 <template>
     <div id="schedule">
+        <div v-if="schedules">
         <ul class="list-group">
             <div  v-for="schedule in schedules" :key="schedule.id" :data="schedule">
                 <router-link :to="'/tournament/'+schedule.tournament_id+'/match/' + schedule.id + '/' + schedule.team1_id.id + '/' + schedule.team2_id.id + '/info'" style="text-decoration:none; color:#000">
@@ -13,6 +14,10 @@
                 </router-link>
             </div>
         </ul>
+        </div>
+        <div id="loader" v-else>
+            <div id="preloader"></div>
+        </div>
     </div>
 </template>
 
@@ -63,4 +68,27 @@
         padding-left: 12px;
         padding-right: 12px;
     }
+
+    #loader{
+        background: #f8fafc;
+    }
+    #preloader {
+        height: 30px;
+        width: 30px;
+        margin: 40vh auto;
+        border: 5px solid #dbdbdb;
+        border-top: 5px solid #1e72fa;
+        border-radius: 50%;
+        animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
 </style>

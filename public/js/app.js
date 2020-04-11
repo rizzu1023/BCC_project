@@ -2574,6 +2574,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerInfo",
   mounted: function mounted() {
@@ -2593,7 +2600,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      player: {}
+      player: null
     };
   }
 });
@@ -2609,6 +2616,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2774,6 +2788,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3486,6 +3505,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "StatsDetail",
   mounted: function mounted() {
@@ -3560,6 +3584,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3668,6 +3697,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8414,7 +8449,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.image[data-v-877ccf4c] {\n    padding-top: 60px;\n    padding-bottom : 20px;\n}\n.image img[data-v-877ccf4c] {\n    border-radius: 50%;\n}\n\n", ""]);
+exports.push([module.i, "\n.image[data-v-877ccf4c] {\n    padding-top: 60px;\n    padding-bottom: 20px;\n}\n.image img[data-v-877ccf4c] {\n    border-radius: 50%;\n}\n#loader[data-v-877ccf4c] {\n    background: #f8fafc;\n}\n#preloader[data-v-877ccf4c] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-877ccf4c 1s infinite linear;\n            animation: rotate-data-v-877ccf4c 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -8433,7 +8468,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n", ""]);
+exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n    position: fixed;\n    top: 56px;\n    z-index : 1001;\n    width: 100vw;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#loader[data-v-0c847bd2]{\n    background: #f8fafc;\n}\n#preloader[data-v-0c847bd2] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-0c847bd2 1s infinite linear;\n            animation: rotate-data-v-0c847bd2 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -8452,7 +8487,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#schedule .list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n", ""]);
+exports.push([module.i, "\n#schedule .list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#loader[data-v-5f748482]{\n    background: #f8fafc;\n}\n#preloader[data-v-5f748482] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-5f748482 1s infinite linear;\n            animation: rotate-data-v-5f748482 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -8509,7 +8544,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead[data-v-cecdae96]{\n    background : #dbdbdb;\n    color : #1e72fa;\n}\n.table thead tr th[data-v-cecdae96]{\n    border:none;\n}\n/*.table tbody td:hover, .table tbody td:active , .table tbody td:focus{*/\n/*    background:orange;*/\n/*}*/\n.table-header[data-v-cecdae96]{\n        background: #1e72fa;\n        color: #FFF;\n        text-align: center;\n}\n.table-header span[data-v-cecdae96]{\n        font-size: 0.85rem;\n        font-weight : bold;\n        text-transform : uppercase;\n}\n", ""]);
+exports.push([module.i, "\n.table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead[data-v-cecdae96]{\n    background : #dbdbdb;\n    color : #1e72fa;\n}\n.table thead tr th[data-v-cecdae96]{\n    border:none;\n}\n/*.table tbody td:hover, .table tbody td:active , .table tbody td:focus{*/\n/*    background:orange;*/\n/*}*/\n.table-header[data-v-cecdae96]{\n        background: #1e72fa;\n        color: #FFF;\n        text-align: center;\n}\n.table-header span[data-v-cecdae96]{\n        font-size: 0.85rem;\n        font-weight : bold;\n        text-transform : uppercase;\n}\n#loader[data-v-cecdae96]{\n    background: #f8fafc;\n}\n#preloader[data-v-cecdae96] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-cecdae96 1s infinite linear;\n            animation: rotate-data-v-cecdae96 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -8528,7 +8563,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#team .list-group-item[data-v-402b42c8]{\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item span[data-v-402b42c8]{\n    font-size: 0.9rem;\n}\n", ""]);
+exports.push([module.i, "\n#team .list-group-item[data-v-402b42c8]{\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item span[data-v-402b42c8]{\n    font-size: 0.9rem;\n}\n#loader[data-v-402b42c8]{\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -8547,7 +8582,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#tournament .list-group-item[data-v-226aea14]{\n    border-radius: 0;\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n    padding-right: 12px;\n    padding-left: 12px;\n}\n", ""]);
+exports.push([module.i, "\n#tournament .list-group-item[data-v-226aea14] {\n    border-radius: 0;\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n    padding-right: 12px;\n    padding-left: 12px;\n}\n#loader[data-v-226aea14]{\n    background: #f8fafc;\n}\n#preloader[data-v-226aea14] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-226aea14 1s infinite linear;\n            animation: rotate-data-v-226aea14 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -45078,7 +45113,8 @@ var render = function() {
                       _vm._v(
                         _vm._s(_vm.liveMatchScorecard.match_detail.score) +
                           "-" +
-                          _vm._s(_vm.liveMatchScorecard.match_detail.wicket)
+                          _vm._s(_vm.liveMatchScorecard.match_detail.wicket) +
+                          " "
                       )
                     ]),
                     _c("span", { staticClass: "text-muted" }, [
@@ -45936,19 +45972,19 @@ var render = function() {
             "ul",
             { staticClass: "nav nav-tabs live", attrs: { role: "tablist" } },
             [
-              _c("router-link", { attrs: { to: "info" } }, [
+              _c("router-link", { attrs: { to: "info", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Info")])
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "batting" } }, [
+              _c("router-link", { attrs: { to: "batting", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Batting")])
                 ])
               ]),
               _vm._v(" "),
-              _c("router-link", { attrs: { to: "bowling" } }, [
+              _c("router-link", { attrs: { to: "bowling", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Bowling")])
                 ])
@@ -45991,11 +46027,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "playerInfo" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-12 text-center" }, [
-      _c("h4", [_vm._v(_vm._s(_vm.player.player_name))])
-    ])
+    _vm.player
+      ? _c("div", [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-12 text-center" }, [
+            _c("h4", [_vm._v(_vm._s(_vm.player.player_name))])
+          ])
+        ])
+      : _c("div", { attrs: { id: "loader" } }, [
+          _c("div", { attrs: { id: "preloader" } })
+        ])
   ])
 }
 var staticRenderFns = [
@@ -46037,64 +46079,77 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "playerDetail" } }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "list-group" },
-      _vm._l(_vm.players, function(player) {
-        return _c(
-          "div",
-          { key: player.id, attrs: { data: player } },
-          [
-            _c(
-              "router-link",
-              {
-                staticStyle: { "text-decoration": "none", color: "#000" },
-                attrs: { to: "/player/" + player.id + "/info" }
-              },
-              [
-                _c(
-                  "li",
-                  {
-                    staticClass: "list-group-item",
-                    staticStyle: { "border-radius": "0" }
-                  },
-                  [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-2" }, [
-                        _c("img", {
-                          attrs: {
-                            width: "40px",
-                            height: "40px",
-                            src: "/assets/Main/image/avatar.jpg",
-                            alt: "avatar"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-10" }, [
-                        _c("h6", {
-                          domProps: { textContent: _vm._s(player.player_name) }
-                        }),
-                        _vm._v(" "),
-                        _c("span", {
-                          staticClass: "text-muted",
-                          staticStyle: { "font-size": "12px" },
-                          domProps: { textContent: _vm._s(player.player_role) }
-                        })
-                      ])
-                    ])
-                  ]
-                )
-              ]
-            )
-          ],
-          1
-        )
-      }),
-      0
-    )
+    _vm.players
+      ? _c("div", [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "ul",
+            {
+              staticClass: "list-group",
+              staticStyle: { "margin-top": "40px" }
+            },
+            _vm._l(_vm.players, function(player) {
+              return _c(
+                "div",
+                { key: player.id, attrs: { data: player } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticStyle: { "text-decoration": "none", color: "#000" },
+                      attrs: { to: "/player/" + player.id + "/info" }
+                    },
+                    [
+                      _c(
+                        "li",
+                        {
+                          staticClass: "list-group-item",
+                          staticStyle: { "border-radius": "0" }
+                        },
+                        [
+                          _c("div", { staticClass: "row" }, [
+                            _c("div", { staticClass: "col-2" }, [
+                              _c("img", {
+                                attrs: {
+                                  width: "40px",
+                                  height: "40px",
+                                  src: "/assets/Main/image/avatar.jpg",
+                                  alt: "avatar"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "col-10" }, [
+                              _c("h6", {
+                                domProps: {
+                                  textContent: _vm._s(player.player_name)
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("span", {
+                                staticClass: "text-muted",
+                                staticStyle: { "font-size": "12px" },
+                                domProps: {
+                                  textContent: _vm._s(player.player_role)
+                                }
+                              })
+                            ])
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            }),
+            0
+          )
+        ])
+      : _c("div", { attrs: { id: "loader" } }, [
+          _c("div", { attrs: { id: "preloader" } })
+        ])
   ])
 }
 var staticRenderFns = [
@@ -46164,81 +46219,91 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "schedule" } }, [
-    _c(
-      "ul",
-      { staticClass: "list-group" },
-      _vm._l(_vm.schedules, function(schedule) {
-        return _c(
-          "div",
-          { key: schedule.id, attrs: { data: schedule } },
-          [
-            _c(
-              "router-link",
-              {
-                staticStyle: { "text-decoration": "none", color: "#000" },
-                attrs: {
-                  to:
-                    "/tournament/" +
-                    schedule.tournament_id +
-                    "/match/" +
-                    schedule.id +
-                    "/" +
-                    schedule.team1_id.id +
-                    "/" +
-                    schedule.team2_id.id +
-                    "/info"
-                }
-              },
-              [
-                _c(
-                  "li",
-                  {
-                    staticClass: "list-group-item",
-                    on: {
-                      click: function($event) {
-                        return _vm.header_string(
-                          schedule.team1_id.team_code,
-                          schedule.team2_id.team_code
-                        )
+    _vm.schedules
+      ? _c("div", [
+          _c(
+            "ul",
+            { staticClass: "list-group" },
+            _vm._l(_vm.schedules, function(schedule) {
+              return _c(
+                "div",
+                { key: schedule.id, attrs: { data: schedule } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticStyle: { "text-decoration": "none", color: "#000" },
+                      attrs: {
+                        to:
+                          "/tournament/" +
+                          schedule.tournament_id +
+                          "/match/" +
+                          schedule.id +
+                          "/" +
+                          schedule.team1_id.id +
+                          "/" +
+                          schedule.team2_id.id +
+                          "/info"
                       }
-                    }
-                  },
-                  [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "text-muted",
-                        staticStyle: { "font-size": "12px" }
-                      },
-                      [_vm._v("Match " + _vm._s(schedule.match_no))]
-                    ),
-                    _vm._v(" "),
-                    _c("h6", { staticClass: "mt-2" }, [
-                      _c("b", [_vm._v(_vm._s(schedule.team1_id.team_name))])
-                    ]),
-                    _vm._v(" "),
-                    _c("h6", [
-                      _c("b", [_vm._v(_vm._s(schedule.team2_id.team_name))])
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "text-danger",
-                        staticStyle: { "font-size": "12px" }
-                      },
-                      [_vm._v(_vm._s(schedule.times))]
-                    )
-                  ]
-                )
-              ]
-            )
-          ],
-          1
-        )
-      }),
-      0
-    )
+                    },
+                    [
+                      _c(
+                        "li",
+                        {
+                          staticClass: "list-group-item",
+                          on: {
+                            click: function($event) {
+                              return _vm.header_string(
+                                schedule.team1_id.team_code,
+                                schedule.team2_id.team_code
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              staticClass: "text-muted",
+                              staticStyle: { "font-size": "12px" }
+                            },
+                            [_vm._v("Match " + _vm._s(schedule.match_no))]
+                          ),
+                          _vm._v(" "),
+                          _c("h6", { staticClass: "mt-2" }, [
+                            _c("b", [
+                              _vm._v(_vm._s(schedule.team1_id.team_name))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("h6", [
+                            _c("b", [
+                              _vm._v(_vm._s(schedule.team2_id.team_name))
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "text-danger",
+                              staticStyle: { "font-size": "12px" }
+                            },
+                            [_vm._v(_vm._s(schedule.times))]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            }),
+            0
+          )
+        ])
+      : _c("div", { attrs: { id: "loader" } }, [
+          _c("div", { attrs: { id: "preloader" } })
+        ])
   ])
 }
 var staticRenderFns = []
@@ -47483,317 +47548,339 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "statsDetail" } }, [
-    _c("div", { staticClass: "tables table-responsive table-hover" }, [
-      _c("div", { staticClass: "panel-body widget-shadow" }, [
-        _c("div", { staticClass: "py-2 px-4 table-header" }, [
-          _vm.type == "mostRuns" ? _c("span", [_vm._v("Most Runs")]) : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "bestBattingAverage"
-            ? _c("span", [_vm._v("Best Batting Average")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "bestBattingStrikeRate"
-            ? _c("span", [_vm._v("Best Batting Strike Rate")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "highestScores"
-            ? _c("span", [_vm._v("Highest Scores")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "mostHundreds"
-            ? _c("span", [_vm._v("Most Hundreds")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "mostFifties"
-            ? _c("span", [_vm._v("Most Fifties")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "mostSixes"
-            ? _c("span", [_vm._v("Most Sixes")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "mostFours"
-            ? _c("span", [_vm._v("Most Fours")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "mostWickets"
-            ? _c("span", [_vm._v("Most Wickets")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "bestBowlingAverage"
-            ? _c("span", [_vm._v("Best Bowling  Average")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "bestBowling"
-            ? _c("span", [_vm._v("Best Bowling")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "bestEconomy"
-            ? _c("span", [_vm._v("Best Economy")])
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.type == "bestBowlingStrikeRate"
-            ? _c("span", [_vm._v("Best Bowling Strike Rate")])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c("table", { staticClass: "table" }, [
-          _c("thead", [
-            _c("tr", [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("Batsman")]),
-              _vm._v(" "),
-              _vm.type === "mostRuns" ||
-              _vm.type === "bestBattingAverage" ||
-              _vm.type === "bestBattingStrikeRate" ||
-              _vm.type === "mostSixes" ||
-              _vm.type === "mostFours" ||
-              _vm.type === "mostHundreds" ||
-              _vm.type === "mostFifties"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("M")])
+    _vm.stats
+      ? _c("div", { staticClass: "tables table-responsive table-hover" }, [
+          _c("div", { staticClass: "panel-body widget-shadow" }, [
+            _c("div", { staticClass: "py-2 px-4 table-header" }, [
+              _vm.type == "mostRuns"
+                ? _c("span", [_vm._v("Most Runs")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "mostRuns" ||
-              _vm.type === "bestBattingAverage" ||
-              _vm.type === "bestBattingStrikeRate" ||
-              _vm.type === "mostSixes" ||
-              _vm.type === "mostFours" ||
-              _vm.type === "mostHundreds" ||
-              _vm.type === "mostFifties"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("I")])
+              _vm.type == "bestBattingAverage"
+                ? _c("span", [_vm._v("Best Batting Average")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "mostRuns" ||
-              _vm.type === "bestBattingAverage" ||
-              _vm.type === "bestBattingStrikeRate" ||
-              _vm.type === "mostSixes" ||
-              _vm.type === "mostFours" ||
-              _vm.type === "mostHundreds" ||
-              _vm.type === "mostFifties"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("R")])
+              _vm.type == "bestBattingStrikeRate"
+                ? _c("span", [_vm._v("Best Batting Strike Rate")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "highestScores"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("HS")])
+              _vm.type == "highestScores"
+                ? _c("span", [_vm._v("Highest Scores")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "highestScores"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Balls")])
+              _vm.type == "mostHundreds"
+                ? _c("span", [_vm._v("Most Hundreds")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "highestScores"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("SR")])
+              _vm.type == "mostFifties"
+                ? _c("span", [_vm._v("Most Fifties")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "highestScores"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Vs")])
+              _vm.type == "mostSixes"
+                ? _c("span", [_vm._v("Most Sixes")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "mostRuns"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Avg")])
+              _vm.type == "mostFours"
+                ? _c("span", [_vm._v("Most Fours")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "bestBattingAverage"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Avg")])
+              _vm.type == "mostWickets"
+                ? _c("span", [_vm._v("Most Wickets")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "bestBattingStrikeRate"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("SR")])
+              _vm.type == "bestBowlingAverage"
+                ? _c("span", [_vm._v("Best Bowling  Average")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "mostFours"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("4s")])
+              _vm.type == "bestBowling"
+                ? _c("span", [_vm._v("Best Bowling")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "mostSixes"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("6s")])
+              _vm.type == "bestEconomy"
+                ? _c("span", [_vm._v("Best Economy")])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.type === "mostHundreds"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("100s")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type === "mostFifties"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("50s")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type === "bestBowling"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("VS")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type === "bestBowling"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("BBI")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type === "bestBowlingAverage" || _vm.type === "mostWickets"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("M")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type === "bestBowlingAverage" || _vm.type === "mostWickets"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("O")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type === "bestBowlingAverage" || _vm.type === "mostWickets"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("W")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type === "bestBowlingAverage" || _vm.type === "mostWickets"
-                ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Avg")])
+              _vm.type == "bestBowlingStrikeRate"
+                ? _c("span", [_vm._v("Best Bowling Strike Rate")])
                 : _vm._e()
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.stats, function(stat) {
-              return _c("tr", { key: stat.id, attrs: { data: stat } }, [
-                _c(
-                  "td",
-                  [
+            ]),
+            _vm._v(" "),
+            _c("table", { staticClass: "table" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Batsman")]),
+                  _vm._v(" "),
+                  _vm.type === "mostRuns" ||
+                  _vm.type === "bestBattingAverage" ||
+                  _vm.type === "bestBattingStrikeRate" ||
+                  _vm.type === "mostSixes" ||
+                  _vm.type === "mostFours" ||
+                  _vm.type === "mostHundreds" ||
+                  _vm.type === "mostFifties"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("M")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "mostRuns" ||
+                  _vm.type === "bestBattingAverage" ||
+                  _vm.type === "bestBattingStrikeRate" ||
+                  _vm.type === "mostSixes" ||
+                  _vm.type === "mostFours" ||
+                  _vm.type === "mostHundreds" ||
+                  _vm.type === "mostFifties"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("I")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "mostRuns" ||
+                  _vm.type === "bestBattingAverage" ||
+                  _vm.type === "bestBattingStrikeRate" ||
+                  _vm.type === "mostSixes" ||
+                  _vm.type === "mostFours" ||
+                  _vm.type === "mostHundreds" ||
+                  _vm.type === "mostFifties"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("R")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "highestScores"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("HS")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "highestScores"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Balls")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "highestScores"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("SR")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "highestScores"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Vs")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "mostRuns"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Avg")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "bestBattingAverage"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Avg")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "bestBattingStrikeRate"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("SR")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "mostFours"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("4s")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "mostSixes"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("6s")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "mostHundreds"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("100s")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "mostFifties"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("50s")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "bestBowling"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("VS")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "bestBowling"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("BBI")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "bestBowlingAverage" ||
+                  _vm.type === "mostWickets"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("M")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "bestBowlingAverage" ||
+                  _vm.type === "mostWickets"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("O")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "bestBowlingAverage" ||
+                  _vm.type === "mostWickets"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("W")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.type === "bestBowlingAverage" ||
+                  _vm.type === "mostWickets"
+                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("Avg")])
+                    : _vm._e()
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.stats, function(stat) {
+                  return _c("tr", { key: stat.id, attrs: { data: stat } }, [
                     _c(
-                      "router-link",
-                      {
-                        staticStyle: {
-                          "text-decoration": "none",
-                          color: "#000"
-                        },
-                        attrs: { to: "/player/" + stat.player.id }
-                      },
+                      "td",
                       [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(stat.player.player_name) +
-                            "\n                            "
+                        _c(
+                          "router-link",
+                          {
+                            staticStyle: {
+                              "text-decoration": "none",
+                              color: "#000"
+                            },
+                            attrs: { to: "/player/" + stat.player.id }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(stat.player.player_name) +
+                                "\n                            "
+                            )
+                          ]
                         )
-                      ]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm.type === "mostRuns" ||
-                _vm.type === "bestBattingAverage" ||
-                _vm.type === "bestBattingStrikeRate" ||
-                _vm.type === "mostSixes" ||
-                _vm.type === "mostFours" ||
-                _vm.type === "mostHundreds" ||
-                _vm.type === "mostFifties"
-                  ? _c("td", [_vm._v(_vm._s(stat.matches))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "highestScores"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_runs))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "mostRuns" ||
-                _vm.type === "bestBattingAverage" ||
-                _vm.type === "bestBattingStrikeRate" ||
-                _vm.type === "mostSixes" ||
-                _vm.type === "mostFours" ||
-                _vm.type === "mostHundreds" ||
-                _vm.type === "mostFifties"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_innings))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "highestScores"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_balls))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "mostRuns" ||
-                _vm.type === "bestBattingAverage" ||
-                _vm.type === "bestBattingStrikeRate" ||
-                _vm.type === "mostSixes" ||
-                _vm.type === "mostFours" ||
-                _vm.type === "mostHundreds" ||
-                _vm.type === "mostFifties"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_runs))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "highestScores"
-                  ? _c("td", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.calculateStrikeRate(stat.bt_runs, stat.bt_balls)
-                        )
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "mostRuns"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_runs))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "highestScores"
-                  ? _c("td", [_vm._v(_vm._s(stat.team_id))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "bestBattingAverage"
-                  ? _c("td", [_vm._v(_vm._s(stat.average))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "bestBattingStrikeRate"
-                  ? _c("td", [
-                      _vm._v(
-                        _vm._s(
-                          _vm.calculateStrikeRate(stat.bt_runs, stat.bt_balls)
-                        )
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "mostFours"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_fours))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "mostSixes"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_sixes))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "mostHundreds"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_hundreds))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "mostFifties"
-                  ? _c("td", [_vm._v(_vm._s(stat.bt_fifties))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "bestBowlingAverage" || _vm.type === "mostWickets"
-                  ? _c("td", [_vm._v(_vm._s(stat.matches))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "bestBowlingAverage" || _vm.type === "mostWickets"
-                  ? _c("td", [
-                      _vm._v(
-                        _vm._s(stat.bw_over) + "." + _vm._s(stat.bw_overball)
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "bestBowlingAverage" || _vm.type === "mostWickets"
-                  ? _c("td", [_vm._v(_vm._s(stat.bw_wickets))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "bestBowlingAverage" || _vm.type === "mostWickets"
-                  ? _c("td", [_vm._v(_vm._s(stat.bw_average))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "bestBowling"
-                  ? _c("td", [_vm._v(_vm._s(stat.team_id))])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.type === "bestBowling"
-                  ? _c("td", [
-                      _vm._v(
-                        _vm._s(stat.bw_wickets) + "-" + _vm._s(stat.bw_runs)
-                      )
-                    ])
-                  : _vm._e()
-              ])
-            }),
-            0
-          )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _vm.type === "mostRuns" ||
+                    _vm.type === "bestBattingAverage" ||
+                    _vm.type === "bestBattingStrikeRate" ||
+                    _vm.type === "mostSixes" ||
+                    _vm.type === "mostFours" ||
+                    _vm.type === "mostHundreds" ||
+                    _vm.type === "mostFifties"
+                      ? _c("td", [_vm._v(_vm._s(stat.matches))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "highestScores"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_runs))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "mostRuns" ||
+                    _vm.type === "bestBattingAverage" ||
+                    _vm.type === "bestBattingStrikeRate" ||
+                    _vm.type === "mostSixes" ||
+                    _vm.type === "mostFours" ||
+                    _vm.type === "mostHundreds" ||
+                    _vm.type === "mostFifties"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_innings))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "highestScores"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_balls))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "mostRuns" ||
+                    _vm.type === "bestBattingAverage" ||
+                    _vm.type === "bestBattingStrikeRate" ||
+                    _vm.type === "mostSixes" ||
+                    _vm.type === "mostFours" ||
+                    _vm.type === "mostHundreds" ||
+                    _vm.type === "mostFifties"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_runs))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "highestScores"
+                      ? _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.calculateStrikeRate(
+                                stat.bt_runs,
+                                stat.bt_balls
+                              )
+                            )
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "mostRuns"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_runs))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "highestScores"
+                      ? _c("td", [_vm._v(_vm._s(stat.team_id))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "bestBattingAverage"
+                      ? _c("td", [_vm._v(_vm._s(stat.average))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "bestBattingStrikeRate"
+                      ? _c("td", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.calculateStrikeRate(
+                                stat.bt_runs,
+                                stat.bt_balls
+                              )
+                            )
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "mostFours"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_fours))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "mostSixes"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_sixes))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "mostHundreds"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_hundreds))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "mostFifties"
+                      ? _c("td", [_vm._v(_vm._s(stat.bt_fifties))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "bestBowlingAverage" ||
+                    _vm.type === "mostWickets"
+                      ? _c("td", [_vm._v(_vm._s(stat.matches))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "bestBowlingAverage" ||
+                    _vm.type === "mostWickets"
+                      ? _c("td", [
+                          _vm._v(
+                            _vm._s(stat.bw_over) +
+                              "." +
+                              _vm._s(stat.bw_overball)
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "bestBowlingAverage" ||
+                    _vm.type === "mostWickets"
+                      ? _c("td", [_vm._v(_vm._s(stat.bw_wickets))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "bestBowlingAverage" ||
+                    _vm.type === "mostWickets"
+                      ? _c("td", [_vm._v(_vm._s(stat.bw_average))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "bestBowling"
+                      ? _c("td", [_vm._v(_vm._s(stat.team_id))])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.type === "bestBowling"
+                      ? _c("td", [
+                          _vm._v(
+                            _vm._s(stat.bw_wickets) + "-" + _vm._s(stat.bw_runs)
+                          )
+                        ])
+                      : _vm._e()
+                  ])
+                }),
+                0
+              )
+            ])
+          ])
         ])
-      ])
-    ])
+      : _c("div", { attrs: { id: "loader" } }, [
+          _c("div", { attrs: { id: "preloader" } })
+        ])
   ])
 }
 var staticRenderFns = []
@@ -47819,41 +47906,47 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "team" } }, [
-    _c(
-      "ul",
-      { staticClass: "list-group" },
-      _vm._l(_vm.teams, function(team) {
-        return _c(
-          "div",
-          { key: team.id, attrs: { data: team } },
-          [
-            _c(
-              "router-link",
-              {
-                staticStyle: { "text-decoration": "none", color: "#000" },
-                attrs: { to: "/teams/" + team.id + "/players" }
-              },
-              [
-                _c(
-                  "li",
-                  {
-                    staticClass: "list-group-item",
-                    staticStyle: { "border-radius": "0" }
-                  },
-                  [
-                    _c("span", {
-                      domProps: { textContent: _vm._s(team.team_name) }
-                    })
-                  ]
-                )
-              ]
-            )
-          ],
-          1
-        )
-      }),
-      0
-    )
+    _vm.teams
+      ? _c("div", [
+          _c(
+            "ul",
+            { staticClass: "list-group" },
+            _vm._l(_vm.teams, function(team) {
+              return _c(
+                "div",
+                { key: team.id, attrs: { data: team } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticStyle: { "text-decoration": "none", color: "#000" },
+                      attrs: { to: "/teams/" + team.id + "/players" }
+                    },
+                    [
+                      _c(
+                        "li",
+                        {
+                          staticClass: "list-group-item",
+                          staticStyle: { "border-radius": "0" }
+                        },
+                        [
+                          _c("span", {
+                            domProps: { textContent: _vm._s(team.team_name) }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            }),
+            0
+          )
+        ])
+      : _c("div", { attrs: { id: "loader" } }, [
+          _c("div", { attrs: { id: "preloader" } })
+        ])
   ])
 }
 var staticRenderFns = []
@@ -47879,52 +47972,62 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "tournament" } }, [
-    _c(
-      "ul",
-      { staticClass: "list-group" },
-      _vm._l(_vm.tournaments, function(tournament) {
-        return _c(
-          "div",
-          { key: tournament.id, attrs: { data: tournament } },
-          [
-            _c(
-              "router-link",
-              {
-                staticStyle: { "text-decoration": "none", color: "#000" },
-                attrs: { to: "/tournament/" + tournament.id + "/schedule" }
-              },
-              [
-                _c(
-                  "li",
-                  {
-                    staticClass: "list-group-item",
-                    on: {
-                      click: function($event) {
-                        return _vm.header_string(tournament.tournament_name)
+    _vm.tournaments
+      ? _c("div", [
+          _c(
+            "ul",
+            { staticClass: "list-group" },
+            _vm._l(_vm.tournaments, function(tournament) {
+              return _c(
+                "div",
+                { key: tournament.id, attrs: { data: tournament } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticStyle: { "text-decoration": "none", color: "#000" },
+                      attrs: {
+                        to: "/tournament/" + tournament.id + "/schedule"
                       }
-                    }
-                  },
-                  [
-                    _c("h5", {
-                      staticStyle: { "font-weight": "bold" },
-                      domProps: {
-                        textContent: _vm._s(tournament.tournament_name)
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("span", { staticStyle: { "font-size": "12px" } }, [
-                      _vm._v(" Jan 24 - Apr 09")
-                    ])
-                  ]
-                )
-              ]
-            )
-          ],
-          1
-        )
-      }),
-      0
-    )
+                    },
+                    [
+                      _c(
+                        "li",
+                        {
+                          staticClass: "list-group-item",
+                          on: {
+                            click: function($event) {
+                              return _vm.header_string(
+                                tournament.tournament_name
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("h5", {
+                            staticStyle: { "font-weight": "bold" },
+                            domProps: {
+                              textContent: _vm._s(tournament.tournament_name)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("span", { staticStyle: { "font-size": "12px" } }, [
+                            _vm._v(" Jan 24 - Apr 09")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            }),
+            0
+          )
+        ])
+      : _c("div", { attrs: { id: "loader" } }, [
+          _c("div", { attrs: { id: "preloader" } })
+        ])
   ])
 }
 var staticRenderFns = []

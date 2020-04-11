@@ -4,13 +4,13 @@
             <div class="col-12">
                 <div class="nav-tabs-boxed">
                     <ul class="nav nav-tabs live" role="tablist">
-                        <router-link to="info">
+                        <router-link to="info" replace>
                             <li class="nav-item"><a class="nav-link">Info</a></li>
                         </router-link>
-                        <router-link to="batting">
+                        <router-link to="batting" replace>
                             <li class="nav-item"><a class="nav-link">Batting</a></li>
                         </router-link>
-                        <router-link to="bowling">
+                        <router-link to="bowling" replace>
                             <li class="nav-item"><a class="nav-link">Bowling</a></li>
                         </router-link>
                     </ul>
