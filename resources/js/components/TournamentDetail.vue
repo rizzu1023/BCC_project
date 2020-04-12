@@ -18,10 +18,11 @@
                             <li class="nav-item"><a class="nav-link">PointsTable</a></li>
                         </router-link>
                     </ul>
-                    <div class="tab-content p-0">
+                </div>
+
+                <div class="tab-content p-0">
                            <router-view></router-view>
 <!--                        <div class="tab-pane active" id="schedule"><Schedule></Schedule></div>-->
-                    </div>
                 </div>
             </div>
         </div>
@@ -47,12 +48,26 @@
         background: #1e72fa;
     }
 
+    .nav-tabs {
+        position: fixed;
+        top: 56px;
+        width : 100vw;
+        z-index : 1000;
+        background: #1e72fa;
+        box-shadow : 0 9px 8px -9px gray;
+
+    }
 
     .nav-item{
         font-size: 0.85rem;
         background: #1e72fa;
         text-transform: uppercase;
+    }
 
+
+
+    .nav-tabs a{
+        text-decoration: none;
     }
 
     .nav-item .nav-link{
@@ -76,17 +91,7 @@
         border-bottom: 3px solid #fff;
     }
 
-    .nav-tabs {
-        position: fixed;
-        top: 56px;
-        background: #1e72fa;
-        width : 100vw;
-        z-index : 1000;
-    }
 
-    .nav-tabs a{
-        text-decoration: none;
-    }
 
 
 

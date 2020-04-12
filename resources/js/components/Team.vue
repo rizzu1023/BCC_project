@@ -117,7 +117,10 @@
         padding-left: 12px;
         padding-right: 12px;
     }
-    #team .list-group-item span{
+    #team .list-group-item:hover, #team .list-group-item:active {
+        background-color: #f0f0f0;
+    }
+        #team .list-group-item span{
         font-size: 0.9rem;
     }
     #loader{

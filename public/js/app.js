@@ -3797,6 +3797,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -8373,7 +8374,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #1e72fa;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #1e72fa;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n\n/*#ul1 {*/\n/*    border: 1px dotted black;*/\n/*    padding: 0px;*/\n/*    display: table;*/\n/*    width: 100%;*/\n/*    box-sizing: border-box;*/\n/*    -moz-box-sizing: border-box;*/\n/*    -webkit-box-sizing: border-box;*/\n/*}*/\n/**/\n/*#ul1 li{*/\n/*    text-align: center;*/\n/*    padding: 12px;*/\n\n\n/*    background-color: red;*/\n/*    display: table-cell;*/\n/*}*/\n", ""]);
 
 // exports
 
@@ -8563,7 +8564,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#team .list-group-item[data-v-402b42c8]{\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item span[data-v-402b42c8]{\n    font-size: 0.9rem;\n}\n#loader[data-v-402b42c8]{\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n#team .list-group-item[data-v-402b42c8]{\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item[data-v-402b42c8]:hover, #team .list-group-item[data-v-402b42c8]:active {\n    background-color: #f0f0f0;\n}\n#team .list-group-item span[data-v-402b42c8]{\n    font-size: 0.9rem;\n}\n#loader[data-v-402b42c8]{\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -8601,7 +8602,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1e72fa;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1e72fa;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1e72fa;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48085,10 +48086,10 @@ var render = function() {
               ])
             ],
             1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "tab-content p-0" }, [_c("router-view")], 1)
-        ])
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tab-content p-0" }, [_c("router-view")], 1)
       ])
     ])
   ])
@@ -63225,6 +63226,12 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
       _this.header_string = value;
     });
   },
+  methods: {
+    clicked: function clicked() {
+      // alert('clicked');
+      _router__WEBPACK_IMPORTED_MODULE_1__["default"].go(-1);
+    }
+  },
   component: {
     ExampleComponent: _components_ExampleComponent__WEBPACK_IMPORTED_MODULE_4__["default"],
     TournamentDetail: _components_TournamentDetail__WEBPACK_IMPORTED_MODULE_5__["default"],
@@ -63237,7 +63244,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   },
   router: _router__WEBPACK_IMPORTED_MODULE_1__["default"],
   data: {
-    header_string: ''
+    header_string: 'Tournaments'
   }
 });
 

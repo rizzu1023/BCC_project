@@ -94,6 +94,7 @@
         background: #dbdbdb;
         padding-left: 12px;
         padding-right: 12px;
+
     }
     #stats .table-header span{
         font-size: 0.8rem;

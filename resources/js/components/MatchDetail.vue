@@ -92,4 +92,23 @@
     .nav-tabs a{
         text-decoration: none;
     }
+
+    /*#ul1 {*/
+    /*    border: 1px dotted black;*/
+    /*    padding: 0px;*/
+    /*    display: table;*/
+    /*    width: 100%;*/
+    /*    box-sizing: border-box;*/
+    /*    -moz-box-sizing: border-box;*/
+    /*    -webkit-box-sizing: border-box;*/
+    /*}*/
+    /**/
+    /*#ul1 li{*/
+    /*    text-align: center;*/
+    /*    padding: 12px;*/
+
+
+    /*    background-color: red;*/
+    /*    display: table-cell;*/
+    /*}*/
 </style>

@@ -75,6 +75,13 @@ const app = new Vue({
         });
     },
 
+    methods : {
+        clicked() {
+            // alert('clicked');
+            routes.go(-1)
+        }
+    },
+
     component : {
         ExampleComponent,
         TournamentDetail,
@@ -89,6 +96,6 @@ const app = new Vue({
     router : routes,
 
     data: {
-        header_string : '',
+        header_string : 'Tournaments',
     }
 });
