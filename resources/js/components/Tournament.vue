@@ -1,13 +1,13 @@
 <template>
     <div id="tournament">
-        <div  v-if="tournaments">
+        <div v-if="tournaments">
             <ul class="list-group">
                 <div v-for="tournament in tournaments" :key="tournament.id" :data="tournament">
                     <router-link :to="'/tournament/' + tournament.id + '/schedule'"
                                  style="text-decoration:none; color:#000">
                         <li class="list-group-item" v-on:click="header_string(tournament.tournament_name)">
-                            <h5 style="font-weight:bold" v-text="tournament.tournament_name"></h5>
-                            <span style="font-size: 12px"> Jan 24 - Apr 09</span>
+                            <h5 v-text="tournament.tournament_name"></h5>
+                            <span> Jan 24 - Apr 09</span>
                         </li>
                     </router-link>
                 </div>
@@ -68,9 +68,24 @@
         border-left: 0;
         padding-right: 12px;
         padding-left: 12px;
+        text-align: center;
     }
 
-    #loader{
+    #tournament .list-group-item:hover, #tournament .list-group-item:active {
+        background-color: #f0f0f0;
+    }
+
+    #tournament .list-group-item h5{
+        font-weight: bold;
+        font-size: 22px;
+    }
+
+
+    #tournament .list-group-item span {
+        font-size: 12px;
+    }
+
+    #loader {
         background: #f8fafc;
     }
 
@@ -83,6 +98,8 @@
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }
+
+
 
     @keyframes rotate {
         0% {

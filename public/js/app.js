@@ -2811,6 +2811,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Schedule",
   mounted: function mounted() {
@@ -3603,6 +3608,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Team",
   mounted: function mounted() {
@@ -3676,6 +3686,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       teams: null,
       editMode: true,
+      team_name: 'south Africa',
       form: new form({
         id: '',
         team_code: '',
@@ -8374,7 +8385,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #1e72fa;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n\n/*#ul1 {*/\n/*    border: 1px dotted black;*/\n/*    padding: 0px;*/\n/*    display: table;*/\n/*    width: 100%;*/\n/*    box-sizing: border-box;*/\n/*    -moz-box-sizing: border-box;*/\n/*    -webkit-box-sizing: border-box;*/\n/*}*/\n/**/\n/*#ul1 li{*/\n/*    text-align: center;*/\n/*    padding: 12px;*/\n\n\n/*    background-color: red;*/\n/*    display: table-cell;*/\n/*}*/\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #1e72fa;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n\n/*#ul1 {*/\n/*    border: 1px dotted black;*/\n/*    padding: 0px;*/\n/*    display: table;*/\n/*    width: 100%;*/\n/*    box-sizing: border-box;*/\n/*    -moz-box-sizing: border-box;*/\n/*    -webkit-box-sizing: border-box;*/\n/*}*/\n/**/\n/*#ul1 li{*/\n/*    text-align: center;*/\n/*    padding: 12px;*/\n\n\n/*    background-color: red;*/\n/*    display: table-cell;*/\n/*}*/\n", ""]);
 
 // exports
 
@@ -8488,7 +8499,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#schedule .list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#loader[data-v-5f748482]{\n    background: #f8fafc;\n}\n#preloader[data-v-5f748482] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-5f748482 1s infinite linear;\n            animation: rotate-data-v-5f748482 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n#schedule .list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#schedule .list-group-item[data-v-5f748482]:hover, #schedule .list-group-item[data-v-5f748482]:active {\n    background-color: #f0f0f0;\n}\n#loader[data-v-5f748482]{\n    background: #f8fafc;\n}\n#preloader[data-v-5f748482] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-5f748482 1s infinite linear;\n            animation: rotate-data-v-5f748482 1s infinite linear;\n}\n#schedule  #not_started[data-v-5f748482]{\n      width: 100vw;\n      text-align: center;\n      background: #f8fafc;\n      margin-top: 45vh;\n}\n@-webkit-keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -8526,7 +8537,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#stats .table-header[data-v-56c7d5c4]{\n    background: #dbdbdb;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .table-header span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n    color: #1e72fa;\n    font-weight : bold;\n}\n#stats .list-group-item[data-v-56c7d5c4]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .list-group-item span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n}\n#stats .list-group a[data-v-56c7d5c4]{\n    text-decoration : none;\n    color : #000;\n}\n", ""]);
+exports.push([module.i, "\n#stats .table-header[data-v-56c7d5c4]{\n    background: #dbdbdb;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .table-header span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n    color: #1e72fa;\n    font-weight : bold;\n}\n#stats .list-group-item[data-v-56c7d5c4]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .list-group-item[data-v-56c7d5c4]:hover, #stats .list-group-item[data-v-56c7d5c4]:active {\n    background-color: #f0f0f0;\n}\n#stats .list-group-item span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n}\n#stats .list-group a[data-v-56c7d5c4]{\n    text-decoration : none;\n    color : #000;\n}\n", ""]);
 
 // exports
 
@@ -8564,7 +8575,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#team .list-group-item[data-v-402b42c8]{\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item[data-v-402b42c8]:hover, #team .list-group-item[data-v-402b42c8]:active {\n    background-color: #f0f0f0;\n}\n#team .list-group-item span[data-v-402b42c8]{\n    font-size: 0.9rem;\n}\n#loader[data-v-402b42c8]{\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n#team .list-group-item[data-v-402b42c8] {\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item[data-v-402b42c8]:hover, #team .list-group-item[data-v-402b42c8]:active {\n    background-color: #f0f0f0;\n}\n#team .list-group-item span[data-v-402b42c8] {\n    font-size: 0.9rem;\n}\n#team #not_started[data-v-402b42c8] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#loader[data-v-402b42c8] {\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -8583,7 +8594,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#tournament .list-group-item[data-v-226aea14] {\n    border-radius: 0;\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n    padding-right: 12px;\n    padding-left: 12px;\n}\n#loader[data-v-226aea14]{\n    background: #f8fafc;\n}\n#preloader[data-v-226aea14] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-226aea14 1s infinite linear;\n            animation: rotate-data-v-226aea14 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n#tournament .list-group-item[data-v-226aea14] {\n    border-radius: 0;\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n    padding-right: 12px;\n    padding-left: 12px;\n    text-align: center;\n}\n#tournament .list-group-item[data-v-226aea14]:hover, #tournament .list-group-item[data-v-226aea14]:active {\n    background-color: #f0f0f0;\n}\n#tournament .list-group-item h5[data-v-226aea14]{\n    font-weight: bold;\n    font-size: 22px;\n}\n#tournament .list-group-item span[data-v-226aea14] {\n    font-size: 12px;\n}\n#loader[data-v-226aea14] {\n    background: #f8fafc;\n}\n#preloader[data-v-226aea14] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-226aea14 1s infinite linear;\n            animation: rotate-data-v-226aea14 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -46082,7 +46093,9 @@ var render = function() {
   return _c("div", { attrs: { id: "playerDetail" } }, [
     _vm.players
       ? _c("div", [
-          _vm._m(0),
+          _c("div", { staticClass: "py-2 px-4 table-header" }, [
+            _c("span", [_vm._v(_vm._s(this.$route.query.team_name))])
+          ]),
           _vm._v(" "),
           _c(
             "ul",
@@ -46153,16 +46166,7 @@ var render = function() {
         ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "py-2 px-4 table-header" }, [
-      _c("span", [_vm._v("INDIA")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -46222,85 +46226,94 @@ var render = function() {
   return _c("div", { attrs: { id: "schedule" } }, [
     _vm.schedules
       ? _c("div", [
-          _c(
-            "ul",
-            { staticClass: "list-group" },
-            _vm._l(_vm.schedules, function(schedule) {
-              return _c(
-                "div",
-                { key: schedule.id, attrs: { data: schedule } },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticStyle: { "text-decoration": "none", color: "#000" },
-                      attrs: {
-                        to:
-                          "/tournament/" +
-                          schedule.tournament_id +
-                          "/match/" +
-                          schedule.id +
-                          "/" +
-                          schedule.team1_id.id +
-                          "/" +
-                          schedule.team2_id.id +
-                          "/info"
-                      }
-                    },
-                    [
-                      _c(
-                        "li",
-                        {
-                          staticClass: "list-group-item",
-                          on: {
-                            click: function($event) {
-                              return _vm.header_string(
-                                schedule.team1_id.team_code,
-                                schedule.team2_id.team_code
-                              )
+          _vm.schedules.length > 0
+            ? _c("div", [
+                _c(
+                  "ul",
+                  { staticClass: "list-group" },
+                  _vm._l(_vm.schedules, function(schedule) {
+                    return _c(
+                      "div",
+                      { key: schedule.id, attrs: { data: schedule } },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticStyle: {
+                              "text-decoration": "none",
+                              color: "#000"
+                            },
+                            attrs: {
+                              to:
+                                "/tournament/" +
+                                schedule.tournament_id +
+                                "/match/" +
+                                schedule.id +
+                                "/" +
+                                schedule.team1_id.id +
+                                "/" +
+                                schedule.team2_id.id +
+                                "/info"
                             }
-                          }
-                        },
-                        [
-                          _c(
-                            "span",
-                            {
-                              staticClass: "text-muted",
-                              staticStyle: { "font-size": "12px" }
-                            },
-                            [_vm._v("Match " + _vm._s(schedule.match_no))]
-                          ),
-                          _vm._v(" "),
-                          _c("h6", { staticClass: "mt-2" }, [
-                            _c("b", [
-                              _vm._v(_vm._s(schedule.team1_id.team_name))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("h6", [
-                            _c("b", [
-                              _vm._v(_vm._s(schedule.team2_id.team_name))
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "span",
-                            {
-                              staticClass: "text-danger",
-                              staticStyle: { "font-size": "12px" }
-                            },
-                            [_vm._v(_vm._s(schedule.times))]
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            }),
-            0
-          )
+                          },
+                          [
+                            _c(
+                              "li",
+                              {
+                                staticClass: "list-group-item",
+                                on: {
+                                  click: function($event) {
+                                    return _vm.header_string(
+                                      schedule.team1_id.team_code,
+                                      schedule.team2_id.team_code
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "text-muted",
+                                    staticStyle: { "font-size": "12px" }
+                                  },
+                                  [_vm._v("Match " + _vm._s(schedule.match_no))]
+                                ),
+                                _vm._v(" "),
+                                _c("h6", { staticClass: "mt-2" }, [
+                                  _c("b", [
+                                    _vm._v(_vm._s(schedule.team1_id.team_name))
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("h6", [
+                                  _c("b", [
+                                    _vm._v(_vm._s(schedule.team2_id.team_name))
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "text-danger",
+                                    staticStyle: { "font-size": "12px" }
+                                  },
+                                  [_vm._v(_vm._s(schedule.times))]
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  }),
+                  0
+                )
+              ])
+            : _c("div", { attrs: { id: "not_started" } }, [
+                _c("span", [_vm._v("Matches Not found")])
+              ])
         ])
       : _c("div", { attrs: { id: "loader" } }, [
           _c("div", { attrs: { id: "preloader" } })
@@ -47909,41 +47922,57 @@ var render = function() {
   return _c("div", { attrs: { id: "team" } }, [
     _vm.teams
       ? _c("div", [
-          _c(
-            "ul",
-            { staticClass: "list-group" },
-            _vm._l(_vm.teams, function(team) {
-              return _c(
-                "div",
-                { key: team.id, attrs: { data: team } },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticStyle: { "text-decoration": "none", color: "#000" },
-                      attrs: { to: "/teams/" + team.id + "/players" }
-                    },
-                    [
-                      _c(
-                        "li",
-                        {
-                          staticClass: "list-group-item",
-                          staticStyle: { "border-radius": "0" }
-                        },
-                        [
-                          _c("span", {
-                            domProps: { textContent: _vm._s(team.team_name) }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ],
-                1
-              )
-            }),
-            0
-          )
+          _vm.teams.length > 0
+            ? _c("div", [
+                _c(
+                  "ul",
+                  { staticClass: "list-group" },
+                  _vm._l(_vm.teams, function(team) {
+                    return _c(
+                      "div",
+                      { key: team.id, attrs: { data: team } },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticStyle: {
+                              "text-decoration": "none",
+                              color: "#000"
+                            },
+                            attrs: {
+                              to: {
+                                path: "/teams/" + team.id + "/players",
+                                query: { team_name: team.team_name }
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "li",
+                              {
+                                staticClass: "list-group-item",
+                                staticStyle: { "border-radius": "0" }
+                              },
+                              [
+                                _c("span", {
+                                  domProps: {
+                                    textContent: _vm._s(team.team_name)
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  }),
+                  0
+                )
+              ])
+            : _c("div", { attrs: { id: "not_started" } }, [
+                _c("span", [_vm._v("Teams Not found")])
+              ])
         ])
       : _c("div", { attrs: { id: "loader" } }, [
           _c("div", { attrs: { id: "preloader" } })
@@ -48006,15 +48035,12 @@ var render = function() {
                         },
                         [
                           _c("h5", {
-                            staticStyle: { "font-weight": "bold" },
                             domProps: {
                               textContent: _vm._s(tournament.tournament_name)
                             }
                           }),
                           _vm._v(" "),
-                          _c("span", { staticStyle: { "font-size": "12px" } }, [
-                            _vm._v(" Jan 24 - Apr 09")
-                          ])
+                          _c("span", [_vm._v(" Jan 24 - Apr 09")])
                         ]
                       )
                     ]

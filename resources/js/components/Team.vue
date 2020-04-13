@@ -1,15 +1,20 @@
 <template>
     <div id="team">
         <div v-if="teams">
-            <ul class="list-group">
-                <div  v-for="team in teams" :key="team.id" :data="team">
-                <router-link :to="'/teams/'+team.id+'/players'" style="text-decoration:none; color:#000">
-                    <li class="list-group-item" style="border-radius: 0;">
-                        <span v-text="team.team_name"></span>
-                    </li>
-                </router-link>
-                </div>
-            </ul>
+            <div v-if="teams.length > 0">
+                <ul class="list-group">
+                    <div v-for="team in teams" :key="team.id" :data="team">
+                        <router-link :to="{ path : '/teams/'+team.id+'/players', query : { team_name : team.team_name} }" style="text-decoration:none; color:#000">
+                            <li class="list-group-item" style="border-radius: 0;">
+                                <span v-text="team.team_name"></span>
+                            </li>
+                        </router-link>
+                    </div>
+                </ul>
+            </div>
+            <div id="not_started" v-else>
+                <span>Teams Not found</span>
+            </div>
         </div>
         <div id="loader" v-else>
             <div id="preloader"></div>
@@ -88,7 +93,6 @@
                     });
 
 
-
             },
 
         },
@@ -97,12 +101,13 @@
             return {
                 teams: null,
                 editMode: true,
+                team_name : 'south Africa',
 
                 form: new form({
                     id: '',
-                    team_code : '',
-                    team_name : '',
-                    team_title : '',
+                    team_code: '',
+                    team_name: '',
+                    team_title: '',
                 })
             }
         },
@@ -110,22 +115,33 @@
 </script>
 
 <style scoped>
-    #team .list-group-item{
+    #team .list-group-item {
         border-right: 0;
         border-left: 0;
-        border-top:0;
+        border-top: 0;
         padding-left: 12px;
         padding-right: 12px;
     }
+
     #team .list-group-item:hover, #team .list-group-item:active {
         background-color: #f0f0f0;
     }
-        #team .list-group-item span{
+
+    #team .list-group-item span {
         font-size: 0.9rem;
     }
-    #loader{
+
+    #team #not_started {
+        width: 100vw;
+        text-align: center;
+        background: #f8fafc;
+        margin-top: 45vh;
+    }
+
+    #loader {
         background: #f8fafc;
     }
+
     #preloader {
         height: 30px;
         width: 30px;

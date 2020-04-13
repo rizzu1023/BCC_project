@@ -110,6 +110,10 @@
         padding-left: 12px;
         padding-right: 12px;
     }
+    #stats .list-group-item:hover, #stats .list-group-item:active {
+        background-color: #f0f0f0;
+    }
+
     #stats .list-group-item span{
         font-size: 0.8rem;
 

@@ -3,7 +3,7 @@
     <div id="playerDetail">
         <div v-if="players">
         <div class="py-2 px-4 table-header">
-            <span>INDIA</span>
+            <span>{{this.$route.query.team_name}}</span>
         </div>
 
         <ul class="list-group" style="margin-top:40px">
