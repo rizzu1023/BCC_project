@@ -2774,8 +2774,67 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PointsTable"
+  name: "PointsTable",
+  mounted: function mounted() {
+    this.detectswipe('swipeme', this.myfunction);
+  },
+  methods: {
+    detectswipe: function detectswipe(el, func) {
+      var swipe_det;
+      swipe_det = new Object();
+      swipe_det.sX = 0;
+      swipe_det.sY = 0;
+      swipe_det.eX = 0;
+      swipe_det.eY = 0;
+      var min_x = 30; //min x swipe for horizontal swipe
+
+      var max_x = 30; //max x difference for vertical swipe
+
+      var min_y = 50; //min y swipe for vertical swipe
+
+      var max_y = 60; //max y difference for horizontal swipe
+
+      var direc = "";
+      var ele = document.getElementById(el);
+      ele.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        swipe_det.sX = t.screenX;
+        swipe_det.sY = t.screenY;
+      }, false);
+      ele.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        swipe_det.eX = t.screenX;
+        swipe_det.eY = t.screenY;
+      }, false);
+      ele.addEventListener('touchend', function (e) {
+        //horizontal detection
+        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+          if (swipe_det.eX > swipe_det.sX) direc = "r";else direc = "l";
+        } //vertical detection
+        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          }
+
+        if (direc != "") {
+          if (typeof func == 'function') func(el, direc);
+        }
+
+        direc = "";
+        swipe_det.sX = 0;
+        swipe_det.sY = 0;
+        swipe_det.eX = 0;
+        swipe_det.eY = 0;
+      }, false);
+    },
+    myfunction: function myfunction(el, d) {
+      alert("you swiped on element with id '" + el + "' to " + d + " direction");
+    }
+  }
 });
 
 /***/ }),
@@ -8482,6 +8541,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n    position: fixed;\n    top: 56px;\n    z-index : 1001;\n    width: 100vw;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#loader[data-v-0c847bd2]{\n    background: #f8fafc;\n}\n#preloader[data-v-0c847bd2] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-0c847bd2 1s infinite linear;\n            animation: rotate-data-v-0c847bd2 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#swipeme[data-v-fd3d9be0] {\n    width:100%;\n    height:100%;\n    background-color:lightgray;\n    color:black;\n    text-align:center;\n    padding-top:20%;\n    padding-bottom:20%;\n}\n", ""]);
 
 // exports
 
@@ -39689,6 +39767,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Schedule.vue?vue&type=style&index=0&id=5f748482&scoped=true&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Schedule.vue?vue&type=style&index=0&id=5f748482&scoped=true&lang=css& ***!
@@ -46198,7 +46306,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "pointsTable" } }, [
       _c("div", { staticClass: "text-center " }, [
-        _c("h4", { staticClass: "pt-5" }, [_vm._v("Working on it...")])
+        _c("h4", { staticClass: "pt-5" }, [_vm._v("Working on it...")]),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "swipeme" } }, [
+          _vm._v("\n            swipe me\n        ")
+        ])
       ])
     ])
   }
@@ -64425,7 +64537,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PointsTable_vue_vue_type_template_id_fd3d9be0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PointsTable.vue?vue&type=template&id=fd3d9be0&scoped=true& */ "./resources/js/components/PointsTable.vue?vue&type=template&id=fd3d9be0&scoped=true&");
 /* harmony import */ var _PointsTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PointsTable.vue?vue&type=script&lang=js& */ "./resources/js/components/PointsTable.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _PointsTable_vue_vue_type_style_index_0_id_fd3d9be0_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css& */ "./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -64433,7 +64547,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _PointsTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _PointsTable_vue_vue_type_template_id_fd3d9be0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _PointsTable_vue_vue_type_template_id_fd3d9be0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -64462,6 +64576,22 @@ component.options.__file = "resources/js/components/PointsTable.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PointsTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PointsTable.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PointsTable.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PointsTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css& ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PointsTable_vue_vue_type_style_index_0_id_fd3d9be0_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PointsTable.vue?vue&type=style&index=0&id=fd3d9be0&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PointsTable_vue_vue_type_style_index_0_id_fd3d9be0_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PointsTable_vue_vue_type_style_index_0_id_fd3d9be0_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PointsTable_vue_vue_type_style_index_0_id_fd3d9be0_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PointsTable_vue_vue_type_style_index_0_id_fd3d9be0_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PointsTable_vue_vue_type_style_index_0_id_fd3d9be0_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
