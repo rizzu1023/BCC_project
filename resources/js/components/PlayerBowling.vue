@@ -8,7 +8,20 @@
 
 <script>
     export default {
-        name: "PlayerBowling"
+        name: "PlayerBowling",
+
+        mounted() {
+            var route = this.$router;
+            $(function () {
+                $("#playerBowling").swipe({
+                    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                        if (direction === 'right'){
+                            route.replace('batting');
+                        }
+                    }, allowPageScroll: "auto"
+                });
+            });
+        }
     }
 </script>
 

@@ -2090,7 +2090,19 @@ __webpack_require__.r(__webpack_exports__);
   name: "LiveMatch",
   mounted: function mounted() {
     this.loadLiveMatchScorecard();
-    this.detectswipe('liveMatch', this.myfunction); // setInterval(() => this.loadLiveMatchScorecard(),5000);
+    var route = this.$router;
+    $(function () {
+      $("#liveMatch").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'left') route.replace('scorecard');
+
+          if (direction === 'right') {
+            route.replace('info');
+          }
+        },
+        allowPageScroll: "auto"
+      });
+    }); // setInterval(() => this.loadLiveMatchScorecard(),5000);
   },
   methods: {
     loadLiveMatchScorecard: function loadLiveMatchScorecard() {
@@ -2123,65 +2135,6 @@ __webpack_require__.r(__webpack_exports__);
       var over = Number(overs) + Number(balls) * 10 / 60;
       var economy = (Number(runs) / Number(over)).toFixed(2);
       return economy;
-    },
-    detectswipe: function detectswipe(el, func) {
-      var swipe_det;
-      swipe_det = new Object();
-      swipe_det.sX = 0;
-      swipe_det.sY = 0;
-      swipe_det.eX = 0;
-      swipe_det.eY = 0;
-      var min_x = 30; //min x swipe for horizontal swipe
-
-      var max_x = 30; //max x difference for vertical swipe
-
-      var min_y = 50; //min y swipe for vertical swipe
-
-      var max_y = 60; //max y difference for horizontal swipe
-
-      var direc = "";
-      var ele = document.getElementById(el);
-      ele.addEventListener('touchstart', function (e) {
-        var t = e.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-      }, false);
-      ele.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        var t = e.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
-      }, false);
-      ele.addEventListener('touchend', function (e) {
-        //horizontal detection
-        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) {
-            direc = "r";
-          } else direc = "l";
-        } //vertical detection
-        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
-            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
-          }
-
-        if (direc != "") {
-          if (typeof func == 'function') func(el, direc);
-        }
-
-        direc = "";
-        swipe_det.sX = 0;
-        swipe_det.sY = 0;
-        swipe_det.eX = 0;
-        swipe_det.eY = 0;
-      }, false);
-    },
-    myfunction: function myfunction(el, d) {
-      if (d == 'r') {
-        this.$router.replace('info');
-      }
-
-      if (d == 'l') {
-        this.$router.replace('scorecard');
-      }
     }
   },
   data: function data() {
@@ -2378,7 +2331,17 @@ __webpack_require__.r(__webpack_exports__);
   name: "MatchInfo",
   mounted: function mounted() {
     this.loadMatchInfo();
-    this.detectswipe('matchInfo', this.myfunction);
+    var route = this.$router;
+    $(function () {
+      $("#matchInfo").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'left') {
+            route.replace('live');
+          }
+        },
+        allowPageScroll: "auto"
+      });
+    });
   },
   methods: {
     loadMatchInfo: function loadMatchInfo() {
@@ -2393,61 +2356,6 @@ __webpack_require__.r(__webpack_exports__);
       ["catch"](function (error) {
         console.log(error);
       });
-    },
-    detectswipe: function detectswipe(el, func) {
-      var swipe_det;
-      swipe_det = new Object();
-      swipe_det.sX = 0;
-      swipe_det.sY = 0;
-      swipe_det.eX = 0;
-      swipe_det.eY = 0;
-      var min_x = 30; //min x swipe for horizontal swipe
-
-      var max_x = 30; //max x difference for vertical swipe
-
-      var min_y = 50; //min y swipe for vertical swipe
-
-      var max_y = 60; //max y difference for horizontal swipe
-
-      var direc = "";
-      var ele = document.getElementById(el);
-      ele.addEventListener('touchstart', function (e) {
-        var t = e.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-      }, false);
-      ele.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        var t = e.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
-      }, false);
-      ele.addEventListener('touchend', function (e) {
-        //horizontal detection
-        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) {
-            direc = "r";
-          } else direc = "l";
-        } //vertical detection
-        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
-            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
-          }
-
-        if (direc != "") {
-          if (typeof func == 'function') func(el, direc);
-        }
-
-        direc = "";
-        swipe_det.sX = 0;
-        swipe_det.sY = 0;
-        swipe_det.eX = 0;
-        swipe_det.eY = 0;
-      }, false);
-    },
-    myfunction: function myfunction(el, d) {
-      if (d == 'l') {
-        this.$router.replace('live');
-      }
     }
   },
   data: function data() {
@@ -2541,7 +2449,15 @@ __webpack_require__.r(__webpack_exports__);
   name: "MatchOvers",
   mounted: function mounted() {
     this.loadMatchOvers();
-    this.detectswipe('matchOvers', this.myfunction); // setInterval(() => this.loadMatchOvers(), 5000);
+    var route = this.$router;
+    $(function () {
+      $("#matchOvers").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'right') route.replace('scorecard');
+        },
+        allowPageScroll: "auto"
+      });
+    }); // setInterval(() => this.loadMatchOvers(), 5000);
   },
   methods: {
     loadMatchOvers: function loadMatchOvers() {
@@ -2556,61 +2472,6 @@ __webpack_require__.r(__webpack_exports__);
       ["catch"](function (error) {
         console.log(error);
       });
-    },
-    detectswipe: function detectswipe(el, func) {
-      var swipe_det;
-      swipe_det = new Object();
-      swipe_det.sX = 0;
-      swipe_det.sY = 0;
-      swipe_det.eX = 0;
-      swipe_det.eY = 0;
-      var min_x = 30; //min x swipe for horizontal swipe
-
-      var max_x = 30; //max x difference for vertical swipe
-
-      var min_y = 50; //min y swipe for vertical swipe
-
-      var max_y = 60; //max y difference for horizontal swipe
-
-      var direc = "";
-      var ele = document.getElementById(el);
-      ele.addEventListener('touchstart', function (e) {
-        var t = e.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-      }, false);
-      ele.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        var t = e.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
-      }, false);
-      ele.addEventListener('touchend', function (e) {
-        //horizontal detection
-        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) {
-            direc = "r";
-          } else direc = "l";
-        } //vertical detection
-        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
-            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
-          }
-
-        if (direc != "") {
-          if (typeof func == 'function') func(el, direc);
-        }
-
-        direc = "";
-        swipe_det.sX = 0;
-        swipe_det.sY = 0;
-        swipe_det.eX = 0;
-        swipe_det.eY = 0;
-      }, false);
-    },
-    myfunction: function myfunction(el, d) {
-      if (d == 'r') {
-        this.$router.replace('scorecard');
-      }
     }
   },
   data: function data() {
@@ -2647,7 +2508,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PlayerBatting"
+  name: "PlayerBatting",
+  mounted: function mounted() {
+    var route = this.$router;
+    $(function () {
+      $("#playerBatting").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'left') route.replace('bowling');
+
+          if (direction === 'right') {
+            route.replace('info');
+          }
+        },
+        allowPageScroll: "auto"
+      });
+    });
+  }
 });
 
 /***/ }),
@@ -2670,7 +2546,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "PlayerBowling"
+  name: "PlayerBowling",
+  mounted: function mounted() {
+    var route = this.$router;
+    $(function () {
+      $("#playerBowling").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'right') {
+            route.replace('batting');
+          }
+        },
+        allowPageScroll: "auto"
+      });
+    });
+  }
 });
 
 /***/ }),
@@ -2757,6 +2646,17 @@ __webpack_require__.r(__webpack_exports__);
   name: "PlayerInfo",
   mounted: function mounted() {
     this.loadPlayer();
+    var route = this.$router;
+    $(function () {
+      $("#playerInfo").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'left') {
+            route.replace('batting');
+          }
+        },
+        allowPageScroll: "auto"
+      });
+    });
   },
   methods: {
     loadPlayer: function loadPlayer() {
@@ -2952,65 +2852,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PointsTable",
   mounted: function mounted() {
-    this.detectswipe('pointsTable', this.myfunction);
-  },
-  methods: {
-    detectswipe: function detectswipe(el, func) {
-      var swipe_det;
-      swipe_det = new Object();
-      swipe_det.sX = 0;
-      swipe_det.sY = 0;
-      swipe_det.eX = 0;
-      swipe_det.eY = 0;
-      var min_x = 30; //min x swipe for horizontal swipe
-
-      var max_x = 30; //max x difference for vertical swipe
-
-      var min_y = 50; //min y swipe for vertical swipe
-
-      var max_y = 60; //max y difference for horizontal swipe
-
-      var direc = "";
-      var ele = document.getElementById(el);
-      ele.addEventListener('touchstart', function (e) {
-        var t = e.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-      }, false);
-      ele.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        var t = e.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
-      }, false);
-      ele.addEventListener('touchend', function (e) {
-        //horizontal detection
-        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) {
-            direc = "r";
-          } else direc = "l";
-        } //vertical detection
-        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
-            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+    var route = this.$router;
+    $(function () {
+      $("#pointsTable").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction == 'right') {
+            route.replace('stats');
           }
-
-        if (direc != "") {
-          if (typeof func == 'function') func(el, direc);
-        }
-
-        direc = "";
-        swipe_det.sX = 0;
-        swipe_det.sY = 0;
-        swipe_det.eX = 0;
-        swipe_det.eY = 0;
-      }, false);
-    },
-    myfunction: function myfunction(el, d) {
-      if (d == 'r') {
-        this.$router.replace('stats');
-      }
-    }
-  } // mixins : [swipeMixin],
+        },
+        allowPageScroll: "auto"
+      });
+    });
+  },
+  methods: {} // mixins : [swipeMixin],
 
 });
 
@@ -3057,7 +2911,15 @@ __webpack_require__.r(__webpack_exports__);
   name: "Schedule",
   mounted: function mounted() {
     this.loadSchedule();
-    this.detectswipe('schedule', this.myfunction);
+    var route = this.$router;
+    $(function () {
+      $("#schedule").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'left') route.replace('teams');
+        },
+        allowPageScroll: "auto"
+      });
+    });
   },
   methods: {
     loadSchedule: function loadSchedule() {
@@ -3073,61 +2935,6 @@ __webpack_require__.r(__webpack_exports__);
     header_string: function header_string(team1, team2) {
       var value = team1 + ' vs ' + team2;
       Event.$emit('headerString', value);
-    },
-    detectswipe: function detectswipe(el, func) {
-      var swipe_det;
-      swipe_det = new Object();
-      swipe_det.sX = 0;
-      swipe_det.sY = 0;
-      swipe_det.eX = 0;
-      swipe_det.eY = 0;
-      var min_x = 30; //min x swipe for horizontal swipe
-
-      var max_x = 30; //max x difference for vertical swipe
-
-      var min_y = 50; //min y swipe for vertical swipe
-
-      var max_y = 60; //max y difference for horizontal swipe
-
-      var direc = "";
-      var ele = document.getElementById(el);
-      ele.addEventListener('touchstart', function (e) {
-        var t = e.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-      }, false);
-      ele.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        var t = e.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
-      }, false);
-      ele.addEventListener('touchend', function (e) {
-        //horizontal detection
-        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) {
-            direc = "r";
-          } else direc = "l";
-        } //vertical detection
-        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
-            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
-          }
-
-        if (direc != "") {
-          if (typeof func == 'function') func(el, direc);
-        }
-
-        direc = "";
-        swipe_det.sX = 0;
-        swipe_det.sY = 0;
-        swipe_det.eX = 0;
-        swipe_det.eY = 0;
-      }, false);
-    },
-    myfunction: function myfunction(el, d) {
-      if (d == 'l') {
-        this.$router.replace('teams');
-      }
     }
   },
   data: function data() {
@@ -3553,7 +3360,19 @@ __webpack_require__.r(__webpack_exports__);
   name: "Scorecard",
   mounted: function mounted() {
     this.loadMatchScorecard();
-    this.detectswipe('scorecard', this.myfunction); // setInterval(() => this.loadMatchScorecard(), 5000);
+    var route = this.$router;
+    $(function () {
+      $("#scorecard").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'left') route.replace('overs');
+
+          if (direction === 'right') {
+            route.replace('live');
+          }
+        },
+        allowPageScroll: "auto"
+      });
+    }); // setInterval(() => this.loadMatchScorecard(), 5000);
   },
   methods: {
     loadMatchScorecard: function loadMatchScorecard() {
@@ -3575,65 +3394,6 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         var val = runs / ball * 100;
         return val.toFixed(2);
-      }
-    },
-    detectswipe: function detectswipe(el, func) {
-      var swipe_det;
-      swipe_det = new Object();
-      swipe_det.sX = 0;
-      swipe_det.sY = 0;
-      swipe_det.eX = 0;
-      swipe_det.eY = 0;
-      var min_x = 30; //min x swipe for horizontal swipe
-
-      var max_x = 30; //max x difference for vertical swipe
-
-      var min_y = 50; //min y swipe for vertical swipe
-
-      var max_y = 60; //max y difference for horizontal swipe
-
-      var direc = "";
-      var ele = document.getElementById(el);
-      ele.addEventListener('touchstart', function (e) {
-        var t = e.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-      }, false);
-      ele.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        var t = e.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
-      }, false);
-      ele.addEventListener('touchend', function (e) {
-        //horizontal detection
-        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) {
-            direc = "r";
-          } else direc = "l";
-        } //vertical detection
-        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
-            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
-          }
-
-        if (direc != "") {
-          if (typeof func == 'function') func(el, direc);
-        }
-
-        direc = "";
-        swipe_det.sX = 0;
-        swipe_det.sY = 0;
-        swipe_det.eX = 0;
-        swipe_det.eY = 0;
-      }, false);
-    },
-    myfunction: function myfunction(el, d) {
-      if (d == 'r') {
-        this.$router.replace('live');
-      }
-
-      if (d == 'l') {
-        this.$router.replace('overs');
       }
     }
   },
@@ -3755,69 +3515,21 @@ __webpack_require__.r(__webpack_exports__);
   name: "Stats",
   mounted: function mounted() {
     // Event.$emit('firstEvent');
-    this.detectswipe('stats', this.myfunction);
-  },
-  methods: {
-    detectswipe: function detectswipe(el, func) {
-      var swipe_det;
-      swipe_det = new Object();
-      swipe_det.sX = 0;
-      swipe_det.sY = 0;
-      swipe_det.eX = 0;
-      swipe_det.eY = 0;
-      var min_x = 30; //min x swipe for horizontal swipe
+    var route = this.$router;
+    $(function () {
+      $("#stats").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction == 'left') route.replace('pointsTable');
 
-      var max_x = 30; //max x difference for vertical swipe
-
-      var min_y = 50; //min y swipe for vertical swipe
-
-      var max_y = 60; //max y difference for horizontal swipe
-
-      var direc = "";
-      var ele = document.getElementById(el);
-      ele.addEventListener('touchstart', function (e) {
-        var t = e.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-      }, false);
-      ele.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        var t = e.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
-      }, false);
-      ele.addEventListener('touchend', function (e) {
-        //horizontal detection
-        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) {
-            direc = "r";
-          } else direc = "l";
-        } //vertical detection
-        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
-            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          if (direction == 'right') {
+            route.replace('teams');
           }
-
-        if (direc != "") {
-          if (typeof func == 'function') func(el, direc);
-        }
-
-        direc = "";
-        swipe_det.sX = 0;
-        swipe_det.sY = 0;
-        swipe_det.eX = 0;
-        swipe_det.eY = 0;
-      }, false);
-    },
-    myfunction: function myfunction(el, d) {
-      if (d == 'r') {
-        this.$router.replace('teams');
-      }
-
-      if (d == 'l') {
-        this.$router.replace('pointsTable');
-      }
-    }
-  }
+        },
+        allowPageScroll: "auto"
+      });
+    });
+  },
+  methods: {}
 });
 
 /***/ }),
@@ -4033,7 +3745,16 @@ __webpack_require__.r(__webpack_exports__);
   name: "Team",
   mounted: function mounted() {
     this.loadTeams();
-    this.detectswipe('team', this.myfunction);
+    var route = this.$router;
+    $(function () {
+      $("#team").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'left') route.replace('stats');
+          if (direction === 'right') route.replace('schedule');
+        },
+        allowPageScroll: "auto"
+      });
+    });
   },
   methods: {
     // addTeam() {
@@ -4097,65 +3818,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
-    },
-    detectswipe: function detectswipe(el, func) {
-      var swipe_det;
-      swipe_det = new Object();
-      swipe_det.sX = 0;
-      swipe_det.sY = 0;
-      swipe_det.eX = 0;
-      swipe_det.eY = 0;
-      var min_x = 30; //min x swipe for horizontal swipe
-
-      var max_x = 30; //max x difference for vertical swipe
-
-      var min_y = 50; //min y swipe for vertical swipe
-
-      var max_y = 60; //max y difference for horizontal swipe
-
-      var direc = "";
-      var ele = document.getElementById(el);
-      ele.addEventListener('touchstart', function (e) {
-        var t = e.touches[0];
-        swipe_det.sX = t.screenX;
-        swipe_det.sY = t.screenY;
-      }, false);
-      ele.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-        var t = e.touches[0];
-        swipe_det.eX = t.screenX;
-        swipe_det.eY = t.screenY;
-      }, false);
-      ele.addEventListener('touchend', function (e) {
-        //horizontal detection
-        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) {
-            direc = "r";
-          } else direc = "l";
-        } //vertical detection
-        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
-            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
-          }
-
-        if (direc != "") {
-          if (typeof func == 'function') func(el, direc);
-        }
-
-        direc = "";
-        swipe_det.sX = 0;
-        swipe_det.sY = 0;
-        swipe_det.eX = 0;
-        swipe_det.eY = 0;
-      }, false);
-    },
-    myfunction: function myfunction(el, d) {
-      if (d == 'r') {
-        this.$router.replace('schedule');
-      }
-
-      if (d == 'l') {
-        this.$router.replace('stats');
-      }
     }
   },
   data: function data() {
@@ -9032,7 +8694,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#stats .table-header[data-v-56c7d5c4]{\n    background: #dbdbdb;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .table-header span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n    color: #1e72fa;\n    font-weight : bold;\n}\n#stats .list-group-item[data-v-56c7d5c4]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .list-group-item[data-v-56c7d5c4]:hover, #stats .list-group-item[data-v-56c7d5c4]:active {\n    background-color: #f0f0f0;\n}\n#stats .list-group-item span[data-v-56c7d5c4]{\n    font-size: 0.8rem;\n}\n#stats .list-group a[data-v-56c7d5c4]{\n    text-decoration : none;\n    color : #000;\n}\n", ""]);
+exports.push([module.i, "\n#stats .table-header[data-v-56c7d5c4] {\n    background: #dbdbdb;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .table-header span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n    color: #1e72fa;\n    font-weight: bold;\n}\n#stats .list-group-item[data-v-56c7d5c4] {\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .list-group-item[data-v-56c7d5c4]:hover, #stats .list-group-item[data-v-56c7d5c4]:active {\n    background-color: #f0f0f0;\n}\n#stats .list-group-item span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n}\n#stats .list-group a[data-v-56c7d5c4] {\n    text-decoration: none;\n    color: #000;\n}\n", ""]);
 
 // exports
 

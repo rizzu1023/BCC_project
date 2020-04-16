@@ -23,6 +23,16 @@
 
         mounted: function () {
             this.loadPlayer();
+            var route = this.$router;
+            $(function () {
+                $("#playerInfo").swipe({
+                    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                        if (direction === 'left'){
+                            route.replace('batting');
+                        }
+                    }, allowPageScroll: "auto"
+                });
+            });
         },
 
         methods: {
