@@ -2089,7 +2089,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LiveMatch",
   mounted: function mounted() {
-    this.loadLiveMatchScorecard(); // setInterval(() => this.loadLiveMatchScorecard(),5000);
+    this.loadLiveMatchScorecard();
+    this.detectswipe('liveMatch', this.myfunction); // setInterval(() => this.loadLiveMatchScorecard(),5000);
   },
   methods: {
     loadLiveMatchScorecard: function loadLiveMatchScorecard() {
@@ -2122,6 +2123,65 @@ __webpack_require__.r(__webpack_exports__);
       var over = Number(overs) + Number(balls) * 10 / 60;
       var economy = (Number(runs) / Number(over)).toFixed(2);
       return economy;
+    },
+    detectswipe: function detectswipe(el, func) {
+      var swipe_det;
+      swipe_det = new Object();
+      swipe_det.sX = 0;
+      swipe_det.sY = 0;
+      swipe_det.eX = 0;
+      swipe_det.eY = 0;
+      var min_x = 30; //min x swipe for horizontal swipe
+
+      var max_x = 30; //max x difference for vertical swipe
+
+      var min_y = 50; //min y swipe for vertical swipe
+
+      var max_y = 60; //max y difference for horizontal swipe
+
+      var direc = "";
+      var ele = document.getElementById(el);
+      ele.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        swipe_det.sX = t.screenX;
+        swipe_det.sY = t.screenY;
+      }, false);
+      ele.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        swipe_det.eX = t.screenX;
+        swipe_det.eY = t.screenY;
+      }, false);
+      ele.addEventListener('touchend', function (e) {
+        //horizontal detection
+        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+          if (swipe_det.eX > swipe_det.sX) {
+            direc = "r";
+          } else direc = "l";
+        } //vertical detection
+        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          }
+
+        if (direc != "") {
+          if (typeof func == 'function') func(el, direc);
+        }
+
+        direc = "";
+        swipe_det.sX = 0;
+        swipe_det.sY = 0;
+        swipe_det.eX = 0;
+        swipe_det.eY = 0;
+      }, false);
+    },
+    myfunction: function myfunction(el, d) {
+      if (d == 'r') {
+        this.$router.replace('info');
+      }
+
+      if (d == 'l') {
+        this.$router.replace('scorecard');
+      }
     }
   },
   data: function data() {
@@ -2318,6 +2378,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "MatchInfo",
   mounted: function mounted() {
     this.loadMatchInfo();
+    this.detectswipe('matchInfo', this.myfunction);
   },
   methods: {
     loadMatchInfo: function loadMatchInfo() {
@@ -2332,6 +2393,61 @@ __webpack_require__.r(__webpack_exports__);
       ["catch"](function (error) {
         console.log(error);
       });
+    },
+    detectswipe: function detectswipe(el, func) {
+      var swipe_det;
+      swipe_det = new Object();
+      swipe_det.sX = 0;
+      swipe_det.sY = 0;
+      swipe_det.eX = 0;
+      swipe_det.eY = 0;
+      var min_x = 30; //min x swipe for horizontal swipe
+
+      var max_x = 30; //max x difference for vertical swipe
+
+      var min_y = 50; //min y swipe for vertical swipe
+
+      var max_y = 60; //max y difference for horizontal swipe
+
+      var direc = "";
+      var ele = document.getElementById(el);
+      ele.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        swipe_det.sX = t.screenX;
+        swipe_det.sY = t.screenY;
+      }, false);
+      ele.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        swipe_det.eX = t.screenX;
+        swipe_det.eY = t.screenY;
+      }, false);
+      ele.addEventListener('touchend', function (e) {
+        //horizontal detection
+        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+          if (swipe_det.eX > swipe_det.sX) {
+            direc = "r";
+          } else direc = "l";
+        } //vertical detection
+        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          }
+
+        if (direc != "") {
+          if (typeof func == 'function') func(el, direc);
+        }
+
+        direc = "";
+        swipe_det.sX = 0;
+        swipe_det.sY = 0;
+        swipe_det.eX = 0;
+        swipe_det.eY = 0;
+      }, false);
+    },
+    myfunction: function myfunction(el, d) {
+      if (d == 'l') {
+        this.$router.replace('live');
+      }
     }
   },
   data: function data() {
@@ -2424,7 +2540,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MatchOvers",
   mounted: function mounted() {
-    this.loadMatchOvers(); // setInterval(() => this.loadMatchOvers(), 5000);
+    this.loadMatchOvers();
+    this.detectswipe('matchOvers', this.myfunction); // setInterval(() => this.loadMatchOvers(), 5000);
   },
   methods: {
     loadMatchOvers: function loadMatchOvers() {
@@ -2439,6 +2556,61 @@ __webpack_require__.r(__webpack_exports__);
       ["catch"](function (error) {
         console.log(error);
       });
+    },
+    detectswipe: function detectswipe(el, func) {
+      var swipe_det;
+      swipe_det = new Object();
+      swipe_det.sX = 0;
+      swipe_det.sY = 0;
+      swipe_det.eX = 0;
+      swipe_det.eY = 0;
+      var min_x = 30; //min x swipe for horizontal swipe
+
+      var max_x = 30; //max x difference for vertical swipe
+
+      var min_y = 50; //min y swipe for vertical swipe
+
+      var max_y = 60; //max y difference for horizontal swipe
+
+      var direc = "";
+      var ele = document.getElementById(el);
+      ele.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        swipe_det.sX = t.screenX;
+        swipe_det.sY = t.screenY;
+      }, false);
+      ele.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        swipe_det.eX = t.screenX;
+        swipe_det.eY = t.screenY;
+      }, false);
+      ele.addEventListener('touchend', function (e) {
+        //horizontal detection
+        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+          if (swipe_det.eX > swipe_det.sX) {
+            direc = "r";
+          } else direc = "l";
+        } //vertical detection
+        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          }
+
+        if (direc != "") {
+          if (typeof func == 'function') func(el, direc);
+        }
+
+        direc = "";
+        swipe_det.sX = 0;
+        swipe_det.sY = 0;
+        swipe_det.eX = 0;
+        swipe_det.eY = 0;
+      }, false);
+    },
+    myfunction: function myfunction(el, d) {
+      if (d == 'r') {
+        this.$router.replace('scorecard');
+      }
     }
   },
   data: function data() {
@@ -2780,7 +2952,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PointsTable",
   mounted: function mounted() {
-    this.detectswipe('swipeme', this.myfunction);
+    this.detectswipe('pointsTable', this.myfunction);
   },
   methods: {
     detectswipe: function detectswipe(el, func) {
@@ -2814,7 +2986,9 @@ __webpack_require__.r(__webpack_exports__);
       ele.addEventListener('touchend', function (e) {
         //horizontal detection
         if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
-          if (swipe_det.eX > swipe_det.sX) direc = "r";else direc = "l";
+          if (swipe_det.eX > swipe_det.sX) {
+            direc = "r";
+          } else direc = "l";
         } //vertical detection
         else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
             if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
@@ -2832,9 +3006,12 @@ __webpack_require__.r(__webpack_exports__);
       }, false);
     },
     myfunction: function myfunction(el, d) {
-      alert("you swiped on element with id '" + el + "' to " + d + " direction");
+      if (d == 'r') {
+        this.$router.replace('stats');
+      }
     }
-  }
+  } // mixins : [swipeMixin],
+
 });
 
 /***/ }),
@@ -2880,6 +3057,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "Schedule",
   mounted: function mounted() {
     this.loadSchedule();
+    this.detectswipe('schedule', this.myfunction);
   },
   methods: {
     loadSchedule: function loadSchedule() {
@@ -2895,6 +3073,61 @@ __webpack_require__.r(__webpack_exports__);
     header_string: function header_string(team1, team2) {
       var value = team1 + ' vs ' + team2;
       Event.$emit('headerString', value);
+    },
+    detectswipe: function detectswipe(el, func) {
+      var swipe_det;
+      swipe_det = new Object();
+      swipe_det.sX = 0;
+      swipe_det.sY = 0;
+      swipe_det.eX = 0;
+      swipe_det.eY = 0;
+      var min_x = 30; //min x swipe for horizontal swipe
+
+      var max_x = 30; //max x difference for vertical swipe
+
+      var min_y = 50; //min y swipe for vertical swipe
+
+      var max_y = 60; //max y difference for horizontal swipe
+
+      var direc = "";
+      var ele = document.getElementById(el);
+      ele.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        swipe_det.sX = t.screenX;
+        swipe_det.sY = t.screenY;
+      }, false);
+      ele.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        swipe_det.eX = t.screenX;
+        swipe_det.eY = t.screenY;
+      }, false);
+      ele.addEventListener('touchend', function (e) {
+        //horizontal detection
+        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+          if (swipe_det.eX > swipe_det.sX) {
+            direc = "r";
+          } else direc = "l";
+        } //vertical detection
+        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          }
+
+        if (direc != "") {
+          if (typeof func == 'function') func(el, direc);
+        }
+
+        direc = "";
+        swipe_det.sX = 0;
+        swipe_det.sY = 0;
+        swipe_det.eX = 0;
+        swipe_det.eY = 0;
+      }, false);
+    },
+    myfunction: function myfunction(el, d) {
+      if (d == 'l') {
+        this.$router.replace('teams');
+      }
     }
   },
   data: function data() {
@@ -3319,7 +3552,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scorecard",
   mounted: function mounted() {
-    this.loadMatchScorecard(); // setInterval(() => this.loadMatchScorecard(), 5000);
+    this.loadMatchScorecard();
+    this.detectswipe('scorecard', this.myfunction); // setInterval(() => this.loadMatchScorecard(), 5000);
   },
   methods: {
     loadMatchScorecard: function loadMatchScorecard() {
@@ -3341,6 +3575,65 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         var val = runs / ball * 100;
         return val.toFixed(2);
+      }
+    },
+    detectswipe: function detectswipe(el, func) {
+      var swipe_det;
+      swipe_det = new Object();
+      swipe_det.sX = 0;
+      swipe_det.sY = 0;
+      swipe_det.eX = 0;
+      swipe_det.eY = 0;
+      var min_x = 30; //min x swipe for horizontal swipe
+
+      var max_x = 30; //max x difference for vertical swipe
+
+      var min_y = 50; //min y swipe for vertical swipe
+
+      var max_y = 60; //max y difference for horizontal swipe
+
+      var direc = "";
+      var ele = document.getElementById(el);
+      ele.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        swipe_det.sX = t.screenX;
+        swipe_det.sY = t.screenY;
+      }, false);
+      ele.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        swipe_det.eX = t.screenX;
+        swipe_det.eY = t.screenY;
+      }, false);
+      ele.addEventListener('touchend', function (e) {
+        //horizontal detection
+        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+          if (swipe_det.eX > swipe_det.sX) {
+            direc = "r";
+          } else direc = "l";
+        } //vertical detection
+        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          }
+
+        if (direc != "") {
+          if (typeof func == 'function') func(el, direc);
+        }
+
+        direc = "";
+        swipe_det.sX = 0;
+        swipe_det.sY = 0;
+        swipe_det.eX = 0;
+        swipe_det.eY = 0;
+      }, false);
+    },
+    myfunction: function myfunction(el, d) {
+      if (d == 'r') {
+        this.$router.replace('live');
+      }
+
+      if (d == 'l') {
+        this.$router.replace('overs');
       }
     }
   },
@@ -3460,7 +3753,70 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Stats",
-  mounted: function mounted() {// Event.$emit('firstEvent');
+  mounted: function mounted() {
+    // Event.$emit('firstEvent');
+    this.detectswipe('stats', this.myfunction);
+  },
+  methods: {
+    detectswipe: function detectswipe(el, func) {
+      var swipe_det;
+      swipe_det = new Object();
+      swipe_det.sX = 0;
+      swipe_det.sY = 0;
+      swipe_det.eX = 0;
+      swipe_det.eY = 0;
+      var min_x = 30; //min x swipe for horizontal swipe
+
+      var max_x = 30; //max x difference for vertical swipe
+
+      var min_y = 50; //min y swipe for vertical swipe
+
+      var max_y = 60; //max y difference for horizontal swipe
+
+      var direc = "";
+      var ele = document.getElementById(el);
+      ele.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        swipe_det.sX = t.screenX;
+        swipe_det.sY = t.screenY;
+      }, false);
+      ele.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        swipe_det.eX = t.screenX;
+        swipe_det.eY = t.screenY;
+      }, false);
+      ele.addEventListener('touchend', function (e) {
+        //horizontal detection
+        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+          if (swipe_det.eX > swipe_det.sX) {
+            direc = "r";
+          } else direc = "l";
+        } //vertical detection
+        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          }
+
+        if (direc != "") {
+          if (typeof func == 'function') func(el, direc);
+        }
+
+        direc = "";
+        swipe_det.sX = 0;
+        swipe_det.sY = 0;
+        swipe_det.eX = 0;
+        swipe_det.eY = 0;
+      }, false);
+    },
+    myfunction: function myfunction(el, d) {
+      if (d == 'r') {
+        this.$router.replace('teams');
+      }
+
+      if (d == 'l') {
+        this.$router.replace('pointsTable');
+      }
+    }
   }
 });
 
@@ -3677,6 +4033,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "Team",
   mounted: function mounted() {
     this.loadTeams();
+    this.detectswipe('team', this.myfunction);
   },
   methods: {
     // addTeam() {
@@ -3740,6 +4097,65 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    detectswipe: function detectswipe(el, func) {
+      var swipe_det;
+      swipe_det = new Object();
+      swipe_det.sX = 0;
+      swipe_det.sY = 0;
+      swipe_det.eX = 0;
+      swipe_det.eY = 0;
+      var min_x = 30; //min x swipe for horizontal swipe
+
+      var max_x = 30; //max x difference for vertical swipe
+
+      var min_y = 50; //min y swipe for vertical swipe
+
+      var max_y = 60; //max y difference for horizontal swipe
+
+      var direc = "";
+      var ele = document.getElementById(el);
+      ele.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        swipe_det.sX = t.screenX;
+        swipe_det.sY = t.screenY;
+      }, false);
+      ele.addEventListener('touchmove', function (e) {
+        e.preventDefault();
+        var t = e.touches[0];
+        swipe_det.eX = t.screenX;
+        swipe_det.eY = t.screenY;
+      }, false);
+      ele.addEventListener('touchend', function (e) {
+        //horizontal detection
+        if ((swipe_det.eX - min_x > swipe_det.sX || swipe_det.eX + min_x < swipe_det.sX) && swipe_det.eY < swipe_det.sY + max_y && swipe_det.sY > swipe_det.eY - max_y && swipe_det.eX > 0) {
+          if (swipe_det.eX > swipe_det.sX) {
+            direc = "r";
+          } else direc = "l";
+        } //vertical detection
+        else if ((swipe_det.eY - min_y > swipe_det.sY || swipe_det.eY + min_y < swipe_det.sY) && swipe_det.eX < swipe_det.sX + max_x && swipe_det.sX > swipe_det.eX - max_x && swipe_det.eY > 0) {
+            if (swipe_det.eY > swipe_det.sY) direc = "d";else direc = "u";
+          }
+
+        if (direc != "") {
+          if (typeof func == 'function') func(el, direc);
+        }
+
+        direc = "";
+        swipe_det.sX = 0;
+        swipe_det.sY = 0;
+        swipe_det.eX = 0;
+        swipe_det.eY = 0;
+      }, false);
+    },
+    myfunction: function myfunction(el, d) {
+      if (d == 'r') {
+        this.$router.replace('schedule');
+      }
+
+      if (d == 'l') {
+        this.$router.replace('stats');
+      }
     }
   },
   data: function data() {
@@ -63356,6 +63772,13 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // const 
 // });
 
 
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
+  methods: {
+    makeTitle: function makeTitle(el, func) {
+      console('hello');
+    }
+  }
+});
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   mounted: function mounted() {

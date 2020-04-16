@@ -65,6 +65,15 @@ require('./bootstrap');
 //     }
 //     else next();
 // });
+Vue.mixin({
+    methods: {
+        makeTitle: function (el,func) {
+                console('hello');
+        },
+    }
+});
+
+
 
 const app = new Vue({
     el: '#app',
