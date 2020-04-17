@@ -35,7 +35,7 @@
             <li class="list-group-item">
               <div class="row m-0" >
                 <div class="col-6 partnership p-0">
-                    <p>P'SHIP <span> 102(80)</span></p>
+                    <p>P'SHIP <span> {{liveMatchScorecard.partnership.score}} ({{liveMatchScorecard.partnership.balls}}) </span></p>
                 </div>
                 <div class="col-6 target p-0">
                     <p>TARGET <span> 170</span></p>
@@ -180,6 +180,8 @@
             return {
                 'liveMatchScorecard' : {
                     'match_detail' : null,
+
+                    'partnership' : null,
 
                     'current_bowler' : {
                         'playerDetail' : {},

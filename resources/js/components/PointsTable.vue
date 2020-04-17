@@ -26,6 +26,9 @@
                     }, allowPageScroll: "auto"
                 });
             });
+
+
+            $('#pointsTable').addClass('animated fadeInRight faster');
         },
 
         methods: {

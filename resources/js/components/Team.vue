@@ -5,6 +5,7 @@
                 <ul class="list-group">
                     <div v-for="team in teams" :key="team.id" :data="team">
                         <router-link :to="{ path : '/teams/'+team.id+'/players', query : { team_name : team.team_name} }" style="text-decoration:none; color:#000">
+
                             <li class="list-group-item" style="border-radius: 0;">
                                 <span v-text="team.team_name"></span>
                             </li>
@@ -39,6 +40,9 @@
                     }, allowPageScroll: "auto"
                 });
             });
+
+            $('#team').addClass('animated fadeInRight faster');
+
         },
 
         methods: {

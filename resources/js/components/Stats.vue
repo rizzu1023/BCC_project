@@ -85,6 +85,8 @@
 
         mounted: function () {
             // Event.$emit('firstEvent');
+            $('#stats').addClass('animated fadeInRight faster');
+
             var route = this.$router;
             $(function () {
                 $("#stats").swipe({

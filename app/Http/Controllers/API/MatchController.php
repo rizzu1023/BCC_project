@@ -19,6 +19,21 @@ use Illuminate\Http\Request;
 
 class MatchController extends Controller
 {
+    public function calculating_balls($max_over,$min_over,$max_overball,$min_overball)
+    {
+        $min_over = $min_over. "." .$min_overball;
+        $max_over = $max_over. "." .$max_overball;
+
+        $max_int = (int)$max_over;
+        $min_int = (int)$min_over;
+
+        $max_frac = explode('.', number_format($max_over, 1))[1];
+        $min_frac = explode('.', number_format($min_over, 1))[1];
+
+        $min_balls = ($min_int * 6) + $min_frac;
+        $max_balls = ($max_int * 6) + $max_frac;
+        return $max_balls - $min_balls;
+    }
     public function matchInfo($tournament_id, $match_id, $team1_id, $team2_id)
     {
         $team1 = Teams::select('id', 'team_code', 'team_name')->where('id', $team1_id)->first();
@@ -73,10 +88,21 @@ class MatchController extends Controller
                 if ($bowler)
                     $current_bowler = new MatchPlayersResource($bowler);
 
-                $partnership = MatchTrack::select('score','over','overball');
+                $partnership = [];
+//                $pship = MatchTrack::selectRaw('max(score) as max_score, min(score) as min_score, max(over) as max_over, min(over) as min_over, max(overball) as max_overball, min(overball) as min_overball')
+//                    ->groupBy('wickets')
+//                    ->where('wickets',$match_detail->wicket)
+//                    ->first();
+                $p = MatchTrack::select('score','over','overball')->where('wickets',$match_detail->wicket)->where('team_id',$match_detail->team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->orderBy('score','asc')->orderBy('over','asc')->orderBy('overball','asc')->get();
+                $score = $p->last()->score - $p->first()->score;
+                $balls = $this->calculating_balls($p->last()->over,$p->first()->over,$p->last()->overball,$p->first()->overball);
+//                return $partnership->merge(['score' => $score,'balls' => $balls]);
+                $partnership['score'] = $score;
+                $partnership['balls'] = $balls;
             }
             return [
                 'isMatch' => true,
+                'partnership' => $partnership,
                 'match_detail' => $match_detail,
                 'current_batsman' => $current_batsman,
                 'current_bowler' => $current_bowler,

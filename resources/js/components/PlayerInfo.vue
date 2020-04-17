@@ -1,11 +1,13 @@
 <template>
     <div id="playerInfo">
         <div v-if="player">
+            <div class="row m-0">
             <div class="col-12 image text-center">
                 <img width="100px" height="100px" src="/assets/Main/image/avatar.jpg" alt="avatar">
             </div>
             <div class="col-12 text-center">
                 <h4>{{ player.player_name}}</h4>
+            </div>
             </div>
         </div>
 

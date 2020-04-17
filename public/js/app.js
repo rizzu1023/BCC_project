@@ -2141,6 +2141,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       'liveMatchScorecard': {
         'match_detail': null,
+        'partnership': null,
         'current_bowler': {
           'playerDetail': {}
         },
@@ -2327,6 +2328,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MatchInfo",
   mounted: function mounted() {
@@ -2360,7 +2366,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      'teamInfo': {}
+      'teamInfo': {
+        'team1': {},
+        'team2': {}
+      },
+      'team_name': ''
     };
   }
 });
@@ -2642,6 +2652,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerInfo",
   mounted: function mounted() {
@@ -2863,6 +2875,7 @@ __webpack_require__.r(__webpack_exports__);
         allowPageScroll: "auto"
       });
     });
+    $('#pointsTable').addClass('animated fadeInRight faster');
   },
   methods: {} // mixins : [swipeMixin],
 
@@ -3515,6 +3528,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "Stats",
   mounted: function mounted() {
     // Event.$emit('firstEvent');
+    $('#stats').addClass('animated fadeInRight faster');
     var route = this.$router;
     $(function () {
       $("#stats").swipe({
@@ -3741,6 +3755,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Team",
   mounted: function mounted() {
@@ -3755,6 +3770,7 @@ __webpack_require__.r(__webpack_exports__);
         allowPageScroll: "auto"
       });
     });
+    $('#team').addClass('animated fadeInRight faster');
   },
   methods: {
     // addTeam() {
@@ -8542,7 +8558,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90]{\n    background: #dbdbdb;\n    color: #1e72fa;\n    padding : 8px 12px;\n}\n#matchInfo .table-header span[data-v-3fc29e90]{\n    font-size: 0.8rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#matchInfo  .card[data-v-3fc29e90]{\n    border-radius : 0;\n     border : none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90]{\n    font-size: 0.8rem;\n     padding: 20px 12px;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90]{\n    color: #1e72fa;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90]{\n    color : #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90]{\n     border : 0;\n     border-radius: 0;\n     padding-left: 12px;\n     padding-right: 12px;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90]{\n     margin : 0px;\n}\n#matchInfo .list-group .first[data-v-3fc29e90]{\n     border-bottom : 0.05rem solid lightgray;\n}\n#matchInfo .row[data-v-3fc29e90]{\n    padding: 0;\n    margin: 0;\n}\n#matchInfo .row .col-4[data-v-3fc29e90]{\n    padding-left: 0;\n}\n#matchInfo .row .col-8[data-v-3fc29e90]{\n     padding-right: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90] {\n    background: #dbdbdb;\n    color: #1e72fa;\n    padding: 8px 12px;\n}\n#matchInfo .table-header span[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#matchInfo .card[data-v-3fc29e90] {\n    border-radius: 0;\n    border: none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    padding: 20px 12px;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90] {\n    color: #1e72fa;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90] {\n    color: #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90] {\n    border: 0;\n    border-radius: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90] {\n    margin: 0px;\n}\n#matchInfo .list-group .first[data-v-3fc29e90] {\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchInfo .row[data-v-3fc29e90] {\n    padding: 0;\n    margin: 0;\n}\n#matchInfo .row .col-4[data-v-3fc29e90] {\n    padding-left: 0;\n}\n#matchInfo .row .col-8[data-v-3fc29e90] {\n    padding-right: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -45349,7 +45365,28 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(1),
+          _c("ul", { staticClass: "list-group" }, [
+            _c("li", { staticClass: "list-group-item" }, [
+              _c("div", { staticClass: "row m-0" }, [
+                _c("div", { staticClass: "col-6 partnership p-0" }, [
+                  _c("p", [
+                    _vm._v("P'SHIP "),
+                    _c("span", [
+                      _vm._v(
+                        " " +
+                          _vm._s(_vm.liveMatchScorecard.partnership.score) +
+                          " (" +
+                          _vm._s(_vm.liveMatchScorecard.partnership.balls) +
+                          ") "
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ])
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "tables table-responsive" }, [
             _c("table", { staticClass: "table invoice" }, [
@@ -45510,18 +45547,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "list-group" }, [
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("div", { staticClass: "row m-0" }, [
-          _c("div", { staticClass: "col-6 partnership p-0" }, [
-            _c("p", [_vm._v("P'SHIP "), _c("span", [_vm._v(" 102(80)")])])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-6 target p-0" }, [
-            _c("p", [_vm._v("TARGET "), _c("span", [_vm._v(" 170")])])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "col-6 target p-0" }, [
+      _c("p", [_vm._v("TARGET "), _c("span", [_vm._v(" 170")])])
     ])
   },
   function() {
@@ -45744,7 +45771,10 @@ var render = function() {
             {
               staticStyle: { "text-decoration": "none", color: "#000" },
               attrs: {
-                to: "/teams/" + this.$route.params.team1_id + "/players"
+                to: {
+                  path: "/teams/" + this.$route.params.team1_id + "/players",
+                  query: { team_name: _vm.teamInfo.team1.team_name }
+                }
               }
             },
             [
@@ -45761,7 +45791,10 @@ var render = function() {
             {
               staticStyle: { "text-decoration": "none", color: "#000" },
               attrs: {
-                to: "/teams/" + this.$route.params.team2_id + "/players"
+                to: {
+                  path: "/teams/" + this.$route.params.team2_id + "/players",
+                  query: { team_name: _vm.teamInfo.team2.team_name }
+                }
               }
             },
             [
@@ -46164,8 +46197,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "playerDetail" } }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12" }, [
+    _c("div", { staticClass: "row m-0" }, [
+      _c("div", { staticClass: "col-12 p-0" }, [
         _c("div", { staticClass: "nav-tabs-boxed" }, [
           _c(
             "ul",
@@ -46228,10 +46261,12 @@ var render = function() {
   return _c("div", { attrs: { id: "playerInfo" } }, [
     _vm.player
       ? _c("div", [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-12 text-center" }, [
-            _c("h4", [_vm._v(_vm._s(_vm.player.player_name))])
+          _c("div", { staticClass: "row m-0" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12 text-center" }, [
+              _c("h4", [_vm._v(_vm._s(_vm.player.player_name))])
+            ])
           ])
         ])
       : _c("div", { attrs: { id: "loader" } }, [

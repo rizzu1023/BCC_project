@@ -5,13 +5,18 @@
         </div>
         <ul class="list-group">
             <div>
-                <router-link :to="'/teams/'+ this.$route.params.team1_id +'/players'" style="text-decoration:none; color:#000">
+                <router-link
+                    :to="{ path : '/teams/'+ this.$route.params.team1_id +'/players', query : { team_name : teamInfo.team1.team_name} }"
+                    style="text-decoration:none; color:#000">
+
                     <li class="list-group-item first">
                         <h6 v-if="teamInfo.team1">{{ teamInfo.team1.team_name}}</h6>
                         <h6 v-else>Loading....</h6>
                     </li>
                 </router-link>
-                <router-link :to="'/teams/'+ this.$route.params.team2_id +'/players'" style="text-decoration:none; color:#000">
+                <router-link
+                    :to="{ path : '/teams/'+ this.$route.params.team2_id +'/players', query : { team_name : teamInfo.team2.team_name} }"
+                    style="text-decoration:none; color:#000">
                     <li class="list-group-item">
                         <h6 v-if="teamInfo.team1">{{ teamInfo.team2.team_name}}</h6>
                         <h6 v-else>Loading....</h6>
@@ -45,13 +50,13 @@
     export default {
         name: "MatchInfo",
 
-        mounted : function () {
+        mounted: function () {
             this.loadMatchInfo();
             var route = this.$router;
             $(function () {
                 $("#matchInfo").swipe({
                     swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-                        if (direction === 'left'){
+                        if (direction === 'left') {
                             route.replace('live');
                         }
                     }, allowPageScroll: "auto"
@@ -60,83 +65,92 @@
 
         },
 
-        methods : {
-           loadMatchInfo(){
-               var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/matchInfo';
-               axios.get($url)
-                   .then(response => this.teamInfo = response.data)
-                   // .then(function(response){
-                   //     console.log(response.data);
-                   // })
-                   .catch(function (error) {
-                       console.log(error);
-                   });
-           },
+        methods: {
+            loadMatchInfo() {
+                var $url = this.$domainName + "tournament/" + this.$route.params.tournament_id + "/match/" + this.$route.params.match_id + '/' + this.$route.params.team1_id + '/' + this.$route.params.team2_id + '/matchInfo';
+                axios.get($url)
+                    .then(response => this.teamInfo = response.data)
+                    // .then(function(response){
+                    //     console.log(response.data);
+                    // })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
 
         },
 
-        data : function () {
+        data: function () {
             return {
-                'teamInfo' : {
-
-                    },
+                'teamInfo': {
+                    'team1': {},
+                    'team2': {},
+                },
+                'team_name': '',
             }
         }
     }
 </script>
 
 <style scoped>
-     #matchInfo .table-header{
+    #matchInfo .table-header {
         background: #dbdbdb;
         color: #1e72fa;
-        padding : 8px 12px;
+        padding: 8px 12px;
     }
-     #matchInfo .table-header span{
+
+    #matchInfo .table-header span {
         font-size: 0.8rem;
-        font-weight : bold;
-        text-transform : uppercase;
+        font-weight: bold;
+        text-transform: uppercase;
     }
-     #matchInfo  .card{
-        border-radius : 0;
-         border : none;
 
-     }
+    #matchInfo .card {
+        border-radius: 0;
+        border: none;
 
-     #matchInfo .card .card-body{
+    }
+
+    #matchInfo .card .card-body {
         font-size: 0.8rem;
-         padding: 20px 12px;
+        padding: 20px 12px;
 
-     }
+    }
 
-     #matchInfo .card .card-body lable{
+    #matchInfo .card .card-body lable {
         color: #1e72fa;
     }
-     #matchInfo .card .card-body span{
-        color : #000;
+
+    #matchInfo .card .card-body span {
+        color: #000;
     }
 
-     #matchInfo .list-group .list-group-item{
-         border : 0;
-         border-radius: 0;
-         padding-left: 12px;
-         padding-right: 12px;
-     }
-     #matchInfo .list-group .list-group-item h6{
-         margin : 0px;
-     }
-     #matchInfo .list-group .first{
-         border-bottom : 0.05rem solid lightgray;
-     }
+    #matchInfo .list-group .list-group-item {
+        border: 0;
+        border-radius: 0;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
 
-     #matchInfo .row{
+    #matchInfo .list-group .list-group-item h6 {
+        margin: 0px;
+    }
+
+    #matchInfo .list-group .first {
+        border-bottom: 0.05rem solid lightgray;
+    }
+
+    #matchInfo .row {
         padding: 0;
         margin: 0;
-     }
-    #matchInfo .row .col-4{
+    }
+
+    #matchInfo .row .col-4 {
         padding-left: 0;
     }
-     #matchInfo .row .col-8{
-         padding-right: 0;
-     }
+
+    #matchInfo .row .col-8 {
+        padding-right: 0;
+    }
 
 </style>
