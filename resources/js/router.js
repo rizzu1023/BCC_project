@@ -21,6 +21,7 @@ import MatchOvers from "./components/MatchOvers";
 import PlayerInfo from "./components/PlayerInfo";
 import PlayerBatting from "./components/PlayerBatting";
 import PlayerBowling from "./components/PlayerBowling";
+import Result from "./components/Result";
 
 
 Vue.use(VueRouter);
@@ -45,6 +46,7 @@ export default new VueRouter({
         { path : '/tournament/:tournament_id' , name : 'TournamentDetail', component : TournamentDetail ,
             children : [
                 { path: 'schedule', name : 'Schedule',component : Schedule },
+                { path: 'result', name : 'result',component : Result },
                 { path: 'teams', name : 'Team', component : Team},
                 { path: 'stats', name : 'Stats',component : Stats},
                 { path: 'pointsTable', name : 'PointsTable',component : PointsTable},

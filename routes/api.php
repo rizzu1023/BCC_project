@@ -37,7 +37,7 @@ Route::apiResource('/tournament', 'API\TournamentController');
 Route::apiResource('/tournaments.teams', 'API\TeamController');
 Route::apiResource('/tournaments.schedules', 'API\ScheduleController');
 //Route::apiResource('/teams.players', 'API\PlayersController');
-
+Route::get('/tournaments/{tournament_id}/results','API\ScheduleController@results');
 
 Route::get('/teams/{team}/players','API\PlayersController@index');
 Route::get('/player/{player_id}','API\PlayersController@show');

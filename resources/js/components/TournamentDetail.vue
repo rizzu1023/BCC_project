@@ -8,14 +8,17 @@
                         <router-link to="schedule" replace>
                             <li class="nav-item"><a class="nav-link">Matches</a></li>
                         </router-link>
+                        <router-link to='result' replace>
+                             <li class="nav-item"><a class="nav-link">Results</a></li>
+                        </router-link>
                         <router-link to='teams' replace>
-                             <li class="nav-item"><a class="nav-link">Teams</a></li>
+                            <li class="nav-item"><a class="nav-link">Teams</a></li>
                         </router-link>
                         <router-link to="stats" replace>
                             <li class="nav-item"><a class="nav-link">Stats</a></li>
                         </router-link>
                         <router-link to="pointsTable" replace>
-                            <li class="nav-item"><a class="nav-link">PointsTable</a></li>
+                            <li class="nav-item"><a class="nav-link">PT</a></li>
                         </router-link>
                     </ul>
                 </div>
@@ -46,6 +49,7 @@
 <style scoped>
     .nav-tabs-boxed{
         background: #1e72fa;
+
     }
 
     .nav-tabs {
@@ -59,7 +63,7 @@
     }
 
     .nav-item{
-        font-size: 0.85rem;
+        font-size: 0.75rem;
         background: #1e72fa;
         text-transform: uppercase;
     }

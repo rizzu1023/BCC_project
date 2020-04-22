@@ -6,8 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-    protected $guarded = []; 
-    
+    protected $guarded = [];
+
+    public function Match(){
+        return $this->hasOne('App\Match','match_id','id');
+    }
+
+    public function  MatchDetail(){
+        return $this->hasMany('App\MatchDetail','match_id','id');
+    }
+
     public function Teams1(){
         return $this->belongsTo('App\Teams','team1_id','id');
     }
@@ -37,7 +45,7 @@ class Schedule extends Model
             'dates' => 'required',
             'tournament' => 'required',
             ]);
-        
+
         return $this->update($data);
     }
 }

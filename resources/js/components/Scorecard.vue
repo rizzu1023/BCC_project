@@ -84,22 +84,6 @@
                                 </router-link>
                             </td>
                         </tr>
-                        <!--                <tr>-->
-                        <!--                    <td>R Sharma<p>b Mokoena</p></td>-->
-                        <!--                    <td>123</td>-->
-                        <!--                    <td>110</td>-->
-                        <!--                    <td>6</td>-->
-                        <!--                    <td>5</td>-->
-                        <!--                    <td>1</td>-->
-                        <!--                </tr>-->
-                        <!--                <tr>-->
-                        <!--                    <td>R Sharma<p>b Mokoena</p></td>-->
-                        <!--                    <td>123</td>-->
-                        <!--                    <td>110</td>-->
-                        <!--                    <td>6</td>-->
-                        <!--                    <td>5</td>-->
-                        <!--                    <td>1</td>-->
-                        <!--                </tr>-->
                         </tbody>
                     </table>
                 </div>
@@ -170,35 +154,29 @@
                         </tbody>
                     </table>
                 </div>
-                <!--            <div class="tables table-responsive">-->
-                <!--                <table class="table invoice">-->
-                <!--                    <thead>-->
-                <!--                    <tr>-->
-                <!--                        <th scope="col">Fall of Wicket</th>-->
-                <!--                        <th scope="col">Score</th>-->
-                <!--                        <th scope="col">Over</th>-->
-                <!--                    </tr>-->
-                <!--                    </thead>-->
-                <!--                    <tbody>-->
-                <!--                    <tr>-->
-                <!--                        <td>V Kohli</td>-->
-                <!--                        <td>15-1</td>-->
-                <!--                        <td>2.3</td>-->
-                <!--                    </tr>-->
-                <!--                    <tr>-->
-                <!--                        <td>R Sharma</td>-->
-                <!--                        <td>45-2</td>-->
-                <!--                        <td>8.2</td>-->
-                <!--                    </tr>-->
-                <!--                    <tr>-->
-                <!--                        <td>MS Dhoni</td>-->
-                <!--                        <td>110-3</td>-->
-                <!--                        <td>17.5</td>-->
-                <!--                    </tr>-->
-
-                <!--                    </tbody>-->
-                <!--                </table>-->
-                <!--            </div>-->
+<!--                            <div class="tables table-responsive">-->
+<!--                                <table class="table invoice">-->
+<!--                                    <thead>-->
+<!--                                   <tr>-->
+<!--                                        <th scope="col">Fall of Wicket</th>-->
+<!--                                        <th scope="col">Score</th>-->
+<!--                                        <th scope="col">Over</th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+<!--                                    <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.fow" :key="player.id"-->
+<!--                                        :data="player">-->
+<!--                                        <td>-->
+<!--                                            <router-link :to="'/player/' + player.player_id + '/info'">-->
+<!--                                                {{player.player_id}}-->
+<!--                                            </router-link>-->
+<!--                                        </td>-->
+<!--                                        <td>{{player.score}}-{{player.wickets}}</td>-->
+<!--                                        <td>{{player.over}}.{{player.overball}}</td>-->
+<!--                                    </tr>-->
+<!--                                    </tbody>-->
+<!--                                </table>-->
+<!--                            </div>-->
             </div>
             <div class="team-header" v-on:click="team2 = !team2">
                 <div class="row m-0">

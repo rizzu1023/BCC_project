@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Resources\ScheduleResource;
+use App\MatchDetail;
 use App\Schedule;
 use App\Tournament;
 use Illuminate\Http\Request;
@@ -64,5 +65,10 @@ class ScheduleController extends Controller
     public function destroy(Schedule $schedule)
     {
         //
+    }
+
+    public function results($tournament_id){
+        $schedule = Schedule::where('tournament_id',$tournament_id)->get();
+        return ScheduleResource::collection($schedule);
     }
 }

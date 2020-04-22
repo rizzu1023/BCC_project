@@ -36,7 +36,7 @@
                         if (direction === 'left')
                             route.replace('stats');
                         if (direction === 'right')
-                            route.replace('schedule');
+                            route.replace('result');
                     }, allowPageScroll: "auto"
                 });
             });

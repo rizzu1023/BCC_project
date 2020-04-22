@@ -2883,6 +2883,114 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Result.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Result",
+  mounted: function mounted() {
+    this.loadResult();
+    var route = this.$router;
+    $(function () {
+      $("#result").swipe({
+        swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
+          if (direction === 'left') route.replace('teams');
+          if (direction === 'right') route.replace('result');
+        },
+        allowPageScroll: "auto"
+      });
+    });
+  },
+  methods: {
+    loadResult: function loadResult() {
+      var _this = this;
+
+      var $url = this.$domainName + "tournaments/" + this.$route.params.tournament_id + "/results";
+      axios.get($url).then(function (response) {
+        return _this.results = response.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    header_string: function header_string(team1, team2) {
+      var value = team1 + ' vs ' + team2;
+      Event.$emit('headerString', value);
+    }
+  },
+  data: function data() {
+    return {
+      results: null
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Schedule.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Schedule.vue?vue&type=script&lang=js& ***!
@@ -2920,6 +3028,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Schedule",
   mounted: function mounted() {
@@ -2928,7 +3064,7 @@ __webpack_require__.r(__webpack_exports__);
     $(function () {
       $("#schedule").swipe({
         swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
-          if (direction === 'left') route.replace('teams');
+          if (direction === 'left') route.replace('result');
         },
         allowPageScroll: "auto"
       });
@@ -2968,28 +3104,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3765,7 +3879,7 @@ __webpack_require__.r(__webpack_exports__);
       $("#team").swipe({
         swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
           if (direction === 'left') route.replace('stats');
-          if (direction === 'right') route.replace('schedule');
+          if (direction === 'right') route.replace('result');
         },
         allowPageScroll: "auto"
       });
@@ -3932,6 +4046,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Schedule__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Schedule */ "./resources/js/components/Schedule.vue");
 /* harmony import */ var _Stats__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Stats */ "./resources/js/components/Stats.vue");
 /* harmony import */ var _PointsTable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PointsTable */ "./resources/js/components/PointsTable.vue");
+//
+//
+//
 //
 //
 //
@@ -8558,7 +8675,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90] {\n    background: #dbdbdb;\n    color: #1e72fa;\n    padding: 8px 12px;\n}\n#matchInfo .table-header span[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#matchInfo .card[data-v-3fc29e90] {\n    border-radius: 0;\n    border: none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    padding: 20px 12px;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90] {\n    color: #1e72fa;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90] {\n    color: #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90] {\n    border: 0;\n    border-radius: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90] {\n    margin: 0px;\n}\n#matchInfo .list-group .first[data-v-3fc29e90] {\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchInfo .row[data-v-3fc29e90] {\n    padding: 0;\n    margin: 0;\n}\n#matchInfo .row .col-4[data-v-3fc29e90] {\n    padding-left: 0;\n}\n#matchInfo .row .col-8[data-v-3fc29e90] {\n    padding-right: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90] {\n    background: #dbdbdb;\n    color: #1e72fa;\n    padding: 8px 12px;\n}\n#matchInfo .table-header span[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#matchInfo .card[data-v-3fc29e90] {\n    border-radius: 0;\n    border: none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    padding: 20px 12px;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90] {\n    color: #1e72fa;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90] {\n    color: #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90] {\n    border: 0;\n    border-radius: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90] {\n    margin: 0px;\n    font-size: 0.9rem;\n}\n#matchInfo .list-group .first[data-v-3fc29e90] {\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchInfo .row[data-v-3fc29e90] {\n    padding: 0;\n    margin: 0;\n}\n#matchInfo .row .col-4[data-v-3fc29e90] {\n    padding-left: 0;\n}\n#matchInfo .row .col-8[data-v-3fc29e90] {\n    padding-right: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -8660,6 +8777,25 @@ exports.push([module.i, "\n#swipeme[data-v-fd3d9be0] {\n    width:100%;\n    hei
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#result .list-group-item[data-v-586a1fc8]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#result .list-group-item[data-v-586a1fc8]:hover, #result .list-group-item[data-v-586a1fc8]:active {\n    background-color: #f0f0f0;\n}\n#result .score-card .col-6[data-v-586a1fc8]{\n    /*font-size: 0.8rem;*/\n    padding-top : 1px;\n    padding-bottom : 1px;\n}\n#result .team-score[data-v-586a1fc8]{\n    font-size: 0.8rem;\n}\n#loader[data-v-586a1fc8]{\n    background: #f8fafc;\n}\n#preloader[data-v-586a1fc8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-586a1fc8 1s infinite linear;\n            animation: rotate-data-v-586a1fc8 1s infinite linear;\n}\n#result  #not_started[data-v-586a1fc8]{\n      width: 100vw;\n      text-align: center;\n      background: #f8fafc;\n      margin-top: 45vh;\n}\n@-webkit-keyframes rotate-data-v-586a1fc8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-586a1fc8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Schedule.vue?vue&type=style&index=0&id=5f748482&scoped=true&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Schedule.vue?vue&type=style&index=0&id=5f748482&scoped=true&lang=css& ***!
@@ -8672,7 +8808,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#schedule .list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#schedule .list-group-item[data-v-5f748482]:hover, #schedule .list-group-item[data-v-5f748482]:active {\n    background-color: #f0f0f0;\n}\n#loader[data-v-5f748482]{\n    background: #f8fafc;\n}\n#preloader[data-v-5f748482] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-5f748482 1s infinite linear;\n            animation: rotate-data-v-5f748482 1s infinite linear;\n}\n#schedule  #not_started[data-v-5f748482]{\n      width: 100vw;\n      text-align: center;\n      background: #f8fafc;\n      margin-top: 45vh;\n}\n@-webkit-keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n#schedule .list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#schedule .score-card .col-6[data-v-5f748482]{\n    /*font-size: 0.8rem;*/\n    padding-top : 1px;\n    padding-bottom : 1px;\n}\n#schedule .team-score[data-v-5f748482]{\n    font-size: 0.8rem;\n}\n#schedule .list-group-item[data-v-5f748482]:hover, #schedule .list-group-item[data-v-5f748482]:active {\n    background-color: #f0f0f0;\n}\n#loader[data-v-5f748482]{\n    background: #f8fafc;\n}\n#preloader[data-v-5f748482] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-5f748482 1s infinite linear;\n            animation: rotate-data-v-5f748482 1s infinite linear;\n}\n#schedule  #not_started[data-v-5f748482]{\n      width: 100vw;\n      text-align: center;\n      background: #f8fafc;\n      margin-top: 45vh;\n}\n@-webkit-keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -8786,7 +8922,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1e72fa;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1e72fa;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1e72fa;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1e72fa;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.75rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -39891,6 +40027,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Schedule.vue?vue&type=style&index=0&id=5f748482&scoped=true&lang=css&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Schedule.vue?vue&type=style&index=0&id=5f748482&scoped=true&lang=css& ***!
@@ -46434,6 +46600,326 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result.vue?vue&type=template&id=586a1fc8&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Result.vue?vue&type=template&id=586a1fc8&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "result" } }, [
+    _vm.results
+      ? _c("div", [
+          _vm.results.length > 0
+            ? _c("div", [
+                _c(
+                  "ul",
+                  { staticClass: "list-group" },
+                  _vm._l(_vm.results, function(result) {
+                    return _c(
+                      "div",
+                      { key: result.id, attrs: { data: result } },
+                      [
+                        _vm.results.status === 4
+                          ? _c(
+                              "div",
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticStyle: {
+                                      "text-decoration": "none",
+                                      color: "#000"
+                                    },
+                                    attrs: {
+                                      to:
+                                        "/tournament/" +
+                                        result.tournament_id +
+                                        "/match/" +
+                                        result.id +
+                                        "/" +
+                                        result.team1_id.id +
+                                        "/" +
+                                        result.team2_id.id +
+                                        "/info"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "li",
+                                      {
+                                        staticClass: "list-group-item",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.header_string(
+                                              result.team1_id.team_code,
+                                              result.team2_id.team_code
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "text-muted",
+                                            staticStyle: { "font-size": "12px" }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "Match " + _vm._s(result.match_no)
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass: "row mt-1 score-card"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "col-6 team-name"
+                                              },
+                                              [
+                                                _c("span", [
+                                                  _c("b", [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        result.team1_id
+                                                          .team_name
+                                                      )
+                                                    )
+                                                  ])
+                                                ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "col-6 team-score"
+                                              },
+                                              [
+                                                _c("span", [
+                                                  result.team1_id.id ===
+                                                  result.match_detail[0].team_id
+                                                    ? _c("div", [
+                                                        _c("b", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              result
+                                                                .match_detail[0]
+                                                                .score
+                                                            ) +
+                                                              "-" +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[0]
+                                                                  .wicket
+                                                              ) +
+                                                              " (" +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[0]
+                                                                  .over
+                                                              ) +
+                                                              "." +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[0]
+                                                                  .overball
+                                                              ) +
+                                                              ")"
+                                                          )
+                                                        ])
+                                                      ])
+                                                    : _vm._e(),
+                                                  _vm._v(" "),
+                                                  result.team1_id.id ===
+                                                  result.match_detail[1].team_id
+                                                    ? _c("div", [
+                                                        _c("b", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              result
+                                                                .match_detail[1]
+                                                                .score
+                                                            ) +
+                                                              "-" +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[1]
+                                                                  .wicket
+                                                              ) +
+                                                              " (" +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[1]
+                                                                  .over
+                                                              ) +
+                                                              "." +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[1]
+                                                                  .overball
+                                                              ) +
+                                                              ")"
+                                                          )
+                                                        ])
+                                                      ])
+                                                    : _vm._e()
+                                                ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "col-6 team-name"
+                                              },
+                                              [
+                                                _c("span", [
+                                                  _c("b", [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        result.team2_id
+                                                          .team_name
+                                                      )
+                                                    )
+                                                  ])
+                                                ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "col-6 team-score"
+                                              },
+                                              [
+                                                _c("span", [
+                                                  result.team2_id.id ===
+                                                  result.match_detail[0].team_id
+                                                    ? _c("div", [
+                                                        _c("b", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              result
+                                                                .match_detail[0]
+                                                                .score
+                                                            ) +
+                                                              "-" +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[0]
+                                                                  .wicket
+                                                              ) +
+                                                              " (" +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[0]
+                                                                  .over
+                                                              ) +
+                                                              "." +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[0]
+                                                                  .overball
+                                                              ) +
+                                                              ")"
+                                                          )
+                                                        ])
+                                                      ])
+                                                    : _vm._e(),
+                                                  _vm._v(" "),
+                                                  result.team2_id.id ===
+                                                  result.match_detail[1].team_id
+                                                    ? _c("div", [
+                                                        _c("b", [
+                                                          _vm._v(
+                                                            _vm._s(
+                                                              result
+                                                                .match_detail[1]
+                                                                .score
+                                                            ) +
+                                                              "-" +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[1]
+                                                                  .wicket
+                                                              ) +
+                                                              " (" +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[1]
+                                                                  .over
+                                                              ) +
+                                                              "." +
+                                                              _vm._s(
+                                                                result
+                                                                  .match_detail[1]
+                                                                  .overball
+                                                              ) +
+                                                              ")"
+                                                          )
+                                                        ])
+                                                      ])
+                                                    : _vm._e()
+                                                ])
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "text-danger",
+                                            staticStyle: { "font-size": "12px" }
+                                          },
+                                          [_vm._v("won by 132 runs")]
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ])
+            : _c("div", { attrs: { id: "not_started" } }, [
+                _c("span", [_vm._v("Matches Not found")])
+              ])
+        ])
+      : _c("div", { attrs: { id: "loader" } }, [
+          _c("div", { attrs: { id: "preloader" } })
+        ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Schedule.vue?vue&type=template&id=5f748482&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Schedule.vue?vue&type=template&id=5f748482&scoped=true& ***!
@@ -46506,26 +46992,263 @@ var render = function() {
                                   [_vm._v("Match " + _vm._s(schedule.match_no))]
                                 ),
                                 _vm._v(" "),
-                                _c("h6", { staticClass: "mt-2" }, [
-                                  _c("b", [
-                                    _vm._v(_vm._s(schedule.team1_id.team_name))
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("h6", [
-                                  _c("b", [
-                                    _vm._v(_vm._s(schedule.team2_id.team_name))
-                                  ])
-                                ]),
-                                _vm._v(" "),
                                 _c(
-                                  "span",
-                                  {
-                                    staticClass: "text-danger",
-                                    staticStyle: { "font-size": "12px" }
-                                  },
-                                  [_vm._v(_vm._s(schedule.times))]
-                                )
+                                  "div",
+                                  { staticClass: "row mt-1 score-card" },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-6 team-name" },
+                                      [
+                                        _c("span", [
+                                          _c("b", [
+                                            _vm._v(
+                                              _vm._s(
+                                                schedule.team1_id.team_name
+                                              )
+                                            )
+                                          ])
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-6 team-score" },
+                                      [
+                                        schedule.status === 1 ||
+                                        schedule.status === 2 ||
+                                        schedule.status === 3
+                                          ? _c("span", [
+                                              schedule.team1_id.id ===
+                                                schedule.match_detail[0]
+                                                  .team_id &&
+                                              (schedule.match_detail[0].score >=
+                                                1 ||
+                                                schedule.match_detail[0]
+                                                  .overball >= 1)
+                                                ? _c("div", [
+                                                    _c("b", [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          schedule
+                                                            .match_detail[0]
+                                                            .score
+                                                        ) +
+                                                          "-" +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[0]
+                                                              .wicket
+                                                          ) +
+                                                          " (" +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[0]
+                                                              .over
+                                                          ) +
+                                                          "." +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[0]
+                                                              .overball
+                                                          ) +
+                                                          ")"
+                                                      )
+                                                    ])
+                                                  ])
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              schedule.team1_id.id ===
+                                                schedule.match_detail[1]
+                                                  .team_id &&
+                                              (schedule.match_detail[1].score >=
+                                                1 ||
+                                                schedule.match_detail[1]
+                                                  .overball >= 1)
+                                                ? _c("div", [
+                                                    _c("b", [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          schedule
+                                                            .match_detail[1]
+                                                            .score
+                                                        ) +
+                                                          "-" +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[1]
+                                                              .wicket
+                                                          ) +
+                                                          " (" +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[1]
+                                                              .over
+                                                          ) +
+                                                          "." +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[1]
+                                                              .overball
+                                                          ) +
+                                                          ")"
+                                                      )
+                                                    ])
+                                                  ])
+                                                : _vm._e()
+                                            ])
+                                          : _vm._e()
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-6 team-name" },
+                                      [
+                                        _c("span", {}, [
+                                          _c("b", [
+                                            _vm._v(
+                                              _vm._s(
+                                                schedule.team2_id.team_name
+                                              )
+                                            )
+                                          ])
+                                        ])
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "col-6 team-score" },
+                                      [
+                                        schedule.status === 1 ||
+                                        schedule.status === 2 ||
+                                        schedule.status === 3
+                                          ? _c("span", [
+                                              schedule.team2_id.id ===
+                                                schedule.match_detail[0]
+                                                  .team_id &&
+                                              (schedule.match_detail[0].score >=
+                                                1 ||
+                                                schedule.match_detail[0]
+                                                  .overball >= 1)
+                                                ? _c("div", [
+                                                    _c("b", [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          schedule
+                                                            .match_detail[0]
+                                                            .score
+                                                        ) +
+                                                          "-" +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[0]
+                                                              .wicket
+                                                          ) +
+                                                          " (" +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[0]
+                                                              .over
+                                                          ) +
+                                                          "." +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[0]
+                                                              .overball
+                                                          ) +
+                                                          ")"
+                                                      )
+                                                    ])
+                                                  ])
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              schedule.team2_id.id ===
+                                                schedule.match_detail[1]
+                                                  .team_id &&
+                                              (schedule.match_detail[1].score >=
+                                                1 ||
+                                                schedule.match_detail[1]
+                                                  .overball >= 1)
+                                                ? _c("div", [
+                                                    _c("b", [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          schedule
+                                                            .match_detail[1]
+                                                            .score
+                                                        ) +
+                                                          "-" +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[1]
+                                                              .wicket
+                                                          ) +
+                                                          " (" +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[1]
+                                                              .over
+                                                          ) +
+                                                          "." +
+                                                          _vm._s(
+                                                            schedule
+                                                              .match_detail[1]
+                                                              .overball
+                                                          ) +
+                                                          ")"
+                                                      )
+                                                    ])
+                                                  ])
+                                                : _vm._e()
+                                            ])
+                                          : _vm._e()
+                                      ]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                schedule.status === 1 || schedule.status === 1
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass: "text-danger",
+                                        staticStyle: { "font-size": "12px" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          _vm._s(schedule.toss) +
+                                            " won the toss & choose " +
+                                            _vm._s(schedule.choose) +
+                                            " first"
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                schedule.status === 3
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass: "text-danger",
+                                        staticStyle: { "font-size": "12px" }
+                                      },
+                                      [_vm._v("* need in * balls")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                schedule.status === null
+                                  ? _c(
+                                      "span",
+                                      {
+                                        staticClass: "text-danger",
+                                        staticStyle: { "font-size": "12px" }
+                                      },
+                                      [_vm._v(_vm._s(schedule.times))]
+                                    )
+                                  : _vm._e()
                               ]
                             )
                           ]
@@ -46647,35 +47370,35 @@ var render = function() {
                                         player.bt_status == 10
                                           ? _c("div", [
                                               _vm._v(
-                                                "\n                                    " +
+                                                "\n                                        " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n                                    "
+                                                  "\n                                        "
                                               ),
                                               _c("p", [_vm._v("Batting")])
                                             ])
                                           : player.bt_status == 11
                                           ? _c("div", [
                                               _vm._v(
-                                                "\n                                    " +
+                                                "\n                                        " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n                                    "
+                                                  "\n                                        "
                                               ),
                                               _c("p", [_vm._v("Batting")])
                                             ])
                                           : _c("div", [
                                               _vm._v(
-                                                "\n                                    " +
+                                                "\n                                        " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n\n                                    "
+                                                  "\n\n                                        "
                                               ),
                                               player.wicket_type == "bold"
                                                 ? _c("p", [
@@ -46720,7 +47443,7 @@ var render = function() {
                                                 : player.wicket_type == "lbw"
                                                 ? _c("p", [
                                                     _vm._v(
-                                                      "lbw\n                                        " +
+                                                      "lbw\n                                            " +
                                                         _vm._s(
                                                           player.wicketPrimary
                                                             .player_name
@@ -46733,7 +47456,7 @@ var render = function() {
                                                     .player_name == "--"
                                                 ? _c("p", [
                                                     _vm._v(
-                                                      "\n                                        runout (" +
+                                                      "\n                                            runout (" +
                                                         _vm._s(
                                                           player.wicketPrimary
                                                             .player_name
@@ -46846,7 +47569,8 @@ var render = function() {
                                               player.bt_runs,
                                               player.bt_balls
                                             )
-                                          ) + "\n                            "
+                                          ) +
+                                            "\n                                "
                                         )
                                       ]
                                     )
@@ -46880,7 +47604,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(
-                            "\n                                b " +
+                            "\n                                    b " +
                               _vm._s(_vm.matchScorecard.team1.extras.byes) +
                               ", lb " +
                               _vm._s(_vm.matchScorecard.team1.extras.legbyes) +
@@ -46905,7 +47629,7 @@ var render = function() {
                               _vm._s(_vm.matchScorecard.team1.score.score) +
                                 " -" +
                                 _vm._s(_vm.matchScorecard.team1.score.wicket) +
-                                "\n                                (" +
+                                "\n                                    (" +
                                 _vm._s(_vm.matchScorecard.team1.score.over) +
                                 "." +
                                 _vm._s(
@@ -46947,11 +47671,11 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                " +
+                                          "\n                                    " +
                                             _vm._s(
                                               player.playerDetail.player_name
                                             ) +
-                                            "\n                            "
+                                            "\n                                "
                                         )
                                       ]
                                     )
@@ -47056,35 +47780,35 @@ var render = function() {
                                         player.bt_status == 10
                                           ? _c("div", [
                                               _vm._v(
-                                                "\n                                    " +
+                                                "\n                                        " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n                                    "
+                                                  "\n                                        "
                                               ),
                                               _c("p", [_vm._v("Batting")])
                                             ])
                                           : player.bt_status == 11
                                           ? _c("div", [
                                               _vm._v(
-                                                "\n                                    " +
+                                                "\n                                        " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n                                    "
+                                                  "\n                                        "
                                               ),
                                               _c("p", [_vm._v("Batting")])
                                             ])
                                           : _c("div", [
                                               _vm._v(
-                                                "\n                                    " +
+                                                "\n                                        " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n\n                                    "
+                                                  "\n\n                                        "
                                               ),
                                               player.wicket_type == "bold"
                                                 ? _c("p", [
@@ -47129,7 +47853,7 @@ var render = function() {
                                                 : player.wicket_type == "lbw"
                                                 ? _c("p", [
                                                     _vm._v(
-                                                      "lbw\n                                        " +
+                                                      "lbw\n                                            " +
                                                         _vm._s(
                                                           player.wicketPrimary
                                                             .player_name
@@ -47142,7 +47866,7 @@ var render = function() {
                                                     .player_name == "--"
                                                 ? _c("p", [
                                                     _vm._v(
-                                                      "\n                                        runout (" +
+                                                      "\n                                            runout (" +
                                                         _vm._s(
                                                           player.wicketPrimary
                                                             .player_name
@@ -47255,7 +47979,8 @@ var render = function() {
                                               player.bt_runs,
                                               player.bt_balls
                                             )
-                                          ) + "\n                            "
+                                          ) +
+                                            "\n                                "
                                         )
                                       ]
                                     )
@@ -47289,7 +48014,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(
-                            "\n                                b " +
+                            "\n                                    b " +
                               _vm._s(_vm.matchScorecard.team2.extras.byes) +
                               ", lb " +
                               _vm._s(_vm.matchScorecard.team2.extras.legbyes) +
@@ -47314,7 +48039,7 @@ var render = function() {
                               _vm._s(_vm.matchScorecard.team2.score.score) +
                                 " -" +
                                 _vm._s(_vm.matchScorecard.team2.score.wicket) +
-                                "\n                                (" +
+                                "\n                                    (" +
                                 _vm._s(_vm.matchScorecard.team2.score.over) +
                                 "." +
                                 _vm._s(
@@ -47356,11 +48081,11 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                 " +
+                                          "\n                                     " +
                                             _vm._s(
                                               player.playerDetail.player_name
                                             ) +
-                                            "\n                            "
+                                            "\n                                "
                                         )
                                       ]
                                     )
@@ -48319,6 +49044,12 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
+              _c("router-link", { attrs: { to: "result", replace: "" } }, [
+                _c("li", { staticClass: "nav-item" }, [
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("Results")])
+                ])
+              ]),
+              _vm._v(" "),
               _c("router-link", { attrs: { to: "teams", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
                   _c("a", { staticClass: "nav-link" }, [_vm._v("Teams")])
@@ -48333,7 +49064,7 @@ var render = function() {
               _vm._v(" "),
               _c("router-link", { attrs: { to: "pointsTable", replace: "" } }, [
                 _c("li", { staticClass: "nav-item" }, [
-                  _c("a", { staticClass: "nav-link" }, [_vm._v("PointsTable")])
+                  _c("a", { staticClass: "nav-link" }, [_vm._v("PT")])
                 ])
               ])
             ],
@@ -64733,6 +65464,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Result.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Result.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Result_vue_vue_type_template_id_586a1fc8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Result.vue?vue&type=template&id=586a1fc8&scoped=true& */ "./resources/js/components/Result.vue?vue&type=template&id=586a1fc8&scoped=true&");
+/* harmony import */ var _Result_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Result.vue?vue&type=script&lang=js& */ "./resources/js/components/Result.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Result_vue_vue_type_style_index_0_id_586a1fc8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css& */ "./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Result_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Result_vue_vue_type_template_id_586a1fc8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Result_vue_vue_type_template_id_586a1fc8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "586a1fc8",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Result.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Result.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Result.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Result.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css& ***!
+  \*****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_style_index_0_id_586a1fc8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result.vue?vue&type=style&index=0&id=586a1fc8&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_style_index_0_id_586a1fc8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_style_index_0_id_586a1fc8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_style_index_0_id_586a1fc8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_style_index_0_id_586a1fc8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_style_index_0_id_586a1fc8_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Result.vue?vue&type=template&id=586a1fc8&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Result.vue?vue&type=template&id=586a1fc8&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_template_id_586a1fc8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Result.vue?vue&type=template&id=586a1fc8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Result.vue?vue&type=template&id=586a1fc8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_template_id_586a1fc8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Result_vue_vue_type_template_id_586a1fc8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Schedule.vue":
 /*!**********************************************!*\
   !*** ./resources/js/components/Schedule.vue ***!
@@ -65375,6 +66193,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PlayerInfo__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/PlayerInfo */ "./resources/js/components/PlayerInfo.vue");
 /* harmony import */ var _components_PlayerBatting__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/PlayerBatting */ "./resources/js/components/PlayerBatting.vue");
 /* harmony import */ var _components_PlayerBowling__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/PlayerBowling */ "./resources/js/components/PlayerBowling.vue");
+/* harmony import */ var _components_Result__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/Result */ "./resources/js/components/Result.vue");
+
 
 
 
@@ -65439,6 +66259,10 @@ var TeamDetail;
       path: 'schedule',
       name: 'Schedule',
       component: _components_Schedule__WEBPACK_IMPORTED_MODULE_15__["default"]
+    }, {
+      path: 'result',
+      name: 'result',
+      component: _components_Result__WEBPACK_IMPORTED_MODULE_23__["default"]
     }, {
       path: 'teams',
       name: 'Team',

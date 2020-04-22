@@ -134,6 +134,7 @@
 
     #matchInfo .list-group .list-group-item h6 {
         margin: 0px;
+        font-size: 0.9rem;
     }
 
     #matchInfo .list-group .first {
