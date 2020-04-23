@@ -7,9 +7,9 @@
         </div>
 
         <div id="scorecardDetail" v-else-if="matchScorecard.isMatch">
-            <!--            <div class="table-header">-->
-            <!--                <span>India won by 4 runs</span>-->
-            <!--            </div>-->
+            <div class="table-header" v-if="matchScorecard.match_status === 4">
+                <span>India won by 4 runs</span>
+            </div>
             <div class="team-header" v-on:click="team1 = !team1" style="border-bottom: 0.05rem solid lightgray">
                 <div class="row m-0">
                     <div class="col-6 team-name p-0">
@@ -139,7 +139,7 @@
                             <td>{{player.bw_maiden}}</td>
                             <td>{{player.bw_runs}}</td>
                             <td>{{player.bw_wickets}}</td>
-                            <td>12.2</td>
+                            <td>{{calculateBowlingEconomy(player.bw_runs,player.bw_over,player.bw_overball)}}</td>
                         </tr>
 
                         <!--                <tr>-->
@@ -154,31 +154,33 @@
                         </tbody>
                     </table>
                 </div>
-<!--                            <div class="tables table-responsive">-->
-<!--                                <table class="table invoice">-->
-<!--                                    <thead>-->
-<!--                                   <tr>-->
-<!--                                        <th scope="col">Fall of Wicket</th>-->
-<!--                                        <th scope="col">Score</th>-->
-<!--                                        <th scope="col">Over</th>-->
-<!--                                    </tr>-->
-<!--                                    </thead>-->
-<!--                                    <tbody>-->
-<!--                                    <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.fow" :key="player.id"-->
-<!--                                        :data="player">-->
-<!--                                        <td>-->
-<!--                                            <router-link :to="'/player/' + player.player_id + '/info'">-->
-<!--                                                {{player.player_id}}-->
-<!--                                            </router-link>-->
-<!--                                        </td>-->
-<!--                                        <td>{{player.score}}-{{player.wickets}}</td>-->
-<!--                                        <td>{{player.over}}.{{player.overball}}</td>-->
-<!--                                    </tr>-->
-<!--                                    </tbody>-->
-<!--                                </table>-->
-<!--                            </div>-->
+                <!--                            <div class="tables table-responsive">-->
+                <!--                                <table class="table invoice">-->
+                <!--                                    <thead>-->
+                <!--                                   <tr>-->
+                <!--                                        <th scope="col">Fall of Wicket</th>-->
+                <!--                                        <th scope="col">Score</th>-->
+                <!--                                        <th scope="col">Over</th>-->
+                <!--                                    </tr>-->
+                <!--                                    </thead>-->
+                <!--                                    <tbody>-->
+                <!--                                    <tr v-if="matchScorecard.team1" v-for="player in matchScorecard.team1.fow" :key="player.id"-->
+                <!--                                        :data="player">-->
+                <!--                                        <td>-->
+                <!--                                            <router-link :to="'/player/' + player.player_id + '/info'">-->
+                <!--                                                {{player.player_id}}-->
+                <!--                                            </router-link>-->
+                <!--                                        </td>-->
+                <!--                                        <td>{{player.score}}-{{player.wickets}}</td>-->
+                <!--                                        <td>{{player.over}}.{{player.overball}}</td>-->
+                <!--                                    </tr>-->
+                <!--                                    </tbody>-->
+                <!--                                </table>-->
+                <!--                            </div>-->
             </div>
-            <div class="team-header" v-on:click="team2 = !team2">
+
+            <div class="team-header" v-on:click="team2 = !team2"
+                 v-if="matchScorecard.match_status === 3 || matchScorecard.match_status === 4">
                 <div class="row m-0">
                     <div class="col-6 team-name p-0">
                         <span>{{matchScorecard.team2.detail.team_code}} inn</span>
@@ -316,14 +318,14 @@
                             :data="player">
                             <td>
                                 <router-link :to="'/player/' + player.playerDetail.id + '/info'">
-                                     {{player.playerDetail.player_name}}
+                                    {{player.playerDetail.player_name}}
                                 </router-link>
                             </td>
                             <td>{{player.bw_over}}.{{player.bw_overball}}</td>
                             <td>{{player.bw_maiden}}</td>
                             <td>{{player.bw_runs}}</td>
                             <td>{{player.bw_wickets}}</td>
-                            <td>12.2</td>
+                            <td>{{calculateBowlingEconomy(player.bw_runs,player.bw_over,player.bw_overball)}}</td>
                         </tr>
 
                         <!--                <tr>-->
@@ -389,7 +391,7 @@
                     swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
                         if (direction === 'left')
                             route.replace('overs');
-                        if (direction === 'right'){
+                        if (direction === 'right') {
                             route.replace('live');
                         }
                     }, allowPageScroll: "auto"
@@ -418,6 +420,12 @@
                     let val = (runs / ball) * 100;
                     return val.toFixed(2);
                 }
+            },
+
+            calculateBowlingEconomy(runs, overs, balls) {
+                let over = Number(overs) + (Number(balls) * 10) / 60;
+                let economy = (Number(runs) / Number(over)).toFixed(2);
+                return economy;
             },
 
 
@@ -561,7 +569,8 @@
         width: 100vw;
         text-align: center;
         background: #f8fafc;
-        margin-top: 45vh;
+        /*margin-top: 45vh;*/
+        padding : 35vh 0 25vh 0;
     }
 
     #loader {

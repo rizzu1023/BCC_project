@@ -181,6 +181,8 @@
         top: 56px;
         z-index : 1001;
         width: 100vw;
+        box-shadow : 0 9px 8px -9px gray;
+
     }
     .table-header span{
         font-size: 0.85rem;

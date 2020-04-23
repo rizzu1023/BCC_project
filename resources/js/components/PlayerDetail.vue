@@ -41,7 +41,7 @@
 
 
     .nav-item{
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         background: #1e72fa;
         text-transform: uppercase;
 
@@ -74,6 +74,8 @@
         background: #1e72fa;
         width : 100vw;
         z-index : 1000;
+        box-shadow : 0 9px 8px -9px gray;
+
     }
 
     .nav-tabs a{

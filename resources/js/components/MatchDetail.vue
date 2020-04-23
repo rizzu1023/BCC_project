@@ -45,7 +45,7 @@
 
 
     .nav-item{
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         background: #1e72fa;
         text-transform: uppercase;
 

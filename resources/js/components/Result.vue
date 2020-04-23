@@ -4,15 +4,15 @@
             <div v-if="results.length > 0">
         <ul class="list-group">
             <div  v-for="result in results" :key="result.id" :data="result">
-                <div v-if="results.status === 4">
+                <div v-if="result.status === 4">
                 <router-link :to="'/tournament/'+result.tournament_id+'/match/' + result.id + '/' + result.team1_id.id + '/' + result.team2_id.id + '/info'" style="text-decoration:none; color:#000">
                     <li class="list-group-item" v-on:click="header_string(result.team1_id.team_code,result.team2_id.team_code)">
                         <span class="text-muted" style="font-size: 12px">Match {{ result.match_no }}</span>
-                        <div class="row mt-1 score-card">
-                            <div class="col-6 team-name">
+                        <div class="row m-0 mt-1 score-card">
+                            <div class="col-6 p-0 team-name">
                                 <span><b>{{ result.team1_id.team_name }}</b></span>
                             </div>
-                            <div class="col-6 team-score">
+                            <div class="col-6 p-0 team-score">
                                    <span>
                                     <div v-if="result.team1_id.id === result.match_detail[0].team_id">
                                     <b>{{ result.match_detail[0].score }}-{{result.match_detail[0].wicket }} ({{result.match_detail[0].over }}.{{result.match_detail[0].overball }})</b>
@@ -23,10 +23,10 @@
                                 </span>
 
                             </div>
-                            <div class="col-6 team-name">
+                            <div class="col-6 p-0 team-name">
                                 <span><b>{{ result.team2_id.team_name }}</b></span>
                             </div>
-                            <div class="col-6 team-score">
+                            <div class="col-6 p-0 team-score">
                                 <span>
                                      <div v-if="result.team2_id.id === result.match_detail[0].team_id">
                                     <b>{{ result.match_detail[0].score }}-{{result.match_detail[0].wicket }} ({{result.match_detail[0].over }}.{{result.match_detail[0].overball }})</b>

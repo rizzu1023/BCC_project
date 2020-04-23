@@ -4,14 +4,15 @@
             <div v-if="schedules.length > 0">
         <ul class="list-group">
             <div  v-for="schedule in schedules" :key="schedule.id" :data="schedule">
+                <div v-if="schedule.status !== 4">
                 <router-link :to="'/tournament/'+schedule.tournament_id+'/match/' + schedule.id + '/' + schedule.team1_id.id + '/' + schedule.team2_id.id + '/info'" style="text-decoration:none; color:#000">
                     <li class="list-group-item" v-on:click="header_string(schedule.team1_id.team_code,schedule.team2_id.team_code)">
                         <span class="text-muted" style="font-size: 12px">Match {{ schedule.match_no }}</span>
-                        <div class="row mt-1 score-card">
-                            <div class="col-6 team-name">
+                        <div class="row m-0 mt-1 score-card">
+                            <div class="col-6 p-0 team-name">
                                 <span><b>{{ schedule.team1_id.team_name }}</b></span>
                             </div>
-                            <div class="col-6 team-score">
+                            <div class="col-6 p-0 team-score">
                                 <span v-if="schedule.status === 1 || schedule.status === 2 || schedule.status === 3">
                                     <div v-if="schedule.team1_id.id === schedule.match_detail[0].team_id && (schedule.match_detail[0].score >= 1 || schedule.match_detail[0].overball >= 1)">
                                     <b>{{ schedule.match_detail[0].score }}-{{schedule.match_detail[0].wicket }} ({{schedule.match_detail[0].over }}.{{schedule.match_detail[0].overball }})</b>
@@ -21,10 +22,10 @@
                                     </div>
                                 </span>
                             </div>
-                            <div class="col-6 team-name">
+                            <div class="col-6 p-0 team-name">
                                 <span class=""><b>{{ schedule.team2_id.team_name }}</b></span>
                             </div>
-                            <div class="col-6 team-score">
+                            <div class="col-6 p-0 team-score">
                                 <span v-if="schedule.status === 1 || schedule.status === 2 || schedule.status === 3">
                                      <div v-if="schedule.team2_id.id === schedule.match_detail[0].team_id && (schedule.match_detail[0].score >= 1 || schedule.match_detail[0].overball >= 1)">
                                     <b>{{ schedule.match_detail[0].score }}-{{schedule.match_detail[0].wicket }} ({{schedule.match_detail[0].over }}.{{schedule.match_detail[0].overball }})</b>
@@ -35,12 +36,13 @@
                                 </span>
                             </div>
                         </div>
-                        <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 1 || schedule.status === 1">{{schedule.toss}} won the toss & choose {{schedule.choose}} first</span>
+                        <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 0 || schedule.status === 1">{{schedule.toss}} won the toss & choose {{schedule.choose}} first</span>
                         <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 3">* need in * balls</span>
                         <span class="text-danger" style="font-size: 12px" v-if="schedule.status === null">{{schedule.times}}</span>
 
                     </li>
                 </router-link>
+                </div>
             </div>
         </ul>
             </div>

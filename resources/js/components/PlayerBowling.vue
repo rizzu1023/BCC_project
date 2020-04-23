@@ -1,7 +1,75 @@
 <template>
     <div id="playerBowling">
-        <div class="text-center p-5">
-            <h4 class="p-5">Working on it...</h4>
+        <div class="tables table-responsive" style="margin-top:46px">
+            <div class="panel-body widget-shadow">
+                <!--                <div class="py-2 px-4 table-header">-->
+                <!--                    <span>CAREER</span>-->
+                <!--                </div>-->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Bowling</th>
+                        <th scope="col">Overall</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                    <tr>
+                        <td>Matches</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Innings</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Runs</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Balls</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Maidens</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Wickets</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Average</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Economy</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>SR</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>BBI</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>BBM</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>4w</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>5w</td>
+                        <td>100</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </template>
@@ -26,5 +94,33 @@
 </script>
 
 <style scoped>
+    #playerBowling .table tbody tr td {
+        font-size: 0.8rem;
+    }
 
+    #playerBowling .table thead th {
+        font-size: 0.8rem;
+    }
+
+    #playerBowling .table thead {
+        background: #dbdbdb;
+        color: #1e72fa;
+    }
+
+    #playerBowling .table thead tr th {
+        border: none;
+    }
+
+
+    #playerBowling .table-header {
+        background: #1e72fa;
+        color: #FFF;
+        text-align: center;
+    }
+
+    #playerBowling .table-header span {
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
 </style>

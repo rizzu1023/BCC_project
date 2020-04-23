@@ -2086,6 +2086,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LiveMatch",
   mounted: function mounted() {
@@ -2131,6 +2138,13 @@ __webpack_require__.r(__webpack_exports__);
       var run_rate = (Number(runs) / Number(over)).toFixed(2);
       return run_rate;
     },
+    calculateRequiredRunRate: function calculateRequiredRunRate(remaining_runs, remaining_balls) {
+      var over = parseInt(remaining_balls / 6);
+      var balls = remaining_balls % 6;
+      var overs = Number(over) + Number(balls) * 10 / 60;
+      var required_run_rate = (Number(remaining_runs) / Number(overs)).toFixed(2);
+      return required_run_rate;
+    },
     calculateBowlingEconomy: function calculateBowlingEconomy(runs, overs, balls) {
       var over = Number(overs) + Number(balls) * 10 / 60;
       var economy = (Number(runs) / Number(over)).toFixed(2);
@@ -2141,6 +2155,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       'liveMatchScorecard': {
         'match_detail': null,
+        'match_status': null,
         'partnership': null,
         'current_bowler': {
           'playerDetail': {}
@@ -2517,6 +2532,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlayerBatting",
   mounted: function mounted() {
@@ -2547,6 +2634,74 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2634,6 +2789,35 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3000,6 +3184,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3483,6 +3669,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scorecard",
   mounted: function mounted() {
@@ -3522,6 +3710,11 @@ __webpack_require__.r(__webpack_exports__);
         var val = runs / ball * 100;
         return val.toFixed(2);
       }
+    },
+    calculateBowlingEconomy: function calculateBowlingEconomy(runs, overs, balls) {
+      var over = Number(overs) + Number(balls) * 10 / 60;
+      var economy = (Number(runs) / Number(over)).toFixed(2);
+      return economy;
     }
   },
   data: function data() {
@@ -3671,6 +3864,24 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8637,7 +8848,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n    margin : 0;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #dbdbdb;\n    color : #1e72fa;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n#liveMatch  #not_started[data-v-d9645c44]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#liveMatch .list-group .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#liveMatch .list-group .list-group-item p[data-v-d9645c44] {\n    margin : 0;\n}\n#liveMatch .list-group .left-col[data-v-d9645c44]{\n    font-weight : bold;\n}\n#liveMatch .list-group .right-col[data-v-d9645c44]{\n    text-align : right;\n}\n#loader[data-v-d9645c44]{\n    background: #f8fafc;\n}\n#preloader[data-v-d9645c44] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-d9645c44 1s infinite linear;\n            animation: rotate-data-v-d9645c44 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n    font-size: .9rem;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n    margin : 0;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #dbdbdb;\n    color : #1e72fa;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n#liveMatch  #not_started[data-v-d9645c44]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n    /*overflow : hidden;*/\n}\n#liveMatch .list-group .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#liveMatch .list-group .list-group-item p[data-v-d9645c44] {\n    margin : 0;\n}\n#liveMatch .list-group .left-col[data-v-d9645c44]{\n    font-weight : bold;\n}\n#liveMatch .list-group .right-col[data-v-d9645c44]{\n    text-align : right;\n}\n#loader[data-v-d9645c44]{\n    background: #f8fafc;\n}\n#preloader[data-v-d9645c44] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-d9645c44 1s infinite linear;\n            animation: rotate-data-v-d9645c44 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -8656,7 +8867,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #1e72fa;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n\n/*#ul1 {*/\n/*    border: 1px dotted black;*/\n/*    padding: 0px;*/\n/*    display: table;*/\n/*    width: 100%;*/\n/*    box-sizing: border-box;*/\n/*    -moz-box-sizing: border-box;*/\n/*    -webkit-box-sizing: border-box;*/\n/*}*/\n/**/\n/*#ul1 li{*/\n/*    text-align: center;*/\n/*    padding: 12px;*/\n\n\n/*    background-color: red;*/\n/*    display: table-cell;*/\n/*}*/\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #1e72fa;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.8rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n\n/*#ul1 {*/\n/*    border: 1px dotted black;*/\n/*    padding: 0px;*/\n/*    display: table;*/\n/*    width: 100%;*/\n/*    box-sizing: border-box;*/\n/*    -moz-box-sizing: border-box;*/\n/*    -webkit-box-sizing: border-box;*/\n/*}*/\n/**/\n/*#ul1 li{*/\n/*    text-align: center;*/\n/*    padding: 12px;*/\n\n\n/*    background-color: red;*/\n/*    display: table-cell;*/\n/*}*/\n", ""]);
 
 // exports
 
@@ -8694,7 +8905,45 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#matchOvers .card[data-v-9f8151f6]{\n    border-top : 0;\n    border-right : 0;\n    border-left : 0;\n    border-radius : 0;\n}\n#matchOvers .card-body[data-v-9f8151f6] {\n    padding : 12px;\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchOvers .card-body p[data-v-9f8151f6]{\n    font-size : .85rem;\n    margin-bottom : 6px;\n    font-weight: bold;\n}\n#matchOvers .card-body .left-col span[data-v-9f8151f6]{\n    font-size: .7rem;\n}\n#matchOvers .card-body .right-col span div[data-v-9f8151f6]{\n    background: #1e72fa;\n    color : white;\n    border-radius : 50%;\n    padding : 2px 6px;\n    font-size : .65rem;\n    margin-right: 4px;\n    display: inline-block;\n}\n#matchOvers .card-body .right-col span .four[data-v-9f8151f6]{\n    background : lightblue;\n}\n#matchOvers .card-body .right-col span .six[data-v-9f8151f6]{\n    background : pink;\n}\n#matchOvers .card-body .right-col span .one[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .two[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .legbyes[data-v-9f8151f6] {\n    background : orange;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .byes[data-v-9f8151f6] {\n    background : cyan;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .noball[data-v-9f8151f6] {\n    background : blue;\n}\n#matchOvers .card-body .right-col span .wicket[data-v-9f8151f6] {\n    background: red;\n}\n#matchOvers #not_started[data-v-9f8151f6]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#loader[data-v-9f8151f6]{\n    background: #f8fafc;\n}\n#preloader[data-v-9f8151f6] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-9f8151f6 1s infinite linear;\n            animation: rotate-data-v-9f8151f6 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-9f8151f6 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-9f8151f6 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n\n", ""]);
+exports.push([module.i, "\n#matchOvers .card[data-v-9f8151f6]{\n    border-top : 0;\n    border-right : 0;\n    border-left : 0;\n    border-radius : 0;\n}\n#matchOvers .card-body[data-v-9f8151f6] {\n    padding : 12px;\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchOvers .card-body p[data-v-9f8151f6]{\n    font-size : .85rem;\n    margin-bottom : 6px;\n    font-weight: bold;\n}\n#matchOvers .card-body .left-col span[data-v-9f8151f6]{\n    font-size: .7rem;\n}\n#matchOvers .card-body .right-col span div[data-v-9f8151f6]{\n    background: #1e72fa;\n    color : white;\n    border-radius : 50%;\n    padding : 2px 6px;\n    font-size : .65rem;\n    margin-right: 4px;\n    display: inline-block;\n}\n#matchOvers .card-body .right-col span .four[data-v-9f8151f6]{\n    background : lightblue;\n}\n#matchOvers .card-body .right-col span .six[data-v-9f8151f6]{\n    background : pink;\n}\n#matchOvers .card-body .right-col span .one[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .two[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .legbyes[data-v-9f8151f6] {\n    background : orange;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .byes[data-v-9f8151f6] {\n    background : cyan;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .noball[data-v-9f8151f6] {\n    background : blue;\n}\n#matchOvers .card-body .right-col span .wicket[data-v-9f8151f6] {\n    background: red;\n}\n#matchOvers #not_started[data-v-9f8151f6]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n}\n#loader[data-v-9f8151f6]{\n    background: #f8fafc;\n}\n#preloader[data-v-9f8151f6] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-9f8151f6 1s infinite linear;\n            animation: rotate-data-v-9f8151f6 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-9f8151f6 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-9f8151f6 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#playerBatting .table tbody tr td[data-v-61150507] {\n    font-size: 0.8rem;\n}\n#playerBatting .table thead th[data-v-61150507] {\n    font-size: 0.8rem;\n}\n#playerBatting .table thead[data-v-61150507] {\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#playerBatting .table thead tr th[data-v-61150507] {\n    border: none;\n}\n#playerBatting .table-header[data-v-61150507] {\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n}\n#playerBatting .table-header span[data-v-61150507] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n#playerBowling .table tbody tr td[data-v-3add1ac4] {\n    font-size: 0.8rem;\n}\n#playerBowling .table thead th[data-v-3add1ac4] {\n    font-size: 0.8rem;\n}\n#playerBowling .table thead[data-v-3add1ac4] {\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#playerBowling .table thead tr th[data-v-3add1ac4] {\n    border: none;\n}\n#playerBowling .table-header[data-v-3add1ac4] {\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n}\n#playerBowling .table-header span[data-v-3add1ac4] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n", ""]);
 
 // exports
 
@@ -8713,7 +8962,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-37bfe506]{\n    background: #1e72fa;\n}\n.nav-item[data-v-37bfe506]{\n    font-size: 0.85rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-37bfe506]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-37bfe506]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-37bfe506]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-37bfe506] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n}\n.nav-tabs a[data-v-37bfe506]{\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-37bfe506]{\n    background: #1e72fa;\n}\n.nav-item[data-v-37bfe506]{\n    font-size: 0.8rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-37bfe506]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-37bfe506]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-37bfe506]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-37bfe506] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-tabs a[data-v-37bfe506]{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -8732,7 +8981,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.image[data-v-877ccf4c] {\n    padding-top: 60px;\n    padding-bottom: 20px;\n}\n.image img[data-v-877ccf4c] {\n    border-radius: 50%;\n}\n#loader[data-v-877ccf4c] {\n    background: #f8fafc;\n}\n#preloader[data-v-877ccf4c] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-877ccf4c 1s infinite linear;\n            animation: rotate-data-v-877ccf4c 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n#playerInfo .image[data-v-877ccf4c] {\n    margin-top: 25px;\n    padding-top: 60px;\n    padding-bottom: 20px;\n}\n#playerInfo .image img[data-v-877ccf4c] {\n    border-radius: 50%;\n}\n#playerInfo .player-name[data-v-877ccf4c]{\n    margin-bottom: 15px;\n}\n#playerInfo .list-group-item[data-v-877ccf4c] {\n    width: 100vw;\n    border-radius: 0;\n    border-right: none;\n    border-left : none;\n    font-size: .75rem;\n    padding : 8px 12px;\n    /*border-bottom : none;*/\n}\n#playerInfo .info-header[data-v-877ccf4c]{\n    padding : 6px 12px;\n    text-transform : uppercase;\n    font-size : .75rem;\n}\n#playerInfo .list-group-item .col-4[data-v-877ccf4c]{\n    color: #666;\n}\n#playerInfo .list-group-item .col-8[data-v-877ccf4c]{\n}\n#loader[data-v-877ccf4c] {\n    background: #f8fafc;\n}\n#preloader[data-v-877ccf4c] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-877ccf4c 1s infinite linear;\n            animation: rotate-data-v-877ccf4c 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -8751,7 +9000,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n    position: fixed;\n    top: 56px;\n    z-index : 1001;\n    width: 100vw;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#loader[data-v-0c847bd2]{\n    background: #f8fafc;\n}\n#preloader[data-v-0c847bd2] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-0c847bd2 1s infinite linear;\n            animation: rotate-data-v-0c847bd2 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n    position: fixed;\n    top: 56px;\n    z-index : 1001;\n    width: 100vw;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#loader[data-v-0c847bd2]{\n    background: #f8fafc;\n}\n#preloader[data-v-0c847bd2] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-0c847bd2 1s infinite linear;\n            animation: rotate-data-v-0c847bd2 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -8827,7 +9076,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7] {\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7] {\n    padding: 12px;\n    /*background : #1e72fa;*/\n    /*color: #fff;*/\n    font-weight: bold;\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7] {\n    margin-bottom: 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7] {\n    font-size: 0.7rem;\n    border: 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7] {\n    border: 0;\n    background: #1e72fa;\n    color: #fff;\n    padding: 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7] {\n    font-size: 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table tbody tr td a[data-v-22a9a9c7] {\n    text-decoration: none;\n    color: #212529;\n}\n#scorecard table td[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1) {\n    text-align: left;\n    padding: 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align: left;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#scorecard table tbody tr[data-v-22a9a9c7]:first-child {\n    border: 0;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child {\n    padding-right: 12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child {\n    padding-right: 12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7] {\n    margin: 0;\n    color: #1e72fa;\n    font-size: 0.65rem;\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7] {\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size: 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin: 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7] {\n    font-weight: bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard #not_started[data-v-22a9a9c7] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#loader[data-v-22a9a9c7] {\n    background: #f8fafc;\n}\n#preloader[data-v-22a9a9c7] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-22a9a9c7 1s infinite linear;\n            animation: rotate-data-v-22a9a9c7 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-22a9a9c7 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-22a9a9c7 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n", ""]);
+exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7] {\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7] {\n    padding: 12px;\n    /*background : #1e72fa;*/\n    /*color: #fff;*/\n    font-weight: bold;\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7] {\n    margin-bottom: 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7] {\n    font-size: 0.7rem;\n    border: 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7] {\n    border: 0;\n    background: #1e72fa;\n    color: #fff;\n    padding: 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7] {\n    font-size: 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table tbody tr td a[data-v-22a9a9c7] {\n    text-decoration: none;\n    color: #212529;\n}\n#scorecard table td[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1) {\n    text-align: left;\n    padding: 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align: left;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#scorecard table tbody tr[data-v-22a9a9c7]:first-child {\n    border: 0;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child {\n    padding-right: 12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child {\n    padding-right: 12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7] {\n    margin: 0;\n    color: #1e72fa;\n    font-size: 0.65rem;\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7] {\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size: 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin: 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7] {\n    font-weight: bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard #not_started[data-v-22a9a9c7] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n}\n#loader[data-v-22a9a9c7] {\n    background: #f8fafc;\n}\n#preloader[data-v-22a9a9c7] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-22a9a9c7 1s infinite linear;\n            animation: rotate-data-v-22a9a9c7 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-22a9a9c7 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-22a9a9c7 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -8865,7 +9114,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n.table thead[data-v-cecdae96]{\n    background : #dbdbdb;\n    color : #1e72fa;\n}\n.table thead tr th[data-v-cecdae96]{\n    border:none;\n}\n/*.table tbody td:hover, .table tbody td:active , .table tbody td:focus{*/\n/*    background:orange;*/\n/*}*/\n.table-header[data-v-cecdae96]{\n        background: #1e72fa;\n        color: #FFF;\n        text-align: center;\n}\n.table-header span[data-v-cecdae96]{\n        font-size: 0.85rem;\n        font-weight : bold;\n        text-transform : uppercase;\n}\n#loader[data-v-cecdae96]{\n    background: #f8fafc;\n}\n#preloader[data-v-cecdae96] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-cecdae96 1s infinite linear;\n            animation: rotate-data-v-cecdae96 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n#statsDetail .table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead[data-v-cecdae96] {\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#statsDetail .table thead tr th[data-v-cecdae96] {\n    border: none;\n}\n#statsDetail .table-header[data-v-cecdae96] {\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n}\n#statsDetail .table-header span[data-v-cecdae96] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#loader[data-v-cecdae96] {\n    background: #f8fafc;\n}\n#preloader[data-v-cecdae96] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-cecdae96 1s infinite linear;\n            animation: rotate-data-v-cecdae96 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -8922,7 +9171,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1e72fa;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1e72fa;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.75rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1e72fa;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1e72fa;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.8rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -39907,6 +40156,66 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerDetail.vue?vue&type=style&index=0&id=37bfe506&scoped=true&lang=css&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlayerDetail.vue?vue&type=style&index=0&id=37bfe506&scoped=true&lang=css& ***!
@@ -45470,11 +45779,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "liveMatch" } }, [
-    _vm.liveMatchScorecard.isMatch === "not_found"
+    _vm.liveMatchScorecard.match_status === 0
       ? _c("div", { attrs: { id: "not_started" } }, [
           _c("span", [_vm._v("Match has not started yet.")])
         ])
-      : _vm.liveMatchScorecard.isMatch
+      : _vm.liveMatchScorecard.match_status === 1 ||
+        _vm.liveMatchScorecard.match_status === 2 ||
+        _vm.liveMatchScorecard.match_status === 3
       ? _c("div", { attrs: { id: "liveMatchShow" } }, [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
@@ -45510,7 +45821,26 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(0),
+                _c("div", { staticClass: "col-3 rrr p-0" }, [
+                  _vm.liveMatchScorecard.match_status === 3
+                    ? _c("div", [
+                        _c("span", { staticClass: "text-muted" }, [
+                          _vm._v("RRR")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.calculateRequiredRunRate(
+                                _vm.liveMatchScorecard.remaining_runs,
+                                _vm.liveMatchScorecard.remaining_balls
+                              )
+                            )
+                          )
+                        ])
+                      ])
+                    : _vm._e()
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-3 crr p-0" }, [
                   _c("span", { staticClass: "text-muted" }, [_vm._v("CRR")]),
@@ -45526,7 +45856,27 @@ var render = function() {
                       )
                     )
                   ])
-                ])
+                ]),
+                _vm._v(" "),
+                _vm.liveMatchScorecard.match_status === 3
+                  ? _c("div", { staticClass: "col-12 need-run p-0" }, [
+                      _c("p", { staticClass: "m-0" }, [
+                        _vm._v(
+                          "India need " +
+                            _vm._s(_vm.liveMatchScorecard.remaining_runs) +
+                            " runs in " +
+                            _vm._s(_vm.liveMatchScorecard.remaining_balls) +
+                            " balls"
+                        )
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.liveMatchScorecard.match_status === 2
+                  ? _c("div", { staticClass: "col-12 need-run p-0" }, [
+                      _c("p", { staticClass: "m-0" }, [_vm._v("Inning Break")])
+                    ])
+                  : _vm._e()
               ])
             ])
           ]),
@@ -45549,14 +45899,25 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(1)
+                _c("div", { staticClass: "col-6 target p-0" }, [
+                  _vm.liveMatchScorecard.match_status === 3
+                    ? _c("div", [
+                        _c("p", [
+                          _vm._v("TARGET "),
+                          _c("span", [
+                            _vm._v(_vm._s(_vm.liveMatchScorecard.target))
+                          ])
+                        ])
+                      ])
+                    : _vm._e()
+                ])
               ])
             ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "tables table-responsive" }, [
             _c("table", { staticClass: "table invoice" }, [
-              _vm._m(2),
+              _vm._m(0),
               _vm._v(" "),
               _c(
                 "tbody",
@@ -45603,7 +45964,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "tables table-responsive" }, [
             _c("table", { staticClass: "table" }, [
-              _vm._m(3),
+              _vm._m(1),
               _vm._v(" "),
               _c("tbody", [
                 _c("tr", [
@@ -45663,7 +46024,7 @@ var render = function() {
           _c("ul", { staticClass: "list-group" }, [
             _c("li", { staticClass: "list-group-item" }, [
               _c("div", { staticClass: "row m-0" }, [
-                _vm._m(4),
+                _vm._m(2),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-6 right-col p-0" }, [
                   _c("p", [
@@ -45693,30 +46054,16 @@ var render = function() {
             ])
           ])
         ])
+      : _vm.liveMatchScorecard.match_status === 4
+      ? _c("div", { attrs: { id: "matchResult" } }, [
+          _c("p", [_vm._v(" mathc result")])
+        ])
       : _c("div", { attrs: { id: "loader" } }, [
           _c("div", { attrs: { id: "preloader" } })
         ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-3 rrr p-0" }, [
-      _c("span", { staticClass: "text-muted" }, [_vm._v("RRR")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("5.53")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-6 target p-0" }, [
-      _c("p", [_vm._v("TARGET "), _c("span", [_vm._v(" 170")])])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -46300,9 +46647,112 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "playerBatting" } }, [
-      _c("div", { staticClass: "text-center p-5" }, [
-        _c("h4", { staticClass: "p-5" }, [_vm._v("Working on it...")])
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "tables table-responsive",
+          staticStyle: { "margin-top": "46px" }
+        },
+        [
+          _c("div", { staticClass: "panel-body widget-shadow" }, [
+            _c("table", { staticClass: "table" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Batting")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Overall")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("Matches")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Innings")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Runs")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Balls")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Highest")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Average")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("SR")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Not Out")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Fours")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Sixes")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Ducks")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("50s")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("100s")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("200s")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -46335,9 +46785,106 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "playerBowling" } }, [
-      _c("div", { staticClass: "text-center p-5" }, [
-        _c("h4", { staticClass: "p-5" }, [_vm._v("Working on it...")])
-      ])
+      _c(
+        "div",
+        {
+          staticClass: "tables table-responsive",
+          staticStyle: { "margin-top": "46px" }
+        },
+        [
+          _c("div", { staticClass: "panel-body widget-shadow" }, [
+            _c("table", { staticClass: "table" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Bowling")]),
+                  _vm._v(" "),
+                  _c("th", { attrs: { scope: "col" } }, [_vm._v("Overall")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("Matches")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Innings")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Runs")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Balls")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Maidens")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Wickets")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Average")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Economy")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("SR")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("BBI")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("BBM")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("4w")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("5w")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("100")])
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
     ])
   }
 ]
@@ -46430,9 +46977,21 @@ var render = function() {
           _c("div", { staticClass: "row m-0" }, [
             _vm._m(0),
             _vm._v(" "),
-            _c("div", { staticClass: "col-12 text-center" }, [
-              _c("h4", [_vm._v(_vm._s(_vm.player.player_name))])
-            ])
+            _c("div", { staticClass: "col-12 text-center player-name" }, [
+              _c("h4", { staticStyle: { "margin-bottom": "4px" } }, [
+                _vm._v(_vm._s(_vm.player.player_name))
+              ]),
+              _vm._v(" "),
+              _c("h6", { staticStyle: { color: "#aaa" } }, [
+                _vm._v("South Africa")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "info-header" }, [
+              _vm._v("Personal Information")
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
           ])
         ])
       : _c("div", { attrs: { id: "loader" } }, [
@@ -46454,6 +47013,46 @@ var staticRenderFns = [
           alt: "avatar"
         }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "list-group" }, [
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("div", { staticClass: "row m-0" }, [
+          _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Born")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-8 p-0" }, [_vm._v("10-23-2019")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("div", { staticClass: "row m-0" }, [
+          _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Role")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-8 p-0" }, [_vm._v("Batsman")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("div", { staticClass: "row m-0" }, [
+          _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Batting Style")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-8 p-0" }, [
+            _vm._v("Right Handed Batsman")
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", { staticClass: "list-group-item" }, [
+        _c("div", { staticClass: "row m-0" }, [
+          _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Bowling Style")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-8 p-0" }, [_vm._v("Left Arm Break")])
+        ])
+      ])
     ])
   }
 ]
@@ -46628,7 +47227,7 @@ var render = function() {
                       "div",
                       { key: result.id, attrs: { data: result } },
                       [
-                        _vm.results.status === 4
+                        result.status === 4
                           ? _c(
                               "div",
                               [
@@ -46683,13 +47282,15 @@ var render = function() {
                                         _c(
                                           "div",
                                           {
-                                            staticClass: "row mt-1 score-card"
+                                            staticClass:
+                                              "row m-0 mt-1 score-card"
                                           },
                                           [
                                             _c(
                                               "div",
                                               {
-                                                staticClass: "col-6 team-name"
+                                                staticClass:
+                                                  "col-6 p-0 team-name"
                                               },
                                               [
                                                 _c("span", [
@@ -46708,7 +47309,8 @@ var render = function() {
                                             _c(
                                               "div",
                                               {
-                                                staticClass: "col-6 team-score"
+                                                staticClass:
+                                                  "col-6 p-0 team-score"
                                               },
                                               [
                                                 _c("span", [
@@ -46786,7 +47388,8 @@ var render = function() {
                                             _c(
                                               "div",
                                               {
-                                                staticClass: "col-6 team-name"
+                                                staticClass:
+                                                  "col-6 p-0 team-name"
                                               },
                                               [
                                                 _c("span", [
@@ -46805,7 +47408,8 @@ var render = function() {
                                             _c(
                                               "div",
                                               {
-                                                staticClass: "col-6 team-score"
+                                                staticClass:
+                                                  "col-6 p-0 team-score"
                                               },
                                               [
                                                 _c("span", [
@@ -46948,313 +47552,349 @@ var render = function() {
                       "div",
                       { key: schedule.id, attrs: { data: schedule } },
                       [
-                        _c(
-                          "router-link",
-                          {
-                            staticStyle: {
-                              "text-decoration": "none",
-                              color: "#000"
-                            },
-                            attrs: {
-                              to:
-                                "/tournament/" +
-                                schedule.tournament_id +
-                                "/match/" +
-                                schedule.id +
-                                "/" +
-                                schedule.team1_id.id +
-                                "/" +
-                                schedule.team2_id.id +
-                                "/info"
-                            }
-                          },
-                          [
-                            _c(
-                              "li",
-                              {
-                                staticClass: "list-group-item",
-                                on: {
-                                  click: function($event) {
-                                    return _vm.header_string(
-                                      schedule.team1_id.team_code,
-                                      schedule.team2_id.team_code
-                                    )
-                                  }
-                                }
-                              },
+                        schedule.status !== 4
+                          ? _c(
+                              "div",
                               [
                                 _c(
-                                  "span",
+                                  "router-link",
                                   {
-                                    staticClass: "text-muted",
-                                    staticStyle: { "font-size": "12px" }
+                                    staticStyle: {
+                                      "text-decoration": "none",
+                                      color: "#000"
+                                    },
+                                    attrs: {
+                                      to:
+                                        "/tournament/" +
+                                        schedule.tournament_id +
+                                        "/match/" +
+                                        schedule.id +
+                                        "/" +
+                                        schedule.team1_id.id +
+                                        "/" +
+                                        schedule.team2_id.id +
+                                        "/info"
+                                    }
                                   },
-                                  [_vm._v("Match " + _vm._s(schedule.match_no))]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "row mt-1 score-card" },
                                   [
                                     _c(
-                                      "div",
-                                      { staticClass: "col-6 team-name" },
-                                      [
-                                        _c("span", [
-                                          _c("b", [
-                                            _vm._v(
-                                              _vm._s(
-                                                schedule.team1_id.team_name
-                                              )
+                                      "li",
+                                      {
+                                        staticClass: "list-group-item",
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.header_string(
+                                              schedule.team1_id.team_code,
+                                              schedule.team2_id.team_code
                                             )
-                                          ])
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "col-6 team-score" },
+                                          }
+                                        }
+                                      },
                                       [
-                                        schedule.status === 1 ||
-                                        schedule.status === 2 ||
-                                        schedule.status === 3
-                                          ? _c("span", [
-                                              schedule.team1_id.id ===
-                                                schedule.match_detail[0]
-                                                  .team_id &&
-                                              (schedule.match_detail[0].score >=
-                                                1 ||
-                                                schedule.match_detail[0]
-                                                  .overball >= 1)
-                                                ? _c("div", [
-                                                    _c("b", [
-                                                      _vm._v(
-                                                        _vm._s(
-                                                          schedule
-                                                            .match_detail[0]
-                                                            .score
-                                                        ) +
-                                                          "-" +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[0]
-                                                              .wicket
-                                                          ) +
-                                                          " (" +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[0]
-                                                              .over
-                                                          ) +
-                                                          "." +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[0]
-                                                              .overball
-                                                          ) +
-                                                          ")"
-                                                      )
-                                                    ])
-                                                  ])
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              schedule.team1_id.id ===
-                                                schedule.match_detail[1]
-                                                  .team_id &&
-                                              (schedule.match_detail[1].score >=
-                                                1 ||
-                                                schedule.match_detail[1]
-                                                  .overball >= 1)
-                                                ? _c("div", [
-                                                    _c("b", [
-                                                      _vm._v(
-                                                        _vm._s(
-                                                          schedule
-                                                            .match_detail[1]
-                                                            .score
-                                                        ) +
-                                                          "-" +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[1]
-                                                              .wicket
-                                                          ) +
-                                                          " (" +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[1]
-                                                              .over
-                                                          ) +
-                                                          "." +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[1]
-                                                              .overball
-                                                          ) +
-                                                          ")"
-                                                      )
-                                                    ])
-                                                  ])
-                                                : _vm._e()
-                                            ])
-                                          : _vm._e()
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "col-6 team-name" },
-                                      [
-                                        _c("span", {}, [
-                                          _c("b", [
+                                        _c(
+                                          "span",
+                                          {
+                                            staticClass: "text-muted",
+                                            staticStyle: { "font-size": "12px" }
+                                          },
+                                          [
                                             _vm._v(
-                                              _vm._s(
-                                                schedule.team2_id.team_name
-                                              )
+                                              "Match " +
+                                                _vm._s(schedule.match_no)
                                             )
-                                          ])
-                                        ])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "col-6 team-score" },
-                                      [
-                                        schedule.status === 1 ||
-                                        schedule.status === 2 ||
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          {
+                                            staticClass:
+                                              "row m-0 mt-1 score-card"
+                                          },
+                                          [
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "col-6 p-0 team-name"
+                                              },
+                                              [
+                                                _c("span", [
+                                                  _c("b", [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        schedule.team1_id
+                                                          .team_name
+                                                      )
+                                                    )
+                                                  ])
+                                                ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "col-6 p-0 team-score"
+                                              },
+                                              [
+                                                schedule.status === 1 ||
+                                                schedule.status === 2 ||
+                                                schedule.status === 3
+                                                  ? _c("span", [
+                                                      schedule.team1_id.id ===
+                                                        schedule.match_detail[0]
+                                                          .team_id &&
+                                                      (schedule.match_detail[0]
+                                                        .score >= 1 ||
+                                                        schedule.match_detail[0]
+                                                          .overball >= 1)
+                                                        ? _c("div", [
+                                                            _c("b", [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  schedule
+                                                                    .match_detail[0]
+                                                                    .score
+                                                                ) +
+                                                                  "-" +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[0]
+                                                                      .wicket
+                                                                  ) +
+                                                                  " (" +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[0]
+                                                                      .over
+                                                                  ) +
+                                                                  "." +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[0]
+                                                                      .overball
+                                                                  ) +
+                                                                  ")"
+                                                              )
+                                                            ])
+                                                          ])
+                                                        : _vm._e(),
+                                                      _vm._v(" "),
+                                                      schedule.team1_id.id ===
+                                                        schedule.match_detail[1]
+                                                          .team_id &&
+                                                      (schedule.match_detail[1]
+                                                        .score >= 1 ||
+                                                        schedule.match_detail[1]
+                                                          .overball >= 1)
+                                                        ? _c("div", [
+                                                            _c("b", [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  schedule
+                                                                    .match_detail[1]
+                                                                    .score
+                                                                ) +
+                                                                  "-" +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[1]
+                                                                      .wicket
+                                                                  ) +
+                                                                  " (" +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[1]
+                                                                      .over
+                                                                  ) +
+                                                                  "." +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[1]
+                                                                      .overball
+                                                                  ) +
+                                                                  ")"
+                                                              )
+                                                            ])
+                                                          ])
+                                                        : _vm._e()
+                                                    ])
+                                                  : _vm._e()
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "col-6 p-0 team-name"
+                                              },
+                                              [
+                                                _c("span", {}, [
+                                                  _c("b", [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        schedule.team2_id
+                                                          .team_name
+                                                      )
+                                                    )
+                                                  ])
+                                                ])
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass:
+                                                  "col-6 p-0 team-score"
+                                              },
+                                              [
+                                                schedule.status === 1 ||
+                                                schedule.status === 2 ||
+                                                schedule.status === 3
+                                                  ? _c("span", [
+                                                      schedule.team2_id.id ===
+                                                        schedule.match_detail[0]
+                                                          .team_id &&
+                                                      (schedule.match_detail[0]
+                                                        .score >= 1 ||
+                                                        schedule.match_detail[0]
+                                                          .overball >= 1)
+                                                        ? _c("div", [
+                                                            _c("b", [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  schedule
+                                                                    .match_detail[0]
+                                                                    .score
+                                                                ) +
+                                                                  "-" +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[0]
+                                                                      .wicket
+                                                                  ) +
+                                                                  " (" +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[0]
+                                                                      .over
+                                                                  ) +
+                                                                  "." +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[0]
+                                                                      .overball
+                                                                  ) +
+                                                                  ")"
+                                                              )
+                                                            ])
+                                                          ])
+                                                        : _vm._e(),
+                                                      _vm._v(" "),
+                                                      schedule.team2_id.id ===
+                                                        schedule.match_detail[1]
+                                                          .team_id &&
+                                                      (schedule.match_detail[1]
+                                                        .score >= 1 ||
+                                                        schedule.match_detail[1]
+                                                          .overball >= 1)
+                                                        ? _c("div", [
+                                                            _c("b", [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  schedule
+                                                                    .match_detail[1]
+                                                                    .score
+                                                                ) +
+                                                                  "-" +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[1]
+                                                                      .wicket
+                                                                  ) +
+                                                                  " (" +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[1]
+                                                                      .over
+                                                                  ) +
+                                                                  "." +
+                                                                  _vm._s(
+                                                                    schedule
+                                                                      .match_detail[1]
+                                                                      .overball
+                                                                  ) +
+                                                                  ")"
+                                                              )
+                                                            ])
+                                                          ])
+                                                        : _vm._e()
+                                                    ])
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        schedule.status === 0 ||
+                                        schedule.status === 1
+                                          ? _c(
+                                              "span",
+                                              {
+                                                staticClass: "text-danger",
+                                                staticStyle: {
+                                                  "font-size": "12px"
+                                                }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(schedule.toss) +
+                                                    " won the toss & choose " +
+                                                    _vm._s(schedule.choose) +
+                                                    " first"
+                                                )
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
                                         schedule.status === 3
-                                          ? _c("span", [
-                                              schedule.team2_id.id ===
-                                                schedule.match_detail[0]
-                                                  .team_id &&
-                                              (schedule.match_detail[0].score >=
-                                                1 ||
-                                                schedule.match_detail[0]
-                                                  .overball >= 1)
-                                                ? _c("div", [
-                                                    _c("b", [
-                                                      _vm._v(
-                                                        _vm._s(
-                                                          schedule
-                                                            .match_detail[0]
-                                                            .score
-                                                        ) +
-                                                          "-" +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[0]
-                                                              .wicket
-                                                          ) +
-                                                          " (" +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[0]
-                                                              .over
-                                                          ) +
-                                                          "." +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[0]
-                                                              .overball
-                                                          ) +
-                                                          ")"
-                                                      )
-                                                    ])
-                                                  ])
-                                                : _vm._e(),
-                                              _vm._v(" "),
-                                              schedule.team2_id.id ===
-                                                schedule.match_detail[1]
-                                                  .team_id &&
-                                              (schedule.match_detail[1].score >=
-                                                1 ||
-                                                schedule.match_detail[1]
-                                                  .overball >= 1)
-                                                ? _c("div", [
-                                                    _c("b", [
-                                                      _vm._v(
-                                                        _vm._s(
-                                                          schedule
-                                                            .match_detail[1]
-                                                            .score
-                                                        ) +
-                                                          "-" +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[1]
-                                                              .wicket
-                                                          ) +
-                                                          " (" +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[1]
-                                                              .over
-                                                          ) +
-                                                          "." +
-                                                          _vm._s(
-                                                            schedule
-                                                              .match_detail[1]
-                                                              .overball
-                                                          ) +
-                                                          ")"
-                                                      )
-                                                    ])
-                                                  ])
-                                                : _vm._e()
-                                            ])
+                                          ? _c(
+                                              "span",
+                                              {
+                                                staticClass: "text-danger",
+                                                staticStyle: {
+                                                  "font-size": "12px"
+                                                }
+                                              },
+                                              [_vm._v("* need in * balls")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        schedule.status === null
+                                          ? _c(
+                                              "span",
+                                              {
+                                                staticClass: "text-danger",
+                                                staticStyle: {
+                                                  "font-size": "12px"
+                                                }
+                                              },
+                                              [_vm._v(_vm._s(schedule.times))]
+                                            )
                                           : _vm._e()
                                       ]
                                     )
                                   ]
-                                ),
-                                _vm._v(" "),
-                                schedule.status === 1 || schedule.status === 1
-                                  ? _c(
-                                      "span",
-                                      {
-                                        staticClass: "text-danger",
-                                        staticStyle: { "font-size": "12px" }
-                                      },
-                                      [
-                                        _vm._v(
-                                          _vm._s(schedule.toss) +
-                                            " won the toss & choose " +
-                                            _vm._s(schedule.choose) +
-                                            " first"
-                                        )
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                schedule.status === 3
-                                  ? _c(
-                                      "span",
-                                      {
-                                        staticClass: "text-danger",
-                                        staticStyle: { "font-size": "12px" }
-                                      },
-                                      [_vm._v("* need in * balls")]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                schedule.status === null
-                                  ? _c(
-                                      "span",
-                                      {
-                                        staticClass: "text-danger",
-                                        staticStyle: { "font-size": "12px" }
-                                      },
-                                      [_vm._v(_vm._s(schedule.times))]
-                                    )
-                                  : _vm._e()
-                              ]
+                                )
+                              ],
+                              1
                             )
-                          ]
-                        )
-                      ],
-                      1
+                          : _vm._e()
+                      ]
                     )
                   }),
                   0
@@ -47298,6 +47938,12 @@ var render = function() {
         ])
       : _vm.matchScorecard.isMatch
       ? _c("div", { attrs: { id: "scorecardDetail" } }, [
+          _vm.matchScorecard.match_status === 4
+            ? _c("div", { staticClass: "table-header" }, [
+                _c("span", [_vm._v("India won by 4 runs")])
+              ])
+            : _vm._e(),
+          _vm._v(" "),
           _c(
             "div",
             {
@@ -47370,35 +48016,35 @@ var render = function() {
                                         player.bt_status == 10
                                           ? _c("div", [
                                               _vm._v(
-                                                "\n                                        " +
+                                                "\n                                    " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n                                        "
+                                                  "\n                                    "
                                               ),
                                               _c("p", [_vm._v("Batting")])
                                             ])
                                           : player.bt_status == 11
                                           ? _c("div", [
                                               _vm._v(
-                                                "\n                                        " +
+                                                "\n                                    " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n                                        "
+                                                  "\n                                    "
                                               ),
                                               _c("p", [_vm._v("Batting")])
                                             ])
                                           : _c("div", [
                                               _vm._v(
-                                                "\n                                        " +
+                                                "\n                                    " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n\n                                        "
+                                                  "\n\n                                    "
                                               ),
                                               player.wicket_type == "bold"
                                                 ? _c("p", [
@@ -47443,7 +48089,7 @@ var render = function() {
                                                 : player.wicket_type == "lbw"
                                                 ? _c("p", [
                                                     _vm._v(
-                                                      "lbw\n                                            " +
+                                                      "lbw\n                                        " +
                                                         _vm._s(
                                                           player.wicketPrimary
                                                             .player_name
@@ -47456,7 +48102,7 @@ var render = function() {
                                                     .player_name == "--"
                                                 ? _c("p", [
                                                     _vm._v(
-                                                      "\n                                            runout (" +
+                                                      "\n                                        runout (" +
                                                         _vm._s(
                                                           player.wicketPrimary
                                                             .player_name
@@ -47569,8 +48215,7 @@ var render = function() {
                                               player.bt_runs,
                                               player.bt_balls
                                             )
-                                          ) +
-                                            "\n                                "
+                                          ) + "\n                            "
                                         )
                                       ]
                                     )
@@ -47604,7 +48249,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(
-                            "\n                                    b " +
+                            "\n                                b " +
                               _vm._s(_vm.matchScorecard.team1.extras.byes) +
                               ", lb " +
                               _vm._s(_vm.matchScorecard.team1.extras.legbyes) +
@@ -47629,7 +48274,7 @@ var render = function() {
                               _vm._s(_vm.matchScorecard.team1.score.score) +
                                 " -" +
                                 _vm._s(_vm.matchScorecard.team1.score.wicket) +
-                                "\n                                    (" +
+                                "\n                                (" +
                                 _vm._s(_vm.matchScorecard.team1.score.over) +
                                 "." +
                                 _vm._s(
@@ -47671,11 +48316,11 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                    " +
+                                          "\n                                " +
                                             _vm._s(
                                               player.playerDetail.player_name
                                             ) +
-                                            "\n                                "
+                                            "\n                            "
                                         )
                                       ]
                                     )
@@ -47697,7 +48342,17 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("td", [_vm._v(_vm._s(player.bw_wickets))]),
                                 _vm._v(" "),
-                                _c("td", [_vm._v("12.2")])
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.calculateBowlingEconomy(
+                                        player.bw_runs,
+                                        player.bw_over,
+                                        player.bw_overball
+                                      )
+                                    )
+                                  )
+                                ])
                               ]
                             )
                           : _vm._e()
@@ -47709,43 +48364,47 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "team-header",
-              on: {
-                click: function($event) {
-                  _vm.team2 = !_vm.team2
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "row m-0" }, [
-                _c("div", { staticClass: "col-6 team-name p-0" }, [
-                  _c("span", [
-                    _vm._v(
-                      _vm._s(_vm.matchScorecard.team2.detail.team_code) + " inn"
-                    )
+          _vm.matchScorecard.match_status === 3 ||
+          _vm.matchScorecard.match_status === 4
+            ? _c(
+                "div",
+                {
+                  staticClass: "team-header",
+                  on: {
+                    click: function($event) {
+                      _vm.team2 = !_vm.team2
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "row m-0" }, [
+                    _c("div", { staticClass: "col-6 team-name p-0" }, [
+                      _c("span", [
+                        _vm._v(
+                          _vm._s(_vm.matchScorecard.team2.detail.team_code) +
+                            " inn"
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-6 team-score p-0" }, [
+                      _c("span", [
+                        _vm._v(
+                          _vm._s(_vm.matchScorecard.team2.score.score) +
+                            " -" +
+                            _vm._s(_vm.matchScorecard.team2.score.wicket) +
+                            " (" +
+                            _vm._s(_vm.matchScorecard.team2.score.over) +
+                            "." +
+                            _vm._s(_vm.matchScorecard.team2.score.overball) +
+                            ")"
+                        )
+                      ])
+                    ])
                   ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-6 team-score p-0" }, [
-                  _c("span", [
-                    _vm._v(
-                      _vm._s(_vm.matchScorecard.team2.score.score) +
-                        " -" +
-                        _vm._s(_vm.matchScorecard.team2.score.wicket) +
-                        " (" +
-                        _vm._s(_vm.matchScorecard.team2.score.over) +
-                        "." +
-                        _vm._s(_vm.matchScorecard.team2.score.overball) +
-                        ")"
-                    )
-                  ])
-                ])
-              ])
-            ]
-          ),
+                ]
+              )
+            : _vm._e(),
           _vm._v(" "),
           _vm.team2
             ? _c("div", { attrs: { id: "team2" } }, [
@@ -47780,35 +48439,35 @@ var render = function() {
                                         player.bt_status == 10
                                           ? _c("div", [
                                               _vm._v(
-                                                "\n                                        " +
+                                                "\n                                    " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n                                        "
+                                                  "\n                                    "
                                               ),
                                               _c("p", [_vm._v("Batting")])
                                             ])
                                           : player.bt_status == 11
                                           ? _c("div", [
                                               _vm._v(
-                                                "\n                                        " +
+                                                "\n                                    " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n                                        "
+                                                  "\n                                    "
                                               ),
                                               _c("p", [_vm._v("Batting")])
                                             ])
                                           : _c("div", [
                                               _vm._v(
-                                                "\n                                        " +
+                                                "\n                                    " +
                                                   _vm._s(
                                                     player.playerDetail
                                                       .player_name
                                                   ) +
-                                                  "\n\n                                        "
+                                                  "\n\n                                    "
                                               ),
                                               player.wicket_type == "bold"
                                                 ? _c("p", [
@@ -47853,7 +48512,7 @@ var render = function() {
                                                 : player.wicket_type == "lbw"
                                                 ? _c("p", [
                                                     _vm._v(
-                                                      "lbw\n                                            " +
+                                                      "lbw\n                                        " +
                                                         _vm._s(
                                                           player.wicketPrimary
                                                             .player_name
@@ -47866,7 +48525,7 @@ var render = function() {
                                                     .player_name == "--"
                                                 ? _c("p", [
                                                     _vm._v(
-                                                      "\n                                            runout (" +
+                                                      "\n                                        runout (" +
                                                         _vm._s(
                                                           player.wicketPrimary
                                                             .player_name
@@ -47979,8 +48638,7 @@ var render = function() {
                                               player.bt_runs,
                                               player.bt_balls
                                             )
-                                          ) +
-                                            "\n                                "
+                                          ) + "\n                            "
                                         )
                                       ]
                                     )
@@ -48014,7 +48672,7 @@ var render = function() {
                             )
                           ]),
                           _vm._v(
-                            "\n                                    b " +
+                            "\n                                b " +
                               _vm._s(_vm.matchScorecard.team2.extras.byes) +
                               ", lb " +
                               _vm._s(_vm.matchScorecard.team2.extras.legbyes) +
@@ -48039,7 +48697,7 @@ var render = function() {
                               _vm._s(_vm.matchScorecard.team2.score.score) +
                                 " -" +
                                 _vm._s(_vm.matchScorecard.team2.score.wicket) +
-                                "\n                                    (" +
+                                "\n                                (" +
                                 _vm._s(_vm.matchScorecard.team2.score.over) +
                                 "." +
                                 _vm._s(
@@ -48081,11 +48739,11 @@ var render = function() {
                                       },
                                       [
                                         _vm._v(
-                                          "\n                                     " +
+                                          "\n                                " +
                                             _vm._s(
                                               player.playerDetail.player_name
                                             ) +
-                                            "\n                                "
+                                            "\n                            "
                                         )
                                       ]
                                     )
@@ -48107,7 +48765,17 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("td", [_vm._v(_vm._s(player.bw_wickets))]),
                                 _vm._v(" "),
-                                _c("td", [_vm._v("12.2")])
+                                _c("td", [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.calculateBowlingEconomy(
+                                        player.bw_runs,
+                                        player.bw_over,
+                                        player.bw_overball
+                                      )
+                                    )
+                                  )
+                                ])
                               ]
                             )
                           : _vm._e()
@@ -48582,7 +49250,11 @@ var render = function() {
                   _vm.type === "mostFours" ||
                   _vm.type === "mostHundreds" ||
                   _vm.type === "mostFifties"
-                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("M")])
+                    ? _c("th", { attrs: { scope: "col" } }, [
+                        _vm._v(
+                          "\n                        M\n                    "
+                        )
+                      ])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.type === "mostRuns" ||
@@ -48592,7 +49264,11 @@ var render = function() {
                   _vm.type === "mostFours" ||
                   _vm.type === "mostHundreds" ||
                   _vm.type === "mostFifties"
-                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("I")])
+                    ? _c("th", { attrs: { scope: "col" } }, [
+                        _vm._v(
+                          "\n                        I\n                    "
+                        )
+                      ])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.type === "mostRuns" ||
@@ -48602,7 +49278,11 @@ var render = function() {
                   _vm.type === "mostFours" ||
                   _vm.type === "mostHundreds" ||
                   _vm.type === "mostFifties"
-                    ? _c("th", { attrs: { scope: "col" } }, [_vm._v("R")])
+                    ? _c("th", { attrs: { scope: "col" } }, [
+                        _vm._v(
+                          "\n                        R\n                    "
+                        )
+                      ])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.type === "highestScores"
@@ -48697,9 +49377,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                " +
+                              "\n                            " +
                                 _vm._s(stat.player.player_name) +
-                                "\n                            "
+                                "\n                        "
                             )
                           ]
                         )
@@ -48714,7 +49394,13 @@ var render = function() {
                     _vm.type === "mostFours" ||
                     _vm.type === "mostHundreds" ||
                     _vm.type === "mostFifties"
-                      ? _c("td", [_vm._v(_vm._s(stat.matches))])
+                      ? _c("td", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(stat.matches) +
+                              "\n                    "
+                          )
+                        ])
                       : _vm._e(),
                     _vm._v(" "),
                     _vm.type === "highestScores"
@@ -48728,7 +49414,13 @@ var render = function() {
                     _vm.type === "mostFours" ||
                     _vm.type === "mostHundreds" ||
                     _vm.type === "mostFifties"
-                      ? _c("td", [_vm._v(_vm._s(stat.bt_innings))])
+                      ? _c("td", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(stat.bt_innings) +
+                              "\n                    "
+                          )
+                        ])
                       : _vm._e(),
                     _vm._v(" "),
                     _vm.type === "highestScores"
@@ -48742,7 +49434,13 @@ var render = function() {
                     _vm.type === "mostFours" ||
                     _vm.type === "mostHundreds" ||
                     _vm.type === "mostFifties"
-                      ? _c("td", [_vm._v(_vm._s(stat.bt_runs))])
+                      ? _c("td", [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(stat.bt_runs) +
+                              "\n                    "
+                          )
+                        ])
                       : _vm._e(),
                     _vm._v(" "),
                     _vm.type === "highestScores"
@@ -48778,7 +49476,7 @@ var render = function() {
                                 stat.bt_runs,
                                 stat.bt_balls
                               )
-                            )
+                            ) + "\n                    "
                           )
                         ])
                       : _vm._e(),
@@ -48810,7 +49508,8 @@ var render = function() {
                           _vm._v(
                             _vm._s(stat.bw_over) +
                               "." +
-                              _vm._s(stat.bw_overball)
+                              _vm._s(stat.bw_overball) +
+                              "\n                    "
                           )
                         ])
                       : _vm._e(),
@@ -64989,7 +65688,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PlayerBatting_vue_vue_type_template_id_61150507_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlayerBatting.vue?vue&type=template&id=61150507&scoped=true& */ "./resources/js/components/PlayerBatting.vue?vue&type=template&id=61150507&scoped=true&");
 /* harmony import */ var _PlayerBatting_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlayerBatting.vue?vue&type=script&lang=js& */ "./resources/js/components/PlayerBatting.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _PlayerBatting_vue_vue_type_style_index_0_id_61150507_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css& */ "./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -64997,7 +65698,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _PlayerBatting_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _PlayerBatting_vue_vue_type_template_id_61150507_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _PlayerBatting_vue_vue_type_template_id_61150507_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -65026,6 +65727,22 @@ component.options.__file = "resources/js/components/PlayerBatting.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBatting_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerBatting.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBatting.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBatting_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBatting_vue_vue_type_style_index_0_id_61150507_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBatting.vue?vue&type=style&index=0&id=61150507&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBatting_vue_vue_type_style_index_0_id_61150507_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBatting_vue_vue_type_style_index_0_id_61150507_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBatting_vue_vue_type_style_index_0_id_61150507_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBatting_vue_vue_type_style_index_0_id_61150507_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBatting_vue_vue_type_style_index_0_id_61150507_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -65058,7 +65775,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PlayerBowling_vue_vue_type_template_id_3add1ac4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlayerBowling.vue?vue&type=template&id=3add1ac4&scoped=true& */ "./resources/js/components/PlayerBowling.vue?vue&type=template&id=3add1ac4&scoped=true&");
 /* harmony import */ var _PlayerBowling_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlayerBowling.vue?vue&type=script&lang=js& */ "./resources/js/components/PlayerBowling.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _PlayerBowling_vue_vue_type_style_index_0_id_3add1ac4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css& */ "./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -65066,7 +65785,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _PlayerBowling_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _PlayerBowling_vue_vue_type_template_id_3add1ac4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
   _PlayerBowling_vue_vue_type_template_id_3add1ac4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -65095,6 +65814,22 @@ component.options.__file = "resources/js/components/PlayerBowling.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBowling_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerBowling.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBowling.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBowling_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBowling_vue_vue_type_style_index_0_id_3add1ac4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlayerBowling.vue?vue&type=style&index=0&id=3add1ac4&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBowling_vue_vue_type_style_index_0_id_3add1ac4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBowling_vue_vue_type_style_index_0_id_3add1ac4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBowling_vue_vue_type_style_index_0_id_3add1ac4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBowling_vue_vue_type_style_index_0_id_3add1ac4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PlayerBowling_vue_vue_type_style_index_0_id_3add1ac4_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

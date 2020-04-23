@@ -189,7 +189,8 @@
         width: 100vw;
         text-align: center;
         background: #f8fafc;
-        margin-top: 45vh;
+        /*margin-top: 45vh;*/
+        padding : 35vh 0 25vh 0;
     }
 
     #loader{

@@ -1,34 +1,37 @@
 <template>
     <div id="liveMatch">
 
-        <div id="not_started" v-if="liveMatchScorecard.isMatch === 'not_found'">
+        <div id="not_started" v-if="liveMatchScorecard.match_status === 0">
             <span>Match has not started yet.</span>
-            <!--            <div class="loader-block-main">-->
-            <!--                <div class="loader-bx"></div>-->
-            <!--            </div>-->
         </div>
 
-        <div id="liveMatchShow" v-else-if="liveMatchScorecard.isMatch">
-        <div class="card">
-                <div class="card-body">
+        <div id="liveMatchShow" v-else-if="liveMatchScorecard.match_status === 1 || liveMatchScorecard.match_status === 2 || liveMatchScorecard.match_status === 3">
+        <div class="card" >
+                <div class="card-body" >
                     <div class="row m-0">
                         <div class="col-6 main-score p-0">
                             <h6>{{ liveMatchScorecard.match_detail.team_detail.team_code }}</h6>
                             <p><b>{{ liveMatchScorecard.match_detail.score }}-{{ liveMatchScorecard.match_detail.wicket }} </b><span class="text-muted">({{ liveMatchScorecard.match_detail.over }}.{{ liveMatchScorecard.match_detail.overball }})</span></p>
                         </div>
                         <div class="col-3 rrr p-0">
-                            <span class="text-muted">RRR</span>
-                            <p>5.53</p>
+                            <div v-if="liveMatchScorecard.match_status === 3">
+                                <span class="text-muted">RRR</span>
+                                <p>{{ calculateRequiredRunRate(liveMatchScorecard.remaining_runs,liveMatchScorecard.remaining_balls)}}</p>
+                            </div>
                         </div>
                         <div class="col-3 crr p-0">
                             <span class="text-muted">CRR</span>
                             <p>{{ calculateRunRate(liveMatchScorecard.match_detail.score,liveMatchScorecard.match_detail.over,liveMatchScorecard.match_detail.overball) }}</p>
                         </div>
-<!--                        <div class="col-12 need-run">-->
-<!--                            <p class="m-0">India need 85 runs to win</p>-->
-<!--                        </div>-->
+                        <div class="col-12 need-run p-0" v-if="liveMatchScorecard.match_status === 3">
+                            <p class="m-0">India need {{liveMatchScorecard.remaining_runs}} runs in {{liveMatchScorecard.remaining_balls}} balls</p>
+                        </div>
+                        <div class="col-12 need-run p-0" v-if="liveMatchScorecard.match_status === 2">
+                            <p class="m-0">Inning Break</p>
+                        </div>
                     </div>
                 </div>
+
 
             </div>
         <ul class="list-group">
@@ -38,7 +41,9 @@
                     <p>P'SHIP <span> {{liveMatchScorecard.partnership.score}} ({{liveMatchScorecard.partnership.balls}}) </span></p>
                 </div>
                 <div class="col-6 target p-0">
-                    <p>TARGET <span> 170</span></p>
+                    <div v-if="liveMatchScorecard.match_status === 3">
+                        <p>TARGET <span>{{liveMatchScorecard.target}}</span></p>
+                    </div>
                 </div>
               </div >
             </li>
@@ -107,7 +112,9 @@
                 </li>
             </ul>
         </div>
-
+        <div id="matchResult" v-else-if="liveMatchScorecard.match_status === 4">
+                <p> mathc result</p>
+        </div>
         <div id="loader" v-else>
                 <div id="preloader"></div>
 <!--            <p>blank</p>-->
@@ -167,11 +174,21 @@
                 return run_rate;
             },
 
+            calculateRequiredRunRate(remaining_runs,remaining_balls){
+              let over = parseInt(remaining_balls / 6);
+              let balls = remaining_balls % 6;
+              let overs = Number(over) + (Number(balls) * 10)/60;
+              let required_run_rate = (Number(remaining_runs)/Number(overs)).toFixed(2);
+              return required_run_rate;
+            },
+
             calculateBowlingEconomy(runs,overs,balls){
                 let over = Number(overs) + (Number(balls)*10)/60;
                 let economy = (Number(runs)/Number(over)).toFixed(2);
                 return economy;
             },
+
+
 
 
         },
@@ -180,6 +197,7 @@
             return {
                 'liveMatchScorecard' : {
                     'match_detail' : null,
+                    'match_status' : null,
 
                     'partnership' : null,
 
@@ -223,6 +241,7 @@
     #liveMatch .need-run{
         color : red;
         margin-top: 10px;
+        font-size: .9rem;
     }
 
     #liveMatch .list-group-item{
@@ -292,7 +311,9 @@
         width: 100vw;
         text-align: center;
         background: #f8fafc;
-        margin-top: 45vh;
+        /*margin-top: 45vh;*/
+        padding : 35vh 0 25vh 0;
+        /*overflow : hidden;*/
     }
 
     #liveMatch .list-group .list-group-item{
