@@ -203,7 +203,7 @@
 
     #statsDetail .table thead {
         background: #dbdbdb;
-        color: #1e72fa;
+        color: #dc3545;
     }
 
     #statsDetail .table thead tr th {
@@ -212,7 +212,7 @@
 
 
     #statsDetail .table-header {
-        background: #1e72fa;
+        background: #dc3545;
         color: #FFF;
         text-align: center;
     }
@@ -232,7 +232,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }

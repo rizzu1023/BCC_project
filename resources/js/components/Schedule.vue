@@ -6,7 +6,7 @@
             <div  v-for="schedule in schedules" :key="schedule.id" :data="schedule">
                 <div v-if="schedule.status !== 4">
                 <router-link :to="'/tournament/'+schedule.tournament_id+'/match/' + schedule.id + '/' + schedule.team1_id.id + '/' + schedule.team2_id.id + '/info'" style="text-decoration:none; color:#000">
-                    <li class="list-group-item" v-on:click="header_string(schedule.team1_id.team_code,schedule.team2_id.team_code)">
+                    <li class="list-group-item">
                         <span class="text-muted" style="font-size: 12px">Match {{ schedule.match_no }}</span>
                         <div class="row m-0 mt-1 score-card">
                             <div class="col-6 p-0 team-name">
@@ -37,6 +37,7 @@
                             </div>
                         </div>
                         <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 0 || schedule.status === 1">{{schedule.toss}} won the toss & choose {{schedule.choose}} first</span>
+                        <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 2">Inning Break</span>
                         <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 3">* need in * balls</span>
                         <span class="text-danger" style="font-size: 12px" v-if="schedule.status === null">{{schedule.times}}</span>
 
@@ -88,11 +89,7 @@
 
             },
 
-            header_string(team1, team2){
-                var value = team1 + ' vs ' + team2;
-                Event.$emit('headerString',value);
 
-            },
 
         },
 
@@ -136,7 +133,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }

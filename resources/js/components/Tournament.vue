@@ -5,7 +5,7 @@
                 <div v-for="tournament in tournaments" :key="tournament.id" :data="tournament">
                     <router-link :to="'/tournament/' + tournament.id + '/schedule'"
                                  style="text-decoration:none; color:#000">
-                        <li class="list-group-item" v-on:click="header_string(tournament.tournament_name)">
+                        <li class="list-group-item">
                             <h5 v-text="tournament.tournament_name"></h5>
                             <span> Jan 24 - Apr 09</span>
                         </li>
@@ -37,10 +37,6 @@
 
 
         methods: {
-
-            header_string(tournament) {
-                Event.$emit('headerString', tournament);
-            },
 
             loadTournaments() {
                 var $url = this.$domainName + "tournament";
@@ -94,7 +90,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }

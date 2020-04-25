@@ -37,18 +37,8 @@
                 <span>Players</span>
                 </a>
               </li>
-              <li class="treeview">
-                <a href="{{route('Schedule.index')}}">
-                <i class="fa fa-calendar"></i>
-                <span>Schedule</span>
-                </a>
-              </li>
-              <li class="treeview">
-                <a href="{{route('LiveScore.index')}}">
-                <i class="fa fa-calendar"></i>
-                <span>Live Score</span>
-                </a>
-              </li>
+
+
               <li class="treeview">
                 <a href="{{route('Batting.index')}}">
                 <i class="fa fa-pie-chart"></i>
@@ -61,12 +51,7 @@
                 <span>Bowling</span>
                 </a>
               </li>
-              <li class="treeview">
-                <a href="{{route('PointsTable.index')}}">
-                <i class="fa fa-bars"></i>
-                <span>Points Table</span>
-                </a>
-              </li>
+
 
               <li class="treeview">
                 <a href="{{route('BrowseResult')}}">

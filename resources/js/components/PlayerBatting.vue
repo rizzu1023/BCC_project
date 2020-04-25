@@ -100,6 +100,9 @@
 </script>
 
 <style scoped>
+    #playerBatting .table{
+        margin: 0;
+    }
     #playerBatting .table tbody tr td {
         font-size: 0.8rem;
     }
@@ -110,7 +113,7 @@
 
     #playerBatting .table thead {
         background: #dbdbdb;
-        color: #1e72fa;
+        color: #dc3545;
     }
 
     #playerBatting .table thead tr th {
@@ -119,7 +122,7 @@
 
 
     #playerBatting .table-header {
-        background: #1e72fa;
+        background: #dc3545;
         color: #FFF;
         text-align: center;
     }

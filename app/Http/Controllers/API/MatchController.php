@@ -115,7 +115,7 @@ class MatchController extends Controller
                     }
                     else{
                         $score = $p1->score - 0;
-                        $balls = $this->calculating_balls($p1->over,0,$p1->overball - 1,0);
+                        $balls = $this->calculating_balls($p1->over,0,$p1->overball,0);
                         $partnership['score'] = $score;
                         $partnership['balls'] = $balls;
                     }

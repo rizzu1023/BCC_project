@@ -359,7 +359,7 @@
                                     <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
                                     <input type="hidden" name="bw_team_id" value="{{$bowling}}">
                                     <input type="hidden" name="bt_team_id" value="{{$batting}}">
-                                    <input type="hidden" name="newBatsman" value="1">
+                                    <input type="hidden" name="value" value="W">
 
                                 </div>
                                 <div class="modal-footer">
@@ -476,8 +476,7 @@
                                 <button id="six" type="submit" value="6" class="bt">6</button>
                                 <br><br>
 
-                                <button id="wicket" type="submit" value="W" class="bt">W</button>
-                                <br><br>
+
 
 
                                 <button id="wide" type="submit" value="wd" class="bt">Wide + 0</button>
@@ -509,6 +508,8 @@
                                 <br><br>
 
                             </form>
+                                <button id="wicket_button">W</button>
+
 
 
                         </div>
@@ -543,70 +544,72 @@
             });
 
 
-            if (isWicket) {
-                $("#wicketModal").modal('show');
+                $('#wicket_button').on('click',function(){
+                    $("#wicketModal").modal('show');
 
-                $('#div_wicket_primary').hide();
-                $('#div_wicket_secondary').hide();
+                    $('#div_wicket_primary').hide();
+                    $('#div_wicket_secondary').hide();
 
-                $('#wicket_type').on('change', function () {
-                    var wicket_type = $("#wicket_type").val();
-                    if (wicket_type === 'catch') {
-                        $('#wicket_secondary').prop('disabled', false);
-                        $('#wicket_secondary').prop('required', true);
-                        $('#label_wicket_secondary').html('Catch By');
-                        $('#label_wicket_primary').html('Bowl By');
-                        $('#div_wicket_primary').show();
-                        $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_secondary').show();
-                        $('#div_batsman_cross').show();
+                    $('#wicket_type').on('change', function () {
+                        var wicket_type = $("#wicket_type").val();
+                        if (wicket_type === 'catch') {
+                            $('#wicket_secondary').prop('disabled', false);
+                            $('#wicket_secondary').prop('required', true);
+                            $('#label_wicket_secondary').html('Catch By');
+                            $('#label_wicket_primary').html('Bowl By');
+                            $('#div_wicket_primary').show();
+                            $('#div_wicket_primary_runout').hide();
+                            $('#div_wicket_secondary').show();
+                            $('#div_batsman_cross').show();
 
-                    }
-                    if (wicket_type === 'stump') {
-                        $('#wicket_secondary').prop('disabled', false);
-                        $('#wicket_secondary').prop('required', true);
-                        $('#label_wicket_secondary').html('Stumped By');
-                        $('#label_wicket_primary').html('Bowl By');
-                        $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
-                        $('#div_wicket_secondary').show();
+                        }
+                        if (wicket_type === 'stump') {
+                            $('#wicket_secondary').prop('disabled', false);
+                            $('#wicket_secondary').prop('required', true);
+                            $('#label_wicket_secondary').html('Stumped By');
+                            $('#label_wicket_primary').html('Bowl By');
+                            $('#div_wicket_primary_runout').hide();
+                            $('#div_wicket_primary').show();
+                            $('#div_wicket_secondary').show();
 
-                    }
-                    if (wicket_type === 'runout') {
-                        $('#wicket_secondary').prop('disabled', false);
-                        $('#wicket_secondary').prop('required', false);
-                        $('#label_wicket_secondary').html('Run out By(Optional)');
-                        $('#div_wicket_primary').hide();
-                        $('#div_wicket_primary_runout').show();
-                        $('#div_wicket_secondary').show();
-                    }
-                    if (wicket_type === 'hitwicket') {
-                        $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowl By');
-                        $('#div_wicket_secondary').hide();
-                        $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
+                        }
+                        if (wicket_type === 'runout') {
+                            $('#wicket_secondary').prop('disabled', false);
+                            $('#wicket_secondary').prop('required', false);
+                            $('#label_wicket_secondary').html('Run out By(Optional)');
+                            $('#div_wicket_primary').hide();
+                            $('#div_wicket_primary_runout').show();
+                            $('#div_wicket_secondary').show();
+                        }
+                        if (wicket_type === 'hitwicket') {
+                            $('#wicket_secondary').prop('disabled', true);
+                            $('#label_wicket_primary').html('Bowl By');
+                            $('#div_wicket_secondary').hide();
+                            $('#div_wicket_primary_runout').hide();
+                            $('#div_wicket_primary').show();
 
-                    }
-                    if (wicket_type === 'bold') {
-                        $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowled By');
-                        $('#div_wicket_secondary').hide();
-                        $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
+                        }
+                        if (wicket_type === 'bold') {
+                            $('#wicket_secondary').prop('disabled', true);
+                            $('#label_wicket_primary').html('Bowled By');
+                            $('#div_wicket_secondary').hide();
+                            $('#div_wicket_primary_runout').hide();
+                            $('#div_wicket_primary').show();
 
 
-                    }
-                    if (wicket_type === 'lbw') {
-                        $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowl By');
-                        $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
-                        $('#div_wicket_secondary').hide();
-                    }
+                        }
+                        if (wicket_type === 'lbw') {
+                            $('#wicket_secondary').prop('disabled', true);
+                            $('#label_wicket_primary').html('Bowl By');
+                            $('#div_wicket_primary_runout').hide();
+                            $('#div_wicket_primary').show();
+                            $('#div_wicket_secondary').hide();
+                        }
                 });
 
-            }
+                });
+
+
         });
     </script>
 

@@ -53,7 +53,11 @@ class LiveScoreController extends Controller
 {
     public function LiveScoreIndex()
     {
-        $schedule = Schedule::all();
+        $schedule = Schedule::WhereIn('tournament_id', function($query) {
+            $query->select('id')
+                ->from('tournaments')
+                ->where('user_id', auth()->user()->id);
+        })->get();
         $start = Match::all();
         return view('Admin/LiveScore/index', compact('schedule', 'start'));
     }
@@ -201,61 +205,10 @@ class LiveScoreController extends Controller
             if ($request->newOver) event(new newOverEvent($request));
 
              if($request->endInning){event(new endInningEvent($request));}
-            if ($request->newBatsman) {event(new wicketEvent($request));}
-
-//              team ko update karega
-//                MatchDetail::where('match_id', $request->match_id)
-//                    ->where('tournament', $request->tournament)
-//                    ->where('team_id', $request->bt_team_id)
-//                    ->increment('wicket', 1, ['overball' => DB::raw('overball + 1')]);
-
-//                  current bowler ko update karega
-//                MatchPlayers::where('match_id', $request->match_id)
-//                    ->where('tournament', $request->tournament)
-//                    ->where('team_id', $request->bw_team_id)
-//                    ->where('bw_status', '11')
-//                    ->increment('bw_overball', 1, ['bw_wickets' => DB::raw('bw_wickets + 1')]);
-
-//              current batsman fetch karega
-//                $current_batsman = MatchPlayers::where('match_id', $request->match_id)
-//                    ->where('tournament', $request->tournament)
-//                    ->where('team_id', $request->bt_team_id)
-//                    ->where('bt_status', 11)->first();
-
-//              current batsman ko batting se hatayega
-             /*   if ($request->wicket_type == 'bold' || $request->wicket_type == 'lbw' || $request->wicket_type == 'hitwicket') {
-                    $current_batsman->wicket_type = $request->wicket_type;
-                    $current_batsman->wicket_primary = $request->wicket_primary;
-                    $current_batsman->bt_balls = $current_batsman->bt_balls + 1;
-                    $current_batsman->bt_status = 0;
-                    $current_batsman->save();
-                }
-                if ($request->wicket_type == 'catch' || $request->wicket_type == 'stump') {
-                    $current_batsman->wicket_type = $request->wicket_type;
-                    $current_batsman->wicket_primary = $request->wicket_primary;
-                    $current_batsman->wicket_secondary = $request->wicket_secondary;
-                    $current_batsman->bt_balls = $current_batsman->bt_balls + 1;
-                    $current_batsman->bt_status = 0;
-                    $current_batsman->save();
-                }*/
-
-
-//                naye batsman ko batting pe layega
-//                MatchPlayers::where('match_id', $request->match_id)
-//                    ->where('tournament', $request->tournament)
-//                    ->where('team_id', $request->bt_team_id)
-//                    ->where('player_id', $request->newBatsman_id)
-//                    ->update(['bt_status' => 11]);
-
-//
-//                MatchDetail::where('match_id', $request->match_id)
-//                    ->where('tournament', $request->tournament)
-//                    ->where('team_id', $request->bt_team_id)
-//                    ->update(['isWicket' => 0]);
-
-
         }
+
         if ($request->value) {
+            if ($request->value == 'W') {event(new wicketEvent($request));}
 
             if ($request->value == 8) event(new dotBallEvent($request));
             if ($request->value == 1) event(new OneRunEvent($request));
@@ -288,12 +241,7 @@ class LiveScoreController extends Controller
             if ($request->value == 'nb5') event(new noballFiveRunEvent($request));
             if ($request->value == 'nb6') event(new noballSixRunEvent($request));
 
-            if ($request->value == "W") {
-                MatchDetail::where('match_id', $request->match_id)
-                    ->where('tournament_id', $request->tournament)
-                    ->where('team_id', $request->bt_team_id)
-                    ->update(['isWicket' => 1]);
-            }
+
 
             $userjobs = "true";
             // $returnHTML = view('Admin/LiveScore/show')->with('userjobs', $userjobs)->render();

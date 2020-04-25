@@ -94,6 +94,9 @@
 </script>
 
 <style scoped>
+    #playerBowling .table{
+        margin: 0;
+    }
     #playerBowling .table tbody tr td {
         font-size: 0.8rem;
     }
@@ -104,7 +107,7 @@
 
     #playerBowling .table thead {
         background: #dbdbdb;
-        color: #1e72fa;
+        color: #dc3545;
     }
 
     #playerBowling .table thead tr th {
@@ -113,7 +116,7 @@
 
 
     #playerBowling .table-header {
-        background: #1e72fa;
+        background: #dc3545;
         color: #FFF;
         text-align: center;
     }

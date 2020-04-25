@@ -70,7 +70,7 @@
                         if (direction === 'left')
                             route.replace('teams');
                         if (direction === 'right')
-                            route.replace('result');
+                            route.replace('schedule');
                     }, allowPageScroll: "auto"
                 });
             });
@@ -135,7 +135,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }

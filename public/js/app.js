@@ -3144,7 +3144,7 @@ __webpack_require__.r(__webpack_exports__);
       $("#result").swipe({
         swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
           if (direction === 'left') route.replace('teams');
-          if (direction === 'right') route.replace('result');
+          if (direction === 'right') route.replace('schedule');
         },
         allowPageScroll: "auto"
       });
@@ -3242,6 +3242,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Schedule",
   mounted: function mounted() {
@@ -3266,10 +3267,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
-    },
-    header_string: function header_string(team1, team2) {
-      var value = team1 + ' vs ' + team2;
-      Event.$emit('headerString', value);
     }
   },
   data: function data() {
@@ -4222,9 +4219,6 @@ __webpack_require__.r(__webpack_exports__);
     this.loadTournaments();
   },
   methods: {
-    header_string: function header_string(tournament) {
-      Event.$emit('headerString', tournament);
-    },
     loadTournaments: function loadTournaments() {
       var _this = this;
 
@@ -8848,7 +8842,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n    font-size: .9rem;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n    margin : 0;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #dbdbdb;\n    color : #1e72fa;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n#liveMatch  #not_started[data-v-d9645c44]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n    /*overflow : hidden;*/\n}\n#liveMatch .list-group .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#liveMatch .list-group .list-group-item p[data-v-d9645c44] {\n    margin : 0;\n}\n#liveMatch .list-group .left-col[data-v-d9645c44]{\n    font-weight : bold;\n}\n#liveMatch .list-group .right-col[data-v-d9645c44]{\n    text-align : right;\n}\n#loader[data-v-d9645c44]{\n    background: #f8fafc;\n}\n#preloader[data-v-d9645c44] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-d9645c44 1s infinite linear;\n            animation: rotate-data-v-d9645c44 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n#liveMatch .card[data-v-d9645c44]{\n    border-radius : 0;\n    margin  : 0;\n    border : 0;\n}\n#liveMatch .card .card-body[data-v-d9645c44]{\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#liveMatch .card p[data-v-d9645c44]{\n    margin : 0;\n}\n#liveMatch .crr p[data-v-d9645c44], .rrr p[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .need-run[data-v-d9645c44]{\n    color : red;\n    margin-top: 10px;\n    font-size: .9rem;\n}\n#liveMatch .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-bottom: 0;\n    border-left: 0;\n    border-radius: 0;\n    padding: 12px;\n}\n#liveMatch .list-group-item p[data-v-d9645c44]{\n    margin : 0;\n    font-size : 0.7rem;\n}\n#liveMatch .list-group-item p span[data-v-d9645c44]{\n    font-weight: bold;\n}\n#liveMatch .list-group-item .target[data-v-d9645c44]{\n    text-align : right;\n}\n#liveMatch .main-score h6[data-v-d9645c44]{\n    font-size: 1.1rem;\n}\n#liveMatch table thead tr th[data-v-d9645c44]{\n    font-size: 0.7rem;\n    border : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table[data-v-d9645c44] {\n    border-collapse :collapse;\n    margin : 0;\n}\n#liveMatch table thead th[data-v-d9645c44]{\n    /*border : 0.5rem;*/\n    background: #dbdbdb;\n    color : #dc3545;\n}\n#liveMatch table tbody tr td[data-v-d9645c44]{\n    font-size : 0.65rem;\n    border-bottom : 0;\n    border-top : 0;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#liveMatch table td[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table th[data-v-d9645c44]{\n    text-align: right;\n}\n#liveMatch table td[data-v-d9645c44]:nth-child(1){\n    text-align : left;\n    color: #0198E1;\n}\n#liveMatch table th[data-v-d9645c44]:nth-child(1) {\n    text-align : left\n}\n#liveMatch  #not_started[data-v-d9645c44]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n    /*overflow : hidden;*/\n}\n#liveMatch .list-group .list-group-item[data-v-d9645c44]{\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size : 0.7rem;\n    padding: 8px 12px;\n}\n#liveMatch .list-group .list-group-item p[data-v-d9645c44] {\n    margin : 0;\n}\n#liveMatch .list-group .left-col[data-v-d9645c44]{\n    font-weight : bold;\n}\n#liveMatch .list-group .right-col[data-v-d9645c44]{\n    text-align : right;\n}\n#loader[data-v-d9645c44]{\n    background: #f8fafc;\n}\n#preloader[data-v-d9645c44] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-d9645c44 1s infinite linear;\n            animation: rotate-data-v-d9645c44 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-d9645c44 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n", ""]);
 
 // exports
 
@@ -8867,7 +8861,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #1e72fa;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.8rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n\n/*#ul1 {*/\n/*    border: 1px dotted black;*/\n/*    padding: 0px;*/\n/*    display: table;*/\n/*    width: 100%;*/\n/*    box-sizing: border-box;*/\n/*    -moz-box-sizing: border-box;*/\n/*    -webkit-box-sizing: border-box;*/\n/*}*/\n/**/\n/*#ul1 li{*/\n/*    text-align: center;*/\n/*    padding: 12px;*/\n\n\n/*    background-color: red;*/\n/*    display: table-cell;*/\n/*}*/\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-f5cef34a]{\n    background: #dc3545;\n}\n.nav-item[data-v-f5cef34a]{\n    font-size: 0.8rem;\n    background: #dc3545;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-f5cef34a]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.live .nav-item .active[data-v-f5cef34a]{\n    color : #fff;\n    background: #dc3545;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.tab-content[data-v-f5cef34a]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-f5cef34a]{\n    color : #fff;\n    text-decoration: none;\n    background: #dc3545;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-f5cef34a] {\n    position: fixed;\n    top: 56px;\n    background: #dc3545;\n    width : 100vw;\n    z-index : 1000;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-tabs a[data-v-f5cef34a]{\n    text-decoration: none;\n}\n\n/*#ul1 {*/\n/*    border: 1px dotted black;*/\n/*    padding: 0px;*/\n/*    display: table;*/\n/*    width: 100%;*/\n/*    box-sizing: border-box;*/\n/*    -moz-box-sizing: border-box;*/\n/*    -webkit-box-sizing: border-box;*/\n/*}*/\n/**/\n/*#ul1 li{*/\n/*    text-align: center;*/\n/*    padding: 12px;*/\n\n\n/*    background-color: red;*/\n/*    display: table-cell;*/\n/*}*/\n", ""]);
 
 // exports
 
@@ -8886,7 +8880,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90] {\n    background: #dbdbdb;\n    color: #1e72fa;\n    padding: 8px 12px;\n}\n#matchInfo .table-header span[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#matchInfo .card[data-v-3fc29e90] {\n    border-radius: 0;\n    border: none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    padding: 20px 12px;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90] {\n    color: #1e72fa;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90] {\n    color: #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90] {\n    border: 0;\n    border-radius: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90] {\n    margin: 0px;\n    font-size: 0.9rem;\n}\n#matchInfo .list-group .first[data-v-3fc29e90] {\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchInfo .row[data-v-3fc29e90] {\n    padding: 0;\n    margin: 0;\n}\n#matchInfo .row .col-4[data-v-3fc29e90] {\n    padding-left: 0;\n}\n#matchInfo .row .col-8[data-v-3fc29e90] {\n    padding-right: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n#matchInfo .table-header[data-v-3fc29e90] {\n    background: #dbdbdb;\n    color: #dc3545;\n    padding: 8px 12px;\n}\n#matchInfo .table-header span[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#matchInfo .card[data-v-3fc29e90] {\n    border-radius: 0;\n    border: none;\n}\n#matchInfo .card .card-body[data-v-3fc29e90] {\n    font-size: 0.8rem;\n    padding: 20px 12px;\n}\n#matchInfo .card .card-body lable[data-v-3fc29e90] {\n    color: #dc3545;\n}\n#matchInfo .card .card-body span[data-v-3fc29e90] {\n    color: #000;\n}\n#matchInfo .list-group .list-group-item[data-v-3fc29e90] {\n    border: 0;\n    border-radius: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#matchInfo .list-group .list-group-item h6[data-v-3fc29e90] {\n    margin: 0px;\n    font-size: 0.9rem;\n}\n#matchInfo .list-group .first[data-v-3fc29e90] {\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchInfo .row[data-v-3fc29e90] {\n    padding: 0;\n    margin: 0;\n}\n#matchInfo .row .col-4[data-v-3fc29e90] {\n    padding-left: 0;\n}\n#matchInfo .row .col-8[data-v-3fc29e90] {\n    padding-right: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -8905,7 +8899,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#matchOvers .card[data-v-9f8151f6]{\n    border-top : 0;\n    border-right : 0;\n    border-left : 0;\n    border-radius : 0;\n}\n#matchOvers .card-body[data-v-9f8151f6] {\n    padding : 12px;\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchOvers .card-body p[data-v-9f8151f6]{\n    font-size : .85rem;\n    margin-bottom : 6px;\n    font-weight: bold;\n}\n#matchOvers .card-body .left-col span[data-v-9f8151f6]{\n    font-size: .7rem;\n}\n#matchOvers .card-body .right-col span div[data-v-9f8151f6]{\n    background: #1e72fa;\n    color : white;\n    border-radius : 50%;\n    padding : 2px 6px;\n    font-size : .65rem;\n    margin-right: 4px;\n    display: inline-block;\n}\n#matchOvers .card-body .right-col span .four[data-v-9f8151f6]{\n    background : lightblue;\n}\n#matchOvers .card-body .right-col span .six[data-v-9f8151f6]{\n    background : pink;\n}\n#matchOvers .card-body .right-col span .one[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .two[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .legbyes[data-v-9f8151f6] {\n    background : orange;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .byes[data-v-9f8151f6] {\n    background : cyan;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .noball[data-v-9f8151f6] {\n    background : blue;\n}\n#matchOvers .card-body .right-col span .wicket[data-v-9f8151f6] {\n    background: red;\n}\n#matchOvers #not_started[data-v-9f8151f6]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n}\n#loader[data-v-9f8151f6]{\n    background: #f8fafc;\n}\n#preloader[data-v-9f8151f6] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-9f8151f6 1s infinite linear;\n            animation: rotate-data-v-9f8151f6 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-9f8151f6 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-9f8151f6 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n\n", ""]);
+exports.push([module.i, "\n#matchOvers .card[data-v-9f8151f6]{\n    border-top : 0;\n    border-right : 0;\n    border-left : 0;\n    border-radius : 0;\n}\n#matchOvers .card-body[data-v-9f8151f6] {\n    padding : 12px;\n    border-bottom: 0.05rem solid lightgray;\n}\n#matchOvers .card-body p[data-v-9f8151f6]{\n    font-size : .85rem;\n    margin-bottom : 6px;\n    font-weight: bold;\n}\n#matchOvers .card-body .left-col span[data-v-9f8151f6]{\n    font-size: .7rem;\n}\n#matchOvers .card-body .right-col span div[data-v-9f8151f6]{\n    background: #dc3545;\n    color : white;\n    border-radius : 50%;\n    padding : 2px 6px;\n    font-size : .65rem;\n    margin-right: 4px;\n    display: inline-block;\n}\n#matchOvers .card-body .right-col span .four[data-v-9f8151f6]{\n    background : lightblue;\n}\n#matchOvers .card-body .right-col span .six[data-v-9f8151f6]{\n    background : pink;\n}\n#matchOvers .card-body .right-col span .one[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .two[data-v-9f8151f6]{\n    background : green;\n}\n#matchOvers .card-body .right-col span .legbyes[data-v-9f8151f6] {\n    background : orange;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .byes[data-v-9f8151f6] {\n    background : cyan;\n    font-size: .6rem;\n}\n#matchOvers .card-body .right-col span .noball[data-v-9f8151f6] {\n    background : blue;\n}\n#matchOvers .card-body .right-col span .wicket[data-v-9f8151f6] {\n    background: red;\n}\n#matchOvers #not_started[data-v-9f8151f6]{\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n}\n#loader[data-v-9f8151f6]{\n    background: #f8fafc;\n}\n#preloader[data-v-9f8151f6] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-9f8151f6 1s infinite linear;\n            animation: rotate-data-v-9f8151f6 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-9f8151f6 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-9f8151f6 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n\n\n", ""]);
 
 // exports
 
@@ -8924,7 +8918,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#playerBatting .table tbody tr td[data-v-61150507] {\n    font-size: 0.8rem;\n}\n#playerBatting .table thead th[data-v-61150507] {\n    font-size: 0.8rem;\n}\n#playerBatting .table thead[data-v-61150507] {\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#playerBatting .table thead tr th[data-v-61150507] {\n    border: none;\n}\n#playerBatting .table-header[data-v-61150507] {\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n}\n#playerBatting .table-header span[data-v-61150507] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n", ""]);
+exports.push([module.i, "\n#playerBatting .table[data-v-61150507]{\n    margin: 0;\n}\n#playerBatting .table tbody tr td[data-v-61150507] {\n    font-size: 0.8rem;\n}\n#playerBatting .table thead th[data-v-61150507] {\n    font-size: 0.8rem;\n}\n#playerBatting .table thead[data-v-61150507] {\n    background: #dbdbdb;\n    color: #dc3545;\n}\n#playerBatting .table thead tr th[data-v-61150507] {\n    border: none;\n}\n#playerBatting .table-header[data-v-61150507] {\n    background: #dc3545;\n    color: #FFF;\n    text-align: center;\n}\n#playerBatting .table-header span[data-v-61150507] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n", ""]);
 
 // exports
 
@@ -8943,7 +8937,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#playerBowling .table tbody tr td[data-v-3add1ac4] {\n    font-size: 0.8rem;\n}\n#playerBowling .table thead th[data-v-3add1ac4] {\n    font-size: 0.8rem;\n}\n#playerBowling .table thead[data-v-3add1ac4] {\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#playerBowling .table thead tr th[data-v-3add1ac4] {\n    border: none;\n}\n#playerBowling .table-header[data-v-3add1ac4] {\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n}\n#playerBowling .table-header span[data-v-3add1ac4] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n", ""]);
+exports.push([module.i, "\n#playerBowling .table[data-v-3add1ac4]{\n    margin: 0;\n}\n#playerBowling .table tbody tr td[data-v-3add1ac4] {\n    font-size: 0.8rem;\n}\n#playerBowling .table thead th[data-v-3add1ac4] {\n    font-size: 0.8rem;\n}\n#playerBowling .table thead[data-v-3add1ac4] {\n    background: #dbdbdb;\n    color: #dc3545;\n}\n#playerBowling .table thead tr th[data-v-3add1ac4] {\n    border: none;\n}\n#playerBowling .table-header[data-v-3add1ac4] {\n    background: #dc3545;\n    color: #FFF;\n    text-align: center;\n}\n#playerBowling .table-header span[data-v-3add1ac4] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n", ""]);
 
 // exports
 
@@ -8962,7 +8956,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-37bfe506]{\n    background: #1e72fa;\n}\n.nav-item[data-v-37bfe506]{\n    font-size: 0.8rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-37bfe506]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-37bfe506]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-37bfe506]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-37bfe506] {\n    position: fixed;\n    top: 56px;\n    background: #1e72fa;\n    width : 100vw;\n    z-index : 1000;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-tabs a[data-v-37bfe506]{\n    text-decoration: none;\n}\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-37bfe506]{\n    background: #dc3545;\n}\n.nav-item[data-v-37bfe506]{\n    font-size: 0.8rem;\n    background: #dc3545;\n    text-transform: uppercase;\n}\n.nav-item .nav-link[data-v-37bfe506]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-37bfe506]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-37bfe506]{\n    color : #fff;\n    text-decoration: none;\n    background: #dc3545;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n.nav-tabs[data-v-37bfe506] {\n    position: fixed;\n    top: 56px;\n    background: #dc3545;\n    width : 100vw;\n    z-index : 1000;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-tabs a[data-v-37bfe506]{\n    text-decoration: none;\n}\n", ""]);
 
 // exports
 
@@ -8981,7 +8975,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#playerInfo .image[data-v-877ccf4c] {\n    margin-top: 25px;\n    padding-top: 60px;\n    padding-bottom: 20px;\n}\n#playerInfo .image img[data-v-877ccf4c] {\n    border-radius: 50%;\n}\n#playerInfo .player-name[data-v-877ccf4c]{\n    margin-bottom: 15px;\n}\n#playerInfo .list-group-item[data-v-877ccf4c] {\n    width: 100vw;\n    border-radius: 0;\n    border-right: none;\n    border-left : none;\n    font-size: .75rem;\n    padding : 8px 12px;\n    /*border-bottom : none;*/\n}\n#playerInfo .info-header[data-v-877ccf4c]{\n    padding : 6px 12px;\n    text-transform : uppercase;\n    font-size : .75rem;\n}\n#playerInfo .list-group-item .col-4[data-v-877ccf4c]{\n    color: #666;\n}\n#playerInfo .list-group-item .col-8[data-v-877ccf4c]{\n}\n#loader[data-v-877ccf4c] {\n    background: #f8fafc;\n}\n#preloader[data-v-877ccf4c] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-877ccf4c 1s infinite linear;\n            animation: rotate-data-v-877ccf4c 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n#playerInfo .image[data-v-877ccf4c] {\n    margin-top: 25px;\n    padding-top: 60px;\n    padding-bottom: 20px;\n}\n#playerInfo .image img[data-v-877ccf4c] {\n    border-radius: 50%;\n}\n#playerInfo .player-name[data-v-877ccf4c]{\n    margin-bottom: 15px;\n}\n#playerInfo .list-group-item[data-v-877ccf4c] {\n    width: 100vw;\n    border-radius: 0;\n    border-right: none;\n    border-left : none;\n    font-size: .75rem;\n    padding : 8px 12px;\n    /*border-bottom : none;*/\n}\n#playerInfo .info-header[data-v-877ccf4c]{\n    padding : 6px 12px;\n    text-transform : uppercase;\n    font-size : .75rem;\n}\n#playerInfo .list-group-item .col-4[data-v-877ccf4c]{\n    color: #666;\n}\n#playerInfo .list-group-item .col-8[data-v-877ccf4c]{\n    color : #000;\n}\n#loader[data-v-877ccf4c] {\n    background: #f8fafc;\n}\n#preloader[data-v-877ccf4c] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-877ccf4c 1s infinite linear;\n            animation: rotate-data-v-877ccf4c 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-877ccf4c {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -9000,7 +8994,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n    position: fixed;\n    top: 56px;\n    z-index : 1001;\n    width: 100vw;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#loader[data-v-0c847bd2]{\n    background: #f8fafc;\n}\n#preloader[data-v-0c847bd2] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-0c847bd2 1s infinite linear;\n            animation: rotate-data-v-0c847bd2 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n.list-group-item[data-v-0c847bd2] {\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n}\n.list-group-item span[data-v-0c847bd2] {\n    font-size: 0.8rem;\n}\n.list-group-item h6[data-v-0c847bd2] {\n    margin-bottom: 0.1rem;\n}\n.list-group-item .row img[data-v-0c847bd2]{\n    /*border-radius: 50%;*/\n}\n.table-header[data-v-0c847bd2]{\n    background: #dc3545;\n    color: #FFF;\n    text-align: center;\n    position: fixed;\n    top: 56px;\n    z-index : 1001;\n    width: 100vw;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.table-header span[data-v-0c847bd2]{\n    font-size: 0.85rem;\n    font-weight : bold;\n    text-transform : uppercase;\n}\n#loader[data-v-0c847bd2]{\n    background: #f8fafc;\n}\n#preloader[data-v-0c847bd2] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-0c847bd2 1s infinite linear;\n            animation: rotate-data-v-0c847bd2 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-0c847bd2 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -9038,7 +9032,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#result .list-group-item[data-v-586a1fc8]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#result .list-group-item[data-v-586a1fc8]:hover, #result .list-group-item[data-v-586a1fc8]:active {\n    background-color: #f0f0f0;\n}\n#result .score-card .col-6[data-v-586a1fc8]{\n    /*font-size: 0.8rem;*/\n    padding-top : 1px;\n    padding-bottom : 1px;\n}\n#result .team-score[data-v-586a1fc8]{\n    font-size: 0.8rem;\n}\n#loader[data-v-586a1fc8]{\n    background: #f8fafc;\n}\n#preloader[data-v-586a1fc8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-586a1fc8 1s infinite linear;\n            animation: rotate-data-v-586a1fc8 1s infinite linear;\n}\n#result  #not_started[data-v-586a1fc8]{\n      width: 100vw;\n      text-align: center;\n      background: #f8fafc;\n      margin-top: 45vh;\n}\n@-webkit-keyframes rotate-data-v-586a1fc8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-586a1fc8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n#result .list-group-item[data-v-586a1fc8]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#result .list-group-item[data-v-586a1fc8]:hover, #result .list-group-item[data-v-586a1fc8]:active {\n    background-color: #f0f0f0;\n}\n#result .score-card .col-6[data-v-586a1fc8]{\n    /*font-size: 0.8rem;*/\n    padding-top : 1px;\n    padding-bottom : 1px;\n}\n#result .team-score[data-v-586a1fc8]{\n    font-size: 0.8rem;\n}\n#loader[data-v-586a1fc8]{\n    background: #f8fafc;\n}\n#preloader[data-v-586a1fc8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-586a1fc8 1s infinite linear;\n            animation: rotate-data-v-586a1fc8 1s infinite linear;\n}\n#result  #not_started[data-v-586a1fc8]{\n      width: 100vw;\n      text-align: center;\n      background: #f8fafc;\n      margin-top: 45vh;\n}\n@-webkit-keyframes rotate-data-v-586a1fc8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-586a1fc8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -9057,7 +9051,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#schedule .list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#schedule .score-card .col-6[data-v-5f748482]{\n    /*font-size: 0.8rem;*/\n    padding-top : 1px;\n    padding-bottom : 1px;\n}\n#schedule .team-score[data-v-5f748482]{\n    font-size: 0.8rem;\n}\n#schedule .list-group-item[data-v-5f748482]:hover, #schedule .list-group-item[data-v-5f748482]:active {\n    background-color: #f0f0f0;\n}\n#loader[data-v-5f748482]{\n    background: #f8fafc;\n}\n#preloader[data-v-5f748482] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-5f748482 1s infinite linear;\n            animation: rotate-data-v-5f748482 1s infinite linear;\n}\n#schedule  #not_started[data-v-5f748482]{\n      width: 100vw;\n      text-align: center;\n      background: #f8fafc;\n      margin-top: 45vh;\n}\n@-webkit-keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n#schedule .list-group-item[data-v-5f748482]{\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top:0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#schedule .score-card .col-6[data-v-5f748482]{\n    /*font-size: 0.8rem;*/\n    padding-top : 1px;\n    padding-bottom : 1px;\n}\n#schedule .team-score[data-v-5f748482]{\n    font-size: 0.8rem;\n}\n#schedule .list-group-item[data-v-5f748482]:hover, #schedule .list-group-item[data-v-5f748482]:active {\n    background-color: #f0f0f0;\n}\n#loader[data-v-5f748482]{\n    background: #f8fafc;\n}\n#preloader[data-v-5f748482] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-5f748482 1s infinite linear;\n            animation: rotate-data-v-5f748482 1s infinite linear;\n}\n#schedule  #not_started[data-v-5f748482]{\n      width: 100vw;\n      text-align: center;\n      background: #f8fafc;\n      margin-top: 45vh;\n}\n@-webkit-keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-5f748482 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -9076,7 +9070,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7] {\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7] {\n    padding: 12px;\n    /*background : #1e72fa;*/\n    /*color: #fff;*/\n    font-weight: bold;\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7] {\n    margin-bottom: 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7] {\n    font-size: 0.7rem;\n    border: 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7] {\n    border: 0;\n    background: #1e72fa;\n    color: #fff;\n    padding: 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7] {\n    font-size: 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table tbody tr td a[data-v-22a9a9c7] {\n    text-decoration: none;\n    color: #212529;\n}\n#scorecard table td[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1) {\n    text-align: left;\n    padding: 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align: left;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#scorecard table tbody tr[data-v-22a9a9c7]:first-child {\n    border: 0;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child {\n    padding-right: 12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child {\n    padding-right: 12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7] {\n    margin: 0;\n    color: #1e72fa;\n    font-size: 0.65rem;\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7] {\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size: 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin: 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7] {\n    font-weight: bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard #not_started[data-v-22a9a9c7] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n}\n#loader[data-v-22a9a9c7] {\n    background: #f8fafc;\n}\n#preloader[data-v-22a9a9c7] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-22a9a9c7 1s infinite linear;\n            animation: rotate-data-v-22a9a9c7 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-22a9a9c7 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-22a9a9c7 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n", ""]);
+exports.push([module.i, "\n#scorecard .table-header[data-v-22a9a9c7] {\n    padding: 8px 12px;\n}\n#scorecard .team-header[data-v-22a9a9c7] {\n    padding: 12px;\n    /*background : #dc3545;*/\n    /*color: #fff;*/\n    font-weight: bold;\n    background: #dbdbdb;\n    color: #dc3545;\n}\n#scorecard .team-header .team-score[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table[data-v-22a9a9c7] {\n    margin-bottom: 0px;\n}\n#scorecard table thead tr[data-v-22a9a9c7] {\n    font-size: 0.7rem;\n    border: 0;\n}\n#scorecard table thead tr th[data-v-22a9a9c7] {\n    border: 0;\n    background: #dc3545;\n    color: #fff;\n    padding: 6px;\n    /*padding-bottom : 6px;*/\n}\n#scorecard table tbody tr td[data-v-22a9a9c7] {\n    font-size: 0.7rem;\n    padding: 8px 6px;\n}\n#scorecard table tbody tr td a[data-v-22a9a9c7] {\n    text-decoration: none;\n    color: #212529;\n}\n#scorecard table td[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table thead th[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard table td[data-v-22a9a9c7]:nth-child(1) {\n    text-align: left;\n    padding: 12px;\n    color: #0198E1;\n    padding-top: 8px;\n    padding-bottom: 8px;\n}\n#scorecard table th[data-v-22a9a9c7]:nth-child(1) {\n    text-align: left;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#scorecard table tbody tr[data-v-22a9a9c7]:first-child {\n    border: 0;\n}\n#scorecard table td[data-v-22a9a9c7]:last-child {\n    padding-right: 12px;\n}\n#scorecard table th[data-v-22a9a9c7]:last-child {\n    padding-right: 12px;\n}\n#scorecard table td:nth-child(1) p[data-v-22a9a9c7] {\n    margin: 0;\n    color: #dc3545;\n    font-size: 0.65rem;\n}\n#scorecard .list-group .list-group-item[data-v-22a9a9c7] {\n    border-right: 0;\n    border-left: 0;\n    border-radius: 0;\n    font-size: 0.7rem;\n    padding: 8px 12px;\n}\n#scorecard .list-group .list-group-item p[data-v-22a9a9c7] {\n    margin: 0;\n}\n#scorecard .list-group .left-col[data-v-22a9a9c7] {\n    font-weight: bold;\n}\n#scorecard .list-group .right-col[data-v-22a9a9c7] {\n    text-align: right;\n}\n#scorecard #not_started[data-v-22a9a9c7] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    /*margin-top: 45vh;*/\n    padding : 35vh 0 25vh 0;\n}\n#loader[data-v-22a9a9c7] {\n    background: #f8fafc;\n}\n#preloader[data-v-22a9a9c7] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-22a9a9c7 1s infinite linear;\n            animation: rotate-data-v-22a9a9c7 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-22a9a9c7 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-22a9a9c7 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -9095,7 +9089,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#stats .table-header[data-v-56c7d5c4] {\n    background: #dbdbdb;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .table-header span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n    color: #1e72fa;\n    font-weight: bold;\n}\n#stats .list-group-item[data-v-56c7d5c4] {\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .list-group-item[data-v-56c7d5c4]:hover, #stats .list-group-item[data-v-56c7d5c4]:active {\n    background-color: #f0f0f0;\n}\n#stats .list-group-item span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n}\n#stats .list-group a[data-v-56c7d5c4] {\n    text-decoration: none;\n    color: #000;\n}\n", ""]);
+exports.push([module.i, "\n#stats .table-header[data-v-56c7d5c4] {\n    background: #dbdbdb;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .table-header span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n    color: #dc3545;\n    font-weight: bold;\n}\n#stats .list-group-item[data-v-56c7d5c4] {\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .list-group-item[data-v-56c7d5c4]:hover, #stats .list-group-item[data-v-56c7d5c4]:active {\n    background-color: #f0f0f0;\n}\n#stats .list-group-item span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n}\n#stats .list-group a[data-v-56c7d5c4] {\n    text-decoration: none;\n    color: #000;\n}\n", ""]);
 
 // exports
 
@@ -9114,7 +9108,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#statsDetail .table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead[data-v-cecdae96] {\n    background: #dbdbdb;\n    color: #1e72fa;\n}\n#statsDetail .table thead tr th[data-v-cecdae96] {\n    border: none;\n}\n#statsDetail .table-header[data-v-cecdae96] {\n    background: #1e72fa;\n    color: #FFF;\n    text-align: center;\n}\n#statsDetail .table-header span[data-v-cecdae96] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#loader[data-v-cecdae96] {\n    background: #f8fafc;\n}\n#preloader[data-v-cecdae96] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-cecdae96 1s infinite linear;\n            animation: rotate-data-v-cecdae96 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n#statsDetail .table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead[data-v-cecdae96] {\n    background: #dbdbdb;\n    color: #dc3545;\n}\n#statsDetail .table thead tr th[data-v-cecdae96] {\n    border: none;\n}\n#statsDetail .table-header[data-v-cecdae96] {\n    background: #dc3545;\n    color: #FFF;\n    text-align: center;\n}\n#statsDetail .table-header span[data-v-cecdae96] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#loader[data-v-cecdae96] {\n    background: #f8fafc;\n}\n#preloader[data-v-cecdae96] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-cecdae96 1s infinite linear;\n            animation: rotate-data-v-cecdae96 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -9133,7 +9127,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#team .list-group-item[data-v-402b42c8] {\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item[data-v-402b42c8]:hover, #team .list-group-item[data-v-402b42c8]:active {\n    background-color: #f0f0f0;\n}\n#team .list-group-item span[data-v-402b42c8] {\n    font-size: 0.9rem;\n}\n#team #not_started[data-v-402b42c8] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#loader[data-v-402b42c8] {\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n#team .list-group-item[data-v-402b42c8] {\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item[data-v-402b42c8]:hover, #team .list-group-item[data-v-402b42c8]:active {\n    background-color: #f0f0f0;\n}\n#team .list-group-item span[data-v-402b42c8] {\n    font-size: 0.9rem;\n}\n#team #not_started[data-v-402b42c8] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    margin-top: 45vh;\n}\n#loader[data-v-402b42c8] {\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -9152,7 +9146,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#tournament .list-group-item[data-v-226aea14] {\n    border-radius: 0;\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n    padding-right: 12px;\n    padding-left: 12px;\n    text-align: center;\n}\n#tournament .list-group-item[data-v-226aea14]:hover, #tournament .list-group-item[data-v-226aea14]:active {\n    background-color: #f0f0f0;\n}\n#tournament .list-group-item h5[data-v-226aea14]{\n    font-weight: bold;\n    font-size: 22px;\n}\n#tournament .list-group-item span[data-v-226aea14] {\n    font-size: 12px;\n}\n#loader[data-v-226aea14] {\n    background: #f8fafc;\n}\n#preloader[data-v-226aea14] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1e72fa;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-226aea14 1s infinite linear;\n            animation: rotate-data-v-226aea14 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
+exports.push([module.i, "\n#tournament .list-group-item[data-v-226aea14] {\n    border-radius: 0;\n    border-top: 0;\n    border-right: 0;\n    border-left: 0;\n    padding-right: 12px;\n    padding-left: 12px;\n    text-align: center;\n}\n#tournament .list-group-item[data-v-226aea14]:hover, #tournament .list-group-item[data-v-226aea14]:active {\n    background-color: #f0f0f0;\n}\n#tournament .list-group-item h5[data-v-226aea14]{\n    font-weight: bold;\n    font-size: 22px;\n}\n#tournament .list-group-item span[data-v-226aea14] {\n    font-size: 12px;\n}\n#loader[data-v-226aea14] {\n    background: #f8fafc;\n}\n#preloader[data-v-226aea14] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #dc3545;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-226aea14 1s infinite linear;\n            animation: rotate-data-v-226aea14 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-226aea14 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n\n", ""]);
 
 // exports
 
@@ -9171,7 +9165,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1e72fa;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1e72fa;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.8rem;\n    background: #1e72fa;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1e72fa;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #dc3545;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #dc3545;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.8rem;\n    background: #dc3545;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #dc3545;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -46056,7 +46050,7 @@ var render = function() {
         ])
       : _vm.liveMatchScorecard.match_status === 4
       ? _c("div", { attrs: { id: "matchResult" } }, [
-          _c("p", [_vm._v(" mathc result")])
+          _c("p", [_vm._v(" match result")])
         ])
       : _c("div", { attrs: { id: "loader" } }, [
           _c("div", { attrs: { id: "preloader" } })
@@ -46983,7 +46977,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("h6", { staticStyle: { color: "#aaa" } }, [
-                _vm._v("South Africa")
+                _vm._v(_vm._s(this.$route.query.team_name))
               ])
             ]),
             _vm._v(" "),
@@ -46991,7 +46985,23 @@ var render = function() {
               _vm._v("Personal Information")
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c("ul", { staticClass: "list-group" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("li", { staticClass: "list-group-item" }, [
+                _c("div", { staticClass: "row m-0" }, [
+                  _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Role")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-8 p-0" }, [
+                    _vm._v(_vm._s(_vm.player.player_role))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3)
+            ])
           ])
         ])
       : _c("div", { attrs: { id: "loader" } }, [
@@ -47019,39 +47029,37 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ul", { staticClass: "list-group" }, [
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("div", { staticClass: "row m-0" }, [
-          _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Born")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-8 p-0" }, [_vm._v("10-23-2019")])
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("div", { staticClass: "row m-0" }, [
+        _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Born")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-8 p-0" }, [_vm._v("10-23-2019")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("div", { staticClass: "row m-0" }, [
+        _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Batting Style")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-8 p-0" }, [
+          _vm._v("Right Handed Batsman")
         ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("div", { staticClass: "row m-0" }, [
-          _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Role")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-8 p-0" }, [_vm._v("Batsman")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("div", { staticClass: "row m-0" }, [
-          _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Batting Style")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-8 p-0" }, [
-            _vm._v("Right Handed Batsman")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "list-group-item" }, [
-        _c("div", { staticClass: "row m-0" }, [
-          _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Bowling Style")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-8 p-0" }, [_vm._v("Left Arm Break")])
-        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "list-group-item" }, [
+      _c("div", { staticClass: "row m-0" }, [
+        _c("div", { staticClass: "col-4 p-0" }, [_vm._v("Bowling Style")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-8 p-0" }, [_vm._v("Left Arm Break")])
       ])
     ])
   }
@@ -47099,7 +47107,12 @@ var render = function() {
                     "router-link",
                     {
                       staticStyle: { "text-decoration": "none", color: "#000" },
-                      attrs: { to: "/player/" + player.id + "/info" }
+                      attrs: {
+                        to: {
+                          path: "/player/" + player.id + "/info",
+                          query: { team_name: _vm.$route.query.team_name }
+                        }
+                      }
                     },
                     [
                       _c(
@@ -47579,17 +47592,7 @@ var render = function() {
                                   [
                                     _c(
                                       "li",
-                                      {
-                                        staticClass: "list-group-item",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.header_string(
-                                              schedule.team1_id.team_code,
-                                              schedule.team2_id.team_code
-                                            )
-                                          }
-                                        }
-                                      },
+                                      { staticClass: "list-group-item" },
                                       [
                                         _c(
                                           "span",
@@ -47858,6 +47861,19 @@ var render = function() {
                                                     " first"
                                                 )
                                               ]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        schedule.status === 2
+                                          ? _c(
+                                              "span",
+                                              {
+                                                staticClass: "text-danger",
+                                                staticStyle: {
+                                                  "font-size": "12px"
+                                                }
+                                              },
+                                              [_vm._v("Inning Break")]
                                             )
                                           : _vm._e(),
                                         _vm._v(" "),
@@ -49671,28 +49687,15 @@ var render = function() {
                       }
                     },
                     [
-                      _c(
-                        "li",
-                        {
-                          staticClass: "list-group-item",
-                          on: {
-                            click: function($event) {
-                              return _vm.header_string(
-                                tournament.tournament_name
-                              )
-                            }
+                      _c("li", { staticClass: "list-group-item" }, [
+                        _c("h5", {
+                          domProps: {
+                            textContent: _vm._s(tournament.tournament_name)
                           }
-                        },
-                        [
-                          _c("h5", {
-                            domProps: {
-                              textContent: _vm._s(tournament.tournament_name)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("span", [_vm._v(" Jan 24 - Apr 09")])
-                        ]
-                      )
+                        }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(" Jan 24 - Apr 09")])
+                      ])
                     ]
                   )
                 ],
@@ -64880,7 +64883,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('ExampleComponent', __webpa
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_require__(/*! ./components/Players */ "./resources/js/components/Players.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Team', __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Batting', __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]); // Vue.prototype.$domainName = 'http://localhost:8000/api/';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Tournament'; // Vue.prototype.$domainName = 'http://localhost:8000/api/';
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://3.7.68.148/api/';
 
@@ -64908,13 +64912,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
-  mounted: function mounted() {
-    var _this = this;
-
-    Event.$on('headerString', function (value) {
-      _this.header_string = value;
-    });
-  },
   methods: {
     clicked: function clicked() {
       // alert('clicked');
@@ -64932,9 +64929,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     Bowling: _components_Bowling__WEBPACK_IMPORTED_MODULE_12__["default"]
   },
   router: _router__WEBPACK_IMPORTED_MODULE_1__["default"],
-  data: {
-    header_string: 'Tournaments'
-  }
+  data: {}
 });
 
 /***/ }),

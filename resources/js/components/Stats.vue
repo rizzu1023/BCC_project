@@ -115,7 +115,7 @@
 
     #stats .table-header span {
         font-size: 0.8rem;
-        color: #1e72fa;
+        color: #dc3545;
         font-weight: bold;
     }
 

@@ -22,7 +22,7 @@
         }
 
         .c-header {
-            background: #1e72fa;
+            background: #dc3545;
             color: #fff;
             border: 0;
         }
@@ -53,7 +53,7 @@
         .c-header-text span {
             color: #fff;
             position: absolute;
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             left: 50%;
             transform: translateX(-50%);
 
@@ -114,7 +114,7 @@
         <header class="c-header c-header-light c-header-fixed c-header-with-subheader">
             <div class="c-header-text">
                 <a v-on:click="clicked()" id="back_button"><img src="{{ asset('assets/Main/icons/back_icon.png') }}"></a>
-                <span v-text="header_string"></span>
+                <span v-text="$header_string"></span>
                 <a id="menu_button"><img src="{{ asset('assets/Main/icons/menu_icon.png') }}"></a>
 
                 {{--                <a >Back</a>--}}

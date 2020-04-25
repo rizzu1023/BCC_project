@@ -464,11 +464,11 @@
 
     #scorecard .team-header {
         padding: 12px;
-        /*background : #1e72fa;*/
+        /*background : #dc3545;*/
         /*color: #fff;*/
         font-weight: bold;
         background: #dbdbdb;
-        color: #1e72fa;
+        color: #dc3545;
     }
 
     #scorecard .team-header .team-score {
@@ -486,7 +486,7 @@
 
     #scorecard table thead tr th {
         border: 0;
-        background: #1e72fa;
+        background: #dc3545;
         color: #fff;
         padding: 6px;
         /*padding-bottom : 6px;*/
@@ -541,7 +541,7 @@
 
     #scorecard table td:nth-child(1) p {
         margin: 0;
-        color: #1e72fa;
+        color: #dc3545;
         font-size: 0.65rem;
     }
 
@@ -582,7 +582,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }

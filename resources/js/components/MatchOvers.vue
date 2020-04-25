@@ -145,7 +145,7 @@
     }
 
     #matchOvers .card-body .right-col span div{
-        background: #1e72fa;
+        background: #dc3545;
         color : white;
         border-radius : 50%;
         padding : 2px 6px;
@@ -201,7 +201,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }

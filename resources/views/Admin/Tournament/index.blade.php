@@ -33,9 +33,23 @@
 								  </td>
 								  <th scope="row">{{$t->id}}</th>
 								  <td>{{$t->tournament_name}}</td>
-								  <td><a class="btn btn-dark btn-sm" href="/admin/tournaments/{{$t->id}}/teams">Teams</a>
-								  <a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Add Team</a></td>
-
+								  <td>
+								  <a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Add Team</a>
+                                  </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Manage
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+{{--                                                <button class="dropdown-item btn btn-sm btn-light mb-1" href="/admin/tournaments/{{$t->id}}/teams" style="margin-bottom: 4px;">Another action</button>--}}
+                                                <a class="dropdown-item btn btn-sm btn-primary" href="/admin/tournaments/{{$t->id}}/teams" style="margin-bottom: 4px;display: block;border-radius: 0">Teams</a>
+                                                <a class="dropdown-item btn btn-sm btn-success " href="/admin/tournaments/{{$t->id}}/schedules" style="margin-bottom: 4px;display: block;border-radius: 0">Schedule</a>
+                                                <a class="dropdown-item btn btn-sm btn-warning" href="{{route('LiveScore.index')}}" style="margin-bottom: 4px;display:block;border-radius: 0">Live Score</a>
+                                                <a class="dropdown-item btn btn-sm btn-danger"  href="{{route('PointsTable.index')}}" style="margin-bottom: 4px;display:block;border-radius: 0">Points Table</a>
+                                            </div>
+                                        </div>
+                                    </td>
 							    </tr>
                             @endforeach
 							</tbody>

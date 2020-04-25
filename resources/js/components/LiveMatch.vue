@@ -113,7 +113,7 @@
             </ul>
         </div>
         <div id="matchResult" v-else-if="liveMatchScorecard.match_status === 4">
-                <p> mathc result</p>
+                <p> match result</p>
         </div>
         <div id="loader" v-else>
                 <div id="preloader"></div>
@@ -282,7 +282,7 @@
     #liveMatch table thead th{
         /*border : 0.5rem;*/
         background: #dbdbdb;
-        color : #1e72fa;
+        color : #dc3545;
     }
 
     #liveMatch table tbody tr td{
@@ -343,7 +343,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }

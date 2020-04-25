@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-12 text-center player-name">
                     <h4 style="margin-bottom: 4px;">{{ player.player_name}}</h4>
-                    <h6 style="color: #aaa;">South Africa</h6>
+                    <h6 style="color: #aaa;">{{this.$route.query.team_name}}</h6>
                 </div>
                 <span class="info-header">Personal Information</span>
                 <ul class="list-group">
@@ -20,7 +20,7 @@
                     <li class="list-group-item">
                         <div class="row m-0">
                             <div class="col-4 p-0">Role</div>
-                            <div class="col-8 p-0">Batsman</div>
+                            <div class="col-8 p-0">{{player.player_role}}</div>
                         </div>
                     </li>
                     <li class="list-group-item">
@@ -120,7 +120,7 @@
         color: #666;
     }
     #playerInfo .list-group-item .col-8{
-
+        color : #000;
     }
 
         #loader {
@@ -132,7 +132,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }

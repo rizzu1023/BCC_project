@@ -45,6 +45,9 @@ Vue.component('Team', require('./components/Team').default);
 Vue.component('Batting', require('./components/Batting').default);
 Vue.component('Bowling', require('./components/Bowling').default);
 
+Vue.prototype.$header_string = 'Tournament';
+
+
 // Vue.prototype.$domainName = 'http://localhost:8000/api/';
 Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
@@ -78,12 +81,6 @@ Vue.mixin({
 const app = new Vue({
     el: '#app',
 
-    mounted : function (){
-        Event.$on('headerString', (value) => {
-            this.header_string = value;
-        });
-    },
-
     methods : {
         clicked() {
             // alert('clicked');
@@ -105,6 +102,6 @@ const app = new Vue({
     router : routes,
 
     data: {
-        header_string : 'Tournaments',
+
     }
 });

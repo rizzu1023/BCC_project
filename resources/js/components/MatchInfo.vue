@@ -95,7 +95,7 @@
 <style scoped>
     #matchInfo .table-header {
         background: #dbdbdb;
-        color: #1e72fa;
+        color: #dc3545;
         padding: 8px 12px;
     }
 
@@ -118,7 +118,7 @@
     }
 
     #matchInfo .card .card-body lable {
-        color: #1e72fa;
+        color: #dc3545;
     }
 
     #matchInfo .card .card-body span {

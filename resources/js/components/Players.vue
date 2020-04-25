@@ -8,7 +8,7 @@
 
         <ul class="list-group" style="margin-top:40px">
             <div v-for="player in players" :key="player.id" :data="player">
-                <router-link :to="'/player/' + player.id + '/info'" style="text-decoration:none; color:#000">
+                <router-link  :to="{ path : '/player/' + player.id + '/info', query : { team_name : $route.query.team_name }}" style="text-decoration:none; color:#000">
                     <li class="list-group-item" style="border-radius: 0;">
                         <div class="row">
                             <div class="col-2">
@@ -174,7 +174,7 @@
     }
 
     .table-header{
-        background: #1e72fa;
+        background: #dc3545;
         color: #FFF;
         text-align: center;
         position: fixed;
@@ -198,7 +198,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #1e72fa;
+        border-top: 5px solid #dc3545;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }
