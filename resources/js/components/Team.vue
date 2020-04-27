@@ -129,6 +129,10 @@
 </script>
 
 <style scoped>
+    #team{
+        height: calc(100vh - (104px));
+    }
+
     #team .list-group-item {
         border-right: 0;
         border-left: 0;

@@ -39,7 +39,11 @@
                     <label class="col-4">Time</label>
                     <span class="col-8">{{ teamInfo.times}}</span>
                     <label class="col-4">Toss</label>
-                    <span class="col-8">--</span>
+                    <span class="col-8" v-if="teamInfo.match_status">{{ teamInfo.toss.team_name}}</span>
+                    <span class="col-8" v-else>--</span>
+                    <label class="col-4">Choose</label>
+                    <span class="col-8" v-if="teamInfo.match_status">{{ teamInfo.choose}}</span>
+                    <span class="col-8" v-else>--</span>
                 </div>
             </div>
         </div>
@@ -85,6 +89,7 @@
                 'teamInfo': {
                     'team1': {},
                     'team2': {},
+                    'toss' : {},
                 },
                 'team_name': '',
             }
@@ -93,6 +98,10 @@
 </script>
 
 <style scoped>
+    #matchInfo{
+        height: calc(100vh - (104px));
+    }
+
     #matchInfo .table-header {
         background: #dbdbdb;
         color: #dc3545;

@@ -104,6 +104,9 @@
 </script>
 
 <style scoped>
+    #result{
+        height: calc(100vh - (104px));
+    }
     #result .list-group-item{
         border-radius: 0;
         border-right: 0;

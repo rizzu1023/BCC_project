@@ -41,6 +41,10 @@
 </script>
 
 <style scoped>
+    #pointsTable{
+        height: calc(100vh - (104px));
+    }
+
     #swipeme {
         width:100%;
         height:100%;

@@ -50,17 +50,32 @@ class MatchController extends Controller
 
         $toss = Match::where('match_id', $match_id)->first();
         $toss_team = NULL;
-        if ($toss)
+        $choose = NULL;
+        if ($toss) {
             $toss_team = Teams::select('id', 'team_code', 'team_name')->where('id', $toss->toss)->first();
+            $choose = $toss->choose;
+
+            return [
+                'match_status' => true,
+                'team1' => $team1,
+                'team2' => $team2,
+                'match' => $match->match_no,
+                'tournament' => $tournament->tournament_name,
+                'dates' => $match->dates,
+                'times' => $match->times,
+                'toss' => $toss_team,
+                'choose' => $choose,
+            ];
+        }
 
         return [
+            'match_status' => false,
             'team1' => $team1,
             'team2' => $team2,
             'match' => $match->match_no,
             'tournament' => $tournament->tournament_name,
             'dates' => $match->dates,
             'times' => $match->times,
-            'toss' => $toss_team,
         ];
     }
 
@@ -76,6 +91,18 @@ class MatchController extends Controller
         } else {
 
             $match_status = $match->status;
+            if($match_status == 4){
+                $bowling_team = MatchDetail::where('isBatting', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+                $batting_team = MatchDetail::where('isBatting', 1)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+                $match_detail = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+
+                return [
+                    'match_status' => $match_status,
+                    'team1' => new MatchDetailResource($bowling_team),
+                    'team2' => new MatchDetailResource($batting_team),
+                    'match_detail' => $match_detail,
+                ];
+            }
             $total_overs = $match->overs;
             $match_detail = NULL;
 
@@ -128,7 +155,7 @@ class MatchController extends Controller
 
             }
             return [
-                'isMatch' => true,
+//                'isMatch' => true,
                 'partnership' => $partnership,
                 'match_detail' => $match_detail,
                 'current_batsman' => $current_batsman,

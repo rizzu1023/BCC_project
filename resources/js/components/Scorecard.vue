@@ -7,10 +7,10 @@
         </div>
 
         <div id="scorecardDetail" v-else-if="matchScorecard.isMatch">
-            <div class="table-header" v-if="matchScorecard.match_status === 4">
+            <div class="table-header winning-status" v-if="matchScorecard.match_status === 4">
                 <span>India won by 4 runs</span>
             </div>
-            <div class="team-header" v-on:click="team1 = !team1" style="border-bottom: 0.05rem solid lightgray">
+            <div class="team-header" v-on:click="team1 = !team1" style="border-bottom: 0.05rem solid lightgray;">
                 <div class="row m-0">
                     <div class="col-6 team-name p-0">
                         <span>{{matchScorecard.team1.detail.team_code}} inn</span>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div id="team1" v-if="team1">
+            <div id="team1" v-if="team1" class="animated slideInDown faster">
                 <div class="tables table-responsive">
                     <table class="table invoice">
                         <thead>
@@ -190,7 +190,7 @@
                     </div>
                 </div>
             </div>
-            <div id="team2" v-if="team2">
+            <div id="team2" v-if="team2" class="animated slideInDown faster">
                 <div class="tables table-responsive">
                     <table class="table invoice">
                         <thead>
@@ -458,6 +458,11 @@
 </script>
 
 <style scoped>
+
+    #scorecard {
+        height: calc(100vh - (104px));
+    }
+
     #scorecard .table-header {
         padding: 8px 12px;
     }
@@ -572,6 +577,7 @@
         /*margin-top: 45vh;*/
         padding : 35vh 0 25vh 0;
     }
+
 
     #loader {
         background: #f8fafc;

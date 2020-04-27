@@ -122,6 +122,10 @@
 </script>
 
 <style scoped>
+    #matchOvers{
+        height: calc(100vh - (104px));
+    }
+
     #matchOvers .card{
         border-top : 0;
         border-right : 0;
