@@ -153,7 +153,7 @@
         width: 100vw;
         text-align: center;
         background: #f8fafc;
-        margin-top: 45vh;
+        line-height: calc(100vh - (104px));
     }
 
     #loader {

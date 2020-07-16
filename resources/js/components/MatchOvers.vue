@@ -193,8 +193,8 @@
         width: 100vw;
         text-align: center;
         background: #f8fafc;
-        /*margin-top: 45vh;*/
-        padding : 35vh 0 25vh 0;
+        line-height: calc(100vh - (104px));
+
     }
 
     #loader{

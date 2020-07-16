@@ -190,7 +190,7 @@
                     </div>
                 </div>
             </div>
-            <div id="team2" v-if="team2" class="animated slideInDown faster">
+            <div id="team2" v-if="team2"  class="animated slideInDown faster">
                 <div class="tables table-responsive">
                     <table class="table invoice">
                         <thead>
@@ -254,22 +254,6 @@
                                 </router-link>
                             </td>
                         </tr>
-                        <!--                <tr>-->
-                        <!--                    <td>R Sharma<p>b Mokoena</p></td>-->
-                        <!--                    <td>123</td>-->
-                        <!--                    <td>110</td>-->
-                        <!--                    <td>6</td>-->
-                        <!--                    <td>5</td>-->
-                        <!--                    <td>1</td>-->
-                        <!--                </tr>-->
-                        <!--                <tr>-->
-                        <!--                    <td>R Sharma<p>b Mokoena</p></td>-->
-                        <!--                    <td>123</td>-->
-                        <!--                    <td>110</td>-->
-                        <!--                    <td>6</td>-->
-                        <!--                    <td>5</td>-->
-                        <!--                    <td>1</td>-->
-                        <!--                </tr>-->
                         </tbody>
                     </table>
                 </div>
@@ -327,48 +311,9 @@
                             <td>{{player.bw_wickets}}</td>
                             <td>{{calculateBowlingEconomy(player.bw_runs,player.bw_over,player.bw_overball)}}</td>
                         </tr>
-
-                        <!--                <tr>-->
-                        <!--                    <td>K Ahmed</td>-->
-                        <!--                    <td>1</td>-->
-                        <!--                    <td>0</td>-->
-                        <!--                    <td>6</td>-->
-                        <!--                    <td>0</td>-->
-                        <!--                    <td>12.2</td>-->
-                        <!--                </tr>-->
-
                         </tbody>
                     </table>
                 </div>
-                <!--            <div class="tables table-responsive">-->
-                <!--            <table class="table invoice">-->
-                <!--                <thead>-->
-                <!--                <tr>-->
-                <!--                    <th scope="col">Fall of Wicket</th>-->
-                <!--                    <th scope="col">Score</th>-->
-                <!--                    <th scope="col">Over</th>-->
-                <!--                </tr>-->
-                <!--                </thead>-->
-                <!--                <tbody>-->
-                <!--                <tr>-->
-                <!--                    <td>V Kohli</td>-->
-                <!--                    <td>15-1</td>-->
-                <!--                    <td>2.3</td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td>R Sharma</td>-->
-                <!--                    <td>45-2</td>-->
-                <!--                    <td>8.2</td>-->
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td>MS Dhoni</td>-->
-                <!--                    <td>110-3</td>-->
-                <!--                    <td>17.5</td>-->
-                <!--                </tr>-->
-
-                <!--                </tbody>-->
-                <!--            </table>-->
-                <!--        </div>-->
             </div>
         </div>
 
@@ -574,8 +519,7 @@
         width: 100vw;
         text-align: center;
         background: #f8fafc;
-        /*margin-top: 45vh;*/
-        padding : 35vh 0 25vh 0;
+        line-height: calc(100vh - (104px));
     }
 
 

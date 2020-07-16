@@ -18,7 +18,7 @@
                     <span v-if="type == 'bestBowlingStrikeRate'">Best Bowling Strike Rate</span>
 
                 </div>
-                <table class="table">
+                <table class="table" >
                     <thead>
                     <tr>
                         <th scope="col">Batsman</th>
@@ -193,6 +193,9 @@
 
 
 <style scoped>
+    #statsDetail .table{
+        /*margin-top: 47px;*/
+    }
     #statsDetail .table tbody tr td {
         font-size: 0.8rem;
     }
@@ -215,6 +218,8 @@
         background: #dc3545;
         color: #FFF;
         text-align: center;
+        position: fixed;
+        width:100vw;
     }
 
     #statsDetail .table-header span {

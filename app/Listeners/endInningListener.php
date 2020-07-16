@@ -27,9 +27,17 @@ class endInningListener
      */
     public function handle($event)
     {
-        $match = Match::where('match_id',$event->request->match_id)
+        $match1 = Match::where('match_id',$event->request->match_id)
             ->where('tournament_id',$event->request->tournament)
             ->increment('status');
+
+        $match = Match::where('match_id',$event->request->match_id)->first();
+
+        if($match->status == 4){
+            $match->won = 'ABC';
+            $match->description = 'XYZ';
+        }
+        $match->save();
 
         $inning1 = MatchDetail::where('match_id',$event->request->match_id)
             ->where('tournament_id',$event->request->tournament)
@@ -41,10 +49,12 @@ class endInningListener
             ->where('isBatting',0)
             ->first();
 
+
         $inning1->isBatting = 0;
         $inning0->isBatting = 1;
         $inning1->save();
         $inning0->save();
+
 
     }
 }
