@@ -22,7 +22,7 @@ use App\Events\noballSixRunEvent;
 use App\Events\noballThreeRunEvent;
 use App\Events\noballTwoRunEvent;
 use App\Events\noballZeroRunEvent;
-use App\Events\OneRunEvent;
+use App\Events\oneRunEvent;
 use App\Events\sixRunEvent;
 use App\Events\startInningEvent;
 use App\Events\strikeRotateEvent;
