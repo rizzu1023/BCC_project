@@ -211,7 +211,7 @@ class LiveScoreController extends Controller
             if ($request->value == 'W') {event(new wicketEvent($request));}
 
             if ($request->value == 8) event(new dotBallEvent($request));
-            if ($request->value == 1) event(new OneRunEvent($request));
+            if ($request->value == 1) event(new oneRunEvent($request));
             if ($request->value == 2) event(new twoRunEvent($request));
             if ($request->value == 3) event(new threeRunEvent($request));
             if ($request->value == 4) event(new fourRunEvent($request));
