@@ -306,6 +306,26 @@
                                             </select>
                                         </div>
 
+                                        <div class="col-md-6" id="batsman_runout" style="display:none;">
+                                            <label for="wicket_primary" id="label_wicket_primary">Batmsan Runout</label>
+                                            <select class="form-control" id="wicket_primar"
+                                                    name="batsman_runout"
+                                                >
+                                                {{-- <option disabled selected>Select</option>--}}
+                                                @foreach($matchs->MatchPlayers as $mp)
+                                                    @if($mp->bt_status == 11 || $mp->bt_status == 10)
+                                                        <option selected
+                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="run_scored" style="display:none;">
+                                            <label for="wicket_primary" id="label_wicket_primary">Run scored</label>
+                                            <input type="number" name="run_scored" id="run_scored_input">
+                                            </select>
+                                        </div>
+
                                         {{--                                   this is for over check for bowler--}}
                                         @foreach($matchs->MatchPlayers as $mp)
                                             @if($mp->team_id == $bowling)
@@ -561,6 +581,9 @@
                             $('#div_wicket_primary_runout').hide();
                             $('#div_wicket_secondary').show();
                             $('#div_batsman_cross').show();
+                            $('#batsman_runout').hide();
+                            $('#run_scored').hide();
+
 
                         }
                         if (wicket_type === 'stump') {
@@ -571,6 +594,8 @@
                             $('#div_wicket_primary_runout').hide();
                             $('#div_wicket_primary').show();
                             $('#div_wicket_secondary').show();
+                            $('#batsman_runout').hide();
+                            $('#run_scored').hide();
 
                         }
                         if (wicket_type === 'runout') {
@@ -579,7 +604,11 @@
                             $('#label_wicket_secondary').html('Run out By(Optional)');
                             $('#div_wicket_primary').hide();
                             $('#div_wicket_primary_runout').show();
-                            $('#div_wicket_secondary').show();
+                            $('#div_wicket_secondary').show();  
+                            $('#batsman_runout').show();
+                            $('#run_scored').show();
+                            $('#batsman_runout').prop('required', true);
+                            $('#run_scored_input').prop('required', true);
                         }
                         if (wicket_type === 'hitwicket') {
                             $('#wicket_secondary').prop('disabled', true);
@@ -587,6 +616,8 @@
                             $('#div_wicket_secondary').hide();
                             $('#div_wicket_primary_runout').hide();
                             $('#div_wicket_primary').show();
+                            $('#batsman_runout').hide();
+                            $('#run_scored').hide();
 
                         }
                         if (wicket_type === 'bold') {
@@ -595,6 +626,8 @@
                             $('#div_wicket_secondary').hide();
                             $('#div_wicket_primary_runout').hide();
                             $('#div_wicket_primary').show();
+                            $('#batsman_runout').hide();
+                            $('#run_scored').hide();
 
 
                         }
@@ -604,6 +637,8 @@
                             $('#div_wicket_primary_runout').hide();
                             $('#div_wicket_primary').show();
                             $('#div_wicket_secondary').hide();
+                            $('#batsman_runout').hide();
+                            $('#run_scored').hide();
                         }
                 });
 
