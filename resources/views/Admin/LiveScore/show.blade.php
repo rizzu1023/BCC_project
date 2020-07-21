@@ -296,7 +296,7 @@
                                             <select class="form-control" id="wicket_primary"
                                                     name="wicket_primary"
                                                     required>
-                                                {{-- <option disabled selected>Select</option>--}}
+                                                <option disabled selected>Select</option>
                                                 @foreach($matchs->MatchPlayers as $mp)
                                                     @if($mp->team_id == $bowling)
                                                         <option selected
@@ -324,7 +324,7 @@
                                             <label for="wicket_primary" id="label_wicket_primary">Who got out?</label>
                                             <select class="form-control" id="wicket_primar"
                                                     name="batsman_runout"  >
-                                                <!-- <option disabled selected>Select</option> -->
+                                                <option disabled selected>Select</option>
                                                 @foreach($matchs->MatchPlayers as $mp)
                                                 @if($mp->team_id == $batting)
                                                     @if($mp->bt_status == 11 || $mp->bt_status == 10)
@@ -349,7 +349,7 @@
                                             <select class="form-control" id="wicket_primar"
                                                     name="run_scored"  >
                                                 <option disabled selected>Select</option>
-                                                        <option value="1">0</option>
+                                                        <option value="0">0</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -377,11 +377,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            {{--                                        <label for="exampleFormControlSelect2">Select Bowler</label>--}}
+                                            <label for="exampleFormControlSelect2">Select new Batsman</label>
                                             <select class="form-control" id="exampleFormControlSelect2"
                                                     name="newBatsman_id"
                                                     required>
-                                                <option disabled selected>Select new Batsman</option>
+                                                <option disabled selected>Select</option>
                                                 @foreach($matchs->MatchPlayers as $mp)
                                                     @if($mp->team_id == $batting)
                                                         @if($mp->bt_status == 'DNB')
