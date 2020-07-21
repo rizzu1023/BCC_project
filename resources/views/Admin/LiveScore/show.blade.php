@@ -305,37 +305,6 @@
                                                 @endforeach
                                             </select>
                                         </div>
-
-                                        <div class="col-md-6" id="batsman_runout" style="display:none;">
-                                            <label for="wicket_primary" id="label_wicket_primary">Batmsan Runout</label>
-                                            <select class="form-control" id="wicket_primar"
-                                                    name="batsman_runout"
-                                                >
-                                                {{-- <option disabled selected>Select</option>--}}
-                                                @foreach($matchs->MatchPlayers as $mp)
-                                                    @if($mp->bt_status == 11 || $mp->bt_status == 10)
-                                                        <option selected
-                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6" id="run_scored" style="display:none;">
-                                            <label for="wicket_primary" id="label_wicket_primary">Run scored</label>
-                                            <input type="number" name="run_scored" id="run_scored_input">
-                                            </select>
-                                        </div>
-
-                                        {{--                                   this is for over check for bowler--}}
-                                        @foreach($matchs->MatchPlayers as $mp)
-                                            @if($mp->team_id == $bowling)
-                                                @if($mp->bw_status == '11')
-                                                    <input type="hidden" value="{{$mp->player_id}}" name="attacker_id"/>
-                                                @endif
-                                            @endif
-                                        @endforeach
-
-                                        {{--wicket secondary--}}
                                         <div class="col-md-6" id="div_wicket_secondary">
                                             <label for="wicket_secondary" id="label_wicket_secondary"></label>
                                             <select class="form-control" id="wicket_secondary"
@@ -350,6 +319,56 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
+                                        <div class="col-md-6" id="batsman_runout" style="display:none;">
+                                            <label for="wicket_primary" id="label_wicket_primary">Who got out?</label>
+                                            <select class="form-control" id="wicket_primar"
+                                                    name="batsman_runout"  >
+                                                <!-- <option disabled selected>Select</option> -->
+                                                @foreach($matchs->MatchPlayers as $mp)
+                                                @if($mp->team_id == $batting)
+                                                    @if($mp->bt_status == 11 || $mp->bt_status == 10)
+                                                        <option 
+                                                                  value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                    @endif
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="where_batsman_runout" style="display:none;">
+                                            <label for="wicket_primary" id="where_batsman_runout_label">Where got out?</label>
+                                            <select class="form-control" id="wicket_primar"
+                                                    name="where_batsman_runout"  >
+                                                <option disabled selected>Select</option>
+                                                        <option  value="strike">Strike</option>
+                                                        <option value="non_stike">Non-Strike</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6" id="run_scored" style="display:none;">
+                                            <label for="wicket_primary" id="run_scored_label">Run Scored</label>
+                                            <select class="form-control" id="wicket_primar"
+                                                    name="run_scored"  >
+                                                <option disabled selected>Select</option>
+                                                        <option value="1">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                            </select>
+                                        </div>
+                                      
+                                        {{--                                   this is for over check for bowler--}}
+                                        @foreach($matchs->MatchPlayers as $mp)
+                                            @if($mp->team_id == $bowling)
+                                                @if($mp->bw_status == '11')
+                                                    <input type="hidden" value="{{$mp->player_id}}" name="attacker_id"/>
+                                                @endif
+                                            @endif
+                                        @endforeach
+
+                                        {{--wicket secondary--}}
+                                        
                                     </div>
                                     <div id="div_batsman_cross" style="display: none">
                                         <label for="input_batsman_cross" style="margin-top: 10px">did Batsman
@@ -582,6 +601,7 @@
                             $('#div_wicket_secondary').show();
                             $('#div_batsman_cross').show();
                             $('#batsman_runout').hide();
+                            $('#where_batsman_runout').hide();
                             $('#run_scored').hide();
 
 
@@ -595,6 +615,7 @@
                             $('#div_wicket_primary').show();
                             $('#div_wicket_secondary').show();
                             $('#batsman_runout').hide();
+                            $('#where_batsman_runout').hide();
                             $('#run_scored').hide();
 
                         }
@@ -606,8 +627,10 @@
                             $('#div_wicket_primary_runout').show();
                             $('#div_wicket_secondary').show();  
                             $('#batsman_runout').show();
+                            $('#where_batsman_runout').show();
                             $('#run_scored').show();
                             $('#batsman_runout').prop('required', true);
+                            $('#where_batsman_runout').prop('required', true);
                             $('#run_scored_input').prop('required', true);
                         }
                         if (wicket_type === 'hitwicket') {
@@ -617,6 +640,7 @@
                             $('#div_wicket_primary_runout').hide();
                             $('#div_wicket_primary').show();
                             $('#batsman_runout').hide();
+                            $('#where_batsman_runout').hide();
                             $('#run_scored').hide();
 
                         }
@@ -627,6 +651,7 @@
                             $('#div_wicket_primary_runout').hide();
                             $('#div_wicket_primary').show();
                             $('#batsman_runout').hide();
+                            $('#where_batsman_runout').hide();
                             $('#run_scored').hide();
 
 
@@ -638,6 +663,7 @@
                             $('#div_wicket_primary').show();
                             $('#div_wicket_secondary').hide();
                             $('#batsman_runout').hide();
+                            $('#where_batsman_runout').hide();
                             $('#run_scored').hide();
                         }
                 });

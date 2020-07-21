@@ -103,7 +103,7 @@ class EventServiceProvider extends ServiceProvider
 
         \App\Events\wicketEvent::class => [
 //            \App\Listeners\batsmanBallUpdateListener::class,
-            \App\Listeners\currentBatsmanRemoveListener::class,
+            \App\Listeners\currentBatsmanRemoveListener::class, 
             \App\Listeners\newBatsmanAddedListener::class,
             \App\Listeners\bowlerBallUpdateListener::class,
             \App\Listeners\bowlerWicketUpdateListener::class,

@@ -33,6 +33,6 @@ class currentBowlerRemoveListener
             ->where('bw_status', 11)->first();
 
         $current_bowler->bw_status = 1;
-        $current_bowler->save();
+        $current_bowler->save(); 
     }
 }

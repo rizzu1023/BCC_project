@@ -32,7 +32,40 @@ class newBatsmanAddedListener
             ->where('team_id', $event->request->bt_team_id)
             ->where('player_id', $event->request->newBatsman_id)
             ->update(['bt_status' => 11]);
+            if ($event->request->wicket_type == 'runout' ){
+               
+                if($event->request->where_batsman_runout == 'strike'){
+                    $bastman_position = 11;
 
+                    $current_batsman = MatchPlayers::where('match_id', $event->request->match_id)
+                    ->where('tournament_id', $event->request->tournament)
+                    ->where('team_id', $event->request->bt_team_id)
+                    ->where('bt_status', 11)->first();
+
+                    $current_batsman->bt_status = 10;
+                    $current_batsman->save();
+                }
+                else{
+                    $bastman_position = 10;
+
+                    $current_batsman = MatchPlayers::where('match_id', $event->request->match_id)
+                    ->where('tournament_id', $event->request->tournament)
+                    ->where('team_id', $event->request->bt_team_id)
+                    ->where('bt_status', 10)->first();
+
+                    $current_batsman->bt_status = 11;
+                    $current_batsman->save();
+               
+                }
+                MatchPlayers::where('match_id', $event->request->match_id)
+                ->where('tournament_id', $event->request->tournament)
+                ->where('team_id', $event->request->bt_team_id)
+                ->where('player_id', $event->request->newBatsman_id)
+                ->update(['bt_status' => $bastman_position]);
+            }
+            else{
+
+          
          if($event->request->isBatsmanCross){
              $nonstriker_batsman = MatchPlayers::where('match_id', $event->request->match_id)
                  ->where('tournament_id', $event->request->tournament)
@@ -47,6 +80,7 @@ class newBatsmanAddedListener
                  ->where('player_id', $event->request->newBatsman_id)
                  ->update(['bt_status' => 10]);
          }
+        }
 
     }
 }

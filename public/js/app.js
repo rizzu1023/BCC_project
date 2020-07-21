@@ -48201,8 +48201,8 @@ var render = function() {
                                                     ])
                                                   : player.wicket_type ==
                                                       "runout" &&
-                                                    player.wicketSecondary
-                                                      .player_name == "--"
+                                                    player.wicket_secondary ==
+                                                      "--"
                                                   ? _c("p", [
                                                       _vm._v(
                                                         "\n                                        runout (" +
@@ -48643,8 +48643,8 @@ var render = function() {
                                                     ])
                                                   : player.wicket_type ==
                                                       "runout" &&
-                                                    player.wicketSecondary
-                                                      .player_name == "--"
+                                                    player.wicket_secondary ==
+                                                      "--"
                                                   ? _c("p", [
                                                       _vm._v(
                                                         "\n                                        runout (" +

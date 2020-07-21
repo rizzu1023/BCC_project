@@ -59,7 +59,7 @@
                                             }}</p>
                                         <p v-else-if="player.wicket_type == 'lbw'">lbw
                                             {{player.wicketPrimary.player_name }}</p>
-                                        <p v-else-if="player.wicket_type == 'runout' && player.wicketSecondary.player_name == '--'">
+                                        <p v-else-if="player.wicket_type == 'runout' && player.wicket_secondary == '--'">
                                             runout ({{player.wicketPrimary.player_name }})</p>
                                         <p v-else>runout ({{player.wicketPrimary.player_name
                                             }}/{{player.wicketSecondary.player_name}})</p>
@@ -229,7 +229,7 @@
                                             }}</p>
                                         <p v-else-if="player.wicket_type == 'lbw'">lbw
                                             {{player.wicketPrimary.player_name }}</p>
-                                        <p v-else-if="player.wicket_type == 'runout' && player.wicketSecondary.player_name == '--'">
+                                        <p v-else-if="player.wicket_type == 'runout' && player.wicket_secondary == '--'">
                                             runout ({{player.wicketPrimary.player_name }})</p>
                                         <p v-else>runout ({{player.wicketPrimary.player_name
                                             }}/{{player.wicketSecondary.player_name}})</p>

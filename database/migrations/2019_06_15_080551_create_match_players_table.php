@@ -39,7 +39,7 @@ class CreateMatchPlayersTable extends Migration
 
             $table->string('wicket_type')->default('--');
             $table->string('wicket_primary')->default('--');
-            $table->string('wicket_secondary')->default('--');
+            $table->string('wicket_secondary')->default('--')->nullable();
 
             $table->integer('tournament_id');
             $table->timestamp('deleted_at')->nullable();
