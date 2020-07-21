@@ -22,7 +22,7 @@
         }
 
         .c-header {
-            background: #dc3545;
+            background: #1a1a1a;
             color: #fff;
             border: 0;
         }

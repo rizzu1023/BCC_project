@@ -107,7 +107,7 @@
 
     #playerBowling .table thead {
         background: #dbdbdb;
-        color: #dc3545;
+        color: #1a1a1a;
     }
 
     #playerBowling .table thead tr th {
@@ -116,7 +116,7 @@
 
 
     #playerBowling .table-header {
-        background: #dc3545;
+        background: #1a1a1a;
         color: #FFF;
         text-align: center;
     }

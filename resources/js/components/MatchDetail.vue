@@ -40,13 +40,13 @@
 
 <style scoped>
     .nav-tabs-boxed{
-        background: #dc3545;
+        background: #1a1a1a;
     }
 
 
     .nav-item{
         font-size: 0.8rem;
-        background: #dc3545;
+        background: #1a1a1a;
         text-transform: uppercase;
 
 
@@ -61,7 +61,7 @@
 
     .live .nav-item .active{
         color : #fff;
-        background: #dc3545;
+        background: #1a1a1a;
         font-weight : bold;
         border-bottom: 3px solid #fff;
     }
@@ -76,7 +76,7 @@
     .router-link-exact-active .nav-item .nav-link{
         color : #fff;
         text-decoration: none;
-        background: #dc3545;
+        background: #1a1a1a;
         font-weight : bold;
         border-bottom: 3px solid #fff;
     }
@@ -84,7 +84,7 @@
     .nav-tabs {
         position: fixed;
         top: 56px;
-        background: #dc3545;
+        background: #1a1a1a;
         width : 100vw;
         z-index : 1000;
         box-shadow : 0 9px 8px -9px gray;

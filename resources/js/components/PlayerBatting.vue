@@ -113,7 +113,7 @@
 
     #playerBatting .table thead {
         background: #dbdbdb;
-        color: #dc3545;
+        color: #1a1a1a;
     }
 
     #playerBatting .table thead tr th {
@@ -122,7 +122,7 @@
 
 
     #playerBatting .table-header {
-        background: #dc3545;
+        background: #1a1a1a;
         color: #FFF;
         text-align: center;
     }

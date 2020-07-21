@@ -332,7 +332,7 @@
     #liveMatch table thead th {
         /*border : 0.5rem;*/
         background: #dbdbdb;
-        color: #dc3545;
+        color: #1a1a1a;
     }
 
     #liveMatch table tbody tr td {
@@ -409,7 +409,7 @@
         width: 30px;
         margin: 40vh auto;
         border: 5px solid #dbdbdb;
-        border-top: 5px solid #dc3545;
+        border-top: 5px solid #1a1a1a;
         border-radius: 50%;
         animation: rotate 1s infinite linear;
     }
