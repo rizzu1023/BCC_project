@@ -35,22 +35,34 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 <script src="{{asset('assets/Admin/js/custom.js')}}"></script>
 <link href="{{asset('assets/Admin/css/custom.css')}}" rel="stylesheet">
 
+<link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" crossorigin="anonymous">
+
 @yield('css')
 
 </head>
 
 
-<body class="cbp-spmenu-push">
-	<div class="main-content">
+<body class="c-app">
 
 
     @include('Admin.layouts.sidebar')
 
 
+	<div class="c-wrapper">
+
+
+	<header class="c-header c-header-fixed">	
     @include('Admin.layouts.topbar')
+	</header>
 
 
+	<div class="c-body">	
+	<main class="c-main">
+		<div class="container-fluid">
     @yield('content')
+		</div>
+	</main>
+	</div>
 
     </div>
 
@@ -69,14 +81,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
 				showLeftPush = document.getElementById( 'showLeftPush' ),
 				body = document.body;
-
 			showLeftPush.onclick = function() {
 				classie.toggle( this, 'active' );
 				classie.toggle( body, 'cbp-spmenu-push-toright' );
 				classie.toggle( menuLeft, 'cbp-spmenu-open' );
 				disableOther( 'showLeftPush' );
 			};
-
 			function disableOther( button ) {
 				if( button !== 'showLeftPush' ) {
 					classie.toggle( showLeftPush, 'disabled' );
@@ -87,7 +97,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 {{--	<script src="{{asset('js/app.js')}}"></script>--}}
 
-	@yield('script')
 
 	<!--scrolling js-->
 	<script src="{{asset('assets/Admin/js/jquery.nicescroll.js')}}"></script>
@@ -97,5 +106,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 	<!-- Bootstrap Core JavaScript -->
    <script src="{{asset('assets/Admin/js/bootstrap.js')}}"> </script>
 
+	@yield('script')
+
+
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+ <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js">
 </body>
 </html>

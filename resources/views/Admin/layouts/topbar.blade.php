@@ -1,46 +1,14 @@
-<div class="sticky-header header-section ">
-			<div class="header-left">
+<button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+<svg class="c-icon c-icon-lg">
+<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+</svg>
+</button>
 
-				<!--toggle button start-->
-				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
-				<!--toggle button end-->
-				<div class="profile_details_left"><!--notifications of menu start -->
-					<div class="clearfix">
-                        @yield('topbar_link')
-                    </div>
-				</div>
-				<!--notification menu end -->
-				<div class="clearfix"> </div>
-			</div>
-			<div class="header-right">
-
-
-
-				<div class="profile_details">
-					<ul>
-						<li class="dropdown profile_details_drop">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-								<div class="profile_img">
-									<span class="prfil-img"><img src="images/2.jpg" alt=""> </span>
-									<div class="user-name">
-										<p>Admin Name</p>
-										<span>Administrator</span>
-									</div>
-									<i class="fa fa-angle-down lnr"></i>
-									<i class="fa fa-angle-up lnr"></i>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-							<ul class="dropdown-menu drp-mnu">
-								<li> <a href="#"><i class="fa fa-cog"></i> Settings</a> </li>
-								<li> <a href="#"><i class="fa fa-user"></i> My Account</a> </li>
-								<li> <a href="#"><i class="fa fa-suitcase"></i> Profile</a> </li>
-								<li> <a href="#"><i class="fa fa-sign-out"></i> Logout</a> </li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
+<ul class="c-header-nav d-md-down-none">
+<li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Dashboard</a></li>
+<li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Users</a></li>
+<li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="#">Settings</a></li>
+</ul>
+<!-- <nav class="navbar navbar-light bg-light"> -->
+  <!-- <a class="navbar-brand" href="#">Default</a> -->
+<!-- </nav> -->
