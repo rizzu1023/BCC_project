@@ -328,7 +328,7 @@
                                                 @foreach($matchs->MatchPlayers as $mp)
                                                 @if($mp->team_id == $batting)
                                                     @if($mp->bt_status == 11 || $mp->bt_status == 10)
-                                                        <option 
+                                                        <option
                                                                   value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
                                                     @endif
                                                     @endif
@@ -341,7 +341,7 @@
                                                     name="where_batsman_runout"  >
                                                 <option disabled selected>Select</option>
                                                         <option  value="strike">Strike</option>
-                                                        <option value="non_stike">Non-Strike</option>
+                                                        <option value="non_strike">Non-Strike</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6" id="run_scored" style="display:none;">
@@ -357,7 +357,7 @@
                                                         <option value="5">5</option>
                                             </select>
                                         </div>
-                                      
+
                                         {{--                                   this is for over check for bowler--}}
                                         @foreach($matchs->MatchPlayers as $mp)
                                             @if($mp->team_id == $bowling)
@@ -368,7 +368,7 @@
                                         @endforeach
 
                                         {{--wicket secondary--}}
-                                        
+
                                     </div>
                                     <div id="div_batsman_cross" style="display: none">
                                         <label for="input_batsman_cross" style="margin-top: 10px">did Batsman
@@ -625,7 +625,7 @@
                             $('#label_wicket_secondary').html('Run out By(Optional)');
                             $('#div_wicket_primary').hide();
                             $('#div_wicket_primary_runout').show();
-                            $('#div_wicket_secondary').show();  
+                            $('#div_wicket_secondary').show();
                             $('#batsman_runout').show();
                             $('#where_batsman_runout').show();
                             $('#run_scored').show();
@@ -707,7 +707,7 @@
                 success: function (data) {
                     $('#wicketModal').modal('hide');
                     //  alert(data.message);
-                    location.reload();
+                    // location.reload();
                 }
             });
         });
