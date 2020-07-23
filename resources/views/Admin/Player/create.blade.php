@@ -2,10 +2,11 @@
 
 @section('content')
 
-<div id="page-wrapper">
-			<div class="main-page">
-				<h3 class="title1">Add Player</h3>
-				<div class="form-grids row widget-shadow" data-example-id="basic-forms">
+<div class="card">
+    <div class="card-header">
+    <h3 class="title1">Add Player</h3>
+    </div>
+    <div class="card-body">
 
 						<div class="form-body">
 							<form method="POST" action="{{route('teams.players.store',$team->id)}}">
@@ -24,11 +25,10 @@
 								</div>
 
 								@include('Admin.layouts.errors')
-								<button type="submit" class="btn btn-default">Submit</button>
+								<button type="submit" class="btn btn-success btn-block">Add Player</button>
 							</form>
 						</div>
 				</div>
-			</div>
 </div>
 
 @endsection

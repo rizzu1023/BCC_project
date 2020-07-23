@@ -3,8 +3,8 @@
 @section('content')
 
 
-<div id="page-wrapper">
-			<div class="main-page">
+<div class="card">
+			<div class="card-body">
 
 			@if(session()->has('message'))
                 <div class="alert alert-success">
@@ -16,8 +16,7 @@
 			@endif
 				<h3 class="title1">Live Score</h3>
                 <div class="tables">
-					<div class="panel-body widget-shadow">
-						<table class="table">
+						<table class="table table-responsive-sm">
 							<thead>
 								<tr>
 								  <th>Match No</th>
@@ -45,7 +44,6 @@
                 @endforeach
 							</tbody>
 						</table>
-					</div>
                     </div>
 			</div>
 </div>

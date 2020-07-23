@@ -2,10 +2,9 @@
 
 @section('content')
 
-<div id="page-wrapper">
-			<div class="main-page">
+<div class="card">
+			<div class="card-body">
 				<h3 class="title1">Edit Match</h3>
-				<div class="form-grids row widget-shadow" data-example-id="basic-forms">
 
 						<div class="form-body">
 							<form method="POST" action={{ route('tournaments.schedules.update', ['schedule' => $schedule['id'],'tournament' => $tournament->id]) }}>
@@ -52,7 +51,7 @@
                                <input type="hidden" name="tournament_id" value="{{$tournament->id}}">
 
 
-								<button type="submit" class="btn btn-default">Update</button>
+								<button type="submit" class="btn btn-success btn-block">Update</button>
 							</form>
 						</div>
 				</div>

@@ -2,10 +2,12 @@
 
 @section('content')
 
-<div id="page-wrapper">
-			<div class="main-page">
-				<h3 class="title1">Edit Player</h3>
-				<div class="form-grids row widget-shadow" data-example-id="basic-forms">
+<div class="card">
+    <div class="card-header">
+    <h3 class="title1">Edit Player</h3>
+
+    </div>
+    <div class="card-body">
 
 						<div class="form-body">
 							<form method="POST" action="{{route('teams.players.update',['team'=>$team->id,'player'=>$player->id])}}">
@@ -27,11 +29,10 @@
 								<div>{{ $errors->first('player_role')}}</div>
 								</div>
 
-								<button type="submit" class="btn btn-default">Update</button>
+								<button type="submit" class="btn btn-block btn-success">Update</button>
 							</form>
 						</div>
 				</div>
-			</div>
 </div>
 
 @endsection

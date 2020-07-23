@@ -3,51 +3,54 @@
 @section('content')
 
 
-<div id="page-wrapper">
-			<div class="main-page">
+    <div class="card">
+        <div class="card-body">
 
-	@include('Admin.layouts.message')
-				<h3 class="title1">Schedule</h3>
-                <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri" href="{{route('tournaments.schedules.create',$tournament->id)}}"><i class="fa fa-plus"></i>Add</a>
-                <div class="tables">
-					<div class="panel-body widget-shadow">
-						<table class="table">
-							<thead>
-								<tr>
-								  <th></th>
-								  <th>Match No</th>
-								  <th>Team 1</th>
-                  <th>Vs</th>
-								  <th>Team 2</th>
-								  <th>Time</th>
-								  <th>Date</th>
-								</tr>
-							</thead>
-							<tbody>
-                @foreach($schedule as $s)
-                <tr>
-								  <td>
-								  <a class="btn btn-success btn-sm" href="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}/edit">Edit</a>
-								  <form style="display:inline-block" method="POST" action="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}">
-								  	@csrf
-										@method('DELETE')
-									  <input type="hidden" value="{{$s->id}}" name="id">
-									  <button class="btn btn-danger btn-sm">Delete</button>
-								  </form>
-								  </td>
-								  <th scope="row">{{$s->match_no}}</th>
-								  <td>{{$s->Teams1->team_code}}</td>
-                  <td>Vs</td>
-								  <td>{{$s->Teams2->team_code}}</td>
-								  <td>{{$s->times}}</td>
-								  <td>{{$s->dates}}</td>
-								</tr>
-                @endforeach
-							</tbody>
-						</table>
-					</div>
-                    </div>
-			</div>
-</div>
+            @include('Admin.layouts.message')
+            <h3 class="title1">Schedule</h3>
+            <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri"
+               href="{{route('tournaments.schedules.create',$tournament->id)}}"><i class="fa fa-plus"></i>Add</a>
+            <div class="tables">
+                <table class="table table-responsive-sm">
+                    <thead>
+                    <tr>
+                        <th>Match No</th>
+                        <th>Team 1</th>
+                        <th>Vs</th>
+                        <th>Team 2</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                        <th></th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($schedule as $s)
+                        <tr>
+
+                            <th scope="row">{{$s->match_no}}</th>
+                            <td>{{$s->Teams1->team_code}}</td>
+                            <td>Vs</td>
+                            <td>{{$s->Teams2->team_code}}</td>
+                            <td>{{$s->times}}</td>
+                            <td>{{$s->dates}}</td>
+                            <td>
+                                <a class="btn btn-success btn-sm"
+                                   href="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}/edit">Edit</a>
+                                <form style="display:inline-block" method="POST"
+                                      action="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" value="{{$s->id}}" name="id">
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 @endsection

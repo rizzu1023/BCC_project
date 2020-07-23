@@ -67,7 +67,7 @@ class ScheduleController extends Controller
         $teams = Teams::whereHas('tournaments',function($query) use($tournament_id){
             $query->where('tournament_id',$tournament_id)->where('user_id',auth()->user()->id);
         })->get();
-        return view('Admin.Schedule.edit',compact('Schedule','teams','tournament'));
+        return view('Admin.Schedule.edit',compact('schedule','teams','tournament'));
     }
 
 

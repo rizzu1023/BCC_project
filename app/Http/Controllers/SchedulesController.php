@@ -77,13 +77,13 @@ class SchedulesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Schedule  $schedule
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Schedule $Schedule)
+    public function edit(Schedule $schedule)
     {
        $team = Teams::all();
        $tournament = Tournament::all();
-       return view('admin/Schedule/edit',compact('Schedule','team','tournament'));
+       return view('admin/Schedule/edit',compact('schedule','team','tournament'));
     }
 
     /**

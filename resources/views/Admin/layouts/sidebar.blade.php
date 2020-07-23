@@ -1,15 +1,15 @@
-<div class="c-sidebar c-sidebar-dark c-sidebar-lg-show">
+
+<div class="c-sidebar c-sidebar-dark c-sidebar-lg-show c-sidebar-sm-hie" id="sidebar">
   <ul class="c-sidebar-nav">
-    <li class="c-sidebar-nav-title">Nav Title</li>
+    <li class="c-sidebar-nav-title">CRICIFY</li>
     <li class="c-sidebar-nav-item">
-      <a class="c-sidebar-nav-link" href="#">
-        <i class="c-sidebar-nav-icon cil-speedometer"></i> Nav item
+      <a class="c-sidebar-nav-link" href="/admin">
+        <i class="c-sidebar-nav-icon cil-speedometer"></i> Dashboard
       </a>
     </li>
     <li class="c-sidebar-nav-item">
-      <a class="c-sidebar-nav-link" href="#">
-        <i class="c-sidebar-nav-icon cil-speedometer"></i> With badge
-        <span class="badge badge-primary">NEW</span>
+      <a class="c-sidebar-nav-link" href="/admin/Tournament">
+        <i class="c-sidebar-nav-icon cil-speedometer"></i> Tournaments
       </a>
     </li>
     <li class="c-sidebar-nav-item nav-dropdown">
@@ -29,5 +29,6 @@
         </li>
       </ul>
     </li>
-   
+  </ul>
+
 </div>
