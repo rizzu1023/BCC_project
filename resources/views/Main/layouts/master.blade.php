@@ -25,6 +25,7 @@
             background: #1a1a1a;
             color: #fff;
             border: 0;
+            width: 100vw;
         }
 
         .c-header-text {
@@ -229,13 +230,14 @@
 
 <!-- Optional JavaScript -->
 <!-- Popper.js first, then CoreUI JS -->
-<script src="{{asset('js/app.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
         integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9&#43;4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/js/coreui.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+<script src="{{asset('js/app.js')}}"></script>
+
 
 <script>
     // alert(colors.black);
