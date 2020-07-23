@@ -78,10 +78,10 @@
 
 
 
-    <div class="card" style="width: 100vw;height: 100vh">
+    <div class="card" >
         <div class="card-body">
             <!-- Opening Modal -->
-            <div class="modal fade" id="openingModal" tabindex="-1" data-backdrop="false" role="dialog"
+            <div class="modal  " id="openingModal" tabindex="-1" data-backdrop="false" role="dialog"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -150,7 +150,8 @@
                                 <input type="hidden" name="startInning" value="1">
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -166,9 +167,9 @@
 {{--                <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">--}}
 {{--                <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">--}}
                 @if($matchs->status == '0')
-                    <button class="btn btn-success btn-lg startInningButton">Start 1st Inning</button>
+                    <button class="btn btn-success btn-md startInningButton">Start 1st Inning</button>
                 @elseif($matchs->status == '2')
-                    <button class="btn btn-success btn-lg startInningButton" >Start 2nd Inning</button>
+                    <button class="btn btn-success btn-md startInningButton" >Start 2nd Inning</button>
                 @endif
 {{--            </from>--}}
         @endif
@@ -181,7 +182,7 @@
 
 
                 <!-- Over Modal -->
-                <div class="modal fade" id="overModal" tabindex="-1" data-backdrop="false" role="dialog"
+                <div class="modal  " id="overModal" tabindex="-1" data-backdrop="false" role="dialog"
                      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -220,14 +221,15 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success ">Submit</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
                 <!-- wicketModal -->
-                <div class="modal fade" id="wicketModal" tabindex="-1" data-backdrop="false" role="dialog"
+                <div class="modal" id="wicketModal" tabindex="-1" data-backdrop="false" role="dialog"
                      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
@@ -402,7 +404,8 @@
 
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success ">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -413,7 +416,6 @@
                 @if($matchs)
 
                     <div class="tables ftable">
-                        <div class="panel-body widget-shadow">
 
                             @foreach($matchs->MatchDetail as $md)
                                 @if($md->team_id == $batting)
@@ -470,7 +472,7 @@
                                     </tbody>
                                 </table>
 
-                                <table class="table">
+                                <table class="table table-responsive-sm">
                                     <thead>
                                     <tr class="bg-dark">
                                         <th>Bowler</th>
@@ -524,6 +526,16 @@
                                 <button id="wide3" type="submit" value="wd3" class="bt">Wide + 3</button>
                                 <button id="wide4" type="submit" value="wd4" class="bt">Wide + 4</button>
                                 <br><br>
+                                <a id="wicket_button" class="btn btn-square btn-secondary">W</a>
+                                <br><br>
+                                <button id="noball" type="submit" value="nb" class="bt">nb + 0</button>
+                                <button id="noball" type="submit" value="nb1" class="bt">nb + 1</button>
+                                <button id="noball" type="submit" value="nb2" class="bt">nb + 2</button>
+                                <button id="noball" type="submit" value="nb3" class="bt">nb + 3</button>
+                                <button id="noball" type="submit" value="nb4" class="bt">nb + 4</button>
+                                <button id="noball" type="submit" value="nb5" class="bt">nb + 5</button>
+                                <button id="noball" type="submit" value="nb6" class="bt">nb + 6</button>
+                                <br><br>
 
                                 <button id="legbyes1" type="submit" value="lb1" class="bt">1 lb</button>
                                 <button id="legbyes2" type="submit" value="lb2" class="bt">2 lb</button>
@@ -537,17 +549,9 @@
                                 <button id="byes4" type="submit" value="b4" class="bt">4 b</button>
                                 <br><br>
 
-                                <button id="noball" type="submit" value="nb" class="bt">nb + 0</button>
-                                <button id="noball" type="submit" value="nb1" class="bt">nb + 1</button>
-                                <button id="noball" type="submit" value="nb2" class="bt">nb + 2</button>
-                                <button id="noball" type="submit" value="nb3" class="bt">nb + 3</button>
-                                <button id="noball" type="submit" value="nb4" class="bt">nb + 4</button>
-                                <button id="noball" type="submit" value="nb5" class="bt">nb + 5</button>
-                                <button id="noball" type="submit" value="nb6" class="bt">nb + 6</button>
-                                <br><br>
+
 
                             </form>
-                                <button id="wicket_button">W</button>
 
 
 
@@ -562,7 +566,6 @@
 
         </div>
 
-    </div>
     <!-- </div> -->
 
 @endsection
@@ -579,7 +582,6 @@
             }
 
             $('.startInningButton').on('click',function(){
-                alert('asdf');
                 $("#openingModal").modal('show');
             });
 

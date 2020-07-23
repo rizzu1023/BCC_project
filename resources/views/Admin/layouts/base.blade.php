@@ -70,10 +70,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 
 
-    <script src="{{asset('assets/Admin/js/SidebarNav.min.js')}}" type='text/javascript'></script>
-	<script>
-      $('.sidebar-menu').SidebarNav()
-    </script>
+{{--    <script src="{{asset('assets/Admin/js/SidebarNav.min.js')}}" type='text/javascript'></script>--}}
+{{--	<script>--}}
+{{--      $('.sidebar-menu').SidebarNav()--}}
+{{--    </script>--}}
 	<!-- //side nav js -->
 
 	<!-- Classie --><!-- for toggle left push menu script -->

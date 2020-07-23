@@ -4,12 +4,15 @@
 
 
     <div class="card">
+        <div class="card-header">
+            <span class="title1">Schedule</span>
+            <a style="float: right" class="btn btn-success btn-sm"
+               href="{{route('tournaments.schedules.create',$tournament->id)}}"><i class="fa fa-plus"></i>Add</a>
+        </div>
         <div class="card-body">
 
             @include('Admin.layouts.message')
-            <h3 class="title1">Schedule</h3>
-            <a style="margin-bottom:20px" class="btn btn-primary btn-flat btn-pri"
-               href="{{route('tournaments.schedules.create',$tournament->id)}}"><i class="fa fa-plus"></i>Add</a>
+
             <div class="tables">
                 <table class="table table-responsive-sm">
                     <thead>

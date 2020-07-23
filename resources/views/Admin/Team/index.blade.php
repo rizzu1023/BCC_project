@@ -2,13 +2,18 @@
 
 @section('content')
     <div class="card">
+        <div class="card-header">
+            <span class="title1">Teams</span>
+            <button style="float: right" id="addButton" class="btn btn-success btn-sm" data-target="#myModal" data-toggle="modal"><i
+                    class="fa fa-plus"></i>Create New Team</button>
+        </div>
         <div class="card-body">
 
 
             @include('Admin.layouts.message')
 
 
-            <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal" id="myModal" role="dialog">
                 <div class="modal-dialog">
 
                     <!-- Modal content-->
@@ -44,9 +49,7 @@
             </div>
 
 
-            <h3 class="title1">Teams</h3>
-            <button style="margin-bottom:20px;" id="addButton" class="btn btn-primary btn-flat btn-pri" data-target="#myModal" data-toggle="modal"><i
-                    class="fa fa-plus"></i>Create New Team</button>
+
             {{--					<form method="POST" action="{{route('teamFilter')}}">--}}
             {{--							@csrf--}}
             {{--							<div class="form-group col-md-4">--}}
