@@ -78,22 +78,22 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 	<!-- Classie --><!-- for toggle left push menu script -->
 		<script src="{{asset('assets/Admin/js/classie.js')}}"></script>
-		<script>
-			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
-				showLeftPush = document.getElementById( 'showLeftPush' ),
-				body = document.body;
-			showLeftPush.onclick = function() {
-				classie.toggle( this, 'active' );
-				classie.toggle( body, 'cbp-spmenu-push-toright' );
-				classie.toggle( menuLeft, 'cbp-spmenu-open' );
-				disableOther( 'showLeftPush' );
-			};
-			function disableOther( button ) {
-				if( button !== 'showLeftPush' ) {
-					classie.toggle( showLeftPush, 'disabled' );
-				}
-			}
-		</script>
+{{--		<script>--}}
+{{--			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),--}}
+{{--				showLeftPush = document.getElementById( 'showLeftPush' ),--}}
+{{--				body = document.body;--}}
+{{--			showLeftPush.onclick = function() {--}}
+{{--				classie.toggle( this, 'active' );--}}
+{{--				classie.toggle( body, 'cbp-spmenu-push-toright' );--}}
+{{--				classie.toggle( menuLeft, 'cbp-spmenu-open' );--}}
+{{--				disableOther( 'showLeftPush' );--}}
+{{--			};--}}
+{{--			function disableOther( button ) {--}}
+{{--				if( button !== 'showLeftPush' ) {--}}
+{{--					classie.toggle( showLeftPush, 'disabled' );--}}
+{{--				}--}}
+{{--			}--}}
+{{--		</script>--}}
 
 
 {{--	<script src="{{asset('js/app.js')}}"></script>--}}
@@ -106,7 +106,6 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 	<!-- Bootstrap Core JavaScript -->
    <script src="{{asset('assets/Admin/js/bootstrap.js')}}"> </script>
-   <script src="{{asset('assets/Admin/modal.js')}}"> </script>
 
 	@yield('script')
 
