@@ -707,7 +707,7 @@
                 success: function (data) {
                     $('#wicketModal').modal('hide');
                     //  alert(data.message);
-                    // location.reload();
+                    location.reload();
                 }
             });
         });
