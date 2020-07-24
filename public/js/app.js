@@ -3195,8 +3195,7 @@ __webpack_require__.r(__webpack_exports__);
       $("#result").swipe({
         swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
           if (direction === 'left') route.replace('teams');
-          if (direction === 'right') alert('hello');
-          route.replace('schedule');
+          if (direction === 'right') route.replace('schedule');
         },
         allowPageScroll: "auto"
       });
@@ -3673,10 +3672,28 @@ __webpack_require__.r(__webpack_exports__);
     $(function () {
       $("#scorecard").swipe({
         swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
-          if (direction === 'left') route.replace('overs');
+          if (direction === 'left') alert('left');
+          route.replace('overs');
 
           if (direction === 'right') {
+            alert('right');
             route.replace('live');
+          }
+
+          if (direction === 'top') {
+            alert('top');
+          }
+
+          if (direction === 'up') {
+            alert('up');
+          }
+
+          if (direction === 'down') {
+            alert('donw');
+          }
+
+          if (direction === 'bottom') {
+            alert('bottom');
           }
         },
         allowPageScroll: "auto"

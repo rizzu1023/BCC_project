@@ -335,10 +335,25 @@
                 $("#scorecard").swipe({
                     swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
                         if (direction === 'left')
+                            alert('left');
                             route.replace('overs');
                         if (direction === 'right') {
+                            alert('right');
                             route.replace('live');
                         }
+                        if (direction === 'top') {
+                            alert('top');
+                        }
+                        if (direction === 'up') {
+                            alert('up');
+                        }
+                        if (direction === 'down') {
+                            alert('donw');
+                        }
+                        if (direction === 'bottom') {
+                            alert('bottom');
+                        }
+
                     }, allowPageScroll: "auto"
                 });
             });
