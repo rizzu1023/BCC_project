@@ -2406,6 +2406,26 @@ __webpack_require__.r(__webpack_exports__);
           if (direction === 'left') {
             route.replace('live');
           }
+
+          if (direction === 'top') {
+            alert('top');
+          }
+
+          if (direction === 'up') {
+            alert('up');
+          }
+
+          if (direction === 'down') {
+            alert('donw');
+          }
+
+          if (direction === 'bottom') {
+            alert('bottom');
+          }
+
+          if (direction === 'right') {
+            alert('right');
+          }
         },
         allowPageScroll: "auto"
       });
@@ -3667,6 +3687,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scorecard",
   mounted: function mounted() {
+    alert('hello');
     this.loadMatchScorecard();
     var route = this.$router;
     $(function () {

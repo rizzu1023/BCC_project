@@ -329,6 +329,7 @@
         name: "Scorecard",
 
         mounted: function () {
+            alert('hello');
             this.loadMatchScorecard();
             var route = this.$router;
             $(function () {
