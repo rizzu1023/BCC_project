@@ -73,6 +73,7 @@
                         if (direction === 'left')
                             route.replace('teams');
                         if (direction === 'right')
+                            alert('hello');
                             route.replace('schedule');
                     }, allowPageScroll: "auto"
                 });

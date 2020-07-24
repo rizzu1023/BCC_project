@@ -3195,7 +3195,8 @@ __webpack_require__.r(__webpack_exports__);
       $("#result").swipe({
         swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
           if (direction === 'left') route.replace('teams');
-          if (direction === 'right') route.replace('schedule');
+          if (direction === 'right') alert('hello');
+          route.replace('schedule');
         },
         allowPageScroll: "auto"
       });
