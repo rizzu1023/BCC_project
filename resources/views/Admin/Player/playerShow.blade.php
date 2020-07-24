@@ -2,10 +2,48 @@
 
 @section('content')
 
-<div id="page-wrapper">
-			<div class="main-page">
+<div class="card">
+			<div class="card-body">
 				<h1 class="title1 text-center">{{$player['player_name']}}</h1>
-				<h4 class="title1 text-center" style="margin-top:10px;">{{ $team->team_name }}</h4>
+
+                <div class="col-md-8 col-md-offset-2">
+                    <form action="/admin/player/add-in-team" method="post">
+                        @csrf
+                    <select class="form-control" id="exampleFormControlSelect2" name="team_id"
+                            required onchange="this.form.submit()">
+                        <option disabled selected>Add in Team</option>
+                        @foreach($teams as $t)
+                                <option
+                                    value="{{$t->id}}">{{$t->team_name}}
+                                </option>
+                        @endforeach
+                    </select>
+                        <input type="hidden" name="player_id" value="{{$player['id']}}">
+                    </form>
+                    <table class="table table-sm table-striped" style="margin-top:50px;">
+                        <thead>
+                        <tr class="bg-dark">
+                            <th scope="col">Teams</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($player_teams as $t)
+                            <tr>
+                                <td>{{$t->team_name}}</td>
+                                <td>
+                                    <form action="/admin/player/remove-from-team" method="post">
+                                        @csrf
+                                        <button type="submit" class="btn btn-danger btn-sm text-white">Remove</button>
+                                        <input type="hidden" name="player_id" value="{{$player['id']}}">
+                                        <input type="hidden" name="team_id" value="{{$t->id}}">
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
 					<div class="col-md-8 col-md-offset-2">
 
 					<table class="table table-sm table-striped" style="margin-top:50px;">
@@ -38,7 +76,6 @@
 						</tr>
 						<tr>
 							<td>Teams</td>
-							<td>@foreach($teams as $t){{$t->Teams->team_name}}, @endforeach</td>
 						</tr>
 						</tbody>
 					</table>

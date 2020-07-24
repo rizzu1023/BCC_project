@@ -1,9 +1,6 @@
 @extends('Admin.layouts.base')
 
-@section('topbar_link')
-    <a href="/admin/LiveUpdate/{{$matchs->match_id}}/{{$matchs->tournament_id}}" class="btn btn-primary"
-       style="margin-top:10px ">Live Score</a>
-@endsection
+
 
 @section('css')
     <style>
@@ -34,8 +31,12 @@
         }
     @endphp
 
-    <div id="page-wrapper">
-        <div class="main-page">
+    <div class="card">
+        <div class="card-header">
+            <a href="/admin/LiveUpdate/{{$matchs->match_id}}/{{$matchs->tournament_id}}" class="btn btn-info"
+               >Live Score</a>
+        </div>
+        <div class="card-body">
             <div class="team-heading">
                 @foreach($matchs->MatchDetail as $md)
                     @if($md->team_id == $batting)
@@ -44,7 +45,7 @@
                     @endif
                 @endforeach
             </div>
-            <table class="table bg-light">
+            <table class="table bg-light table-responsive-sm">
                 <thead>
                 <tr class="bg-warning">
                     <th>Batsman</th>
@@ -131,7 +132,7 @@
                 </tr>
                 </tbody>
             </table>
-            <table class="table bg-light">
+            <table class="table bg-light table-responsive-sm">
                 <thead>
                 <tr class="bg-warning">
                     <th>Bowler</th>

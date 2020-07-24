@@ -9,9 +9,19 @@
     </li>
     <li class="c-sidebar-nav-item">
       <a class="c-sidebar-nav-link" href="/admin/Tournament">
-        <i class="c-sidebar-nav-icon cil-speedometer"></i> Tournaments
+        <i class="c-sidebar-nav-icon cil-clipboard"></i> Tournaments
       </a>
     </li>
+      <li class="c-sidebar-nav-item">
+          <a class="c-sidebar-nav-link" href="/admin/players">
+              <i class="c-sidebar-nav-icon cil-clipboard"></i> Players
+          </a>
+      </li>
+      <li class="c-sidebar-nav-item">
+          <a href="{{route('BrowseResult')}}" class="c-sidebar-nav-link">
+              <i class="c-sidebar-nav-icon cil-clipboard"></i> Results
+          </a>
+      </li>
 {{--    <li class="c-sidebar-nav-item nav-dropdown">--}}
 {{--      <a class="c-sidebar-nav-link nav-dropdown-toggle" href="#">--}}
 {{--        <i class="c-sidebar-nav-icon cil-puzzle"></i> Nav dropdown--}}
