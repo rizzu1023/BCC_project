@@ -3,13 +3,12 @@
 
 @section('content')
 
-<div id="page-wrapper">
-			<div class="main-page">
+<div class="card">
+			<div class="card-body">
 				@if(count($result) > 0)
 				<h3 class="title1">Results</h3>
               <div class="tables">
-                <div class="panel-body widget-shadow">
-                  <table class="table">
+                  <table class="table table-responsive-sm">
                     <thead>
                       <tr>
                         <th></th>
@@ -48,7 +47,6 @@
                       @endfor
                     </tbody>
                   </table>
-                </div>
                     </div>
 
 					@else
