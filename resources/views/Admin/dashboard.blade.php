@@ -1,52 +1,36 @@
 @extends('Admin.layouts.base')
 
 @section('content')
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="c-callout c-callout-info b-t-1 b-r-1 b-b-1">
+                    <small class="text-muted">Teams</small><br>
+                    <strong class="h4">{{$teams}}</strong>
+                </div>
+            </div><!--/.col-->
+            <div class="col-sm-3">
+                <div class="c-callout c-callout-danger b-t-1 b-r-1 b-b-1">
+                    <small class="text-muted">Players</small><br>
+                    <strong class="h4">{{$players}}</strong>
+                </div>
+            </div><!--/.col-->
+            <div class="col-sm-3">
+                <div class="c-callout c-callout-warning b-t-1 b-r-1 b-b-1">
+                    <small class="text-muted">Tournaments</small><br>
+                    <strong class="h4">{{$tournaments}}</strong>
+                </div>
+            </div><!--/.col-->
+            <div class="col-sm-3">
+                <div class="c-callout c-callout-success b-t-1 b-r-1 b-b-1">
+                    <small class="text-muted">Matches</small><br>
+                    <strong class="h4">{{$matches}}</strong>
+                </div>
+            </div><!--/.col-->
 
-
-<div id="page-wrapper">
-			<div class="main-page">
-				<h3 class="title1">Dashboard</h3> 
-
-				<div class="col_3">
-        	<div class="col-md-3 widget widget1">
-        		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-dollar icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>{{$teams}}</strong></h5>
-                      <span>Teams</span>
-                    </div>
-                </div>
-        	</div> 
-        	<div class="col-md-3 widget widget1">
-        		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-laptop user1 icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>{{$players}}</strong></h5>
-                      <span>Players</span>
-                    </div>
-                </div>
-        	</div>
-        	<div class="col-md-3 widget widget1">
-        		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-money user2 icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>{{$tournaments}}</strong></h5>
-                      <span>Tournaments</span>
-                    </div>
-                </div>
-        	</div>
-        	<div class="col-md-3 widget widget1">
-        		<div class="r3_counter_box">
-                    <i class="pull-left fa fa-pie-chart dollar1 icon-rounded"></i>
-                    <div class="stats">
-                      <h5><strong>{{$matches}}</strong></h5>
-                      <span>Matches</span>
-                    </div>
-                </div>
-        	 </div>
-		</div>
-					
-			</div>
+        </div><!--/.row-->
+    </div>
 </div>
 
 @endsection

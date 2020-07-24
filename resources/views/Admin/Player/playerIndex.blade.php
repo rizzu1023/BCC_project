@@ -19,13 +19,12 @@
 <div class="card">
     <div class="card-header">
         <strong class="title1">Players</strong>
-        <a style=" float: right" class="btn btn-success btn-sm " href="{{route('teams.players.create',$team->id)}}"><i class="fa fa-plus"></i>Add</a>
+        <a style=" float: right" class="btn btn-success btn-sm " href="/admin/player/create"><i class="fa fa-plus"></i>Add</a>
 
 
     </div>
 			<div class="card-body">
 			@include('Admin.layouts.message')
-                <span style="font-size: 30px;margin-left: 30vw">{{$team->team_name}}</span>
 								<div class="row">
 
 								<!-- <div class="col-md-4"> -->
@@ -72,18 +71,18 @@
                             @foreach($players as $p)
                                 <tr>
 
-								  <th scope="row">{{$i}}</th>
+								  <th scope="row">{{$loop->iteration}}</th>
 								  <td>{{$p->player_id}}</td>
 								  <td>{{$p->player_name}}</td>
 								  <td>{{$p->player_role}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}/edit">Edit</a>
-                                        <a class="btn btn-warning btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}">Show</a>
-                                        <form style="display:inline-block" method="POST" action="/admin/teams/{{$team->id}}/players/{{$p->id}}">
+                                        <a class="btn btn-success btn-sm" href="/admin/player/{{$p->id}}/edit">Edit</a>
+                                        <a class="btn btn-warning btn-sm" href="/admin/player/{{$p->id}}">Show</a>
+                                        <form style="display:inline-block" method="POST" action="/admin/player/{{$p->id}}">
                                         @csrf
                                         @method('DELETE')
                                         <!-- <input type="hidden" value="#" name="id"> -->
-                                            <button class="btn btn-danger btn-sm">Remove</button>
+                                            <button class="btn btn-danger btn-sm">Delete</button>
                                         </form>
 
                                     </td>

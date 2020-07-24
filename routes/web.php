@@ -19,6 +19,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/Tournament/addTeam','TournamentController@Tournament_add_Team')->name('Tournament_add_Team');
     Route::post('/Tournament/destroyTeam','TournamentController@Tournament_destroy_Team')->name('Tournament_destroy_Team');
 
+
 //    Route::resource('/Team','TeamController');
 //    Route::post('/Team/filter','TeamController@teamFilter')->name('teamFilter');  //Team
 //    Route::resource('/Players','PlayersController');    //Player
@@ -52,6 +53,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::resource('tournaments.schedules','ScheduleController');
     Route::resource('tournaments.teams','TeamController');
     Route::resource('teams.players','PlayersController');
+
+    Route::get('players','PlayersController@player_index');
+    Route::get('player/create','PlayersController@player_create');
+    Route::post('player','PlayersController@player_store');
+    Route::get('player/{id}','PlayersController@player_show');
+    Route::get('player/{id}/edit','PlayersController@player_edit');
+    Route::put('player/{id}','PlayersController@player_update');
+    Route::delete('player/{id}','PlayersController@player_destroy');
+
+    Route::post('player/add-in-team','PlayersController@add_in_team');
+    Route::post('player/remove-from-team','PlayersController@remove_from_team');
 });
 
 Auth::routes();

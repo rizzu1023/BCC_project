@@ -25,7 +25,7 @@
             background: #1a1a1a;
             color: #fff;
             border: 0;
-            width: 100vw;
+            width:100vw;
         }
 
         .c-header-text {

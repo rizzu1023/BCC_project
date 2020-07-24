@@ -9,7 +9,7 @@
     <div class="card-body">
 
 						<div class="form-body">
-							<form method="POST" action="{{route('teams.players.store',$team->id)}}">
+							<form method="POST" action="/admin/player">
 							@csrf
 								<div class="form-group">
 									<label for="field1">Player Id</label>

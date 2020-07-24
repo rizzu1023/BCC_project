@@ -10,7 +10,7 @@
     <div class="card-body">
 
 						<div class="form-body">
-							<form method="POST" action="{{route('teams.players.update',['team'=>$team->id,'player'=>$player->id])}}">
+							<form method="POST" action="/admin/player/{{$player['id']}}">
 							@csrf
 							@method('PUT')
 								<div class="form-group">

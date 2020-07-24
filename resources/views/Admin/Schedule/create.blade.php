@@ -2,10 +2,9 @@
 
 @section('content')
 
-<div id="page-wrapper">
-			<div class="main-page">
+<div class="card row">
+			<div class="card-body">
 				<h3 class="title1">Add Match</h3>
-				<div class="form-grids row widget-shadow" data-example-id="basic-forms">
 						<div class="form-body">
 							<form method="POST" action="{{route('tournaments.schedules.store', $tournament->id)}}">
 							@csrf
@@ -44,10 +43,9 @@
 									<input type="date" class="form-control" id="field1" name="dates"  required>
 								</div>
 
-								<button type="submit" class="btn btn-default">Submit</button>
+								<button type="submit" class="btn btn-block btn-success">Add Match</button>
 							</form>
 						</div>
-				</div>
 			</div>
 </div>
 
