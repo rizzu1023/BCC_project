@@ -29,30 +29,32 @@ class PlayersController extends Controller
 
     public function create(Teams $team)
     {
-        return view('Admin/Player/create', compact('team'));
+        $players = Players::all();
+        return view('Admin/Player/create', compact('team','players'));
     }
 
 
     public function store(Request $request, Teams $team)
     {
-        $data = request()->validate([
-            'player_id' => 'required',
-            'player_name' => 'required',
-            'player_role' => 'required',
-        ]);
+//        $data = request()->validate([
+//            'player_id' => 'required',
+//            'player_name' => 'required',
+//            'player_role' => 'required',
+//        ]);
 
-        $player = Players::create([
-            'player_id' => $request->player_id,
-            'player_name' => $request->player_name,
-            'player_role' => $request->player_role,
-        ]);
-
+//        $player = Players::create([
+//            'player_id' => $request->player_id,
+//            'player_name' => $request->player_name,
+//            'player_role' => $request->player_role,
+//        ]);
+        $player = Players::find($request->player_id);
         $player->Teams()->syncWithoutDetaching($team);
+        return back()->with('message','Player added');
 
-        Batting::create(request(['player_id']));
-        Bowling::create(request(['player_id']));
+//        Batting::create(request(['player_id']));
+//        Bowling::create(request(['player_id']));
 
-        return redirect::route('teams.players.index',$team->id)->with('message', 'Player has been added');
+//        return redirect::route('teams.players.index',$team->id)->with('message', 'Player has been added');
         // return back();
     }
 
