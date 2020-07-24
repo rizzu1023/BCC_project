@@ -2406,26 +2406,6 @@ __webpack_require__.r(__webpack_exports__);
           if (direction === 'left') {
             route.replace('live');
           }
-
-          if (direction === 'top') {
-            alert('top');
-          }
-
-          if (direction === 'up') {
-            alert('up');
-          }
-
-          if (direction === 'down') {
-            alert('donw');
-          }
-
-          if (direction === 'bottom') {
-            alert('bottom');
-          }
-
-          if (direction === 'right') {
-            alert('right');
-          }
         },
         allowPageScroll: "auto"
       });
@@ -3687,34 +3667,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Scorecard",
   mounted: function mounted() {
-    alert('hello');
     this.loadMatchScorecard();
     var route = this.$router;
     $(function () {
       $("#scorecard").swipe({
         swipe: function swipe(event, direction, distance, duration, fingerCount, fingerData) {
-          if (direction === 'left') alert('left');
-          route.replace('overs');
+          if (direction === 'left') route.replace('overs');
 
           if (direction === 'right') {
-            alert('right');
             route.replace('live');
-          }
-
-          if (direction === 'top') {
-            alert('top');
-          }
-
-          if (direction === 'up') {
-            alert('up');
-          }
-
-          if (direction === 'down') {
-            alert('donw');
-          }
-
-          if (direction === 'bottom') {
-            alert('bottom');
           }
         },
         allowPageScroll: "auto"
@@ -65591,7 +65552,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_requir
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Team', __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Batting', __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Tournament'; // Vue.prototype.$domainName = 'http://localhost:8000/api/';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Cricify'; // Vue.prototype.$domainName = 'http://localhost:8000/api/';
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://3.7.68.148/api/';
 

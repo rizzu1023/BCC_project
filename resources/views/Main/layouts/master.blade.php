@@ -7,34 +7,29 @@
 
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-{{--        <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">--}}
+    {{--        <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/css/coreui.min.css">--}}
     {{--    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">--}}
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <style>
         @font-face {
             /*font-family : Averta;*/
         {{--            src : url({{ asset('assets/Main/fonts/AvertaDemoPE-ExtraboldItalic.woff2') }});--}}
-
         }
-
         html body {
             font-family: 'Open Sans', sans-serif;
         }
-
         .c-header {
             background: #1a1a1a;
             color: #fff;
             border: 0;
-            width:100vw;
+            width: 100vw;
         }
-
         .c-header-text {
             /*text-align: center;*/
             width: 100%;
             line-height: 56px;
             padding: 0 12px;
         }
-
         .c-header-text #back_button {
             float: left;
         }
@@ -42,7 +37,6 @@
             height: 35px;
             width: 35px;
         }
-
         .c-header-text #menu_button {
             float: right;
         }
@@ -50,17 +44,13 @@
             height: 28px;
             width: 28px;
         }
-
         .c-header-text span {
             color: #fff;
             position: absolute;
             font-size: 1.1rem;
             left: 50%;
             transform: translateX(-50%);
-
         }
-
-
     </style>
     @yield('css')
 
@@ -230,14 +220,13 @@
 
 <!-- Optional JavaScript -->
 <!-- Popper.js first, then CoreUI JS -->
+<script src="{{asset('js/app.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"
         integrity="sha384-L2pyEeut/H3mtgCBaUNw7KWzp5n9&#43;4pDQiExs933/5QfaTh8YStYFFkOzSoXjlTb"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@coreui/coreui@3.0.0-rc.0/dist/js/coreui.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
-<script src="{{asset('js/app.js')}}"></script>
-
 
 <script>
     // alert(colors.black);

@@ -63,21 +63,6 @@
                         if (direction === 'left') {
                             route.replace('live');
                         }
-                        if (direction === 'top') {
-                            alert('top');
-                        }
-                        if (direction === 'up') {
-                            alert('up');
-                        }
-                        if (direction === 'down') {
-                            alert('donw');
-                        }
-                        if (direction === 'bottom') {
-                            alert('bottom');
-                        }
-                        if (direction === 'right') {
-                            alert('right');
-                        }
                     }, allowPageScroll: "auto"
                 });
             });

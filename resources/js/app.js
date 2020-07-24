@@ -45,7 +45,7 @@ Vue.component('Team', require('./components/Team').default);
 Vue.component('Batting', require('./components/Batting').default);
 Vue.component('Bowling', require('./components/Bowling').default);
 
-Vue.prototype.$header_string = 'Tournament';
+Vue.prototype.$header_string = 'Cricify';
 
 
 // Vue.prototype.$domainName = 'http://localhost:8000/api/';
