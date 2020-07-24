@@ -19,7 +19,7 @@
 <div class="card">
     <div class="card-header">
         <strong class="title1">Players</strong>
-        <a style=" float: right" class="btn btn-success btn-sm " href="{{route('teams.players.create',$team->id)}}"><i class="fa fa-plus"></i>Add</a>
+        <a style=" float: right" class="btn btn-success btn-sm " href="{{route('teams.players.create',$team->id)}}"><i class="fa fa-plus"></i>Add Existing Player</a>
 
 
     </div>
