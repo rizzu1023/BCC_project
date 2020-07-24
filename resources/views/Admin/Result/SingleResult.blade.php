@@ -34,8 +34,8 @@
 
 @section('content')
 
-<div id="page-wrapper">
-			<div class="main-page">
+<div class="card">
+			<div class="card-body">
             <div class="row">
             <div class="col-md-12">
         	<div class="col-md-2">
