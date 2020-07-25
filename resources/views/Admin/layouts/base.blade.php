@@ -41,6 +41,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
 @yield('css')
 
+
 </head>
 
 

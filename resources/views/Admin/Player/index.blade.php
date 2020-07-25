@@ -1,21 +1,7 @@
 @extends('Admin.layouts.base')
 
 @section('content')
-{{--    <div class="card mb-3" style="max-width: 540px;">--}}
-{{--        <div class="row no-gutters">--}}
-{{--            <div class="col-md-4">--}}
-{{--                <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg>--}}
 
-{{--            </div>--}}
-{{--            <div class="col-md-8">--}}
-{{--                <div class="card-body">--}}
-{{--                    <h5 class="card-title">Card title</h5>--}}
-{{--                    <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This content is a little longer.</p>--}}
-{{--                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
 <div class="card">
     <div class="card-header">
         <strong class="title1">Players</strong>
@@ -77,13 +63,13 @@
 								  <td>{{$p->player_name}}</td>
 								  <td>{{$p->player_role}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}/edit">Edit</a>
-                                        <a class="btn btn-warning btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}">Show</a>
+                                        <a class="btn btn-success btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}/edit"><i class=" cil-color-border"></i></a>
+                                        <a class="btn btn-warning btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}"><i class=" cil-user"></i></a>
                                         <form style="display:inline-block" method="POST" action="/admin/teams/{{$team->id}}/players/{{$p->id}}">
                                         @csrf
                                         @method('DELETE')
                                         <!-- <input type="hidden" value="#" name="id"> -->
-                                            <button class="btn btn-danger btn-sm">Remove</button>
+                                            <button class="btn btn-danger btn-sm"><i class=" cil-trash"></i></button>
                                         </form>
 
                                     </td>

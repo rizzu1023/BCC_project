@@ -1,10 +1,10 @@
 
-<div class="c-sidebar c-sidebar-dark c-sidebar-lg-show c-sidebar-sm-hie" id="sidebar">
+<div class="c-sidebar c-sidebar-lg-show c-sidebar-sm-hie" id="sidebar" style="background: #1a1a1a">
   <ul class="c-sidebar-nav">
     <li class="c-sidebar-nav-title">CRICIFY</li>
     <li class="c-sidebar-nav-item">
       <a class="c-sidebar-nav-link" href="/admin">
-        <i class="c-sidebar-nav-icon fa fa-plus"></i> Dashboard
+        <i class="c-sidebar-nav-icon cil-speedometer"></i> Dashboard
       </a>
     </li>
     <li class="c-sidebar-nav-item">
@@ -14,7 +14,7 @@
     </li>
       <li class="c-sidebar-nav-item">
           <a class="c-sidebar-nav-link" href="/admin/players">
-              <i class="c-sidebar-nav-icon cil-clipboard"></i> Players
+              <i class="c-sidebar-nav-icon cil-user"></i> Players
           </a>
       </li>
       <li class="c-sidebar-nav-item">
@@ -22,7 +22,7 @@
               <i class="c-sidebar-nav-icon cil-clipboard"></i> Results
           </a>
       </li>
-{{--    <li class="c-sidebar-nav-item nav-dropdown">--}}
+{{--    <li class="c-sidebar-nav-item c-sidebar-nav-dropdown">--}}
 {{--      <a class="c-sidebar-nav-link nav-dropdown-toggle" href="#">--}}
 {{--        <i class="c-sidebar-nav-icon cil-puzzle"></i> Nav dropdown--}}
 {{--      </a>--}}
