@@ -198,7 +198,7 @@
 
     }
     #statsDetail .table{
-        margin-top: 40px;
+        margin-top: 39px;
     }
     #statsDetail .table tbody tr td {
         font-size: 0.8rem;

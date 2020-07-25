@@ -85,7 +85,7 @@
 
         mounted: function () {
             // Event.$emit('firstEvent');
-            $('#stats').addClass('animate__animated animate__fadeInRight animate__faster');
+            // $('#stats').addClass('animate__animated animate__fadeInRight animate__faster');
 
             var route = this.$router;
             $(function () {

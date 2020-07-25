@@ -28,7 +28,7 @@
             });
 
 
-            $('#pointsTable').addClass('animated fadeInRight faster');
+            // $('#pointsTable').addClass('animated fadeInRight faster');
         },
 
         methods: {
