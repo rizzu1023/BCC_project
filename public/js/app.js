@@ -3828,7 +3828,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "Stats",
   mounted: function mounted() {
     // Event.$emit('firstEvent');
-    // $('#stats').addClass('animated fadeInRight faster');
+    $('#stats').addClass('animated fadeInRight faster');
     var route = this.$router;
     $(function () {
       $("#stats").swipe({
@@ -4088,7 +4088,7 @@ __webpack_require__.r(__webpack_exports__);
         allowPageScroll: "auto"
       });
     });
-    $('#team').addClass('animated fadeInRight faster');
+    $('#team').addClass('animate__animated animate__fadeInRight animate__faster');
   },
   methods: {
     // addTeam() {

@@ -41,7 +41,7 @@
                 });
             });
 
-            $('#team').addClass('animated fadeInRight faster');
+            $('#team').addClass('animate__animated animate__fadeInRight animate__faster');
 
         },
 
