@@ -63,13 +63,13 @@
 								  <td>{{$p->player_name}}</td>
 								  <td>{{$p->player_role}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}/edit"><i class=" cil-color-border"></i></a>
                                         <a class="btn btn-warning btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}"><i class=" cil-user"></i></a>
+                                        <a class="btn btn-success btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}/edit"><i class=" cil-color-border"></i></a>
                                         <form style="display:inline-block" method="POST" action="/admin/teams/{{$team->id}}/players/{{$p->id}}">
                                         @csrf
                                         @method('DELETE')
                                         <!-- <input type="hidden" value="#" name="id"> -->
-                                            <button class="btn btn-danger btn-sm"><i class=" cil-trash"></i></button>
+                                            <button class="btn btn-danger btn-sm" onclick="return tconfirm('Are you sure you want to remove this player ?');"><i class=" cil-trash"></i></button>
                                         </form>
 
                                     </td>

@@ -83,15 +83,15 @@
                             <td><a class="btn btn-dark btn-sm" href="/admin/teams/{{$t->id}}/players">Squad</a>
                             </td>
                             <td>
-                                <a class="btn btn-warning btn-sm"
-                                   href="/admin/tournaments/{{$tournament->id}}/teams/{{$t->id}}">Show</a>
+{{--                                <a class="btn btn-warning btn-sm"--}}
+{{--                                   href="/admin/tournaments/{{$tournament->id}}/teams/{{$t->id}}"> <i class="cil-user"></i> </a>--}}
                                 <a class="btn btn-success btn-sm"
-                                   href="/admin/tournaments/{{$tournament->id}}/teams/{{$t->id}}/edit">Edit</a>
+                                   href="/admin/tournaments/{{$tournament->id}}/teams/{{$t->id}}/edit"> <i class="cil-color-border"></i> </a>
                                 <form style="display:inline-block" method="POST"
                                       action="/admin/tournaments/{{$tournament->id}}/teams/{{$t->id}}">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                    <button class="btn btn-danger btn-sm"> <i class="cil-trash"></i> </button>
                                 </form>
                             </td>
 

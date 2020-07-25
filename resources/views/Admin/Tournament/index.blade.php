@@ -6,7 +6,7 @@
             <span class="title1">Tournaments</span>
 
             <a style="float:right" class="btn btn-primary btn-success btn-sm" href="{{route('Tournament.create')}}"><i
-                    class="fa fa-plus"></i>Create Tournament</a>
+                    class="fa fa-plus"></i> Create Tournament</a>
         </div>
         <div class="card-body">
 
@@ -58,11 +58,11 @@
                     <!-- <a class="btn btn-warning btn-sm" href="/admin/Tournament/{{$t->id}}">Add Team</a> -->
                     </td>
                     <td>
-                        <a class="btn btn-success btn-sm" href="/admin/Tournament/{{$t->id}}/edit">Edit</a>
+                        <a class="btn btn-success btn-sm" href="/admin/Tournament/{{$t->id}}/edit"> <i class="cil-color-border"></i> </a>
                         <form style="display:inline-block" method="POST" action="/admin/Tournament/{{$t->id}}">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <button class="btn btn-danger btn-sm"> <i class="cil-trash"></i> </button>
                         </form>
 
 

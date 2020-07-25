@@ -19,7 +19,7 @@
 <div class="card">
     <div class="card-header">
         <strong class="title1">Players</strong>
-        <a style=" float: right" class="btn btn-success btn-sm " href="/admin/player/create"><i class="fa fa-plus"></i>Add</a>
+        <a style=" float: right" class="btn btn-success btn-sm " href="/admin/player/create"><i class="cil-user-plus"></i> Add New</a>
 
 
     </div>
@@ -76,13 +76,13 @@
 								  <td>{{$p->player_name}}</td>
 								  <td>{{$p->player_role}}</td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="/admin/player/{{$p->id}}/edit">Edit</a>
-                                        <a class="btn btn-warning btn-sm" href="/admin/player/{{$p->id}}">Show</a>
+                                        <a class="btn btn-warning btn-sm" href="/admin/player/{{$p->id}}"><i class=" cil-user"></i></a>
+                                        <a class="btn btn-success btn-sm" href="/admin/player/{{$p->id}}/edit"><i class=" cil-color-border"></i></a>
                                         <form style="display:inline-block" method="POST" action="/admin/player/{{$p->id}}">
                                         @csrf
                                         @method('DELETE')
                                         <!-- <input type="hidden" value="#" name="id"> -->
-                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this player?');"><i class=" cil-trash"></i></button>
                                         </form>
 
                                     </td>
