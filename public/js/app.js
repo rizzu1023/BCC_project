@@ -3828,7 +3828,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "Stats",
   mounted: function mounted() {
     // Event.$emit('firstEvent');
-    $('#stats').addClass('animated fadeInRight faster');
+    $('#stats').addClass('animate__animated animate__fadeInRight animate__faster');
     var route = this.$router;
     $(function () {
       $("#stats").swipe({
@@ -3857,6 +3857,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -8984,7 +8985,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#stats .table-header[data-v-56c7d5c4] {\n    background: #dbdbdb;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .table-header span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n    color: #1a1a1a;\n    font-weight: bold;\n}\n#stats .list-group-item[data-v-56c7d5c4] {\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .list-group-item[data-v-56c7d5c4]:hover, #stats .list-group-item[data-v-56c7d5c4]:active {\n    background-color: #f0f0f0;\n}\n#stats .list-group-item span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n}\n#stats .list-group a[data-v-56c7d5c4] {\n    text-decoration: none;\n    color: #000;\n}\n", ""]);
+exports.push([module.i, "\n#stats[data-v-56c7d5c4]{\n    width: 100%;\n}\n#stats .table-header[data-v-56c7d5c4] {\n    background: #dbdbdb;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .table-header span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n    color: #1a1a1a;\n    font-weight: bold;\n}\n#stats .list-group-item[data-v-56c7d5c4] {\n    border-radius: 0;\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#stats .list-group-item[data-v-56c7d5c4]:hover, #stats .list-group-item[data-v-56c7d5c4]:active {\n    background-color: #f0f0f0;\n}\n#stats .list-group-item span[data-v-56c7d5c4] {\n    font-size: 0.8rem;\n}\n#stats .list-group a[data-v-56c7d5c4] {\n    text-decoration: none;\n    color: #000;\n}\n", ""]);
 
 // exports
 
@@ -9003,7 +9004,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#statsDetail .table[data-v-cecdae96]{\n    /*margin-top: 47px;*/\n}\n#statsDetail .table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead[data-v-cecdae96] {\n    background: #dbdbdb;\n    color: 1a1a1a;\n}\n#statsDetail .table thead tr th[data-v-cecdae96] {\n    border: none;\n}\n#statsDetail .table-header[data-v-cecdae96] {\n    background: #1a1a1a;\n    color: #FFF;\n    text-align: center;\n    position: fixed;\n    width:100vw;\n}\n#statsDetail .table-header span[data-v-cecdae96] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#loader[data-v-cecdae96] {\n    background: #f8fafc;\n}\n#preloader[data-v-cecdae96] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1a1a1a;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-cecdae96 1s infinite linear;\n            animation: rotate-data-v-cecdae96 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n#statsDetail .tables .table tr[data-v-cecdae96]{\n}\n#statsDetail .table[data-v-cecdae96]{\n    margin-top: 40px;\n}\n#statsDetail .table tbody tr td[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead th[data-v-cecdae96] {\n    font-size: 0.8rem;\n}\n#statsDetail .table thead[data-v-cecdae96] {\n    background: #dbdbdb;\n    color: #1a1a1a;\n}\n#statsDetail .table thead tr th[data-v-cecdae96] {\n    border: none;\n}\n#statsDetail .table-top[data-v-cecdae96] {\n    background: #1a1a1a;\n    color: #FFF;\n    text-align: center;\n    position: fixed;\n    top:56px;\n    width:100vw;\n    padding: 8px 24px;\n    /*margin-bottom: 30px;*/\n}\n#statsDetail .table-header span[data-v-cecdae96] {\n    font-size: 0.85rem;\n    font-weight: bold;\n    text-transform: uppercase;\n}\n#loader[data-v-cecdae96] {\n    background: #f8fafc;\n}\n#preloader[data-v-cecdae96] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1a1a1a;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-cecdae96 1s infinite linear;\n            animation: rotate-data-v-cecdae96 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-cecdae96 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -9022,7 +9023,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#team[data-v-402b42c8]{\n    height: calc(100vh - (104px));\n}\n#team .list-group-item[data-v-402b42c8] {\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item[data-v-402b42c8]:hover, #team .list-group-item[data-v-402b42c8]:active {\n    background-color: #f0f0f0;\n}\n#team .list-group-item span[data-v-402b42c8] {\n    font-size: 0.9rem;\n}\n#team #not_started[data-v-402b42c8] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    line-height: calc(100vh - (104px));\n}\n#loader[data-v-402b42c8] {\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1a1a1a;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n#team[data-v-402b42c8]{\n    height: calc(100vh - (104px));\n    width: 100vw;\n}\n#team .list-group-item[data-v-402b42c8] {\n    border-right: 0;\n    border-left: 0;\n    border-top: 0;\n    padding-left: 12px;\n    padding-right: 12px;\n}\n#team .list-group-item[data-v-402b42c8]:hover, #team .list-group-item[data-v-402b42c8]:active {\n    background-color: #f0f0f0;\n}\n#team .list-group-item span[data-v-402b42c8] {\n    font-size: 0.9rem;\n}\n#team #not_started[data-v-402b42c8] {\n    width: 100vw;\n    text-align: center;\n    background: #f8fafc;\n    line-height: calc(100vh - (104px));\n}\n#loader[data-v-402b42c8] {\n    background: #f8fafc;\n}\n#preloader[data-v-402b42c8] {\n    height: 30px;\n    width: 30px;\n    margin: 40vh auto;\n    border: 5px solid #dbdbdb;\n    border-top: 5px solid #1a1a1a;\n    border-radius: 50%;\n    -webkit-animation: rotate-data-v-402b42c8 1s infinite linear;\n            animation: rotate-data-v-402b42c8 1s infinite linear;\n}\n@-webkit-keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes rotate-data-v-402b42c8 {\n0% {\n        -webkit-transform: rotate(0deg);\n                transform: rotate(0deg);\n}\n100% {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
@@ -49710,63 +49711,57 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "statsDetail" } }, [
+    _c("div", { staticClass: "table-top" }, [
+      _vm.type == "mostRuns" ? _c("span", [_vm._v("Most Runs")]) : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "bestBattingAverage"
+        ? _c("span", [_vm._v("Best Batting Average")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "bestBattingStrikeRate"
+        ? _c("span", [_vm._v("Best Batting Strike Rate")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "highestScores"
+        ? _c("span", [_vm._v("Highest Scores")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "mostHundreds"
+        ? _c("span", [_vm._v("Most Hundreds")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "mostFifties"
+        ? _c("span", [_vm._v("Most Fifties")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "mostSixes" ? _c("span", [_vm._v("Most Sixes")]) : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "mostFours" ? _c("span", [_vm._v("Most Fours")]) : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "mostWickets"
+        ? _c("span", [_vm._v("Most Wickets")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "bestBowlingAverage"
+        ? _c("span", [_vm._v("Best Bowling  Average")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "bestBowling"
+        ? _c("span", [_vm._v("Best Bowling")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "bestEconomy"
+        ? _c("span", [_vm._v("Best Economy")])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.type == "bestBowlingStrikeRate"
+        ? _c("span", [_vm._v("Best Bowling Strike Rate")])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
     _vm.stats
       ? _c("div", { staticClass: "tables table-responsive table-hover" }, [
           _c("div", { staticClass: "panel-body widget-shadow" }, [
-            _c("div", { staticClass: "py-2 px-4 table-header" }, [
-              _vm.type == "mostRuns"
-                ? _c("span", [_vm._v("Most Runs")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "bestBattingAverage"
-                ? _c("span", [_vm._v("Best Batting Average")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "bestBattingStrikeRate"
-                ? _c("span", [_vm._v("Best Batting Strike Rate")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "highestScores"
-                ? _c("span", [_vm._v("Highest Scores")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "mostHundreds"
-                ? _c("span", [_vm._v("Most Hundreds")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "mostFifties"
-                ? _c("span", [_vm._v("Most Fifties")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "mostSixes"
-                ? _c("span", [_vm._v("Most Sixes")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "mostFours"
-                ? _c("span", [_vm._v("Most Fours")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "mostWickets"
-                ? _c("span", [_vm._v("Most Wickets")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "bestBowlingAverage"
-                ? _c("span", [_vm._v("Best Bowling  Average")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "bestBowling"
-                ? _c("span", [_vm._v("Best Bowling")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "bestEconomy"
-                ? _c("span", [_vm._v("Best Economy")])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.type == "bestBowlingStrikeRate"
-                ? _c("span", [_vm._v("Best Bowling Strike Rate")])
-                : _vm._e()
-            ]),
-            _vm._v(" "),
             _c("table", { staticClass: "table" }, [
               _c("thead", [
                 _c("tr", [

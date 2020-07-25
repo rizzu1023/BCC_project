@@ -85,7 +85,7 @@
 
         mounted: function () {
             // Event.$emit('firstEvent');
-            $('#stats').addClass('animated fadeInRight faster');
+            $('#stats').addClass('animate__animated animate__fadeInRight animate__faster');
 
             var route = this.$router;
             $(function () {
@@ -106,6 +106,9 @@
 </script>
 
 <style scoped>
+    #stats{
+        width: 100%;
+    }
     #stats .table-header {
         background: #dbdbdb;
         padding-left: 12px;

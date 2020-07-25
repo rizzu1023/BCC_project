@@ -131,6 +131,7 @@
 <style scoped>
     #team{
         height: calc(100vh - (104px));
+        width: 100vw;
     }
 
     #team .list-group-item {

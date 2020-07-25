@@ -1,23 +1,24 @@
 <template>
     <div id="statsDetail">
+        <div class="table-top">
+            <span v-if="type == 'mostRuns'">Most Runs</span>
+            <span v-if="type == 'bestBattingAverage'">Best Batting Average</span>
+            <span v-if="type == 'bestBattingStrikeRate'">Best Batting Strike Rate</span>
+            <span v-if="type == 'highestScores'">Highest Scores</span>
+            <span v-if="type == 'mostHundreds'">Most Hundreds</span>
+            <span v-if="type == 'mostFifties'">Most Fifties</span>
+            <span v-if="type == 'mostSixes'">Most Sixes</span>
+            <span v-if="type == 'mostFours'">Most Fours</span>
+            <span v-if="type == 'mostWickets'">Most Wickets</span>
+            <span v-if="type == 'bestBowlingAverage'">Best Bowling  Average</span>
+            <span v-if="type == 'bestBowling'">Best Bowling</span>
+            <span v-if="type == 'bestEconomy'">Best Economy</span>
+            <span v-if="type == 'bestBowlingStrikeRate'">Best Bowling Strike Rate</span>
+
+        </div>
         <div class="tables table-responsive table-hover" v-if="stats">
             <div class="panel-body widget-shadow">
-                <div class="py-2 px-4 table-header">
-                    <span v-if="type == 'mostRuns'">Most Runs</span>
-                    <span v-if="type == 'bestBattingAverage'">Best Batting Average</span>
-                    <span v-if="type == 'bestBattingStrikeRate'">Best Batting Strike Rate</span>
-                    <span v-if="type == 'highestScores'">Highest Scores</span>
-                    <span v-if="type == 'mostHundreds'">Most Hundreds</span>
-                    <span v-if="type == 'mostFifties'">Most Fifties</span>
-                    <span v-if="type == 'mostSixes'">Most Sixes</span>
-                    <span v-if="type == 'mostFours'">Most Fours</span>
-                    <span v-if="type == 'mostWickets'">Most Wickets</span>
-                    <span v-if="type == 'bestBowlingAverage'">Best Bowling  Average</span>
-                    <span v-if="type == 'bestBowling'">Best Bowling</span>
-                    <span v-if="type == 'bestEconomy'">Best Economy</span>
-                    <span v-if="type == 'bestBowlingStrikeRate'">Best Bowling Strike Rate</span>
 
-                </div>
                 <table class="table" >
                     <thead>
                     <tr>
@@ -193,8 +194,11 @@
 
 
 <style scoped>
+    #statsDetail .tables .table tr{
+
+    }
     #statsDetail .table{
-        /*margin-top: 47px;*/
+        margin-top: 40px;
     }
     #statsDetail .table tbody tr td {
         font-size: 0.8rem;
@@ -206,7 +210,7 @@
 
     #statsDetail .table thead {
         background: #dbdbdb;
-        color: 1a1a1a;
+        color: #1a1a1a;
     }
 
     #statsDetail .table thead tr th {
@@ -214,12 +218,15 @@
     }
 
 
-    #statsDetail .table-header {
+    #statsDetail .table-top {
         background: #1a1a1a;
         color: #FFF;
         text-align: center;
         position: fixed;
+        top:56px;
         width:100vw;
+        padding: 8px 24px;
+        /*margin-bottom: 30px;*/
     }
 
     #statsDetail .table-header span {
