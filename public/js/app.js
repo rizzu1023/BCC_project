@@ -50200,7 +50200,14 @@ var render = function() {
                           }
                         }),
                         _vm._v(" "),
-                        _c("span", [_vm._v(" Jan 24 - Apr 09")])
+                        _c("span", [
+                          _vm._v(
+                            " " +
+                              _vm._s(tournament.start_date) +
+                              " - " +
+                              _vm._s(tournament.end_date)
+                          )
+                        ])
                       ])
                     ]
                   )
