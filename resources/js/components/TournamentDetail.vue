@@ -81,6 +81,8 @@
         padding: 12px;
     }
 
+   
+
     .tab-content{
         border-radius: 0;
         border : 0;

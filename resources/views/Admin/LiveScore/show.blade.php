@@ -461,10 +461,10 @@
                                 <thead>
                                 <tr class="bg-dark">
                                     <th>Batsman</th>
-                                    <th>Runs</th>
-                                    <th>Balls</th>
-                                    <th>Fours</th>
-                                    <th>Sixes</th>
+                                    <th>R</th>
+                                    <th>B</th>
+                                    <th>4</th>
+                                    <th>6</th>
                                     <th>SR</th>
                                 </tr>
                                 </thead>
@@ -500,10 +500,10 @@
                                 <thead>
                                 <tr class="bg-dark">
                                     <th>Bowler</th>
-                                    <th>Overs</th>
-                                    <th>Maiden</th>
-                                    <th>Runs</th>
-                                    <th>Wicket</th>
+                                    <th>O</th>
+                                    <th>M</th>
+                                    <th>R</th>
+                                    <th>W</th>
                                     <th>Eco</th>
                                 </tr>
                                 </thead>

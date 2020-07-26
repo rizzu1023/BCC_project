@@ -39,7 +39,7 @@
                         <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 0 || schedule.status === 1">{{schedule.toss}} won the toss & choose {{schedule.choose}} first</span>
                         <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 2">Inning Break</span>
                         <span class="text-danger" style="font-size: 12px" v-if="schedule.status === 3">* need in * balls</span>
-                        <span class="text-danger" style="font-size: 12px" v-if="schedule.status === null">{{schedule.dates}}, {{schedule.times}}</span>
+                        <span class="text-danger" style="font-size: 12px" v-if="schedule.status === null">{{schedule.times}}, {{schedule.dates}}</span>
 
                     </li>
                 </router-link>
