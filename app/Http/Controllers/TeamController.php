@@ -43,7 +43,12 @@ class TeamController extends Controller
     public function store(Request $request,$tournament)
     {
 
-        $team = Teams::create(request(['team_code','team_name','team_title']));
+        $team = Teams::create([
+            'team_code' => $request['team_code'],
+            'team_name' => $request['team_name'],
+            'team_title' => $request['team_title'],
+            'user_id' => auth()->user()->id,
+        ]);
 
         $tnt = Tournament::find($tournament);
         $team->Tournaments()->syncWithoutDetaching($tnt);
@@ -72,7 +77,12 @@ class TeamController extends Controller
 
     public function update(Request $request, Tournament $tournament, Teams $team)
     {
-        $team->update(request(['team_code','team_name','team_won']));
+        $team->update([
+            'team_code' => $request['team_code'],
+            'team_name' => $request['team_name'],
+            'team_title' => $request['team_title'],
+            'user_id' => auth()->user()->id,
+        ]);
         return redirect::route('tournaments.teams.index',$tournament->id)->with('message','Team has been succesfully updated');
     }
 

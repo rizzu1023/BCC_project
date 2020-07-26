@@ -65,6 +65,8 @@ class TournamentController extends Controller
     {
         Tournament::create([
             'tournament_name' => request('tournament_name'),
+            'start_date' => request('start_date'),
+            'end_date' => request('end_date'),
             'user_id' => auth()->user()->id,
         ]);
         return redirect::route('Tournament.index')->with('message',"Added");
@@ -111,7 +113,11 @@ class TournamentController extends Controller
     public function update(Request $request, $id)
     {
         $Tournament = Tournament::find($id);
-        $Tournament->update(request(['id','tournament_name']));
+        $Tournament->update([
+            'tournament_name' => request('tournament_name'),
+            'start_date' => request('start_date'),
+            'end_date' => request('end_date'),
+        ]);
 
         return redirect::route('Tournament.index')->with('message','Updated');
     }
