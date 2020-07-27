@@ -63,7 +63,7 @@
     }
 
     .nav-item{
-        font-size: 0.8rem;
+        font-size: 0.7rem;
         background: #1a1a1a;
         text-transform: uppercase;
     }
@@ -81,7 +81,7 @@
         padding: 12px;
     }
 
-   
+
 
     .tab-content{
         border-radius: 0;

@@ -277,7 +277,7 @@
                                                     name="wicket_type"
                                                     required>
                                                 <option selected disabled>Select</option>
-                                                <option value="bold">Bold</option>
+                                                <option value="bold">Bowled</option>
                                                 <option value="lbw">LBW</option>
                                                 <option value="catch">Catch</option>
                                                 <option value="stump">Stump</option>

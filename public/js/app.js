@@ -9059,7 +9059,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1a1a1a;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1a1a1a;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.8rem;\n    background: #1a1a1a;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1a1a1a;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1a1a1a;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1a1a1a;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.7rem;\n    background: #1a1a1a;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1a1a1a;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48352,7 +48352,18 @@ var render = function() {
                                                   "font-size": "12px"
                                                 }
                                               },
-                                              [_vm._v("* need in * balls")]
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    schedule.runs_required
+                                                  ) +
+                                                    " runs need in " +
+                                                    _vm._s(
+                                                      schedule.balls_required
+                                                    ) +
+                                                    " balls"
+                                                )
+                                              ]
                                             )
                                           : _vm._e(),
                                         _vm._v(" "),
