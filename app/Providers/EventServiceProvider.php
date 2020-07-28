@@ -22,9 +22,7 @@ class EventServiceProvider extends ServiceProvider
         \App\Events\startInningEvent::class => [
             \App\Listeners\startInningListener::class,
         ],
-        \App\Events\endInningEvent::class => [
-            \App\Listeners\endInningListener::class,
-        ],
+
         \App\Events\strikeRotateEvent::class => [
             \App\Listeners\strikeRotateListener::class,
         ],
@@ -103,7 +101,7 @@ class EventServiceProvider extends ServiceProvider
 
         \App\Events\wicketEvent::class => [
 //            \App\Listeners\batsmanBallUpdateListener::class,
-            \App\Listeners\currentBatsmanRemoveListener::class, 
+            \App\Listeners\currentBatsmanRemoveListener::class,
             \App\Listeners\newBatsmanAddedListener::class,
             \App\Listeners\bowlerBallUpdateListener::class,
             \App\Listeners\bowlerWicketUpdateListener::class,
@@ -320,7 +318,15 @@ class EventServiceProvider extends ServiceProvider
         ],
 
 
-//        start inning event
+        \App\Events\endInningEvent::class => [
+            \App\Listeners\endInningListener::class,
+        ],
+
+//        Auto End Inning Event
+
+        \App\Events\autoEndInningEvent::class => [
+            \App\Listeners\autoEndInningListener::class,
+        ],
 
 
 

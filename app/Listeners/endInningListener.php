@@ -33,28 +33,39 @@ class endInningListener
 
         $match = Match::where('match_id',$event->request->match_id)->first();
 
+        if($match->status == 2){
+            $inning1 = MatchDetail::where('match_id',$event->request->match_id)
+                ->where('tournament_id',$event->request->tournament)
+                ->where('isBatting',1)
+                ->first();
+
+            $inning0 = MatchDetail::where('match_id',$event->request->match_id)
+                ->where('tournament_id',$event->request->tournament)
+                ->where('isBatting',0)
+                ->first();
+
+
+            $inning1->isBatting = 0;
+            $inning0->isBatting = 1;
+            $inning1->save();
+            $inning0->save();
+
+        }
         if($match->status == 4){
+            $inning1 = MatchDetail::where('match_id',$event->request->match_id)
+                ->where('tournament_id',$event->request->tournament)
+                ->where('isBatting',1)
+                ->first();
+
+            $inning1->isBatting = 0;
+            $inning1->save();
+
             $match->won = 'ABC';
             $match->description = 'XYZ';
+
+            $match->save();
+
+
         }
-        $match->save();
-
-        $inning1 = MatchDetail::where('match_id',$event->request->match_id)
-            ->where('tournament_id',$event->request->tournament)
-            ->where('isBatting',1)
-            ->first();
-
-        $inning0 = MatchDetail::where('match_id',$event->request->match_id)
-            ->where('tournament_id',$event->request->tournament)
-            ->where('isBatting',0)
-            ->first();
-
-
-        $inning1->isBatting = 0;
-        $inning0->isBatting = 1;
-        $inning1->save();
-        $inning0->save();
-
-
     }
 }

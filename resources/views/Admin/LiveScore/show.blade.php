@@ -76,14 +76,15 @@
             $bowling = $matchs->MatchDetail['1']->team_id;
 
             $isOver = $matchs->MatchDetail['0']->isOver;
-            $isWicket = $matchs->MatchDetail['0']->isWicket;
+            $current_over = $matchs->MatchDetail['0']->over;
         }
         else{
             $batting = $matchs->MatchDetail['1']->team_id;
             $bowling = $matchs->MatchDetail['0']->team_id;
 
             $isOver = $matchs->MatchDetail['1']->isOver;
-            $isWicket = $matchs->MatchDetail['1']->isWicket;
+            $current_over = $matchs->MatchDetail['1']->over;
+
         }
 
         $opening = true;
@@ -100,13 +101,18 @@
         <div class="card-header">
             @if($matchs->status == '1' || $matchs->status == '3')
                 <a href="/admin/LiveScoreCard/{{$matchs->match_id}}/{{$matchs->tournament_id}}" class="btn btn-info"
-                   >Scorecard</a>
+                >Scorecard</a>
                 <form id="endInningForm" style="display: inline-block; float: right;">
                     <input type="hidden" name="endInning" value="1">
                     <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">
                     <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
                     <button type="submit" class="btn btn-danger">End Inning</button>
                 </form>
+            @elseif($matchs->status == '2')
+                <span>First Inning has Been ended</span>
+                @elseif($matchs->status == '4')
+                <span>Match has Been ended</span>
+
             @endif
         </div>
         <div class="card-body">
@@ -203,7 +209,7 @@
             @endif
 
             @if($matchs->status == '4')
-                <H4>Match Ended</H4>
+                <h4>xyz won by 20 runs</h4>
             @endif
             @if($matchs->status == '1' || $matchs->status == '3')
             <!-- <div class="container"> -->
@@ -596,7 +602,14 @@
         $(document).ready(function () {
                 {{--var opening = {!! str_replace("'", "\'", json_encode($opening)) !!};--}}
             var isOver = {!! str_replace("'", "\'", json_encode($isOver)) !!};
-            var isWicket = {!! str_replace("'", "\'", json_encode($isWicket)) !!};
+            var total_over = {!! str_replace("'", "\'", json_encode($matchs->overs)) !!};
+            var current_over = {!! str_replace("'", "\'", json_encode($current_over)) !!};
+
+            if(current_over == total_over){
+                $('#endInningForm').submit();
+            }
+
+
 
             if (isOver) {
                 $("#overModal").modal('show');
@@ -705,6 +718,21 @@
             }
         });
 
+        $('#endInningForm').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: '{{Route('LiveUpdate')}}',
+                data: $(this).serialize(),
+                success: function (data) {
+                    // $('#overModal').modal('hide');
+                    //  alert(data.message);
+                    location.reload();
+                }
+            });
+        });
+
         $('#bowlerForm').on('submit', function (e) {
             e.preventDefault();
 
@@ -785,20 +813,6 @@
         });
 
 
-        $('#endInningForm').on('submit', function (e) {
-            e.preventDefault();
-
-            $.ajax({
-                type: "POST",
-                url: '{{Route('LiveUpdate')}}',
-                data: $(this).serialize(),
-                success: function (data) {
-                    // $('#overModal').modal('hide');
-                    //  alert(data.message);
-                    location.reload();
-                }
-            });
-        });
 
         $('.bt').on('click', function () {
             $('.bt').prop('disabled', true);
