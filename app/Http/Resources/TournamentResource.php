@@ -14,6 +14,13 @@ class TournamentResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $start_date = date('d M', strtotime($this->start_date));
+        $end_date = date('d M', strtotime($this->end_date));
+        return [
+            'id' => $this->id,
+            'tournament_name' => $this->tournament_name,
+            'start_date' => $start_date,
+            'end_date' => $end_date,
+        ];
     }
 }

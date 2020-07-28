@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="field1">Team Title</label>
-                                    <input type="text" class="form-control" id="field1" name="team_title"
+                                    <input type="number" class="form-control" id="field1" name="team_title"
                                            placeholder="eg .2">
                                 </div>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

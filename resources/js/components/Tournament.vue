@@ -7,7 +7,7 @@
                                  style="text-decoration:none; color:#000">
                         <li class="list-group-item">
                             <h5 v-text="tournament.tournament_name"></h5>
-                            <span> Jan 24 - Apr 09</span>
+                            <span> {{ tournament.start_date }} - {{ tournament.end_date }}</span>
                         </li>
                     </router-link>
                 </div>

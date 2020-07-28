@@ -9059,7 +9059,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1a1a1a;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1a1a1a;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.8rem;\n    background: #1a1a1a;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1a1a1a;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n.nav-tabs-boxed[data-v-628fc105]{\n    background: #1a1a1a;\n}\n.nav-tabs[data-v-628fc105] {\n    position: fixed;\n    top: 56px;\n    width : 100vw;\n    z-index : 1000;\n    background: #1a1a1a;\n    box-shadow : 0 9px 8px -9px gray;\n}\n.nav-item[data-v-628fc105]{\n    font-size: 0.7rem;\n    background: #1a1a1a;\n    text-transform: uppercase;\n}\n.nav-tabs a[data-v-628fc105]{\n    text-decoration: none;\n}\n.nav-item .nav-link[data-v-628fc105]{\n    border : 0px;\n    border-radius : 0px;\n    color : #cbcbcb;\n    padding: 12px;\n}\n.tab-content[data-v-628fc105]{\n    border-radius: 0;\n    border : 0;\n    margin-top: 47.5px;\n}\n.router-link-exact-active .nav-item .nav-link[data-v-628fc105]{\n    color : #fff;\n    text-decoration: none;\n    background: #1a1a1a;\n    font-weight : bold;\n    border-bottom: 3px solid #fff;\n}\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47665,10 +47665,8 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "pointsTable" } }, [
       _c("div", { staticClass: "text-center " }, [
-        _c("h4", { staticClass: "pt-5" }, [_vm._v("Working on it...")]),
-        _vm._v(" "),
         _c("div", { attrs: { id: "swipeme" } }, [
-          _vm._v("\n            swipe me\n        ")
+          _vm._v("\n                Under Developement\n            ")
         ])
       ])
     ])
@@ -48354,7 +48352,18 @@ var render = function() {
                                                   "font-size": "12px"
                                                 }
                                               },
-                                              [_vm._v("* need in * balls")]
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    schedule.runs_required
+                                                  ) +
+                                                    " runs need in " +
+                                                    _vm._s(
+                                                      schedule.balls_required
+                                                    ) +
+                                                    " balls"
+                                                )
+                                              ]
                                             )
                                           : _vm._e(),
                                         _vm._v(" "),
@@ -48369,9 +48378,9 @@ var render = function() {
                                               },
                                               [
                                                 _vm._v(
-                                                  _vm._s(schedule.dates) +
+                                                  _vm._s(schedule.times) +
                                                     ", " +
-                                                    _vm._s(schedule.times)
+                                                    _vm._s(schedule.dates)
                                                 )
                                               ]
                                             )
@@ -50200,7 +50209,14 @@ var render = function() {
                           }
                         }),
                         _vm._v(" "),
-                        _c("span", [_vm._v(" Jan 24 - Apr 09")])
+                        _c("span", [
+                          _vm._v(
+                            " " +
+                              _vm._s(tournament.start_date) +
+                              " - " +
+                              _vm._s(tournament.end_date)
+                          )
+                        ])
                       ])
                     ]
                   )
@@ -65545,9 +65561,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_requir
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Team', __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Batting', __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Cricify'; // Vue.prototype.$domainName = 'http://localhost:8000/api/';
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://3.7.68.148/api/';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Cricify';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://localhost:8000/api/'; // Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // const router = new VueRouter({
 //     router : routes,

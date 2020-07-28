@@ -29,7 +29,7 @@ class PlayersController extends Controller
 
     public function create(Teams $team)
     {
-        $players = Players::all();
+        $players = Players::where('user_id',auth()->user()->id)->get();
         return view('Admin/Player/create', compact('team','players'));
     }
 
@@ -135,7 +135,7 @@ class PlayersController extends Controller
 
     public function player_index()
     {
-       $players = Players::all();
+       $players = Players::where('user_id' , auth()->user()->id)->get();
        return view('Admin.Player.playerIndex',compact('players'));
     }
 
@@ -164,6 +164,7 @@ class PlayersController extends Controller
             'player_id' => $request->player_id,
             'player_name' => $request->player_name,
             'player_role' => $request->player_role,
+            'user_id' => auth()->user()->id,
         ]);
 
         Batting::create(request(['player_id']));

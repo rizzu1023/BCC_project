@@ -18,6 +18,7 @@ class CreateTeamsTable extends Migration
             $table->string('team_code');
             $table->string('team_name');
             $table->integer('team_title')->nullable();
+            $table->integer('user_id');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

@@ -66,6 +66,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('player/remove-from-team','PlayersController@remove_from_team');
 });
 
+Route::group(['prefix' => 'super-admin', 'middleware' => ['auth']], function() {
+    Route::get('user','SuperAdminController@user_index');
+    Route::get('admin','SuperAdminController@admin_index');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
