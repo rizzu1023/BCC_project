@@ -42,7 +42,7 @@
                                     </div>
 
                                     <!--                        <h6><b>{{ result.team2_id.team_name}}</b></h6>-->
-                                    <span class="text-danger" style="font-size: 12px">won by 132 runs</span>
+                                    <span class="text-primary" style="font-size: 12px;">{{ result.won }} {{ result.description }}</span>
 
                                 </li>
                             </router-link>

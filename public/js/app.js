@@ -47968,10 +47968,16 @@ var render = function() {
                                         _c(
                                           "span",
                                           {
-                                            staticClass: "text-danger",
+                                            staticClass: "text-primary",
                                             staticStyle: { "font-size": "12px" }
                                           },
-                                          [_vm._v("won by 132 runs")]
+                                          [
+                                            _vm._v(
+                                              _vm._s(result.won) +
+                                                " " +
+                                                _vm._s(result.description)
+                                            )
+                                          ]
                                         )
                                       ]
                                     )
@@ -48439,7 +48445,13 @@ var render = function() {
       ? _c("div", { attrs: { id: "scorecardDetail" } }, [
           _vm.matchScorecard.match_status === 4
             ? _c("div", { staticClass: "table-header winning-status" }, [
-                _c("span", [_vm._v("India won by 4 runs")])
+                _c("span", { staticClass: "text-primary" }, [
+                  _vm._v(
+                    _vm._s(_vm.matchScorecard.won) +
+                      " " +
+                      _vm._s(_vm.matchScorecard.description)
+                  )
+                ])
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -65561,9 +65573,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_requir
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Team', __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Batting', __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Cricify'; // Vue.prototype.$domainName = 'http://localhost:8000/api/';
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://3.7.68.148/api/';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Cricify';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://localhost:8000/api/'; // Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // const router = new VueRouter({
 //     router : routes,

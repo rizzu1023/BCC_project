@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Teams;
 
 class ScheduleResource extends JsonResource
 {
@@ -53,12 +54,17 @@ class ScheduleResource extends JsonResource
             $required_runs = ($fielding_team_score + 1) - $batting_team_score;
         }
 
+        $team = Teams::where('id',$this->Match['won'])->first();
+        $won = $team['team_name'];
+
         return [
             'status' => $this->Match['status'],
             'toss' => $this->Match['toss'],
             'choose' => $this->Match['choose'],
             'balls_required' => $required_balls,
             'runs_required' => $required_runs,
+            'won' => $won,
+            'description' => $this->Match['description'],
             'match_detail' => $this->MatchDetail,
             'id' => $this->id,
             'match_no' => $this->match_no,

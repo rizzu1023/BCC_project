@@ -16,6 +16,7 @@ use App\Tournament;
 
 class AdminController extends Controller
 {
+
     public function getDashboard(){
         $teams = Teams::all()->count();
         $players = Players::all()->count();

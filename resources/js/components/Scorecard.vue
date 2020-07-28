@@ -8,7 +8,7 @@
 
         <div id="scorecardDetail" v-else-if="matchScorecard.isMatch">
             <div class="table-header winning-status" v-if="matchScorecard.match_status === 4">
-                <span>India won by 4 runs</span>
+                <span class="text-primary">{{matchScorecard.won}} {{ matchScorecard.description}}</span>
             </div>
             <div class="team-header" v-on:click="team1 = !team1" style="border-bottom: 0.05rem solid lightgray;">
                 <div class="row m-0">
