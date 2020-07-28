@@ -47968,10 +47968,16 @@ var render = function() {
                                         _c(
                                           "span",
                                           {
-                                            staticClass: "text-danger",
+                                            staticClass: "text-primary",
                                             staticStyle: { "font-size": "12px" }
                                           },
-                                          [_vm._v("won by 132 runs")]
+                                          [
+                                            _vm._v(
+                                              _vm._s(result.won) +
+                                                " " +
+                                                _vm._s(result.description)
+                                            )
+                                          ]
                                         )
                                       ]
                                     )
@@ -48439,7 +48445,13 @@ var render = function() {
       ? _c("div", { attrs: { id: "scorecardDetail" } }, [
           _vm.matchScorecard.match_status === 4
             ? _c("div", { staticClass: "table-header winning-status" }, [
-                _c("span", [_vm._v("India won by 4 runs")])
+                _c("span", { staticClass: "text-primary" }, [
+                  _vm._v(
+                    _vm._s(_vm.matchScorecard.won) +
+                      " " +
+                      _vm._s(_vm.matchScorecard.description)
+                  )
+                ])
               ])
             : _vm._e(),
           _vm._v(" "),

@@ -28,4 +28,13 @@ class Match extends Model
     public function MatchPlayers(){
         return $this->hasMany('App\MatchPlayers','match_id','match_id')->orderBy('updated_at','asc');
     }
+
+    public function WON(){
+        return $this->belongsTo('App\Teams','won','id');
+    }
+
+    public function MOM(){
+        return $this->belongsTo('App\Teams','mom','id');
+    }
+
 }

@@ -322,11 +322,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\endInningListener::class,
         ],
 
-//        Auto End Inning Event
-
-        \App\Events\autoEndInningEvent::class => [
-            \App\Listeners\autoEndInningListener::class,
-        ],
 
 
 

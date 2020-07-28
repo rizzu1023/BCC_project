@@ -57,13 +57,30 @@ class endInningListener
                 ->where('isBatting',1)
                 ->first();
 
+            $inning0 = MatchDetail::where('match_id',$event->request->match_id)
+                ->where('tournament_id',$event->request->tournament)
+                ->where('isBatting',0)
+                ->first();
+
+            if($inning1->score > $inning0->score){
+                $wickets = 10 - $inning1->wicket;
+                $match->won = $inning1->team_id;
+                $result = "won by $wickets wickets";
+                $match->description = $result;
+            }
+            else{
+                $runs = $inning0->score - $inning1->score;
+                $match->won = $inning0->team_id;
+                $result = "won by $runs runs";
+                $match->description = $result;
+            }
+            $match->save();
+
             $inning1->isBatting = 0;
             $inning1->save();
 
-            $match->won = 'ABC';
-            $match->description = 'XYZ';
 
-            $match->save();
+
 
 
         }
