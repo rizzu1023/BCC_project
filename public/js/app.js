@@ -2136,6 +2136,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "LiveMatch",
   mounted: function mounted() {
@@ -46451,7 +46466,7 @@ var render = function() {
                   _vm._v(
                     "\n                        " +
                       _vm._s(
-                        _vm.liveMatchScorecard.team1.team_detail.team_code
+                        _vm.liveMatchScorecard.team1.team_detail.team_name
                       ) +
                       "\n                    "
                   )
@@ -46475,7 +46490,7 @@ var render = function() {
                   _vm._v(
                     "\n                        " +
                       _vm._s(
-                        _vm.liveMatchScorecard.team2.team_detail.team_code
+                        _vm.liveMatchScorecard.team2.team_detail.team_name
                       ) +
                       "\n\n                    "
                   )
@@ -46498,15 +46513,17 @@ var render = function() {
                 _c("div", { staticClass: "col-12 need-run p-0 text-primary" }, [
                   _c("p", { staticClass: "m-0" }, [
                     _vm._v(
-                      _vm._s(_vm.liveMatchScorecard.match_detail.won) +
-                        " won by\n                            " +
+                      _vm._s(_vm.liveMatchScorecard.won.team_name) +
+                        "\n                            " +
                         _vm._s(_vm.liveMatchScorecard.match_detail.description)
                     )
                   ])
                 ])
               ])
             ])
-          ])
+          ]),
+          _vm._v(" "),
+          _vm._m(3)
         ])
       : _c("div", { attrs: { id: "loader" } }, [
           _c("div", { attrs: { id: "preloader" } })
@@ -46561,6 +46578,41 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-6 left-col p-0" }, [
       _c("p", [_vm._v("Extras")])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card", staticStyle: { "margin-top": "171px" } },
+      [
+        _c("div", { staticClass: "card-header" }, [
+          _vm._v("\n                PLAYER OF THE MATCH\n            ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "row m-0" }, [
+            _c("div", { staticClass: "col-3" }, [
+              _c("img", {
+                attrs: {
+                  width: "100%",
+                  height: "auto",
+                  src: "/assets/Main/image/avatar.jpg",
+                  alt: "avatar"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-9", staticStyle: { padding: "15px 10px" } },
+              [_c("h5", [_vm._v("Mohammed Rizwan")])]
+            )
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
