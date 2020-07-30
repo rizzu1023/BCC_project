@@ -79,7 +79,7 @@ class LiveScoreController extends Controller
 
     public function ScoreDetails(Request $request)
     {
-        $m = Match::create([
+            $m = Match::create([
             'match_id' => request('id'),
             'overs' => request('overs'),
             'tournament_id' => request('tournament_id'),
@@ -151,27 +151,44 @@ class LiveScoreController extends Controller
                 ]);
             }
         }
-
-
-        for ($i = 1; $i < 23; $i++) {
-
-            $var = "t1p" . $i;
-            if ($request->$var != null) {
-                $obj = Players::where('player_id', $request->$var)->first();
-                $team = $leagues = DB::table('player_team')
-                    ->where('player_team.player_id',$obj->id)
-                    ->join('team_tournament', 'team_tournament.team_id', '=', 'player_team.team_id')
-                    ->where('team_tournament.tournament_id', $request->tournament_id)
-                    ->first();
-
-                MatchPlayers::create([
-                    'match_id' => $m->match_id,
-                    'player_id' => $request->$var,
-                    'team_id' => $team->team_id,
-                    'tournament_id' => request('tournament_id'),
-                ]);
-            }
+        foreach($request->team1 as $t1){
+            MatchPlayers::create([
+                'match_id' => $m->match_id,
+                'player_id' => $t1,
+                'team_id' => $request->team1_id,
+                'tournament_id' => request('tournament_id'),
+            ]);
         }
+        foreach($request->team2 as $t2){
+            MatchPlayers::create([
+                'match_id' => $m->match_id,
+                'player_id' => $t2,
+                'team_id' => $request->team2_id,
+                'tournament_id' => request('tournament_id'),
+            ]);
+        }
+
+//baad me delete karna hai
+
+//        for ($i = 1; $i < 23; $i++) {
+//
+//            $var = "t1p" . $i;
+//            if ($request->$var != null) {
+//                $obj = Players::where('player_id', $request->$var)->first();
+//                $team = $leagues = DB::table('player_team')
+//                    ->where('player_team.player_id',$obj->id)
+//                    ->join('team_tournament', 'team_tournament.team_id', '=', 'player_team.team_id')
+//                    ->where('team_tournament.tournament_id', $request->tournament_id)
+//                    ->first();
+//
+//                MatchPlayers::create([
+//                    'match_id' => $m->match_id,
+//                    'player_id' => $request->$var,
+//                    'team_id' => $team->team_id,
+//                    'tournament_id' => request('tournament_id'),
+//                ]);
+//            }
+//        }
 
         return redirect::route('LiveScore.index');
     }
@@ -181,6 +198,7 @@ class LiveScoreController extends Controller
     public function LiveUpdateShow($id, $tournament)
     {
         $matchs = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
+//        return $matchs->MatchPlayers;
         return view('Admin/LiveScore/show', compact('matchs'));
     }
 
