@@ -133,14 +133,14 @@
                 <div class="card-body">
                     <div class="row m-0">
                         <div class="col-6 p-0">
-                            {{liveMatchScorecard.team1.team_detail.team_code}}
+                            {{liveMatchScorecard.team1.team_detail.team_name}}
                         </div>
                         <div class="col-6 p-0">
                             {{liveMatchScorecard.team1.score}} -{{liveMatchScorecard.team1.wicket}}
                             ({{liveMatchScorecard.team1.over}}.{{liveMatchScorecard.team1.overball}})
                         </div>
                         <div class="col-6 p-0">
-                            {{liveMatchScorecard.team2.team_detail.team_code}}
+                            {{liveMatchScorecard.team2.team_detail.team_name}}
 
                         </div>
                         <div class="col-6 p-0">
@@ -149,13 +149,28 @@
 
                         </div>
                         <div class="col-12 need-run p-0 text-primary">
-                            <p class="m-0">{{liveMatchScorecard.match_detail.won}} won by
+                            <p class="m-0">{{liveMatchScorecard.won.team_name}}
                                 {{liveMatchScorecard.match_detail.description}}</p>
                         </div>
                     </div>
                 </div>
 
 
+            </div>
+            <div class="card" style="margin-top:171px">
+                <div class="card-header">
+                    PLAYER OF THE MATCH
+                </div>
+                <div class="card-body">
+                    <div class="row m-0">
+                        <div class="col-3">
+                            <img width="100%" height="auto" src="/assets/Main/image/avatar.jpg" alt="avatar">
+                        </div>
+                        <div class="col-9" style="padding:15px 10px">
+                            <h5>Mohammed Rizwan</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="loader" v-else>

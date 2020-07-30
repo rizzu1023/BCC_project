@@ -92,15 +92,17 @@ class MatchController extends Controller
 
             $match_status = $match->status;
             if($match_status == 4){
-                $bowling_team = MatchDetail::where('isBatting', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
-                $batting_team = MatchDetail::where('isBatting', 1)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+                $bowling_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament_id)->orderBy('updated_at','desc')->get();
+//                $batting_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
                 $match_detail = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
-
+                $match_won = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+                $won = $match_won->WON;
                 return [
                     'match_status' => $match_status,
-                    'team1' => new MatchDetailResource($bowling_team),
-                    'team2' => new MatchDetailResource($batting_team),
+                    'team1' => new MatchDetailResource($bowling_team[0]),
+                    'team2' => new MatchDetailResource($bowling_team[1]),
                     'match_detail' => $match_detail,
+                    'won' => $won,
                 ];
             }
             $total_overs = $match->overs;
