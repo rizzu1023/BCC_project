@@ -41,6 +41,7 @@
 
 
             </div>
+            <div v-if="liveMatchScorecard.match_status != 2">
             <ul class="list-group">
                 <li class="list-group-item">
                     <div class="row m-0">
@@ -84,7 +85,7 @@
                 </table>
             </div>
             <div class="tables table-responsive">
-                <table class="table">
+                <table class="table invoice">
                     <thead>
                     <tr>
                         <th scope="col">Bowler</th>
@@ -96,7 +97,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr v-if="liveMatchScorecard.current_bowler">
                         <td>{{ liveMatchScorecard.current_bowler.playerDetail.player_name}}</td>
                         <td>{{ liveMatchScorecard.current_bowler.bw_over }}.{{
                             liveMatchScorecard.current_bowler.bw_overball }}
@@ -127,6 +128,7 @@
                     </div>
                 </li>
             </ul>
+            </div>
         </div>
         <div id="matchResult" v-else-if="liveMatchScorecard.match_status === 4">
             <div class="card result-card">
@@ -256,9 +258,9 @@
 
                     'partnership': null,
 
-                    'current_bowler': {
-                        'playerDetail': {},
-                    },
+                    // 'current_bowler': {
+                    //     'playerDetail': {},
+                    // },
 
                     'isMatch': false,
                 },

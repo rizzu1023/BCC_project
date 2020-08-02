@@ -13,6 +13,11 @@ class Match extends Model
         return $this->belongsTo('App\Teams','toss','id');
     }
 
+    public function Toss()
+    {
+        return $this->belongsTo('App\Teams','toss','id');
+    }
+
     public function Teams1(){
         return $this->belongsTo('App\Teams','team2_id','id');
     }

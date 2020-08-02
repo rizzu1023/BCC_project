@@ -28,7 +28,7 @@ class MatchPlayers extends Model
     }
 
     public function MatchDetail(){
-        return $this->belongsTo('App\MatchDetail','match_id','match_id');
+        return $this->hasMany('App\MatchDetail','match_id','match_id');
     }
 
 
