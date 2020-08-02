@@ -83,7 +83,7 @@
                         <td v-if="type === 'highestScores'">{{ calculateStrikeRate(stat.bt_runs,stat.bt_balls)}}</td>
 
                         <td v-if="type === 'mostRuns'">{{ stat.bt_runs}}</td>
-                        <td v-if="type === 'highestScores'">{{ stat.team_id }}</td>
+                        <td v-if="type === 'highestScores'">{{ stat.opposite_team.team_code }}</td>
                         <td v-if="type === 'bestBattingAverage'">{{ stat.average }}</td>
                         <!--                        <td v-if="type === 'bestBattingAverage' && stat.bt_average == null">{{ stat.bt_runs }}</td>-->
                         <td v-if="type === 'bestBattingStrikeRate'">{{ calculateStrikeRate(stat.bt_runs,stat.bt_balls)
@@ -102,7 +102,7 @@
                         <td v-if="type === 'bestBowlingAverage' || type === 'mostWickets'">{{ stat.bw_wickets }}</td>
                         <td v-if="type === 'bestBowlingAverage' || type === 'mostWickets'">{{ stat.bw_average }}</td>
 
-                        <td v-if="type === 'bestBowling'">{{ stat.team_id }}</td>
+                        <td v-if="type === 'bestBowling'">{{ stat.opposite_team.team_code }}</td>
                         <td v-if="type === 'bestBowling'">{{ stat.bw_wickets }}-{{ stat.bw_runs}}</td>
                     </tr>
                     </tbody>
@@ -201,7 +201,7 @@
         margin-top: 39px;
     }
     #statsDetail .table tbody tr td {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
 
     #statsDetail .table thead th {

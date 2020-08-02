@@ -57,9 +57,16 @@ class ScheduleResource extends JsonResource
         $team = Teams::where('id',$this->Match['won'])->first();
         $won = $team['team_name'];
 
+        $toss = null;
+        if($this->Match){
+            if($this->Match->Toss){
+                $toss = $this->Match->Toss['team_name'];
+            }
+        }
+
         return [
             'status' => $this->Match['status'],
-            'toss' => $this->Match['toss'],
+            'toss' => $toss,
             'choose' => $this->Match['choose'],
             'balls_required' => $required_balls,
             'runs_required' => $required_runs,

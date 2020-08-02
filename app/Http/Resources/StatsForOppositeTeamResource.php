@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class StatsResource extends JsonResource
+class StatsForOppositeTeamResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +14,14 @@ class StatsResource extends JsonResource
      */
     public function toArray($request)
     {
+        $opposite_team = 0;
+        if($this->MatchDetail['0']['team_id'] == $this->team_id){
+            $opposite_team = $this->MatchDetail['1']->Teams;
+        }
+        else
+            $opposite_team = $this->MatchDetail['0']->Teams;
+
+
         return [
             'player' => $this->Players,
             'matches' => $this->matches,
@@ -28,7 +36,11 @@ class StatsResource extends JsonResource
             'bt_fifties' => $this->bt_fifties,
             'bt_average' => $this->bt_average,
             'average' => $this->average,
+
             'team_id' => $this->team_id,
+            'opposite_team' => $opposite_team,
+
+
             'bw_wickets' => $this->bw_wickets,
             'bw_runs' => $this->bw_runs,
             'bw_average' => $this->bw_average,

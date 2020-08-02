@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\MatchPlayersResource;
+use App\Http\Resources\StatsForOppositeTeamResource;
 use App\Http\Resources\StatsResource;
 use App\Match;
 use App\MatchPlayers;
@@ -29,7 +30,7 @@ class StatsController extends Controller
             $highestScores = MatchPlayers::select('player_id','bt_runs','bt_balls','match_id', 'team_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_runs','desc')->get()->take(20);
-            return StatsResource::collection($highestScores);
+            return StatsForOppositeTeamResource::collection($highestScores);
         }
 
         if($type == "bestBattingAverage"){
@@ -89,7 +90,7 @@ class StatsController extends Controller
                 ->where('bw_wickets', '>', 0)
                 ->orderBy('bw_wickets','desc')->orderBy('bw_runs','asc')
                 ->get()->take(20);
-            return StatsResource::collection($bestBowling);
+            return StatsForOppositeTeamResource::collection($bestBowling);
         }
 
         if($type == "mostWickets"){

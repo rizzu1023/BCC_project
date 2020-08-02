@@ -19,10 +19,10 @@ use Illuminate\Http\Request;
 
 class MatchController extends Controller
 {
-    public function calculating_balls($max_over,$min_over,$max_overball,$min_overball)
+    public function calculating_balls($max_over, $min_over, $max_overball, $min_overball)
     {
-        $min_over = $min_over. "." .$min_overball;
-        $max_over = $max_over. "." .$max_overball;
+        $min_over = $min_over . "." . $min_overball;
+        $max_over = $max_over . "." . $max_overball;
 
         $max_int = (int)$max_over;
         $min_int = (int)$min_over;
@@ -48,6 +48,10 @@ class MatchController extends Controller
 
         $match = Schedule::select('match_no', 'dates', 'times')->where('id', $match_id)->first();
 
+        $format_time = date('h:i A', strtotime($match->times));
+        $format_date = date('d M y', strtotime($match->dates));
+
+
         $toss = Match::where('match_id', $match_id)->first();
         $toss_team = NULL;
         $choose = NULL;
@@ -61,8 +65,8 @@ class MatchController extends Controller
                 'team2' => $team2,
                 'match' => $match->match_no,
                 'tournament' => $tournament->tournament_name,
-                'dates' => $match->dates,
-                'times' => $match->times,
+                'dates' => $format_date,
+                'times' => $format_time,
                 'toss' => $toss_team,
                 'choose' => $choose,
             ];
@@ -91,8 +95,8 @@ class MatchController extends Controller
         } else {
 
             $match_status = $match->status;
-            if($match_status == 4){
-                $bowling_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament_id)->orderBy('updated_at','desc')->get();
+            if ($match_status == 4) {
+                $bowling_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament_id)->orderBy('updated_at', 'desc')->get();
 //                $batting_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
                 $match_detail = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
                 $match_won = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
@@ -123,33 +127,32 @@ class MatchController extends Controller
                 $bowler = MatchPlayers::where('bw_status', '11')->where('team_id', '<>', $batting_team->team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
                 if ($bowler)
                     $current_bowler = new MatchPlayersResource($bowler);
+//                else
+//                    $current_bowler = 'not_found';
 
                 $batting_team_overs = $batting_team->over;
                 $batting_team_balls = $batting_team->overball;
                 //calculating remaining ball of current team
-                $remaining_balls = $this->calculating_balls($total_overs,$batting_team_overs,0,$batting_team_balls);
-
+                $remaining_balls = $this->calculating_balls($total_overs, $batting_team_overs, 0, $batting_team_balls);
 
 
                 $partnership = [];
 
-                $p1 = MatchTrack::select('score','over','overball')->where('wickets',$match_detail->wicket)->where('team_id',$match_detail->team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->orderBy('score','desc')->orderBy('over','desc')->orderBy('overball','desc')->first();
-                $p0 = MatchTrack::select('score','over','overball')->where('wickets',$match_detail->wicket - 1)->where('team_id',$match_detail->team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->orderBy('score','desc')->orderBy('over','desc')->orderBy('overball','desc')->first();
-                if($p1){
-                    if($p1 && $p0){
+                $p1 = MatchTrack::select('score', 'over', 'overball')->where('wickets', $match_detail->wicket)->where('team_id', $match_detail->team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->orderBy('score', 'desc')->orderBy('over', 'desc')->orderBy('overball', 'desc')->first();
+                $p0 = MatchTrack::select('score', 'over', 'overball')->where('wickets', $match_detail->wicket - 1)->where('team_id', $match_detail->team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->orderBy('score', 'desc')->orderBy('over', 'desc')->orderBy('overball', 'desc')->first();
+                if ($p1) {
+                    if ($p1 && $p0) {
                         $score = $p1->score - $p0->score;
-                        $balls = $this->calculating_balls($p1->over,$p0->over,$p1->overball ,$p0->overball + 1);
+                        $balls = $this->calculating_balls($p1->over, $p0->over, $p1->overball, $p0->overball + 1);
                         $partnership['score'] = $score;
                         $partnership['balls'] = $balls;
-                    }
-                    else{
+                    } else {
                         $score = $p1->score - 0;
-                        $balls = $this->calculating_balls($p1->over,0,$p1->overball,0);
+                        $balls = $this->calculating_balls($p1->over, 0, $p1->overball, 0);
                         $partnership['score'] = $score;
                         $partnership['balls'] = $balls;
                     }
-                }
-                else{
+                } else {
                     $partnership['score'] = 0;
                     $partnership['balls'] = 0;
                 }
@@ -177,13 +180,16 @@ class MatchController extends Controller
     {
         $isMatch = 'not_found';
         $match_status = null;
-        $match = Match::where('match_id',$match_id)->first();
-        if($match->WON)
-        $team_won = $match->WON->team_name;
+        $match = Match::where('match_id', $match_id)->first();
+        if ($match->WON) {
+            $team_won = $match->WON->team_name;
+            $won_description = $match->description;
+        }
         else
             $team_won = '';
+            $won_description = '';
         $match = Match::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
-        if ($match){
+        if ($match) {
             $isMatch = true;
             $match_status = $match->status;
         }
@@ -222,8 +228,7 @@ class MatchController extends Controller
             $team1_bowler = MatchPlayers::whereIn('bw_status', ['1', '11'])->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->get();
             $team1_extras = MatchDetail::select('no_ball', 'wide', 'byes', 'legbyes')->where('team_id', $batting_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
             $team1_score = MatchDetail::select('score', 'wicket', 'over', 'overball')->where('team_id', $batting_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
-            $team1_fow = MatchTrack::select('player_id','score','wickets','over','overball')->where('action','wicket')->where('team_id',$batting_team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->orderBy('wickets','asc')->get();
-
+            $team1_fow = MatchTrack::select('player_id', 'score', 'wickets', 'over', 'overball')->where('action', 'wicket')->where('team_id', $batting_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->orderBy('wickets', 'asc')->get();
 
 
             $team2_detail = Teams::where('id', $bowling_team_id)->first();
@@ -232,14 +237,14 @@ class MatchController extends Controller
             $team2_bowler = MatchPlayers::whereIn('bw_status', ['1', '11'])->where('team_id', $batting_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->get();
             $team2_extras = MatchDetail::select('no_ball', 'wide', 'byes', 'legbyes')->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
             $team2_score = MatchDetail::select('score', 'wicket', 'over', 'overball')->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
-            $team2_fow = MatchTrack::select('player_id','score','wickets','over','overball')->where('action','wicket')->where('team_id',$bowling_team_id)->where('match_id',$match_id)->where('tournament_id',$tournament_id)->orderBy('wickets','asc')->get();
+            $team2_fow = MatchTrack::select('player_id', 'score', 'wickets', 'over', 'overball')->where('action', 'wicket')->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->orderBy('wickets', 'asc')->get();
 
         }
 
         return [
             'isMatch' => $isMatch,
             'won' => $team_won,
-            'description' => $match->description,
+            'description' => $won_description,
             'match_status' => $match_status,
             'match_detail' => $match_detail,
             'team1' => [
