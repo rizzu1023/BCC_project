@@ -181,13 +181,21 @@ class MatchController extends Controller
         $isMatch = 'not_found';
         $match_status = null;
         $match = Match::where('match_id', $match_id)->first();
-        if ($match->WON) {
-            $team_won = $match->WON->team_name;
-            $won_description = $match->description;
+        if($match){
+            if ($match->WON) {
+                $team_won = $match->WON->team_name;
+                $won_description = $match->description;
+            }
+            else
+                $team_won = '';
+                $won_description = '';
+
         }
         else
             $team_won = '';
             $won_description = '';
+
+
         $match = Match::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
         if ($match) {
             $isMatch = true;

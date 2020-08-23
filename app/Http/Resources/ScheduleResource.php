@@ -16,7 +16,7 @@ class ScheduleResource extends JsonResource
     public function toArray($request)
     {
         $times = date('h:i A', strtotime($this->times));
-        $dates = date('d M y', strtotime($this->dates));
+        $dates = date('d M Y', strtotime($this->dates));
 
 
         // calculating required_balls from overs
