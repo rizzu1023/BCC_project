@@ -105,7 +105,7 @@ class MatchController extends Controller
                     'match_status' => $match_status,
                     'team1' => new MatchDetailResource($bowling_team[0]),
                     'team2' => new MatchDetailResource($bowling_team[1]),
-                    'match_detail' => $match_detail,
+                    'won_match_detail' => $match_detail,
                     'won' => $won,
                 ];
             }
