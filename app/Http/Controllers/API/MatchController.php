@@ -49,7 +49,7 @@ class MatchController extends Controller
         $match = Schedule::select('match_no', 'dates', 'times')->where('id', $match_id)->first();
 
         $format_time = date('h:i A', strtotime($match->times));
-        $format_date = date('d M y', strtotime($match->dates));
+        $format_date = date('d M Y', strtotime($match->dates));
 
 
         $toss = Match::where('match_id', $match_id)->first();

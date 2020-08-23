@@ -50011,7 +50011,7 @@ var render = function() {
                           [
                             _vm._v(
                               "\n                            " +
-                                _vm._s(stat.player.player_name) +
+                                _vm._s(stat.playerDetail.player_name) +
                                 "\n                        "
                             )
                           ]

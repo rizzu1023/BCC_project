@@ -64,7 +64,7 @@
 
                         <td>
                             <router-link :to="'/player/'+ stat.player.id " style="text-decoration: none;color:#000">
-                                {{ stat.player.player_name}}
+                                {{ stat.playerDetail.player_name}}
                             </router-link>
                         </td>
                         <td v-if="type === 'mostRuns' || type === 'bestBattingAverage' || type === 'bestBattingStrikeRate' || type === 'mostSixes' || type === 'mostFours' || type === 'mostHundreds' || type === 'mostFifties'">

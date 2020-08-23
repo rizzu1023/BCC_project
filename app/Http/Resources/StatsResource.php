@@ -15,7 +15,7 @@ class StatsResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'player' => $this->Players,
+            'playerDetail' => $this->Players,
             'matches' => $this->matches,
             'bt_runs' => (int)$this->bt_runs,
             'bt_balls' => $this->bt_balls,
