@@ -52,6 +52,17 @@
             height: 50px;
             background: #ff6961;
             display: inline-block;
+            cursor: pointer;
+        }
+        #retired_hurt, #declare {
+            width: 150px;
+            border: none;
+            line-height: 50px;
+            height: 50px;
+            background: lightgray;
+            display: inline-block;
+            cursor: pointer;
+
         }
 
         .bt:hover {
@@ -446,6 +457,136 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal" id="retiredHurtModal" tabindex="-1" data-backdrop="false" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Select New Batsman</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form id="retiredHurtBatsmanForm">
+                                <div class="modal-body">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="exampleFormControlSelect2">Select Retired Hurt Batsman</label>
+                                            <select class="form-control" id="exampleFormControlSelect2"
+                                                    name="retiredHurtBatsman_id"
+                                                    required>
+                                                <option disabled selected>Select</option>
+                                                @foreach($matchs->MatchPlayers as $mp)
+                                                    @if($mp->team_id == $batting)
+                                                        @if($mp->bt_status == '10' || $mp->bt_status == '11')
+                                                            <option
+                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="exampleFormControlSelect2">Select new Batsman</label>
+                                            <select class="form-control" id="exampleFormControlSelect2"
+                                                    name="newBatsman_id"
+                                                    required>
+                                                <option disabled selected>Select</option>
+                                                @foreach($matchs->MatchPlayers as $mp)
+                                                    @if($mp->team_id == $batting)
+                                                        @if($mp->bt_status == 'DNB')
+                                                            <option
+                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">
+                                    <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
+                                    <input type="hidden" name="bw_team_id" value="{{$bowling}}">
+                                    <input type="hidden" name="bt_team_id" value="{{$batting}}">
+                                    <input type="hidden" name="value" value="rh">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success ">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal" id="declareBatsmanModal" tabindex="-1" data-backdrop="false" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Select New Batsman</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form id="declareBatsmanForm">
+                                <div class="modal-body">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="exampleFormControlSelect2">Select Declared Batsman</label>
+                                            <select class="form-control" id="exampleFormControlSelect2"
+                                                    name="declareBatsman_id"
+                                                    required>
+                                                <option disabled selected>Select</option>
+                                                @foreach($matchs->MatchPlayers as $mp)
+                                                    @if($mp->team_id == $batting)
+                                                        @if($mp->bt_status == '10' || $mp->bt_status == '11')
+                                                            <option
+                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="exampleFormControlSelect2">Select new Batsman</label>
+                                            <select class="form-control" id="exampleFormControlSelect2"
+                                                    name="newBatsman_id"
+                                                    required>
+                                                <option disabled selected>Select</option>
+                                                @foreach($matchs->MatchPlayers as $mp)
+                                                    @if($mp->team_id == $batting)
+                                                        @if($mp->bt_status == 'DNB')
+                                                            <option
+                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">
+                                    <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
+                                    <input type="hidden" name="bw_team_id" value="{{$bowling}}">
+                                    <input type="hidden" name="bt_team_id" value="{{$batting}}">
+                                    <input type="hidden" name="value" value="dc">
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-success ">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
 
                 @if($matchs)
@@ -549,6 +690,9 @@
                             <button id="wide" type="submit" value="wd" class="bt">Wide</button>
                             <button id="noball" type="submit" value="nb" class="bt">nb</button>
                             <div id="wicket_button" class="text-center">W</div>
+                            <br><br>
+                            <div id="retired_hurt" class="text-center">Redirect Hurt</div>
+                            <div id="declare" class="text-center">Declare Batsman</div>
                             <br><br>
 
 
@@ -709,6 +853,14 @@
 
 
         });
+
+
+        $('#retired_hurt').on('click', function () {
+            $("#retiredHurtModal").modal('show');
+        });
+        $('#declare').on('click', function () {
+            $("#declareBatsmanModal").modal('show');
+        });
     </script>
 
     <script>
@@ -758,6 +910,36 @@
                 data: $(this).serialize(),
                 success: function (data) {
                     $('#wicketModal').modal('hide');
+                    //  alert(data.message);
+                    location.reload();
+                }
+            });
+        });
+
+        $('#retiredHurtBatsmanForm').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: '{{Route('LiveUpdate')}}',
+                data: $(this).serialize(),
+                success: function (data) {
+                    $('#retiredHurtModal').modal('hide');
+                    //  alert(data.message);
+                    location.reload();
+                }
+            });
+        });
+
+        $('#declareBatsmanForm').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: '{{Route('LiveUpdate')}}',
+                data: $(this).serialize(),
+                success: function (data) {
+                    $('#declareBatsmanModal').modal('hide');
                     //  alert(data.message);
                     location.reload();
                 }
