@@ -7,6 +7,7 @@ use App\Events\byesFourRunEvent;
 use App\Events\byesOneRunEvent;
 use App\Events\byesThreeRunEvent;
 use App\Events\byesTwoRunEvent;
+use App\Events\DeclareBatsmanEvent;
 use App\Events\dotBallEvent;
 use App\Events\endInningEvent;
 use App\Events\fourRunEvent;
@@ -23,6 +24,7 @@ use App\Events\noballThreeRunEvent;
 use App\Events\noballTwoRunEvent;
 use App\Events\noballZeroRunEvent;
 use App\Events\oneRunEvent;
+use App\Events\RetiredHurtBatsmanEvent;
 use App\Events\sixRunEvent;
 use App\Events\startInningEvent;
 use App\Events\strikeRotateEvent;
@@ -259,6 +261,12 @@ class LiveScoreController extends Controller
             if ($request->value == 'nb5') event(new noballFiveRunEvent($request));
             if ($request->value == 'nb6') event(new noballSixRunEvent($request));
 
+            if ($request->value == 'dc') event(new DeclareBatsmanEvent($request));
+            if ($request->value == 'rh') event(new RetiredHurtBatsmanEvent($request));
+
+
+
+
 
 
             $userjobs = "true";
@@ -268,9 +276,6 @@ class LiveScoreController extends Controller
             return response()->json(compact('userjobs'), 200);
             // return response()->json(['message'=>$request->value]);
         }
-
-        // $product = "heii";
-        // return Response::json(array(view('Admin/LiveScore/show')->with('product',$product),'product'=>$product));
     }
 }
 

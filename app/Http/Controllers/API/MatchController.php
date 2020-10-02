@@ -203,6 +203,7 @@ class MatchController extends Controller
         }
         $match_detail = Match::where('match_id', $match_id)->first();
         if ($match_detail) {
+            $toss_winning_team = Teams::where('id',$match_detail->toss)->first();
             if ($match_detail->toss == $team1_id && $match_detail->choose == 'Bat') {
                 $batting_team_id = $team1_id;
                 $bowling_team_id = $team2_id;
@@ -254,6 +255,7 @@ class MatchController extends Controller
             'won' => $team_won,
             'description' => $won_description,
             'match_status' => $match_status,
+            'toss_winning_team' => $toss_winning_team,
             'match_detail' => $match_detail,
             'team1' => [
                 'detail' => $team1_detail,
