@@ -62,6 +62,8 @@ class matchTrackListener
         elseif ($event->request->value == 'nb5'){$action = 'nb5';$run = 6;}
         elseif ($event->request->value == 'nb6'){$action = 'nb6';$run = 7;}
 
+        elseif ($event->request->value == 'rh'){$action = 'rh';$run = 0;}
+
         elseif ($event->request->wicket_type == 'runout'){$action = 'wicket';$run = 0;}
         elseif ($event->request->wicket_type == 'lbw' || $event->request->wicket_type == 'bold' || $event->request->wicket_type == 'catch' || $event->request->wicket_type == 'stump'){$action = 'wicket';$run = 0;}
 

@@ -40,7 +40,7 @@
 						            		@csrf
 								          <input type="hidden" value="{{$result[$i]->match_id}}" name="match_id">
                           <input type="hidden" value="{{$result[$i]->tournament_id}}" name="tournament"/>
-								          <button class="btn btn-sm btn-danger">Delete</button>
+								          <button class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete it?');">Delete</button>
                           </form>
                         </td>
                       </tr>

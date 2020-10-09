@@ -7,7 +7,7 @@ use App\MatchPlayers;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class strikeRotateListener
+class  strikeRotateListener
 {
     /**
      * Create the event listener.
