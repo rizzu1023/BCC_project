@@ -25,6 +25,14 @@ use App\Events\noballTwoRunEvent;
 use App\Events\noballZeroRunEvent;
 use App\Events\oneRunEvent;
 use App\Events\RetiredHurtBatsmanEvent;
+use App\Events\reverseDotBallEvent;
+use App\Events\reverseFourRunEvent;
+use App\Events\reverseNoballZeroRunEvent;
+use App\Events\reverseOneRunEvent;
+use App\Events\reverseSixRunEvent;
+use App\Events\reverseThreeRunEvent;
+use App\Events\reverseTwoRunEvent;
+use App\Events\reverseWideZeroRunEvent;
 use App\Events\sixRunEvent;
 use App\Events\startInningEvent;
 use App\Events\strikeRotateEvent;
@@ -39,6 +47,7 @@ use App\Events\wideTwoRunEvent;
 use App\Events\wideZeroRunEvent;
 use App\Http\Resources\MatchDetailResource;
 use App\Http\Resources\MatchResource;
+use App\MatchTrack;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
@@ -169,30 +178,7 @@ class LiveScoreController extends Controller
                 'tournament_id' => request('tournament_id'),
             ]);
         }
-
-//baad me delete karna hai
-
-//        for ($i = 1; $i < 23; $i++) {
-//
-//            $var = "t1p" . $i;
-//            if ($request->$var != null) {
-//                $obj = Players::where('player_id', $request->$var)->first();
-//                $team = $leagues = DB::table('player_team')
-//                    ->where('player_team.player_id',$obj->id)
-//                    ->join('team_tournament', 'team_tournament.team_id', '=', 'player_team.team_id')
-//                    ->where('team_tournament.tournament_id', $request->tournament_id)
-//                    ->first();
-//
-//                MatchPlayers::create([
-//                    'match_id' => $m->match_id,
-//                    'player_id' => $request->$var,
-//                    'team_id' => $team->team_id,
-//                    'tournament_id' => request('tournament_id'),
-//                ]);
-//            }
-//        }
-
-        return redirect::route('LiveScore.index');
+        return redirect('/admin/tournaments/'.request('tournament_id').'/schedules');
     }
 
 
@@ -261,8 +247,19 @@ class LiveScoreController extends Controller
             if ($request->value == 'nb5') event(new noballFiveRunEvent($request));
             if ($request->value == 'nb6') event(new noballSixRunEvent($request));
 
-            if ($request->value == 'dc') event(new DeclareBatsmanEvent($request));
             if ($request->value == 'rh') event(new RetiredHurtBatsmanEvent($request));
+
+            if ($request->value == 'undo'){
+                $last_ball = MatchTrack::where('team_id',$request->bt_team_id)->where('match_id',$request->match_id)->where('tournament_id',$request->tournament)->latest()->first();
+                if ($last_ball->action == 'zero') event(new reverseDotBallEvent($request));
+                if ($last_ball->action == 'one') event(new reverseOneRunEvent($request));
+                if ($last_ball->action == 'two') event(new reverseTwoRunEvent($request));
+                if ($last_ball->action == 'three') event(new reverseThreeRunEvent($request));
+                if ($last_ball->action == 'four') event(new reverseFourRunEvent($request));
+                if ($last_ball->action == 'six') event(new reverseSixRunEvent($request));
+                if ($last_ball->action == 'wd') event(new reverseWideZeroRunEvent($request));
+                if ($last_ball->action == 'nb') event(new reverseNoballZeroRunEvent($request));
+            }
 
 
 
@@ -273,8 +270,8 @@ class LiveScoreController extends Controller
             // $returnHTML = view('Admin/LiveScore/show')->with('userjobs', $userjobs)->render();
             // return response()->json(array('success' => true, 'html'=>$returnHTML));
 
-            return response()->json(compact('userjobs'), 200);
-            // return response()->json(['message'=>$request->value]);
+             return response()->json(['message'=>'done']);
+//            return response()->json(compact('userjobs'), 200);
         }
     }
 }
@@ -283,6 +280,8 @@ class LiveScoreController extends Controller
 // 11 = striker
 // 10 = non striker
 // DNB = Did not bat
+
+// 12 = retired hurt
 // 0 = out
 // 1 = notout
 

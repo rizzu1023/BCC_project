@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\OneRunEvent;
+use App\Events\reverseFourRunEvent;
 use App\MatchPlayers;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 
-class bowlerOneRunUpdateListener
+class reverseBowlerFourRunUpdateListener
 {
     /**
      * Create the event listener.
@@ -22,15 +22,17 @@ class bowlerOneRunUpdateListener
     /**
      * Handle the event.
      *
-     * @param  OneRunEvent  $event
+     * @param  reverseFourRunEvent  $event
      * @return void
      */
     public function handle($event)
     {
-        MatchPlayers::where('match_id', $event->request->match_id)
+        $striker = MatchPlayers::where('match_id', $event->request->match_id)
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bw_team_id)
-            ->where('player_id', $event->request->attacker_id)
-            ->increment('bw_runs');
+            ->where('bw_status', 11)->first();
+
+        $striker->bw_runs = $striker->bw_runs - 4;
+        $striker->save();
     }
 }

@@ -47,8 +47,8 @@
                         <a class=" btn btn-sm btn-success "
                            href="/admin/tournaments/{{$t->id}}/schedules"
                            >Schedule</a>
-                        <a class=" btn btn-sm btn-warning" href="{{route('LiveScore.index')}}"
-                           >Live Score</a>
+{{--                        <a class=" btn btn-sm btn-warning" href="{{route('LiveScore.index')}}"--}}
+{{--                           >Live Score</a>--}}
 
 
                     </td>
