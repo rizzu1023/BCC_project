@@ -54,7 +54,7 @@
             display: inline-block;
             cursor: pointer;
         }
-        #retired_hurt {
+        #retired_hurt,#undo {
             width: 150px;
             border: none;
             line-height: 50px;
@@ -63,6 +63,12 @@
             display: inline-block;
             cursor: pointer;
 
+        }
+        #retired_hurt:hover{
+            background: lightpink;
+        }
+        #undo:hover{
+            background: lightpink;
         }
 
         .bt:hover {
@@ -626,10 +632,11 @@
                             <button id="wide" type="submit" value="wd" class="bt">Wide</button>
                             <button id="noball" type="submit" value="nb" class="bt">nb</button>
                             <div id="wicket_button" class="text-center">W</div>
-                            <button id="undo" type="submit" value="undo" class="bt" onclick="return confirm('Are you sure you want to delete it?');">Undo</button>
 
                             <br><br>
                             <div id="retired_hurt" class="text-center">Redirect Hurt</div>
+                            <button id="undo" type="submit" value="undo" class="bt">Undo</button>
+
                             <br><br>
 
 

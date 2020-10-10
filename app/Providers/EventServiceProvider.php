@@ -151,6 +151,8 @@ class EventServiceProvider extends ServiceProvider
         ],
 
         \App\Events\sixRunEvent::class => [
+            \App\Listeners\isOverForTeam::class,
+            \App\Listeners\isOverForBowler::class,
             \App\Listeners\batsmanBallUpdateListener::class,
             \App\Listeners\batsmanSixRunUpdateListener::class,
             \App\Listeners\batsmanSixBoundaryUpdateListener::class,
@@ -159,8 +161,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\teamBallUpdateListener::class,
             \App\Listeners\teamSixRunUpdateListener::class,
             \App\Listeners\matchTrackListener::class,
-            \App\Listeners\isOverForBowler::class,
-            \App\Listeners\isOverForTeam::class,
         ],
 
         \App\Events\reverseSixRunEvent::class => [

@@ -250,15 +250,15 @@ class LiveScoreController extends Controller
             if ($request->value == 'rh') event(new RetiredHurtBatsmanEvent($request));
 
             if ($request->value == 'undo'){
-                $last_ball = MatchTrack::where('team_id',$request->bt_team_id)->where('match_id',$request->match_id)->where('tournament_id',$request->tournament)->latest()->first();
-                if ($last_ball->action == 'zero') event(new reverseDotBallEvent($request));
-                if ($last_ball->action == 'one') event(new reverseOneRunEvent($request));
-                if ($last_ball->action == 'two') event(new reverseTwoRunEvent($request));
-                if ($last_ball->action == 'three') event(new reverseThreeRunEvent($request));
-                if ($last_ball->action == 'four') event(new reverseFourRunEvent($request));
-                if ($last_ball->action == 'six') event(new reverseSixRunEvent($request));
-                if ($last_ball->action == 'wd') event(new reverseWideZeroRunEvent($request));
-                if ($last_ball->action == 'nb') event(new reverseNoballZeroRunEvent($request));
+                $previous_ball = MatchTrack::where('team_id',$request->bt_team_id)->where('match_id',$request->match_id)->where('tournament_id',$request->tournament)->latest()->first();
+                if ($previous_ball->action == 'zero') event(new reverseDotBallEvent($request,$previous_ball));
+                if ($previous_ball->action == 'one') event(new reverseOneRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'two') event(new reverseTwoRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'three') event(new reverseThreeRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'four') event(new reverseFourRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'six') event(new reverseSixRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'wd') event(new reverseWideZeroRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'nb') event(new reverseNoballZeroRunEvent($request,$previous_ball));
             }
 
 

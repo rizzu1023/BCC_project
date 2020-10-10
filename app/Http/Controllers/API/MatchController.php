@@ -78,8 +78,8 @@ class MatchController extends Controller
             'team2' => $team2,
             'match' => $match->match_no,
             'tournament' => $tournament->tournament_name,
-            'dates' => $match->dates,
-            'times' => $match->times,
+            'dates' => $format_date,
+            'times' => $format_time,
         ];
     }
 
