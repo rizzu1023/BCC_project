@@ -25,6 +25,7 @@ class MatchPlayersResource extends JsonResource
             'bt_balls' => $this->bt_balls,
             'bt_fours' => $this->bt_fours,
             'bt_sixes' => $this->bt_sixes,
+            'bt_order' => $this->bt_order,
             'bw_status' => $this->bw_status,
             'bw_over' => $this->bw_over,
             'bw_overball' => $this->bw_overball,
