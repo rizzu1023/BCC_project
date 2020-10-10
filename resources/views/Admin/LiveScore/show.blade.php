@@ -429,12 +429,13 @@
                                             Crossed?</label>
                                         <input type="checkbox" name="isBatsmanCross" id="input_batsman_cross"/>
                                     </div>
-                                    <div class="row">
+
+                                    <div class="row" id="select_new_batsman">
                                         <div class="col-md-6">
                                             <label for="exampleFormControlSelect2">Select new Batsman</label>
-                                            <select class="form-control" id="exampleFormControlSelect2"
+                                            <select class="form-control" id="select_new_batsman_input"
                                                     name="newBatsman_id"
-                                                    required>
+                                                    >
                                                 <option disabled selected>Select</option>
                                                 @foreach($matchs->MatchPlayers as $mp)
                                                     @if($mp->team_id == $batting)
@@ -447,6 +448,11 @@
                                             </select>
                                         </div>
                                     </div>
+{{--                                    <div id="all_out">--}}
+{{--                                        <label for="input_batsman_cross" style="margin-top: 10px;margin-left: 20px">--}}
+{{--                                            All Out?</label>--}}
+{{--                                        <input type="checkbox" name="isBatsmanCross" id="input_batsman_cross"/>--}}
+{{--                                    </div>--}}
 
                                     <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">
                                     <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
@@ -713,6 +719,13 @@
 
                 $('#div_wicket_primary').hide();
                 $('#div_wicket_secondary').hide();
+
+
+                // $('#all_out').on('change',function(){
+                //    $('#select_new_batsman').toggle();
+                //    $('#select_new_batsman_input').prop('required',false);
+                // });
+
 
                 $('#wicket_type').on('change', function () {
                     var wicket_type = $("#wicket_type").val();
