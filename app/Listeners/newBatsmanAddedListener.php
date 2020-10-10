@@ -72,12 +72,17 @@ class newBatsmanAddedListener
 //                ->where('player_id', $event->request->newBatsman_id)
 //                ->update(['bt_status' => $bastman_position]);
         } else {
+            $highest_batting_order = MatchPlayers::where('match_id', $event->request->match_id)
+                ->where('tournament_id', $event->request->tournament)
+                ->where('team_id', $event->request->bt_team_id)
+                ->where('bt_order','<',100)
+                ->max('bt_order');
 
             MatchPlayers::where('match_id', $event->request->match_id)
                 ->where('tournament_id', $event->request->tournament)
                 ->where('team_id', $event->request->bt_team_id)
                 ->where('player_id', $event->request->newBatsman_id)
-                ->update(['bt_status' => 11]);
+                ->update(['bt_status' => 11,'bt_order' => $highest_batting_order + 1]);
 
 
             if ($event->request->isBatsmanCross) {

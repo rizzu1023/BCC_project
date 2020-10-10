@@ -32,14 +32,14 @@ class startInningListener
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)
             ->where('player_id', $event->request->strike_id)
-            ->update(['bt_status' => 11]);
+            ->update(['bt_status' => 11,'bt_order' => 1]);
 
 //                batsman ko non striker select karega
         MatchPlayers::where('match_id', $event->request->match_id)
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)
             ->where('player_id', $event->request->nonstrike_id)
-            ->update(['bt_status' => 10]);
+            ->update(['bt_status' => 10,'bt_order' => 2]);
 
 //                bowler ko select karega
         MatchPlayers::where('match_id', $event->request->match_id)

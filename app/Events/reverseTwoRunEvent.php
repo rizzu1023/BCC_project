@@ -14,14 +14,16 @@ class reverseTwoRunEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $request;
+    public $previous_ball;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($request)
+    public function __construct($request,$previous_ball)
     {
+        $this->previous_ball = $previous_ball;
         $this->request = $request;
     }
 
