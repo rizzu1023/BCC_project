@@ -19,7 +19,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/Tournament/addTeam','TournamentController@Tournament_add_Team')->name('Tournament_add_Team');
     Route::post('/Tournament/destroyTeam','TournamentController@Tournament_destroy_Team')->name('Tournament_destroy_Team');
 
-
 //    Route::resource('/Team','TeamController');
 //    Route::post('/Team/filter','TeamController@teamFilter')->name('teamFilter');  //Team
 //    Route::resource('/Players','PlayersController');    //Player
@@ -28,16 +27,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 //    Route::post('/Schedule/create/tournament','ScheduleController@scheduleTournament')->name('scheduleTournament');
 
     Route::resource('/PointsTable','PointsTableController');  //PointsTable
-
     Route::resource('/Batting','BattingController');  //Batting
-
     Route::resource('/Bowling','BowlingController'); //Bowling
-
     Route::get('/BrowseResult', 'MatchController@BrowseResult')->name('BrowseResult');
+    //TODO :: update this to get route
     Route::post('/Post_BrowseResult', 'MatchController@Post_BrowseResult')->name('Post_BrowseResult');
     Route::post('/Post_DeleteResult', 'MatchController@Post_DeleteResult')->name('Post_DeleteResult');
 
 
+    Route::post('/update-overs','MatchController@update_overs')->name('update.overs');
+    Route::post('/update-toss','MatchController@update_toss')->name('update.toss');
+    Route::post('/update-choose','MatchController@update_choose')->name('update.choose');
+    Route::post('/update-player','MatchController@update_player')->name('update.player');
 
 
     Route::get('/LiveScore','LiveScoreController@LiveScoreindex')->name('LiveScore.index');
