@@ -37,11 +37,16 @@ class MatchController extends Controller
 
     public function calculate_crr($runs, $overs, $balls){
         $over = $overs + ($balls * 10) / 60;
-        if($over == 0){
+        if($overs == 0 && $balls == 0){
             return $crr = 0;
         }
-        $crr = ($runs / $over);
-        return (float)number_format((float)$crr, 2, '.', '');
+        elseif($overs == 0){
+            return $runs * 6;
+        }
+        else{
+             $crr = $runs / $over;
+             return (float)number_format((float)$crr, 2, '.', '');
+        }
     }
 
     public function calculate_rrr($remaining_runs,$remaining_balls){
@@ -182,7 +187,7 @@ class MatchController extends Controller
 
             }
             $remaining_runs = $target - $batting_team->score + 1;
-            $crr = $this->calculate_crr($match_detail->score,$match->over,$match_detail->overball);
+            $crr = $this->calculate_crr($match_detail->score,$match_detail->over,$match_detail->overball);
             $rrr = $this->calculate_rrr($remaining_runs,$remaining_balls);
 
             return [
