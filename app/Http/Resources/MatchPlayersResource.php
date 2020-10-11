@@ -10,10 +10,27 @@ class MatchPlayersResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param \Illuminate\Http\Request $request
-     * @return array
+     * @return float
      */
+
+    public function calculate_economy($runs, $overs, $balls)
+    {
+        if($overs == 0 && $balls == 0){
+            return 0;
+        }
+        else {
+            $over = $overs + ($balls * 10) / 60;
+            $crr = ($runs / $over);
+            return (float)number_format((float)$crr, 2, '.', '');
+        }
+    }
+
     public function toArray($request)
     {
+       $bw_economy = 0;
+       if($this->bw_status != 'DNB'){
+           $bw_economy = $this->calculate_economy($this->bw_runs,$this->bw_over,$this->bw_overball);
+       }
 //        return parent::toArray($request);
         return [
             'id' => $this->id,
@@ -34,6 +51,7 @@ class MatchPlayersResource extends JsonResource
             'bw_nb' => $this->bw_nb,
             'bw_maiden' => $this->bw_maiden,
             'bw_nb' => $this->bw_nb,
+            'bw_economy' => $bw_economy,
             'wicket_type' => $this->wicket_type,
             'wicket_primary' => $this->wicket_primary,
             'wicket_secondary' => $this->wicket_secondary,
