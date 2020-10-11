@@ -37,6 +37,9 @@ class MatchController extends Controller
 
     public function calculate_crr($runs, $overs, $balls){
         $over = $overs + ($balls * 10) / 60;
+        if($over == 0){
+            return $crr = 0;
+        }
         $crr = ($runs / $over);
         return (float)number_format((float)$crr, 2, '.', '');
     }
@@ -45,6 +48,9 @@ class MatchController extends Controller
         $over = (int)( $remaining_balls / 6 );
         $balls = $remaining_balls % 6 ;
         $overs = $over + ($balls * 10) / 60;
+        if($overs == 0){
+            return $rrr = 0;
+        }
         $rrr = ($remaining_runs / $overs);
         return (float)number_format((float)$rrr, 2, '.', '');
     }
@@ -64,6 +70,7 @@ class MatchController extends Controller
 
         $format_time = date('h:i A', strtotime($match->times));
         $format_date = date('d M Y', strtotime($match->dates));
+        $day = 'daf';
 
 
         $toss = Match::where('match_id', $match_id)->first();
@@ -80,6 +87,7 @@ class MatchController extends Controller
                 'match' => $match->match_no,
                 'tournament' => $tournament->tournament_name,
                 'dates' => $format_date,
+                'day' => $day,
                 'times' => $format_time,
                 'toss' => $toss_team,
                 'choose' => $choose,

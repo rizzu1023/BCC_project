@@ -38,6 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/update-overs','MatchController@update_overs')->name('update.overs');
     Route::post('/update-toss','MatchController@update_toss')->name('update.toss');
     Route::post('/update-choose','MatchController@update_choose')->name('update.choose');
+    Route::post('/update-player','MatchController@update_player')->name('update.player');
 
 
     Route::get('/LiveScore','LiveScoreController@LiveScoreindex')->name('LiveScore.index');
