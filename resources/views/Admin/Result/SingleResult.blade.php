@@ -51,6 +51,16 @@
                     <div class="stats">
                       <span>Toss</span>
                       <h5><strong>{{$match->Teams->team_code}}</strong></h5>
+                        <form method="post" action="{{ Route("update.toss") }}">
+                        @csrf
+                            <select name="toss" onchange="this.form.submit();">
+                                <option selected disabled>Select</option>
+                            @foreach($match_detail as $md)
+                                 <option value="{{$md->team_id}}">{{$md->Teams->team_code}}</option>
+                            @endforeach
+                        </select>
+                            <input type="hidden" value="{{$match->match_id}}" name="match_id">
+                        </form>
                     </div>
                 </div>
         	</div>
@@ -59,6 +69,15 @@
                     <div class="stats">
                       <span>First</span>
                       <h5><strong>{{$match->choose}}</strong></h5>
+                        <form method="post" action="{{ Route("update.choose") }}">
+                            @csrf
+                            <select name="choose" onchange="this.form.submit();">
+                                <option selected disabled>Select</option>
+                                <option value="Bat">Batting</option>
+                                <option value="Bowl">Bowling</option>
+                            </select>
+                            <input type="hidden" value="{{$match->match_id}}" name="match_id">
+                        </form>
                     </div>
                 </div>
         	</div>
@@ -68,7 +87,13 @@
         		<div class="r3_counter_box ">
                     <div class="stats">
                       <span>Overs</span>
-                      <h5><strong>{{$match->overs}}</strong></h5>
+{{--                      <h5><strong>{{$match->overs}}</strong></h5>--}}
+                        <form method="post" action="{{ Route('update.overs') }}">
+                            @csrf
+                        <h5><input type="number" value="{{$match->overs}}" name="overs"></h5>
+                            <input type="hidden" name="match_id" value="{{$match->match_id}}">
+                        <button type="submit" class="btn btn-sm btn-success">Update</button>
+                        </form>
                     </div>
                 </div>
         	 </div>
