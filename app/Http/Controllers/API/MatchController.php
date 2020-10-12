@@ -16,6 +16,7 @@ use App\Schedule;
 use App\Teams;
 use App\Tournament;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class MatchController extends Controller
 {
@@ -75,7 +76,10 @@ class MatchController extends Controller
 
         $format_time = date('h:i A', strtotime($match->times));
         $format_date = date('d M Y', strtotime($match->dates));
-        $day = 'daf';
+        $date = $match->dates;
+        $d    = new \DateTime($date);
+        $dy = $d->format('D');
+        $day = strtoupper($dy);
 
 
         $toss = Match::where('match_id', $match_id)->first();
@@ -106,6 +110,7 @@ class MatchController extends Controller
             'match' => $match->match_no,
             'tournament' => $tournament->tournament_name,
             'dates' => $format_date,
+            'day' => $day,
             'times' => $format_time,
         ];
     }

@@ -491,7 +491,7 @@
                                                 <option disabled selected>Select</option>
                                                 @foreach($matchs->MatchPlayers as $mp)
                                                     @if($mp->team_id == $batting)
-                                                        @if($mp->bt_status == '10' || $mp->bt_status == '11')
+                                                        @if($mp->bt_status == '10' || $mp->bt_status == '11' || $mp->bt_status == '12')
                                                             <option
                                                                 value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
                                                         @endif
