@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\MatchTrackResource;
 use App\MatchTrack;
+use App\Tournament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -18,6 +19,7 @@ class MatchController extends Controller
 {
 
     public function BrowseResult(){
+      $tournaments = Tournament::where("user_id", auth()->user()->id)->first();
       $result= MatchDetail::orderBy('match_id','asc')->get();
       return view('Admin/Result/BrowseResult',compact('result'));
     }

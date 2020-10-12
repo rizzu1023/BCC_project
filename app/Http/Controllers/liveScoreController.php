@@ -10,6 +10,7 @@ use App\Events\byesTwoRunEvent;
 use App\Events\DeclareBatsmanEvent;
 use App\Events\dotBallEvent;
 use App\Events\endInningEvent;
+use App\Events\fiveRunEvent;
 use App\Events\fourRunEvent;
 use App\Events\legByesFourRunEvent;
 use App\Events\legByesOneRunEvent;
@@ -26,6 +27,7 @@ use App\Events\noballZeroRunEvent;
 use App\Events\oneRunEvent;
 use App\Events\RetiredHurtBatsmanEvent;
 use App\Events\reverseDotBallEvent;
+use App\Events\reverseFiveRunEvent;
 use App\Events\reverseFourRunEvent;
 use App\Events\reverseNoballZeroRunEvent;
 use App\Events\reverseOneRunEvent;
@@ -221,6 +223,7 @@ class LiveScoreController extends Controller
             if ($request->value == 2) event(new twoRunEvent($request));
             if ($request->value == 3) event(new threeRunEvent($request));
             if ($request->value == 4) event(new fourRunEvent($request));
+            if ($request->value == 5) event(new fiveRunEvent($request));
             if ($request->value == 6) event(new sixRunEvent($request));
 
             if ($request->value == 'wd') event(new wideZeroRunEvent($request));
@@ -256,6 +259,7 @@ class LiveScoreController extends Controller
                 if ($previous_ball->action == 'two') event(new reverseTwoRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'three') event(new reverseThreeRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'four') event(new reverseFourRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'five') event(new reverseFiveRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'six') event(new reverseSixRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'wd') event(new reverseWideZeroRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'nb') event(new reverseNoballZeroRunEvent($request,$previous_ball));
