@@ -15,6 +15,11 @@ class ScheduleResource extends JsonResource
      */
     public function toArray($request)
     {
+        $date = $this->dates;
+        $d    = new \DateTime($date);
+        $dy = $d->format('D');
+        $day = strtoupper($dy);
+
         $times = date('h:i A', strtotime($this->times));
         $dates = date('d M Y', strtotime($this->dates));
 
@@ -79,6 +84,7 @@ class ScheduleResource extends JsonResource
             'team2_id' => $this->Teams2,
             'times' => $times,
             'dates' => $dates,
+            'day' => $day,
             'tournament_id' => $this->tournament_id,
         ];
     }
