@@ -31,7 +31,7 @@
                 <h3 class="title1">{{$schedule->Teams1->team_name}} XI</h3>
                     @foreach($players1 as $p1)
 {{--                        <input class="single-checkbox" type="checkbox" name="{{$str.$i}}" value="{{$p1->player_id}}"><div class="single-name">{{$loop->index + 1}} {{$p1->player_name}}</div><br>--}}
-                        <input class="single-checkbox" type="checkbox" name="team1[]" value="{{$p1->player_id}}"><div class="single-name">{{$loop->index + 1}} {{$p1->player_name}}</div><br>
+                        <input onchange="team1_function(this)" class="single-checkbox" type="checkbox" name="team1[]" value="{{$p1->player_id}}"><div class="single-name">{{$loop->index + 1}} {{$p1->player_name}}</div><br>
                     @php($i++)
                     @endforeach
                 </div>
@@ -42,7 +42,7 @@
 
                     @foreach($players2 as $p2)
 {{--                        <input class="single-checkbox" type="checkbox" name="{{$str.$i}}" value="{{$p2->player_id}}"><div class="single-name">{{$loop->index + 1}} {{$p2->player_name}}</div><br>--}}
-                        <input class="single-checkbox" type="checkbox" name="team2[]" value="{{$p2->player_id}}"><div class="single-name">{{$loop->index + 1}} {{$p2->player_name}}</div><br>
+                        <input onchange="team2_function(this)" class="single-checkbox" type="checkbox" name="team2[]" value="{{$p2->player_id}}"><div class="single-name">{{$loop->index + 1}} {{$p2->player_name}}</div><br>
                     @php($i++)
                     @endforeach
                 </div>
