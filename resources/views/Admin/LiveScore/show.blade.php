@@ -491,7 +491,7 @@
                                                 <option disabled selected>Select</option>
                                                 @foreach($matchs->MatchPlayers as $mp)
                                                     @if($mp->team_id == $batting)
-                                                        @if($mp->bt_status == '10' || $mp->bt_status == '11' || $mp->bt_status == '12')
+                                                        @if($mp->bt_status == '10' || $mp->bt_status == '11')
                                                             <option
                                                                 value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
                                                         @endif
@@ -509,7 +509,7 @@
                                                 <option disabled selected>Select</option>
                                                 @foreach($matchs->MatchPlayers as $mp)
                                                     @if($mp->team_id == $batting)
-                                                        @if($mp->bt_status == 'DNB')
+                                                        @if($mp->bt_status == 'DNB' || $mp->bt_status == '12')
                                                             <option
                                                                 value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
                                                         @endif
@@ -633,6 +633,7 @@
                             <button id="double" type="submit" value="2" class="bt">2</button>
                             <button id="triple" type="submit" value="3" class="bt">3</button>
                             <button id="four" type="submit" value="4" class="bt">4</button>
+                            <button id="five" type="submit" value="5" class="bt">5</button>
                             <button id="six" type="submit" value="6" class="bt">6</button>
                             <br><br>
                             <button id="wide" type="submit" value="wd" class="bt">Wide</button>

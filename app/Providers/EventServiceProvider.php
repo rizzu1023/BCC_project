@@ -150,9 +150,34 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\reverseMatchTrackListener::class,
         ],
 
-        \App\Events\sixRunEvent::class => [
-            \App\Listeners\isOverForTeam::class,
+        \App\Events\fiveRunEvent::class => [
+            \App\Listeners\batsmanBallUpdateListener::class,
+            \App\Listeners\batsmanFiveRunUpdateListener::class,
+            \App\Listeners\bowlerBallUpdateListener::class,
+            \App\Listeners\bowlerFiveRunUpdateListener::class,
+            \App\Listeners\teamBallUpdateListener::class,
+            \App\Listeners\teamFiveRunUpdateListener::class,
+            \App\Listeners\matchTrackListener::class,
+            \App\Listeners\strikeRotateListener::class,
             \App\Listeners\isOverForBowler::class,
+            \App\Listeners\isOverForTeam::class,
+        ],
+
+        \App\Events\reverseFiveRunEvent::class => [
+            \App\Listeners\strikeRotateListener::class,
+            \App\Listeners\reverseIsOverForTeam::class,
+            \App\Listeners\reverseIsOverForBowler::class,
+            \App\Listeners\reverseBatsmanBallUpdateListener::class,
+            \App\Listeners\reverseBatsmanFiveRunUpdateListener::class,
+            \App\Listeners\reverseBowlerBallUpdateListener::class,
+            \App\Listeners\reverseBowlerFiveRunUpdateListener::class,
+            \App\Listeners\reverseTeamBallUpdateListener::class,
+            \App\Listeners\reverseTeamFiveRunUpdateListener::class,
+            \App\Listeners\reverseMatchTrackListener::class,
+        ],
+
+        \App\Events\sixRunEvent::class => [
+
             \App\Listeners\batsmanBallUpdateListener::class,
             \App\Listeners\batsmanSixRunUpdateListener::class,
             \App\Listeners\batsmanSixBoundaryUpdateListener::class,
@@ -161,6 +186,8 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\teamBallUpdateListener::class,
             \App\Listeners\teamSixRunUpdateListener::class,
             \App\Listeners\matchTrackListener::class,
+            \App\Listeners\isOverForBowler::class,
+            \App\Listeners\isOverForTeam::class,
         ],
 
         \App\Events\reverseSixRunEvent::class => [
