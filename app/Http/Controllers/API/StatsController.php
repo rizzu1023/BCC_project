@@ -72,7 +72,7 @@ class StatsController extends Controller
         }
 
         if($type == "bestBattingStrikeRate"){
-            $bestBattingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls')
+            $bestBattingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_runs','desc')->get()->take(20);
@@ -92,23 +92,31 @@ class StatsController extends Controller
         }
 
         if($type == "mostFours"){
-            $mostFours = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_fours) as bt_fours')
+            $mostFours = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_fours) as bt_fours')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_fours','desc')->get()->take(20);
+
+            $mostFours = $mostFours->reject(function($element) {
+                return $element->bt_fours <= 0;
+            });
             return StatsResource::collection($mostFours);
         }
 
         if($type == "mostSixes"){
-            $mostSixes = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_sixes) as bt_sixes')
+            $mostSixes = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_sixes) as bt_sixes')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_sixes','desc')->get()->take(20);
+
+            $mostSixes = $mostSixes->reject(function($element) {
+                return $element->bt_sixes <= 0;
+            });
             return StatsResource::collection($mostSixes);
         }
 
         if($type == "mostHundreds"){
-            $mostHundreds = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, COUNT(bt_runs) as bt_hundreds')
+            $mostHundreds = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(Case when bt_runs > 99 then 1 else 0 end) as bt_hundreds')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->where('bt_runs', '>=' ,100)
@@ -117,12 +125,14 @@ class StatsController extends Controller
         }
 
         if($type == "mostFifties"){
-            $mostFifties = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, COUNT(bt_runs) as bt_fifties')
+            $mostFifties = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(Case when bt_runs > 49 and bt_runs < 100 then 1 else 0 end) as bt_fifties')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
-                ->where('bt_runs', '>=' ,50)
-                ->where('bt_runs', '<', 100)
-                ->orderBy('bt_fifties','desc')->orderBy('bt_runs','desc')->get()->take(20);
+//                ->where('bt_runs', '>=' ,50)
+//                ->where('bt_runs', '<', 100)
+                ->orderBy('bt_runs','desc')->get()->take(20);
+
+
             return StatsResource::collection($mostFifties);
         }
 
