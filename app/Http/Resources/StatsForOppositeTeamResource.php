@@ -27,6 +27,7 @@ class StatsForOppositeTeamResource extends JsonResource
             'matches' => $this->matches,
             'bt_runs' => (int)$this->bt_runs,
             'bt_balls' => $this->bt_balls,
+            'bt_sr' => $this->bt_sr,
             'bt_innings' => (int)$this->bt_innings,
             'out_innings' => (int)$this->out_innings,
 

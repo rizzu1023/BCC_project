@@ -19,7 +19,7 @@ class StatsController extends Controller
 //            DB::enableQueryLog();
 //            return DB::getQueryLog();
 
-            $mostRuns = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0") then 1 else 0 end)),2) as bt_average')
+            $mostRuns = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(Case when bt_status IN ("0") then 1 else 0 end) as out_innings, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0") then 1 else 0 end)),2) as bt_average')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_runs','desc')->get()->take(20);
@@ -38,7 +38,15 @@ class StatsController extends Controller
         if($type == "highestScores"){
             $highestScores = MatchPlayers::select('player_id','bt_runs','bt_balls','match_id', 'team_id')
                 ->where('tournament_id',$tournament_id)
+                ->where('bt_runs','>',0)
+                ->where('bt_balls','>',0)
                 ->orderBy('bt_runs','desc')->get()->take(20);
+
+            $highestScores->map(function ($element) {
+                    $bt_sr = ($element->bt_runs / $element->bt_balls) * 100 ;
+                    $bt_strike_rate = (float)number_format((float)$bt_sr, 2, '.', '');
+                    return $element->bt_sr = $bt_strike_rate;
+            });
             return StatsForOppositeTeamResource::collection($highestScores);
         }
 
