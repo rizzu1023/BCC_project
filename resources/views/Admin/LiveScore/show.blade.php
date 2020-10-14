@@ -932,6 +932,7 @@
                 },
                 success: function (data) {
                     // alert(data.message);
+                    $('#newBatsmanForm').trigger('reset');
                     location.reload(true);
                 }
             });

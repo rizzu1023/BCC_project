@@ -96,7 +96,6 @@ class StatsController extends Controller
         if($type == "mostWickets"){
             $mostWickets = MatchPlayers::selectRaw('player_id, round(SUM(bw_runs) / SUM(bw_wickets),2) as bw_average, COUNT(match_id) as matches, SUM(bw_over) as bw_over, SUM(bw_overball) as bw_overball, SUM(bw_wickets) as bw_wickets, SUM(bw_runs) as bw_runs')
                 ->where('tournament_id',$tournament_id)
-                ->where('bw_wickets', '>', 0)
                 ->groupBy('player_id')
                 ->orderBy('bw_wickets','desc')
                 ->get()->take(20);
