@@ -76,7 +76,19 @@ class StatsController extends Controller
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_runs','desc')->get()->take(20);
-            return StatsResource::collection($bestBattingStrikeRate);
+
+            $bestBattingStrikeRate = $bestBattingStrikeRate->reject(function($element) {
+                return $element->bt_runs <= 0;
+            });
+
+            $bestBattingStrikeRate->map(function ($element) {
+                $bt_sr = ($element->bt_runs / $element->bt_balls) * 100 ;
+                $bt_strike_rate = (float)number_format((float)$bt_sr, 2, '.', '');
+                return $element->bt_sr = $bt_strike_rate;
+            });
+
+            $sortedBestBattingStrikeRate = $bestBattingStrikeRate->sortByDesc('bt_sr');
+            return StatsResource::collection($sortedBestBattingStrikeRate);
         }
 
         if($type == "mostFours"){
