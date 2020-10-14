@@ -23,7 +23,11 @@ class StatsController extends Controller
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_runs','desc')->get()->take(20);
-            return StatsResource::collection($mostRuns);
+
+            $filteredMostRuns = $mostRuns->reject(function($element) {
+                return $element->bt_runs <= 0;
+            });
+            return StatsResource::collection($filteredMostRuns);
 
         }
         if($type == "highestScores"){
@@ -34,11 +38,24 @@ class StatsController extends Controller
         }
 
         if($type == "bestBattingAverage"){
-            $bestBattingAverage = MatchPlayers::selectRaw('player_id, COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, SUM(Case when bt_status IN ("0") then 1 else 0 end) as out_innings,  SUM(bt_runs) as bt_runs, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0") then 1 else 0 end)),2) as bt_average')
+            $bestBattingAverage = MatchPlayers::selectRaw('player_id, COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, SUM(Case when bt_status IN ("0") then 1 else 0 end) as out_innings,  SUM(bt_runs) as bt_runs, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0") then 1 else 0 end)),2) as bt_average')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->get()->take(20);
-            return StatsResource::collection($bestBattingAverage);
+
+            $filteredBestBattingAverage = $bestBattingAverage->reject(function($element) {
+                return $element->bt_runs <= 0;
+            });
+
+            $filteredBestBattingAverage->map(function ($element) {
+                if($element->out_innings == 0){
+                    return $element->bt_average = $element->bt_runs ;
+                }
+            });
+
+            $sortedBestBattingAverage = $filteredBestBattingAverage->sortByDesc('bt_average');
+
+            return StatsResource::collection($sortedBestBattingAverage);
         }
 
         if($type == "bestBattingStrikeRate"){
@@ -99,7 +116,12 @@ class StatsController extends Controller
                 ->groupBy('player_id')
                 ->orderBy('bw_wickets','desc')
                 ->get()->take(20);
-            return StatsResource::collection($mostWickets);
+
+            $filteredMostWickets = $mostWickets->reject(function($element) {
+                return $element->bw_wickets <= 0;
+            });
+
+            return StatsResource::collection($filteredMostWickets);
         }
 
         if($type == "bestBowlingAverage"){
