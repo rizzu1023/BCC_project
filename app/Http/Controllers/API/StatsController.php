@@ -121,6 +121,12 @@ class StatsController extends Controller
                 ->where('tournament_id',$tournament_id)
                 ->where('bt_runs', '>=' ,100)
                 ->orderBy('bt_hundreds','desc')->orderBy('bt_runs','desc')->get()->take(20);
+
+            $mostHundreds = $mostHundreds->reject(function($element) {
+                return $element->bt_hundreds <= 0;
+            });
+
+            $mostHundreds = $mostHundreds->sortByDesc('bt_hundreds');
             return StatsResource::collection($mostHundreds);
         }
 
@@ -128,11 +134,13 @@ class StatsController extends Controller
             $mostFifties = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(Case when bt_runs > 49 and bt_runs < 100 then 1 else 0 end) as bt_fifties')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
-//                ->where('bt_runs', '>=' ,50)
-//                ->where('bt_runs', '<', 100)
                 ->orderBy('bt_runs','desc')->get()->take(20);
 
+            $mostFifties = $mostFifties->reject(function($element) {
+                return $element->bt_fifties <= 0;
+            });
 
+            $mostFifties = $mostFifties->sortByDesc('bt_fifties');
             return StatsResource::collection($mostFifties);
         }
 
