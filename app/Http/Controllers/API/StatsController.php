@@ -19,13 +19,18 @@ class StatsController extends Controller
 //            DB::enableQueryLog();
 //            return DB::getQueryLog();
 
-            $mostRuns = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs')
+            $mostRuns = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0") then 1 else 0 end)),2) as bt_average')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_runs','desc')->get()->take(20);
 
             $filteredMostRuns = $mostRuns->reject(function($element) {
                 return $element->bt_runs <= 0;
+            });
+            $filteredMostRuns->map(function ($element) {
+                if($element->out_innings == 0){
+                    return $element->bt_average = $element->bt_runs ;
+                }
             });
             return StatsResource::collection($filteredMostRuns);
 
