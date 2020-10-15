@@ -41,14 +41,14 @@ class currentBatsmanRemoveListener
 
         if ($event->request->wicket_type == 'bold' || $event->request->wicket_type == 'lbw' || $event->request->wicket_type == 'hitwicket') {
             $current_batsman->wicket_type = $event->request->wicket_type;
-            $current_batsman->wicket_primary = $event->request->wicket_primary;
+            $current_batsman->wicket_primary = $event->request->attacker_id;
             $current_batsman->bt_balls = $current_batsman->bt_balls + 1;
             $current_batsman->bt_status = 0;
             $current_batsman->save();
         }
         if ($event->request->wicket_type == 'catch' || $event->request->wicket_type == 'stump') {
             $current_batsman->wicket_type = $event->request->wicket_type;
-            $current_batsman->wicket_primary = $event->request->wicket_primary;
+            $current_batsman->wicket_primary = $event->request->attacker_id;
             $current_batsman->wicket_secondary = $event->request->wicket_secondary;
             $current_batsman->bt_balls = $current_batsman->bt_balls + 1;
             $current_batsman->bt_status = 0;
@@ -78,6 +78,8 @@ class currentBatsmanRemoveListener
                 ->where('tournament_id', $event->request->tournament)
                 ->where('team_id', $event->request->bt_team_id)
                 ->where('player_id', $event->request->newBatsman_id)->first();
+
+            if($new_batsman)
             $new_batsman->bt_order = $highest_batting_order + 1;
 
 
@@ -96,23 +98,31 @@ class currentBatsmanRemoveListener
                 $striker_batsman->bt_status = 10;
                 $striker_batsman->save();
 
-                $new_batsman->bt_status = 11;
-                $new_batsman->save();
+                if($new_batsman){
+                    $new_batsman->bt_status = 11;
+                    $new_batsman->save();
+                }
             }
             elseif($got_out_batsman->bt_status == 11 && $event->request->where_batsman_runout == 'strike'){
-                $new_batsman->bt_status = 11;
-                $new_batsman->save();
+                if($new_batsman) {
+                    $new_batsman->bt_status = 11;
+                    $new_batsman->save();
+                }
             }
             elseif($got_out_batsman->bt_status == 10 && $event->request->where_batsman_runout == 'non_strike'){
-                $new_batsman->bt_status = 10;
-                $new_batsman->save();
+                if($new_batsman) {
+                    $new_batsman->bt_status = 10;
+                    $new_batsman->save();
+                }
             }
             elseif($got_out_batsman->bt_status == 11 && $event->request->where_batsman_runout == 'non_strike'){
                 $non_striker_batsman->bt_status = 11;
                 $non_striker_batsman->save();
 
-                $new_batsman->bt_status = 10;
-                $new_batsman->save();
+                if($new_batsman) {
+                    $new_batsman->bt_status = 10;
+                    $new_batsman->save();
+                }
             }
 
             $got_out_batsman->bt_status = 0;

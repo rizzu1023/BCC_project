@@ -57,11 +57,11 @@
         }
         #retired_hurt,#undo {
             width: 125px;
-            border: none;
             line-height: 50px;
             height: 50px;
             background: lightgray;
             display: inline-block;
+            border: 1px solid gray;
             cursor: pointer;
 
         }
@@ -311,9 +311,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6" id="div_wicket_primary">
+                                        <div class="col-md-6" id="div_wicket_primary"  ">
                                             <label for="wicket_primary" id="label_wicket_primary"></label>
-                                            <select class="form-control" id="wicket_primary"
+                                            <select class="form-control" style="display: none" id="wicket_primary"
                                                     name="wicket_primary"
                                                     required>
                                                 {{--                                            <option disabled selected>Select</option>--}}
@@ -668,7 +668,7 @@
                             <br><br>
                             <button id="wide" type="submit" value="wd" class="bt">Wide</button>
                             <button id="noball" type="submit" value="nb" class="bt">nb</button>
-                            <div id="wicket_button" class="text-center">Wicket</div>
+                            <div id="wicket_button" class="text-center" onclick="reset_form()">Wicket</div>
 
                             <br><br>
                             <div id="retired_hurt" class="text-center mt-1">Retired Hurt</div>
@@ -764,8 +764,8 @@
                         $('#wicket_secondary').prop('disabled', false);
                         $('#wicket_secondary').prop('required', true);
                         $('#label_wicket_secondary').html('Catch By');
-                        $('#label_wicket_primary').html('Bowl By');
-                        $('#div_wicket_primary').show();
+                        // $('#label_wicket_primary').html('Bowl By');
+                        // $('#div_wicket_primary').show();
                         $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_secondary').show();
                         $('#div_batsman_cross').show();
@@ -774,25 +774,29 @@
                         $('#run_scored').hide();
 
 
+
                     }
                     if (wicket_type === 'stump') {
                         $('#wicket_secondary').prop('disabled', false);
                         $('#wicket_secondary').prop('required', true);
                         $('#label_wicket_secondary').html('Stumped By');
-                        $('#label_wicket_primary').html('Bowl By');
+                        // $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
+                        // $('#div_wicket_primary').show();
                         $('#div_wicket_secondary').show();
                         $('#batsman_runout').hide();
                         $('#where_batsman_runout').hide();
                         $('#run_scored').hide();
+                        $('#div_batsman_cross').hide();
+
+
 
                     }
                     if (wicket_type === 'runout') {
                         $('#wicket_secondary').prop('disabled', false);
                         $('#wicket_secondary').prop('required', false);
                         $('#label_wicket_secondary').html('Run out By(Optional)');
-                        $('#div_wicket_primary').hide();
+                        // $('#div_wicket_primary').hide();
                         $('#div_wicket_primary_runout').show();
                         $('#div_wicket_secondary').show();
                         $('#batsman_runout').show();
@@ -801,39 +805,51 @@
                         $('#batsman_runout').prop('required', true);
                         $('#where_batsman_runout').prop('required', true);
                         $('#run_scored_input').prop('required', true);
+                        $('#div_batsman_cross').hide();
+
+
                     }
                     if (wicket_type === 'hitwicket') {
                         $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowl By');
+                        // $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_secondary').hide();
                         $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
+                        // $('#div_wicket_primary').show();
                         $('#batsman_runout').hide();
                         $('#where_batsman_runout').hide();
                         $('#run_scored').hide();
+                        $('#div_batsman_cross').hide();
+
+
 
                     }
                     if (wicket_type === 'bold') {
                         $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowled By');
+                        // $('#label_wicket_primary').html('Bowled By');
                         $('#div_wicket_secondary').hide();
                         $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_primary').show();
                         $('#batsman_runout').hide();
                         $('#where_batsman_runout').hide();
                         $('#run_scored').hide();
+                        $('#div_batsman_cross').hide();
+
+
 
 
                     }
                     if (wicket_type === 'lbw') {
                         $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowl By');
+                        // $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
+                        // $('#div_wicket_primary').show();
                         $('#div_wicket_secondary').hide();
                         $('#batsman_runout').hide();
                         $('#where_batsman_runout').hide();
                         $('#run_scored').hide();
+                        $('#div_batsman_cross').hide();
+
+
                     }
                 });
 
@@ -850,6 +866,20 @@
     </script>
 
     <script>
+
+        $(document).ready(function () {
+            resetForms();
+        });
+
+        function reset_form(){
+            $('#newBatsmanForm').trigger('reset');
+        }
+
+        function resetForms() {
+            $('#newBatsmanForm').trigger('reset');
+        }
+
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -961,7 +991,6 @@
                     value: value
                 },
                 success: function (data) {
-                    // alert(data.message);
                     $('#newBatsmanForm').trigger('reset');
                     location.reload(true);
                 }
