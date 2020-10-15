@@ -39,14 +39,15 @@
         }
 
         .bt {
+            margin-top: 5px;
             width: 50px;
             height: 50px;
-            border: none;
+            border: 1px solid gray;
             background: lightgray;
         }
 
         #wicket_button {
-            width: 50px;
+            width: 150px;
             border: none;
             line-height: 50px;
             height: 50px;
@@ -55,7 +56,7 @@
             cursor: pointer;
         }
         #retired_hurt,#undo {
-            width: 150px;
+            width: 125px;
             border: none;
             line-height: 50px;
             height: 50px;
@@ -627,6 +628,35 @@
                                 <input type="hidden" name="tournament" value="{{$matchs->tournament_id}}">
                                 </tbody>
                             </table>
+                            <div class="current_over">
+                                <span><h6 style="display:inline-block;font-weight: bold">Current Over : </h6></span>
+                                @foreach($over as $o)
+
+                                    @if($o->action == 'zero')
+                                        <span>0</span>
+                                        @elseif($o->action == 'one')
+                                        <span>1</span>
+                                    @elseif($o->action == 'two')
+                                        <span>2</span>
+                                    @elseif($o->action == 'three')
+                                        <span>3</span>
+                                    @elseif($o->action == 'four')
+                                        <span>4</span>
+                                    @elseif($o->action == 'five')
+                                        <span>5</span>
+                                    @elseif($o->action == 'six')
+                                        <span>6</span>
+                                    @elseif($o->action == 'wicket')
+                                        <span>W</span>
+                                    @else
+                                    <span>{{$o->action}}</span>
+                                    @endif
+                                        @if($o->overball == 6)
+                                            <span style="font-weight: bold; color: red"> | </span>
+                                        @endif
+
+                                @endforeach
+                            </div>
 
                             <button id="dot" type="submit" value="8" class="bt">0</button>
                             <button id="single" type="submit" value="1" class="bt">1</button>
@@ -638,11 +668,11 @@
                             <br><br>
                             <button id="wide" type="submit" value="wd" class="bt">Wide</button>
                             <button id="noball" type="submit" value="nb" class="bt">nb</button>
-                            <div id="wicket_button" class="text-center">W</div>
+                            <div id="wicket_button" class="text-center">Wicket</div>
 
                             <br><br>
-                            <div id="retired_hurt" class="text-center">Redirect Hurt</div>
-                            <button id="undo" type="submit" value="undo" class="bt">Undo</button>
+                            <div id="retired_hurt" class="text-center mt-1">Retired Hurt</div>
+                            <button id="undo" type="submit" value="undo" class="bt mt-1">Undo</button>
 
                             <br><br>
 

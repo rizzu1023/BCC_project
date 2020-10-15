@@ -34,6 +34,7 @@ use App\Events\reverseOneRunEvent;
 use App\Events\reverseSixRunEvent;
 use App\Events\reverseThreeRunEvent;
 use App\Events\reverseTwoRunEvent;
+use App\Events\reverseWicketEvent;
 use App\Events\reverseWideZeroRunEvent;
 use App\Events\sixRunEvent;
 use App\Events\startInningEvent;
@@ -188,8 +189,9 @@ class LiveScoreController extends Controller
     public function LiveUpdateShow($id, $tournament)
     {
         $matchs = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
-//        return $matchs->MatchPlayers;
-        return view('Admin/LiveScore/show', compact('matchs'));
+        $over = MatchTrack::where('match_id',$id)->where('tournament_id',$tournament)->latest()->get()->take(10);
+        $over = $over->reverse();
+        return view('Admin/LiveScore/show', compact('over','matchs'));
     }
 
     public function LiveScoreCard($id, $tournament)
@@ -263,6 +265,7 @@ class LiveScoreController extends Controller
                 if ($previous_ball->action == 'six') event(new reverseSixRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'wd') event(new reverseWideZeroRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'nb') event(new reverseNoballZeroRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'wicket') event(new reverseWicketEvent($request,$previous_ball));
             }
 
 
@@ -293,3 +296,6 @@ class LiveScoreController extends Controller
 // 11 = attacker
 // 1 = inning yes
 // DNB = Did not ball
+
+
+

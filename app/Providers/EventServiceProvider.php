@@ -218,10 +218,23 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\bowlerWicketUpdateListener::class,
             \App\Listeners\teamBallUpdateListener::class,
             \App\Listeners\teamWicketUpdateListener::class,
-            \App\Listeners\isWicketFalseListener::class,
+//            \App\Listeners\isWicketFalseListener::class,
             \App\Listeners\matchTrackListener::class,
             \App\Listeners\isOverForBowler::class,
             \App\Listeners\isOverForTeam::class,
+        ],
+
+        \App\Events\reverseWicketEvent::class => [
+            \App\Listeners\reverseIsOverForTeam::class,
+            \App\Listeners\reverseIsOverForBowler::class,
+            \App\Listeners\reverseNewBatsmanAddedListener::class,
+            \App\Listeners\reverseCurrentBatsmanRemoveListener::class,
+            \App\Listeners\reverseBowlerBallUpdateListener::class,
+            \App\Listeners\reverseBowlerWicketUpdateListener::class,
+            \App\Listeners\reverseTeamBallUpdateListener::class,
+            \App\Listeners\reverseTeamWicketUpdateListener::class,
+//            \App\Listeners\reverseIsWicketFalseListener::class,
+            \App\Listeners\reverseMatchTrackListener::class,
 
         ],
 //        Leg Byes Events

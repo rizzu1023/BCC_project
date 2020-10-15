@@ -120,7 +120,7 @@ class StatsController extends Controller
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->where('bt_runs', '>=' ,100)
-                ->orderBy('bt_hundreds','desc')->orderBy('bt_runs','desc')->get()->take(20);
+                ->orderBy('bt_runs','desc')->get()->take(20);
 
             $mostHundreds = $mostHundreds->reject(function($element) {
                 return $element->bt_hundreds <= 0;
