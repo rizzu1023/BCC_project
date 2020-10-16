@@ -93,6 +93,7 @@ class LiveScoreController extends Controller
 
     public function ScoreDetails(Request $request)
     {
+//        return $request->all();
             $m = Match::create([
             'match_id' => request('id'),
             'overs' => request('overs'),
@@ -253,6 +254,7 @@ class LiveScoreController extends Controller
             if ($request->value == 'nb6') event(new noballSixRunEvent($request));
 
             if ($request->value == 'rh') event(new RetiredHurtBatsmanEvent($request));
+            if ($request->value == 'sr') event(new strikeRotateEvent($request));
 
             if ($request->value == 'undo'){
                 $previous_ball = MatchTrack::where('team_id',$request->bt_team_id)->where('match_id',$request->match_id)->where('tournament_id',$request->tournament)->latest()->first();

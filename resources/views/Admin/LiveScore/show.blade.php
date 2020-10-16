@@ -47,25 +47,29 @@
         }
 
         #wicket_button {
-            width: 150px;
-            border: none;
+            width: 130px;
             line-height: 50px;
             height: 50px;
             background: #ff6961;
             display: inline-block;
+            border: 1px solid gray;
+
             cursor: pointer;
         }
-        #retired_hurt,#undo {
-            width: 125px;
-            border: none;
+        #retired_hurt,#undo,#strike_rotate {
+            width: 130px;
             line-height: 50px;
             height: 50px;
             background: lightgray;
             display: inline-block;
+            border: 1px solid gray;
             cursor: pointer;
 
         }
         #retired_hurt:hover{
+            background: lightpink;
+        }
+        #strike_rotate:hover{
             background: lightpink;
         }
         #undo:hover{
@@ -311,9 +315,9 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6" id="div_wicket_primary">
+                                        <div class="col-md-6" id="div_wicket_primary"  ">
                                             <label for="wicket_primary" id="label_wicket_primary"></label>
-                                            <select class="form-control" id="wicket_primary"
+                                            <select class="form-control" style="display: none" id="wicket_primary"
                                                     name="wicket_primary"
                                                     required>
                                                 {{--                                            <option disabled selected>Select</option>--}}
@@ -425,10 +429,12 @@
                                         {{--wicket secondary--}}
 
                                     </div>
-                                    <div id="div_batsman_cross" style="display: none">
-                                        <label for="input_batsman_cross" style="margin-top: 10px">did Batsman
-                                            Crossed?</label>
-                                        <input type="checkbox" name="isBatsmanCross" id="input_batsman_cross"/>
+                                    <div id="div_batsman_cross" class="custom-control custom-switch mt-2 mr-3" style="display: none" >
+{{--                                        <label for="input_batsman_cross" style="margin-top: 10px">did Batsman--}}
+{{--                                            Crossed?</label>--}}
+{{--                                        <input type="checkbox" name="isBatsmanCross" id="input_batsman_cross"/>--}}
+                                        <input type="checkbox" class="custom-control-input" onchange="team2_function(this)" id="input_batsman_cross" name="isBatsmanCross">
+                                        <label class="custom-control-label" for="input_batsman_cross"></label>did batsman crossed ?
                                     </div>
 
                                     <div class="row" id="select_new_batsman">
@@ -561,7 +567,7 @@
                                     <th>B</th>
                                     <th>4</th>
                                     <th>6</th>
-                                    <th>SR</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -577,14 +583,7 @@
                                             <td>{{$m->bt_balls}}</td>
                                             <td>{{$m->bt_fours}}</td>
                                             <td>{{$m->bt_sixes}}</td>
-                                            @php
-                                                $sr = 0;
-                                                if($m->bt_balls > 0){
-                                                $srs = ($m->bt_runs/$m->bt_balls)*100;
-                                                $sr = number_format((float)$srs, 2, '.', '');
-                                                }
-                                            @endphp
-                                            <td>{{$sr}}</td>
+
                                         </tr>
                                     @endif
                                 @endforeach
@@ -600,7 +599,6 @@
                                     <th>M</th>
                                     <th>R</th>
                                     <th>W</th>
-                                    <th>Eco</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -613,14 +611,7 @@
                                             <td>{{$m->bw_maiden}}</td>
                                             <td>{{$m->bw_runs}}</td>
                                             <td>{{$m->bw_wickets}}</td>
-                                            @php
-                                                $sr = 0;
-                                                if($m->bt_balls > 0){
-                                                $srs = ($m->bt_runs/$m->bt_balls)*100;
-                                                $sr = number_format((float)$srs, 2, '.', '');
-                                                }
-                                            @endphp
-                                            <td>{{$sr}}</td>
+
                                         </tr>
                                     @endif
                                 @endforeach
@@ -658,6 +649,14 @@
                                 @endforeach
                             </div>
 
+{{--                            <div class="custom-control custom-switch">--}}
+{{--                                <form id="toggle_form">--}}
+{{--                                    @csrf--}}
+{{--                                    <input type="checkbox" class="custom-control-input" id="test" @if(true) checked @endif name="active" onchange="toggle_function(1)">--}}
+{{--                                    <label class="custom-control-label" for="test"></label>--}}
+{{--                                    <input type="hidden"  name="feedback_id" value="1">--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
                             <button id="dot" type="submit" value="8" class="bt">0</button>
                             <button id="single" type="submit" value="1" class="bt">1</button>
                             <button id="double" type="submit" value="2" class="bt">2</button>
@@ -665,14 +664,16 @@
                             <button id="four" type="submit" value="4" class="bt">4</button>
                             <button id="five" type="submit" value="5" class="bt">5</button>
                             <button id="six" type="submit" value="6" class="bt">6</button>
-                            <br><br>
                             <button id="wide" type="submit" value="wd" class="bt">Wide</button>
                             <button id="noball" type="submit" value="nb" class="bt">nb</button>
-                            <div id="wicket_button" class="text-center">Wicket</div>
+                            <br><br>
+                            <div id="wicket_button" class="text-center" onclick="reset_form()">Wicket</div>
+                            <button id="undo" type="submit" value="undo" class="bt mt-1">Undo</button>
 
                             <br><br>
+                            <button id="strike_rotate" type="submit" value="sr" class="bt mt-1">Strike Rotate</button>
                             <div id="retired_hurt" class="text-center mt-1">Retired Hurt</div>
-                            <button id="undo" type="submit" value="undo" class="bt mt-1">Undo</button>
+
 
                             <br><br>
 
@@ -716,7 +717,7 @@
 
         @endif
 
-    </div>
+{{--    </div>--}}
 
     <!-- </div> -->
 
@@ -764,8 +765,8 @@
                         $('#wicket_secondary').prop('disabled', false);
                         $('#wicket_secondary').prop('required', true);
                         $('#label_wicket_secondary').html('Catch By');
-                        $('#label_wicket_primary').html('Bowl By');
-                        $('#div_wicket_primary').show();
+                        // $('#label_wicket_primary').html('Bowl By');
+                        // $('#div_wicket_primary').show();
                         $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_secondary').show();
                         $('#div_batsman_cross').show();
@@ -774,25 +775,29 @@
                         $('#run_scored').hide();
 
 
+
                     }
                     if (wicket_type === 'stump') {
                         $('#wicket_secondary').prop('disabled', false);
                         $('#wicket_secondary').prop('required', true);
                         $('#label_wicket_secondary').html('Stumped By');
-                        $('#label_wicket_primary').html('Bowl By');
+                        // $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
+                        // $('#div_wicket_primary').show();
                         $('#div_wicket_secondary').show();
                         $('#batsman_runout').hide();
                         $('#where_batsman_runout').hide();
                         $('#run_scored').hide();
+                        $('#div_batsman_cross').hide();
+
+
 
                     }
                     if (wicket_type === 'runout') {
                         $('#wicket_secondary').prop('disabled', false);
                         $('#wicket_secondary').prop('required', false);
                         $('#label_wicket_secondary').html('Run out By(Optional)');
-                        $('#div_wicket_primary').hide();
+                        // $('#div_wicket_primary').hide();
                         $('#div_wicket_primary_runout').show();
                         $('#div_wicket_secondary').show();
                         $('#batsman_runout').show();
@@ -801,39 +806,51 @@
                         $('#batsman_runout').prop('required', true);
                         $('#where_batsman_runout').prop('required', true);
                         $('#run_scored_input').prop('required', true);
+                        $('#div_batsman_cross').hide();
+
+
                     }
                     if (wicket_type === 'hitwicket') {
                         $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowl By');
+                        // $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_secondary').hide();
                         $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
+                        // $('#div_wicket_primary').show();
                         $('#batsman_runout').hide();
                         $('#where_batsman_runout').hide();
                         $('#run_scored').hide();
+                        $('#div_batsman_cross').hide();
+
+
 
                     }
                     if (wicket_type === 'bold') {
                         $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowled By');
+                        // $('#label_wicket_primary').html('Bowled By');
                         $('#div_wicket_secondary').hide();
                         $('#div_wicket_primary_runout').hide();
                         $('#div_wicket_primary').show();
                         $('#batsman_runout').hide();
                         $('#where_batsman_runout').hide();
                         $('#run_scored').hide();
+                        $('#div_batsman_cross').hide();
+
+
 
 
                     }
                     if (wicket_type === 'lbw') {
                         $('#wicket_secondary').prop('disabled', true);
-                        $('#label_wicket_primary').html('Bowl By');
+                        // $('#label_wicket_primary').html('Bowl By');
                         $('#div_wicket_primary_runout').hide();
-                        $('#div_wicket_primary').show();
+                        // $('#div_wicket_primary').show();
                         $('#div_wicket_secondary').hide();
                         $('#batsman_runout').hide();
                         $('#where_batsman_runout').hide();
                         $('#run_scored').hide();
+                        $('#div_batsman_cross').hide();
+
+
                     }
                 });
 
@@ -847,9 +864,23 @@
             $("#retiredHurtModal").modal('show');
         });
 
-    </script>
+{{--    </script>--}}
+{{----}}
+//     <script>
 
-    <script>
+        $(document).ready(function () {
+            resetForms();
+        });
+
+        function reset_form(){
+            $('#newBatsmanForm').trigger('reset');
+        }
+
+        function resetForms() {
+            $('#newBatsmanForm').trigger('reset');
+        }
+
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -961,7 +992,6 @@
                     value: value
                 },
                 success: function (data) {
-                    // alert(data.message);
                     $('#newBatsmanForm').trigger('reset');
                     location.reload(true);
                 }
