@@ -93,6 +93,7 @@ class LiveScoreController extends Controller
 
     public function ScoreDetails(Request $request)
     {
+//        return $request->all();
             $m = Match::create([
             'match_id' => request('id'),
             'overs' => request('overs'),

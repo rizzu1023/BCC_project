@@ -429,10 +429,12 @@
                                         {{--wicket secondary--}}
 
                                     </div>
-                                    <div id="div_batsman_cross" style="display: none">
-                                        <label for="input_batsman_cross" style="margin-top: 10px">did Batsman
-                                            Crossed?</label>
-                                        <input type="checkbox" name="isBatsmanCross" id="input_batsman_cross"/>
+                                    <div id="div_batsman_cross" class="custom-control custom-switch mt-2 mr-3" style="display: none" >
+{{--                                        <label for="input_batsman_cross" style="margin-top: 10px">did Batsman--}}
+{{--                                            Crossed?</label>--}}
+{{--                                        <input type="checkbox" name="isBatsmanCross" id="input_batsman_cross"/>--}}
+                                        <input type="checkbox" class="custom-control-input" onchange="team2_function(this)" id="input_batsman_cross" name="isBatsmanCross">
+                                        <label class="custom-control-label" for="input_batsman_cross"></label>did batsman crossed ?
                                     </div>
 
                                     <div class="row" id="select_new_batsman">
