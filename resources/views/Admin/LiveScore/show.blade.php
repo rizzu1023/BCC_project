@@ -47,16 +47,17 @@
         }
 
         #wicket_button {
-            width: 150px;
-            border: none;
+            width: 130px;
             line-height: 50px;
             height: 50px;
             background: #ff6961;
             display: inline-block;
+            border: 1px solid gray;
+
             cursor: pointer;
         }
-        #retired_hurt,#undo {
-            width: 125px;
+        #retired_hurt,#undo,#strike_rotate {
+            width: 130px;
             line-height: 50px;
             height: 50px;
             background: lightgray;
@@ -66,6 +67,9 @@
 
         }
         #retired_hurt:hover{
+            background: lightpink;
+        }
+        #strike_rotate:hover{
             background: lightpink;
         }
         #undo:hover{
@@ -561,7 +565,7 @@
                                     <th>B</th>
                                     <th>4</th>
                                     <th>6</th>
-                                    <th>SR</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -577,14 +581,7 @@
                                             <td>{{$m->bt_balls}}</td>
                                             <td>{{$m->bt_fours}}</td>
                                             <td>{{$m->bt_sixes}}</td>
-                                            @php
-                                                $sr = 0;
-                                                if($m->bt_balls > 0){
-                                                $srs = ($m->bt_runs/$m->bt_balls)*100;
-                                                $sr = number_format((float)$srs, 2, '.', '');
-                                                }
-                                            @endphp
-                                            <td>{{$sr}}</td>
+
                                         </tr>
                                     @endif
                                 @endforeach
@@ -600,7 +597,6 @@
                                     <th>M</th>
                                     <th>R</th>
                                     <th>W</th>
-                                    <th>Eco</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -613,14 +609,7 @@
                                             <td>{{$m->bw_maiden}}</td>
                                             <td>{{$m->bw_runs}}</td>
                                             <td>{{$m->bw_wickets}}</td>
-                                            @php
-                                                $sr = 0;
-                                                if($m->bt_balls > 0){
-                                                $srs = ($m->bt_runs/$m->bt_balls)*100;
-                                                $sr = number_format((float)$srs, 2, '.', '');
-                                                }
-                                            @endphp
-                                            <td>{{$sr}}</td>
+
                                         </tr>
                                     @endif
                                 @endforeach
@@ -658,6 +647,14 @@
                                 @endforeach
                             </div>
 
+{{--                            <div class="custom-control custom-switch">--}}
+{{--                                <form id="toggle_form">--}}
+{{--                                    @csrf--}}
+{{--                                    <input type="checkbox" class="custom-control-input" id="test" @if(true) checked @endif name="active" onchange="toggle_function(1)">--}}
+{{--                                    <label class="custom-control-label" for="test"></label>--}}
+{{--                                    <input type="hidden"  name="feedback_id" value="1">--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
                             <button id="dot" type="submit" value="8" class="bt">0</button>
                             <button id="single" type="submit" value="1" class="bt">1</button>
                             <button id="double" type="submit" value="2" class="bt">2</button>
@@ -665,14 +662,16 @@
                             <button id="four" type="submit" value="4" class="bt">4</button>
                             <button id="five" type="submit" value="5" class="bt">5</button>
                             <button id="six" type="submit" value="6" class="bt">6</button>
-                            <br><br>
                             <button id="wide" type="submit" value="wd" class="bt">Wide</button>
                             <button id="noball" type="submit" value="nb" class="bt">nb</button>
+                            <br><br>
                             <div id="wicket_button" class="text-center" onclick="reset_form()">Wicket</div>
+                            <button id="undo" type="submit" value="undo" class="bt mt-1">Undo</button>
 
                             <br><br>
+                            <button id="strike_rotate" type="submit" value="sr" class="bt mt-1">Strike Rotate</button>
                             <div id="retired_hurt" class="text-center mt-1">Retired Hurt</div>
-                            <button id="undo" type="submit" value="undo" class="bt mt-1">Undo</button>
+
 
                             <br><br>
 
@@ -716,7 +715,7 @@
 
         @endif
 
-    </div>
+{{--    </div>--}}
 
     <!-- </div> -->
 
@@ -863,9 +862,9 @@
             $("#retiredHurtModal").modal('show');
         });
 
-    </script>
-
-    <script>
+{{--    </script>--}}
+{{----}}
+//     <script>
 
         $(document).ready(function () {
             resetForms();
