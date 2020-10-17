@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\MatchDetail;
 use App\Schedule;
 use App\Teams;
 use App\Tournament;
@@ -90,5 +91,11 @@ class ScheduleController extends Controller
     {
         $schedule->delete();
         return back()->with('message','Successfully Deleted');
+    }
+
+    public function results(Tournament $tournament)
+    {
+        $result = MatchDetail::where('tournament_id',$tournament->id)->orderBy('match_id','desc')->get();
+        return view('Admin/Result/BrowseResult',compact('result'));
     }
 }

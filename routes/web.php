@@ -52,6 +52,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
 
     Route::resource('tournaments.schedules','ScheduleController');
+    Route::get('/tournaments/{tournament}/results','ScheduleController@results');
     Route::resource('tournaments.teams','TeamController');
     Route::resource('teams.players','PlayersController');
 

@@ -6,9 +6,9 @@ $('input.single-checkbox').on('change', function(evt) {
    }
 });
 
-$('input.single-checkbox').on('change', function(evt) {
-   // alert($('input.single-checkbox').val());
-});
+// $('input.single-checkbox').on('change', function(evt) {
+//    // alert($('input.single-checkbox').val());
+// });
 
 function team1_function(player_object){
     if($(player_object).is(":checked")){
