@@ -5,4 +5,4 @@
                     <i class="material-icons">close</i>
                 </button>
               </div>
-			@endif
+@endif

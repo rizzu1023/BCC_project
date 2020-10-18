@@ -16,11 +16,11 @@
                 <i class="c-sidebar-nav-icon cil-user"></i> Players
             </a>
         </li>
-        <li class="c-sidebar-nav-item">
-            <a href="{{route('BrowseResult')}}" class="c-sidebar-nav-link">
-                <i class="c-sidebar-nav-icon cil-clipboard"></i> Results
-            </a>
-        </li>
+{{--        <li class="c-sidebar-nav-item">--}}
+{{--            <a href="{{route('BrowseResult')}}" class="c-sidebar-nav-link">--}}
+{{--                <i class="c-sidebar-nav-icon cil-clipboard"></i> Results--}}
+{{--            </a>--}}
+{{--        </li>--}}
         <li class="c-sidebar-nav-item">
             <a href="{{route('logout')}}" class="c-sidebar-nav-link" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                 <i class="c-sidebar-nav-icon cil-account-logout"></i> Logout

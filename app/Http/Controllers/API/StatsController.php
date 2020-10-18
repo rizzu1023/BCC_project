@@ -40,7 +40,8 @@ class StatsController extends Controller
                 ->where('tournament_id',$tournament_id)
                 ->where('bt_runs','>',0)
                 ->where('bt_balls','>',0)
-                ->orderBy('bt_runs','desc')->get()->take(20);
+                ->orderBy('bt_runs','desc')
+                ->orderBy('bt_balls','asc')->get()->take(20);
 
             $highestScores->map(function ($element) {
                     $bt_sr = ($element->bt_runs / $element->bt_balls) * 100 ;

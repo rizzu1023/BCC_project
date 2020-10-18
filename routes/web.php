@@ -29,16 +29,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::resource('/PointsTable','PointsTableController');  //PointsTable
     Route::resource('/Batting','BattingController');  //Batting
     Route::resource('/Bowling','BowlingController'); //Bowling
-    Route::get('/BrowseResult', 'MatchController@BrowseResult')->name('BrowseResult');
     //TODO :: update this to get route
-    Route::post('/Post_BrowseResult', 'MatchController@Post_BrowseResult')->name('Post_BrowseResult');
-    Route::post('/Post_DeleteResult', 'MatchController@Post_DeleteResult')->name('Post_DeleteResult');
+//    Route::get('/BrowseResult', 'ResultController@BrowseResult')->name('BrowseResult');
+    Route::post('/Post_BrowseResult', 'ResultController@Post_BrowseResult')->name('Post_BrowseResult');
 
+    Route::get('/tournaments/{tournament}/results','ScheduleController@results');
+    Route::get('/result/{tournament_id}/{match_id}/show', 'ResultController@result_show');
+    Route::delete('/result', 'ResultController@result_destroy')->name('result.destroy');
 
-    Route::post('/update-overs','MatchController@update_overs')->name('update.overs');
-    Route::post('/update-toss','MatchController@update_toss')->name('update.toss');
-    Route::post('/update-choose','MatchController@update_choose')->name('update.choose');
-    Route::post('/update-player','MatchController@update_player')->name('update.player');
+    Route::post('/update-overs','ResultController@update_overs')->name('update.overs');
+    Route::post('/update-toss','ResultController@update_toss')->name('update.toss');
+    Route::post('/update-choose','ResultController@update_choose')->name('update.choose');
+    Route::post('/update-player','ResultController@update_player')->name('update.player');
+    Route::post('/update-score','ResultController@update_score')->name('update.score');
 
 
     Route::get('/LiveScore','LiveScoreController@LiveScoreindex')->name('LiveScore.index');
@@ -52,7 +55,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
 
     Route::resource('tournaments.schedules','ScheduleController');
-    Route::get('/tournaments/{tournament}/results','ScheduleController@results');
     Route::resource('tournaments.teams','TeamController');
     Route::resource('teams.players','PlayersController');
 

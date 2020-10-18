@@ -2,32 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\MatchTrackResource;
-use App\MatchTrack;
-use App\Tournament;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-
+use App\Http\Controllers\Controller;
 use App\Match;
 use App\MatchDetail;
-use App\Players;
 use App\MatchPlayers;
-use App\Schedule;
-use DB;
+use App\MatchTrack;
+use App\Players;
+use App\Tournament;
+use Illuminate\Http\Request;
 
-class MatchController extends Controller
+class ResultController extends Controller
 {
 
     public function BrowseResult(){
-      $tournaments = Tournament::where("user_id", auth()->user()->id)->first();
-      $result= MatchDetail::orderBy('match_id','asc')->get();
-      return view('Admin/Result/BrowseResult',compact('result'));
+        $tournaments = Tournament::where("user_id", auth()->user()->id)->first();
+        $result= MatchDetail::orderBy('match_id','asc')->get();
+        return view('Admin/Result/index',compact('result'));
     }
 
-    public function Post_BrowseResult(Request $request){
-        $match = Match::where('tournament_id',$request->tournament)->where('match_id',$request->match_id)->first();
-        $match_detail = MatchDetail::where('tournament_id',$request->tournament)->where('match_id',$request->match_id)->get();
-        $single_result = MatchPlayers::where('match_id',$request->match_id)->get();
+
+    public function result_show($tournament_id,$match_id)
+    {
+        $match = Match::where('tournament_id',$tournament_id)->where('match_id',$match_id)->first();
+        $match_detail = MatchDetail::where('tournament_id',$tournament_id)->where('match_id',$match_id)->get();
+        $single_result = MatchPlayers::where('match_id',$match_id)->get();
         $team1_id = $match_detail['0']['team_id'];
         $team2_id = $match_detail['1']['team_id'];
         $subs1_players = Players::whereHas('teams',function($query) use($team1_id){
@@ -36,25 +34,26 @@ class MatchController extends Controller
         $subs2_players = Players::whereHas('teams',function($query) use($team2_id){
             $query->where('team_id',$team2_id);
         })->get();
-        return view('Admin/Result/SingleResult',compact('single_result','match','match_detail','subs1_players','subs2_players'));
+        return view('Admin/Result/show',compact('single_result','match','match_detail','subs1_players','subs2_players'));
     }
 
-    public function Post_DeleteResult(Request $request){
+
+    public function result_destroy(Request $request){
         $result= MatchDetail::where('tournament_id',$request->tournament)->orderBy('match_id','asc')->get();
         $match_id = $request->match_id;
         $match = Match::where('match_id',$match_id)->where('tournament_id',$request->tournament)->first();
         $match->delete();
-        // dd(count($match));
+
         $match_detail = MatchDetail::where('match_id',$match_id)->where('tournament_id',$request->tournament)->get();
         for($i=0; $i<count($match_detail); $i++){
-          $m = MatchDetail::where('match_id',$match_id)->first();
-          $m->delete();
+            $m = MatchDetail::where('match_id',$match_id)->first();
+            $m->delete();
         }
 
         $gamexi = MatchPlayers::where('match_id',$match_id)->get();
         for($j=0; $j<count($gamexi); $j++){
-          $g = MatchPlayers::where('match_id',$match_id)->first();
-          $g->delete();
+            $g = MatchPlayers::where('match_id',$match_id)->first();
+            $g->delete();
         }
 
         $matchTrack = MatchTrack::where('match_id',$match_id)->where('tournament_id',$request->tournament)->get();
@@ -62,7 +61,8 @@ class MatchController extends Controller
             $g = MatchTrack::where('match_id',$match_id)->first();
             $g->delete();
         }
-        return redirect::route('BrowseResult',compact('result'));
+        return back()->with('message','Success');
+//        return redirect::route('BrowseResult',compact('result'));
     }
 
     public function update_overs(Request $request)
@@ -71,7 +71,7 @@ class MatchController extends Controller
         $match_detail = MatchDetail::where('match_id',$request->match_id)->get();
         foreach ($match_detail as $m){
             if($m->over > $request->overs){
-                return redirect::route('BrowseResult')->with('error',"you can't set overs more than played");
+                return back()->with('error',"you can't set overs more than played");
             }
         }
 
@@ -79,7 +79,7 @@ class MatchController extends Controller
         $match->overs = $request->overs;
         $match->save();
 
-        return redirect::route('BrowseResult')->with('message','Success');
+        return back()->with('message','Success');
 
     }
 
@@ -89,7 +89,7 @@ class MatchController extends Controller
         $match->toss = $request->toss;
         $match->save();
 
-        return redirect::route('BrowseResult')->with('message','Success');
+        return back()->with('message','Success');
     }
 
     public function update_choose(Request $request)
@@ -98,7 +98,7 @@ class MatchController extends Controller
         $match->choose = $request->choose;
         $match->save();
 
-        return redirect::route('BrowseResult')->with('message','Success');
+        return back()->with('message','Success');
     }
 
     public function update_player(Request $request)
@@ -109,7 +109,7 @@ class MatchController extends Controller
             ->where('tournament_id',$request->tournament_id)
             ->first();
         if($player)
-            return redirect::route('BrowseResult')->with('error',"this player already playing in this match");
+            return back()->with('error',"this player already playing in this match");
 
         $player = MatchPlayers::where('player_id',$request->player_id)
             ->where('team_id',$request->team_id)
@@ -162,6 +162,27 @@ class MatchController extends Controller
             $mt->save();
         }
 
-        return redirect::route('BrowseResult')->with('message','Success');
+        return back()->with('message','Success');
+    }
+
+    public function update_score(Request $request)
+    {
+        $score =  MatchDetail::where('team_id',$request->team_id)
+            ->where('match_id',$request->match_id)
+            ->where('tournament_id',$request->tournament_id)
+            ->first();
+
+        $score->score = $request->score;
+        $score->wicket = $request->wicket;
+        $score->over =  $request->over;
+        $score->overball = $request->overball;
+        if($score->save()){
+            return back()->with('message','Success');
+        }
+        else{
+            return back()->with('error','failed');
+        }
+
+
     }
 }
