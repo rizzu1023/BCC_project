@@ -22,12 +22,12 @@ class reverseNewBatsmanAddedListener
     /**
      * Handle the event.
      *
-     * @param  reverseWicketEvent  $event
+     * @param reverseWicketEvent $event
      * @return void
      */
-    public function handle( $event)
+    public function handle($event)
     {
-        if ($event->request->wicket_type != 'runout'){
+        if ($event->request->wicket_type != 'runout') {
 
 //            MatchPlayers::where('match_id', $event->request->match_id)
 //                ->where('tournament_id', $event->request->tournament)
@@ -44,21 +44,24 @@ class reverseNewBatsmanAddedListener
                 ->where('tournament_id', $event->request->tournament)
                 ->where('team_id', $event->request->bt_team_id)
                 ->where('bt_status', 11)->first();
-            if ($event->previous_ball->batsman_cross){
+            if ($event->previous_ball->batsman_cross) {
 
-                $nonstriker_batsman->bt_status = 'DNB';
-                $nonstriker_batsman->bt_order = 100;
-                $nonstriker_batsman->bt_runs = 0;
-                $nonstriker_batsman->bt_balls = 0;
-                $nonstriker_batsman->bt_fours = 0;
-                $nonstriker_batsman->bt_sixes = 0;
-                $nonstriker_batsman->save();
+                if($nonstriker_batsman) {
+                    $nonstriker_batsman->bt_status = 'DNB';
+                    $nonstriker_batsman->bt_order = 100;
+                    $nonstriker_batsman->bt_runs = 0;
+                    $nonstriker_batsman->bt_balls = 0;
+                    $nonstriker_batsman->bt_fours = 0;
+                    $nonstriker_batsman->bt_sixes = 0;
+                    $nonstriker_batsman->save();
+                }
 
-                $striker_batsman->bt_status = 10;
-                $striker_batsman->save();
-            }
-
-                else{
+                if ($striker_batsman) {
+                    $striker_batsman->bt_status = 10;
+                    $striker_batsman->save();
+                }
+            } else {
+                if ($striker_batsman) {
                     $striker_batsman->bt_status = 'DNB';
                     $striker_batsman->bt_order = 100;
                     $striker_batsman->bt_runs = 0;
@@ -67,6 +70,8 @@ class reverseNewBatsmanAddedListener
                     $striker_batsman->bt_sixes = 0;
                     $striker_batsman->save();
                 }
+
             }
+        }
     }
 }
