@@ -126,13 +126,14 @@
     <div class="card">
         <div class="card-header">
             @if($matchs->status == '1' || $matchs->status == '3')
-                <a href="/admin/LiveScoreCard/{{$matchs->match_id}}/{{$matchs->tournament_id}}" class="btn btn-info"
+                <a href="/admin/LiveScoreCard/{{$matchs->match_id}}/{{$matchs->tournament_id}}" class="btn btn-info btn-sm"
                 >Scorecard</a>
+                <a class="btn btn-success btn-sm" href="/admin/result/{{$matchs->tournament_id}}/{{$matchs->match_id}}/show">Edit</a>
                 <form id="endInningForm" style="display: inline-block; float: right;">
                     <input type="hidden" name="endInning" value="1">
                     <input type="hidden" name="match_id" value="{{$matchs['match_id']}}">
                     <input type="hidden" name="tournament" value="{{$matchs['tournament_id']}}">
-                    <button type="submit" class="btn btn-danger">End Inning</button>
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">End Inning</button>
                 </form>
             @elseif($matchs->status == '2')
                 <span>First Inning has Been ended</span>
