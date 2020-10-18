@@ -270,11 +270,6 @@ class LiveScoreController extends Controller
                 if ($previous_ball->action == 'wicket') event(new reverseWicketEvent($request,$previous_ball));
             }
 
-
-
-
-
-
             $userjobs = "true";
             // $returnHTML = view('Admin/LiveScore/show')->with('userjobs', $userjobs)->render();
             // return response()->json(array('success' => true, 'html'=>$returnHTML));

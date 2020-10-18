@@ -40,6 +40,10 @@
 @section('content')
 
     <div class="card">
+        <div class="mb-1">
+            @include('Admin.layouts.message')
+            @include('Admin.layouts.error')
+        </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-md-12">
@@ -135,8 +139,23 @@
                     <div class="panel-body widget-shadow">
                         <div class="col-md-12 team-name"><h3>{{$match_detail[0]->Teams->team_name}}</h3><span>Total {{$match_detail[0]->score}}-{{$match_detail[0]->wicket}} ({{$match_detail[0]->over}}.{{$match_detail[0]->overball}})</span>
                         </div>
-
-
+                        <div>
+                            <form method="post" action="{{Route('update.score')}}">
+                                @csrf
+                                <label>Score : </label>
+                                <input type="number" name="score" value="{{$match_detail[0]->score}}" ><br>
+                                <label>Wicket :</label>
+                                <input type="number" value="{{$match_detail[0]->wicket}}" name="wicket"><br>
+                                <label>Over : </label>
+                                <input type="number" value="{{$match_detail[0]->over}}" name="over"><br>
+                                <label>Ball : </label>
+                                <input type="number" value="{{$match_detail[0]->overball}}" name="overball"><br>
+                                <input type="hidden" value="{{$match_detail[0]->team_id}}" name="team_id">
+                                <input type="hidden" value="{{$match_detail[0]->match_id}}" name="match_id">
+                                <input type="hidden" value="{{$match_detail[0]->tournament_id}}" name="tournament_id">
+                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                            </form>
+                        </div>
                         <table class="table">
                             <thead>
                             <tr>
@@ -185,6 +204,23 @@
                         <div class="panel-body widget-shadow">
                             <div class="col-md-12 team-name"><h3>{{$match_detail[1]->Teams->team_name}}</h3><span>Total {{$match_detail[1]->score}}-{{$match_detail[1]->wicket}} ({{$match_detail[1]->over}}.{{$match_detail[1]->overball}})</span>
                             </div>
+                            <div>
+                                <form method="post" action="{{Route('update.score')}}">
+                                    @csrf
+                                    <label>Score : </label>
+                                    <input type="number" name="score" value="{{$match_detail[1]->score}}" ><br>
+                                    <label>Wicket :</label>
+                                    <input type="number" value="{{$match_detail[1]->wicket}}" name="wicket"><br>
+                                    <label>Over : </label>
+                                    <input type="number" value="{{$match_detail[1]->over}}" name="over"><br>
+                                    <label>Ball : </label>
+                                    <input type="number" value="{{$match_detail[1]->overball}}" name="overball"><br>
+                                    <input type="hidden" value="{{$match_detail[1]->team_id}}" name="team_id">
+                                    <input type="hidden" value="{{$match_detail[1]->match_id}}" name="match_id">
+                                    <input type="hidden" value="{{$match_detail[1]->tournament_id}}" name="tournament_id">
+                                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                                </form>
+                            </div>
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -229,7 +265,7 @@
                     </div>
                 </div>
 
-                <form action="{{route('Post_DeleteResult')}}" method="POST">
+                <form action="{{route('result.destroy')}}" method="POST">
                     @csrf
                     <input type="hidden" value="{{$match->match_id}}" name="match_id">
                     <input type="hidden" value="{{$match->tournament_id}}" name="tournament">

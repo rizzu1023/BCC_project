@@ -96,6 +96,6 @@ class ScheduleController extends Controller
     public function results(Tournament $tournament)
     {
         $result = MatchDetail::where('tournament_id',$tournament->id)->orderBy('match_id','desc')->get();
-        return view('Admin/Result/BrowseResult',compact('result'));
+        return view('Admin/Result/index',compact('result'));
     }
 }
