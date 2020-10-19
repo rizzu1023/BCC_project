@@ -117,7 +117,7 @@ class StatsController extends Controller
         }
 
         if($type == "mostHundreds"){
-            $mostHundreds = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(Case when bt_runs > 99 then 1 else 0 end) as bt_hundreds')
+            $mostHundreds = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs,SUM(Case when bt_runs > 99 then 1 else 0 end) as bt_hundreds')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->orderBy('bt_runs','desc')->get()->take(20);
@@ -181,11 +181,11 @@ class StatsController extends Controller
 
             //balls conceded / wicket taken
 
-            $bestBowlingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls, SUM(bw_over * 6 + bw_overball) as total_balls, SUM(bw_wickets) as total_wickets')
+            $bestBowlingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches, SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls, SUM(bw_over * 6 + bw_overball) as total_balls, SUM(bw_wickets) as total_wickets')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
                 ->whereIn('bw_status',[11,1])
-                ->orderBy('bw_wickets','desc')->get()->take(20);
+                ->orderBy('total_wickets','desc')->get()->take(20);
 
 
             $bestBowlingStrikeRate = $bestBowlingStrikeRate->reject(function($element) {
