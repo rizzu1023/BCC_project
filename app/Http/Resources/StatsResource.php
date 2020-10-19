@@ -35,6 +35,7 @@ class StatsResource extends JsonResource
             'bw_average' => $this->bw_average,
             'bw_over' => $this->bw_over,
             'bw_overball' => $this->bw_overball,
+            'bw_sr' => $this->bw_sr,
         ];
     }
 }
