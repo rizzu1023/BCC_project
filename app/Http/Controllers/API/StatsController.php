@@ -181,20 +181,21 @@ class StatsController extends Controller
 
             //balls conceded / wicket taken
 
-            $bestBowlingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches, SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls, SUM(bw_over * 6 + bw_overball) as total_balls, SUM(bw_wickets) as total_wickets')
+            $bestBowlingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches, SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls, SUM(bw_over * 6 + bw_overball) as total_balls, SUM(bw_wickets) as bw_wickets')
                 ->groupBy('player_id')
                 ->where('tournament_id',$tournament_id)
-                ->whereIn('bw_status',[11,1])
-                ->orderBy('total_wickets','desc')->get()->take(20);
+                ->orderBy('bw_wickets','desc')->get()->take(20);
 
 
             $bestBowlingStrikeRate = $bestBowlingStrikeRate->reject(function($element) {
-                return $element->total_wickets <= 0;
+                return $element->bw_wickets <= 0;
             });
 
             $bestBowlingStrikeRate->map(function ($element) {
-                $bw_sr = $element->total_balls / $element->total_wickets;
+                $bw_sr = $element->total_balls / $element->bw_wickets;
                 $bw_strike_rate = (float)number_format((float)$bw_sr, 2, '.', '');
+                $element->bw_over = (int)($element->total_balls / 6);
+                $element->bw_overball = $element->total_balls % 6;
                 return $element->bw_sr = $bw_strike_rate;
             });
 //            return $bestBowlingStrikeRate;
