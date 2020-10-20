@@ -31,10 +31,10 @@
                         <h3 class="title1">{{$schedule->Teams1->team_name}} XI</h3>
                         @foreach($players1 as $p1)
                             <div class="custom-control custom-switch mt-2">
-                                <input type="checkbox" class="single-checkbox custom-control-input" onchange="team1_function(this)"
+                                <input type="checkbox" class="team1-checkbox custom-control-input" onchange="team1_function(this)"
                                        id="{{$p1->player_id . 'team1'}}" name="team1[]" value="{{$p1->player_id}}">
-                                <label class="custom-control-label "
-                                       for="{{$p1->player_id . 'team1'}}"></label>{{$loop->iteration}} {{$p1->player_name}}
+                                <label class="custom-control-label " style="font-size: 18px;font-weight: normal"
+                                       for="{{$p1->player_id . 'team1'}}">{{$loop->iteration}} {{$p1->player_name}}</label>
                             </div>
                             {{--                        <input onchange="team1_function(this)" class="single-checkbox" type="checkbox" name="team1[]" value="{{$p1->player_id}}"><div class="single-name">{{$loop->index + 1}} {{$p1->player_name}}</div><br>--}}
                         @endforeach
@@ -46,10 +46,10 @@
 
                         @foreach($players2 as $p2)
                             <div class="custom-control custom-switch mt-2">
-                                <input type="checkbox" class="single-checkbox custom-control-input" onchange="team2_function(this)"
+                                <input type="checkbox" class="team2-checkbox custom-control-input" onchange="team2_function(this)"
                                        id="{{$p2->player_id . 'team2'}}" name="team2[]" value="{{$p2->player_id}}">
-                                <label class="custom-control-label "
-                                       for="{{$p2->player_id  . 'team2'}}"></label>{{$loop->iteration}} {{$p2->player_name}}
+                                <label class="custom-control-label " style="font-size: 18px;font-weight: normal"
+                                       for="{{$p2->player_id  . 'team2'}}">{{$loop->iteration}} {{$p2->player_name}}</label>
                             </div>
 
                             {{--                        <input onchange="team2_function(this)" class="single-checkbox" type="checkbox" name="team2[]" value="{{$p2->player_id}}"><div class="single-name"></div><br>--}}

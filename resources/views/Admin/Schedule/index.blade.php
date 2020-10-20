@@ -40,7 +40,7 @@
                                     <a class="btn btn-warning btn-sm" href="/admin/StartScore/{{$s->id}}">Start</a>
                                 @endif</td>
                             <td>{{ date('d-M-Y', strtotime($s->dates))}}</td>
-                            <td>{{ date('h:m A', strtotime($s->dates))}}</td>
+                            <td>{{ date('h:m A', strtotime($s->times))}}</td>
                             <td>{{$s->Teams1->team_code}}</td>
                             <td>Vs</td>
                             <td>{{$s->Teams2->team_code}}</td>
