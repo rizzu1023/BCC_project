@@ -17,13 +17,13 @@
                 <table class="table table-responsive-sm">
                     <thead>
                     <tr>
-                        <th>M No</th>
+                        <th>No</th>
                         <th></th>
+                        <th>Date</th>
+                        <th>Time</th>
                         <th>Team 1</th>
                         <th>Vs</th>
                         <th>Team 2</th>
-                        <th>Time</th>
-                        <th>Date</th>
                         <th></th>
 
                     </tr>
@@ -33,16 +33,18 @@
                         <tr>
 
                             <th scope="row">{{$s->match_no}}</th>
+
                             <td> @if($s->Match)
                                     <a class="btn btn-dark btn-sm" href="/admin/LiveUpdate/{{$s->id}}/{{$s->tournament_id}}">Score</a>
                                 @else
                                     <a class="btn btn-warning btn-sm" href="/admin/StartScore/{{$s->id}}">Start</a>
                                 @endif</td>
+                            <td>{{ date('d-M-Y', strtotime($s->dates))}}</td>
+                            <td>{{ date('h:m A', strtotime($s->dates))}}</td>
                             <td>{{$s->Teams1->team_code}}</td>
                             <td>Vs</td>
                             <td>{{$s->Teams2->team_code}}</td>
-                            <td>{{$s->times}}</td>
-                            <td>{{$s->dates}}</td>
+
                             <td>
                                 <a class="btn btn-success btn-sm"
                                    href="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}/edit">Edit</a>

@@ -27,8 +27,15 @@ use App\Events\noballZeroRunEvent;
 use App\Events\oneRunEvent;
 use App\Events\RetiredHurtBatsmanEvent;
 use App\Events\reverseDotBallEvent;
+use App\Events\reverseEndInningEvent;
 use App\Events\reverseFiveRunEvent;
 use App\Events\reverseFourRunEvent;
+use App\Events\reverseNoballFiveRunEvent;
+use App\Events\reverseNoballFourRunEvent;
+use App\Events\reverseNoballOneRunEvent;
+use App\Events\reverseNoballSixRunEvent;
+use App\Events\reverseNoballThreeRunEvent;
+use App\Events\reverseNoballTwoRunEvent;
 use App\Events\reverseNoballZeroRunEvent;
 use App\Events\reverseOneRunEvent;
 use App\Events\reverseSixRunEvent;
@@ -256,6 +263,8 @@ class LiveScoreController extends Controller
             if ($request->value == 'rh') event(new RetiredHurtBatsmanEvent($request));
             if ($request->value == 'sr') event(new strikeRotateEvent($request));
 
+            if($request->value == 'reverse_inning') event(new reverseEndInningEvent($request));
+
             if ($request->value == 'undo'){
                 $previous_ball = MatchTrack::where('team_id',$request->bt_team_id)->where('match_id',$request->match_id)->where('tournament_id',$request->tournament)->latest()->first();
                 if ($previous_ball->action == 'zero') event(new reverseDotBallEvent($request,$previous_ball));
@@ -266,8 +275,14 @@ class LiveScoreController extends Controller
                 if ($previous_ball->action == 'five') event(new reverseFiveRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'six') event(new reverseSixRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'wd') event(new reverseWideZeroRunEvent($request,$previous_ball));
-                if ($previous_ball->action == 'nb') event(new reverseNoballZeroRunEvent($request,$previous_ball));
                 if ($previous_ball->action == 'wicket') event(new reverseWicketEvent($request,$previous_ball));
+                if ($previous_ball->action == 'nb') event(new reverseNoballZeroRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'nb1') event(new reverseNoballOneRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'nb2') event(new reverseNoballTwoRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'nb3') event(new reverseNoballThreeRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'nb4') event(new reverseNoballFourRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'nb5') event(new reverseNoballFiveRunEvent($request,$previous_ball));
+                if ($previous_ball->action == 'nb6') event(new reverseNoballSixRunEvent($request,$previous_ball));
             }
 
             $userjobs = "true";
