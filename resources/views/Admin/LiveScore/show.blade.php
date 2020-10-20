@@ -232,11 +232,14 @@
                 @elseif($matchs->status == '2')
                     <button class="btn btn-success btn-md startInningButton">Start 2nd Inning</button>
                 @endif
+                <button id="undo" type="submit" value="reverse_inning" class="bt mt-1 btn btn-sm">Undo</button>
+
                 {{--            </from>--}}
             @endif
 
             @if($matchs->status == '4')
-                <h4>xyz won by 20 runs</h4>
+{{--                <h4>xyz won by 20 runs</h4>--}}
+                <button id="undo" type="submit" value="reverse_inning" class="bt mt-1 btn btn-sm">Undo</button>
         @endif
         @if($matchs->status == '1' || $matchs->status == '3')
             <!-- <div class="container"> -->
@@ -692,18 +695,19 @@
                     <br><br>
 
 
-                    <button id="wide1" type="submit" value="wd1" class="bt">Wide + 1</button>
-                    <button id="wide2" type="submit" value="wd2" class="bt">Wide + 2</button>
-                    <button id="wide3" type="submit" value="wd3" class="bt">Wide + 3</button>
-                    <button id="wide4" type="submit" value="wd4" class="bt">Wide + 4</button>
-
-                    <br><br>
                     <button id="noball" type="submit" value="nb1" class="bt">nb + 1</button>
                     <button id="noball" type="submit" value="nb2" class="bt">nb + 2</button>
                     <button id="noball" type="submit" value="nb3" class="bt">nb + 3</button>
                     <button id="noball" type="submit" value="nb4" class="bt">nb + 4</button>
                     <button id="noball" type="submit" value="nb5" class="bt">nb + 5</button>
                     <button id="noball" type="submit" value="nb6" class="bt">nb + 6</button>
+                    <br><br>
+                    <button id="wide1" type="submit" value="wd1" class="bt">Wide + 1</button>
+                    <button id="wide2" type="submit" value="wd2" class="bt">Wide + 2</button>
+                    <button id="wide3" type="submit" value="wd3" class="bt">Wide + 3</button>
+                    <button id="wide4" type="submit" value="wd4" class="bt">Wide + 4</button>
+
+
                     <br><br>
 
                     <button id="legbyes1" type="submit" value="lb1" class="bt">1 lb</button>

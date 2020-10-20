@@ -78,11 +78,6 @@ class endInningListener
 
             $inning1->isBatting = 0;
             $inning1->save();
-
-
-
-
-
         }
     }
 }

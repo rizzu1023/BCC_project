@@ -406,6 +406,18 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\matchTrackListener::class,
             \App\Listeners\strikeRotateListener::class,
         ],
+
+        \App\Events\reverseNoballOneRunEvent::class => [
+            \App\Listeners\strikeRotateListener::class,
+            \App\Listeners\reverseBatsmanBallUpdateListener::class,
+            \App\Listeners\reverseBatsmanOneRunUpdateListener::class,
+            \App\Listeners\reverseBowlerTwoRunUpdateListener::class,
+            \App\Listeners\reverseBowlerOneNoballUpdateListener::class,
+            \App\Listeners\reverseTeamTwoRunUpdateListener::class,
+            \App\Listeners\reverseTeamOneNoballUpdateListener::class,
+            \App\Listeners\reverseMatchTrackListener::class,
+        ],
+
         \App\Events\noballTwoRunEvent::class => [
             \App\Listeners\batsmanBallUpdateListener::class,
             \App\Listeners\batsmanTwoRunUpdateListener::class,
@@ -414,8 +426,18 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\teamThreeRunUpdateListener::class,
             \App\Listeners\teamOneNoballUpdateListener::class,
             \App\Listeners\matchTrackListener::class,
-
         ],
+
+        \App\Events\reverseNoballTwoRunEvent::class => [
+            \App\Listeners\reverseBatsmanBallUpdateListener::class,
+            \App\Listeners\reverseBatsmanTwoRunUpdateListener::class,
+            \App\Listeners\reverseBowlerThreeRunUpdateListener::class,
+            \App\Listeners\reverseBowlerOneNoballUpdateListener::class,
+            \App\Listeners\reverseTeamThreeRunUpdateListener::class,
+            \App\Listeners\reverseTeamOneNoballUpdateListener::class,
+            \App\Listeners\reverseMatchTrackListener::class,
+        ],
+
         \App\Events\noballThreeRunEvent::class => [
             \App\Listeners\batsmanBallUpdateListener::class,
             \App\Listeners\batsmanThreeRunUpdateListener::class,
@@ -426,6 +448,18 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\matchTrackListener::class,
             \App\Listeners\strikeRotateListener::class,
         ],
+
+        \App\Events\reverseNoballThreeRunEvent::class => [
+            \App\Listeners\strikeRotateListener::class,
+            \App\Listeners\reverseBatsmanBallUpdateListener::class,
+            \App\Listeners\reverseBatsmanThreeRunUpdateListener::class,
+            \App\Listeners\reverseBowlerFourRunUpdateListener::class,
+            \App\Listeners\reverseBowlerOneNoballUpdateListener::class,
+            \App\Listeners\reverseTeamFourRunUpdateListener::class,
+            \App\Listeners\reverseTeamOneNoballUpdateListener::class,
+            \App\Listeners\reverseMatchTrackListener::class,
+        ],
+
         \App\Events\noballFourRunEvent::class => [
             \App\Listeners\batsmanBallUpdateListener::class,
             \App\Listeners\batsmanFourRunUpdateListener::class,
@@ -436,6 +470,18 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\teamOneNoballUpdateListener::class,
             \App\Listeners\matchTrackListener::class,
         ],
+
+        \App\Events\reverseNoballFourRunEvent::class => [
+            \App\Listeners\reverseBatsmanBallUpdateListener::class,
+            \App\Listeners\reverseBatsmanFourRunUpdateListener::class,
+            \App\Listeners\reverseBatsmanFourBoundaryUpdateListener::class,
+            \App\Listeners\reverseBowlerFiveRunUpdateListener::class,
+            \App\Listeners\reverseBowlerOneNoballUpdateListener::class,
+            \App\Listeners\reverseTeamFiveRunUpdateListener::class,
+            \App\Listeners\reverseTeamOneNoballUpdateListener::class,
+            \App\Listeners\reverseMatchTrackListener::class,
+        ],
+
         \App\Events\noballFiveRunEvent::class => [
             \App\Listeners\batsmanBallUpdateListener::class,
             \App\Listeners\batsmanFiveRunUpdateListener::class,
@@ -445,8 +491,19 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\teamOneNoballUpdateListener::class,
             \App\Listeners\matchTrackListener::class,
             \App\Listeners\strikeRotateListener::class,
-
         ],
+
+        \App\Events\reverseNoballFiveRunEvent::class => [
+            \App\Listeners\strikeRotateListener::class,
+            \App\Listeners\reverseBatsmanBallUpdateListener::class,
+            \App\Listeners\reverseBatsmanFiveRunUpdateListener::class,
+            \App\Listeners\reverseBowlerSixRunUpdateListener::class,
+            \App\Listeners\reverseBowlerOneNoballUpdateListener::class,
+            \App\Listeners\reverseTeamSixRunUpdateListener::class,
+            \App\Listeners\reverseTeamOneNoballUpdateListener::class,
+            \App\Listeners\reverseMatchTrackListener::class,
+        ],
+
         \App\Events\noballSixRunEvent::class => [
             \App\Listeners\batsmanBallUpdateListener::class,
             \App\Listeners\batsmanSixRunUpdateListener::class,
@@ -460,9 +517,26 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\matchTrackListener::class,
         ],
 
+        \App\Events\reverseNoballSixRunEvent::class => [
+            \App\Listeners\reverseBatsmanBallUpdateListener::class,
+            \App\Listeners\reverseBatsmanSixRunUpdateListener::class,
+            \App\Listeners\reverseBatsmanSixBoundaryUpdateListener::class,
+            \App\Listeners\reverseBowlerSixRunUpdateListener::class,
+            \App\Listeners\reverseBowlerOneRunUpdateListener::class,
+            \App\Listeners\reverseBowlerOneNoballUpdateListener::class,
+            \App\Listeners\reverseTeamSixRunUpdateListener::class,
+            \App\Listeners\reverseTeamOneRunUpdateListener::class,
+            \App\Listeners\reverseTeamOneNoballUpdateListener::class,
+            \App\Listeners\reverseMatchTrackListener::class,
+        ],
+
 
         \App\Events\endInningEvent::class => [
             \App\Listeners\endInningListener::class,
+        ],
+
+        \App\Events\reverseEndInningEvent::class => [
+            \App\Listeners\reverseEndInningListener::class,
         ],
 
 
