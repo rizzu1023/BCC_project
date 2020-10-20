@@ -1,11 +1,20 @@
 
 var max_limit = 11; // Max Limit
 $(document).ready(function (){
-    $(".single-checkbox:input:checkbox").each(function (index){
+    $(".team1-checkbox:input:checkbox").each(function (index){
         this.checked = (".single-checkbox:input:checkbox" < max_limit);
 
     }).change(function (){
-        if ($(".single-checkbox:input:checkbox:checked").length > max_limit){
+        if ($(".team1-checkbox:input:checkbox:checked").length > max_limit){
+            this.checked = false;
+        }
+    });
+
+    $(".team2-checkbox:input:checkbox").each(function (index){
+        this.checked = (".single-checkbox:input:checkbox" < max_limit);
+
+    }).change(function (){
+        if ($(".team2-checkbox:input:checkbox:checked").length > max_limit){
             this.checked = false;
         }
     });
