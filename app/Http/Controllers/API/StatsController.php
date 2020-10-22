@@ -64,10 +64,10 @@ class StatsController extends Controller
         }
 
         if ($type == "bestBattingAverage") {
-            $bestBattingAverage = MatchPlayers::selectRaw('player_id, COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, SUM(Case when bt_status IN ("0") then 1 else 0 end) as out_innings,  SUM(bt_runs) as bt_runs, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0") then 1 else 0 end)),2) as bt_average')
+            $bestBattingAverage = MatchPlayers::selectRaw('player_id, COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, SUM(Case when bt_status IN ("0","12") then 1 else 0 end) as out_innings,  SUM(bt_runs) as bt_runs, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0","12") then 1 else 0 end)),2) as bt_average')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
-                ->get()->take(20);
+                ->get();
 
             $filteredBestBattingAverage = $bestBattingAverage->reject(function ($element) {
                 return $element->bt_runs <= 0;

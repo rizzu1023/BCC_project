@@ -231,8 +231,9 @@
                     <button class="btn btn-success btn-md startInningButton">Start 1st Inning</button>
                 @elseif($matchs->status == '2')
                     <button class="btn btn-success btn-md startInningButton">Start 2nd Inning</button>
+                    <button id="undo" type="submit" value="reverse_inning" class="bt mt-1 btn btn-sm">Undo</button>
                 @endif
-                <button id="undo" type="submit" value="reverse_inning" class="bt mt-1 btn btn-sm">Undo</button>
+
 
                 {{--            </from>--}}
             @endif
