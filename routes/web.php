@@ -14,7 +14,7 @@ Route::view('/blank','Main.layouts.layout');
 
 //Admin Routes
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
-    Route::get('/', 'AdminController@GetDashboard')->name('GetDashboard');
+    Route::get('/', [\App\Http\Controllers\AdminController::class,'getDashboard'])->name('GetDashboard');
     Route::resource('/Tournament','TournamentController');  //Tournament
     Route::post('/Tournament/addTeam','TournamentController@Tournament_add_Team')->name('Tournament_add_Team');
     Route::post('/Tournament/destroyTeam','TournamentController@Tournament_destroy_Team')->name('Tournament_destroy_Team');
