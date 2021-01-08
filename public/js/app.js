@@ -65663,9 +65663,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Players', __webpack_requir
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Team', __webpack_require__(/*! ./components/Team */ "./resources/js/components/Team.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Batting', __webpack_require__(/*! ./components/Batting */ "./resources/js/components/Batting.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Bowling', __webpack_require__(/*! ./components/Bowling */ "./resources/js/components/Bowling.vue")["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Cricify'; // Vue.prototype.$domainName = 'http://localhost:8000/api/';
-
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://3.7.68.148/api/';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$header_string = 'Cricify';
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$domainName = 'http://localhost:8000/api/'; // Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // const router = new VueRouter({
 //     router : routes,

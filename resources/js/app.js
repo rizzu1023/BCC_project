@@ -48,9 +48,8 @@ Vue.component('Bowling', require('./components/Bowling').default);
 Vue.prototype.$header_string = 'Cricify';
 
 
-// Vue.prototype.$domainName = 'http://localhost:8000/api/';
-
-Vue.prototype.$domainName = 'http://3.7.68.148/api/';
+Vue.prototype.$domainName = 'http://localhost:8000/api/';
+// Vue.prototype.$domainName = 'http://3.7.68.148/api/';
 
 
 

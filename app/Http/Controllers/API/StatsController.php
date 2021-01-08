@@ -85,6 +85,7 @@ class StatsController extends Controller
             return StatsResource::collection($sortedBestBattingAverage);
         }
 
+        //TODO : need to change
         if ($type == "bestBattingStrikeRate") {
             $bestBattingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls')
                 ->groupBy('player_id')
@@ -190,6 +191,7 @@ class StatsController extends Controller
             return StatsResource::collection($bestBowlingAverage);
         }
 
+        //TODO : need to change
         if ($type == "bestBowlingStrikeRate") {
 
             //balls conceded / wicket taken
@@ -218,7 +220,7 @@ class StatsController extends Controller
         }
 
 
-
+        //TODO : need to change
         if ($type == "bestEconomy") {
             $bestEconomy = MatchPlayers::selectRaw('COUNT(match_id) as matches, SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bw_over) as bw_over, SUM(bw_overball) as bw_overball, SUM(bw_wickets) as bw_wickets, SUM(bw_runs) as bw_runs')
                 ->groupBy('player_id')
