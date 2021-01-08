@@ -22,15 +22,10 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <div class="card-body">
 
-                    </div>
                 </div>
             </div>
         </div>
         <!-- Container-fluid Ends-->
     </div>
-@endsection
-@section('js')
-
 @endsection

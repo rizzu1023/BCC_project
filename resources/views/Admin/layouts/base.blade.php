@@ -28,21 +28,20 @@
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/feather-icon.css')}}">
     <!-- Plugins css start-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/prism.css')}}">
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/prism.css')}}">--}}
     <!-- Plugins css Ends-->
     <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/todo.css')}}">
     <!-- Bootstrap css-->
 
     <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/select2.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/datatables.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/owlcarousel.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/rating.css')}}">
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/datatables.css')}}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/owlcarousel.css')}}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/rating.css')}}">--}}
 
 
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/chartist.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/prism.css')}}">
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/chartist.css')}}">--}}
     <link rel="stylesheet" type="text/css"  href="{{asset('Assets/Admin/css/vendors/animate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/bootstrap.css')}}">
     <!-- App css-->
@@ -60,10 +59,14 @@
 <div class="page-wrapper compact-wrapper" id="pageWrapper">
 
     <div class="page-body-wrapper horizontal-menu">
+
+
         @include('Admin.layouts.sidebar')
         @include('Admin.layouts.navbar')
         @yield('content')
-        @include('Admin.layouts.footer')
+{{--        @include('Admin.layouts.footer')--}}
+
+
         <script src="{{asset('Assets/Admin/js/jquery-3.5.1.min.js')}}"></script>
         <!-- Bootstrap js-->
         <script src="{{asset('Assets/Admin/js/bootstrap/popper.min.js')}}"></script>
@@ -83,30 +86,30 @@
         <script src="{{asset('Assets/Admin/js/tooltip-init.js')}}"></script>
         <script src="{{asset('Assets/Admin/js/todo/todo.js')}}"></script>
 
-        <script src="{{asset('Assets/Admin/js/chart/chartist/chartistjs')}}"></script>
-        <script src="{{asset('Assets/Admin/js/chart/chartist/chartist-plugin-tooltipjs')}}"></script>
+{{--        <script src="{{asset('Assets/Admin/js/chart/chartist/chartistjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/chart/chartist/chartist-plugin-tooltipjs')}}"></script>--}}
         <!-- Plugins JS Ends-->
 
-        <script src="{{asset('Assets/Admin/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('Assets/Admin/js/rating/jquery.barrating.js')}}"></script>
-        <script src="{{asset('Assets/Admin/rating/rating-script.js')}}"></script>
-        <script src="{{asset('Assets/Admin/js/owlcarousel/owl.carousel.js')}}"></script>
-        <script src="{{asset('Assets/Admin/js/ecommerce.js')}}"></script>
-        <script src="{{asset('Assets/Admin/js/product-list-custom.js')}}"></script>
+{{--        <script src="{{asset('Assets/Admin/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>--}}
+        {{--        <script src="{{asset('Assets/Admin/js/datatable/datatables/datatable.custom.js')}}"></script>--}}
+        {{--        <script src="{{asset('Assets/Admin/js/rating/jquery.barrating.js')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/rating/rating-script.js')}}"></script>--}}
+        {{--        <script src="{{asset('Assets/Admin/js/owlcarousel/owl.carousel.js')}}"></script>--}}
+        {{--        <script src="{{asset('Assets/Admin/js/ecommerce.js')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/product-list-custom.js')}}"></script>--}}
 
-        <script src="{{asset('Assets/Admin/js/datatable/datatables/datatable.custom.js')}}"></script>
         <script src="{{asset('Assets/Admin/js/notify/bootstrap-notify.min.js')}}"></script>
 
         <script src="{{asset('Assets/Admin/js/select2/select2.full.min.js')}}"></script>
         <script src="{{asset('Assets/Admin/js/select2/select2-custom.js')}}"></script>
-        <script src="{{asset('Assets/Admin/js/chart/apex-chart/apex-chartjs')}}"></script>
-        <script src="{{asset('Assets/Admin/js/chart/apex-chart/stock-pricesjs')}}"></script>
-        <script src="{{asset('Assets/Admin/js/prism/prism.minjs')}}"></script>
-        <script src="{{asset('Assets/Admin/js/counter/jquery.waypoints.minjs')}}"></script>
-        <script src="{{asset('Assets/Admin/js/counter/jquery.counterup.minjs')}}"></script>
+{{--        <script src="{{asset('Assets/Admin/js/chart/apex-chart/apex-chartjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/chart/apex-chart/stock-pricesjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/prism/prism.minjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/counter/jquery.waypoints.minjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/counter/jquery.counterup.minjs')}}"></script>--}}
         <script src="{{asset('Assets/Admin/js/counter/counter-customjs')}}"></script>
         <script src="{{asset('Assets/Admin/js/custom-card/custom-cardjs')}}"></script>
-        <script src="{{asset('Assets/Admin/js/owlcarousel/owl.carouseljs')}}"></script>
+{{--        <script src="{{asset('Assets/Admin/js/owlcarousel/owl.carouseljs')}}"></script>--}}
         <script src="{{asset('Assets/Admin/js/dashboard/dashboard_2js')}}"></script>
 
         <script src="{{asset('Assets/Admin/js/contacts/custom.js')}}"></script>
@@ -119,8 +122,6 @@
 
 
         <script src="{{asset('Assets/Admin/js/script.js')}}"></script>
-        <!-- login js-->
-        <!-- Plugin used-->
         {{--        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.minjs')}}"></script>--}}
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -128,7 +129,7 @@
         <script src="{{asset('Assets/Admin/js/animation/wow/wow.min.js')}}"> </script>
 
         <script>
-            WOW.init();
+            // WOW.init();
         </script>
 @yield('js')
 

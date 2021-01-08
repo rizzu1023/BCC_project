@@ -1,85 +1,77 @@
+
 @extends('Admin.layouts.base')
 
 @section('content')
+    <div class="page-body">
+        <div class="container-fluid">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>{{$team->team_name}}</h3>
 
-<div class="card">
-    <div class="card-header">
-        <strong class="title1">Players</strong>
-        <a style=" float: right" class="btn btn-success btn-sm " href="{{route('teams.players.create',$team->id)}}"><i class="fa fa-plus"></i>Add Existing Player</a>
+                    </div>
+                    <div class="col-6">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard"> <i data-feather="home"></i></a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                            {{--              <li class="breadcrumb-item active">Product list</li>--}}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <a class="btn btn-success btn-sm mb-3 " href="{{ route('teams.players.create',$team->id)}}"><i class="fa fa-plus"></i>Add New Player</a>
+                    <a style=" float: right" class="btn btn-success btn-sm mb-3 " href="{{ route('teams.players.create',$team->id)}}"><i class="fa fa-plus"></i>Add Existing Player</a>
 
-
-    </div>
-			<div class="card-body">
-			@include('Admin.layouts.message')
-                <span style="font-size: 30px;margin-left: 30vw">{{$team->team_name}}</span>
-								<div class="row">
-
-								<!-- <div class="col-md-4"> -->
-{{--										<form method="POST" action="{{route('playerFilter')}}">--}}
-{{--											@csrf--}}
-{{--											<div class="form-group col-md-4">--}}
-{{--													<select class="form-control" id="id" name="id">--}}
-{{--														<option value="{{$id['id']}}">@if($id){{$id->team_name}}@else<p>ALL</p>@endif</option>--}}
-{{--														@foreach($team as $t)--}}
-{{--															<option value="{{$t->id}}">{{$t->team_name}}</option>--}}
-{{--														@endforeach--}}
-{{--													</select>--}}
-{{--											</div>--}}
-
-{{--											<div class="form-group col-md-4">--}}
-{{--														<select class="form-control"  id="player_role" name="player_role">--}}
-{{--															<option value="{{$player_role}}">@if($player_role){{$player_role}}@else<p>ALL</p>@endif</option>--}}
-{{--																<option value="Batsman">Batsman</option>--}}
-{{--																<option value="Bowler">Bowler</option>--}}
-{{--																<option value="All Rounder">All Rounder</option>--}}
-{{--																<option value="Wicket keeper">Wicket Keeper</option>--}}
-{{--														</select>--}}
-{{--												</div>--}}
-{{--											<button type="submit" class="btn btn-md btn-success">Filter</button>--}}
-{{--										</form>--}}
-									<!-- </div> -->
-
-
-								</div>
-				<div class="tables">
-						<table class="table table-responsive-sm">
-							<thead>
-								<tr>
-								  <th>Sr</th>
-								  <th>Player Id</th>
-								  <th>Player Name</th>
-								  <th>Player Role</th>
+                    <div class="tables">
+                            <table class="table table-responsive-sm">
+                                <thead>
+                                <tr>
+                                    <th>Sr</th>
+                                    <th>Player Id</th>
+                                    <th>Player Name</th>
+                                    <th>Player Role</th>
                                     <th></th>
 
                                 </tr>
-							</thead>
-							<tbody>
-							@php($i=1)
-                            @foreach($players as $p)
-                                <tr>
+                                </thead>
+                                <tbody>
+                                @php($i=1)
+                                @foreach($players as $p)
+                                    <tr>
 
-								  <th scope="row">{{$i}}</th>
-								  <td>{{$p->player_id}}</td>
-								  <td>{{$p->player_name}}</td>
-								  <td>{{$p->player_role}}</td>
-                                    <td>
-                                        <a class="btn btn-warning btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}"><i class=" cil-user"></i></a>
-                                        <a class="btn btn-success btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}/edit"><i class=" cil-color-border"></i></a>
-                                        <form style="display:inline-block" method="POST" action="/admin/teams/{{$team->id}}/players/{{$p->id}}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <!-- <input type="hidden" value="#" name="id"> -->
-                                            <button class="btn btn-danger btn-sm" onclick="return tconfirm('Are you sure you want to remove this player ?');"><i class=" cil-trash"></i></button>
-                                        </form>
+                                        <th scope="row">{{$i}}</th>
+                                        <td>{{$p->player_id}}</td>
+                                        <td>{{$p->player_name}}</td>
+                                        <td>{{$p->player_role}}</td>
+                                        <td>
+                                            <a class="btn btn-warning btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}">Detail</a>
+                                            <a class="btn btn-success btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}/edit">Edit</a>
+                                            <form style="display:inline-block" method="POST" action="/admin/teams/{{$team->id}}/players/{{$p->id}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <!-- <input type="hidden" value="#" name="id"> -->
+                                                <button class="btn btn-danger btn-sm" onclick="return tconfirm('Are you sure you want to remove this player ?');">Delete</button>
+                                            </form>
 
-                                    </td>
-								</tr>
-                                @php($i++)
-                            @endforeach
-							</tbody>
-						</table>
-                    </div>
-			</div>
-</div>
+                                        </td>
+                                    </tr>
+                                    @php($i++)
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+    </div>
+@endsection
+@section('js')
 
 @endsection
+

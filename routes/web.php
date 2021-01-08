@@ -19,7 +19,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/Tournament/addTeam','TournamentController@Tournament_add_Team')->name('Tournament_add_Team');
     Route::post('/Tournament/destroyTeam','TournamentController@Tournament_destroy_Team')->name('Tournament_destroy_Team');
 
-//    Route::resource('/Team','TeamController');
+    Route::resource('/teams','TeamController');
 //    Route::post('/Team/filter','TeamController@teamFilter')->name('teamFilter');  //Team
 //    Route::resource('/Players','PlayersController');    //Player
 //    Route::post('/Players/filter','PlayersController@playerFilter')->name('playerFilter');
@@ -55,7 +55,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
 
     Route::resource('tournaments.schedules','ScheduleController');
-    Route::resource('tournaments.teams','TeamController');
+    Route::resource('tournaments.teams','TeamTournamentController');
     Route::resource('teams.players','PlayersController');
 
     Route::get('players','PlayersController@player_index');

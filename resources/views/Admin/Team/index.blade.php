@@ -75,6 +75,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <h3>Teams</h3>
+                                <a class="btn btn-success btn-sm " href="{{ Route('teams.create') }}"><i class="cil-user-plus"></i> Add Team</a>
                             </div>
                             <div class="col-6">
                                 <ol class="breadcrumb">
@@ -103,7 +104,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($team as $t)
+                                        @foreach($teams as $t)
                                             <tr>
 
                                                 <th scope="row">{{$t->id}}</th>
@@ -112,12 +113,12 @@
                                                 <td><a class="btn btn-dark btn-sm" href="/admin/teams/{{$t->id}}/players">Squad</a>
                                                 </td>
                                                 <td>
-                                                    {{--                                <a class="btn btn-warning btn-sm"--}}
-                                                    {{--                                   href="/admin/tournaments/{{$tournament->id}}/teams/{{$t->id}}"> <i class="cil-user"></i> </a>--}}
+                                                                                    <a class="btn btn-warning btn-sm"
+                                                                                       href="/admin/teams/{{$t->id}}"> Details </a>
                                                     <a class="btn btn-success btn-sm"
-                                                       href="/admin/tournaments/{{$tournament->id}}/teams/{{$t->id}}/edit"> Edit </a>
+                                                       href="/admin/teams/{{$t->id}}/edit"> Edit </a>
                                                     <form style="display:inline-block" method="POST"
-                                                          action="/admin/tournaments/{{$tournament->id}}/teams/{{$t->id}}">
+                                                          action="/admin/teams/{{$t->id}}">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button class="btn btn-danger btn-sm"> Delete </button>

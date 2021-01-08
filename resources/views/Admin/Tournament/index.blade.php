@@ -24,7 +24,7 @@
             @foreach($Tournament as $t)
                 <div class="card b-r-0">
                     <div class="card-header">
-                        <span>{{$loop->iteration}}</span>
+                        <h4 style="display: inline-block">{{$loop->iteration}}</h4>
                         <div style="float: right">
                             <a class="btn btn-success btn-sm" href="/admin/Tournament/{{$t->id}}/edit"> Edit </a>
                             <form style="display:inline-block" method="POST" action="/admin/Tournament/{{$t->id}}">
@@ -40,8 +40,8 @@
                             <span>{{$t->start_date}} to</span><span> {{$t->end_date}}</span>
                         </div>
                         <a class="btn btn-secondary btn-block" href="/admin/tournaments/{{$t->id}}/teams">Teams</a>
-                        <a class="btn btn-secondary btn-block" href="/admin/tournaments/{{$t->id}}/schedules">Schedule</a>
-                        <a class="btn btn-secondary btn-block" href="/admin/tournaments/{{$t->id}}/results">Results</a>
+                        <a class="btn btn-success btn-block" href="/admin/tournaments/{{$t->id}}/schedules">Schedule</a>
+                        <a class="btn btn-primary btn-block" href="/admin/tournaments/{{$t->id}}/results">Results</a>
 
                     </div>
                 </div>

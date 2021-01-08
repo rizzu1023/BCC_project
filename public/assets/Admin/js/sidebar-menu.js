@@ -235,6 +235,6 @@ if ($(window).width() <= 991) {
     });
 }
 
-    $('.custom-scrollbar').animate({
-        scrollTop: $('a.sidebar-link.sidebar-title.active').offset().top - 200
-    }, 1000);
+    // $('.custom-scrollbar').animate({
+    //     scrollTop: $('a.sidebar-link.sidebar-title.active').offset().top - 200
+    // }, 1000);
