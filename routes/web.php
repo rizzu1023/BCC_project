@@ -56,19 +56,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::resource('tournaments.schedules','ScheduleController');
     Route::resource('tournaments.teams','TeamTournamentController');
-    Route::resource('teams.players','PlayersController');
+    Route::resource('teams.players','TeamPlayerController');
 
-    Route::get('players','PlayersController@player_index');
-    Route::get('player/create','PlayersController@player_create');
-    Route::post('player','PlayersController@player_store');
-    Route::get('player/{id}','PlayersController@player_show');
-    Route::get('player/{id}/edit','PlayersController@player_edit');
-    Route::put('player/{id}','PlayersController@player_update');
-    Route::delete('player/{id}','PlayersController@player_destroy');
+    Route::resource('tournaments.groups','TournamentGroupController')->shallow();
+    Route::resource('groups.teams','GroupTeamController');
+
+    Route::get('/teams/{team}/players/exist_create','TeamPlayerController@exist_team_player_create');
+    Route::post('/teams/{team}/players/exist_store','TeamPlayerController@exist_team_player_store');
+
+    Route::resource('player','PlayersController');
 
     Route::post('player/add-in-team','PlayersController@add_in_team');
     Route::post('player/remove-from-team','PlayersController@remove_from_team');
 });
+
+
 
 Route::group(['prefix' => 'super-admin', 'middleware' => ['auth']], function() {
     Route::get('user','SuperAdminController@user_index');

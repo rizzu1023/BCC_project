@@ -20,7 +20,7 @@
                         <a class="nav-link  " href="/admin/Tournament"><i data-feather="truck"></i><span>Tournaments</span></a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="nav-link  " href="/admin/players"><i data-feather="users"></i><span>Players</span></a>
+                        <a class="nav-link  " href="/admin/player"><i data-feather="users"></i><span>Players</span></a>
                     </li>
                     <li class="sidebar-list">
                         <a class="nav-link  " href="/admin/teams"><i data-feather="users"></i><span>Teams</span></a>

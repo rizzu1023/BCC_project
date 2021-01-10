@@ -1,5 +1,8 @@
-
 @extends('Admin.layouts.base')
+
+@section('css')
+        <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/datatables.css')}}">
+@endsection
 
 @section('content')
     <div class="page-body">
@@ -7,14 +10,15 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-6">
-                        <h3>Dashboard</h3>
-                        <a style=" float: right" class="btn btn-success btn-sm " href="/admin/player/create"><i class="cil-user-plus"></i> Add New</a>
+                        <h3>Players</h3>
+                        <a style=" float: right" class="btn btn-success btn-sm " href="/admin/player/create"><i
+                                class="cil-user-plus"></i> Add New</a>
 
                     </div>
                     <div class="col-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/admin/dashboard"> <i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Players</li>
                             {{--              <li class="breadcrumb-item active">Product list</li>--}}
                         </ol>
                     </div>
@@ -25,41 +29,47 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <div class="tables">
-                        <table class="table table-responsive-sm">
+                    <div class="table-responsive product-table">
+                        <table class="display dataTable" id="basic-1">
                             <thead>
                             <tr>
-                                <th>Sr</th>
-                                <th>Player Id</th>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Player ID</th>
                                 <th>Player Name</th>
                                 <th>Player Role</th>
-                                <th></th>
-
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @php($i=1)
                             @foreach($players as $p)
-                                <tr>
-
-                                    <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$p->player_id}}</td>
+                                <tr id="{{$p->id}}">
+                                    <td>{{$loop->iteration}}</td>
+                                                                        <td class="text-center"><img src="{{ asset("Assets/Admin/images/ecommerce/product-table-1.png") }}" alt="img not found"></td>
+                                    <td>
+                                        <h6> {{$p->player_id}}</h6>
+                                        {{--                    <span>Interchargebla lens Digital Camera with APS-C-X Trans CMOS Sens</span>--}}
+                                    </td>
                                     <td>{{$p->player_name}}</td>
                                     <td>{{$p->player_role}}</td>
                                     <td>
                                         <a class="btn btn-warning btn-sm" href="/admin/player/{{$p->id}}">Details</a>
                                         <a class="btn btn-success btn-sm" href="/admin/player/{{$p->id}}/edit">Edit</a>
-                                        <form style="display:inline-block" method="POST" action="/admin/player/{{$p->id}}">
+                                        <form style="display:inline-block" method="POST"
+                                              action="/admin/player/{{$p->id}}">
                                         @csrf
                                         @method('DELETE')
                                         <!-- <input type="hidden" value="#" name="id"> -->
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this player?');">Delete</button>
+                                            <button class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this player?');">
+                                                Delete
+                                            </button>
                                         </form>
 
                                     </td>
                                 </tr>
-                                @php($i++)
                             @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -69,4 +79,11 @@
         <!-- Container-fluid Ends-->
     </div>
 @endsection
+
+@section('js')
+            <script src="{{asset('Assets/Admin/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+            <script src="{{asset('Assets/Admin/js/datatable/datatables/datatable.custom.js')}}"></script>
+@endsection
+
+
 

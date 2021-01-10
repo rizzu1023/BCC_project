@@ -49,7 +49,7 @@
     <link id="color" rel="stylesheet" href="{{asset('Assets/Admin/css/color-1.css')}}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/responsive.css')}}">
-
+    @yield('css')
 </head>
 
 

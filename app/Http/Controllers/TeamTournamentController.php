@@ -14,13 +14,12 @@ class TeamTournamentController extends Controller
 
     public function index(Tournament $tournament)
     {
-
         $tournament_id = $tournament->id;
-        $team = Teams::whereHas('tournaments',function($query) use($tournament_id){
+        $teams = Teams::whereHas('tournaments',function($query) use($tournament_id){
             $query->where('tournament_id',$tournament_id)->where('user_id',auth()->user()->id);
         })->get();
         if($tournament->user_id == auth()->user()->id){
-            return view('Admin/Team/index',compact('team','tournament'));
+            return view('Admin.Team.index',compact('teams','tournament'));
         }
         else
             return "Page Not Found";
@@ -29,6 +28,7 @@ class TeamTournamentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param Tournament $tournament
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function create(Tournament $tournament)
@@ -51,7 +51,7 @@ class TeamTournamentController extends Controller
         $team->Tournaments()->syncWithoutDetaching($tnt);
 
         return back();
-        return response()->json(['message'=> 'Team has been successfully added']);
+//        return response()->json(['message'=> 'Team has been successfully added']);
 //        return redirect::route('Team.index')->with('message','Team has been successfully added');
 
     }

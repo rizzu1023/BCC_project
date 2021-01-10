@@ -118,7 +118,7 @@
                                         {{--                      <h5><strong>{{$match->overs}}</strong></h5>--}}
                                         <form method="post" action="{{ Route('update.overs') }}">
                                             @csrf
-                                            <h5><input type="number" value="{{$match->overs}}" name="overs"></h5>
+                                            <h5><input type="number" value="{{$match->overs}}" name="overs"/></h5>
                                             <input type="hidden" name="match_id" value="{{$match->match_id}}">
                                             <button type="submit" class="btn btn-sm btn-success">Update</button>
                                         </form>
@@ -130,7 +130,7 @@
                                 <div class="r3_counter_box">
                                     <div class="stats">
                                         <span>Won</span>
-                                        <h5><strong>{{$match->won}}</strong></h5>
+                                        <h5><strong{{$match->won}}</strong></h5>
                                     </div>
                                 </div>
                             </div>
