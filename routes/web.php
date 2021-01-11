@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::resource('tournaments.groups','TournamentGroupController')->shallow();
     Route::resource('groups.teams','GroupTeamController');
+    Route::get('tournaments/{tournament}/points-table','PointsTableController@index');
 
     Route::get('/teams/{team}/players/exist_create','TeamPlayerController@exist_team_player_create');
     Route::post('/teams/{team}/players/exist_store','TeamPlayerController@exist_team_player_store');

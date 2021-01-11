@@ -35,6 +35,12 @@
                                     <th scope="col">#</th>
                                     <th class="w-25" scope="col">Team Code</th>
                                     <th scope="col">Team Name</th>
+                                    <th scope="col">M</th>
+                                    <th scope="col">W</th>
+                                    <th scope="col">L</th>
+                                    <th scope="col">D</th>
+                                    <th scope="col">P</th>
+                                    <th scope="col">NRR</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
@@ -42,8 +48,14 @@
                                 @foreach($group_teams as $t)
                                     <tr id="{{$t->id}}">
                                         <th scope="row">{{$loop->iteration}}</th>
-                                        <td >{{$t->Teams->team_code}}</td>
-                                        <td >{{$t->Teams->team_name}}</td>
+                                        <td>{{ $t->Teams->team_code}}</td>
+                                        <td>{{ $t->Teams->team_name}}</td>
+                                        <td>{{ $t->match }}</td>
+                                        <td>{{ $t->won }}</td>
+                                        <td>{{ $t->lost }}</td>
+                                        <td>{{ $t->draw }}</td>
+                                        <td>{{ $t->points }}</td>
+                                        <td>{{ $t->nrr }}</td>
                                         <td>
 {{--                                            <a class="btn btn-sm btn-outline-primary" href="/admin/groups/{{$t->team_id}}/teams">Squad</a>--}}
 {{--                                            <a class="btn btn-sm btn-outline-success" type="button"   data-toggle="modal" data-target="#exampleModalCenter" title="">Edit</a>--}}

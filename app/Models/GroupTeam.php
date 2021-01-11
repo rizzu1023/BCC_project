@@ -10,6 +10,13 @@ class GroupTeam extends Model
 
     public function Teams()
     {
-        return $this->hasONe('App\Teams','id','team_id');
+        return $this->hasOne('App\Teams','id','team_id');
     }
+
+    public function Group()
+    {
+        return $this->belongsTo('App\Models\Group','group_id','id');
+    }
+
+
 }

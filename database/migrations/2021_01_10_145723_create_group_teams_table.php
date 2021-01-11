@@ -17,6 +17,13 @@ class CreateGroupTeamsTable extends Migration
             $table->id();
             $table->unsignedInteger('group_id');
             $table->unsignedInteger('team_id');
+            $table->integer('match')->default(0);
+            $table->integer('won')->default(0);
+            $table->integer('lost')->default(0);
+            $table->integer('draw')->default(0);
+            $table->integer('points')->default(0);
+            $table->float('nrr')->default(0);
+            $table->integer('tournament_id');
             $table->timestamps();
         });
     }

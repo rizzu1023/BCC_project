@@ -43,6 +43,7 @@
                         <a class="btn btn-success btn-block" href="/admin/tournaments/{{$t->id}}/schedules">Schedule</a>
                         <a class="btn btn-primary btn-block" href="/admin/tournaments/{{$t->id}}/results">Results</a>
                         <a class="btn btn-info btn-block" href="/admin/tournaments/{{$t->id}}/groups">Groups</a>
+                        <a class="btn btn-warning btn-block" href="/admin/tournaments/{{$t->id}}/points-table">Points Table</a>
 
                     </div>
                 </div>
