@@ -1,98 +1,89 @@
 @extends('Admin.layouts.base')
 
+@section('css')
+        <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/datatables.css')}}">
+@endsection
+
 @section('content')
-{{--    <div class="card mb-3" style="max-width: 540px;">--}}
-{{--        <div class="row no-gutters">--}}
-{{--            <div class="col-md-4">--}}
-{{--                <svg class="bd-placeholder-img" width="100%" height="250" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" role="img"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image</text></svg>--}}
+    <div class="page-body">
+        <div class="container-fluid">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-6">
+                        <h3>Players</h3>
+                        <a style=" float: right" class="btn btn-success btn-sm " href="/admin/player/create"><i
+                                class="cil-user-plus"></i> Add New</a>
 
-{{--            </div>--}}
-{{--            <div class="col-md-8">--}}
-{{--                <div class="card-body">--}}
-{{--                    <h5 class="card-title">Card title</h5>--}}
-{{--                    <p class="card-text">It's a broader card with text below as a natural lead-in to extra content. This content is a little longer.</p>--}}
-{{--                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-<div class="card">
-    <div class="card-header">
-        <strong class="title1">Players</strong>
-        <a style=" float: right" class="btn btn-success btn-sm " href="/admin/player/create"><i class="cil-user-plus"></i> Add New</a>
-
-
-    </div>
-			<div class="card-body">
-			@include('Admin.layouts.message')
-								<div class="row">
-
-								<!-- <div class="col-md-4"> -->
-{{--										<form method="POST" action="{{route('playerFilter')}}">--}}
-{{--											@csrf--}}
-{{--											<div class="form-group col-md-4">--}}
-{{--													<select class="form-control" id="id" name="id">--}}
-{{--														<option value="{{$id['id']}}">@if($id){{$id->team_name}}@else<p>ALL</p>@endif</option>--}}
-{{--														@foreach($team as $t)--}}
-{{--															<option value="{{$t->id}}">{{$t->team_name}}</option>--}}
-{{--														@endforeach--}}
-{{--													</select>--}}
-{{--											</div>--}}
-
-{{--											<div class="form-group col-md-4">--}}
-{{--														<select class="form-control"  id="player_role" name="player_role">--}}
-{{--															<option value="{{$player_role}}">@if($player_role){{$player_role}}@else<p>ALL</p>@endif</option>--}}
-{{--																<option value="Batsman">Batsman</option>--}}
-{{--																<option value="Bowler">Bowler</option>--}}
-{{--																<option value="All Rounder">All Rounder</option>--}}
-{{--																<option value="Wicket keeper">Wicket Keeper</option>--}}
-{{--														</select>--}}
-{{--												</div>--}}
-{{--											<button type="submit" class="btn btn-md btn-success">Filter</button>--}}
-{{--										</form>--}}
-									<!-- </div> -->
-
-
-								</div>
-				<div class="tables">
-						<table class="table table-responsive-sm">
-							<thead>
-								<tr>
-								  <th>Sr</th>
-								  <th>Player Id</th>
-								  <th>Player Name</th>
-								  <th>Player Role</th>
-                                    <th></th>
-
-                                </tr>
-							</thead>
-							<tbody>
-							@php($i=1)
+                    </div>
+                    <div class="col-6">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin/dashboard"> <i data-feather="home"></i></a></li>
+                            <li class="breadcrumb-item active">Players</li>
+                            {{--              <li class="breadcrumb-item active">Product list</li>--}}
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid starts-->
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive product-table">
+                        <table class="display dataTable" id="basic-1">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Image</th>
+                                <th>Player ID</th>
+                                <th>Player Name</th>
+                                <th>Player Role</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             @foreach($players as $p)
-                                <tr>
-
-								  <th scope="row">{{$loop->iteration}}</th>
-								  <td>{{$p->player_id}}</td>
-								  <td>{{$p->player_name}}</td>
-								  <td>{{$p->player_role}}</td>
+                                <tr id="{{$p->id}}">
+                                    <td>{{$loop->iteration}}</td>
+                                                                        <td class="text-center"><img src="{{ asset("Assets/Admin/images/ecommerce/product-table-1.png") }}" alt="img not found"></td>
                                     <td>
-                                        <a class="btn btn-warning btn-sm" href="/admin/player/{{$p->id}}"><i class=" cil-user"></i></a>
-                                        <a class="btn btn-success btn-sm" href="/admin/player/{{$p->id}}/edit"><i class=" cil-color-border"></i></a>
-                                        <form style="display:inline-block" method="POST" action="/admin/player/{{$p->id}}">
+                                        <h6> {{$p->player_id}}</h6>
+                                        {{--                    <span>Interchargebla lens Digital Camera with APS-C-X Trans CMOS Sens</span>--}}
+                                    </td>
+                                    <td>{{$p->player_name}}</td>
+                                    <td>{{$p->player_role}}</td>
+                                    <td>
+                                        <a class="btn btn-warning btn-sm" href="/admin/player/{{$p->id}}">Details</a>
+                                        <a class="btn btn-success btn-sm" href="/admin/player/{{$p->id}}/edit">Edit</a>
+                                        <form style="display:inline-block" method="POST"
+                                              action="/admin/player/{{$p->id}}">
                                         @csrf
                                         @method('DELETE')
                                         <!-- <input type="hidden" value="#" name="id"> -->
-                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this player?');"><i class=" cil-trash"></i></button>
+                                            <button class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete this player?');">
+                                                Delete
+                                            </button>
                                         </form>
 
                                     </td>
-								</tr>
-                                @php($i++)
+                                </tr>
                             @endforeach
-							</tbody>
-						</table>
-                    </div>
-			</div>
-</div>
 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container-fluid Ends-->
+    </div>
 @endsection
+
+@section('js')
+            <script src="{{asset('Assets/Admin/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+            <script src="{{asset('Assets/Admin/js/datatable/datatables/datatable.custom.js')}}"></script>
+@endsection
+
+
+

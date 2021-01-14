@@ -14,17 +14,20 @@ Route::view('/blank','Main.layouts.layout');
 
 //Admin Routes
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
-    Route::get('/', [\App\Http\Controllers\AdminController::class,'getDashboard'])->name('GetDashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\AdminController::class,'getDashboard'])->name('GetDashboard');
     Route::resource('/Tournament','TournamentController');  //Tournament
     Route::post('/Tournament/addTeam','TournamentController@Tournament_add_Team')->name('Tournament_add_Team');
     Route::post('/Tournament/destroyTeam','TournamentController@Tournament_destroy_Team')->name('Tournament_destroy_Team');
 
-//    Route::resource('/Team','TeamController');
+    Route::resource('/teams','TeamController');
 //    Route::post('/Team/filter','TeamController@teamFilter')->name('teamFilter');  //Team
 //    Route::resource('/Players','PlayersController');    //Player
 //    Route::post('/Players/filter','PlayersController@playerFilter')->name('playerFilter');
 //    Route::resource('/Schedule','ScheduleController');  //Schedule
 //    Route::post('/Schedule/create/tournament','ScheduleController@scheduleTournament')->name('scheduleTournament');
+
+    Route::get('/teams/{team}/players/exist_create','TeamPlayerController@exist_team_player_create');
+    Route::post('/teams/{team}/players/exist_store','TeamPlayerController@exist_team_player_store');
 
     Route::resource('/PointsTable','PointsTableController');  //PointsTable
     Route::resource('/Batting','BattingController');  //Batting
@@ -55,20 +58,28 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
 
     Route::resource('tournaments.schedules','ScheduleController');
-    Route::resource('tournaments.teams','TeamController');
-    Route::resource('teams.players','PlayersController');
+    Route::resource('tournaments.teams','TeamTournamentController');
+    Route::resource('teams.players','TeamPlayerController');
 
-    Route::get('players','PlayersController@player_index');
-    Route::get('player/create','PlayersController@player_create');
-    Route::post('player','PlayersController@player_store');
-    Route::get('player/{id}','PlayersController@player_show');
-    Route::get('player/{id}/edit','PlayersController@player_edit');
-    Route::put('player/{id}','PlayersController@player_update');
-    Route::delete('player/{id}','PlayersController@player_destroy');
+    Route::resource('tournaments.groups','TournamentGroupController')->shallow();
+    Route::resource('groups.teams','GroupTeamController');
+
+    //Points Table
+    Route::get('tournaments/{tournament}/points-table','PointsTableController@index');
+    Route::get('tournaments/{tournament}/points-table/edit','PointsTableController@edit');
+
+    Route::post('tournaments/{tournament}/points-table/match_selected','PointsTableController@match_selected');
+    Route::post('tournaments/{tournament}/points-table/nrr','PointsTableController@nrr');
+
+
+
+    Route::resource('player','PlayersController');
 
     Route::post('player/add-in-team','PlayersController@add_in_team');
     Route::post('player/remove-from-team','PlayersController@remove_from_team');
 });
+
+
 
 Route::group(['prefix' => 'super-admin', 'middleware' => ['auth']], function() {
     Route::get('user','SuperAdminController@user_index');

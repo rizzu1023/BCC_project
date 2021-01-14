@@ -1,15 +1,31 @@
 <?php
 
-/* @var $factory \Illuminate\Database\Eloquent\Factory */
+namespace Database\Factories;
 
-use App\Model;
-use Faker\Generator as Faker;
+use App\Players;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(App\Players::class, function (Faker $faker) {
-    return [
-        'player_id' => $faker->word,
-        'player_name' => $faker->name,
-        'player_role' => $faker->word,
-        'team_id' => $faker->numberBetween(1,4),
-    ];
-});
+class PlayersFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Players::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'player_id' => $this->faker->word,
+            'player_name' => $this->faker->name,
+            'player_role' => $this->faker->word,
+            'user_id' => 1,
+        ];
+    }
+}

@@ -39,3 +39,4 @@ Route::get('/tournament/{tournament_id}/match/{match_id}/{team1_id}/{team2_id}/l
 Route::get('/tournament/{tournament_id}/match/{match_id}/{team1_id}/{team2_id}/scorecard','API\MatchController@scorecard');
 Route::get('/tournament/{tournament_id}/match/{match_id}/{team1_id}/{team2_id}/overs','API\MatchController@overs');
 
+Route::get('/tournament/{tournament_id}/points-table','API\PointsTableController@index');

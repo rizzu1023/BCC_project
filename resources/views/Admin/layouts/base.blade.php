@@ -1,139 +1,138 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<title>Admin Panel</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Glance Design Dashboard Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
+    <meta name="keywords"
+          content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <link rel="shortcut icon" href="{{asset('Assets/Admin/images/favicon.png')}}" type="image/x-icon">
+    <title>FE Admin Panel</title>
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/fontawesome.css')}}">
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/icofont.css')}}">
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/themify.css')}}">
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/flag-icon.css')}}">
+    <!-- Feather icon-->
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/feather-icon.css')}}">
+    <!-- Plugins css start-->
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/prism.css')}}">--}}
+    <!-- Plugins css Ends-->
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/todo.css')}}">
+    <!-- Bootstrap css-->
 
-<!-- Bootstrap Core CSS -->
-<link href="{{asset('assets/Admin/css/bootstrap.css')}}" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/select2.css')}}">
 
-<!-- Custom CSS -->
-<link href="{{asset('assets/Admin/css/style.css')}}" rel='stylesheet' type='text/css' />
-
-<!-- font-awesome icons CSS -->
-<link href="{{asset('assets/Admin/css/font-awesome.css')}}" rel="stylesheet">
-<!-- //font-awesome icons CSS -->
-
- <!-- side nav css file -->
- <link href="{{asset('assets/Admin/css/SidebarNav.min.css')}}" media='all' rel='stylesheet' type='text/css'/>
- <!-- side nav css file -->
-
- <!-- js-->
-{{--<script src="{{asset('assets/Admin/js/jquery-1.11.1.min.js')}}"></script>--}}
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-<script src="{{asset('assets/Admin/js/modernizr.custom.js')}}"></script>
-
-<!--webfonts-->
-<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-<!--//webfonts-->
-
-<!-- Metis Menu -->
-<script src="{{asset('assets/Admin/js/metisMenu.min.js')}}"></script>
-<script src="{{asset('assets/Admin/js/custom.js')}}"></script>
-<link href="{{asset('assets/Admin/css/custom.css')}}" rel="stylesheet">
-
-<link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/all.min.css">
-
-@yield('css')
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/datatables.css')}}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/owlcarousel.css')}}">--}}
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/rating.css')}}">--}}
 
 
+    <!-- Bootstrap css-->
+{{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/chartist.css')}}">--}}
+    <link rel="stylesheet" type="text/css"  href="{{asset('Assets/Admin/css/vendors/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/bootstrap.css')}}">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/style.css')}}">
+    <link id="color" rel="stylesheet" href="{{asset('Assets/Admin/css/color-1.css')}}" media="screen">
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/responsive.css')}}">
+    @yield('css')
 </head>
 
 
-<body class="c-app">
+
+<body>
+<div class="tap-top"><i data-feather="chevrons-up"></i></div>
+<div class="page-wrapper compact-wrapper" id="pageWrapper">
+
+    <div class="page-body-wrapper horizontal-menu">
 
 
-    @include('Admin.layouts.sidebar')
+        @include('Admin.layouts.sidebar')
+        @include('Admin.layouts.navbar')
+        @yield('content')
+{{--        @include('Admin.layouts.footer')--}}
 
 
-	<div class="c-wrapper">
+        <script src="{{asset('Assets/Admin/js/jquery-3.5.1.min.js')}}"></script>
+        <!-- Bootstrap js-->
+        <script src="{{asset('Assets/Admin/js/bootstrap/popper.min.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/bootstrap/bootstrap.js')}}"></script>
+        <!-- feather icon js-->
+        <script src="{{asset('Assets/Admin/js/icons/feather-icon/feather.min.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/icons/feather-icon/feather-icon.js')}}"></script>
+        <!-- Sidebar jquery-->
+        <script src="{{asset('Assets/Admin/js/sidebar-menu.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/config.js')}}"></script>
+        <!-- Plugins JS start-->
+        <script src="{{asset('Assets/Admin/js/prism/prism.min.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/clipboard/clipboard.min.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/custom-card/custom-card.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/modal-animated.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/animation/animate-custom.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/tooltip-init.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/todo/todo.js')}}"></script>
+
+{{--        <script src="{{asset('Assets/Admin/js/chart/chartist/chartistjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/chart/chartist/chartist-plugin-tooltipjs')}}"></script>--}}
+        <!-- Plugins JS Ends-->
+
+{{--        <script src="{{asset('Assets/Admin/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>--}}
+        {{--        <script src="{{asset('Assets/Admin/js/datatable/datatables/datatable.custom.js')}}"></script>--}}
+        {{--        <script src="{{asset('Assets/Admin/js/rating/jquery.barrating.js')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/rating/rating-script.js')}}"></script>--}}
+        {{--        <script src="{{asset('Assets/Admin/js/owlcarousel/owl.carousel.js')}}"></script>--}}
+        {{--        <script src="{{asset('Assets/Admin/js/ecommerce.js')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/product-list-custom.js')}}"></script>--}}
+
+        <script src="{{asset('Assets/Admin/js/notify/bootstrap-notify.min.js')}}"></script>
+
+        <script src="{{asset('Assets/Admin/js/select2/select2.full.min.js')}}"></script>
+        <script src="{{asset('Assets/Admin/js/select2/select2-custom.js')}}"></script>
+{{--        <script src="{{asset('Assets/Admin/js/chart/apex-chart/apex-chartjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/chart/apex-chart/stock-pricesjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/prism/prism.minjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/counter/jquery.waypoints.minjs')}}"></script>--}}
+{{--        <script src="{{asset('Assets/Admin/js/counter/jquery.counterup.minjs')}}"></script>--}}
+        <script src="{{asset('Assets/Admin/js/counter/counter-customjs')}}"></script>
+        <script src="{{asset('Assets/Admin/js/custom-card/custom-cardjs')}}"></script>
+{{--        <script src="{{asset('Assets/Admin/js/owlcarousel/owl.carouseljs')}}"></script>--}}
+        <script src="{{asset('Assets/Admin/js/dashboard/dashboard_2js')}}"></script>
+
+        <script src="{{asset('Assets/Admin/js/contacts/custom.js')}}"></script>
+
+        <!-- Theme js-->
 
 
-{{--	<header class="c-header c-header-fixed navbar">--}}
-    @include('Admin.layouts.topbar')
-{{--	</header>--}}
-
-
-	<div class="c-body">
-	<main class="c-main">
-		<div class="container-fluid">
-    @yield('content')
-		</div>
-	</main>
-	</div>
-
-    </div>
 
 
 
 
-{{--    <script src="{{asset('assets/Admin/js/SidebarNav.min.js')}}" type='text/javascript'></script>--}}
-{{--	<script>--}}
-{{--      $('.sidebar-menu').SidebarNav()--}}
-{{--    </script>--}}
-	<!-- //side nav js -->
+        <script src="{{asset('Assets/Admin/js/script.js')}}"></script>
+        {{--        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.minjs')}}"></script>--}}
 
-	<!-- Classie --><!-- for toggle left push menu script -->
-		<script src="{{asset('assets/Admin/js/classie.js')}}"></script>
-{{--		<script>--}}
-{{--			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),--}}
-{{--				showLeftPush = document.getElementById( 'showLeftPush' ),--}}
-{{--				body = document.body;--}}
-{{--			showLeftPush.onclick = function() {--}}
-{{--				classie.toggle( this, 'active' );--}}
-{{--				classie.toggle( body, 'cbp-spmenu-push-toright' );--}}
-{{--				classie.toggle( menuLeft, 'cbp-spmenu-open' );--}}
-{{--				disableOther( 'showLeftPush' );--}}
-{{--			};--}}
-{{--			function disableOther( button ) {--}}
-{{--				if( button !== 'showLeftPush' ) {--}}
-{{--					classie.toggle( showLeftPush, 'disabled' );--}}
-{{--				}--}}
-{{--			}--}}
-{{--		</script>--}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+        <script src="{{asset('Assets/Admin/js/animation/wow/wow.min.js')}}"> </script>
 
-{{--	<script src="{{asset('js/app.js')}}"></script>--}}
+        <script>
+            // WOW.init();
+        </script>
+@yield('js')
 
-
-	<!--scrolling js-->
-	<script src="{{asset('assets/Admin/js/jquery.nicescroll.js')}}"></script>
-	<script src="{{asset('assets/Admin/js/scripts.js')}}"></script>
-	<!--//scrolling js-->
-
-	<!-- Bootstrap Core JavaScript -->
-   <script src="{{asset('assets/Admin/js/bootstrap.js')}}"> </script>
-
-	@yield('script')
-
-    <script>
-        $('#rizzu').on('click',function(){
-           // $('.c-sidebar').toggle();
-            if( $(".c-sidebar").css('margin-left') == '0px'){
-                $('.c-sidebar').css('margin-left','-257px');
-            }
-            else {
-                $('.c-sidebar').css('margin-left', '0px');
-            }
-
-        });
-
-        $('.c-wrapper').on('click',function(){
-            if( $(".c-sidebar").css('margin-left') == '0px'){
-                $('.c-sidebar').css('margin-left','-257px');
-            }
-
-        });
-
-    </script>
-
-
-	<script src="https://unpkg.com/@popperjs/core@2"></script>
-    <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
 </body>
+
 </html>

@@ -2,45 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Schedule;
+use App\Teams;
+use App\Tournament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-
-use App\Teams;
-use App\PointsTable;
-use App\Tournament;
-use App\Schedule;
 
 
 class TeamController extends Controller
 {
 
-    public function index(Tournament $tournament)
+    public function index()
     {
-
-        $tournament_id = $tournament->id;
-        $team = Teams::whereHas('tournaments',function($query) use($tournament_id){
-            $query->where('tournament_id',$tournament_id)->where('user_id',auth()->user()->id);
-        })->get();
-        if($tournament->user_id == auth()->user()->id){
-            return view('Admin/Team/index',compact('team','tournament'));
-        }
-        else
-            return "Page Not Found";
+        $teams = Teams::all();
+        return view('Admin.Team.index',compact('teams'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Teams $team
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create()
-    {
-        // $message = NULL;
-        // return view('admin/Team/create',compact('message'));
+    public function create(Teams $team){
+         return view('Admin.Team.create',compact('team'));
     }
 
 
-    public function store(Request $request,$tournament)
+    public function store(Request $request)
     {
 
         $team = Teams::create([
@@ -50,32 +39,21 @@ class TeamController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        $tnt = Tournament::find($tournament);
-        $team->Tournaments()->syncWithoutDetaching($tnt);
-
-        return response()->json(['message'=> 'Team has been successfully added']);
-        return redirect::route('Team.index')->with('message','Team has been successfully added');
-
+        return redirect()->route('teams.index')->with('message','Successfully Added');
     }
 
 
-    public function show(Tournament $tournament,Teams $Team)
+    public function show(Teams $Team)
     {
-        $id = $Team->id;
-        $tournament = Tournament::whereHas('teams',function($query) use($id){
-            $query->where('team_id',$id);
-        })->get();
-        // return $tournament;
-        return view('Admin/Team/show',compact('Team','tournament'));
+        return view('Admin.Team.show',compact('Team'));
     }
 
-    public function edit(Tournament $tournament, Teams $team)
+    public function edit( Teams $team)
     {
-        $team = Teams::find($team->id);
-        return view('Admin/Team/edit',compact('team','tournament'));
+        return view('Admin.Team.edit',compact('team'));
     }
 
-    public function update(Request $request, Tournament $tournament, Teams $team)
+    public function update(Request $request, Teams $team)
     {
         $team->update([
             'team_code' => $request['team_code'],
@@ -83,10 +61,10 @@ class TeamController extends Controller
             'team_title' => $request['team_title'],
             'user_id' => auth()->user()->id,
         ]);
-        return redirect::route('tournaments.teams.index',$tournament->id)->with('message','Team has been succesfully updated');
+        return redirect::route('teams.index')->with('message','Team has been successfully updated');
     }
 
-    public function destroy(Tournament $tournament,Teams $team)
+    public function destroy(Teams $team)
     {
         $schedule = Schedule::where('team1_id',$team->id)->orWhere('team2_id',$team->id)->first();
         if($schedule){
@@ -96,17 +74,15 @@ class TeamController extends Controller
             $team->delete();
             return back()->with('message','Team has been successfully deleted');
         }
-
-
     }
 
-    public function teamFilter(Request $request){
-            $id = request('tournament_id');
-            // return $id;
-            $tournament = Tournament::all();
-            $team = Teams::whereHas('tournaments',function($query) use($id){
-                    $query->where('tournament_id',$id);
-                })->get();
-            return view('Admin/Team/index',compact('tournament','team'));
-    }
+//    public function teamFilter(Request $request){
+//            $id = request('tournament_id');
+//            // return $id;
+//            $tournament = Tournament::all();
+//            $team = Teams::whereHas('tournaments',function($query) use($id){
+//                    $query->where('tournament_id',$id);
+//                })->get();
+//            return view('Admin/Team/index',compact('tournament','team'));
+//    }
 }
