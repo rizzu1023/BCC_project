@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Group;
+use App\Models\GroupTeam;
 use App\Tournament;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,8 @@ class TournamentGroupController extends Controller
      */
     public function index(Tournament $tournament)
     {
-        $groups = Group::where('tournament_id',$tournament->id)->get();
-        return view('Admin.Tournament.tournament-group-index',compact('tournament','groups'));
+        $groups = Group::where('tournament_id', $tournament->id)->get();
+        return view('Admin.Tournament.tournament-group-index', compact('tournament', 'groups'));
     }
 
     /**
@@ -38,7 +39,7 @@ class TournamentGroupController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return string
      */
-    public function store(Tournament $tournament,Request $request)
+    public function store(Tournament $tournament, Request $request)
     {
         $data = $this->validate_data($request);
         $group = Group::create([
@@ -51,7 +52,7 @@ class TournamentGroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -62,7 +63,7 @@ class TournamentGroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -94,9 +95,15 @@ class TournamentGroupController extends Controller
      */
     public function destroy(Group $group)
     {
-        $grp = $group;
-        $group->delete();
-        return response()->json(['data' => 'success','group' => $grp]);
+        $group_team = GroupTeam::where('group_id', $group->id)->first();
+        if ($group_team) {
+            return response()->json(['data' => 'failed', 'message' => 'First remove teams from this group.']);
+        } else {
+            $group->delete();
+            $grp = $group;
+            return response()->json(['data' => 'success', 'group' => $grp]);
+        }
+
     }
 
     public function validate_data(Request $request)

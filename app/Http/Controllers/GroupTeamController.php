@@ -21,7 +21,7 @@ class GroupTeamController extends Controller
      */
     public function index(Group $group)
     {
-        $group_teams = GroupTeam::where('group_id', $group->id)->get();
+        $group_teams = GroupTeam::where('group_id', $group->id)->orderBy('points','desc')->orderBy('nrr','desc')->get();
         return view('Admin.Group.group-team-index', compact('group_teams', 'group'));
     }
 
@@ -50,9 +50,14 @@ class GroupTeamController extends Controller
     public function store(Request $request, Group $group)
     {
         $group_team = GroupTeam::where('group_id', $group->id)->where('team_id', $request->team_id)->first();
+        $team_another_group = GroupTeam::where('team_id',$request->team_id)->where('tournament_id',$group->tournament_id)->first();
         if ($group_team) {
             return back()->with('error', 'Team is Already in Group');
-        } else {
+        }
+        elseif($team_another_group){
+            return back()->with('error', 'Team is Already in Another Group');
+        }
+        else {
 
             GroupTeam::create([
                 'group_id' => $group->id,
@@ -60,8 +65,6 @@ class GroupTeamController extends Controller
                 'tournament_id' => $group->tournament_id,
             ]);
         }
-
-
         return back()->with('message', 'Team Added in Group');
     }
 
@@ -79,24 +82,30 @@ class GroupTeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\rf $rf
-     * @return \Illuminate\Http\Response
+     * @param Group $group
+     * @param Teams $team
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(rf $rf)
+    public function edit(Group $group, Teams $team)
     {
-        //
+        $team = GroupTeam::where('team_id',$team->id)->where('group_id',$group->id)->where('tournament_id',$group->tournament_id)->first();
+        return view('Admin.Group.group-team-edit', compact('group', 'team'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Models\rf $rf
-     * @return \Illuminate\Http\Response
+     * @param Group $group
+     * @param Teams $team
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, rf $rf)
+    public function update(Request $request, Group $group, Teams $team)
     {
-        //
+        $data = $this->validate_data($request);
+        $group_team = GroupTeam::where('team_id',$team->id)->where('group_id',$group->id)->first();
+        $group_team->update($data);
+        return back()->with('message','Successfully Updated');
     }
 
     /**
@@ -111,5 +120,17 @@ class GroupTeamController extends Controller
         $team = GroupTeam::where('group_id', $group->id)->where('team_id', $team->id)->first();
         $team->delete();
         return back()->with('message', 'Successfully Removed from Group');
+    }
+
+    public function validate_data(Request $request)
+    {
+        return $request->validate([
+            'match' => 'required|numeric',
+            'won' => 'required|numeric',
+            'lost' => 'required|numeric',
+            'points' => 'required|numeric',
+            'draw' => 'required|numeric',
+            'nrr' => 'required|numeric',
+        ]);
     }
 }

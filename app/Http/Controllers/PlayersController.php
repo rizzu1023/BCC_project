@@ -51,7 +51,8 @@ class PlayersController extends Controller
         Batting::create(request(['player_id']));
         Bowling::create(request(['player_id']));
 
-        return redirect('/admin/player')->with('message','Player Added');
+        return back()->with('message','Player Added');
+//        return redirect('/admin/player')->with('message','Player Added');
 
     }
 

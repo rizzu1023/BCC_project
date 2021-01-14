@@ -153,37 +153,72 @@
                             "_token": "{{ csrf_token() }}",
                         },
                         success :function(data){
-                            $('#' + group_id).fadeOut('slow', function(){
-                                $('#' + group_id).remove();
-                            });
-                            $.notify({
-                                    // title:'Title',
-                                    message:'Group Successfully Deleted!'
-                                },
-                                {
-                                    type:'success',
-                                    allow_dismiss:false,
-                                    newest_on_top:false ,
-                                    mouse_over:false,
-                                    showProgressbar:false,
-                                    spacing:10,
-                                    timer:500,
-                                    placement:{
-                                        from:'top',
-                                        align:'right'
+                            if(data.data === 'failed'){
+                                $.notify({
+                                        // title:'Title',
+                                        message:data.message,
                                     },
-                                    offset:{
-                                        x:30,
-                                        y:60
-                                    },
-                                    delay:500,
-                                    z_index:10000,
-                                    animate:{
-                                        enter:'animated fadeIn',
-                                        exit:'animated fadeOut'
-                                    }
+                                    {
+                                        type:'danger',
+                                        allow_dismiss:false,
+                                        newest_on_top:false ,
+                                        mouse_over:false,
+                                        showProgressbar:false,
+                                        spacing:10,
+                                        timer:500,
+                                        placement:{
+                                            from:'top',
+                                            align:'right'
+                                        },
+                                        offset:{
+                                            x:30,
+                                            y:60
+                                        },
+                                        delay:500,
+                                        z_index:10000,
+                                        animate:{
+                                            enter:'animated fadeIn',
+                                            exit:'animated fadeOut'
+                                        }
+                                    });
+                            }
+                            else{
+                                $('#' + group_id).fadeOut('slow', function(){
+                                    $('#' + group_id).remove();
                                 });
+                                $.notify({
+                                        // title:'Title',
+                                        message:'Group Successfully Deleted!'
+                                    },
+                                    {
+                                        type:'success',
+                                        allow_dismiss:false,
+                                        newest_on_top:false ,
+                                        mouse_over:false,
+                                        showProgressbar:false,
+                                        spacing:10,
+                                        timer:500,
+                                        placement:{
+                                            from:'top',
+                                            align:'right'
+                                        },
+                                        offset:{
+                                            x:30,
+                                            y:60
+                                        },
+                                        delay:500,
+                                        z_index:10000,
+                                        animate:{
+                                            enter:'animated fadeIn',
+                                            exit:'animated fadeOut'
+                                        }
+                                    });
+                            }
+
                             // location.reload();
+                        },
+                        error : function(data){
+
                         }
                     });
                 }

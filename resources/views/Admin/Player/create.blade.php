@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="title1">Select Player</h3>
+                    <h3 class="title1">{{ $team->team_name }}</h3>
                 </div>
                 <div class="card-body">
                     @include('Admin.layouts.message')

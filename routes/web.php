@@ -26,6 +26,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 //    Route::resource('/Schedule','ScheduleController');  //Schedule
 //    Route::post('/Schedule/create/tournament','ScheduleController@scheduleTournament')->name('scheduleTournament');
 
+    Route::get('/teams/{team}/players/exist_create','TeamPlayerController@exist_team_player_create');
+    Route::post('/teams/{team}/players/exist_store','TeamPlayerController@exist_team_player_store');
+
     Route::resource('/PointsTable','PointsTableController');  //PointsTable
     Route::resource('/Batting','BattingController');  //Batting
     Route::resource('/Bowling','BowlingController'); //Bowling
@@ -60,10 +63,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::resource('tournaments.groups','TournamentGroupController')->shallow();
     Route::resource('groups.teams','GroupTeamController');
-    Route::get('tournaments/{tournament}/points-table','PointsTableController@index');
 
-    Route::get('/teams/{team}/players/exist_create','TeamPlayerController@exist_team_player_create');
-    Route::post('/teams/{team}/players/exist_store','TeamPlayerController@exist_team_player_store');
+    //Points Table
+    Route::get('tournaments/{tournament}/points-table','PointsTableController@index');
+    Route::get('tournaments/{tournament}/points-table/edit','PointsTableController@edit');
+
+    Route::post('tournaments/{tournament}/points-table/match_selected','PointsTableController@match_selected');
+    Route::post('tournaments/{tournament}/points-table/nrr','PointsTableController@nrr');
+
+
 
     Route::resource('player','PlayersController');
 

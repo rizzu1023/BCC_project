@@ -128,8 +128,9 @@ class TeamPlayerController extends Controller
 
     public function exist_team_player_create(Teams $team)
     {
+
         $players = Players::where('user_id',auth()->user()->id)->get();
-        return view('Admin/Player/create', compact('team','players'));
+        return view('Admin.Player.create', compact('team','players'));
     }
 
     public function exist_team_player_store(Request $request, Teams $team)

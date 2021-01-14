@@ -57,7 +57,7 @@
                                         <td>{{ $t->points }}</td>
                                         <td>{{ $t->nrr }}</td>
                                         <td>
-{{--                                            <a class="btn btn-sm btn-outline-primary" href="/admin/groups/{{$t->team_id}}/teams">Squad</a>--}}
+                                            <a class="btn btn-sm btn-outline-primary" href="/admin/groups/{{$t->group_id}}/teams/{{$t->team_id}}/edit">Edit</a>
 {{--                                            <a class="btn btn-sm btn-outline-success" type="button"   data-toggle="modal" data-target="#exampleModalCenter" title="">Edit</a>--}}
                                             <form  id="team-form" method="post" style="display: inline-block" action="/admin/groups/{{$t->group_id}}/teams/{{$t->team_id}}">
                                                 @csrf

@@ -8,7 +8,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-6">
-                        <h3>Dashboard</h3>
+                        <h3>Schedule</h3>
                         <a style="float: right" class="btn btn-success btn-sm"
                            href="{{route('tournaments.schedules.create',$tournament->id)}}"><i class="fa fa-plus"></i>Add</a>
                     </div>

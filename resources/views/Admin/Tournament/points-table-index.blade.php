@@ -7,6 +7,8 @@
                 <div class="row">
                     <div class="col-6">
                         <h3>Points Table</h3>
+                        <a class="btn btn-success btn-sm " href="/admin/tournaments/{{$tournament->id}}/points-table/edit"><i
+                                class="cil-user-plus"></i> Update</a>
                     </div>
                     <div class="col-6">
                         <ol class="breadcrumb">

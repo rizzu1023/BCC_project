@@ -173,6 +173,7 @@ class LiveScoreController extends Controller
                 ]);
             }
         }
+
         foreach($request->team1 as $t1){
             MatchPlayers::create([
                 'match_id' => $m->match_id,
