@@ -18,22 +18,22 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/fontawesome.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/fontawesome.css')}}">
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/icofont.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/vendors/icofont.css')}}">
     <!-- Themify icon-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/themify.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/vendors/themify.css')}}">
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/flag-icon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/vendors/flag-icon.css')}}">
     <!-- Feather icon-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/feather-icon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/vendors/feather-icon.css')}}">
     <!-- Plugins css start-->
 {{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/prism.css')}}">--}}
     <!-- Plugins css Ends-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/todo.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/vendors/todo.css')}}">
     <!-- Bootstrap css-->
 
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/select2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/vendors/select2.css')}}">
 
 {{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/datatables.css')}}">--}}
 {{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/owlcarousel.css')}}">--}}
@@ -42,13 +42,13 @@
 
     <!-- Bootstrap css-->
 {{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/chartist.css')}}">--}}
-    <link rel="stylesheet" type="text/css"  href="{{asset('Assets/Admin/css/vendors/animate.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('Assets/Admin/css/vendors/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css"  href="{{asset('assets/Admin/css/vendors/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/Admin/css/vendors/bootstrap.css')}}">
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/style.css')}}">
-    <link id="color" rel="stylesheet" href="{{asset('Assets/Admin/css/color-1.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/style.css')}}">
+    <link id="color" rel="stylesheet" href="{{asset('assets/Admin/css/color-1.css')}}" media="screen">
     <!-- Responsive css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/responsive.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/Admin/css/responsive.css')}}">
     @yield('css')
 </head>
 
