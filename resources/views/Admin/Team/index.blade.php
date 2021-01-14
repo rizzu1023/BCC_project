@@ -75,7 +75,10 @@
                         <div class="row">
                             <div class="col-6">
                                 <h3>Teams</h3>
-                                <a class="btn btn-success btn-sm " href="{{ Route('teams.create') }}"><i class="cil-user-plus"></i> Add Team</a>
+                                <a class="btn btn-success btn-sm mr-2" href="{{ Route('teams.create') }}"><i class="cil-user-plus"></i> Add New Team</a>
+                                @if($tournament)
+                                <a class="btn btn-primary btn-sm " href="/admin/Tournament/{{$tournament->id}}"><i class="cil-user-plus"></i> Add Existing Team</a>
+                                @endif
                             </div>
                             <div class="col-6">
                                 <ol class="breadcrumb">
@@ -92,6 +95,7 @@
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
+                            @include('Admin.layouts.message')
                                 <div class="tables">
                                     <table class="table table-responsive-sm">
                                         <thead>
@@ -121,7 +125,7 @@
                                                           action="/admin/teams/{{$t->id}}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm"> Delete </button>
+                                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?')"> Delete </button>
                                                     </form>
                                                 </td>
 
