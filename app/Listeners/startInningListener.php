@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\startInningEvent;
-use App\Match;
+use App\Game;
 use App\MatchPlayers;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -48,7 +48,7 @@ class startInningListener
             ->where('player_id', $event->request->attacker_id)
             ->update(['bw_status' => 11]);
 
-        $match = Match::where('match_id',$event->request->match_id)
+        $match = Game::where('match_id',$event->request->match_id)
             ->where('tournament_id',$event->request->tournament)
             ->increment('status');
     }

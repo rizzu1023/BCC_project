@@ -7,7 +7,7 @@ use App\Http\Resources\MatchDetailResource;
 use App\Http\Resources\MatchPlayersResource;
 use App\Http\Resources\MatchTrackResource;
 use App\Http\Resources\PlayersResource;
-use App\Match;
+use App\Game;
 use App\MatchDetail;
 use App\MatchPlayers;
 use App\MatchTrack;
@@ -82,7 +82,7 @@ class MatchController extends Controller
         $day = strtoupper($dy);
 
 
-        $toss = Match::where('match_id', $match_id)->first();
+        $toss = Game::where('match_id', $match_id)->first();
         $toss_team = NULL;
         $choose = NULL;
         if ($toss) {
@@ -117,7 +117,7 @@ class MatchController extends Controller
 
     public function live($tournament_id, $match_id, $team1_id, $team2_id)
     {
-        $match = Match::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+        $match = Game::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
         if (!$match) {
             $match_status = 0;
             return [
@@ -130,8 +130,8 @@ class MatchController extends Controller
             if ($match_status == 4) {
                 $bowling_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament_id)->orderBy('updated_at', 'desc')->get();
 //                $batting_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
-                $match_detail = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
-                $match_won = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+                $match_detail = Game::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+                $match_won = Game::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
                 $won = $match_won->WON;
                 return [
                     'match_status' => $match_status,
@@ -218,7 +218,7 @@ class MatchController extends Controller
     {
         $isMatch = 'not_found';
         $match_status = null;
-        $match = Match::where('match_id', $match_id)->first();
+        $match = Game::where('match_id', $match_id)->first();
         if($match){
             if ($match->WON) {
                 $team_won = $match->WON->team_name;
@@ -234,12 +234,12 @@ class MatchController extends Controller
             $won_description = '';
 
 
-        $match = Match::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+        $match = Game::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
         if ($match) {
             $isMatch = true;
             $match_status = $match->status;
         }
-        $match_detail = Match::where('match_id', $match_id)->first();
+        $match_detail = Game::where('match_id', $match_id)->first();
         if ($match_detail) {
             $toss_winning_team = Teams::where('id',$match_detail->toss)->first();
             if ($match_detail->toss == $team1_id && $match_detail->choose == 'Bat') {
@@ -320,13 +320,13 @@ class MatchController extends Controller
     public function overs($tournament_id, $match_id, $team1_id, $team2_id)
     {
 
-        if (!Match::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first()) {
+        if (!Game::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament_id)->first()) {
             return [
                 'isMatch' => 'not_found',
             ];
         } else {
 
-            $match_detail = Match::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
+            $match_detail = Game::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
             if ($match_detail) {
                 if ($match_detail->toss == $team1_id && $match_detail->choose == 'Bat') {
                     $batting_team_id = $team1_id;

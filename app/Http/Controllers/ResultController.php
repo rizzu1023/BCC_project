@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Match;
+use App\Game;
 use App\MatchDetail;
 use App\MatchPlayers;
 use App\MatchTrack;
@@ -23,7 +23,7 @@ class ResultController extends Controller
 
     public function result_show($tournament_id,$match_id)
     {
-        $match = Match::where('tournament_id',$tournament_id)->where('match_id',$match_id)->first();
+        $match = Game::where('tournament_id',$tournament_id)->where('match_id',$match_id)->first();
         $match_detail = MatchDetail::where('tournament_id',$tournament_id)->where('match_id',$match_id)->get();
         $single_result = MatchPlayers::where('match_id',$match_id)->get();
         $team1_id = $match_detail['0']['team_id'];
@@ -41,7 +41,7 @@ class ResultController extends Controller
     public function result_destroy(Request $request){
         $result= MatchDetail::where('tournament_id',$request->tournament)->orderBy('match_id','asc')->get();
         $match_id = $request->match_id;
-        $match = Match::where('match_id',$match_id)->where('tournament_id',$request->tournament)->first();
+        $match = Game::where('match_id',$match_id)->where('tournament_id',$request->tournament)->first();
         $match->delete();
 
         $match_detail = MatchDetail::where('match_id',$match_id)->where('tournament_id',$request->tournament)->get();
@@ -75,7 +75,7 @@ class ResultController extends Controller
             }
         }
 
-        $match = Match::where('match_id',$request->match_id)->first();
+        $match = Game::where('match_id',$request->match_id)->first();
         $match->overs = $request->overs;
         $match->save();
 
@@ -85,7 +85,7 @@ class ResultController extends Controller
 
     public function update_toss(Request $request)
     {
-        $match = Match::where('match_id',$request->match_id)->first();
+        $match = Game::where('match_id',$request->match_id)->first();
         $match->toss = $request->toss;
         $match->save();
 
@@ -94,7 +94,7 @@ class ResultController extends Controller
 
     public function update_choose(Request $request)
     {
-        $match = Match::where('match_id',$request->match_id)->first();
+        $match = Game::where('match_id',$request->match_id)->first();
         $match->choose = $request->choose;
         $match->save();
 

@@ -23,8 +23,8 @@ class MatchPlayers extends Model
         return $this->belongsTo('App\Teams','team_id','id');
     }
 
-    public function Match(){
-        return $this->belongsTo('App\Match','match_id','match_id');
+    public function Game(){
+        return $this->belongsTo('App\Game','match_id','match_id');
     }
 
     public function MatchDetail(){

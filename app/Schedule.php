@@ -8,8 +8,8 @@ class Schedule extends Model
 {
     protected $guarded = [];
 
-    public function Match(){
-        return $this->hasOne('App\Match','match_id','id');
+    public function Game(){
+        return $this->hasOne('App\Game','match_id','id');
     }
 
     public function  MatchDetail(){

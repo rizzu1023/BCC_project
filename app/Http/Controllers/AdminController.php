@@ -9,7 +9,7 @@ use App\Teams;
 use App\Schedule;
 use App\Players;
 use App\MatchPlayers;
-use App\Match;
+use App\Game;
 use App\MatchDetail;
 use App\Tournament;
 

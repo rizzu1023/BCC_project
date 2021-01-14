@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Match;
+use App\Game;
 use App\Models\Group;
 use App\Models\GroupTeam;
 use App\PointsTable;
@@ -70,28 +70,28 @@ class PointsTableController extends Controller
      * @param Tournament $tournament
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-//    public function edit(Tournament $tournament)
-//    {
-//        $matches = Match::where('tournament_id',$tournament->id)->where('status','>=',4)->get();
-//        return view('Admin.Tournament.points-table-edit',compact('matches','tournament'));
-//    }
+    public function edit(Tournament $tournament)
+    {
+        $matches = Game::where('tournament_id',$tournament->id)->where('status','>=',4)->get();
+        return view('Admin.Tournament.points-table-edit',compact('matches','tournament'));
+    }
 
-//    public function match_selected(Tournament $tournament,Request $request)
-//    {
-//        $match = Match::where('tournament_id',$tournament->id)->where('match_id',$request->match_id)->first();
-//        $match_detail = $match->MatchDetail;
-//        $team1 = $match->MatchDetail[0]->Teams;
-//        $team2 = $match->MatchDetail[1]->Teams;
-//        if($match_detail[0]->wicket == 10)
-//            $all_out1 = true;
-//        else
-//            $all_out1 = false;
-//        if($match_detail[1]->wicket == 10)
-//            $all_out2 = true;
-//        else
-//            $all_out2 = false;
-//        return response()->json(['success' => true, 'match' => $match, 'match_detail' => $match_detail, 'team1' => $team1, 'team2' => $team2,'all_out1'=>$all_out1, 'all_out2'=> $all_out2,'tournament' => $tournament]);
-//    }
+    public function match_selected(Tournament $tournament,Request $request)
+    {
+        $match = Game::where('tournament_id',$tournament->id)->where('match_id',$request->match_id)->first();
+        $match_detail = $match->MatchDetail;
+        $team1 = $match->MatchDetail[0]->Teams;
+        $team2 = $match->MatchDetail[1]->Teams;
+        if($match_detail[0]->wicket == 10)
+            $all_out1 = true;
+        else
+            $all_out1 = false;
+        if($match_detail[1]->wicket == 10)
+            $all_out2 = true;
+        else
+            $all_out2 = false;
+        return response()->json(['success' => true, 'match' => $match, 'match_detail' => $match_detail, 'team1' => $team1, 'team2' => $team2,'all_out1'=>$all_out1, 'all_out2'=> $all_out2,'tournament' => $tournament]);
+    }
 
     public function calculate_nrr($total_runs_scored, $overs_faced, $wickets_gone, $total_runs_conceded, $total_overs_bowled, $wickets_taken, $total_overs)
     {

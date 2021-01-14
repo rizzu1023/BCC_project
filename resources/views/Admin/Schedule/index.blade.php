@@ -47,7 +47,7 @@
 
                                         <th scope="row">{{$s->match_no}}</th>
 
-                                        <td> @if($s->Match)
+                                        <td> @if($s->Game)
                                                 <a class="btn btn-dark btn-sm" href="/admin/LiveUpdate/{{$s->id}}/{{$s->tournament_id}}">Score</a>
                                             @else
                                                 <a class="btn btn-warning btn-sm" href="/admin/StartScore/{{$s->id}}">Start</a>

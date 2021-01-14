@@ -29,7 +29,7 @@ class ScheduleResource extends JsonResource
         $current_overball = 0;
         $required_balls = 0;
         $required_runs = 0;
-        if($this->Match['status'] == 3) {
+        if($this->Game['status'] == 3) {
             if ($this->MatchDetail['0']->isBatting == '1') {
                 $current_over = $this->MatchDetail['0']->over;
                 $current_overball = $this->MatchDetail['0']->overball;
@@ -37,7 +37,7 @@ class ScheduleResource extends JsonResource
                 $current_over = $this->MatchDetail['1']->over;
                 $current_overball = $this->MatchDetail['1']->overball;
             }
-            $total_over = $this->Match['overs'];
+            $total_over = $this->Game['overs'];
             $total_overball = 0;
 
             $required_over = $total_over - $current_over;
@@ -59,24 +59,24 @@ class ScheduleResource extends JsonResource
             $required_runs = ($fielding_team_score + 1) - $batting_team_score;
         }
 
-        $team = Teams::where('id',$this->Match['won'])->first();
+        $team = Teams::where('id',$this->Game['won'])->first();
         $won = $team['team_name'];
 
         $toss = null;
-        if($this->Match){
-            if($this->Match->Toss){
-                $toss = $this->Match->Toss['team_name'];
+        if($this->Game){
+            if($this->Game->Toss){
+                $toss = $this->Game->Toss['team_name'];
             }
         }
 
         return [
-            'status' => $this->Match['status'],
+            'status' => $this->Game['status'],
             'toss' => $toss,
-            'choose' => $this->Match['choose'],
+            'choose' => $this->Game['choose'],
             'balls_required' => $required_balls,
             'runs_required' => $required_runs,
             'won' => $won,
-            'description' => $this->Match['description'],
+            'description' => $this->Game['description'],
             'match_detail' => $this->MatchDetail,
             'id' => $this->id,
             'match_no' => $this->match_no,

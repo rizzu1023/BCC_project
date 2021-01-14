@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Match extends Model
+class Game extends Model
 {
-//    protected $fillable  = ['status'];
+    protected $table = 'games';
+
     protected $guarded = [];
 
     public function Teams(){

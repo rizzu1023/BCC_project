@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\MatchPlayersResource;
 use App\Http\Resources\StatsForOppositeTeamResource;
 use App\Http\Resources\StatsResource;
-use App\Match;
+use App\Game;
 use App\MatchPlayers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;

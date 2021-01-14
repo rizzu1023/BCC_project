@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Match;
+use App\Game;
 use App\MatchDetail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -27,11 +27,11 @@ class endInningListener
      */
     public function handle($event)
     {
-        $match1 = Match::where('match_id',$event->request->match_id)
+        $match1 = Game::where('match_id',$event->request->match_id)
             ->where('tournament_id',$event->request->tournament)
             ->increment('status');
 
-        $match = Match::where('match_id',$event->request->match_id)->first();
+        $match = Game::where('match_id',$event->request->match_id)->first();
 
         if($match->status == 2){
             $inning1 = MatchDetail::where('match_id',$event->request->match_id)

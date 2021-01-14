@@ -66,7 +66,7 @@ use App\Teams;
 use App\Schedule;
 use App\Players;
 use App\MatchPlayers;
-use App\Match;
+use App\Game;
 use App\MatchDetail;
 
 
@@ -79,7 +79,7 @@ class LiveScoreController extends Controller
                 ->from('tournaments')
                 ->where('user_id', auth()->user()->id);
         })->get();
-        $start = Match::all();
+        $start = Game::all();
         return view('Admin/LiveScore/index', compact('schedule', 'start'));
     }
 
@@ -101,7 +101,7 @@ class LiveScoreController extends Controller
     public function ScoreDetails(Request $request)
     {
 //        return $request->all();
-            $m = Match::create([
+            $m = Game::create([
             'match_id' => request('id'),
             'overs' => request('overs'),
             'tournament_id' => request('tournament_id'),
@@ -197,7 +197,7 @@ class LiveScoreController extends Controller
 
     public function LiveUpdateShow($id, $tournament)
     {
-        $matchs = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
+        $matchs = Game::where('match_id', $id)->where('tournament_id', $tournament)->first();
         $over = MatchTrack::where('match_id',$id)->where('tournament_id',$tournament)->latest()->get()->take(10);
         $over = $over->reverse();
         return view('Admin/LiveScore/show', compact('over','matchs'));
@@ -206,13 +206,13 @@ class LiveScoreController extends Controller
     public function LiveScoreCard($id, $tournament)
     {
 
-        $matchs = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
+        $matchs = Game::where('match_id', $id)->where('tournament_id', $tournament)->first();
 
         return view('Admin/LiveScore/scorecard', compact('matchs'));
     }
 
     public function MatchData($id, $tournament){
-        $data = Match::where('match_id', $id)->where('tournament_id', $tournament)->first();
+        $data = Game::where('match_id', $id)->where('tournament_id', $tournament)->first();
         return new MatchResource($data);
     }
 
