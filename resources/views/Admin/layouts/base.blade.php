@@ -43,7 +43,7 @@
     <!-- Bootstrap css-->
 {{--    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/chartist.css')}}">--}}
     <link rel="stylesheet" type="text/css"  href="{{asset('Assets/Admin/css/vendors/animate.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/vendors/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ secure_asset('Assets/Admin/css/vendors/bootstrap.css')}}">
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('Assets/Admin/css/style.css')}}">
     <link id="color" rel="stylesheet" href="{{asset('Assets/Admin/css/color-1.css')}}" media="screen">
