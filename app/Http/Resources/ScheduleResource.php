@@ -59,10 +59,11 @@ class ScheduleResource extends JsonResource
 
                 $required_runs = ($fielding_team_score + 1) - $batting_team_score;
             }
-        }
+
 
         $team = Teams::where('id', $this->Game['won'])->first();
         $won = $team['team_name'];
+        }
 
         $toss = null;
         if ($this->Game) {
