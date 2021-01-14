@@ -121,12 +121,23 @@
                                                                                        href="/admin/teams/{{$t->id}}"> Details </a>
                                                     <a class="btn btn-success btn-sm"
                                                        href="/admin/teams/{{$t->id}}/edit"> Edit </a>
-                                                    <form style="display:inline-block" method="POST"
-                                                          action="/admin/teams/{{$t->id}}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?')"> Delete </button>
-                                                    </form>
+                                                    @if($tournament)
+                                                        <form style="display:inline-block" method="POST" action="{{route('Tournament_destroy_Team')}}">
+                                                            @csrf
+                                                            <input type="hidden" value="{{$t->id}}" name="team_id"/>
+                                                            <input type="hidden" value="{{$tournament->id}}" name="tournament_id"/>
+                                                            <button class="btn btn-danger btn-sm">Remove</button>
+                                                        </form>
+                                                    @else
+                                                        <form style="display:inline-block" method="POST"
+                                                              action="/admin/teams/{{$t->id}}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this team?')"> Delete </button>
+                                                        </form>
+
+                                                    @endif
+
                                                 </td>
 
                                             </tr>

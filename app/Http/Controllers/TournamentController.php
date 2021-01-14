@@ -81,9 +81,7 @@ class TournamentController extends Controller
     public function show(Tournament $Tournament)
     {
         $id = auth()->user()->id;
-        $Team = Teams::whereHas('tournaments',function($query) use($id){
-            $query->where('user_id',$id);
-        })->get();
+        $Team = Teams::where('user_id',$id)->get();
         $id = $Tournament->id;
         $tournament_team = Teams::whereHas('tournaments',function($query) use($id){
             $query->where('tournament_id',$id);
