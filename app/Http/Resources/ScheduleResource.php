@@ -16,7 +16,7 @@ class ScheduleResource extends JsonResource
     public function toArray($request)
     {
         $date = $this->dates;
-        $d    = new \DateTime($date);
+        $d = new \DateTime($date);
         $dy = $d->format('D');
         $day = strtoupper($dy);
 
@@ -29,42 +29,44 @@ class ScheduleResource extends JsonResource
         $current_overball = 0;
         $required_balls = 0;
         $required_runs = 0;
-        if($this->Game['status'] == 3) {
-            if ($this->MatchDetail['0']->isBatting == '1') {
-                $current_over = $this->MatchDetail['0']->over;
-                $current_overball = $this->MatchDetail['0']->overball;
-            } else {
-                $current_over = $this->MatchDetail['1']->over;
-                $current_overball = $this->MatchDetail['1']->overball;
+        if ($this->Game) {
+            if ($this->Game['status'] == 3) {
+                if ($this->MatchDetail['0']->isBatting == '1') {
+                    $current_over = $this->MatchDetail['0']->over;
+                    $current_overball = $this->MatchDetail['0']->overball;
+                } else {
+                    $current_over = $this->MatchDetail['1']->over;
+                    $current_overball = $this->MatchDetail['1']->overball;
+                }
+                $total_over = $this->Game['overs'];
+                $total_overball = 0;
+
+                $required_over = $total_over - $current_over;
+                $required_overball = $total_overball - $current_overball;
+
+                $required_balls = ($required_over * 6) + $required_overball;
+
+                //calculating runs
+                $fielding_team_score = 0;
+                $batting_team_score = 0;
+                if ($this->MatchDetail['0']->isBatting == '1') {
+                    $batting_team_score = $this->MatchDetail['0']->score;
+                    $fielding_team_score = $this->MatchDetail['1']->score;
+                } else {
+                    $batting_team_score = $this->MatchDetail['1']->score;
+                    $fielding_team_score = $this->MatchDetail['0']->score;
+                }
+
+                $required_runs = ($fielding_team_score + 1) - $batting_team_score;
             }
-            $total_over = $this->Game['overs'];
-            $total_overball = 0;
-
-            $required_over = $total_over - $current_over;
-            $required_overball = $total_overball - $current_overball;
-
-            $required_balls = ($required_over * 6) + $required_overball;
-
-            //calculating runs
-            $fielding_team_score = 0;
-            $batting_team_score = 0;
-            if ($this->MatchDetail['0']->isBatting == '1') {
-                $batting_team_score = $this->MatchDetail['0']->score;
-                $fielding_team_score = $this->MatchDetail['1']->score;
-            } else {
-                $batting_team_score = $this->MatchDetail['1']->score;
-                $fielding_team_score = $this->MatchDetail['0']->score;
-            }
-
-            $required_runs = ($fielding_team_score + 1) - $batting_team_score;
         }
 
-        $team = Teams::where('id',$this->Game['won'])->first();
+        $team = Teams::where('id', $this->Game['won'])->first();
         $won = $team['team_name'];
 
         $toss = null;
-        if($this->Game){
-            if($this->Game->Toss){
+        if ($this->Game) {
+            if ($this->Game->Toss) {
                 $toss = $this->Game->Toss['team_name'];
             }
         }
