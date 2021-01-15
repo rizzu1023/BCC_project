@@ -29,7 +29,18 @@ class ScheduleResource extends JsonResource
         $current_overball = 0;
         $required_balls = 0;
         $required_runs = 0;
+        $status = NULL;
+        $description = NULL;
+        $choose = NULL;
+        $won = NULL;
+        $toss = NULL;
         if ($this->Game) {
+
+            $status = $this->Game['status'];
+            $description = $this->Game['description'];
+            $choose = $this->Game['choose'];
+            $toss = $this->Game->Toss['team_name'];
+
             if ($this->Game['status'] == 3) {
                 if ($this->MatchDetail['0']->isBatting == '1') {
                     $current_over = $this->MatchDetail['0']->over;
@@ -64,25 +75,15 @@ class ScheduleResource extends JsonResource
         $team = Teams::where('id', $this->Game['won'])->first();
         $won = $team['team_name'];
         }
-        else{
-            $won = NULL;
-        }
-
-        $toss = null;
-        if ($this->Game) {
-            if ($this->Game->Toss) {
-                $toss = $this->Game->Toss['team_name'];
-            }
-        }
 
         return [
-            'status' => $this->Game['status'],
+            'status' => $status,
             'toss' => $toss,
-            'choose' => $this->Game['choose'],
+            'choose' => $choose,
             'balls_required' => $required_balls,
             'runs_required' => $required_runs,
             'won' => $won,
-            'description' => $this->Game['description'],
+            'description' => $description,
             'match_detail' => $this->MatchDetail,
             'id' => $this->id,
             'match_no' => $this->match_no,
