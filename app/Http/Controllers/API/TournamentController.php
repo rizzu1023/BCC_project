@@ -3,7 +3,15 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\GroupTeamResource;
+use App\Http\Resources\PointsTableResource;
+use App\Http\Resources\ScheduleResource;
+use App\Http\Resources\TeamResource;
 use App\Http\Resources\TournamentResource;
+use App\Models\Group;
+use App\Models\GroupTeam;
+use App\Schedule;
+use App\Teams;
 use App\Tournament;
 use Illuminate\Http\Request;
 
@@ -19,48 +27,35 @@ class TournamentController extends Controller
         return TournamentResource::collection(Tournament::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function schedules(Tournament $tournament)
     {
-        //
+        $schedule = Schedule::where('tournament_id',$tournament->id)->get();
+        return ScheduleResource::collection($schedule);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function teams(Tournament $tournament)
     {
-        //
+        $tournament_id = $tournament->id;
+        $team = Teams::whereHas('tournaments',function($query) use($tournament_id){
+            $query->where('tournament_id',$tournament_id);
+        })->get();
+        return TeamResource::collection($team);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    public function points_table(Tournament $tournament)
     {
-        //
+        $groups = Group::where('tournament_id',$tournament->id)->orderBy('group_name','asc')->get();
+        $points_table = collect();
+        foreach ($groups as $g){
+            $teams = GroupTeam::where('tournament_id',$g->tournament_id)->where('group_id',$g->id)->orderBy('points','desc')->orderBy('nrr','desc')->get();
+            $t = GroupTeamResource::collection($teams);
+            $points_table->push(['group_name' => $g->group_name, 'teams' => $t]);
+        }
+        return PointsTableResource::collection($points_table);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

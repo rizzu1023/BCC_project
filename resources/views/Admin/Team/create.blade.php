@@ -26,7 +26,6 @@
             <div class="card">
                 <div class="card-body">
                     <div class="form-body">
-                    <!-- <form method="POST" action="{{route('Team.store')}}"> -->
                         <form id="comment" action="{{route('teams.store')}}" method="POST" >
                             @csrf
                             <div class="form-group">
@@ -79,7 +78,7 @@
 
                 type:'POST',
 
-                url:'{{Route('Team.store')}}',
+{{--                url:'{{Route('team.store')}}',--}}
 
                 //    data:{team_code:team_code, team_name:team_name, team_title:team_title},
                 data: $(this).serialize(),
