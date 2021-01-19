@@ -18,6 +18,7 @@ use App\Teams;
 use App\Tournament;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class MatchController extends Controller
 {
@@ -349,13 +350,15 @@ class MatchController extends Controller
                     $bowling_team_id = $team1_id;
                 }
             }
-            $overs = MatchTrack::selectRaw('Min(attacker_id) as attacker_id,over as over_no, SUM(run) as runs, SUM(wickets) as wickets')
+
+            $overs = MatchTrack::select('over', DB::raw('Min(attacker_id) as attacker_id, SUM(wickets) as wickets,SUM(run) as runs'))
                 ->groupBy('over')
                 ->where('match_id', $match_id)
                 ->where('team_id', $bowling_team_id)
                 ->where('tournament_id', $tournament->id)
                 ->orderBy('over', 'desc')
                 ->get();
+
 
             $over_detail = MatchTrack::select('over', 'action', 'run', 'overball')
                 ->where('match_id', $match_id)
@@ -369,17 +372,29 @@ class MatchController extends Controller
             $over_details = collect($over_detail)->groupBy('over');
             $result = collect();
             foreach ($result_collection as $rc) {
-                $r = collect($rc)->merge(['over_detail' => $over_details[$rc->over_no]]);
+                $r = collect($rc)->merge(['over_detail' => $over_details[$rc->over]]);
                 $result->push($r);
             }
 
-            $overs2 = MatchTrack::selectRaw('Min(attacker_id) as attacker_id,over as over_no, SUM(run) as runs, SUM(wickets) as wickets')
+//            return $result_collection;
+
+//            $overs2 = MatchTrack::selectRaw('Min(attacker_id) as attacker_id, SUM(run) as runs, SUM(wickets) as wickets ',)
+//                ->groupBy('over')
+//                ->where('match_id', $match_id)
+//                ->where('team_id', $batting_team_id)
+//                ->where('tournament_id', $tournament->id)
+//                ->orderBy('over', 'desc')
+//                ->get();
+
+            $overs2 = MatchTrack::select('over', DB::raw('Min(attacker_id) as attacker_id, SUM(wickets) as wickets,SUM(run) as runs'))
                 ->groupBy('over')
                 ->where('match_id', $match_id)
                 ->where('team_id', $batting_team_id)
                 ->where('tournament_id', $tournament->id)
                 ->orderBy('over', 'desc')
                 ->get();
+
+
 
             $over_detail2 = MatchTrack::select('over', 'action', 'run', 'overball')
                 ->where('match_id', $match_id)
@@ -393,7 +408,7 @@ class MatchController extends Controller
             $over_details2 = collect($over_detail2)->groupBy('over');
             $result2 = collect();
             foreach ($result_collection2 as $rc) {
-                $r = collect($rc)->merge(['over_detail' => $over_details2[$rc->over_no]]);
+                $r = collect($rc)->merge(['over_detail' => $over_details2[$rc->over]]);
                 $result2->push($r);
             }
 

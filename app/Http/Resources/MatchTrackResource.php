@@ -16,7 +16,7 @@ class MatchTrackResource extends JsonResource
     {
         return [
             'attacker_id' => $this->Players,
-            'over_no' => $this->over_no,
+            'over' => $this->over,
             'runs' => $this->runs,
             'wickets' => $this->wickets,
         ];
