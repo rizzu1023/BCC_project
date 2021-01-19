@@ -1,19 +1,18 @@
 <?php
 
-
 namespace Database\Factories;
 
-use App\Teams;
+use App\Models\Model;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TeamsFactory extends Factory
+class ScheduleFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Teams::class;
+    protected $model = Model::class;
 
     /**
      * Define the model's default state.
@@ -23,11 +22,7 @@ class TeamsFactory extends Factory
     public function definition()
     {
         return [
-            'team_code' => $this->faker->countryCode,
-            'team_name' => $this->faker->country,
-            'team_title' => 0,
-            'user_id' => 1,
+            //
         ];
     }
 }
-

@@ -22,9 +22,9 @@ class PlayersFactory extends Factory
     public function definition()
     {
         return [
-            'player_id' => $this->faker->word,
-            'player_name' => $this->faker->name,
-            'player_role' => $this->faker->word,
+            'player_id' => $this->faker->numberBetween($min=1000,$max=9999),
+            'player_name' => $this->faker->state,
+            'player_role' => $this->faker->colorName,
             'user_id' => 1,
         ];
     }

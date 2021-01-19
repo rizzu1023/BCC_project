@@ -25,6 +25,13 @@
                     <li class="sidebar-list">
                         <a class="nav-link  " href="/admin/teams"><i data-feather="users"></i><span>Teams</span></a>
                     </li>
+                    @auth
+                        @if(auth()->user()->is_super_admin)
+                    <li class="sidebar-list">
+                        <a class="nav-link  " href="/admin/feedbacks"><i data-feather="book"></i><span>Feedbacks</span></a>
+                    </li>
+                            @endif
+                    @endauth
 
 
 

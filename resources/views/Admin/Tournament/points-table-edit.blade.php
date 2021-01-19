@@ -69,7 +69,7 @@
                                         <div class="form-group col-3">
                                             <label class="" for="overs_played1">Overs Played</label>
                                             <div class="">
-                                                <input class="form-control" id="over_played1" type="number"
+                                                <input class="form-control" id="over_played1" type="text"
                                                          required="" name="overs_played1">
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>
@@ -120,7 +120,7 @@
                                         <div class="form-group col-3">
                                             <label class="" for="overs_played2">Overs Played</label>
                                             <div class="">
-                                                <input class="form-control" id="over_played2" type="number"
+                                                <input class="form-control" id="over_played2" type="text"
                                                        required="" name="overs_played2">
                                                 <div class="valid-feedback">Looks good!</div>
                                             </div>

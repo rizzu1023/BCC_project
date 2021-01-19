@@ -1,4 +1,3 @@
-// Risk factor chart
 var options4 = {
   series: [70],
   chart: {

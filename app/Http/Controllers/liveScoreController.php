@@ -56,6 +56,7 @@ use App\Events\wideThreeRunEvent;
 use App\Events\wideTwoRunEvent;
 use App\Events\wideZeroRunEvent;
 use App\Http\Resources\MatchDetailResource;
+use App\Http\Resources\MatchPlayersResource;
 use App\Http\Resources\MatchResource;
 use App\MatchTrack;
 use Illuminate\Support\Facades\DB;
@@ -197,10 +198,41 @@ class LiveScoreController extends Controller
 
     public function LiveUpdateShow($id, $tournament)
     {
-        $matchs = Game::where('match_id', $id)->where('tournament_id', $tournament)->first();
         $over = MatchTrack::where('match_id',$id)->where('tournament_id',$tournament)->latest()->get()->take(10);
         $over = $over->reverse();
-        return view('Admin/LiveScore/show', compact('over','matchs'));
+
+        $game = Game::where('match_id', $id)->where('tournament_id', $tournament)->first();
+
+        if($game->MatchDetail['0']->isBatting == 1){
+            $batting_team_id = $game->MatchDetail['0']->team_id;
+            $bowling_team_id = $game->MatchDetail['1']->team_id;
+
+            $isOver = $game->MatchDetail['0']->isOver;
+            $current_over = $game->MatchDetail['0']->over;
+        }
+        else{
+            $batting_team_id = $game->MatchDetail['1']->team_id;
+            $bowling_team_id = $game->MatchDetail['0']->team_id;
+
+            $isOver = $game->MatchDetail['1']->isOver;
+            $current_over = $game->MatchDetail['1']->over;
+        }
+
+        //check for opening
+        $opening = true;
+        foreach($game->MatchPlayers as $mp){
+            if($mp->team_id == $batting_team_id)
+                if($mp->bt_status == 10 || $mp->bt_status == 11)
+                    $opening = false;
+        }
+
+        $current_batsman = MatchPlayers::whereIn('bt_status', ['10', '11'])->where('team_id', $batting_team_id)->where('match_id', $id)->where('tournament_id', $tournament)->orderBy('bt_order','asc')->get();
+        $current_bowler = MatchPlayers::where('bw_status', '11')->where('team_id', '<>', $batting_team_id)->where('match_id', $id)->where('tournament_id', $tournament)->first();
+
+        $notout_batsman = MatchPlayers::whereIn('bt_status', ['DNB','12'])->where('team_id', $batting_team_id)->where('match_id', $id)->where('tournament_id', $tournament)->get();
+
+
+        return view('Admin/LiveScore/show', compact('over','game','batting_team_id','bowling_team_id','opening','isOver','current_over','current_batsman','current_bowler','notout_batsman'));
     }
 
     public function LiveScoreCard($id, $tournament)
@@ -290,7 +322,7 @@ class LiveScoreController extends Controller
             // $returnHTML = view('Admin/LiveScore/show')->with('userjobs', $userjobs)->render();
             // return response()->json(array('success' => true, 'html'=>$returnHTML));
 
-             return response()->json(['message'=>'done']);
+             return response()->json(['message'=>'success','value' => $request->value]);
 //            return response()->json(compact('userjobs'), 200);
         }
     }

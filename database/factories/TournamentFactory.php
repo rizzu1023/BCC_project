@@ -1,19 +1,18 @@
 <?php
 
-
 namespace Database\Factories;
 
-use App\Teams;
+use App\Tournament;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TeamsFactory extends Factory
+class TournamentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Teams::class;
+    protected $model = Tournament::class;
 
     /**
      * Define the model's default state.
@@ -23,11 +22,10 @@ class TeamsFactory extends Factory
     public function definition()
     {
         return [
-            'team_code' => $this->faker->countryCode,
-            'team_name' => $this->faker->country,
-            'team_title' => 0,
+            'tournament_name' => 'CWC19',
             'user_id' => 1,
+            'start_date' => '2010/10/10',
+            'end_date' => '2020/10/10',
         ];
     }
 }
-

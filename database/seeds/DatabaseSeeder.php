@@ -11,8 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
-        // $this->call(TeamsSeeder::class);
-        $this->call(PlayersSeeder::class);
+        \App\Tournament::factory()->create();
+        \App\Teams::factory(10)->create();
+        \App\Players::factory(50)->create();
+
     }
 }

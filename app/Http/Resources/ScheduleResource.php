@@ -39,7 +39,7 @@ class ScheduleResource extends JsonResource
             $status = $this->Game['status'];
             $description = $this->Game['description'];
             $choose = $this->Game['choose'];
-            $toss = $this->Game->Toss['team_name'];
+            $toss = $this->Game->Toss['team_code'];
 
             if ($this->Game['status'] == 3) {
                 if ($this->MatchDetail['0']->isBatting == '1') {
@@ -73,7 +73,8 @@ class ScheduleResource extends JsonResource
 
 
         $team = Teams::where('id', $this->Game['won'])->first();
-        $won = $team['team_name'];
+            if($team)
+                $won = $team['team_code'];
         }
 
         return [

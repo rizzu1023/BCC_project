@@ -19,6 +19,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/Tournament/addTeam','TournamentController@Tournament_add_Team')->name('Tournament_add_Team');
     Route::post('/Tournament/destroyTeam','TournamentController@Tournament_destroy_Team')->name('Tournament_destroy_Team');
 
+    Route::resource('/feedbacks','FeedbackController');
+
     Route::resource('/teams','TeamController');
 //    Route::post('/Team/filter','TeamController@teamFilter')->name('teamFilter');  //Team
 //    Route::resource('/Players','PlayersController');    //Player

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FowResource;
 use App\Http\Resources\MatchDetailResource;
 use App\Http\Resources\MatchPlayersResource;
 use App\Http\Resources\MatchTrackResource;
@@ -61,14 +62,14 @@ class MatchController extends Controller
         return (float)number_format((float)$rrr, 2, '.', '');
     }
 
-    public function match_info(Tournament $tournament, $match_id, $team1_id, $team2_id)
+    public function match_info(Tournament $tournament, $match_id)
     {
-        $team1 = Teams::select('id', 'team_code', 'team_name')->where('id', $team1_id)->first();
-        $team2 = Teams::select('id', 'team_code', 'team_name')->where('id', $team2_id)->first();
+        $schedule = Schedule::where('id',$match_id)->where('tournament_id',$tournament->id)->first();
+//        $team1 = Teams::select('id', 'team_code', 'team_name')->where('id', $team1_id)->first();
+//        $team2 = Teams::select('id', 'team_code', 'team_name')->where('id', $team2_id)->first();
 
-//        $team1_players = Players::whereHas('teams', function($query) use($team1_id){
-//            $query->where('team_id', $team1_id);
-//        })->get();
+        $team1 = $schedule->Teams1;
+        $team2 = $schedule->Teams2;
 
         $tournament = Tournament::select('tournament_name')->where('id', $tournament->id)->first();
 
@@ -115,7 +116,7 @@ class MatchController extends Controller
         ];
     }
 
-    public function match_live(Tournament $tournament, $match_id, $team1_id, $team2_id)
+    public function match_live(Tournament $tournament, $match_id)
     {
         $match = Game::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
         if (!$match) {
@@ -214,9 +215,16 @@ class MatchController extends Controller
 
     }
 
-    public function match_scorecard(Tournament $tournament, $match_id, $team1_id, $team2_id)
+    public function match_scorecard(Tournament $tournament, $match_id)
     {
+        $schedule = Schedule::where('id',$match_id)->where('tournament_id',$tournament->id)->first();
+
+        $team1_id = $schedule->Teams1->id;
+        $team2_id = $schedule->Teams2->id;
+
+
         $isMatch = 'not_found';
+        $toss_winning_team = NULL;
         $match_status = null;
         $match = Game::where('match_id', $match_id)->first();
         if($match){
@@ -285,8 +293,8 @@ class MatchController extends Controller
             $team2_extras = MatchDetail::select('no_ball', 'wide', 'byes', 'legbyes')->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
             $team2_score = MatchDetail::select('score', 'wicket', 'over', 'overball')->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
             $team2_fow = MatchTrack::select('player_id', 'score', 'wickets', 'over', 'overball')->where('action', 'wicket')->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->orderBy('wickets', 'asc')->get();
-
         }
+
 
         return [
             'isMatch' => $isMatch,
@@ -302,7 +310,7 @@ class MatchController extends Controller
                 'bowler' => MatchPlayersResource::collection($team1_bowler),
                 'extras' => $team1_extras,
                 'score' => $team1_score,
-                'fow' => $team1_fow,
+                'fow' => FowResource::collection($team1_fow),
             ],
             'team2' => [
                 'detail' => $team2_detail,
@@ -311,14 +319,19 @@ class MatchController extends Controller
                 'bowler' => MatchPlayersResource::collection($team2_bowler),
                 'extras' => $team2_extras,
                 'score' => $team2_score,
-                'fow' => $team2_fow,
+                'fow' => FowResource::collection($team2_fow),
             ],
         ];
 
     }
 
-    public function match_overs(Tournament $tournament, $match_id, $team1_id, $team2_id)
+    public function match_overs(Tournament $tournament, $match_id)
     {
+        $schedule = Schedule::where('id',$match_id)->where('tournament_id',$tournament->id)->first();
+
+        $team1_id = $schedule->Teams1->id;
+        $team2_id = $schedule->Teams2->id;
+
 
         if (!Game::where('status', '>', 0)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first()) {
             return [
