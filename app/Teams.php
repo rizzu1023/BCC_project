@@ -22,7 +22,7 @@ class Teams extends Model
     }
 
     public function Tournaments(){
-        return $this->belongsToMany('App\Tournament','team_tournament','team_id','tournament_id')->withPivot(['position'])->withTimestamps();;
+        return $this->belongsTo('App\Tournament','id','tournament_id');
     }
 
     public function Players(){

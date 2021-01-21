@@ -25,7 +25,7 @@ class TeamsFactory extends Factory
         return [
             'team_code' => $this->faker->countryCode,
             'team_name' => $this->faker->country,
-            'team_title' => 0,
+            'tournament_id' => 1,
             'user_id' => 1,
         ];
     }

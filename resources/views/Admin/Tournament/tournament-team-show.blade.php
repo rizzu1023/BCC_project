@@ -33,7 +33,7 @@
                                 </button>
                             </div>
                         @endif
-                        <h1 class="title1 text-center">{{$Team['team_name']}}</h1>
+                        <h1 class="title1 text-center">{{$team['team_name']}}</h1>
                         <div class="">
 
                             <table class="table table-sm table-striped" style="margin-top:50px;">

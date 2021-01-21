@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Batting;
 use App\Bowling;
-use App\Http\Controllers\Controller;
 use App\MatchPlayers;
 use App\Players;
 use App\Teams;

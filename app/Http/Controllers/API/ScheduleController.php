@@ -18,7 +18,7 @@ class ScheduleController extends Controller
      */
     public function index(Tournament $tournament)
     {
-        $schedule = Schedule::where('tournament_id',$tournament->id)->get();
+        $schedule = Schedule::where('tournament_id',$tournament->id)->orderBy('dates','asc')->orderBy('times','asc')->get();
         return ScheduleResource::collection($schedule);
     }
 

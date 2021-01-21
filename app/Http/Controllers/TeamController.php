@@ -77,13 +77,4 @@ class TeamController extends Controller
         }
     }
 
-//    public function teamFilter(Request $request){
-//            $id = request('tournament_id');
-//            // return $id;
-//            $tournament = Tournament::all();
-//            $team = Teams::whereHas('tournaments',function($query) use($id){
-//                    $query->where('tournament_id',$id);
-//                })->get();
-//            return view('Admin/Team/index',compact('tournament','team'));
-//    }
 }

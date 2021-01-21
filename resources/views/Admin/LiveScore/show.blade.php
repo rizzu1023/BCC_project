@@ -580,55 +580,56 @@
                             {{--                                    <input type="hidden"  name="feedback_id" value="1">--}}
                             {{--                                </form>--}}
                             {{--                            </div>--}}
-                            <button id="dot" type="submit" value="8" class="bt">0</button>
-                            <button id="single" type="submit" value="1" class="bt">1</button>
-                            <button id="double" type="submit" value="2" class="bt">2</button>
-                            <button id="triple" type="submit" value="3" class="bt">3</button>
-                            <button id="four" type="submit" value="4" class="bt">4</button>
-                            <button id="five" type="submit" value="5" class="bt ">5</button>
-                            <button id="six" type="submit" value="6" class="bt ">6</button>
-                            <br>
-                            <br>
-                            <button id="wide" type="submit" value="wd" class="bt ">Wide</button>
-                            <button id="noball" type="submit" value="nb" class="bt">nb</button>
-                            {{--                            <br><br>--}}
-                            {{--                            <button id="wicket_button btn btn-sm btn-danger" onclick="reset_form()">Wicket</button>--}}
-                            <a id="wicket_button" class="btn btn-sm btn-danger" onclick="reset_form()">Wicket</a>
-                            <button id="undo" type="submit" value="undo" class="bt">Undo</button>
-
-                            <br><br>
-                            <button id="strike_rotate" type="submit" value="sr" class="bt ">Strike Rotate</button>
-                            <div id="retired_hurt" class="text-center btn btn-primary">Retired Hurt</div>
-
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(8)" >0</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(1)" >1</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(2)" >2</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(3)" >3</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(4)" >4</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(5)" >5</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(6)" >6</a>
 
                             <br><br>
 
-
-                            <button id="noball" type="submit" value="nb1" class="bt">nb + 1</button>
-                            <button id="noball" type="submit" value="nb2" class="bt">nb + 2</button>
-                            <button id="noball" type="submit" value="nb3" class="bt">nb + 3</button>
-                            <button id="noball" type="submit" value="nb4" class="bt">nb + 4</button>
-                            <button id="noball" type="submit" value="nb5" class="bt">nb + 5</button>
-                            <button id="noball" type="submit" value="nb6" class="bt">nb + 6</button>
-                            <br><br>
-                            <button id="wide1" type="submit" value="wd1" class="bt">Wide + 1</button>
-                            <button id="wide2" type="submit" value="wd2" class="bt">Wide + 2</button>
-                            <button id="wide3" type="submit" value="wd3" class="bt">Wide + 3</button>
-                            <button id="wide4" type="submit" value="wd4" class="bt">Wide + 4</button>
-
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('wd')" >wd</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb')" >nb</a>
+                            <a id="wicket_button" class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="reset_form()">Wicket</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('undo')" >undo</a>
 
                             <br><br>
 
-                            <button id="legbyes1" type="submit" value="lb1" class="bt">1 lb</button>
-                            <button id="legbyes2" type="submit" value="lb2" class="bt">2 lb</button>
-                            <button id="legbyes3" type="submit" value="lb3" class="bt">3 lb</button>
-                            <button id="legbyes4" type="submit" value="lb4" class="bt">4 lb</button>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('sr')" >Strike Rotate</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" id="retired_hurt">Retired Hurt</a>
+
                             <br><br>
 
-                            <button id="byes1" type="submit" value="b1" class="bt">1 b</button>
-                            <button id="byes2" type="submit" value="b2" class="bt">2 b</button>
-                            <button id="byes3" type="submit" value="b3" class="bt">3 b</button>
-                            <button id="byes4" type="submit" value="b4" class="bt">4 b</button>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb1')">nb + 1</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb2')">nb + 2</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb3')">nb + 3</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb4')">nb + 4</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb5')">nb + 5</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb6')">nb + 6</a>
+
+                            <br><br>
+
+                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1" onclick="livescore_function('wd1')">wd + 1</a>
+                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1" onclick="livescore_function('wd2')">wd + 2</a>
+                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1" onclick="livescore_function('wd3')">wd + 3</a>
+                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1" onclick="livescore_function('wd4')">wd + 4</a>
+
+                            <br><br>
+
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('lb1')">1 lb</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('lb2')">2 lb</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('lb3')">3 lb</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('lb4')">4 lb</a>
+
+                            <br><br>
+
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('b1')">1 b</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('b2')">2 b</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('b3')">3 b</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('b4')">4 b</a>
+
                             <br><br>
 
 
@@ -650,7 +651,11 @@
 
 @section('js')
     <script>
+
+
         $(document).ready(function () {
+
+
                 {{--var opening = {!! str_replace("'", "\'", json_encode($opening)) !!};--}}
             var isOver = {!! str_replace("'", "\'", json_encode($isOver)) !!};
             var total_over = {!! str_replace("'", "\'", json_encode($game->overs)) !!};
@@ -884,62 +889,7 @@
             });
         });
 
-
-        //for live update
-        $(".bt").on('click', function (e) {
-
-            e.preventDefault();
-            var bt_team_id = "{{$batting_team_id}}";
-            var bw_team_id = "{{$bowling_team_id}}";
-            var match_id = $("input[name=match_id]").val();
-            var tournament = $("input[name=tournament]").val();
-            var attacker_id = $("input[name=attacker_id]").val();
-            var player_id = $("input[name=player_id]:checked").val();
-            var value = $(this).val();
-
-            $.ajax({
-                type: "POST",
-                url: "{{route('LiveUpdate')}}",
-                // headers: {'X-Requested-With': 'XMLHttpRequest'},
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    player_id: player_id,
-                    attacker_id: attacker_id,
-                    bt_team_id: bt_team_id,
-                    bw_team_id: bw_team_id,
-                    match_id: match_id,
-                    tournament: tournament,
-                    value: value
-                },
-                success: function (data) {
-                    $('#newBatsmanForm').trigger('reset');
-                    location.reload(true);
-
-
-                    // if(data.value === '2' || data.value === '4' || data.value === '6'){
-                    //     var team_score = $('#team-score').text();
-                    //     $('#team-score').text(parseInt(team_score) + parseInt(data.value));
-                    //
-                    //     var team_overball = $('#team-overball').text();
-                    //     $('#team-overball').text(parseInt(team_overball) + 1);
-                    //
-                    //     var batsman_runs = $('#batsman-runs').text();
-                    //     $('#batsman-runs').text(parseInt(batsman_runs) + parseInt(data.value));
-                    //
-                    //     var batsman_balls = $('#batsman-balls').text();
-                    //     $('#batsman-balls').text(parseInt(batsman_balls) + 1);
-                    //
-                    //     var bowler_runs = $('#bowler-runs').text();
-                    //     $('#bowler-runs').text(parseInt(bowler_runs) + parseInt(data.value));
-                    //
-                    //     var bowler_balls = $('#bowler-overball').text();
-                    //     $('#bowler-overball').text(parseInt(bowler_balls) + 1);
-                    // }
-                    // else{
-                    // }
-                }
-            });
-        });
+         mt-1
 
 
         $('.bt').on('click', function () {
@@ -953,6 +903,60 @@
             } else {
                 $('#select_new_batsman_input').prop('required', true);
             }
+        }
+
+        function livescore_function(value){
+
+                var bt_team_id = "{{$batting_team_id}}";
+                var bw_team_id = "{{$bowling_team_id}}";
+                var match_id = $("input[name=match_id]").val();
+                var tournament = $("input[name=tournament]").val();
+                var attacker_id = $("input[name=attacker_id]").val();
+                var player_id = $("input[name=player_id]:checked").val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{route('LiveUpdate')}}",
+                    // headers: {'X-Requested-With': 'XMLHttpRequest'},
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        player_id: player_id,
+                        attacker_id: attacker_id,
+                        bt_team_id: bt_team_id,
+                        bw_team_id: bw_team_id,
+                        match_id: match_id,
+                        tournament: tournament,
+                        value: value
+                    },
+                    success: function (data) {
+                        $('#newBatsmanForm').trigger('reset');
+                        location.reload(true);
+
+
+                        // if(data.value === '2' || data.value === '4' || data.value === '6'){
+                        //     var team_score = $('#team-score').text();
+                        //     $('#team-score').text(parseInt(team_score) + parseInt(data.value));
+                        //
+                        //     var team_overball = $('#team-overball').text();
+                        //     $('#team-overball').text(parseInt(team_overball) + 1);
+                        //
+                        //     var batsman_runs = $('#batsman-runs').text();
+                        //     $('#batsman-runs').text(parseInt(batsman_runs) + parseInt(data.value));
+                        //
+                        //     var batsman_balls = $('#batsman-balls').text();
+                        //     $('#batsman-balls').text(parseInt(batsman_balls) + 1);
+                        //
+                        //     var bowler_runs = $('#bowler-runs').text();
+                        //     $('#bowler-runs').text(parseInt(bowler_runs) + parseInt(data.value));
+                        //
+                        //     var bowler_balls = $('#bowler-overball').text();
+                        //     $('#bowler-overball').text(parseInt(bowler_balls) + 1);
+                        // }
+                        // else{
+                        // }
+                    }
+                });
+
         }
     </script>
 @endsection

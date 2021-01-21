@@ -14,12 +14,12 @@ class CreateTeamTournamentTable extends Migration
     public function up()
     {
         Schema::create('team_tournament', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('team_id');
-            $table->unsignedBigInteger('tournament_id');
-            $table->string('position')->default('--');
-            $table->timestamp('deleted_at')->nullable();
-            $table->timestamps();
+//            $table->bigIncrements('id');
+//            $table->unsignedBigInteger('team_id');
+//            $table->unsignedBigInteger('tournament_id');
+//            $table->string('position')->default('--');
+//            $table->timestamp('deleted_at')->nullable();
+//            $table->timestamps();
         });
     }
 

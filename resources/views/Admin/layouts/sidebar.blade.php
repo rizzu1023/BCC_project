@@ -22,9 +22,9 @@
                     <li class="sidebar-list">
                         <a class="nav-link  " href="/admin/player"><i data-feather="users"></i><span>Players</span></a>
                     </li>
-                    <li class="sidebar-list">
-                        <a class="nav-link  " href="/admin/teams"><i data-feather="users"></i><span>Teams</span></a>
-                    </li>
+{{--                    <li class="sidebar-list">--}}
+{{--                        <a class="nav-link  " href="/admin/teams"><i data-feather="users"></i><span>Teams</span></a>--}}
+{{--                    </li>--}}
                     @auth
                         @if(auth()->user()->is_super_admin)
                     <li class="sidebar-list">

@@ -21,7 +21,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::resource('/feedbacks','FeedbackController');
 
-    Route::resource('/teams','TeamController');
+//    Route::resource('/teams','TeamController');
+
 //    Route::post('/Team/filter','TeamController@teamFilter')->name('teamFilter');  //Team
 //    Route::resource('/Players','PlayersController');    //Player
 //    Route::post('/Players/filter','PlayersController@playerFilter')->name('playerFilter');
@@ -59,8 +60,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/LiveUpdate','LiveScoreController@LiveUpdate')->name('LiveUpdate');
 
 
-    Route::resource('tournaments.schedules','ScheduleController');
-    Route::resource('tournaments.teams','TeamTournamentController');
+    Route::resource('tournaments.schedules','TournamentScheduleController');
+    Route::resource('tournaments.teams', 'TournamentTeamController');
     Route::resource('teams.players','TeamPlayerController');
 
     Route::resource('tournaments.groups','TournamentGroupController')->shallow();

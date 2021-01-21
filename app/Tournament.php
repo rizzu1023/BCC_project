@@ -13,6 +13,6 @@ class Tournament extends Model
     protected $guarded = [];
 
     public function Teams(){
-        return $this->belongsToMany('App\Teams','team_tournament','tournament_id','team_id')->withPivot(['position'])->withTimestamps();
+        return $this->hasMany('App\Teams','tournament_id','id');
     }
 }

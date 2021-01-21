@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <div class="card-body">
                         <div class="form-body">
-                            <form method="POST" action="{{route('teams.update',$team->id)}}">
+                            <form method="POST" action="/admin/tournaments/{{$tournament->id}}/teams/{{$team->id}}">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -36,10 +36,6 @@
                                 <div class="form-group">
                                     <label for="field1">Team Name</label>
                                     <input type="text" class="form-control" id="field1" name="team_name" value="{{$team['team_name']}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="field1">Team Title</label>
-                                    <input type="text" class="form-control" id="field1" name="team_title" value="{{$team['team_title']}}">
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block">Update</button>
 

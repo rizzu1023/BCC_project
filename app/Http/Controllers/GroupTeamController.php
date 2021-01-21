@@ -33,10 +33,7 @@ class GroupTeamController extends Controller
      */
     public function create(Group $group)
     {
-        $tournament_id = $group->tournament_id;
-        $teams = Teams::whereHas('tournaments', function ($query) use ($tournament_id) {
-            $query->where('tournament_id', $tournament_id);
-        })->get();
+        $teams = Teams::where('tournament_id',$group->tournament->id)->get();
         return view('Admin.Group.group-team-create', compact('group', 'teams'));
     }
 

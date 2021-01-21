@@ -17,7 +17,7 @@ class CreateTeamsTable extends Migration
             $table->bigIncrements('id');
             $table->string('team_code');
             $table->string('team_name');
-            $table->integer('team_title')->nullable();
+            $table->integer('tournament_id');
             $table->integer('user_id');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

@@ -151,7 +151,7 @@ class MatchController extends Controller
             $bowling_team = MatchDetail::where('isBatting', 0)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
             $target = $bowling_team->score;
 
-            $batting_team = MatchDetail::where('isBatting', 1)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
+            $batting_team  = MatchDetail::where('isBatting', 1)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
             if ($batting_team) {
                 $match_detail = new MatchDetailResource($batting_team);
                 $batsman = MatchPlayers::whereIn('bt_status', ['10', '11'])->where('team_id', $batting_team->team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->orderBy('bt_order','asc')->get();
@@ -197,6 +197,12 @@ class MatchController extends Controller
             $crr = $this->calculate_crr($match_detail->score,$match_detail->over,$match_detail->overball);
             $rrr = $this->calculate_rrr($remaining_runs,$remaining_balls);
 
+            //TODO :: only when inning breaks
+            if($match_status == 2){
+                $inning_break_team  = MatchDetail::where('isBatting', 0)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
+                $match_detail = new MatchDetailResource($inning_break_team);
+            }
+
             return [
 //                'isMatch' => true,
                 'partnership' => $partnership,
@@ -228,6 +234,7 @@ class MatchController extends Controller
         $toss_winning_team = NULL;
         $match_status = null;
         $match = Game::where('match_id', $match_id)->first();
+
         if($match){
             if ($match->WON) {
                 $team_won = $match->WON->team_name;
@@ -296,6 +303,11 @@ class MatchController extends Controller
             $team2_fow = MatchTrack::select('player_id', 'score', 'wickets', 'over', 'overball')->where('action', 'wicket')->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->orderBy('wickets', 'asc')->get();
         }
 
+        if(is_null($team1_fow)) $team1_fow = null;
+        else $team1_fow = FowResource::collection($team1_fow);
+        if(is_null($team2_fow)) $team2_fow = null;
+        else $team2_fow = FowResource::collection($team2_fow);
+
 
         return [
             'isMatch' => $isMatch,
@@ -311,7 +323,7 @@ class MatchController extends Controller
                 'bowler' => MatchPlayersResource::collection($team1_bowler),
                 'extras' => $team1_extras,
                 'score' => $team1_score,
-                'fow' => FowResource::collection($team1_fow),
+                'fow' => $team1_fow,
             ],
             'team2' => [
                 'detail' => $team2_detail,
@@ -320,7 +332,7 @@ class MatchController extends Controller
                 'bowler' => MatchPlayersResource::collection($team2_bowler),
                 'extras' => $team2_extras,
                 'score' => $team2_score,
-                'fow' => FowResource::collection($team2_fow),
+                'fow' => $team2_fow,
             ],
         ];
 

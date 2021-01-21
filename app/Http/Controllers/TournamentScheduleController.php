@@ -9,7 +9,7 @@ use App\Tournament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class ScheduleController extends Controller
+class TournamentScheduleController extends Controller
 {
 
     public function index(Tournament $tournament)

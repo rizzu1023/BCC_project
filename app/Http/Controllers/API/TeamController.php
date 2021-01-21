@@ -35,13 +35,12 @@ class TeamController extends Controller
         $this->validate($request,[
             'team_code' => 'required|unique:teams',
             'team_name' => 'required',
-            'team_title' => 'required|numeric',
         ]);
 
         return Teams::create([
             'team_code' => $request['team_code'],
             'team_name' => $request['team_name'],
-            'team_title' => $request['team_title'],
+            'team_title' => $request->tournament_id,
         ]);
     }
 

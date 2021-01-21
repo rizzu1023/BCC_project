@@ -24,9 +24,10 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="card">
+                @include('Admin.layouts.message')
                 <div class="card-body">
                     <div class="form-body">
-                        <form id="comment" action="{{route('teams.store')}}" method="POST" >
+                        <form id="comment" action="/admin/tournaments/{{$tournament->id}}/teams" method="POST" >
                             @csrf
                             <div class="form-group">
                                 <label for="field1">Team Code</label>
@@ -36,10 +37,12 @@
                                 <label for="field1">Team Name</label>
                                 <input type="text" class="form-control" id="field1" name="team_name" placeholder="eg. Mumbai Indians">
                             </div>
+
                             <div class="form-group">
-                                <label for="field1">Team Title</label>
-                                <input type="text" class="form-control" id="field1" name="team_title" placeholder="eg .2">
+                                <label for="field1">Tournament</label>
+                                <input type="text" class="form-control" id="field1" placeholder="eg .2" value="{{$tournament->tournament_name}}" readonly>
                             </div>
+
                             <button type="submit" class="btn btn-success btn-submit">Submit</button>
                         </form>
                     </div>
@@ -78,7 +81,7 @@
 
                 type:'POST',
 
-{{--                url:'{{Route('team.store')}}',--}}
+                {{--                url:'{{Route('team.store')}}',--}}
 
                 //    data:{team_code:team_code, team_name:team_name, team_title:team_title},
                 data: $(this).serialize(),
