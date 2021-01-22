@@ -21,10 +21,7 @@ class TournamentScheduleController extends Controller
 
     public function create(Tournament $tournament)
     {
-        $tournament_id = $tournament->id;
-        $teams = Teams::whereHas('tournaments',function($query) use($tournament_id){
-            $query->where('tournament_id',$tournament_id)->where('user_id',auth()->user()->id);
-        })->get();
+        $teams = Teams::where('tournament_id',$tournament->id)->get();
         return view('Admin.Schedule.create',compact('teams','tournament'));
     }
 
