@@ -44,7 +44,7 @@ class MatchController extends Controller
             return $crr = 0;
         }
         elseif($overs == 0){
-            return $runs * 6;
+            return ($runs/$balls) * 6;
         }
         else{
              $crr = $runs / $over;

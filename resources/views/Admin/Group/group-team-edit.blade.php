@@ -73,7 +73,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-3" for="validationCustom08">NRR</label>
                                     <div class="col-sm-9">
-                                        <input class="form-control" id="validationCustom08" type="number" required="" name="nrr" value="{{$team['nrr']}}">
+                                        <input class="form-control" id="validationCustom08" type="text" required="" name="nrr" value="{{$team['nrr']}}">
                                         <div class="valid-feedback">Looks good!</div>
                                     </div>
                                 </div>

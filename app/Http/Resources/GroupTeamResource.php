@@ -14,6 +14,9 @@ class GroupTeamResource extends JsonResource
      */
     public function toArray($request)
     {
+
+        $formated_nrr = (float)number_format((float)$this->nrr, 2, '.', '');
+
         return [
             'id' => $this->id,
             'team' => $this->Teams,
@@ -23,7 +26,7 @@ class GroupTeamResource extends JsonResource
             'lost' => $this->lost,
             'draw' => $this->draw,
             'points' => $this->points,
-            'nrr' => $this->nrr,
+            'nrr' => $formated_nrr,
             'tournament_id' => $this->tournament_id
         ];
     }

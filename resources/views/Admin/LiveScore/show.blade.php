@@ -889,7 +889,6 @@
             });
         });
 
-         mt-1
 
 
         $('.bt').on('click', function () {

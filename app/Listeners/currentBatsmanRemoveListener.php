@@ -128,7 +128,7 @@ class currentBatsmanRemoveListener
             $got_out_batsman->bt_status = 0;
             $got_out_batsman->wicket_type = $event->request->wicket_type;
             $got_out_batsman->wicket_primary = $event->request->wicket_primary;
-            if($event->request->wicket_scondary)
+            if($event->request->wicket_secondary)
             $got_out_batsman->wicket_secondary = $event->request->wicket_secondary;
             else
             $got_out_batsman->wicket_secondary = '--';
