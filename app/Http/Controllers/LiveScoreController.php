@@ -231,8 +231,8 @@ class LiveScoreController extends Controller
 
         $notout_batsman = MatchPlayers::whereIn('bt_status', ['DNB','12'])->where('team_id', $batting_team_id)->where('match_id', $id)->where('tournament_id', $tournament)->get();
 
-
         return view('Admin/LiveScore/show', compact('over','game','batting_team_id','bowling_team_id','opening','isOver','current_over','current_batsman','current_bowler','notout_batsman'));
+
     }
 
     public function LiveScoreCard($id, $tournament)

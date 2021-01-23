@@ -135,9 +135,8 @@
                             <button class="btn btn-success btn-md startInningButton">Start 1st Inning</button>
                         @elseif($game->status == '2')
                             <button class="btn btn-success btn-md startInningButton">Start 2nd Inning</button>
-                            <button id="undo" type="submit" value="reverse_inning"
-                                    class="bt mt-1 btn btn-primary btn-sm">Undo
-                            </button>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function('reverse_inning')" >Undo</a>
+
                         @endif
 
 
@@ -146,9 +145,8 @@
 
                     @if($game->status == '4')
                         {{--                <h4>xyz won by 20 runs</h4>--}}
-                        <button id="undo" type="submit" value="reverse_inning" class="bt mt-1 btn btn-sm btn-primary">
-                            Undo
-                        </button>
+                        <a class="btn btn-secondary btn-square btn-md mt-1" onclick="livescore_function('reverse_inning')" >Undo</a>
+                        <a href="/admin/result/{{$game->tournament_id}}/{{$game->id}}/show" class="btn btn-primary btn-square btn-md mt-1">Result</a>
                 @endif
 
                 @if($game->status == '1' || $game->status == '3')

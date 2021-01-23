@@ -75,6 +75,9 @@ class ScheduleResource extends JsonResource
         $team = Teams::where('id', $this->Game['won'])->first();
             if($team)
                 $won = $team['team_code'];
+            else{
+                $won = '0';
+            }
         }
 
         return [

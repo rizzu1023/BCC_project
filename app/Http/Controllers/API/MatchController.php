@@ -241,7 +241,7 @@ class MatchController extends Controller
                 $won_description = $match->description;
             }
             else
-                $team_won = '';
+                $team_won = '0';
                 $won_description = '';
 
         }

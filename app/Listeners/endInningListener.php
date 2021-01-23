@@ -62,17 +62,22 @@ class endInningListener
                 ->where('isBatting',0)
                 ->first();
 
+
             if($inning1->score > $inning0->score){
                 $wickets = 10 - $inning1->wicket;
                 $match->won = $inning1->team_id;
                 $result = "won by $wickets wickets";
                 $match->description = $result;
             }
-            else{
+            else if($inning1->score < $inning0->score){
                 $runs = $inning0->score - $inning1->score;
                 $match->won = $inning0->team_id;
                 $result = "won by $runs runs";
                 $match->description = $result;
+            }
+            else{
+                $match->won = 0;
+                $match->description = "Match Draw";
             }
             $match->save();
 

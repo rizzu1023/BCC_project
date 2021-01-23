@@ -39,7 +39,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 //    Route::get('/BrowseResult', 'ResultController@BrowseResult')->name('BrowseResult');
     Route::post('/Post_BrowseResult', 'ResultController@Post_BrowseResult')->name('Post_BrowseResult');
 
-    Route::get('/tournaments/{tournament}/results','ScheduleController@results');
+    Route::get('/tournaments/{tournament}/results','TournamentScheduleController@results');
     Route::get('/result/{tournament_id}/{match_id}/show', 'ResultController@result_show');
     Route::delete('/result', 'ResultController@result_destroy')->name('result.destroy');
 
