@@ -24,7 +24,7 @@
         <div class="container-fluid">
             <div class="card">
                     <div class="card-body">
-                        <h1 class="title1 text-center">{{$player['player_name']}}</h1>
+                        <h1 class="title1 text-center">{{$player['first_name']}} {{$player['last_name']}}</h1>
 
                         <div class="">
                             <form action="/admin/player/add-in-team" method="post">
@@ -67,8 +67,8 @@
                         <div class="">
 
                             <table class="table table-sm table-striped" style="margin-top:50px;">
-                                <thead>
-                                <tr class="bg-dark">
+                                <thead >
+                                <tr class="">
                                     <th scope="col">Personal Information</th>
                                     <th scope="col"></th>
                                 </tr>
@@ -76,27 +76,31 @@
                                 <tbody>
                                 <tr>
                                     <td>Born</td>
-                                    <td>August 25, 1998</td>
+                                    <td>{{$player['dob']}}</td>
                                 </tr>
                                 <tr>
                                     <td>Age</td>
                                     <td>20</td>
                                 </tr>
                                 <tr>
+                                    <td>ID</td>
+                                    <td>{{$player['player_id']}}</td>
+                                </tr>
+                                <tr>
                                     <td>Role</td>
-                                    <td>{{$player['player_role']}}</td>
+                                    <td>{{$player['role']}}</td>
                                 </tr>
                                 <tr>
                                     <td>Bowling Style</td>
-                                    <td>Right handed</td>
+                                    <td>{{$player['batting_style']}}</td>
                                 </tr>
                                 <tr>
                                     <td>Bowling Style</td>
-                                    <td>Right Arm</td>
+                                    <td>{{$player['bowling_style']}}</td>
                                 </tr>
-                                <tr>
-                                    <td>Teams</td>
-                                </tr>
+{{--                                <tr>--}}
+{{--                                    <td>Teams</td>--}}
+{{--                                </tr>--}}
                                 </tbody>
                             </table>
                         </div>
@@ -106,7 +110,7 @@
 
                             <table class="table table-sm table-striped" style="margin-top:50px;">
                                 <thead>
-                                <tr class="bg-dark">
+                                <tr class="">
                                     <th scope="col">Batting</th>
                                     <th scope="col"></th>
                                 </tr>
@@ -172,7 +176,7 @@
 
                             <table class="table table-sm table-striped" style="margin-top:50px;">
                                 <thead>
-                                <tr class="bg-dark">
+                                <tr class="">
                                     <th scope="col">Bowling</th>
                                     <th scope="col"></th>
                                 </tr>

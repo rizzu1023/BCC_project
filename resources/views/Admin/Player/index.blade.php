@@ -46,8 +46,8 @@
 
                                         <th scope="row">{{$i}}</th>
                                         <td>{{$p->player_id}}</td>
-                                        <td>{{$p->player_name}}</td>
-                                        <td>{{$p->player_role}}</td>
+                                        <td>{{$p->first_name}} {{$p->last_name}}</td>
+                                        <td>{{$p->role}}</td>
                                         <td>
                                             <a class="btn btn-warning btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}">Detail</a>
                                             <a class="btn btn-success btn-sm" href="/admin/teams/{{$team->id}}/players/{{$p->id}}/edit">Edit</a>

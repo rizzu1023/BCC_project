@@ -16,8 +16,13 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('player_id')->unique();
-            $table->string('player_name');
-            $table->string('player_role');
+            $table->string('image_path')->default('default.png');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('role');
+            $table->string('batting_style');
+            $table->string('bowling_style')->nullable();
+            $table->date('dob')->nullable();
             $table->integer('user_id');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

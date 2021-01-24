@@ -28,6 +28,9 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="card">
+                <div class="card-header">
+                    @include('Admin.layouts.message')
+                </div>
                 <div class="card-body">
                     <div class="table-responsive product-table">
                         <table class="display dataTable" id="basic-1">
@@ -45,13 +48,13 @@
                             @foreach($players as $p)
                                 <tr id="{{$p->id}}">
                                     <td>{{$loop->iteration}}</td>
-                                                                        <td class="text-center"><img src="{{ asset("Assets/Admin/images/ecommerce/product-table-1.png") }}" alt="img not found"></td>
+                                    <td class="text-center"><img src="{{ asset("Assets/Admin/images/ecommerce/product-table-1.png") }}" alt="img not found"></td>
                                     <td>
                                         <h6> {{$p->player_id}}</h6>
                                         {{--                    <span>Interchargebla lens Digital Camera with APS-C-X Trans CMOS Sens</span>--}}
                                     </td>
-                                    <td>{{$p->player_name}}</td>
-                                    <td>{{$p->player_role}}</td>
+                                    <td>{{$p->first_name}} {{$p->last_name}}</td>
+                                    <td>{{$p->role}}</td>
                                     <td>
                                         <a class="btn btn-warning btn-sm" href="/admin/player/{{$p->id}}">Details</a>
                                         <a class="btn btn-success btn-sm" href="/admin/player/{{$p->id}}/edit">Edit</a>

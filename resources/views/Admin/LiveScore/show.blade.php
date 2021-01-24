@@ -73,7 +73,7 @@
                                                     @foreach($game->MatchPlayers as $mp)
                                                         @if($mp->team_id == $batting_team_id)
                                                             <option
-                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}
+                                                                value="{{$mp->player_id}}">{{$mp->Players->first_name}} {{$mp->Players->last_name}}
                                                             </option>
                                                         @endif
                                                     @endforeach
@@ -86,7 +86,7 @@
                                                     @foreach($game->MatchPlayers as $mp)
                                                         @if($mp->team_id == $batting_team_id)
                                                             <option
-                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}
+                                                                value="{{$mp->player_id}}">{{$mp->Players->first_name}} {{$mp->Players->last_name}}
                                                             </option>
                                                         @endif
                                                     @endforeach
@@ -104,7 +104,7 @@
                                                     @foreach($game->MatchPlayers as $mp)
                                                         @if($mp->team_id == $bowling_team_id)
                                                             <option
-                                                                value="{{$mp->player_id}}">{{$mp->Players->player_name}}
+                                                                value="{{$mp->player_id}}">{{$mp->Players['first_name']}} {{$mp->Players['last_name']}}
                                                             </option>
                                                         @endif
                                                     @endforeach
@@ -177,7 +177,7 @@
                                                             @if($mp->team_id == $bowling_team_id)
                                                                 @if($mp->bw_status != 11)
                                                                     <option
-                                                                        value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                                        value="{{$mp->player_id}}">{{$mp->Players->first_name}} {{$mp->Players->last_name}}</option>
                                                                 @endif
                                                             @endif
                                                         @endforeach
@@ -241,7 +241,7 @@
                                                             @if($mp->team_id == $bowling_team_id)
                                                                 @if($mp->bw_status == '11')
                                                                     <option selected
-                                                                            value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                                            value="{{$mp->player_id}}">{{$mp->Players->first_name}} {{$mp->Players->last_name}}</option>
                                                                 @endif
                                                             @endif
                                                         @endforeach
@@ -256,7 +256,7 @@
                                                         @foreach($game->MatchPlayers as $mp)
                                                             @if($mp->team_id == $batting_team_id)
                                                                 @if($mp->bt_status == '11')
-                                                                    <option selected value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                                    <option selected value="{{$mp->player_id}}">{{$mp->Players->first_name}} {{$mp->Players->last_name}}</option>
                                                                 @endif
                                                             @endif
                                                         @endforeach
@@ -275,7 +275,7 @@
                                                         @foreach($game->MatchPlayers as $mp)
                                                             @if($mp->team_id == $bowling_team_id)
                                                                 <option selected
-                                                                        value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                                        value="{{$mp->player_id}}">{{$mp->Players->first_name}} {{$mp->Players->last_name}}</option>
                                                             @endif
                                                         @endforeach
                                                     </select>
@@ -289,7 +289,7 @@
                                                         @foreach($game->MatchPlayers as $mp)
                                                             @if($mp->team_id == $bowling_team_id)
                                                                 <option
-                                                                    value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                                    value="{{$mp->player_id}}">{{$mp->Players->first_name}} {{$mp->Players->last_name}}</option>
                                                             @endif
                                                         @endforeach
                                                     </select>
@@ -305,7 +305,7 @@
                                                             @if($mp->team_id == $batting_team_id)
                                                                 @if($mp->bt_status == 11 || $mp->bt_status == 10)
                                                                     <option
-                                                                        value="{{$mp->player_id}}">{{$mp->Players->player_name}}</option>
+                                                                        value="{{$mp->player_id}}">{{$mp->Players->first_name}} {{$mp->Players->last_name}}</option>
                                                                 @endif
                                                             @endif
                                                         @endforeach
@@ -368,7 +368,7 @@
                                                         <option disabled selected>Select</option>
                                                         @foreach($notout_batsman as $new_batsman)
                                                                     <option
-                                                                        value="{{$new_batsman->player_id}}">{{$new_batsman->Players->player_name}}</option>
+                                                                        value="{{$new_batsman->player_id}}">{{$new_batsman->Players->first_name}} {{$new_batsman->Players->last_name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -430,7 +430,7 @@
                                                     required>
                                                 <option selected disabled>Select</option>
                                                   @foreach($current_batsman as $batsman)
-                                                            <option value="{{$batsman->player_id}}">{{$batsman->Players->player_name}}</option>
+                                                            <option value="{{$batsman->player_id}}">{{$batsman->Players->first_name}} {{$batsman->Players->last_name}}</option>
                                                  @endforeach
                                             </select>
                                         </div>
@@ -444,7 +444,7 @@
                                                 <option disabled selected>Select</option>
                                                 @foreach($notout_batsman as $new_batsman)
                                                             <option
-                                                                value="{{$new_batsman->player_id}}">{{$new_batsman->Players->player_name}}</option>
+                                                                value="{{$new_batsman->player_id}}">{{$new_batsman->Players->first_name}} {{$new_batsman->Players->last_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -487,7 +487,7 @@
                             @csrf
                             <table class="table">
                                 <thead>
-                                <tr class="bg-dark">
+                                <tr class="bg-light">
                                     <th>Batsman</th>
                                     <th>R</th>
                                     <th>B</th>
@@ -500,7 +500,7 @@
                                 @foreach($current_batsman as $batsman)
                                         <tr>
                                             <td><input type="radio" id="player_id" name="player_id" value="{{$batsman->player_id}}"
-                                                 @if($batsman->bt_status==11) checked @endif> {{$batsman->Players->player_name}}
+                                                 @if($batsman->bt_status==11) checked @endif> {{$batsman->Players->first_name}} {{$batsman->Players->last_name}}
                                             </td>
                                             <input type="hidden" name="team_id" value="{{$batsman->team_id}}">
                                             <td id="batsman-runs">{{$batsman->bt_runs}}</td>
@@ -516,7 +516,7 @@
 
                             <table class="table table-responsive-sm">
                                 <thead>
-                                <tr class="bg-dark">
+                                <tr class="bg-light">
                                     <th>Bowler</th>
                                     <th>O</th>
                                     <th>M</th>
@@ -526,7 +526,7 @@
                                 </thead>
                                 <tbody>
                                         <tr>
-                                            <td>{{$current_bowler->Players->player_name}}</td>
+                                            <td>{{$current_bowler->Players->first_name}} {{$current_bowler->Players->last_name}}</td>
                                             <input type="hidden" value="{{$current_bowler->player_id}}" name="attacker_id">
                                             <td><span id="bowler-over">{{$current_bowler->bw_over}}</span>.<span
                                                     id="bowler-overball">{{$current_bowler->bw_overball}}</span></td>

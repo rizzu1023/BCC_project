@@ -56,7 +56,7 @@
                             <option disabled selected>Add in Team</option>
                             @foreach($players as $p)
                                 <option
-                                    value="{{$p->id}}">{{$p->player_name}}
+                                    value="{{$p->id}}">{{$p->first_name}} {{$p->last_name}}
                                 </option>
                             @endforeach
                         </select>

@@ -12,7 +12,8 @@
                     <div class="col-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/admin/dashboard"> <i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item "><a href="/admin/player">Players</a> </li>
+                            <li class="breadcrumb-item active">Create</li>
                             {{--              <li class="breadcrumb-item active">Product list</li>--}}
                         </ol>
                     </div>
@@ -22,6 +23,9 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="card">
+                <div class="card-header">
+                    @include('Admin.layouts.message')
+                </div>
                 <div class="card-body">
 
                     <div class="form-body">
@@ -29,16 +33,46 @@
                             @csrf
                             <div class="form-group">
                                 <label for="field1">Player Id</label>
-                                <input type="text" class="form-control" id="field1" name="player_id" placeholder="eg. MR">
+                                <input type="text" class="form-control" id="field1" name="player_id" required>
                             </div>
                             <div class="form-group">
-                                <label for="field1">Player Name</label>
-                                <input type="text" class="form-control" id="field1" name="player_name" placeholder="eg. Virat Kohli">
+                                <label for="field1">First Name</label>
+                                <input type="text" class="form-control" id="field1" name="first_name" required>
                             </div>
                             <div class="form-group">
-                                <label for="field1">Player Role</label>
-                                <input type="text" class="form-control" id="field1" name="player_role" placeholder="eg Batsman">
+                                <label for="field1">Last Name</label>
+                                <input type="text" class="form-control" id="field1" name="last_name" required>
                             </div>
+                            <div class="form-group">
+                                    <label class="col-form-label">Player Role</label>
+                                    <select class="form-control" name="role" required="" >
+                                        <option selected="" disabled="" value="">Choose...</option>
+                                        <option>Batsman</option>
+                                        <option>WK-Batsman</option>
+                                        <option>Bowler</option>
+                                        <option>Bowling Allrounder</option>
+                                        <option>Batting Allrounder</option>
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Batting Style</label>
+                                <select class="form-control" name="batting_style" required="" >
+                                    <option selected="" disabled="" value="">Choose...</option>
+                                    <option>Right Hand Batsman</option>
+                                    <option>Left Hand Batsman</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Bowling Style (optional)</label>
+                                <select class="form-control" name="bowling_style" required="" >
+                                    <option selected="" disabled="" value="">Choose...</option>
+                                    <option>Right-arm fast</option>
+                                    <option>Left-arm fast</option>
+                                    <option>Right-arm legbreak</option>
+                                    <option>Left-arm legbreak</option>
+                                </select>
+                            </div>
+
 
                             @include('Admin.layouts.errors')
                             <button type="submit" class="btn btn-success btn-block">Add Player</button>

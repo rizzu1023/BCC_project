@@ -30,13 +30,13 @@
 								  <a class="btn btn-success btn-sm" href="/admin/Batting/{{$b->id}}/edit">Edit</a>
 								  </td>
 								  <th scope="row">{{$i}}</th>
-								  <td>{{$b->Players->player_name}}</td>
+								  <td>{{$b->Players->first_name}} {{$b->Players->last_name}}</td>
 								  <td>{{$b->bt_matches}}</td>
 								  <td>{{$b->bt_innings}}</td>
 								  <td>{{$b->bt_balls}}</td>
 								  <td>{{$b->bt_fours}}</td>
 								  <td>{{$b->Players->Teams->team_name}}</td>
-								
+
 								</tr>
                                 @php($i++)
                             @endforeach

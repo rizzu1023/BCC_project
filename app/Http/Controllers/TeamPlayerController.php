@@ -33,18 +33,42 @@ class TeamPlayerController extends Controller
 
     public function store(Request $request, Teams $team)
     {
-        $data = request()->validate([
+        $data = $this->validate($request,[
             'player_id' => 'required',
-            'player_name' => 'required',
-            'player_role' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'required',
+            'batting_style' => 'required',
+            'bowling_style' => '',
+            'team_id' => 'required',
         ]);
 
-        $player = Players::create([
-            'player_id' => $request->player_id,
-            'player_name' => $request->player_name,
-            'player_role' => $request->player_role,
-            'user_id' => auth()->user()->id,
+        $this->validate($request,[
+            'player_id' => 'required|unique:players',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'required',
+            'batting_style' => 'required',
+            'bowling_style' => '',
+            'team_id' => 'required',
+        ]);
 
+        if($request['image_path'])
+            $image_path = $request['image_path'];
+        else
+            $image_path = 'default.png';
+
+
+         $player = Players::create([
+             'player_id' => $request['player_id'],
+             'image_path' => $image_path,
+             'first_name' => $request['first_name'],
+             'last_name' => $request['last_name'],
+             'role' => $request['role'],
+             'batting_style' => $request['batting_style'],
+             'bowling_style' => $request['bowling_style'],
+             'dob' => $request['dob'],
+             'user_id' => auth()->user()->id,
         ]);
 //        $player = Players::find($request->player_id);
         $player->Teams()->syncWithoutDetaching($team);

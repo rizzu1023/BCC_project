@@ -34,14 +34,43 @@
                                 <div>{{ $errors->first('player_id')}}</div>
                             </div>
                             <div class="form-group">
-                                <label for="field1">Player Name</label>
-                                <input type="text" class="form-control" id="field1" name="player_name" value="{{$player['player_name']}}">
-                                <div>{{ $errors->first('player_name')}}</div>
+                                <label for="field1">First Name</label>
+                                <input type="text" class="form-control" id="field1" name="first_name" value="{{$player['first_name']}}">
+                                <div>{{ $errors->first('first_name')}}</div>
                             </div>
                             <div class="form-group">
-                                <label for="field1">Player Role</label>
-                                <input type="text" class="form-control" id="field1" name="player_role" value="{{$player['player_role']}}">
-                                <div>{{ $errors->first('player_role')}}</div>
+                                <label for="field1">Last Name</label>
+                                <input type="text" class="form-control" id="field1" name="last_name" value="{{$player['last_name']}}">
+                                <div>{{ $errors->first('last_name')}}</div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Player Role</label>
+                                <select class="form-control" name="role" required="" >
+                                    <option selected="" value="{{$player->role}}">{{$player->role}}</option>
+                                    <option>Batsman</option>
+                                    <option>WK-Batsman</option>
+                                    <option>Bowler</option>
+                                    <option>Bowling Allrounder</option>
+                                    <option>Batting Allrounder</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Batting Style</label>
+                                <select class="form-control" name="batting_style" required="" >
+                                    <option selected=""  value="{{$player->batting_style}}">{{$player->batting_style}}</option>
+                                    <option>Right Hand Batsman</option>
+                                    <option>Left Hand Batsman</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">Bowling Style (optional)</label>
+                                <select class="form-control" name="bowling_style" required="" >
+                                    <option selected=""  value="{{$player->bowling_style}}">{{$player->bowling_style}}</option>
+                                    <option>Right-arm fast</option>
+                                    <option>Left-arm fast</option>
+                                    <option>Right-arm legbreak</option>
+                                    <option>Left-arm legbreak</option>
+                                </select>
                             </div>
 
                             <button type="submit" class="btn btn-block btn-success">Update</button>

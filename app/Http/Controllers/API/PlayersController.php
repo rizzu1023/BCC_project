@@ -20,7 +20,7 @@ class PlayersController extends Controller
         $team_id = $team->id;
         $player = Players::whereHas('teams',function($query) use($team_id){
             $query->where('team_id',$team_id);
-        })->orderByRaw("FIELD(player_role, 'Batsman','Wicket Keeper','All Rounder','Bowler')")->get();
+        })->orderByRaw("FIELD(role, 'Batsman','WK-Batsman','Allrounder','Bowler')")->get();
         return PlayersResource::collection($player);
     }
 
@@ -34,15 +34,21 @@ class PlayersController extends Controller
     {
         $this->validate($request,[
             'player_id' => 'required|unique:players',
-            'player_name' => 'required',
-            'player_role' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'required',
+            'batting_style' => 'required',
+            'bowling_style' => '',
             'team_id' => 'required',
         ]);
 
         return Players::create([
             'player_id' => $request['player_id'],
-            'player_name' => $request['player_name'],
-            'player_role' => $request['player_role'],
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'role' => $request['role'],
+            'batting_style' => $request['batting_style'],
+            'bowling_style' => $request['bowling_style'],
             'team_id' => $request['team_id'],
         ]);
     }
@@ -71,8 +77,11 @@ class PlayersController extends Controller
 
         $this->validate($request,[
             'player_id' => 'required',
-            'player_name' => 'required',
-            'player_role' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'required',
+            'batting_style' => 'required',
+            'bowling_style' => '',
             'team_id' => 'required',
         ]);
 

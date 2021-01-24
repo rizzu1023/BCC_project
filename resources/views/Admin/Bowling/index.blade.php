@@ -29,13 +29,13 @@
 								  <a class="btn btn-success btn-sm" href="/admin/Bowling/{{$b->id}}/edit">Edit</a>
 								  </td>
 								  <th scope="row">{{$i}}</th>
-								  <td>{{$b->Players->player_name}}</td>
+								  <td>{{$b->Players->first_name}} {{$b->Players->last_name}}</td>
 								  <td>{{$b->bw_matches}}</td>
 								  <td>{{$b->bw_innings}}</td>
 								  <td>{{$b->bw_balls}}</td>
 								  <td>{{$b->bw_wickets}}</td>
 								  <td>{{$b->Players->Teams->team_name}}</td>
-								
+
 								</tr>
                                 @php($i++)
                             @endforeach

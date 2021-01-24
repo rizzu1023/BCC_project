@@ -61,9 +61,9 @@
                             @endif
                         @endforeach
                     </div>
-                    <table class="table bg-light table-responsive-sm">
+                    <table class="table  table-responsive-sm">
                         <thead>
-                        <tr class="bg-warning">
+                        <tr class="bg-light">
                             <th>Batsman</th>
                             <th></th>
                             <th>Runs</th>
@@ -79,29 +79,29 @@
                                 <tr>
                                     <td>
                                         @if($m->bt_status == 10 || $m->bt_status == 11)
-                                            <b>{{$m->Players->player_name}}</b>
+                                            <b>{{$m->Players->first_name}} {{$m->Players->last_name}}</b>
                                         @else
-                                            {{$m->Players->player_name}}
+                                            {{$m->Players->first_name}} {{$m->Players->last_name}}
                                         @endif
                                     </td>
                                     <td style="font-size: 13px">
                                         @if($m->bt_status == 'DNB')
                                             DNB
                                         @elseif($m->bt_status == 0 && $m->wicket_type == 'bold')
-                                            <b>b</b> {{$m->wicketPrimary->player_name}}
+                                            <b>b</b> {{$m->wicketPrimary->first_name}} {{$m->wicketPrimary->first_name}}
                                         @elseif($m->bt_status == 0 && $m->wicket_type == 'lbw')
-                                            <b>lbw</b> {{$m->wicketPrimary->player_name}}
+                                            <b>lbw</b> {{$m->wicketPrimary->first_name}} {{$m->wicketPrimary->last_name}}
                                         @elseif($m->bt_status == 0 && $m->wicket_type == 'catch')
-                                            <b>c</b> {{$m->wicketSecondary->player_name}}
-                                            <b>b</b> {{$m->wicketPrimary->player_name}}
+                                            <b>c</b> {{$m->wicketSecondary->first_name}} {{$m->wicketSecondary->last_name}}
+                                            <b>b</b> {{$m->wicketPrimary->first_name}} {{$m->wicketPrimary->last_name}}
                                         @elseif($m->bt_status == 0 && $m->wicket_type == 'stump')
-                                            <b>st</b> {{$m->wicketSecondary->player_name}}
-                                            <b>b</b> {{$m->wicketPrimary->player_name}}
+                                            <b>st</b> {{$m->wicketSecondary->first_name}} {{$m->wicketSecondary->last_name}}
+                                            <b>b</b> {{$m->wicketPrimary->first_name}} {{$m->wicketPrimary->last_name}}
                                         @elseif($m->bt_status == 0 && $m->wicket_type == 'runout')
                                             @if($m->wicket_secondary == '--')
-                                                <b>runout</b>({{$m->wicketPrimary->player_name}})
+                                                <b>runout</b>({{$m->wicketPrimary->first_name}} {{$m->wicketPrimary->last_name}})
                                             @else
-                                                <b>runout</b>({{$m->wicketPrimary->player_name}}/{{$m->wicketSecondary->player_name}})
+                                                <b>runout</b>({{$m->wicketPrimary->first_name}} {{$m->wicketPrimary->last_name}}/{{$m->wicketSecondary->first_name}} {{$m->wicketSecondary->last_name}})
                                             @endif
                                         @elseif($m->bt_status == 10 || $m->bt_status == 11)
                                             batting
@@ -148,9 +148,9 @@
                         </tr>
                         </tbody>
                     </table>
-                    <table class="table bg-light table-responsive-sm">
+                    <table class="table table-responsive-sm">
                         <thead>
-                        <tr class="bg-warning">
+                        <tr class="bg-light">
                             <th>Bowler</th>
                             <th></th>
                             <th>Overs</th>
@@ -169,9 +169,9 @@
                                     <tr>
                                         <td>
                                             @if($m->bw_status == 11)
-                                                <b>{{$m->Players->player_name}}</b>
+                                                <b>{{$m->Players->first_name}} {{$m->Players->last_name}}</b>
                                             @else
-                                                {{$m->Players->player_name}}
+                                                {{$m->Players->first_name}} {{$m->Players->last_name}}
                                             @endif
                                         </td>
                                         <input type="hidden" value="{{$m->player_id}}" name="attacker_id">

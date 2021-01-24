@@ -27,8 +27,8 @@ class PlayersController extends Controller
     public function show($id)
     {
         $player = Players::find($id);
-        $bt = NULL;
-        $bw = NULL;
+        $bt = Batting::where('player_id',$player->player_id)->first();
+        $bw = Bowling::where('player_id',$player->player_id)->first();
 
         $player_teams = Teams::whereHas('players',function($query) use($id){
             $query->where('player_team.player_id',$id);
@@ -41,10 +41,31 @@ class PlayersController extends Controller
 
     public function store(Request $request)
     {
+
+        $data = $this->validate($request,[
+            'player_id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'required',
+            'batting_style' => 'required',
+            'bowling_style' => '',
+        ]);
+
+        if($request['image_path'])
+             $image_path = $request['image_path'];
+        else
+            $image_path = 'default.png';
+
+
         Players::create([
-            'player_id' => $request->player_id,
-            'player_name' => $request->player_name,
-            'player_role' => $request->player_role,
+            'player_id' => $request['player_id'],
+            'image_path' => $image_path,
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'role' => $request['role'],
+            'batting_style' => $request['batting_style'],
+            'bowling_style' => $request['bowling_style'],
+            'dob' => $request['dob'],
             'user_id' => auth()->user()->id,
         ]);
 
@@ -52,7 +73,6 @@ class PlayersController extends Controller
         Bowling::create(request(['player_id']));
 
         return back()->with('message','Player Added');
-//        return redirect('/admin/player')->with('message','Player Added');
 
     }
 
@@ -69,8 +89,13 @@ class PlayersController extends Controller
 
         $data= request()->validate([
             'player_id' => 'required|min:2',
-            'player_name' => 'required',
-            'player_role' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'required',
+            'batting_style' => 'required',
+            'bowling_style' => '',
+            'dob' => '',
+            'image_path' => '',
         ]);
 
         $player->update($data);

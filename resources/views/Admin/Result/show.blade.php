@@ -190,15 +190,14 @@
                                         @if($sr->team_id == $match_detail[0]->team_id)
                                             <tr>
                                                 <td>
-                                                    {{--                                            {{$sr->Players->player_name}}--}}
                                                     <form method="post" action="{{Route('update.player')}}">
                                                         @csrf
                                                         <select name="sub_player" onchange="this.form.submit()">
-                                                            <option selected disabled>{{$sr->Players['player_name']}}</option>
+                                                            <option selected disabled>{{$sr->Players['first_name']}} {{$sr->Players['last_name']}}</option>
                                                             @foreach($subs1_players as $sp)
                                                                 @if($sp->player_id != $sr->Players['player_id'])
                                                                     <option
-                                                                        value="{{$sp['player_id']}}">{{$sp['player_name']}}</option>
+                                                                        value="{{$sp['player_id']}}">{{$sp['first_name']}} {{$sp['last_name']}}</option>
                                                                 @endif
                                                             @endforeach
                                                         </select>
@@ -261,11 +260,11 @@
                                                         <form method="post" action="{{Route('update.player')}}">
                                                             @csrf
                                                             <select name="sub_player" onchange="this.form.submit()">
-                                                                <option selected disabled>{{$sr->Players->player_name}}</option>
+                                                                <option selected disabled>{{$sr->Players->first_name}} {{$sr->Players->last_name}}</option>
                                                                 @foreach($subs2_players as $sp)
                                                                     @if($sp->player_id != $sr->Players->player_id)
                                                                         <option
-                                                                            value="{{$sp->player_id}}">{{$sp->player_name}}</option>
+                                                                            value="{{$sp->player_id}}">{{$sp->first_name}} {{$sp->last_name}}</option>
                                                                     @endif
                                                                 @endforeach
                                                             </select>
