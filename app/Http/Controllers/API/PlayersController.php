@@ -24,7 +24,9 @@ class PlayersController extends Controller
 //        })->orderByRaw("FIELD(role, 'Batsman','WK-Batsman','Allrounder','Bowler')")->get();
 
         // TODO : Mariadb
-        $player = Players::where('team_id',$team_id)->get();
+        $player = Players::whereHas('teams',function($query) use($team_id){
+            $query->where('team_id',$team_id);
+        })->get();
 
         return PlayersResource::collection($player);
     }
