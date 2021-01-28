@@ -77,7 +77,8 @@ class TeamPlayerController extends Controller
         Batting::create(request(['player_id']));
         Bowling::create(request(['player_id']));
 
-        return redirect::route('teams.players.index',$team->id)->with('message', 'Player has been added');
+        return back()->with('message',"Player has been added");
+//        return redirect::route('teams.players.index',$team->id)->with('message', 'Player has been added');
         // return back();
     }
 
