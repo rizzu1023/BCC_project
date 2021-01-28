@@ -135,7 +135,8 @@
                             <button class="btn btn-success btn-md startInningButton">Start 1st Inning</button>
                         @elseif($game->status == '2')
                             <button class="btn btn-success btn-md startInningButton">Start 2nd Inning</button>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function('reverse_inning')" >Undo</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                               onclick="livescore_function('reverse_inning')">Undo</a>
 
                         @endif
 
@@ -145,8 +146,10 @@
 
                     @if($game->status == '4')
                         {{--                <h4>xyz won by 20 runs</h4>--}}
-                        <a class="btn btn-secondary btn-square btn-md mt-1" onclick="livescore_function('reverse_inning')" >Undo</a>
-                        <a href="/admin/result/{{$game->tournament_id}}/{{$game->id}}/show" class="btn btn-primary btn-square btn-md mt-1">Result</a>
+                        <a class="btn btn-secondary btn-square btn-md mt-1"
+                           onclick="livescore_function('reverse_inning')">Undo</a>
+                        <a href="/admin/result/{{$game->tournament_id}}/{{$game->id}}/show"
+                           class="btn btn-primary btn-square btn-md mt-1">Result</a>
                 @endif
 
                 @if($game->status == '1' || $game->status == '3')
@@ -256,7 +259,8 @@
                                                         @foreach($game->MatchPlayers as $mp)
                                                             @if($mp->team_id == $batting_team_id)
                                                                 @if($mp->bt_status == '11')
-                                                                    <option selected value="{{$mp->player_id}}">{{$mp->Players['first_name']}} {{$mp->Players['last_name']}}</option>
+                                                                    <option selected
+                                                                            value="{{$mp->player_id}}">{{$mp->Players['first_name']}} {{$mp->Players['last_name']}}</option>
                                                                 @endif
                                                             @endif
                                                         @endforeach
@@ -367,8 +371,8 @@
                                                             name="newBatsman_id" required>
                                                         <option disabled selected>Select</option>
                                                         @foreach($notout_batsman as $new_batsman)
-                                                                    <option
-                                                                        value="{{$new_batsman->player_id}}">{{$new_batsman->Players['first_name']}} {{$new_batsman->Players['last_name']}}</option>
+                                                            <option
+                                                                value="{{$new_batsman->player_id}}">{{$new_batsman->Players['first_name']}} {{$new_batsman->Players['last_name']}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -429,9 +433,10 @@
                                                     name="retiredHurtBatsman_id"
                                                     required>
                                                 <option selected disabled>Select</option>
-                                                  @foreach($current_batsman as $batsman)
-                                                            <option value="{{$batsman->player_id}}">{{$batsman->Players['first_name']}} {{$batsman->Players['last_name']}}</option>
-                                                 @endforeach
+                                                @foreach($current_batsman as $batsman)
+                                                    <option
+                                                        value="{{$batsman->player_id}}">{{$batsman->Players['first_name']}} {{$batsman->Players['last_name']}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -443,8 +448,8 @@
                                                     required>
                                                 <option disabled selected>Select</option>
                                                 @foreach($notout_batsman as $new_batsman)
-                                                            <option
-                                                                value="{{$new_batsman->player_id}}">{{$new_batsman->Players['first_name']}} {{$new_batsman->Players['last_name']}}</option>
+                                                    <option
+                                                        value="{{$new_batsman->player_id}}">{{$new_batsman->Players['first_name']}} {{$new_batsman->Players['last_name']}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -498,17 +503,18 @@
                                 </thead>
                                 <tbody>
                                 @foreach($current_batsman as $batsman)
-                                        <tr>
-                                            <td><input type="radio" id="player_id" name="player_id" value="{{$batsman->player_id}}"
-                                                 @if($batsman->bt_status==11) checked @endif> {{$batsman->Players['first_name']}} {{$batsman->Players['last_name']}}
-                                            </td>
-                                            <input type="hidden" name="team_id" value="{{$batsman->team_id}}">
-                                            <td id="batsman-runs">{{$batsman->bt_runs}}</td>
-                                            <td id="batsman-balls">{{$batsman->bt_balls}}</td>
-                                            <td id="batsman-fours">{{$batsman->bt_fours}}</td>
-                                            <td id="batsman-sixes">{{$batsman->bt_sixes}}</td>
+                                    <tr id="{{$batsman->bt_status}}">
+                                        <td><input type="radio" id="player_id" name="player_id"
+                                                   value="{{$batsman->player_id}}"
+                                                   @if($batsman->bt_status==11) checked @endif> {{$batsman->Players['first_name']}} {{$batsman->Players['last_name']}}
+                                        </td>
+                                        <input type="hidden" name="team_id" value="{{$batsman->team_id}}">
+                                        <td id="batsman-runs">{{$batsman->bt_runs}}</td>
+                                        <td id="batsman-balls">{{$batsman->bt_balls}}</td>
+                                        <td id="batsman-fours">{{$batsman->bt_fours}}</td>
+                                        <td id="batsman-sixes">{{$batsman->bt_sixes}}</td>
 
-                                        </tr>
+                                    </tr>
                                 @endforeach
 
                                 </tbody>
@@ -525,16 +531,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                        <tr>
-                                            <td>{{$current_bowler->Players['first_name']}} {{$current_bowler->Players['last_name']}}</td>
-                                            <input type="hidden" value="{{$current_bowler->player_id}}" name="attacker_id">
-                                            <td><span id="bowler-over">{{$current_bowler->bw_over}}</span>.<span
-                                                    id="bowler-overball">{{$current_bowler->bw_overball}}</span></td>
-                                            <td id="bowler-maiden">{{$current_bowler->bw_maiden}}</td>
-                                            <td id="bowler-runs">{{$current_bowler->bw_runs}}</td>
-                                            <td id="bowler-wickets">{{$current_bowler->bw_wickets}}</td>
+                                <tr>
+                                    <td>{{$current_bowler->Players['first_name']}} {{$current_bowler->Players['last_name']}}</td>
+                                    <input type="hidden" value="{{$current_bowler->player_id}}" name="attacker_id">
+                                    <td><span id="bowler-over">{{$current_bowler->bw_over}}</span>.<span
+                                            id="bowler-overball">{{$current_bowler->bw_overball}}</span></td>
+                                    <td id="bowler-maiden">{{$current_bowler->bw_maiden}}</td>
+                                    <td id="bowler-runs">{{$current_bowler->bw_runs}}</td>
+                                    <td id="bowler-wickets">{{$current_bowler->bw_wickets}}</td>
 
-                                        </tr>
+                                </tr>
                                 <input type="hidden" name="match_id" value="{{$game->match_id}}">
                                 <input type="hidden" name="tournament" value="{{$game->tournament_id}}">
                                 </tbody>
@@ -570,55 +576,83 @@
                                 @endforeach
                             </div>
 
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(8)" >0</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(1)" >1</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(2)" >2</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(3)" >3</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(4)" >4</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(5)" >5</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1" onclick="livescore_function(6)" >6</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                               onclick="livescore_function(8)">0</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                               onclick="livescore_function(1)">1</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                               onclick="livescore_function(2)">2</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                               onclick="livescore_function(3)">3</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                               onclick="livescore_function(4)">4</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                               onclick="livescore_function(5)">5</a>
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                               onclick="livescore_function(6)">6</a>
 
                             <br><br>
 
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('wd')" >wd</a>
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb')" >nb</a>
-                            <a id="wicket_button" class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="reset_form()">Wicket</a>
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('undo')" >undo</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('wd')">wd</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb')">nb</a>
+                            <a id="wicket_button" class="btn btn-outline-danger btn-square btn-sm mt-1"
+                               onclick="reset_form()">Wicket</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1"
+                               onclick="livescore_function('undo')">undo</a>
 
                             <br><br>
 
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('sr')" >Strike Rotate</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('sr')">Strike Rotate</a>
                             <a class="btn btn-outline-primary btn-square btn-sm mt-1" id="retired_hurt">Retired Hurt</a>
 
                             <br><br>
 
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb1')">nb + 1</a>
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb2')">nb + 2</a>
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb3')">nb + 3</a>
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb4')">nb + 4</a>
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb5')">nb + 5</a>
-                            <a class="btn btn-outline-danger btn-square btn-sm mt-1" onclick="livescore_function('nb6')">nb + 6</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1"
+                               onclick="livescore_function('nb1')">nb + 1</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1"
+                               onclick="livescore_function('nb2')">nb + 2</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1"
+                               onclick="livescore_function('nb3')">nb + 3</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1"
+                               onclick="livescore_function('nb4')">nb + 4</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1"
+                               onclick="livescore_function('nb5')">nb + 5</a>
+                            <a class="btn btn-outline-danger btn-square btn-sm mt-1"
+                               onclick="livescore_function('nb6')">nb + 6</a>
 
                             <br><br>
 
-                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1" onclick="livescore_function('wd1')">wd + 1</a>
-                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1" onclick="livescore_function('wd2')">wd + 2</a>
-                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1" onclick="livescore_function('wd3')">wd + 3</a>
-                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1" onclick="livescore_function('wd4')">wd + 4</a>
+                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1"
+                               onclick="livescore_function('wd1')">wd + 1</a>
+                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1"
+                               onclick="livescore_function('wd2')">wd + 2</a>
+                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1"
+                               onclick="livescore_function('wd3')">wd + 3</a>
+                            <a class="btn btn-outline-secondary btn-square btn-sm mt-1"
+                               onclick="livescore_function('wd4')">wd + 4</a>
 
                             <br><br>
 
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('lb1')">1 lb</a>
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('lb2')">2 lb</a>
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('lb3')">3 lb</a>
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('lb4')">4 lb</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('lb1')">1 lb</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('lb2')">2 lb</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('lb3')">3 lb</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('lb4')">4 lb</a>
 
                             <br><br>
 
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('b1')">1 b</a>
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('b2')">2 b</a>
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('b3')">3 b</a>
-                            <a class="btn btn-outline-primary btn-square btn-sm mt-1" onclick="livescore_function('b4')">4 b</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('b1')">1 b</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('b2')">2 b</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('b3')">3 b</a>
+                            <a class="btn btn-outline-primary btn-square btn-sm mt-1"
+                               onclick="livescore_function('b4')">4 b</a>
 
                             <br><br>
 
@@ -640,8 +674,6 @@
 
 @section('js')
     <script>
-
-
         $(document).ready(function () {
 
 
@@ -669,7 +701,6 @@
 
                 $('#div_wicket_primary').hide();
                 $('#div_wicket_secondary').hide();
-
 
 
                 $('#wicket_type').on('change', function () {
@@ -871,7 +902,6 @@
         });
 
 
-
         $('.bt').on('click', function () {
             $('.bt').prop('disabled', true);
         });
@@ -885,57 +915,103 @@
             }
         }
 
-        function livescore_function(value){
+        function livescore_function(value) {
 
-                var bt_team_id = "{{$batting_team_id}}";
-                var bw_team_id = "{{$bowling_team_id}}";
-                var match_id = $("input[name=match_id]").val();
-                var tournament = $("input[name=tournament]").val();
-                var attacker_id = $("input[name=attacker_id]").val();
-                var player_id = $("input[name=player_id]:checked").val();
+            var bt_team_id = "{{$batting_team_id}}";
+            var bw_team_id = "{{$bowling_team_id}}";
+            var match_id = $("input[name=match_id]").val();
+            var tournament = $("input[name=tournament]").val();
+            var attacker_id = $("input[name=attacker_id]").val();
+            var player_id = $("input[name=player_id]:checked").val();
 
-                $.ajax({
-                    type: "POST",
-                    url: "{{route('LiveUpdate')}}",
-                    // headers: {'X-Requested-With': 'XMLHttpRequest'},
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        player_id: player_id,
-                        attacker_id: attacker_id,
-                        bt_team_id: bt_team_id,
-                        bw_team_id: bw_team_id,
-                        match_id: match_id,
-                        tournament: tournament,
-                        value: value
-                    },
-                    success: function (data) {
-                        $('#newBatsmanForm').trigger('reset');
+            $.ajax({
+                type: "POST",
+                url: "{{route('LiveUpdate')}}",
+                // headers: {'X-Requested-With': 'XMLHttpRequest'},
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    player_id: player_id,
+                    attacker_id: attacker_id,
+                    bt_team_id: bt_team_id,
+                    bw_team_id: bw_team_id,
+                    match_id: match_id,
+                    tournament: tournament,
+                    value: value
+                },
+                success: function (data) {
+                    $('#newBatsmanForm').trigger('reset');
+
+
+                     if (data.value === '8' || data.value === '1' || data.value === '2' || data.value === '3' || data.value === '4' || data.value === '5' || data.value === '6') {
+
+
+                         if(data.value != '8'){
+                             var batsman_runs = $('#11').find('#batsman-runs').text();
+                             $('#11').find("#batsman-runs").text(parseInt(batsman_runs) + parseInt(data.value));
+
+                             var bowler_runs = $('#bowler-runs').text();
+                             $('#bowler-runs').text(parseInt(bowler_runs) + parseInt(data.value));
+
+                             var team_score = $('#team-score').text();
+                             $('#team-score').text(parseInt(team_score) + parseInt(data.value));
+                         }
+
+
+                        var batsman_balls = $('#11').find('#batsman-balls').text();
+                        $('#11').find("#batsman-balls").text(parseInt(batsman_balls) + 1);
+
+
+                        var bowler_balls = $('#bowler-overball').text();
+                        $('#bowler-overball').text(parseInt(bowler_balls) + 1);
+
+
+                        var team_overball = $('#team-overball').text();
+                        $('#team-overball').text(parseInt(team_overball) + 1);
+
+
+                        if(data.value === '1' || data.value === '3' || data.value === '5') {
+                            $('#10').find('input').prop('checked', true);
+
+                            $('#10').attr('id', 'temp');
+                            $('#11').attr('id', '10');
+                            $('#temp').attr('id', '11');
+                        }
+
+                        if(data.isOver === 1){
+                            $("#overModal").modal('show');
+                        }
+
+
+
+                    }
+
+                     else if (data.value === 'wd') {
+                         var team_score = $('#team-score').text();
+                         $('#team-score').text(parseInt(team_score) + parseInt('1'));
+
+
+                         var bowler_runs = $('#bowler-runs').text();
+                         $('#bowler-runs').text(parseInt(bowler_runs) + parseInt('1'));
+
+                     }
+                     else if (data.value === 'nb') {
+                         var team_score = $('#team-score').text();
+                         $('#team-score').text(parseInt(team_score) + 1);
+
+
+                         var bowler_runs = $('#bowler-runs').text();
+                         $('#bowler-runs').text(parseInt(bowler_runs) + 1);
+
+                         var batsman_balls = $('#11').find('#batsman-balls').text();
+                         $('#11').find("#batsman-balls").text(parseInt(batsman_balls) + 1);
+
+                     }
+                     else {
                         location.reload(true);
 
-
-                        // if(data.value === '2' || data.value === '4' || data.value === '6'){
-                        //     var team_score = $('#team-score').text();
-                        //     $('#team-score').text(parseInt(team_score) + parseInt(data.value));
-                        //
-                        //     var team_overball = $('#team-overball').text();
-                        //     $('#team-overball').text(parseInt(team_overball) + 1);
-                        //
-                        //     var batsman_runs = $('#batsman-runs').text();
-                        //     $('#batsman-runs').text(parseInt(batsman_runs) + parseInt(data.value));
-                        //
-                        //     var batsman_balls = $('#batsman-balls').text();
-                        //     $('#batsman-balls').text(parseInt(batsman_balls) + 1);
-                        //
-                        //     var bowler_runs = $('#bowler-runs').text();
-                        //     $('#bowler-runs').text(parseInt(bowler_runs) + parseInt(data.value));
-                        //
-                        //     var bowler_balls = $('#bowler-overball').text();
-                        //     $('#bowler-overball').text(parseInt(bowler_balls) + 1);
-                        // }
-                        // else{
-                        // }
                     }
-                });
+                }
+            });
 
         }
     </script>
