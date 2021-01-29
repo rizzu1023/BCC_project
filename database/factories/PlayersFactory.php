@@ -23,8 +23,12 @@ class PlayersFactory extends Factory
     {
         return [
             'player_id' => $this->faker->numberBetween($min=1000,$max=9999),
-            'player_name' => $this->faker->state,
-            'player_role' => $this->faker->colorName,
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'role' => $this->faker->randomElement($array = array('Batsman','Bowler','WK-Batsman','Batting Allrounder', 'Bowling Allrounder')),
+            'batting_style' => $this->faker->randomElement($array = array('Right Hand Batsman','Left Hand Batsman')),
+            'bowling_style' => $this->faker->randomElement($array = array('Right-arm Fast', 'Left-arm Fast', 'Right-arm Legbreak','Left-arm Offbreak')),
+            'dob' => $this->faker->date($format = 'Y-m-d',$max = 'now'),
             'user_id' => 1,
         ];
     }

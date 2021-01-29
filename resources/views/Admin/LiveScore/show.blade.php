@@ -39,6 +39,7 @@
                                     onclick="return confirm('Are you sure?')">End Inning
                             </button>
                         </form>
+                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-secondary mr-1" style="float : right">Reset</button>
                     @elseif($game->status == '2')
                         <span>First Inning has Been ended</span>
                     @elseif($game->status == '4')
@@ -545,9 +546,8 @@
                                 <input type="hidden" name="tournament" value="{{$game->tournament_id}}">
                                 </tbody>
                             </table>
-                            <div class="current_over">
-                                        <span><h6
-                                                style="display:inline-block;font-weight: bold">Current Over : </h6></span>
+                            <div id="current-over">
+                                        <span><h6 style="display:inline-block;font-weight: bold">Current Over : </h6></span>
                                 @foreach($over as $o)
 
                                     @if($o->action == 'zero')
@@ -576,19 +576,19 @@
                                 @endforeach
                             </div>
 
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                            <a  class="btn btn-outline-success btn-square btn-sm mt-1 py-3 px-4"
                                onclick="livescore_function(8)">0</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1 py-3 px-4"
                                onclick="livescore_function(1)">1</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1 py-3 px-4"
                                onclick="livescore_function(2)">2</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1 py-3 px-4"
                                onclick="livescore_function(3)">3</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1 py-3 px-4"
                                onclick="livescore_function(4)">4</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1 py-3 px-4"
                                onclick="livescore_function(5)">5</a>
-                            <a class="btn btn-outline-success btn-square btn-sm mt-1"
+                            <a class="btn btn-outline-success btn-square btn-sm mt-1 py-3 px-4"
                                onclick="livescore_function(6)">6</a>
 
                             <br><br>
@@ -943,10 +943,17 @@
 
 
                      if (data.value === '8' || data.value === '1' || data.value === '2' || data.value === '3' || data.value === '4' || data.value === '5' || data.value === '6') {
+                         if(data.value == '8'){
+                             $('#current-over').append("<span>0 </span>");
 
+                         }
 
                          if(data.value != '8'){
+
+                             $('#current-over').append("<span>"+ data.value + " </span>");
+
                              var batsman_runs = $('#11').find('#batsman-runs').text();
+
                              $('#11').find("#batsman-runs").text(parseInt(batsman_runs) + parseInt(data.value));
 
                              var bowler_runs = $('#bowler-runs').text();
@@ -986,6 +993,8 @@
                     }
 
                      else if (data.value === 'wd') {
+                         $('#current-over').append("<span>"+ data.value + " </span>");
+
                          var team_score = $('#team-score').text();
                          $('#team-score').text(parseInt(team_score) + parseInt('1'));
 
@@ -995,6 +1004,8 @@
 
                      }
                      else if (data.value === 'nb') {
+                         $('#current-over').append("<span>"+ data.value + " </span>");
+
                          var team_score = $('#team-score').text();
                          $('#team-score').text(parseInt(team_score) + 1);
 
@@ -1006,10 +1017,20 @@
                          $('#11').find("#batsman-balls").text(parseInt(batsman_balls) + 1);
 
                      }
+                     else if(data.value === 'sr'){
+                         $('#10').find('input').prop('checked', true);
+
+                         $('#10').attr('id', 'temp');
+                         $('#11').attr('id', '10');
+                         $('#temp').attr('id', '11');
+                     }
                      else {
                         location.reload(true);
 
                     }
+                },
+                error : function(data){
+                    alert('something went wrong');
                 }
             });
 

@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         \App\Tournament::factory()->create();
         \App\Teams::factory(10)->create();
-        \App\Players::factory(50)->create();
+        \App\Players::factory(60)->create();
 
     }
 }
