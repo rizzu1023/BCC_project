@@ -32,7 +32,7 @@
                                     @method('PUT')
                                     <div class="form-group">
                                         <label for="field1">Player Id</label>
-                                        <input type="text" class="form-control" id="field1" name="player_id" value="{{$player['player_id']}}">
+                                        <input type="text" class="form-control" id="field1" name="player_id" value="{{$player['player_id']}}" readonly>
                                         <div>{{ $errors->first('player_id')}}</div>
                                     </div>
                                     <div class="form-group">

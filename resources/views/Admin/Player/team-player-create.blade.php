@@ -22,6 +22,9 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="card">
+                <div class="card-header">
+                    @include('Admin.layouts.message')
+                </div>
                 <div class="card-body">
 
                     <div class="form-body">
@@ -60,7 +63,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Bowling Style (optional)</label>
-                                <select class="form-control" name="bowling_style" required="" >
+                                <select class="form-control" name="bowling_style" >
                                     <option selected="" disabled="" value="">Choose...</option>
                                     <option>Right-arm fast</option>
                                     <option>Left-arm fast</option>

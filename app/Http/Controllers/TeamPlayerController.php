@@ -94,7 +94,7 @@ class TeamPlayerController extends Controller
 
     public function edit(Teams $team, Players $player)
     {
-        return view('Admin/Player/edit', compact('player', 'team'));
+        return view('Admin.Player.edit', compact('player', 'team'));
     }
 
 
@@ -105,9 +105,12 @@ class TeamPlayerController extends Controller
         $bw = Bowling::where('player_id', $player->player_id)->first();
 
         $data= request()->validate([
-            'player_id' => 'required|min:2',
-            'player_name' => 'required',
-            'player_role' => 'required',
+            'player_id' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'role' => 'required',
+            'batting_style' => 'required',
+            'bowling_style' => '',
         ]);
 
         $player->update($data);
@@ -115,7 +118,7 @@ class TeamPlayerController extends Controller
         $bt->update(request(['player_id']));
         $bw->update(request(['player_id']));
 
-        return redirect::route('teams.players.index',$team->id)->with('message', "Update Successfull");
+        return redirect::route('teams.players.index',$team->id)->with('message', "Successfully Updated");
     }
 
 

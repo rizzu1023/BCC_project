@@ -130,16 +130,28 @@ class MatchController extends Controller
 
             $match_status = $match->status;
             if ($match_status == 4) {
-                $bowling_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament->id)->orderBy('updated_at', 'desc')->get();
-//                $batting_team = MatchDetail::where('match_id', $match_id)->where('tournament_id', $tournament_id)->first();
-                $match_detail = Game::where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
-                $match_won = Game::where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
-                $won = $match_won->WON;
+                $schedule = Schedule::where('id',$match_id)->where('tournament_id',$tournament->id)->first();
+
+                $team1_id = $schedule->Teams1->id;
+                $team2_id = $schedule->Teams2->id;
+
+                $game = Game::where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
+
+                if (($game->toss == $team1_id && $game->choose == 'Bat') || ($game->toss == $team2_id && $game->choose == 'Bowl')) {
+                    $batting_team_id = $team1_id;
+                    $bowling_team_id = $team2_id;
+                } else {
+                    $batting_team_id = $team2_id;
+                    $bowling_team_id = $team1_id;
+                }
+                $batting_team = MatchDetail::where('team_id',$batting_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
+                $bowling_team = MatchDetail::where('team_id',$bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
+                $won = $game->WON;
                 return [
                     'match_status' => $match_status,
-                    'team1' => new MatchDetailResource($bowling_team[0]),
-                    'team2' => new MatchDetailResource($bowling_team[1]),
-                    'won_match_detail' => $match_detail,
+                    'team1' => new MatchDetailResource($batting_team),
+                    'team2' => new MatchDetailResource($bowling_team),
+                    'won_match_detail' => $game,
                     'won' => $won,
                 ];
             }
