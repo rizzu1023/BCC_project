@@ -258,7 +258,7 @@ class MatchController extends Controller
         $match_detail = Game::where('match_id', $match_id)->first();
         if ($match_detail) {
             $toss_winning_team = Teams::where('id',$match_detail->toss)->first();
-            if ($match_detail->toss == $team1_id && $match_detail->choose == 'Bat') {
+            if (($match_detail->toss == $team1_id && $match_detail->choose == 'Bat') || ($match_detail->toss == $team2_id && $match_detail->choose == 'Bowl')) {
                 $batting_team_id = $team1_id;
                 $bowling_team_id = $team2_id;
             } else {
