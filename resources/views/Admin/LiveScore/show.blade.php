@@ -24,6 +24,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
+                    @include('Admin.layouts.message')
                     @if($game->status == '1' || $game->status == '3')
                         <a href="/admin/LiveScoreCard/{{$game->match_id}}/{{$game->tournament_id}}"
                            class="btn btn-info btn-sm"
@@ -39,12 +40,57 @@
                                     onclick="return confirm('Are you sure?')">End Inning
                             </button>
                         </form>
-                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm btn-secondary mr-1" style="float : right">Reset</button>
+                        <form id="resetInningForm" style="display: inline-block; float: right;">
+                            @csrf
+                            <input type="hidden" name="resetInning" value="1">
+                            <input type="hidden" name="match_id" value="{{$game['match_id']}}">
+                            <input type="hidden" name="tournament" value="{{$game['tournament_id']}}">
+                            <input type="hidden" name="bt_team_id" value="{{$batting_team_id}}">
+                            <input type="hidden" name="bw_team_id" value="{{$bowling_team_id}}">
+                            <button type="submit" class="btn btn-secondary mr-1 btn-sm"
+                                    onclick="return confirm('Are you sure?')">Reset Inning
+                            </button>
+                        </form>
                     @elseif($game->status == '2')
                         <span>First Inning has Been ended</span>
                     @elseif($game->status == '4')
-                        <span>Match has Been ended</span>
+                        <span>Match has Been ended </span>
+                        <h4 class="mt-3">{{$game->WON->team_name}} {{$game->description}}</h4>
 
+                    @if($game->mom != '--')
+                        <h4 class="mt-5">Man of the Match : {{$game->MOM['first_name']}} {{$game->MOM['last_name']}}</h4>
+                    @endif
+                        <div class="form-body mt-5">
+                            <form method="POST" action="{{ Route('select.mom') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div class="form-group">
+                                            <select class="form-control" id="exampleFormControlSelect2" name="mom" required>
+                                                <option value="">Select Man of the Match</option>
+                                                @foreach($game->MatchPlayers as $mp)
+                                                    @if($mp->team_id == $game->won)
+                                                        <option value="{{$mp->player_id}}">{{ $mp->Players['first_name'] }} {{ $mp->Players['last_name'] }}</option>
+                                                    @endif
+                                                @endforeach
+                                            </select>
+                                            <input type="hidden" name="match_id" value="{{$game['match_id']}}">
+                                            <input type="hidden" name="tournament_id" value="{{$game['tournament_id']}}">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        @if($game->mom == '--')
+                                        <button type="submit" class="btn  btn-success">Select</button>
+                                        @else
+                                        <button type="submit" class="btn  btn-success">Change</button>
+                                        @endif
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
                     @endif
                 </div>
                 <div class="card-body pt-0">
@@ -833,6 +879,19 @@
                 success: function (data) {
                     // $('#overModal').modal('hide');
                     //  alert(data.message);
+                    location.reload();
+                }
+            });
+        });
+
+        $('#resetInningForm').on('submit', function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: "POST",
+                url: '{{Route('LiveUpdate')}}',
+                data: $(this).serialize(),
+                success: function (data) {
                     location.reload();
                 }
             });

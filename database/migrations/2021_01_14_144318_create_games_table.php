@@ -22,7 +22,7 @@ class CreateGamesTable extends Migration
             $table->integer('status')->default(0);
             $table->integer('won')->default(0);
             $table->string('description')->default('--');
-            $table->integer('mom')->default(0);
+            $table->String('mom')->default('--');
             $table->integer('tournament_id');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

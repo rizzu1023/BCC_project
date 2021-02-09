@@ -10,6 +10,7 @@ use App\Events\byesTwoRunEvent;
 use App\Events\DeclareBatsmanEvent;
 use App\Events\dotBallEvent;
 use App\Events\endInningEvent;
+use App\Events\resetInningEvent;
 use App\Events\fiveRunEvent;
 use App\Events\fourRunEvent;
 use App\Events\legByesFourRunEvent;
@@ -255,7 +256,8 @@ class LiveScoreController extends Controller
             if ($request->startInning) event(new startInningEvent($request));
             if ($request->newOver) event(new newOverEvent($request));
 
-             if($request->endInning){event(new endInningEvent($request));}
+            if($request->endInning) event(new endInningEvent($request));
+            if($request->resetInning) event(new resetInningEvent($request));
         }
 
         if ($request->value) {
@@ -329,6 +331,17 @@ class LiveScoreController extends Controller
              return response()->json(['message'=>'success','value' => $request->value, 'isOver' => $isOver]);
 //            return response()->json(compact('userjobs'), 200);
         }
+    }
+
+    public function select_mom(Request $request){
+        $game = Game::where('match_id',$request['match_id'])
+            ->where('tournament_id',$request['tournament_id'])
+            ->first();
+
+        $game->mom = $request->mom;
+        $game->save();
+
+        return back()->with('message','Man of the match successfully selected');
     }
 }
 

@@ -17,18 +17,14 @@ class CreateMatchPlayersTable extends Migration
         Schema::create('match_players', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('match_id');
-            // $table->string('match_no');
             $table->string('team_id');
             $table->string('player_id');
-
             $table->string('bt_status')->default('DNB');
             $table->integer('bt_runs')->default(0);
             $table->integer('bt_balls')->default(0);
             $table->integer('bt_fours')->default(0);
             $table->integer('bt_sixes')->default(0);
-
             $table->string('bw_status')->default('DNB');
-            // $table->float('bw_overs',3,1)->default(0);
             $table->integer('bw_over')->default(0);
             $table->integer('bw_overball')->default(0);
             $table->integer('bw_wickets')->default(0);
@@ -36,11 +32,9 @@ class CreateMatchPlayersTable extends Migration
             $table->integer('bw_maiden')->default(0);
             $table->integer('bw_nb')->default(0);
             $table->integer('bw_wide')->default(0);
-
             $table->string('wicket_type')->default('--');
             $table->string('wicket_primary')->default('--');
             $table->string('wicket_secondary')->default('--')->nullable();
-
             $table->integer('tournament_id');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();

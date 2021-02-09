@@ -218,7 +218,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\bowlerWicketUpdateListener::class,
             \App\Listeners\teamBallUpdateListener::class,
             \App\Listeners\teamWicketUpdateListener::class,
-//            \App\Listeners\isWicketFalseListener::class,
             \App\Listeners\matchTrackListener::class,
             \App\Listeners\isOverForBowler::class,
             \App\Listeners\isOverForTeam::class,
@@ -233,7 +232,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\reverseBowlerWicketUpdateListener::class,
             \App\Listeners\reverseTeamBallUpdateListener::class,
             \App\Listeners\reverseTeamWicketUpdateListener::class,
-//            \App\Listeners\reverseIsWicketFalseListener::class,
             \App\Listeners\reverseMatchTrackListener::class,
 
         ],
@@ -533,6 +531,10 @@ class EventServiceProvider extends ServiceProvider
 
         \App\Events\endInningEvent::class => [
             \App\Listeners\endInningListener::class,
+        ],
+
+        \App\Events\resetInningEvent::class => [
+            \App\Listeners\resetInningListener::class,
         ],
 
         \App\Events\reverseEndInningEvent::class => [

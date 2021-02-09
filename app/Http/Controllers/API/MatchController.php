@@ -137,6 +137,8 @@ class MatchController extends Controller
 
                 $game = Game::where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
 
+//                $toss_winning_team = Teams::where('id',$game->toss)->first();
+
                 if (($game->toss == $team1_id && $game->choose == 'Bat') || ($game->toss == $team2_id && $game->choose == 'Bowl')) {
                     $batting_team_id = $team1_id;
                     $bowling_team_id = $team2_id;
@@ -147,12 +149,14 @@ class MatchController extends Controller
                 $batting_team = MatchDetail::where('team_id',$batting_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
                 $bowling_team = MatchDetail::where('team_id',$bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->first();
                 $won = $game->WON;
+                $mom = $game->MOM;
                 return [
                     'match_status' => $match_status,
                     'team1' => new MatchDetailResource($batting_team),
                     'team2' => new MatchDetailResource($bowling_team),
                     'won_match_detail' => $game,
                     'won' => $won,
+                    'mom' => $mom,
                 ];
             }
             $total_overs = $match->overs;
@@ -247,6 +251,7 @@ class MatchController extends Controller
         $match_status = null;
         $match = Game::where('match_id', $match_id)->first();
 
+
         if($match){
             if ($match->WON) {
                 $team_won = $match->WON->team_name;
@@ -315,10 +320,11 @@ class MatchController extends Controller
             $team2_fow = MatchTrack::select('player_id', 'score', 'wickets', 'over', 'overball')->where('action', 'wicket')->where('team_id', $bowling_team_id)->where('match_id', $match_id)->where('tournament_id', $tournament->id)->orderBy('wickets', 'asc')->get();
         }
 
+
         if(is_null($team1_fow)) $team1_fow = null;
-        else $team1_fow = FowResource::collection($team1_fow);
+    else $team1_fow = FowResource::collection($team1_fow);
         if(is_null($team2_fow)) $team2_fow = null;
-        else $team2_fow = FowResource::collection($team2_fow);
+    else $team2_fow = FowResource::collection($team2_fow);
 
 
         return [

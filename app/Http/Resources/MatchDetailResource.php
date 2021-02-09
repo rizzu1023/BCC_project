@@ -30,7 +30,6 @@ class MatchDetailResource extends JsonResource
             'legbyes' => $this->legbyes,
             'tournament_id' => $this->tournament_id,
             'isOver' => $this->isOver,
-            'isWicket' => $this->isWicket,
             'team_detail' => $this->Teams,
         ];
     }

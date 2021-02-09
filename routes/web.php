@@ -59,6 +59,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/LiveScoreCard/{id}/{tournament}','LiveScoreController@LiveScoreCard')->name('LiveScoreCard');
     Route::post('/LiveUpdate','LiveScoreController@LiveUpdate')->name('LiveUpdate');
 
+    Route::post('/LiveUpdate/mom','LiveScoreController@select_mom')->name('select.mom');
+
 
     Route::resource('tournaments.schedules','TournamentScheduleController');
     Route::resource('tournaments.teams', 'TournamentTeamController');
@@ -80,6 +82,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::post('player/add-in-team','PlayersController@add_in_team');
     Route::post('player/remove-from-team','PlayersController@remove_from_team');
+
+
+
 });
 
 

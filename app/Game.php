@@ -40,7 +40,7 @@ class Game extends Model
     }
 
     public function MOM(){
-        return $this->belongsTo('App\Teams','mom','id');
+        return $this->belongsTo('App\Players','mom','player_id');
     }
 
 }
