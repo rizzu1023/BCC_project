@@ -126,6 +126,7 @@ class matchTrackListener
             $wicket_type = $event->request->wicket_type;
             if ($event->request->isBatsmanCross) {
                 $batsman_cross = 1;
+                //update
             }
         }
 
