@@ -16,7 +16,6 @@ class CreatePlayersTable extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('player_id')->unique();
-            $table->string('image_path')->default('default.png');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('role');

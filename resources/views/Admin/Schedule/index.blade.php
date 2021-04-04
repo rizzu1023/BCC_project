@@ -1,5 +1,3 @@
-
-
 @extends('Admin.layouts.base')
 
 @section('content')
@@ -26,56 +24,71 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                        <div class="tables">
-                            <table class="table table-responsive-sm">
-                                <thead>
+                    <div class="tables">
+                        <table class="table table-responsive-sm">
+                            <thead>
+                            <tr>
+                                <th>No</th>
+                                <th></th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Team 1</th>
+                                <th>Vs</th>
+                                <th>Team 2</th>
+                                <th></th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($schedule as $s)
                                 <tr>
-                                    <th>No</th>
-                                    <th></th>
-                                    <th>Date</th>
-                                    <th>Time</th>
-                                    <th>Team 1</th>
-                                    <th>Vs</th>
-                                    <th>Team 2</th>
-                                    <th></th>
+
+                                    <th scope="row">{{$s->match_no}}</th>
+
+                                    <td> @if($s->Game)
+                                            @if($s->Game->status == 4)
+                                                <a class="btn btn-dark btn-sm"
+                                                   href="/admin/result/{{$s->id}}/{{$s->tournament_id}}/show">Result</a>
+                                            @else
+                                                <a class="btn btn-primary btn-sm"
+                                                   href="/admin/LiveUpdate/{{$s->id}}/{{$s->tournament_id}}">Score</a>
+                                            @endif
+
+                                        @else
+                                            <a class="btn btn-warning btn-sm"
+                                               href="/admin/StartScore/{{$s->id}}">Start</a>
+                                        @endif</td>
+                                    <td>{{ date('d-M-Y', strtotime($s->dates))}}</td>
+                                    <td>{{ date('h:m A', strtotime($s->times))}}</td>
+                                    <td>{{$s->Teams1->team_code}}</td>
+                                    <td>Vs</td>
+                                    <td>{{$s->Teams2->team_code}}</td>
+
+                                    <td>
+                                        @if(!$s->Game)
+                                        <a class="btn btn-success btn-sm"
+                                               href="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}/edit">Edit</a>
+
+                                        <form style="display:inline-block" method="POST"
+                                              action="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" value="{{$s->id}}" name="id">
+                                            <button class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Are you sure you want to delete it?')">
+                                                Delete
+                                            </button>
+
+
+                                        </form>
+                                        @endif
+                                    </td>
 
                                 </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($schedule as $s)
-                                    <tr>
-
-                                        <th scope="row">{{$s->match_no}}</th>
-
-                                        <td> @if($s->Game)
-                                                <a class="btn btn-dark btn-sm" href="/admin/LiveUpdate/{{$s->id}}/{{$s->tournament_id}}">Score</a>
-                                            @else
-                                                <a class="btn btn-warning btn-sm" href="/admin/StartScore/{{$s->id}}">Start</a>
-                                            @endif</td>
-                                        <td>{{ date('d-M-Y', strtotime($s->dates))}}</td>
-                                        <td>{{ date('h:m A', strtotime($s->times))}}</td>
-                                        <td>{{$s->Teams1->team_code}}</td>
-                                        <td>Vs</td>
-                                        <td>{{$s->Teams2->team_code}}</td>
-
-                                        <td>
-                                            <a class="btn btn-success btn-sm"
-                                               href="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}/edit">Edit</a>
-                                            <form style="display:inline-block" method="POST"
-                                                  action="/admin/tournaments/{{$tournament->id}}/schedules/{{$s->id}}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <input type="hidden" value="{{$s->id}}" name="id">
-                                                <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete it?')">Delete</button>
-
-
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

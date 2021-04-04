@@ -7,12 +7,12 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-6">
-                        <h3>Dashboard</h3>
+                        <h3>Edit</h3>
                     </div>
                     <div class="col-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/admin/dashboard"> <i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Edit</li>
                             {{--              <li class="breadcrumb-item active">Product list</li>--}}
                         </ol>
                     </div>
@@ -23,11 +23,20 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-
+                    <div class="card-header">
+                        @if($player->media)
+                            <img src="{{ $player->media->last()->getUrl('player-profile') }}">
+                            @endif
+                    </div>
                     <div class="form-body">
-                        <form method="POST" action="/admin/player/{{$player['id']}}">
+                        <form method="POST" action="/admin/player/{{$player['id']}}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            <div class="form-group">
+                                <label for="field20">Player Image</label>
+                                <input type="file" class="form-control" id="field20" name="player_image" >
+                                <div>{{ $errors->first('player_image')}}</div>
+                            </div>
                             <div class="form-group">
                                 <label for="field1">Player Id</label>
                                 <input type="text" class="form-control" id="field1" name="player_id" value="{{$player['player_id']}}">

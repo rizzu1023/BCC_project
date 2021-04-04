@@ -24,7 +24,6 @@ class PlayersResource extends JsonResource
 
     public function toArray($request)
     {
-        $image = "assets/player_images/".$this->image_path;
         $age = Carbon::parse($this->dob)->diff(\Carbon\Carbon::now())->format('%y');
         if($this->dob){
             $dob = date('d-M-Y',strtotime($this->dob));
@@ -37,7 +36,7 @@ class PlayersResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'image_path' => $image,
+            'player_profile' => $this->media->isNotEmpty() ? $this->media->last()->getUrl('player-profile') : NULL,
             'player_id' => $this->player_id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,

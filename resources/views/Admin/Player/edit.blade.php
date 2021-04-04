@@ -23,6 +23,11 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="card">
+                <div class="card-header">
+                    @if($player->media)
+                        <img src="{{ $player->media->last()->getUrl('player-profile') }}">
+                    @endif
+                </div>
                 <div class="card-body">
                         <div class="card-body">
 
@@ -30,6 +35,11 @@
                                 <form method="POST" action="{{route('teams.players.update',['team'=>$team->id,'player'=>$player->id])}}">
                                     @csrf
                                     @method('PUT')
+                                    <div class="form-group">
+                                        <label for="field20">Player Image</label>
+                                        <input type="file" class="form-control" id="field20" name="player_image" >
+                                        <div>{{ $errors->first('player_image')}}</div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="field1">Player Id</label>
                                         <input type="text" class="form-control" id="field1" name="player_id" value="{{$player['player_id']}}" readonly>

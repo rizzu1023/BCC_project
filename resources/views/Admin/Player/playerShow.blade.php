@@ -23,6 +23,11 @@
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="card">
+                <div class="card-header">
+                    @if($player->media)
+                        <img src="{{ $player->media->last()->getUrl('player-profile') }}">
+                    @endif
+                </div>
                     <div class="card-body">
                         <h1 class="title1 text-center">{{$player['first_name']}} {{$player['last_name']}}</h1>
 

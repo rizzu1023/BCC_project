@@ -22,7 +22,7 @@ class Teams extends Model
     }
 
     public function Tournaments(){
-        return $this->belongsTo('App\Tournament','id','tournament_id');
+        return $this->belongsTo('App\Tournament','tournament_id','id');
     }
 
     public function Players(){
