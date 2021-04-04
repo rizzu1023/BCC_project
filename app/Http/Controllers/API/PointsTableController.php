@@ -17,7 +17,7 @@ class PointsTableController extends Controller
         $groups = Group::where('tournament_id',$tournament_id)->orderBy('group_name','asc')->get();
         $points_table = collect();
         foreach ($groups as $g){
-            $teams = GroupTeam::where('tournament_id',$g->tournament_id)->where('group_id',$g->id)->orderBy('points','desc')->orderBy('nrr','desc')->get();
+            $teams = GroupTeam::with('Teams')->where('tournament_id',$g->tournament_id)->where('group_id',$g->id)->orderBy('points','desc')->orderBy('nrr','desc')->get();
             $t = GroupTeamResource::collection($teams);
             $points_table->push(['group_name' => $g->group_name, 'teams' => $t]);
         }

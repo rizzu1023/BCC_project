@@ -79,6 +79,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
 
     Route::resource('player','PlayersController');
+    Route::post('store-excel-player',[\App\Http\Controllers\PlayersController::class,'storeExcelPlayer'])->name('store.excel.player');
 
     Route::post('player/add-in-team','PlayersController@add_in_team');
     Route::post('player/remove-from-team','PlayersController@remove_from_team');

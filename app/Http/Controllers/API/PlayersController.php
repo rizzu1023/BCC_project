@@ -66,9 +66,9 @@ class PlayersController extends Controller
      * @param  int  $id
      * @return PlayersResource
      */
-    public function show(Players $player_id)
+    public function show(Players $player)
     {
-       return new PlayersResource($player_id);
+       return new PlayersResource($player);
     }
 
     /**

@@ -27,9 +27,10 @@
         </div>
         <!-- Container-fluid starts-->
         <div class="container-fluid">
+            @include('Admin.layouts.message')
             <div class="card">
                 <div class="card-header">
-                    @include('Admin.layouts.message')
+
                 </div>
                 <div class="card-body">
                     <div class="table-responsive product-table">

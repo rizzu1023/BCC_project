@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Imports\PlayerImport;
 use App\Tournament;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use App\Teams;
 use App\Bowling;
 use App\Batting;
 use App\MatchPlayers;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PlayersController extends Controller
 {
@@ -44,11 +46,11 @@ class PlayersController extends Controller
 
         $data = $this->validate($request,[
             'player_id' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'role' => 'required',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'role' => 'required|string',
             'batting_style' => 'required',
-            'bowling_style' => '',
+            'bowling_style' => 'sometimes|required',
         ]);
 
         if($request['image_path'])
@@ -110,10 +112,10 @@ class PlayersController extends Controller
         $pid = $player->player_id;
 
         $bt_player = Batting::where('player_id', $pid)->first();
-        $bt_player->delete();
+        if($bt_player) $bt_player->delete();
 
         $bw_player = Bowling::where('player_id', $pid)->first();
-        $bw_player->delete();
+        if($bw_player) $bw_player->delete();
 
         $teams = Teams::all();
         $player->Teams()->detach($teams);
@@ -136,6 +138,25 @@ class PlayersController extends Controller
         $team = Teams::find($request->team_id);
         $player->Teams()->detach($team);
         return back()->with('message','Successfully removed from Team');
+    }
+
+    public function storeExcelPlayer(Request $request)
+    {
+        $request->validate([
+            'player_sheet' => 'required|mimes:xls,xlsx',
+        ]);
+
+        $user = auth()->user();
+        if($request->hasFile('player_sheet')){
+//            $file = $request->file('player_sheet');
+//            $import = new PlayerImport($user);
+//            $import->import($file);
+            $import = Excel::import(new PlayerImport($user), $request->file('player_sheet'));
+            return back()->with([ 'status' => true, 'message' => 'File Successfully Uploaded']);
+        }
+
+        return back()->with(['status' => false, 'message' => 'Something Went Wrong..!']);
+
     }
 
 }

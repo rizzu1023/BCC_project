@@ -2,22 +2,18 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Game;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FowResource;
 use App\Http\Resources\MatchDetailResource;
 use App\Http\Resources\MatchPlayersResource;
 use App\Http\Resources\MatchTrackResource;
-use App\Http\Resources\PlayersResource;
-use App\Game;
 use App\MatchDetail;
 use App\MatchPlayers;
 use App\MatchTrack;
-use App\Players;
 use App\Schedule;
 use App\Teams;
 use App\Tournament;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class MatchController extends Controller
@@ -381,7 +377,7 @@ class MatchController extends Controller
                 }
             }
 
-            $overs = MatchTrack::select('over', DB::raw('Min(attacker_id) as attacker_id, SUM(wickets) as wickets,SUM(run) as runs'))
+            $overs = MatchTrack::with('Players','Batsman')->select('over', DB::raw('Min(attacker_id) as attacker_id, SUM(wickets) as wickets,SUM(run) as runs'))
                 ->groupBy('over')
                 ->where('match_id', $match_id)
                 ->where('team_id', $bowling_team_id)
