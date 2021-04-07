@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\LiveScoreController;
 
 //frontend Routes
 Route::get('/index', [MainController::class,'GetIndex']);
@@ -14,7 +14,7 @@ Route::view('/blank','Main.layouts.layout');
 
 //Admin Routes
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
-    Route::get('/dashboard', [AdminController::class,'getDashboard'])->name('GetDashboard');
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class,'getDashboard'])->name('GetDashboard');
     Route::resource('/Tournament','TournamentController');  //Tournament
     Route::post('/Tournament/addTeam',[TournamentController::class,'Tournament_add_Team'])->name('Tournament_add_Team');
     Route::post('/Tournament/destroyTeam',[TournamentController::class,'Tournament_destroy_Team'])->name('Tournament_destroy_Team');
@@ -100,4 +100,4 @@ Route::group(['prefix' => 'super-admin', 'middleware' => ['auth']], function() {
 Auth::routes();
 
 Route::get('/home', [HomeController::class,'index'])->name('home');
-Route::get('/{any}', [AppController::class,'index'])->where('any','.*');
+Route::get('/{any}', [App\Http\Controllers\AppController::class,'index'])->where('any','.*');

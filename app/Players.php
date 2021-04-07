@@ -26,11 +26,15 @@ class Players extends Model implements HasMedia
     }
 
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaCollections(): void
     {
-        $this->addMediaConversion('player-profile')
-            ->width(200)
-            ->height(200)
-            ->sharpen(10);
+        $this->addMediaCollection('player-image')
+            ->singleFile()
+            ->registerMediaConversions(function (Media $media) {
+                $this->addMediaConversion('player-profile')
+                    ->width(200)
+                    ->height(200)
+                    ->sharpen(10);
+            });
     }
 }

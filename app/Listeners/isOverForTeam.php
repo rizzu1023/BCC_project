@@ -29,7 +29,8 @@ class isOverForTeam
      */
     public function handle($event)
     {
-        $overball = MatchDetail::where('match_id', $event->request->match_id)
+        $overball = MatchDetail::select('overball')
+            ->where('match_id', $event->request->match_id)
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)->first();
 
@@ -53,12 +54,14 @@ class isOverForTeam
 
             //strike Rotation
 
-            $nonstriker = MatchPlayers::where('match_id', $event->request->match_id)
+            $nonstriker = MatchPlayers::select('player_id')
+                ->where('match_id', $event->request->match_id)
                 ->where('tournament_id', $event->request->tournament)
                 ->where('team_id', $event->request->bt_team_id)
                 ->where('bt_status', 10)->first();
 
-            $striker = MatchPlayers::where('match_id', $event->request->match_id)
+            $striker = MatchPlayers::select('player_id')
+                ->where('match_id', $event->request->match_id)
                 ->where('tournament_id', $event->request->tournament)
                 ->where('team_id', $event->request->bt_team_id)
                 ->where('bt_status', 11)->first();

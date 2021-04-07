@@ -24,8 +24,8 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    @if($player->media)
-                        <img src="{{ $player->media->last()->getUrl('player-profile') }}">
+                    @if($player->getFirstMedia('player-image'))
+                        <img src="{{ $player->getFirstMedia('player-image')->getUrl('player-profile') }}">
                     @endif
                 </div>
                     <div class="card-body">

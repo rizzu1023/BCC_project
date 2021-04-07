@@ -6,6 +6,7 @@ use App\Events\strikeRotateEvent;
 use App\MatchPlayers;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use function GuzzleHttp\Psr7\str;
 
 class  strikeRotateListener
 {
@@ -27,12 +28,12 @@ class  strikeRotateListener
      */
     public function handle($event)
     {
-        $nonstriker = MatchPlayers::where('match_id', $event->request->match_id)
+        $nonstriker = MatchPlayers::select('player_id')->where('match_id', $event->request->match_id)
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)
             ->where('bt_status', 10)->first();
 
-        $striker = MatchPlayers::where('match_id', $event->request->match_id)
+        $striker = MatchPlayers::select('player_id')->where('match_id', $event->request->match_id)
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)
             ->where('bt_status', 11)->first();

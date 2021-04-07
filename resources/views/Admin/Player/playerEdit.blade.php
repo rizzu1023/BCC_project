@@ -24,9 +24,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-header">
-                        @if($player->media)
-                            <img src="{{ $player->media->last()->getUrl('player-profile') }}">
-                            @endif
+                        @if($player->getFirstMedia('player-image'))
+                            <img src="{{ $player->getFirstMedia('player-image')->getUrl('player-profile') }}">
+                        @endif
                     </div>
                     <div class="form-body">
                         <form method="POST" action="/admin/player/{{$player['id']}}" enctype="multipart/form-data">

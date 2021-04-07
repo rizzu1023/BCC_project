@@ -107,10 +107,10 @@
 {{--        <script src="{{asset('assets/Admin/js/prism/prism.minjs')}}"></script>--}}
 {{--        <script src="{{asset('assets/Admin/js/counter/jquery.waypoints.minjs')}}"></script>--}}
 {{--        <script src="{{asset('assets/Admin/js/counter/jquery.counterup.minjs')}}"></script>--}}
-        <script src="{{asset('assets/Admin/js/counter/counter-customjs')}}"></script>
-        <script src="{{asset('assets/Admin/js/custom-card/custom-cardjs')}}"></script>
+{{--        <script src="{{asset('assets/Admin/js/counter/counter-customjs')}}"></script>--}}
+{{--        <script src="{{asset('assets/Admin/js/custom-card/custom-cardjs')}}"></script>--}}
 {{--        <script src="{{asset('assets/Admin/js/owlcarousel/owl.carouseljs')}}"></script>--}}
-        <script src="{{asset('assets/Admin/js/dashboard/dashboard_2js')}}"></script>
+{{--        <script src="{{asset('assets/Admin/js/dashboard/dashboard_2js')}}"></script>--}}
 
         <script src="{{asset('assets/Admin/js/contacts/custom.js')}}"></script>
 

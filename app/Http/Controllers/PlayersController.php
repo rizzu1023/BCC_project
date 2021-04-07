@@ -97,12 +97,15 @@ class PlayersController extends Controller
             'batting_style' => 'required',
             'bowling_style' => '',
             'dob' => '',
+        ]);
+
+        $request->validate([
             'player_image' => 'sometimes|required|mimes:png,jpeg,jpg'
         ]);
 
         $player->update($data);
         if($request->hasFile('player_image')){
-            $player->addMediaFromRequest('player_image')->toMediaCollection();
+            $player->addMediaFromRequest('player_image')->toMediaCollection('player-image');
         }
         return redirect('/admin/player')->with('message','Player Updated');
     }

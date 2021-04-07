@@ -313,6 +313,23 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                                <div class="col-md-6" id="player_id" style="display: none">
+                                                    <label for="non_striker" id="non_striker"></label>
+                                                    <select class="form-control" id="non_striker"
+                                                            name="non_striker_id"
+                                                            required>
+                                                        {{--                                            <option disabled selected>Select</option>--}}
+                                                        @foreach($game->MatchPlayers as $mp)
+                                                            @if($mp->team_id == $batting_team_id)
+                                                                @if($mp->bt_status == '10')
+                                                                    <option selected
+                                                                            value="{{$mp->player_id}}">{{$mp->Players['first_name']}} {{$mp->Players['last_name']}}</option>
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
 
                                                 {{--                                    wicket_primary for runout--}}
                                                 <div class="col-md-6" id="div_wicket_primary_runout"
@@ -982,6 +999,7 @@
             var tournament = $("input[name=tournament]").val();
             var attacker_id = $("input[name=attacker_id]").val();
             var player_id = $("input[name=player_id]:checked").val();
+            var non_striker_id = $("input[name=player_id]:not(:checked)").val();
 
             $.ajax({
                 type: "POST",
@@ -990,6 +1008,7 @@
                 data: {
                     "_token": "{{ csrf_token() }}",
                     player_id: player_id,
+                    non_striker_id : non_striker_id,
                     attacker_id: attacker_id,
                     bt_team_id: bt_team_id,
                     bw_team_id: bw_team_id,
@@ -998,6 +1017,9 @@
                     value: value
                 },
                 success: function (data) {
+                    // if(!data.status){
+                    //     alert(data.errors);
+                    // }
                     $('#newBatsmanForm').trigger('reset');
 
 

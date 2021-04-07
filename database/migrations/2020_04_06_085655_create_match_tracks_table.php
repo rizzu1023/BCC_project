@@ -18,6 +18,7 @@ class CreateMatchTracksTable extends Migration
             $table->integer('match_id');
             $table->integer('team_id');
             $table->string('player_id');
+            $table->string('non_striker_id');
             $table->string('attacker_id');
             $table->integer('score');
             $table->integer('wickets');

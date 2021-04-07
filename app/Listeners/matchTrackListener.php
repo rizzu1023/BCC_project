@@ -136,6 +136,7 @@ class matchTrackListener
                     'team_id' => $event->request->bt_team_id,
                     'player_id' => $event->request->player_id,
                     'attacker_id' => $event->request->attacker_id,
+                    'non_striker_id' => $event->request->non_striker_id,
                     'score' => $match_detail->score,
                     'wickets' => $match_detail->wicket,
                     'action' => $action,

@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Redirect;
-use App\Teams;
-use App\Schedule;
 use App\Players;
-use App\MatchPlayers;
-use App\Game;
-use App\MatchDetail;
+use App\Schedule;
+use App\Teams;
 use App\Tournament;
 
 

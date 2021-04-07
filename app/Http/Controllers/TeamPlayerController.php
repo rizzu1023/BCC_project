@@ -111,14 +111,16 @@ class TeamPlayerController extends Controller
             'role' => 'required',
             'batting_style' => 'required',
             'bowling_style' => '',
-            'player_image' => 'sometimes|required|mimes:png,jpeg,jpg'
+        ]);
 
+        $request->validate([
+            'player_image' => 'sometimes|required|mimes:png,jpeg,jpg'
         ]);
 
         $player->update($data);
 
         if($request->hasFile('player_image')){
-            $player->addMediaFromRequest('player_image')->toMediaCollection();
+            $player->addMediaFromRequest('player_image')->toMediaCollection('player-image');
         }
 
         $bt->update(request(['player_id']));

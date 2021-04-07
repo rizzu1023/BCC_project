@@ -36,7 +36,7 @@ class PlayersResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'player_profile' => $this->media->isNotEmpty() ? $this->media->last()->getUrl('player-profile') : NULL,
+            'player_profile' => $this->getFirstMedia('player-image') ? $this->getFirstMedia('player-image')->getUrl('player-profile') : NULL,
             'player_id' => $this->player_id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
