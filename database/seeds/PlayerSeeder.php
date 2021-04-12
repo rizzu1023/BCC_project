@@ -361,7 +361,7 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Will',
             'last_name' => 'Pocuvski',
-            'role' => '',
+            'role' => 'Batsman',
             'batting_style' => 'Right Hand Batsman',
             'bowling_style' => 'Right Arm Fast',
             'dob' => '2000-12-12',

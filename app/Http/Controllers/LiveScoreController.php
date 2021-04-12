@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Validator;
 use App\Events\byesFourRunEvent;
 use App\Events\byesOneRunEvent;
@@ -325,16 +326,12 @@ class LiveScoreController extends Controller
                 if ($previous_ball->action == 'nb6') event(new reverseNoballSixRunEvent($request, $previous_ball));
             }
 
-            $userjobs = "true";
-            // $returnHTML = view('Admin/LiveScore/show')->with('userjobs', $userjobs)->render();
-            // return response()->json(array('success' => true, 'html'=>$returnHTML));
 
             $check_for_over = MatchDetail::where('match_id', $request->match_id)
                 ->where('tournament_id', $request->tournament)
                 ->where('team_id', $request->bt_team_id)->first();
             $isOver = $check_for_over->isOver;
             return response()->json(['message' => 'success', 'value' => $request->value, 'isOver' => $isOver]);
-//            return response()->json(compact('userjobs'), 200);
         }
     }
 

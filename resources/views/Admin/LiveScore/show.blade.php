@@ -1006,7 +1006,7 @@
                 url: "{{route('LiveUpdate')}}",
                 // headers: {'X-Requested-With': 'XMLHttpRequest'},
                 data: {
-                    "_token": "{{ csrf_token() }}",
+                    {{--"_token": "{{ csrf_token() }}",--}}
                     player_id: player_id,
                     non_striker_id : non_striker_id,
                     attacker_id: attacker_id,

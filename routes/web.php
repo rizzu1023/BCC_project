@@ -48,7 +48,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     Route::get('/LiveUpdate/{id}/{tournament}',[LiveScoreController::class,'LiveUpdateShow'])->name('LiveUpdate.show');
     Route::get('/LiveScoreCard/{id}/{tournament}',[LiveScoreController::class,'LiveScoreCard'])->name('LiveScoreCard');
-    Route::post('/LiveUpdate',[LiveScoreController::class,'LiveUpdate'])->name('LiveUpdate');
+    Route::post('/LiveUpdate',[LiveScoreController::class,'LiveUpdate'])->name('LiveUpdate')->withoutMiddleware([\App\Http\Middleware\VerifyCsrfToken::class]);
 
     Route::post('/LiveUpdate/mom',[LiveScoreController::class,'select_mom'])->name('select.mom');
 
