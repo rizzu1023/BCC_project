@@ -8,6 +8,7 @@ use App\Game;
 use App\MatchPlayers;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\DB;
 
 class isOverForTeam
 {
@@ -29,69 +30,33 @@ class isOverForTeam
      */
     public function handle($event)
     {
-        $overball = MatchDetail::select('overball')
-            ->where('match_id', $event->request->match_id)
+        $over = MatchDetail::where('match_id', $event->request->match_id)
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)->first();
 
 
-
-        if ($overball->overball > 5) {
-            MatchDetail::where('match_id', $event->request->match_id)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->update(['overball' => 0]);
-
-            MatchDetail::where('match_id', $event->request->match_id)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->increment('over');
-
-            MatchDetail::where('match_id', $event->request->match_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->where('team_id', $event->request->bt_team_id)
-                ->update(['isOver' => 1]);
+        if ($over->overball > 5) {
+            $over->update([
+                'overball' => 0,
+                'over' => $over->over + 1,
+                'isOver' => 1,
+            ]);
 
             //strike Rotation
 
-            $nonstriker = MatchPlayers::select('player_id')
-                ->where('match_id', $event->request->match_id)
+            $query = MatchPlayers::select('player_id','bt_status')->where('match_id', $event->request->match_id)
                 ->where('tournament_id', $event->request->tournament)
                 ->where('team_id', $event->request->bt_team_id)
-                ->where('bt_status', 10)->first();
+                ->whereIn('bt_status', [10,11])->get();
 
-            $striker = MatchPlayers::select('player_id')
-                ->where('match_id', $event->request->match_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('bt_status', 11)->first();
+            $nonstriker = $query->where('bt_status', 10)->first();
 
-            MatchPlayers::where('match_id', $event->request->match_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('player_id', $nonstriker->player_id)
-                ->update(['bt_status' => 11]);
+            $striker = $query->where('bt_status', 11)->first();
 
-            MatchPlayers::where('match_id', $event->request->match_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('player_id', $striker->player_id)
-                ->update(['bt_status' => 10]);
+            DB::transaction(function() use ($nonstriker,$striker){
+                $nonstriker->update(['bt_status' => 11]);
+                $striker->update(['bt_status' => 10]);
+            });
         }
-
-
-        // if($overball->over == '2'){
-        //     MatchDetail::where('match_id', $event->request->match_id)
-        //     ->where('team_id', $event->request->bt_team_id)
-        //     ->where('tournament_id', $event->request->tournament)
-        //     ->update(['isBatting' => 0]);
-
-        //     MatchDetail::where('match_id', $event->request->match_id)
-        //     ->where('team_id', $event->request->bw_team_id)
-        //     ->where('tournament_id', $event->request->tournament)
-        //     ->update(['isBatting' => 1]);
-        // }
-
-
     }
 }
