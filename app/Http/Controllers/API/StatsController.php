@@ -48,7 +48,7 @@ class StatsController extends Controller
 
         }
         if ($type == "highestScores") {
-            $highestScores = MatchPlayers::with('Players')->select('player_id', 'bt_runs', 'bt_balls', 'match_id', 'team_id')
+            $highestScores = MatchPlayers::with('Players','MatchDetail.Teams')->select('player_id', 'bt_runs', 'bt_balls', 'match_id', 'team_id')
                 ->where('tournament_id', $tournament_id)
                 ->where('bt_runs', '>', 0)
                 ->where('bt_balls', '>', 0)
@@ -93,8 +93,9 @@ class StatsController extends Controller
                 ->orderBy('bt_runs', 'desc')->get()->take(20);
 
             $bestBattingStrikeRate = $bestBattingStrikeRate->reject(function ($element) {
-                return $element->bt_runs <= 0;
+                return $element->bt_balls <= 0;
             });
+
 
             $bestBattingStrikeRate->map(function ($element) {
                 $bt_sr = ($element->bt_runs / $element->bt_balls) * 100;
@@ -159,7 +160,7 @@ class StatsController extends Controller
         }
 
         if ($type == "bestBowling") {
-            $bestBowling = MatchPlayers::with('Players')->select('bw_wickets', 'bw_runs', 'team_id', 'player_id', 'match_id')
+            $bestBowling = MatchPlayers::with('Players','MatchDetail.Teams')->select('bw_wickets', 'bw_runs', 'team_id', 'player_id', 'match_id')
                 ->where('tournament_id', $tournament_id)
                 ->where('bw_wickets', '>', 0)
                 ->orderBy('bw_wickets', 'desc')->orderBy('bw_runs', 'asc')

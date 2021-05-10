@@ -45,7 +45,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/tournaments', [\App\Http\Controllers\API\TournamentController::class,'index']);
 
-Route::get('/tournaments/{tournament}/schedules',[\App\Http\Controllers\API\ScheduleController::class,'index']);
+Route::get('/tournaments/{tournament}/schedules',[\App\Http\Controllers\API\ScheduleController::class,'schedules']);
+Route::get('/tournaments/{tournament}/results',[\App\Http\Controllers\API\ScheduleController::class,'results']);
 Route::get('/tournaments/{tournament}/teams',[\App\Http\Controllers\API\TournamentController::class,'teams']);
 Route::get('/tournaments/{tournament}/stats/{stats_type}',[\App\Http\Controllers\API\StatsController::class,'data']);
 Route::get('/tournaments/{tournament}/points-table',[\App\Http\Controllers\API\TournamentController::class,'points_table']);
