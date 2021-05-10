@@ -7,6 +7,7 @@ use App\MatchDetail;
 use App\MatchPlayers;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\DB;
 
 class reverseIsOverForTeam
 {
@@ -28,22 +29,17 @@ class reverseIsOverForTeam
      */
     public function handle($event)
     {
-        $overball = MatchDetail::where('match_id', $event->request->match_id)
+        $over = MatchDetail::where('match_id', $event->request->match_id)
             ->where('tournament_id', $event->request->tournament)
             ->where('team_id', $event->request->bt_team_id)->first();
 
 
 
-        if ($overball->overball == 0) {
-            MatchDetail::where('match_id', $event->request->match_id)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->update(['overball' => 6]);
-
-            MatchDetail::where('match_id', $event->request->match_id)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->decrement('over');
+        if ($over->overball == 0) {
+            $over->update([
+                'overball' => 6,
+                'over' => $over->over - 1,
+            ]);
 
 //            MatchDetail::where('match_id', $event->request->match_id)
 //                ->where('tournament_id', $event->request->tournament)
@@ -52,27 +48,19 @@ class reverseIsOverForTeam
 
             //strike Rotation
 
-            $nonstriker = MatchPlayers::where('match_id', $event->request->match_id)
+            $query = MatchPlayers::select('player_id','bt_status')->where('match_id', $event->request->match_id)
                 ->where('tournament_id', $event->request->tournament)
                 ->where('team_id', $event->request->bt_team_id)
-                ->where('bt_status', 10)->first();
+                ->whereIn('bt_status', [10,11])->get();
 
-            $striker = MatchPlayers::where('match_id', $event->request->match_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('bt_status', 11)->first();
+            $nonstriker = $query->where('bt_status', 10)->first();
 
-            MatchPlayers::where('match_id', $event->request->match_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('player_id', $nonstriker->player_id)
-                ->update(['bt_status' => 11]);
+            $striker = $query->where('bt_status', 11)->first();
 
-            MatchPlayers::where('match_id', $event->request->match_id)
-                ->where('tournament_id', $event->request->tournament)
-                ->where('team_id', $event->request->bt_team_id)
-                ->where('player_id', $striker->player_id)
-                ->update(['bt_status' => 10]);
+            DB::transaction(function() use ($nonstriker,$striker){
+                $nonstriker->update(['bt_status' => 11]);
+                $striker->update(['bt_status' => 10]);
+            });
         }
     }
 }

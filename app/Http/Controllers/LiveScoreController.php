@@ -96,6 +96,13 @@ class LiveScoreController extends Controller
 
     public function ScoreDetails(Request $request)
     {
+        $request->validate([
+           'match_id' => 'required',
+           'overs' => 'required',
+           'tournament_id' => 'required',
+           'toss' => 'required',
+           'choose' => 'required',
+        ]);
 //        return $request->all();
         $m = Game::create([
             'match_id' => request('id'),
