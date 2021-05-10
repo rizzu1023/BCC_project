@@ -31,7 +31,7 @@ class StatsController extends Controller
 //            DB::enableQueryLog();
 //            return DB::getQueryLog();
 
-            $mostRuns = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(Case when bt_status IN ("0") then 1 else 0 end) as out_innings, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0") then 1 else 0 end)),2) as bt_average')
+            $mostRuns = MatchPlayers::with('Players')->selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(Case when bt_status IN ("0") then 1 else 0 end) as out_innings, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0") then 1 else 0 end)),2) as bt_average')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bt_runs', 'desc')->get()->take(20);
@@ -48,7 +48,7 @@ class StatsController extends Controller
 
         }
         if ($type == "highestScores") {
-            $highestScores = MatchPlayers::select('player_id', 'bt_runs', 'bt_balls', 'match_id', 'team_id')
+            $highestScores = MatchPlayers::with('Players')->select('player_id', 'bt_runs', 'bt_balls', 'match_id', 'team_id')
                 ->where('tournament_id', $tournament_id)
                 ->where('bt_runs', '>', 0)
                 ->where('bt_balls', '>', 0)
@@ -64,7 +64,7 @@ class StatsController extends Controller
         }
 
         if ($type == "bestBattingAverage") {
-            $bestBattingAverage = MatchPlayers::selectRaw('player_id, COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, SUM(Case when bt_status IN ("0","12") then 1 else 0 end) as out_innings,  SUM(bt_runs) as bt_runs, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0","12") then 1 else 0 end)),2) as bt_average')
+            $bestBattingAverage = MatchPlayers::with('Players')->selectRaw('player_id, COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, SUM(Case when bt_status IN ("0","12") then 1 else 0 end) as out_innings,  SUM(bt_runs) as bt_runs, round((SUM(bt_runs) / SUM(Case when bt_status IN ("0","12") then 1 else 0 end)),2) as bt_average')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bt_average','desc')
@@ -87,7 +87,7 @@ class StatsController extends Controller
 
         //TODO : need to change
         if ($type == "bestBattingStrikeRate") {
-            $bestBattingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls')
+            $bestBattingStrikeRate = MatchPlayers::with('Players')->selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bt_runs', 'desc')->get()->take(20);
@@ -107,7 +107,7 @@ class StatsController extends Controller
         }
 
         if ($type == "mostFours") {
-            $mostFours = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_fours) as bt_fours')
+            $mostFours = MatchPlayers::with('Players')->selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_fours) as bt_fours')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bt_fours', 'desc')->get()->take(20);
@@ -119,7 +119,7 @@ class StatsController extends Controller
         }
 
         if ($type == "mostSixes") {
-            $mostSixes = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_sixes) as bt_sixes')
+            $mostSixes = MatchPlayers::with('Players')->selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_sixes) as bt_sixes')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bt_sixes', 'desc')->get()->take(20);
@@ -131,7 +131,7 @@ class StatsController extends Controller
         }
 
         if ($type == "mostHundreds") {
-            $mostHundreds = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs,SUM(Case when bt_runs > 99 then 1 else 0 end) as bt_hundreds')
+            $mostHundreds = MatchPlayers::with('Players')->selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs,SUM(Case when bt_runs > 99 then 1 else 0 end) as bt_hundreds')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bt_runs', 'desc')->get()->take(20);
@@ -145,7 +145,7 @@ class StatsController extends Controller
         }
 
         if ($type == "mostFifties") {
-            $mostFifties = MatchPlayers::selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(Case when bt_runs > 49 and bt_runs < 100 then 1 else 0 end) as bt_fifties')
+            $mostFifties = MatchPlayers::with('Players')->selectRaw('COUNT(match_id) as matches,  SUM(Case when bt_status IN ("11","10","0","12") then 1 else 0 end) as bt_innings, player_id, SUM(bt_runs) as bt_runs, SUM(Case when bt_runs > 49 and bt_runs < 100 then 1 else 0 end) as bt_fifties')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bt_runs', 'desc')->get()->take(20);
@@ -159,7 +159,7 @@ class StatsController extends Controller
         }
 
         if ($type == "bestBowling") {
-            $bestBowling = MatchPlayers::select('bw_wickets', 'bw_runs', 'team_id', 'player_id', 'match_id')
+            $bestBowling = MatchPlayers::with('Players')->select('bw_wickets', 'bw_runs', 'team_id', 'player_id', 'match_id')
                 ->where('tournament_id', $tournament_id)
                 ->where('bw_wickets', '>', 0)
                 ->orderBy('bw_wickets', 'desc')->orderBy('bw_runs', 'asc')
@@ -168,7 +168,7 @@ class StatsController extends Controller
         }
 
         if ($type == "mostWickets") {
-            $mostWickets = MatchPlayers::selectRaw('player_id, round(SUM(bw_runs) / SUM(bw_wickets),2) as bw_average, COUNT(match_id) as matches, SUM(bw_over) as bw_over, SUM(bw_overball) as bw_overball, SUM(bw_wickets) as bw_wickets, SUM(bw_runs) as bw_runs')
+            $mostWickets = MatchPlayers::with('Players')->selectRaw('player_id, round(SUM(bw_runs) / SUM(bw_wickets),2) as bw_average, COUNT(match_id) as matches, SUM(bw_over) as bw_over, SUM(bw_overball) as bw_overball, SUM(bw_wickets) as bw_wickets, SUM(bw_runs) as bw_runs')
                 ->where('tournament_id', $tournament_id)
                 ->groupBy('player_id')
                 ->orderBy('bw_wickets', 'desc')
@@ -182,7 +182,7 @@ class StatsController extends Controller
         }
 
         if ($type == "bestBowlingAverage") {
-            $bestBowlingAverage = MatchPlayers::selectRaw('player_id, round(SUM(bw_runs) / SUM(bw_wickets),2) as bw_average, COUNT(match_id) as matches, SUM(bw_over) as bw_over, SUM(bw_overball) as bw_overball, SUM(bw_wickets) as bw_wickets, SUM(bw_runs) as bw_runs')
+            $bestBowlingAverage = MatchPlayers::with('Players')->selectRaw('player_id, round(SUM(bw_runs) / SUM(bw_wickets),2) as bw_average, COUNT(match_id) as matches, SUM(bw_over) as bw_over, SUM(bw_overball) as bw_overball, SUM(bw_wickets) as bw_wickets, SUM(bw_runs) as bw_runs')
                 ->where('tournament_id', $tournament_id)
                 ->where('bw_wickets', '>', 0)
                 ->groupBy('player_id')
@@ -196,7 +196,7 @@ class StatsController extends Controller
 
             //balls conceded / wicket taken
 
-            $bestBowlingStrikeRate = MatchPlayers::selectRaw('COUNT(match_id) as matches, SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls, SUM(bw_over * 6 + bw_overball) as total_balls, SUM(bw_wickets) as bw_wickets')
+            $bestBowlingStrikeRate = MatchPlayers::with('Players')->selectRaw('COUNT(match_id) as matches, SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bt_runs) as bt_runs, SUM(bt_balls) as bt_balls, SUM(bw_over * 6 + bw_overball) as total_balls, SUM(bw_wickets) as bw_wickets')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bw_wickets', 'desc')->get()->take(20);
@@ -222,7 +222,7 @@ class StatsController extends Controller
 
         //TODO : need to change
         if ($type == "bestEconomy") {
-            $bestEconomy = MatchPlayers::selectRaw('COUNT(match_id) as matches, SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bw_over) as bw_over, SUM(bw_overball) as bw_overball, SUM(bw_wickets) as bw_wickets, SUM(bw_runs) as bw_runs')
+            $bestEconomy = MatchPlayers::with('Players')->selectRaw('COUNT(match_id) as matches, SUM(Case when bw_status IN ("11","1") then 1 else 0 end) as bw_innings, player_id, SUM(bw_over) as bw_over, SUM(bw_overball) as bw_overball, SUM(bw_wickets) as bw_wickets, SUM(bw_runs) as bw_runs')
                 ->groupBy('player_id')
                 ->where('tournament_id', $tournament_id)
                 ->orderBy('bw_runs', 'desc')->get()->take(20);
