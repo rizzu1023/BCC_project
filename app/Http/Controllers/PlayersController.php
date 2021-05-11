@@ -3,28 +3,31 @@
 namespace App\Http\Controllers;
 
 
+use App\Batting;
+use App\Bowling;
 use App\Imports\PlayerImport;
-use App\Tournament;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Http\Request;
+use App\Models\MasterBattingStyle;
+use App\Models\MasterBowlingStyle;
+use App\Models\MasterRole;
 use App\Players;
 use App\Teams;
-use App\Bowling;
-use App\Batting;
-use App\MatchPlayers;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PlayersController extends Controller
 {
     public function index()
     {
-       $players = Players::where('user_id' , auth()->user()->id)->get();
+       $players = Players::with('Role')->where('user_id' , auth()->user()->id)->get();
        return view('Admin.Player.playerIndex',compact('players'));
     }
 
     public function create()
     {
-        return view('Admin.Player.playerCreate');
+        $masterRoles = MasterRole::where('status',1)->get();
+        $masterBattingStyles = MasterBattingStyle::where('status',1)->get();
+        $masterBowlingStyles = MasterBowlingStyle::where('status',1)->get();
+        return view('Admin.Player.playerCreate',compact('masterRoles','masterBattingStyles','masterBowlingStyles'));
     }
     public function show($id)
     {
@@ -48,25 +51,19 @@ class PlayersController extends Controller
             'player_id' => 'required',
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            'role' => 'required|string',
-            'batting_style' => 'required',
-            'bowling_style' => 'sometimes|required',
+            'role_id' => 'required|string',
+            'batting_style_id' => 'required',
+            'bowling_style_id' => '',
         ]);
-
-        if($request['image_path'])
-             $image_path = $request['image_path'];
-        else
-            $image_path = 'default.png';
 
 
         Players::create([
             'player_id' => $request['player_id'],
-            'image_path' => $image_path,
             'first_name' => $request['first_name'],
             'last_name' => $request['last_name'],
-            'role' => $request['role'],
-            'batting_style' => $request['batting_style'],
-            'bowling_style' => $request['bowling_style'],
+            'role_id' => $request['role_id'],
+            'batting_style_id' => $request['batting_style_id'],
+            'bowling_style_id' => $request['bowling_style_id'],
             'dob' => $request['dob'],
             'user_id' => auth()->user()->id,
         ]);

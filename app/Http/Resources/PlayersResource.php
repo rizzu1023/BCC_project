@@ -40,11 +40,11 @@ class PlayersResource extends JsonResource
             'player_id' => $this->player_id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'role' => $this->role,
+            'role' => $this->Role->name,
             'dob' => $dob,
             'age' => $age,
-            'batting_style' => $this->batting_style,
-            'bowling_style' => $this->bowling_style,
+            'batting_style' => $this->BattingStyle->name,
+            'bowling_style' => $this->BowlingStyle->name,
 //            'player_team' => $this->Teams,
         ];
     }

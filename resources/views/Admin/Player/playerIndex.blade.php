@@ -55,7 +55,7 @@
                                         {{--                    <span>Interchargebla lens Digital Camera with APS-C-X Trans CMOS Sens</span>--}}
                                     </td>
                                     <td>{{$p->first_name}} {{$p->last_name}}</td>
-                                    <td>{{$p->role}}</td>
+                                    <td>{{$p->Role->name}}</td>
                                     <td>
                                         <a class="btn btn-warning btn-sm" href="/admin/player/{{$p->id}}">Details</a>
                                         <a class="btn btn-success btn-sm" href="/admin/player/{{$p->id}}/edit">Edit</a>

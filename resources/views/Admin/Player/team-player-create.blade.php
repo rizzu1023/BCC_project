@@ -44,31 +44,29 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Player Role</label>
-                                <select class="form-control" name="role" required="" >
+                                <select class="form-control" name="role_id" required="" >
                                     <option selected="" disabled="" value="">Choose...</option>
-                                    <option>Batsman</option>
-                                    <option>WK-Batsman</option>
-                                    <option>Bowler</option>
-                                    <option>Bowling Allrounder</option>
-                                    <option>Batting Allrounder</option>
+                                    @foreach($masterRoles as $role)
+                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Batting Style</label>
-                                <select class="form-control" name="batting_style" required="" >
+                                <select class="form-control" name="batting_style_id" required="" >
                                     <option selected="" disabled="" value="">Choose...</option>
-                                    <option>Right Hand Batsman</option>
-                                    <option>Left Hand Batsman</option>
+                                    @foreach($masterBattingStyles as $style)
+                                        <option value="{{ $style->id }}">{{ $style->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="col-form-label">Bowling Style (optional)</label>
-                                <select class="form-control" name="bowling_style" >
+                                <select class="form-control" name="bowling_style_id" required="" >
                                     <option selected="" disabled="" value="">Choose...</option>
-                                    <option>Right-arm fast</option>
-                                    <option>Left-arm fast</option>
-                                    <option>Right-arm legbreak</option>
-                                    <option>Left-arm legbreak</option>
+                                    @foreach($masterBowlingStyles as $style)
+                                        <option value="{{ $style->id }}">{{ $style->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">

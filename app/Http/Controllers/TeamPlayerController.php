@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Batting;
 use App\Bowling;
 use App\MatchPlayers;
+use App\Models\MasterBattingStyle;
+use App\Models\MasterBowlingStyle;
+use App\Models\MasterRole;
 use App\Players;
 use App\Teams;
 use Illuminate\Http\Request;
@@ -15,7 +18,7 @@ class TeamPlayerController extends Controller
     public function index(Teams $team, Players $player)
     {
         $team_id = $team->id;
-        $players = Players::whereHas('teams',function($query) use($team_id){
+        $players = Players::with('Role')->whereHas('teams',function($query) use($team_id){
             $query->where('team_id',$team_id);
         })->get();
 //        return $players;
@@ -27,46 +30,33 @@ class TeamPlayerController extends Controller
     public function create(Teams $team)
     {
         $players = Players::where('user_id',auth()->user()->id)->get();
-        return view('Admin.Player.team-player-create', compact('team','players'));
+        $masterRoles = MasterRole::where('status',1)->get();
+        $masterBattingStyles = MasterBattingStyle::where('status',1)->get();
+        $masterBowlingStyles = MasterBowlingStyle::where('status',1)->get();
+        return view('Admin.Player.team-player-create', compact('team','players','masterRoles','masterBowlingStyles','masterBattingStyles'));
     }
 
 
     public function store(Request $request, Teams $team)
     {
-        $data = $this->validate($request,[
-            'player_id' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'role' => 'required',
-            'batting_style' => 'required',
-            'bowling_style' => '',
-            'team_id' => 'required',
-        ]);
 
         $this->validate($request,[
             'player_id' => 'required|unique:players',
             'first_name' => 'required',
             'last_name' => 'required',
-            'role' => 'required',
-            'batting_style' => 'required',
-            'bowling_style' => '',
+            'role_id' => 'required',
+            'batting_style_id' => 'required',
+            'bowling_style_id' => '',
             'team_id' => 'required',
         ]);
 
-        if($request['image_path'])
-            $image_path = $request['image_path'];
-        else
-            $image_path = 'default.png';
-
-
          $player = Players::create([
              'player_id' => $request['player_id'],
-             'image_path' => $image_path,
              'first_name' => $request['first_name'],
              'last_name' => $request['last_name'],
-             'role' => $request['role'],
-             'batting_style' => $request['batting_style'],
-             'bowling_style' => $request['bowling_style'],
+             'role_id' => $request['role_id'],
+             'batting_style_id' => $request['batting_style_id'],
+             'bowling_style_id' => $request['bowling_style_id'],
              'dob' => $request['dob'],
              'user_id' => auth()->user()->id,
         ]);

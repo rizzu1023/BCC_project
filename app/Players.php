@@ -25,6 +25,21 @@ class Players extends Model implements HasMedia
         return $this->belongsToMany('App\Teams','player_team','player_id','team_id')->withTimestamps();
     }
 
+    public function Role()
+    {
+        return $this->belongsTo('App\Models\MasterRole','role_id','id');
+    }
+
+    public function BattingStyle()
+    {
+        return $this->belongsTo('App\Models\MasterBattingStyle','batting_style_id','id');
+    }
+
+    public function BowlingStyle()
+    {
+        return $this->belongsTo('App\Models\MasterBowlingStyle','bowling_style_id','id');
+    }
+
 
     public function registerMediaCollections(): void
     {
