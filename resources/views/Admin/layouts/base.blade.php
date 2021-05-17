@@ -117,10 +117,6 @@
         <!-- Theme js-->
 
 
-
-
-
-
         <script src="{{asset('assets/Admin/js/script.js')}}"></script>
         {{--        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.minjs')}}"></script>--}}
 

@@ -8,6 +8,6 @@ class AppController extends Controller
 {
     public function index()
     {
-        return view('Main.layouts.master');
+        return view('Admin.layouts.master');
     }
 }

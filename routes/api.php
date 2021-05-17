@@ -60,3 +60,13 @@ Route::get('/teams/{team}/players',[\App\Http\Controllers\API\PlayersController:
 Route::get('/players/{player}',[\App\Http\Controllers\API\PlayersController::class,'show']);
 
 Route::post('/feedback',[\App\Http\Controllers\API\FeedbackController::class,'store']);
+
+
+
+
+
+
+//Admin Api Routes
+
+Route::get('/admin/tournaments',[\App\Http\Controllers\API\Admin\TournamentController::class,'getTournaments']);
+Route::get('/admin/tournament/{tournament}/teams',[\App\Http\Controllers\API\Admin\TournamentTeamsController::class,'getTournamentTeams']);
