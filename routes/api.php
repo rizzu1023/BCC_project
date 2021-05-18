@@ -69,4 +69,5 @@ Route::post('/feedback',[\App\Http\Controllers\API\FeedbackController::class,'st
 //Admin Api Routes
 
 Route::get('/admin/tournaments',[\App\Http\Controllers\API\Admin\TournamentController::class,'getTournaments']);
+Route::delete('/admin/tournaments/{tournament_id}',[\App\Http\Controllers\API\Admin\TournamentController::class,'deleteTournament']);
 Route::get('/admin/tournament/{tournament}/teams',[\App\Http\Controllers\API\Admin\TournamentTeamsController::class,'getTournamentTeams']);

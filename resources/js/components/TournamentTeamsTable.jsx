@@ -6,9 +6,9 @@ class TournamentTeamsTable extends React.Component {
         columns: [
             {id: 1, path : 'team_code' , label : 'Team Code'},
             {id: 2, path : 'team_name' , label : 'Team Name'},
-            {id: 3, key : 'squad', label : 'Squad', content : tournamentTeam => <button onClick={() => this.props.onSquad(tournamentTeam)} className="btn btn-dark btn-sm">Squad</button>},
-            {id: 4, key : 'show', label : 'Action', content : tournamentTeam => <button onClick={() => this.props.onDetails(tournamentTeam)} className="btn btn-warning btn-sm">Details</button>},
-            {id: 5, key : 'delete', label : 'Action', content : tournamentTeam => <button onClick={() => this.props.onDelete(tournamentTeam)} className="btn btn-danger btn-sm">Delete</button>},
+            {id: 3, key : 'squad', label : 'Squad', content : tournamentTeam => <><button onClick={() => this.props.onSquad(tournamentTeam)} className="btn btn-dark btn-sm mr-2">Squad</button><button onClick={() => this.props.onDetails(tournamentTeam)} className="btn btn-warning btn-sm mr-2">Details</button><button onClick={() => this.props.onDelete(tournamentTeam)} className="btn btn-danger btn-sm">Delete</button></>},
+            // {id: 4, key : 'show', label : 'Action', content : tournamentTeam => <button onClick={() => this.props.onDetails(tournamentTeam)} className="btn btn-warning btn-sm">Details</button>},
+            // {id: 5, key : 'delete', label : 'Action', content : tournamentTeam => <button onClick={() => this.props.onDelete(tournamentTeam)} className="btn btn-danger btn-sm">Delete</button>},
         ],
     };
     render() {

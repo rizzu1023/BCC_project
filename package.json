@@ -19,6 +19,8 @@
         "postcss": "^8.1.14",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
+        "react-router-dom": "^5.2.0",
+        "react-toastify": "^7.0.4",
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0",

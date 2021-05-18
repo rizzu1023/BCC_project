@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class TournamentTeamsController extends Controller
 {
-    public function getTournamentTeams(Tournament $tournament)
+    public function getTournamentTeams($tournament_id)
     {
+        $tournament = Tournament::where('id',$tournament_id)->first();
         $teams = Teams::where('tournament_id', $tournament->id)->get();
-        return TournamentTeamsResource::collection($teams);
+        return response()->json(['status'=>true , 'data' => TournamentTeamsResource::collection($teams) ]);
     }
 }

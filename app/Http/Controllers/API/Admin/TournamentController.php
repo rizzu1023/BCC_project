@@ -12,6 +12,12 @@ class TournamentController extends Controller
     public function getTournaments()
     {
         $tournament = Tournament::all();
-        return TournamentResource::collection($tournament);
+        return response()->json(['status'=>true , 'data' => TournamentResource::collection($tournament) ]);
+    }
+
+    public function deleteTournament($tournament_id){
+        $tournament = Tournament::where('id',$tournament_id)->first();
+        $tournament->delete();
+        return response()->json(['status'=>true , 'message' => "Tournament Successfully Deleted." ]);
     }
 }

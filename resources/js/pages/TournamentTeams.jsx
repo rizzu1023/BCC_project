@@ -2,18 +2,35 @@ import React from 'react';
 import axios from "axios";
 import {url} from "../config.json";
 import TournamentTeamsTable from "../components/TournamentTeamsTable";
+import {toast} from "react-toastify";
+import Breadcrumb from "../components/common/Breadcrumb";
+
 
 class TournamentTeams extends React.Component {
     state = {
         tournamentTeams : [],
+        breadcrumbs : [
+            { id : 1, label : 'Tournament', path : '/react/admin/tournaments' },
+            { id : 2, label : 'Teams', path : false },
+        ]
     };
 
     async componentDidMount() {
         const tournament_id = this.props.match.params.tournament_id;
         const { data : teams } = await axios.get(url + "tournament/"+ tournament_id +"/teams");
-        this.setState({
-            tournamentTeams : teams
-        });
+        try{
+            if(teams.status){
+                this.setState({
+                    tournamentTeams : teams.data
+                });
+            }
+            else{
+                toast.error(teams.message);
+            }
+        }
+        catch(ex){
+            toast.error('An unexpected error occurred.');
+        }
     }
 
     deleteTournamentTeam = (tournamentTeam) => {
@@ -39,10 +56,9 @@ class TournamentTeams extends React.Component {
                                 <h3>Teams</h3>
                             </div>
                             <div className="col-6">
-                                <ol className="breadcrumb border-0">
-                                    <li className="breadcrumb-item"><a href="/doctor/dashboard"><i data-feather="home"/></a></li>
-                                    <li className="breadcrumb-item">Dashboard</li>
-                                </ol>
+                               <Breadcrumb
+                                    breadcrumbs = {this.state.breadcrumbs}
+                               />
                             </div>
                         </div>
                     </div>

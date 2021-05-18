@@ -1,22 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from './../assets/images/FELogo.png'
 
 class Sidebar extends React.Component {
     state = {
         sidebar: [
-            {id: 1, name: 'Dashboard', path: '/rizz/admin/dashboard', icon : 'home'},
-            {id: 2, name: 'Tournaments', path: '/rizz/admin/tournaments', icon : 'truck'},
-            {id: 3, name: 'Players', path: '/rizz/admin/players', icon : 'users'},
-            {id: 4, name: 'Feedback', path: '/rizz/admin/feedbacks', icon : 'home' },
-            {id: 5, name: 'Logout', path: '/rizz/admin/logout', icon : 'log-out'},
+            {id: 1, name: 'Dashboard', path: '/react/admin/dashboard', icon : 'home'},
+            {id: 2, name: 'Tournaments', path: '/react/admin/tournaments', icon : 'truck'},
+            {id: 3, name: 'Players', path: '/react/admin/players', icon : 'users'},
+            {id: 4, name: 'Feedback', path: '/react/admin/feedbacks', icon : 'home' },
+            {id: 5, name: 'Logout', path: '/react/admin/logout', icon : 'log-out'},
         ]
     };
     render() {
         const { sidebar } = this.state;
         return (
             <div className="sidebar-wrapper">
-                <div className="logo-wrapper"><a href="index.html"><img className="img-fluid" alt="abc"/></a></div>
-                <div className="logo-icon-wrapper"><a href="index.html"><img className="img-fluid" alt="xaa"/></a></div>
+                <div className="logo-wrapper"><NavLink to="/react/admin/dashboard"><img className="img-fluid" src={logo} alt='logo'/></NavLink></div>
+                <div className="logo-icon-wrapper"><NavLink to="/react/admin/dashboard"><img className="img-fluid" src={logo} alt='logo'/></NavLink></div>
                 <nav>
                     <div className="sidebar-main">
                         <div id="sidebar-menu">

@@ -27856,3 +27856,12 @@ body[class*='dark-'] .for-light {
 /**=====================
     63. Box-layout CSS ends
 ==========================**/
+
+.card{
+    border-radius:  0;
+}
+
+.card .card-header{
+    padding-top : 25px;
+    padding-bottom : 20px;
+}
