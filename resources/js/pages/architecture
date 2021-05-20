@@ -1,5 +1,5 @@
                                                 Tournament
 
-                      TournamentTeams     TournamentSchedule    TournamentGroups    TournamentPointsTable
+                      TournamentTeams     TournamentSchedules    TournamentGroups    TournamentPointsTable
 
-       TournamentTeamCreate TournamentTeamShow
+       TournamentTeamCreateForm TournamentTeamShow

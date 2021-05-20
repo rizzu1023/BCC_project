@@ -20,8 +20,8 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Eoin',
             'last_name' => 'Morgan',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
+            'role' => 1,
+            'batting_style' => 1,
             'bowling_style' => 'Right Arm Offbreak',
             'dob' => '2000-12-12',
             'user_id' => '1',
@@ -32,9 +32,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Joe',
             'last_name' => 'Root',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -44,9 +44,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Jason',
             'last_name' => 'Roy',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -56,9 +56,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Liam',
             'last_name' => 'Livingstone',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -68,9 +68,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'David',
             'last_name' => 'Malan',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -80,9 +80,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Moeen',
             'last_name' => 'Ali',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -92,9 +92,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Ben',
             'last_name' => 'Stokes',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -104,9 +104,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Chris',
             'last_name' => 'Woakes',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -117,9 +117,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Tom',
             'last_name' => 'Curran',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -129,9 +129,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Sam',
             'last_name' => 'Curran',
-            'role' => 'ALl Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -141,9 +141,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Jonny',
             'last_name' => 'Bairstow',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -153,9 +153,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Jos',
             'last_name' => 'Buttler',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -167,9 +167,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Virat',
             'last_name' => 'Kohli',
-            'role' => 'Batman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -179,9 +179,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Rohit',
             'last_name' => 'Sharma',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -191,9 +191,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Shikhar',
             'last_name' => 'Dhawan',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -203,9 +203,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Shubam',
             'last_name' => 'Gill',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -215,9 +215,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Ajinkya',
             'last_name' => 'Rahane',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -227,9 +227,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Hardik',
             'last_name' => 'Pandya',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -239,9 +239,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Ravindra',
             'last_name' => 'Jadeja',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -251,9 +251,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'KL',
             'last_name' => 'Rahul',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -263,9 +263,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Rishab',
             'last_name' => 'Pant',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -275,9 +275,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Mohammed',
             'last_name' => 'Shami',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -287,9 +287,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Jasprit',
             'last_name' => 'Bumrah',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -299,9 +299,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Mohammed',
             'last_name' => 'Siraj',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -313,9 +313,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Aaron',
             'last_name' => 'Finch',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -325,9 +325,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Steve',
             'last_name' => 'Smith',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -337,9 +337,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'David',
             'last_name' => 'Warner',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -349,9 +349,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Joe',
             'last_name' => 'Burns',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -361,9 +361,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Will',
             'last_name' => 'Pocuvski',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -373,9 +373,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Glenn',
             'last_name' => 'Maxwell',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -385,9 +385,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Cameroon',
             'last_name' => 'Gareen',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -397,9 +397,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Alex',
             'last_name' => 'Carey',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -409,9 +409,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Tim',
             'last_name' => 'Paine',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -421,9 +421,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Pat',
             'last_name' => 'Cummins',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -433,9 +433,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Mitchell',
             'last_name' => 'Starc',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -445,9 +445,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Josh',
             'last_name' => 'Hazlewood',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -459,9 +459,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Martin',
             'last_name' => 'Guptill',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -471,9 +471,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Ross',
             'last_name' => 'Taylor',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -483,9 +483,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Kane',
             'last_name' => 'Williomson',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -495,9 +495,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Henry ',
             'last_name' => 'Nicholas',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -507,9 +507,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'James',
             'last_name' => 'Neesham',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -519,9 +519,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Colin',
             'last_name' => 'Munro',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -531,9 +531,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Mitchell',
             'last_name' => 'Santner',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -543,9 +543,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Tom',
             'last_name' => 'Latham',
-            'role' => 'Wicket keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -555,9 +555,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Tom',
             'last_name' => 'Blundell',
-            'role' => 'Wikcet Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -567,9 +567,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Trent',
             'last_name' => 'Bolt',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -579,9 +579,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Mat',
             'last_name' => 'Henry',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -591,9 +591,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Tim',
             'last_name' => 'Southee',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -605,9 +605,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Faf',
             'last_name' => 'Du Plessis',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -617,9 +617,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'David',
             'last_name' => 'Miller',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -629,9 +629,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Aiden',
             'last_name' => 'Markram',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -641,9 +641,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Jean Paul',
             'last_name' => 'Duminy',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -653,9 +653,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Andile',
             'last_name' => 'Phehlukwayo',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -665,9 +665,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Chris',
             'last_name' => 'Morris',
-            'role' => 'ALl Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -677,9 +677,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Dwaine',
             'last_name' => 'Pretorius',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -689,9 +689,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Quinton',
             'last_name' => 'de Kock',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -701,9 +701,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Kagiso',
             'last_name' => 'Rabada',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -713,9 +713,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Lungi',
             'last_name' => 'Ngidi',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -725,9 +725,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Tabraiz',
             'last_name' => 'Shamsi',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -737,9 +737,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Imran',
             'last_name' => 'Tahir',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -752,9 +752,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Daren',
             'last_name' => 'Bravo',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -764,9 +764,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Chris',
             'last_name' => 'Gayle',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -776,9 +776,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Evin',
             'last_name' => 'Lewis',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -788,9 +788,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Shimron',
             'last_name' => 'Hetmyer',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -800,9 +800,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Fabian',
             'last_name' => 'Allen',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -812,9 +812,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Json',
             'last_name' => 'Holder',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -824,9 +824,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Andre',
             'last_name' => 'Russell',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -836,9 +836,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Shai',
             'last_name' => 'Hope',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -848,9 +848,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Nicholas',
             'last_name' => 'Pooran',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -860,9 +860,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Sheldon',
             'last_name' => 'Cottrell',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -872,9 +872,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Shannon',
             'last_name' => 'Gabriel',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -884,9 +884,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Kemar',
             'last_name' => 'Roach',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -898,9 +898,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Fakhar',
             'last_name' => 'Zaman',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -910,9 +910,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Imam-ul',
             'last_name' => 'Haq',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -922,9 +922,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Babar',
             'last_name' => 'Azam',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -934,9 +934,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Asif',
             'last_name' => 'Ali',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -945,9 +945,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Haris',
             'last_name' => 'Sohail',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -957,9 +957,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Mohammed',
             'last_name' => 'Hafeez',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -968,9 +968,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Shoiab ',
             'last_name' => 'Malik',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -980,9 +980,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Mohammed',
             'last_name' => 'Rizwan',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -991,9 +991,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Sarfraz',
             'last_name' => 'Ahmed',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1003,9 +1003,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Wahab',
             'last_name' => 'Riaz',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1014,9 +1014,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Shahid',
             'last_name' => 'Afridi',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1026,9 +1026,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Mohammed',
             'last_name' => 'Amir',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1040,9 +1040,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Lahirr',
             'last_name' => 'Thrimanne',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1052,9 +1052,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Dimuth',
             'last_name' => 'Karunaratne',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1065,9 +1065,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Aviska',
             'last_name' => 'Fernando',
-            'role' => 'Batsman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1077,9 +1077,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Kusal',
             'last_name' => 'Mendis',
-            'role' => 'Batman',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1090,9 +1090,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Angelo',
             'last_name' => 'Mathews',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1102,9 +1102,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Tisara',
             'last_name' => 'Perera',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1114,9 +1114,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Isuru',
             'last_name' => 'Udana',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1126,9 +1126,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Jeevan',
             'last_name' => 'Mendis',
-            'role' => 'All Rounder',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1138,9 +1138,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Kusal',
             'last_name' => 'Perera',
-            'role' => 'Wicket Keeper',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1150,9 +1150,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Suranga',
             'last_name' => 'Lakmal',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1162,9 +1162,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Lasith',
             'last_name' => 'Malinga',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);
@@ -1174,9 +1174,9 @@ class PlayerSeeder extends Seeder
 
             'first_name' => 'Nuwan',
             'last_name' => 'Pradeep',
-            'role' => 'Bowler',
-            'batting_style' => 'Right Hand Batsman',
-            'bowling_style' => 'Right Arm Fast',
+            'role' => 1,
+            'batting_style' => 1,
+            'bowling_style' => 1,
             'dob' => '2000-12-12',
             'user_id' => '1',
         ]);

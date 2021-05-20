@@ -69,5 +69,20 @@ Route::post('/feedback',[\App\Http\Controllers\API\FeedbackController::class,'st
 //Admin Api Routes
 
 Route::get('/admin/tournaments',[\App\Http\Controllers\API\Admin\TournamentController::class,'getTournaments']);
+Route::get('/admin/tournaments/{tournament_id}',[\App\Http\Controllers\API\Admin\TournamentController::class,'getTournament']);
+Route::post('/admin/tournament/create',[\App\Http\Controllers\API\Admin\TournamentController::class,'createTournament']);
 Route::delete('/admin/tournaments/{tournament_id}',[\App\Http\Controllers\API\Admin\TournamentController::class,'deleteTournament']);
+
+
 Route::get('/admin/tournament/{tournament}/teams',[\App\Http\Controllers\API\Admin\TournamentTeamsController::class,'getTournamentTeams']);
+Route::post('/admin/tournament/team/create',[\App\Http\Controllers\API\Admin\TournamentTeamsController::class,'createTournamentTeam']);
+Route::delete('/admin/teams/{team_id}',[\App\Http\Controllers\API\Admin\TournamentTeamsController::class,'deleteTeam']);
+
+
+Route::get('/admin/tournament/{tournament}/groups',[\App\Http\Controllers\API\Admin\TournamentGroupController::class,'getTournamentGroups']);
+Route::post('/admin/tournament/group/create',[\App\Http\Controllers\API\Admin\TournamentGroupController::class,'createTournamentGroup']);
+Route::patch('/admin/tournament/group',[\App\Http\Controllers\API\Admin\TournamentGroupController::class,'updateTournamentGroup']);
+Route::delete('/admin/group/{group_id}',[\App\Http\Controllers\API\Admin\TournamentGroupController::class,'deleteGroup']);
+
+
+Route::get('/admin/tournament/{tournament}/points-table',[\App\Http\Controllers\API\Admin\TournamentPointsTableController::class,'getPointsTable']);

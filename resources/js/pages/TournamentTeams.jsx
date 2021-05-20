@@ -3,7 +3,6 @@ import axios from "axios";
 import {url} from "../config.json";
 import TournamentTeamsTable from "../components/TournamentTeamsTable";
 import {toast} from "react-toastify";
-import Breadcrumb from "../components/common/Breadcrumb";
 
 
 class TournamentTeams extends React.Component {
@@ -16,7 +15,7 @@ class TournamentTeams extends React.Component {
     };
 
     async componentDidMount() {
-        const tournament_id = this.props.match.params.tournament_id;
+        const tournament_id = this.props.location.state.tournament_id;
         const { data : teams } = await axios.get(url + "tournament/"+ tournament_id +"/teams");
         try{
             if(teams.status){
@@ -33,8 +32,20 @@ class TournamentTeams extends React.Component {
         }
     }
 
-    deleteTournamentTeam = (tournamentTeam) => {
-        console.log(tournamentTeam)
+    deleteTournamentTeam = async tournamentTeam => {
+
+        const tournamentTeamsBackup = this.state.tournamentTeams;
+        const tournamentTeams = this.state.tournamentTeams.filter(t => t.id !== tournamentTeam.id);
+        this.setState({tournamentTeams});
+        try {
+            const {data} = await axios.delete(url + "teams/" + tournamentTeam.id);
+            toast.success(data.message);
+        } catch (ex) {
+            toast.error('An unexpected error occurred.');
+            this.setState({tournamentTeams: tournamentTeamsBackup});
+        }
+
+
     }
 
     detailsTournamentTeam = (tournamentTeam) => {
@@ -42,44 +53,29 @@ class TournamentTeams extends React.Component {
     }
 
     teamSquad = (tournamentTeam) => {
-        console.log('clicked');
-        console.log(tournamentTeam);
+        const href = "/react/admin/team/players";
+        this.props.history.push({ pathname : href,state : { team_id : tournamentTeam.id}});
+    }
+
+    createTeam = () => {
+        const tournament_id = this.props.location.state.tournament_id;
+        const href = "/react/admin/tournaments/teams/create";
+        this.props.history.push({ pathname : href,state : { tournament_id }});
     }
 
     render() {
         return (
-            <div className="page-body">
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-6">
-                                <h3>Teams</h3>
-                            </div>
-                            <div className="col-6">
-                               <Breadcrumb
-                                    breadcrumbs = {this.state.breadcrumbs}
-                               />
-                            </div>
-                        </div>
-                    </div>
+            <div className="card">
+                <div className="card-header">
+                    <button className='btn btn-primary btn-md' onClick={() => this.createTeam()}><i data-feather="plus"/>Create Team</button>
                 </div>
-                <div className="container-fluid">
-
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <div className="card">
-
-                                <div className="card-body">
-                                    <TournamentTeamsTable
-                                        data={this.state.tournamentTeams}
-                                        onDelete={this.deleteTournamentTeam}
-                                        onDetails={this.detailsTournamentTeam}
-                                        onSquad={this.teamSquad}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className="card-body">
+                    <TournamentTeamsTable
+                        data={this.state.tournamentTeams}
+                        onDelete={this.deleteTournamentTeam}
+                        onDetails={this.detailsTournamentTeam}
+                        onSquad={this.teamSquad}
+                    />
                 </div>
             </div>
         );

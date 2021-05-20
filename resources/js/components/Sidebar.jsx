@@ -6,9 +6,9 @@ class Sidebar extends React.Component {
     state = {
         sidebar: [
             {id: 1, name: 'Dashboard', path: '/react/admin/dashboard', icon : 'home'},
-            {id: 2, name: 'Tournaments', path: '/react/admin/tournaments', icon : 'truck'},
+            {id: 2, name: 'Tournaments', path: '/react/admin/tournaments', icon : 'menu'},
             {id: 3, name: 'Players', path: '/react/admin/players', icon : 'users'},
-            {id: 4, name: 'Feedback', path: '/react/admin/feedbacks', icon : 'home' },
+            {id: 4, name: 'Feedback', path: '/react/admin/feedbacks', icon : 'bookmark' },
             {id: 5, name: 'Logout', path: '/react/admin/logout', icon : 'log-out'},
         ]
     };
@@ -21,11 +21,11 @@ class Sidebar extends React.Component {
                 <nav>
                     <div className="sidebar-main">
                         <div id="sidebar-menu">
-                            <ul className="sidebar-links custom-scrollbar">
+                            <ul className="sidebar-links custom-scrollbar">w
                                 <li className="back-btn">
                                     <div className="mobile-back text-right"><span>Back</span><i className="fa fa-angle-right pl-2" aria-hidden="true"/></div>
                                 </li>
-                                { sidebar.map( s => <li key={s.id} className="sidebar-list" ><NavLink className="nav-link sidebar-title" to={s.path}><i data-feather={s.icon}/><span>{s.name}</span></NavLink></li>)}
+                                { sidebar.map( s => <li key={s.id} className="sidebar-list" ><NavLink className="nav-link sidebar-title active" to={s.path}><i data-feather={s.icon}/><span>{s.name}</span></NavLink></li>)}
                             </ul>
                         </div>
                     </div>

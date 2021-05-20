@@ -3,14 +3,15 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Dashboard from "../pages/Dashboard";
 import Players from "../pages/Players";
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import Tournaments from "../pages/Tournaments";
 import Feedbacks from "../pages/Feedbacks";
-import TournamentTeams from "../pages/TournamentTeams";
-import { ToastContainer } from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import TournamentDetails from "../pages/TournamentDetails";
+import TournamentForm from "../pages/TournamentForm";
+import TournamentTeamCreateForm from "../pages/TournamentTeamCreateForm";
+import TournamentGroupCreateForm from "../pages/TournamentGroupCreateForm";
 
 
 class App extends React.Component {
@@ -23,16 +24,19 @@ class App extends React.Component {
                     <div className="page-body-wrapper horizontal-menu">
                         <Sidebar/>
                         <Switch>
-                        <Route path="/react/admin/dashboard" component={Dashboard}/>
-                        <Route path="/react/admin/players" component={Players}/>
-                        <Route path="/react/admin/tournament/:tournament_id/teams" component={TournamentTeams}/>
-                        <Route path="/react/admin/tournament/:tournament_id/schedules" component={TournamentTeams}/>
-                        <Route path="/react/admin/tournament/:tournament_id/results" component={TournamentTeams}/>
-                        <Route path="/react/admin/tournament/:tournament_id/groups" component={TournamentTeams}/>
-                        <Route path="/react/admin/tournament/:tournament_id/points-table" component={TournamentTeams}/>
-                        <Route path="/react/admin/tournaments" component={Tournaments}/>
-                        <Route path="/react/admin/feedbacks" component={Feedbacks}/>
-                        <Redirect from="/" to="/react/admin/dashboard" component={Dashboard}/>
+                            <Route path="/react/admin/dashboard" component={Dashboard}/>
+                            <Route exact path='/react/admin/tournaments/teams' component={TournamentDetails}/>
+                            <Route  exact path='/react/admin/tournaments/schedules' component={TournamentDetails}/>
+                            <Route  exact path='/react/admin/tournaments/results' component={TournamentDetails}/>
+                            <Route  exact path='/react/admin/tournaments/points-table' component={TournamentDetails}/>
+                            <Route  exact path='/react/admin/tournaments/groups' component={TournamentDetails}/>
+                            <Route  exact path='/react/admin/tournaments/create' component={TournamentForm}/>
+                            <Route  exact path='/react/admin/tournaments/teams/create' component={TournamentTeamCreateForm}/>
+                            <Route  exact path='/react/admin/tournaments/groups/create' component={TournamentGroupCreateForm}/>
+                            <Route path="/react/admin/players" component={Players}/>
+                            <Route path="/react/admin/tournaments" component={Tournaments}/>
+                            <Route path="/react/admin/feedbacks" component={Feedbacks}/>
+                            {/*<Redirect from="/" to="/react/admin/dashboard" component={Dashboard}/>*/}
                         </Switch>
                     </div>
                 </div>

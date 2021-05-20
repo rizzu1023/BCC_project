@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources\Admin;
 
-use App\Http\Resources\TeamResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TournamentResource extends JsonResource
+class PointsTableResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +16,8 @@ class TournamentResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'tournament_name' => $this->tournament_name,
+            'group_name' => $this->group_name,
+            'group_teams' => $this->Teams ? GroupTeamResource::collection($this->Teams) : NULL,
         ];
     }
 }

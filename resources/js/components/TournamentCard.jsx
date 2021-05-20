@@ -3,11 +3,6 @@ import {Link} from "react-router-dom";
 
 const TournamentCard = (props) => {
     const { id : tournament_id , tournament_name} = props.tournament;
-    const teams_href = "/react/admin/tournament/" + tournament_id + "/teams";
-    const schedules_href = "/react/admin/tournament/" + tournament_id + "/schedules";
-    const results_href = "/react/admin/tournament/" + tournament_id + "/results";
-    const groups_href = "/react/admin/tournament/" + tournament_id + "/groups";
-    const points_table_href = "/react/admin/tournament/" + tournament_id + "/points-table";
     return (
         <div className="card b-r-0">
             <div className="card-header">
@@ -22,11 +17,11 @@ const TournamentCard = (props) => {
                     <h2>{tournament_name}</h2>
                     {/*<span>12-12-2200 to</span><span> 12-12-2020</span>*/}
                 </div>
-                <Link className="btn btn-secondary btn-md mr-2" to={teams_href}>Teams</Link>
-                <Link className="btn btn-success btn-md mr-2"   to={schedules_href}>Schedule</Link>
-                <Link className="btn btn-primary btn-md mr-2"   to={results_href}>Results</Link>
-                <Link className="btn btn-info btn-md mr-2"      to={groups_href}>Groups</Link>
-                <Link className="btn btn-warning btn-md "       to={points_table_href}>Points Table</Link>
+                <button className="btn btn-secondary btn-md mr-2" onClick={ () => props.onSelect(props.tournament,'teams')}>Teams</button>
+                <button className="btn btn-success btn-md mr-2" onClick={ () => props.onSelect(props.tournament,'schedules')}>Schedule</button>
+                <button className="btn btn-primary btn-md mr-2" onClick={ () => props.onSelect(props.tournament,'results')}>Results</button>
+                <button className="btn btn-info btn-md mr-2" onClick={ () => props.onSelect(props.tournament,'groups')}>Groups</button>
+                <button className="btn btn-warning btn-md mr-2" onClick={ () => props.onSelect(props.tournament,'points-table')}>Points Table</button>
             </div>
         </div>
     );

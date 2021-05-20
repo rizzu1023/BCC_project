@@ -13,12 +13,16 @@ class TournamentTeamsTable extends React.Component {
     };
     render() {
         const {data} = this.props;
-        return (
+        const count = data.length;
+        if(count > 0) return (
             <Table
                 columns={this.state.columns}
                 data={data}
             />
         );
+        else return(
+            <h2>Ooops! No teams found.</h2>
+    );
     }
 }
 

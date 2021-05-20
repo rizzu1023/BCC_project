@@ -2,7 +2,15 @@ import React from 'react';
 
 const TournamentResults = (props) => {
     return (
-        <h1>TournamentResults Component</h1>
+
+                        <div className="card">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <h1>Results</h1>
+                                </div>
+                            </div>
+                        </div>
+
     );
 }
 

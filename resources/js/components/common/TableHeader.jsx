@@ -11,7 +11,7 @@ class TableHeader extends React.Component {
         return (
             <thead>
             <tr>
-                { columns.map( column => <th className="clickable" key={column.id}>{column.label}</th>)}
+                { columns.map( column => <th className="clickable" key={column.id}><b>{column.label}</b></th>)}
             </tr>
             </thead>
         );
