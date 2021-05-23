@@ -68,21 +68,31 @@ Route::post('/feedback',[\App\Http\Controllers\API\FeedbackController::class,'st
 
 //Admin Api Routes
 
+
+//Tournament Routes
 Route::get('/admin/tournaments',[\App\Http\Controllers\API\Admin\TournamentController::class,'getTournaments']);
 Route::get('/admin/tournaments/{tournament_id}',[\App\Http\Controllers\API\Admin\TournamentController::class,'getTournament']);
 Route::post('/admin/tournament/create',[\App\Http\Controllers\API\Admin\TournamentController::class,'createTournament']);
 Route::delete('/admin/tournaments/{tournament_id}',[\App\Http\Controllers\API\Admin\TournamentController::class,'deleteTournament']);
 
-
+//Tournament Teams
 Route::get('/admin/tournament/{tournament}/teams',[\App\Http\Controllers\API\Admin\TournamentTeamsController::class,'getTournamentTeams']);
 Route::post('/admin/tournament/team/create',[\App\Http\Controllers\API\Admin\TournamentTeamsController::class,'createTournamentTeam']);
 Route::delete('/admin/teams/{team_id}',[\App\Http\Controllers\API\Admin\TournamentTeamsController::class,'deleteTeam']);
 
-
+//Tournament Groups
 Route::get('/admin/tournament/{tournament}/groups',[\App\Http\Controllers\API\Admin\TournamentGroupController::class,'getTournamentGroups']);
 Route::post('/admin/tournament/group/create',[\App\Http\Controllers\API\Admin\TournamentGroupController::class,'createTournamentGroup']);
 Route::patch('/admin/tournament/group',[\App\Http\Controllers\API\Admin\TournamentGroupController::class,'updateTournamentGroup']);
 Route::delete('/admin/group/{group_id}',[\App\Http\Controllers\API\Admin\TournamentGroupController::class,'deleteGroup']);
 
-
+//Tournament PointsTable
 Route::get('/admin/tournament/{tournament}/points-table',[\App\Http\Controllers\API\Admin\TournamentPointsTableController::class,'getPointsTable']);
+
+//Tournament Schedule
+Route::get('/admin/tournament/{tournament}/schedules',[\App\Http\Controllers\API\Admin\TournamentScheduleController::class,'getTournamentSchedules']);
+Route::delete('/admin/schedule/{schedule_id}',[\App\Http\Controllers\API\Admin\TournamentScheduleController::class,'deleteSchedule']);
+
+//Start Match
+Route::get('/admin/match/schedule/{schedule_id}/details',[\App\Http\Controllers\API\Admin\MatchLiveScoreController::class,'getScheduleDetail']);
+Route::post('/admin/match/select-playing-xi',[\App\Http\Controllers\API\Admin\MatchLiveScoreController::class,'selectPlayingXI']);

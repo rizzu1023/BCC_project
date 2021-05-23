@@ -54,7 +54,7 @@ class TournamentTeams extends React.Component {
 
     teamSquad = (tournamentTeam) => {
         const href = "/react/admin/team/players";
-        this.props.history.push({ pathname : href,state : { team_id : tournamentTeam.id}});
+        this.props.history.push({ pathname : href,state : { team_id : tournamentTeam.id }});
     }
 
     createTeam = () => {

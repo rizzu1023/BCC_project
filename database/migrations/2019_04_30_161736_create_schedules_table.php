@@ -21,7 +21,7 @@ class CreateSchedulesTable extends Migration
             $table->time('times');
             $table->date('dates');
             $table->integer('tournament_id');
-            $table->timestamp('deleted_at')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

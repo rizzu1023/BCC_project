@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Events\byesFourRunEvent;
 use App\Events\byesOneRunEvent;
@@ -97,100 +98,107 @@ class LiveScoreController extends Controller
     public function ScoreDetails(Request $request)
     {
         $request->validate([
-           'match_id' => 'required',
-           'overs' => 'required',
-           'tournament_id' => 'required',
-           'toss' => 'required',
-           'choose' => 'required',
+            'id' => 'required',
+            'overs' => 'required',
+            'tournament_id' => 'required',
+            'toss' => 'required',
+            'choose' => 'required',
+            'team1' => 'required|array',
+            'team2' => 'required|array',
         ]);
 //        return $request->all();
-        $m = Game::create([
-            'match_id' => request('id'),
-            'overs' => request('overs'),
-            'tournament_id' => request('tournament_id'),
-            'toss' => request('toss'),
-            'choose' => request('choose'),
-        ]);
 
-        if ($request->choose == 'Bat')
-            if ($request->toss == $request->team1_id) {
-                MatchDetail::create([
-                    'match_id' => $m->match_id,
-                    'team_id' => request('team1_id'),
-                    'isBatting' => 1,
-                    'tournament_id' => request('tournament_id'),
-                ]);
+        DB::transaction( function() use($request){
+            $m = Game::create([
+                'match_id' => request('id'),
+                'overs' => request('overs'),
+                'tournament_id' => request('tournament_id'),
+                'toss' => request('toss'),
+                'choose' => request('choose'),
+            ]);
 
-                MatchDetail::create([
-                    'match_id' => $m->match_id,
-                    'team_id' => request('team2_id'),
-                    'isBatting' => 0,
-                    'tournament_id' => request('tournament_id'),
-                ]);
-            } else {
-                MatchDetail::create([
-                    'match_id' => $m->match_id,
-                    'team_id' => request('team1_id'),
-                    'isBatting' => 0,
-                    'tournament_id' => request('tournament_id'),
-                ]);
+            if ($request->choose == 'Bat')
+                if ($request->toss == $request->team1_id) {
+                    MatchDetail::create([
+                        'match_id' => $m->match_id,
+                        'team_id' => request('team1_id'),
+                        'isBatting' => 1,
+                        'tournament_id' => request('tournament_id'),
+                    ]);
 
-                MatchDetail::create([
+                    MatchDetail::create([
+                        'match_id' => $m->match_id,
+                        'team_id' => request('team2_id'),
+                        'isBatting' => 0,
+                        'tournament_id' => request('tournament_id'),
+                    ]);
+                } else {
+                    MatchDetail::create([
+                        'match_id' => $m->match_id,
+                        'team_id' => request('team1_id'),
+                        'isBatting' => 0,
+                        'tournament_id' => request('tournament_id'),
+                    ]);
+
+                    MatchDetail::create([
+                        'match_id' => $m->match_id,
+                        'team_id' => request('team2_id'),
+                        'isBatting' => 1,
+                        'tournament_id' => request('tournament_id'),
+                    ]);
+                }
+
+            else {
+                if ($request->toss == $request->team1_id) {
+                    MatchDetail::create([
+                        'match_id' => $m->match_id,
+                        'team_id' => request('team1_id'),
+                        'isBatting' => 0,
+                        'tournament_id' => request('tournament_id'),
+                    ]);
+
+                    MatchDetail::create([
+                        'match_id' => $m->match_id,
+                        'team_id' => request('team2_id'),
+                        'isBatting' => 1,
+                        'tournament_id' => request('tournament_id'),
+                    ]);
+                } else {
+                    MatchDetail::create([
+                        'match_id' => $m->match_id,
+                        'team_id' => request('team1_id'),
+                        'isBatting' => 1,
+                        'tournament_id' => request('tournament_id'),
+                    ]);
+
+                    MatchDetail::create([
+                        'match_id' => $m->match_id,
+                        'team_id' => request('team2_id'),
+                        'isBatting' => 0,
+                        'tournament_id' => request('tournament_id'),
+                    ]);
+                }
+            }
+
+            foreach ($request->team1 as $t1) {
+                MatchPlayers::create([
                     'match_id' => $m->match_id,
-                    'team_id' => request('team2_id'),
-                    'isBatting' => 1,
+                    'player_id' => $t1,
+                    'team_id' => $request->team1_id,
                     'tournament_id' => request('tournament_id'),
                 ]);
             }
-
-        else {
-            if ($request->toss == $request->team1_id) {
-                MatchDetail::create([
+            foreach ($request->team2 as $t2) {
+                MatchPlayers::create([
                     'match_id' => $m->match_id,
-                    'team_id' => request('team1_id'),
-                    'isBatting' => 0,
-                    'tournament_id' => request('tournament_id'),
-                ]);
-
-                MatchDetail::create([
-                    'match_id' => $m->match_id,
-                    'team_id' => request('team2_id'),
-                    'isBatting' => 1,
-                    'tournament_id' => request('tournament_id'),
-                ]);
-            } else {
-                MatchDetail::create([
-                    'match_id' => $m->match_id,
-                    'team_id' => request('team1_id'),
-                    'isBatting' => 1,
-                    'tournament_id' => request('tournament_id'),
-                ]);
-
-                MatchDetail::create([
-                    'match_id' => $m->match_id,
-                    'team_id' => request('team2_id'),
-                    'isBatting' => 0,
+                    'player_id' => $t2,
+                    'team_id' => $request->team2_id,
                     'tournament_id' => request('tournament_id'),
                 ]);
             }
-        }
+        });
 
-        foreach ($request->team1 as $t1) {
-            MatchPlayers::create([
-                'match_id' => $m->match_id,
-                'player_id' => $t1,
-                'team_id' => $request->team1_id,
-                'tournament_id' => request('tournament_id'),
-            ]);
-        }
-        foreach ($request->team2 as $t2) {
-            MatchPlayers::create([
-                'match_id' => $m->match_id,
-                'player_id' => $t2,
-                'team_id' => $request->team2_id,
-                'tournament_id' => request('tournament_id'),
-            ]);
-        }
+
         return redirect('/admin/tournaments/' . request('tournament_id') . '/schedules');
     }
 

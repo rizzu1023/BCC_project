@@ -7,6 +7,7 @@ import axios from "axios";
 import {toast} from "react-toastify";
 import {getTournament} from "../services/tournamentService";
 import Form from "../components/common/Form";
+import Checkbox from "../components/common/Checkbox";
 
 class TournamentTeamCreateForm extends Form {
     state = {
@@ -85,6 +86,7 @@ class TournamentTeamCreateForm extends Form {
 
                                     <div className="card-body">
                                         <form onSubmit={this.handleSubmit}>
+
                                             <Input
                                                 type="text"
                                                 name="tournament_name"

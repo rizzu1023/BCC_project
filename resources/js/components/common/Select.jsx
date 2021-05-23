@@ -11,8 +11,8 @@ const Select = (props) => {
                 id={name}
                 onChange={onChange}
                 name={name}>
-                <option value="" />
-                {options.map(option => ( <option key={option._id} value={option._id}>{option.name}</option>))}
+                <option value=""/>
+                {options.map(option => ( <option key={option.id} value={option.id}>{option.name}</option>))}
             </select>
             { error && <span className="text-danger" role="alert">{error}</span> }
         </div>
@@ -20,4 +20,6 @@ const Select = (props) => {
     );
 }
 
-export default Select
+export default Select;
+
+

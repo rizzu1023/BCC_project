@@ -12,6 +12,7 @@ import TournamentDetails from "../pages/TournamentDetails";
 import TournamentForm from "../pages/TournamentForm";
 import TournamentTeamCreateForm from "../pages/TournamentTeamCreateForm";
 import TournamentGroupCreateForm from "../pages/TournamentGroupCreateForm";
+import SelectPlayingXI from "./SelectPlayingXI";
 
 
 class App extends React.Component {
@@ -33,6 +34,9 @@ class App extends React.Component {
                             <Route  exact path='/react/admin/tournaments/create' component={TournamentForm}/>
                             <Route  exact path='/react/admin/tournaments/teams/create' component={TournamentTeamCreateForm}/>
                             <Route  exact path='/react/admin/tournaments/groups/create' component={TournamentGroupCreateForm}/>
+                            <Route  exact path='/react/admin/tournaments/match/select-players' component={SelectPlayingXI}/>
+                            <Route  exact path='/react/admin/tournaments/match/live-score' component={TournamentGroupCreateForm}/>
+                            <Route  exact path='/react/admin/tournaments/match/result' component={TournamentGroupCreateForm}/>
                             <Route path="/react/admin/players" component={Players}/>
                             <Route path="/react/admin/tournaments" component={Tournaments}/>
                             <Route path="/react/admin/feedbacks" component={Feedbacks}/>

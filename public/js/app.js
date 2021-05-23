@@ -2043,16 +2043,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Sidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Sidebar */ "./resources/js/components/Sidebar.jsx");
 /* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/Dashboard */ "./resources/js/pages/Dashboard.jsx");
 /* harmony import */ var _pages_Players__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/Players */ "./resources/js/pages/Players.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _pages_Tournaments__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/Tournaments */ "./resources/js/pages/Tournaments.jsx");
 /* harmony import */ var _pages_Feedbacks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/Feedbacks */ "./resources/js/pages/Feedbacks.jsx");
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
 /* harmony import */ var react_toastify_dist_ReactToastify_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-toastify/dist/ReactToastify.css */ "./node_modules/react-toastify/dist/ReactToastify.css");
 /* harmony import */ var _pages_TournamentDetails__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pages/TournamentDetails */ "./resources/js/pages/TournamentDetails.jsx");
 /* harmony import */ var _pages_TournamentForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../pages/TournamentForm */ "./resources/js/pages/TournamentForm.jsx");
 /* harmony import */ var _pages_TournamentTeamCreateForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../pages/TournamentTeamCreateForm */ "./resources/js/pages/TournamentTeamCreateForm.jsx");
 /* harmony import */ var _pages_TournamentGroupCreateForm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../pages/TournamentGroupCreateForm */ "./resources/js/pages/TournamentGroupCreateForm.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _SelectPlayingXI__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./SelectPlayingXI */ "./resources/js/components/SelectPlayingXI.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2093,6 +2094,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -2107,55 +2109,67 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
           className: "page-wrapper compact-wrapper",
           id: "pageWrapper",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_13__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_14__.ToastContainer, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)("div", {
             className: "page-body-wrapper horizontal-menu",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Switch, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_Sidebar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Switch, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 path: "/react/admin/dashboard",
                 component: _pages_Dashboard__WEBPACK_IMPORTED_MODULE_3__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 exact: true,
                 path: "/react/admin/tournaments/teams",
                 component: _pages_TournamentDetails__WEBPACK_IMPORTED_MODULE_8__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 exact: true,
                 path: "/react/admin/tournaments/schedules",
                 component: _pages_TournamentDetails__WEBPACK_IMPORTED_MODULE_8__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 exact: true,
                 path: "/react/admin/tournaments/results",
                 component: _pages_TournamentDetails__WEBPACK_IMPORTED_MODULE_8__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 exact: true,
                 path: "/react/admin/tournaments/points-table",
                 component: _pages_TournamentDetails__WEBPACK_IMPORTED_MODULE_8__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 exact: true,
                 path: "/react/admin/tournaments/groups",
                 component: _pages_TournamentDetails__WEBPACK_IMPORTED_MODULE_8__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 exact: true,
                 path: "/react/admin/tournaments/create",
                 component: _pages_TournamentForm__WEBPACK_IMPORTED_MODULE_9__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 exact: true,
                 path: "/react/admin/tournaments/teams/create",
                 component: _pages_TournamentTeamCreateForm__WEBPACK_IMPORTED_MODULE_10__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 exact: true,
                 path: "/react/admin/tournaments/groups/create",
                 component: _pages_TournamentGroupCreateForm__WEBPACK_IMPORTED_MODULE_11__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+                exact: true,
+                path: "/react/admin/tournaments/match/select-players",
+                component: _SelectPlayingXI__WEBPACK_IMPORTED_MODULE_12__.default
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+                exact: true,
+                path: "/react/admin/tournaments/match/live-score",
+                component: _pages_TournamentGroupCreateForm__WEBPACK_IMPORTED_MODULE_11__.default
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
+                exact: true,
+                path: "/react/admin/tournaments/match/result",
+                component: _pages_TournamentGroupCreateForm__WEBPACK_IMPORTED_MODULE_11__.default
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 path: "/react/admin/players",
                 component: _pages_Players__WEBPACK_IMPORTED_MODULE_4__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 path: "/react/admin/tournaments",
                 component: _pages_Tournaments__WEBPACK_IMPORTED_MODULE_5__.default
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.Route, {
                 path: "/react/admin/feedbacks",
                 component: _pages_Feedbacks__WEBPACK_IMPORTED_MODULE_6__.default
               })]
@@ -2394,6 +2408,425 @@ var Options = function Options(_ref) {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Options);
+
+/***/ }),
+
+/***/ "./resources/js/components/SelectPlayingXI.jsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/SelectPlayingXI.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _common_Breadcrumb__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/Breadcrumb */ "./resources/js/components/common/Breadcrumb.jsx");
+/* harmony import */ var joi_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! joi-browser */ "./node_modules/joi-browser/dist/joi-browser.js");
+/* harmony import */ var joi_browser__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(joi_browser__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _common_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/Input */ "./resources/js/components/common/Input.jsx");
+/* harmony import */ var _common_Select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./common/Select */ "./resources/js/components/common/Select.jsx");
+/* harmony import */ var _common_Form__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./common/Form */ "./resources/js/components/common/Form.jsx");
+/* harmony import */ var _services_matchService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/matchService */ "./resources/js/services/matchService.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var _common_Checkbox__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./common/Checkbox */ "./resources/js/components/common/Checkbox.jsx");
+/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../config.json */ "./resources/js/config.json");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var SelectPlayingXI = /*#__PURE__*/function (_Form) {
+  _inherits(SelectPlayingXI, _Form);
+
+  var _super = _createSuper(SelectPlayingXI);
+
+  function SelectPlayingXI() {
+    var _this;
+
+    _classCallCheck(this, SelectPlayingXI);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      data: {
+        overs: '',
+        toss: '',
+        choose: ''
+      },
+      errors: {},
+      breadcrumbs: [{
+        id: 1,
+        label: 'Tournament',
+        path: '/react/admin/tournaments'
+      }, {
+        id: 2,
+        label: 'Schedules',
+        path: '/react/admin/tournaments/schedules'
+      }, {
+        id: 3,
+        label: 'Start',
+        path: false
+      }],
+      toss: [{
+        id: 1,
+        name: ''
+      }, {
+        id: 2,
+        name: ''
+      }],
+      choose: [{
+        id: 1,
+        name: 'Batting'
+      }, {
+        id: 2,
+        name: 'Bowling'
+      }],
+      team1_id: '',
+      team2_id: '',
+      team1_players: [],
+      team2_players: [],
+      tournament_id: '',
+      match_id: ''
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "schema", {
+      overs: joi_browser__WEBPACK_IMPORTED_MODULE_3___default().number().integer().min(1).required().label('Overs'),
+      toss: joi_browser__WEBPACK_IMPORTED_MODULE_3___default().string().required().label('Toss'),
+      choose: joi_browser__WEBPACK_IMPORTED_MODULE_3___default().string().required().label('Choose')
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "checkPlayerExistOrNot", function (player_id) {
+      var team1_player = _this.state.team1_players.filter(function (item) {
+        return item.player_id === player_id && item.isChecked;
+      }).length;
+
+      var team2_player = _this.state.team2_players.filter(function (item) {
+        return item.player_id === player_id && item.isChecked;
+      }).length;
+
+      if (team1_player === 0 && team2_player === 0) {
+        return false;
+      } else if (team1_player > 0 && team2_player > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleCheckElement", function (event) {
+      var team1_players = _this.state.team1_players;
+      var team2_players = _this.state.team2_players;
+
+      var x = _this.checkPlayerExistOrNot(event.target.value); // console.log(event.target.value);
+
+
+      if (x) react_toastify__WEBPACK_IMPORTED_MODULE_12__.toast.error('This player is already present in opposite team.');else {
+        team1_players.map(function (player) {
+          if (player.player_id === event.target.value) {
+            player.isChecked = event.target.checked;
+          }
+        });
+        team2_players.map(function (player) {
+          if (player.player_id === event.target.value) {
+            player.isChecked = event.target.checked;
+          }
+        });
+
+        _this.setState({
+          team1_players: team1_players,
+          team2_players: team2_players
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "doSubmit", /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var players1_count, players2_count, players_data, endpoint, _yield$axios$post, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              players1_count = _this.state.team1_players.filter(function (item) {
+                return item.isChecked;
+              }).length;
+              players2_count = _this.state.team2_players.filter(function (item) {
+                return item.isChecked;
+              }).length;
+
+              if (players1_count < 11 || players2_count < 11) {
+                react_toastify__WEBPACK_IMPORTED_MODULE_12__.toast.error('please select 11 player per side');
+              } // else{
+
+
+              players_data = {
+                'match_id': _this.state.match_id,
+                'overs': _this.state.data.overs,
+                'toss': _this.state.data.toss,
+                'choose': _this.state.data.choose,
+                'team1_id': _this.state.team1_id,
+                'team2_id': _this.state.team2_id,
+                'team1_players': _this.state.team1_players.filter(function (item) {
+                  return item.isChecked;
+                }),
+                'team2_players': _this.state.team2_players.filter(function (item) {
+                  return item.isChecked;
+                }),
+                'tournament_id': _this.state.tournament_id
+              };
+              endpoint = _config_json__WEBPACK_IMPORTED_MODULE_9__.url + 'match/select-playing-xi';
+              _context.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_10___default().post(endpoint, players_data);
+
+            case 7:
+              _yield$axios$post = _context.sent;
+              data = _yield$axios$post.data;
+
+              if (data.status) {//redirect to score page
+              } else {
+                react_toastify__WEBPACK_IMPORTED_MODULE_12__.toast.error('An unexpected error occurred.');
+              }
+
+              console.log(data); // }
+
+            case 11:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    })));
+
+    return _this;
+  }
+
+  _createClass(SelectPlayingXI, [{
+    key: "componentDidMount",
+    value: function () {
+      var _componentDidMount = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var schedule_id, _yield$getScheduleDet, schedule;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                schedule_id = this.props.location.state.schedule_id;
+                _context2.next = 3;
+                return (0,_services_matchService__WEBPACK_IMPORTED_MODULE_7__.getScheduleDetails)(schedule_id);
+
+              case 3:
+                _yield$getScheduleDet = _context2.sent;
+                schedule = _yield$getScheduleDet.data;
+
+                if (schedule.status) {
+                  this.setState({
+                    toss: schedule.data.toss,
+                    team1_players: schedule.data.team1_players,
+                    team2_players: schedule.data.team2_players,
+                    match_id: schedule.data.id,
+                    tournament_id: schedule.data.tournament_id,
+                    team1_id: schedule.data.toss[0].id,
+                    team2_id: schedule.data.toss[1].id
+                  });
+                } else {
+                  react_toastify__WEBPACK_IMPORTED_MODULE_12__.toast.error('An unexpected error occurred.');
+                }
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function componentDidMount() {
+        return _componentDidMount.apply(this, arguments);
+      }
+
+      return componentDidMount;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          errors = _this$state.errors,
+          data = _this$state.data;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+          className: "page-body",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            className: "container-fluid",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              className: "page-title",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                className: "row",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "col-md-6",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+                    children: "Select Playing XI"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "col-md-6",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_Breadcrumb__WEBPACK_IMPORTED_MODULE_2__.default, {
+                    breadcrumbs: this.state.breadcrumbs
+                  })
+                })]
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+            className: "container-fluid",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+              className: "row",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "col-sm-12",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "card",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                    className: "card-body",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("form", {
+                      onSubmit: this.handleSubmit,
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                        className: "row mb-5",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                          className: "col-6",
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+                            className: "mb-3",
+                            children: this.state.toss[0].name
+                          }), this.state.team1_players.map(function (player, index) {
+                            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_Checkbox__WEBPACK_IMPORTED_MODULE_8__.default, {
+                              onChange: _this2.handleCheckElement,
+                              label: player.player_name,
+                              name: player.player_id + 'team1',
+                              checked: player.isChecked,
+                              index: index + 1,
+                              value: player.player_id
+                            }, player.player_id);
+                          })]
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                          className: "col-6",
+                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("h3", {
+                            className: "mb-3",
+                            children: this.state.toss[1].name
+                          }), this.state.team2_players.map(function (player, index) {
+                            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_Checkbox__WEBPACK_IMPORTED_MODULE_8__.default, {
+                              onChange: _this2.handleCheckElement,
+                              label: player.player_name,
+                              name: player.player_id + 'team2',
+                              checked: player.isChecked,
+                              index: index + 1,
+                              value: player.player_id
+                            }, player.player_id);
+                          })]
+                        })]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+                        className: "row",
+                        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                          className: "col-6",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_Select__WEBPACK_IMPORTED_MODULE_5__.default, {
+                            name: "toss",
+                            value: "",
+                            options: this.state.toss,
+                            label: "Who won the Toss?",
+                            onChange: this.handleChange,
+                            error: errors.toss
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                          className: "col-6",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_Select__WEBPACK_IMPORTED_MODULE_5__.default, {
+                            name: "choose",
+                            value: "Select",
+                            options: this.state.choose,
+                            label: "Choose",
+                            onChange: this.handleChange,
+                            error: errors.choose
+                          })
+                        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                          className: "col-6",
+                          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_common_Input__WEBPACK_IMPORTED_MODULE_4__.default, {
+                            type: "number",
+                            name: "overs",
+                            label: "Overs",
+                            title: data.overs,
+                            value: data.overs,
+                            onChange: this.handleChange,
+                            error: errors.overs
+                          })
+                        })]
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+                        disabled: this.validate(),
+                        type: "submit",
+                        className: "btn btn-success btn-md",
+                        children: "Submit"
+                      })]
+                    })
+                  })
+                })
+              })
+            })
+          })]
+        })
+      });
+    }
+  }]);
+
+  return SelectPlayingXI;
+}(_common_Form__WEBPACK_IMPORTED_MODULE_6__.default);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SelectPlayingXI);
 
 /***/ }),
 
@@ -3020,6 +3453,54 @@ Breadcrumb.defaultProps = {
 
 /***/ }),
 
+/***/ "./resources/js/components/common/Checkbox.jsx":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/common/Checkbox.jsx ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var Checkbox = function Checkbox(props) {
+  var onChange = props.onChange,
+      label = props.label,
+      name = props.name,
+      isChecked = props.isChecked,
+      value = props.value,
+      index = props.index;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "custom-control custom-switch mt-2",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+      type: "checkbox",
+      className: "custom-control-input",
+      id: name,
+      checked: isChecked,
+      onChange: onChange,
+      value: value
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("label", {
+      className: "custom-control-label",
+      htmlFor: name,
+      children: [index, " ", label, " "]
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Checkbox);
+Checkbox.defaultProps = {
+  index: null
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/common/Form.jsx":
 /*!*************************************************!*\
   !*** ./resources/js/components/common/Form.jsx ***!
@@ -3231,6 +3712,60 @@ Input.defaultProps = {
   placeholder: '',
   readOnly: false
 };
+
+/***/ }),
+
+/***/ "./resources/js/components/common/Select.jsx":
+/*!***************************************************!*\
+  !*** ./resources/js/components/common/Select.jsx ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+var Select = function Select(props) {
+  var name = props.name,
+      label = props.label,
+      onChange = props.onChange,
+      error = props.error,
+      options = props.options,
+      value = props.value;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "form-group",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+      htmlFor: name,
+      children: label
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+      className: "form-control",
+      id: name,
+      onChange: onChange,
+      name: name,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+        value: ""
+      }), options.map(function (option) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+          value: option.id,
+          children: option.name
+        }, option.id);
+      })]
+    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+      className: "text-danger",
+      role: "alert",
+      children: error
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Select);
 
 /***/ }),
 
@@ -5296,7 +5831,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../config.json */ "./resources/js/config.json");
 /* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
-/* harmony import */ var _components_common_Breadcrumb__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/common/Breadcrumb */ "./resources/js/components/common/Breadcrumb.jsx");
+/* harmony import */ var _TournamentSchedulesTable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TournamentSchedulesTable */ "./resources/js/pages/TournamentSchedulesTable.jsx");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -5364,6 +5899,30 @@ var TournamentSchedules = /*#__PURE__*/function (_React$Component) {
       }]
     });
 
+    _defineProperty(_assertThisInitialized(_this), "editTournamentSchedule", function (tournamentSchedule) {
+      console.log(tournamentSchedule);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "scoreTournamentSchedule", function (tournamentSchedule) {
+      console.log(tournamentSchedule);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "startTournamentSchedule", function (tournamentSchedule) {
+      var schedule_id = tournamentSchedule.id;
+      var href = '/react/admin/tournaments/match/select-players';
+
+      _this.props.history.push({
+        pathname: href,
+        state: {
+          schedule_id: schedule_id
+        }
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "resultTournamentSchedule", function (tournamentSchedule) {
+      console.log(tournamentSchedule);
+    });
+
     _defineProperty(_assertThisInitialized(_this), "deleteTournamentSchedule", /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(tournamentSchedule) {
         var tournamentSchedulesBackup, tournamentSchedules, _yield$axios$delete, data;
@@ -5372,7 +5931,7 @@ var TournamentSchedules = /*#__PURE__*/function (_React$Component) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                tournamentSchedulesBackup = _this.state.tournamentTeams;
+                tournamentSchedulesBackup = _this.state.tournamentSchedules;
                 tournamentSchedules = _this.state.tournamentSchedules.filter(function (t) {
                   return t.id !== tournamentSchedule.id;
                 });
@@ -5383,12 +5942,22 @@ var TournamentSchedules = /*#__PURE__*/function (_React$Component) {
 
                 _context.prev = 3;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().delete(_config_json__WEBPACK_IMPORTED_MODULE_3__.url + "schedules/" + tournamentSchedule.id);
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().delete(_config_json__WEBPACK_IMPORTED_MODULE_3__.url + "schedule/" + tournamentSchedule.id);
 
               case 6:
                 _yield$axios$delete = _context.sent;
                 data = _yield$axios$delete.data;
-                react_toastify__WEBPACK_IMPORTED_MODULE_6__.toast.success(data.message);
+
+                if (data.status) {
+                  react_toastify__WEBPACK_IMPORTED_MODULE_6__.toast.success(data.message);
+                } else {
+                  react_toastify__WEBPACK_IMPORTED_MODULE_6__.toast.error(data.message);
+
+                  _this.setState({
+                    tournamentSchedules: tournamentSchedulesBackup
+                  });
+                }
+
                 _context.next = 15;
                 break;
 
@@ -5438,7 +6007,7 @@ var TournamentSchedules = /*#__PURE__*/function (_React$Component) {
                 try {
                   if (schedules.status) {
                     this.setState({
-                      tournamentTeams: schedules.data
+                      tournamentSchedules: schedules.data
                     });
                   } else {
                     react_toastify__WEBPACK_IMPORTED_MODULE_6__.toast.error(schedules.message);
@@ -5468,8 +6037,13 @@ var TournamentSchedules = /*#__PURE__*/function (_React$Component) {
         className: "card",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "card-body",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
-            children: "Results"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_TournamentSchedulesTable__WEBPACK_IMPORTED_MODULE_4__.default, {
+            data: this.state.tournamentSchedules,
+            onDelete: this.deleteTournamentSchedule,
+            onEdit: this.editTournamentSchedule,
+            onScore: this.scoreTournamentSchedule,
+            onStart: this.startTournamentSchedule,
+            onResult: this.resultTournamentSchedule
           })
         })
       });
@@ -5480,6 +6054,178 @@ var TournamentSchedules = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TournamentSchedules);
+
+/***/ }),
+
+/***/ "./resources/js/pages/TournamentSchedulesTable.jsx":
+/*!*********************************************************!*\
+  !*** ./resources/js/pages/TournamentSchedulesTable.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _components_common_Table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/common/Table */ "./resources/js/components/common/Table.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+
+
+
+var TournamentSchedulesTable = /*#__PURE__*/function (_React$Component) {
+  _inherits(TournamentSchedulesTable, _React$Component);
+
+  var _super = _createSuper(TournamentSchedulesTable);
+
+  function TournamentSchedulesTable() {
+    var _this;
+
+    _classCallCheck(this, TournamentSchedulesTable);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      columns: [{
+        id: 0,
+        path: 'match_no',
+        label: 'Match'
+      }, {
+        id: 1,
+        path: 'dates',
+        label: 'Date'
+      }, {
+        id: 2,
+        path: 'times',
+        label: 'Time'
+      }, {
+        id: 3,
+        path: 'team1_code',
+        label: 'Team3'
+      }, {
+        id: 4,
+        label: 'VS',
+        content: function content() {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("span", {
+            children: "vs"
+          });
+        }
+      }, {
+        id: 5,
+        path: 'team2_code',
+        label: 'Team2'
+      }, // {id: 6, key : 'action', label : 'Action', content : tournamentSchedule => <><button onClick={() => this.props.onEdit(tournamentSchedule)} className="btn btn-dark btn-sm mr-2">Edit</button><button onClick={() => this.props.onDelete(tournamentSchedule)} className="btn btn-danger btn-sm">Delete</button></>},
+      {
+        id: 6,
+        key: 'action',
+        label: 'Action',
+        content: function content(tournamentSchedule) {
+          return _this.showButton(tournamentSchedule);
+        }
+      }]
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "showButton", function (tournamentSchedule) {
+      if (tournamentSchedule.status === null) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return _this.props.onStart(tournamentSchedule);
+            },
+            className: "btn btn-info btn-sm mr-2",
+            children: "Start"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return _this.props.onEdit(tournamentSchedule);
+            },
+            className: "btn btn-success btn-sm mr-2",
+            children: "Edit"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return _this.props.onDelete(tournamentSchedule);
+            },
+            className: "btn btn-danger btn-sm",
+            children: "Delete"
+          })]
+        });
+      } else if (tournamentSchedule.status <= 3) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return _this.props.onScore(tournamentSchedule);
+            },
+            className: "btn btn-primary btn-sm mr-2",
+            children: "Score"
+          })
+        }); // return <><button onClick={() => this.props.onStart(tournamentSchedule)} className="btn btn-success btn-sm mr-2">Start</button></>
+        // return <><Link to='' className="btn btn-success btn-sm mr-2">Start</Link></>
+      } else {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return _this.props.onResult(tournamentSchedule);
+            },
+            className: "btn btn-dark btn-sm mr-2",
+            children: "Result"
+          })
+        });
+      }
+    });
+
+    return _this;
+  }
+
+  _createClass(TournamentSchedulesTable, [{
+    key: "render",
+    value: function render() {
+      var data = this.props.data;
+      var count = data.length;
+      if (count > 0) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_common_Table__WEBPACK_IMPORTED_MODULE_1__.default, {
+        columns: this.state.columns,
+        data: data
+      });else return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        children: "Ooops! No schedules found."
+      });
+    }
+  }]);
+
+  return TournamentSchedulesTable;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TournamentSchedulesTable);
 
 /***/ }),
 
@@ -5504,10 +6250,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../config.json */ "./resources/js/config.json");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
+/* harmony import */ var react_toastify__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-toastify */ "./node_modules/react-toastify/dist/react-toastify.esm.js");
 /* harmony import */ var _services_tournamentService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/tournamentService */ "./resources/js/services/tournamentService.js");
 /* harmony import */ var _components_common_Form__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/common/Form */ "./resources/js/components/common/Form.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_common_Checkbox__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/common/Checkbox */ "./resources/js/components/common/Checkbox.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -5537,6 +6284,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -5618,7 +6366,7 @@ var TournamentTeamCreateForm = /*#__PURE__*/function (_Form) {
               data = _yield$axios$post.data;
 
               if (data.status) {
-                react_toastify__WEBPACK_IMPORTED_MODULE_10__.toast.success(data.message);
+                react_toastify__WEBPACK_IMPORTED_MODULE_11__.toast.success(data.message);
                 pathname = '/react/admin/tournaments/teams';
 
                 _this.props.history.push({
@@ -5628,7 +6376,7 @@ var TournamentTeamCreateForm = /*#__PURE__*/function (_Form) {
                   }
                 });
               } else {
-                react_toastify__WEBPACK_IMPORTED_MODULE_10__.toast.error('An unexpected error occurred.');
+                react_toastify__WEBPACK_IMPORTED_MODULE_11__.toast.error('An unexpected error occurred.');
               }
 
             case 8:
@@ -5688,41 +6436,41 @@ var TournamentTeamCreateForm = /*#__PURE__*/function (_Form) {
       var _this$state = this.state,
           data = _this$state.data,
           errors = _this$state.errors;
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.Fragment, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.Fragment, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
           className: "page-body",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             className: "container-fluid",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "page-title",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
                 className: "row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                   className: "col-6",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("h3", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("h3", {
                     children: "Create Team"
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                   className: "col-6",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_common_Breadcrumb__WEBPACK_IMPORTED_MODULE_2__.default, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_common_Breadcrumb__WEBPACK_IMPORTED_MODULE_2__.default, {
                     breadcrumbs: this.state.breadcrumbs
                   })
                 })]
               })
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
             className: "container-fluid",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
               className: "row",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                 className: "col-sm-12",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                   className: "card",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
                     className: "card-body",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("form", {
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("form", {
                       onSubmit: this.handleSubmit,
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_common_Input__WEBPACK_IMPORTED_MODULE_3__.default, {
+                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_common_Input__WEBPACK_IMPORTED_MODULE_3__.default, {
                         type: "text",
                         name: "tournament_name",
                         label: "Tournament",
@@ -5731,7 +6479,7 @@ var TournamentTeamCreateForm = /*#__PURE__*/function (_Form) {
                         value: data.tournament_name,
                         onChange: this.handleChange,
                         error: errors.tournament_name
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_common_Input__WEBPACK_IMPORTED_MODULE_3__.default, {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_common_Input__WEBPACK_IMPORTED_MODULE_3__.default, {
                         type: "text",
                         name: "team_code",
                         label: "Team Code",
@@ -5740,7 +6488,7 @@ var TournamentTeamCreateForm = /*#__PURE__*/function (_Form) {
                         value: data.team_code,
                         onChange: this.handleChange,
                         error: errors.team_code
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_components_common_Input__WEBPACK_IMPORTED_MODULE_3__.default, {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_common_Input__WEBPACK_IMPORTED_MODULE_3__.default, {
                         type: "text",
                         name: "team_name",
                         label: "Team Name",
@@ -5749,7 +6497,7 @@ var TournamentTeamCreateForm = /*#__PURE__*/function (_Form) {
                         value: data.team_name,
                         onChange: this.handleChange,
                         error: errors.team_name
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("button", {
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("button", {
                         disabled: this.validate(),
                         type: "submit",
                         className: "btn btn-success btn-md",
@@ -6247,6 +6995,29 @@ var Tournaments = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__.Component);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tournaments);
+
+/***/ }),
+
+/***/ "./resources/js/services/matchService.js":
+/*!***********************************************!*\
+  !*** ./resources/js/services/matchService.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getScheduleDetails": () => (/* binding */ getScheduleDetails)
+/* harmony export */ });
+/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../config.json */ "./resources/js/config.json");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function getScheduleDetails(schedule_id) {
+  var href = _config_json__WEBPACK_IMPORTED_MODULE_0__.url + 'match/schedule/' + schedule_id + '/details';
+  return axios__WEBPACK_IMPORTED_MODULE_1___default().get(href);
+}
 
 /***/ }),
 
